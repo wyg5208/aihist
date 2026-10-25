@@ -5,8 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex, nofollow" />
     <meta name="theme-color" content="#0f1116" />
-    <meta name="color-scheme" content="dark" />
+    <meta name="color-scheme" content="dark light" />
     <title>管理台 · AI 纪年</title>
+    <script>
+      // Before the first paint, so the wrong palette never flashes. Kept in sync
+      // with `src/admin/theme.ts` (same key, same two colours).
+      (function () {
+        var saved = null;
+        try {
+          saved = localStorage.getItem("aihist.admin.theme");
+        } catch (error) {
+          /* storage blocked: fall through to the system preference */
+        }
+        var theme =
+          saved === "light" || saved === "dark"
+            ? saved
+            : window.matchMedia("(prefers-color-scheme: light)").matches
+              ? "light"
+              : "dark";
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "light" ? "#f5f6f8" : "#0f1116");
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

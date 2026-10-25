@@ -344,7 +344,7 @@ export function ApiKeys() {
       >
         {panel?.mode === "secret" ? (
           <div className="space-y-3">
-            <p className="rounded-[var(--c-radius)] border border-[#4a3d22] bg-[#241d12] px-3 py-2 text-[11px] leading-5 text-[var(--c-warn)]">
+            <p className="rounded-[var(--c-radius)] border border-[var(--c-warn-line)] bg-[var(--c-warn-bg)] px-3 py-2 text-[11px] leading-5 text-[var(--c-warn)]">
               这是唯一一次能看到完整密钥的时刻。关闭本抽屉后，服务端只剩下 sha256 摘要，
               任何接口都无法把它还原出来。
             </p>

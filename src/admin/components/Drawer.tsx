@@ -44,13 +44,13 @@ export function Drawer({ open, title, subtitle, onClose, children, footer, width
         type="button"
         aria-label="关闭"
         onClick={onClose}
-        className="absolute inset-0 cursor-default bg-black/55"
+        className="absolute inset-0 cursor-default bg-[var(--c-scrim)]"
       />
       <div
         ref={panel}
         tabIndex={-1}
         style={{ width: `min(${width}, 100vw)` }}
-        className="relative flex h-full flex-col border-l border-[var(--c-line-strong)] bg-[var(--c-surface)] shadow-2xl shadow-black/60 outline-none"
+        className="relative flex h-full flex-col border-l border-[var(--c-line-strong)] bg-[var(--c-surface)] shadow-2xl outline-none"
       >
         <header className="flex items-start justify-between gap-4 border-b border-[var(--c-line)] px-4 py-3">
           <div className="min-w-0">

@@ -19,13 +19,13 @@ const BUTTON_BASE =
 
 const BUTTON_TONE: Record<ButtonTone, string> = {
   primary:
-    "border-[var(--c-accent)] bg-[var(--c-accent)] text-[#101216] hover:brightness-110",
+    "border-[var(--c-accent)] bg-[var(--c-accent)] text-[var(--c-on-accent)] hover:brightness-110",
   default:
     "border-[var(--c-line-strong)] bg-transparent text-[var(--c-text)] hover:bg-[var(--c-surface-2)]",
   ghost:
     "border-transparent bg-transparent text-[var(--c-text-dim)] hover:text-[var(--c-text)]",
   danger:
-    "border-[var(--c-danger)] bg-transparent text-[var(--c-danger)] hover:bg-[#241514]",
+    "border-[var(--c-danger)] bg-transparent text-[var(--c-danger)] hover:bg-[var(--c-danger-bg)]",
 };
 
 export type ButtonTone = "primary" | "default" | "ghost" | "danger";

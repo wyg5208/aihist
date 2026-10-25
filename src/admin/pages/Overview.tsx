@@ -32,7 +32,7 @@ function AlertStrip() {
 
   if (alerts.length === 0) {
     return (
-      <div className="flex items-center gap-2 rounded-[var(--c-radius)] border border-[#2b4a35] bg-[#16241b] px-3 py-2">
+      <div className="flex items-center gap-2 rounded-[var(--c-radius)] border border-[var(--c-ok-line)] bg-[var(--c-ok-bg)] px-3 py-2">
         <StatusPill tone="ok">无待办</StatusPill>
         <span className="text-[11px] text-[var(--c-text-dim)]">
           采集、暂缓队列、配置均正常，今天没有需要处理的事项。
@@ -48,10 +48,10 @@ function AlertStrip() {
           alert.level === "danger" ? "danger" : alert.level === "warn" ? "warn" : alert.level === "info" ? "info" : "muted";
         const shell =
           tone === "danger"
-            ? "border-[#4a2a25] bg-[#241514] text-[var(--c-danger)] hover:bg-[#2c1a18]"
+            ? "border-[var(--c-danger-line)] bg-[var(--c-danger-bg)] text-[var(--c-danger)] hover:bg-[var(--c-danger-bg-hover)]"
             : tone === "warn"
-              ? "border-[#4a3d22] bg-[#241d12] text-[var(--c-warn)] hover:bg-[#2c2415]"
-              : "border-[#25384f] bg-[#131c26] text-[var(--c-info)] hover:bg-[#182533]";
+              ? "border-[var(--c-warn-line)] bg-[var(--c-warn-bg)] text-[var(--c-warn)] hover:bg-[var(--c-warn-bg-hover)]"
+              : "border-[var(--c-info-line)] bg-[var(--c-info-bg)] text-[var(--c-info)] hover:bg-[var(--c-info-bg-hover)]";
         return (
           <button
             key={alert.code}

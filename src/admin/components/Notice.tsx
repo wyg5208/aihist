@@ -17,10 +17,10 @@ export interface NoticeItem {
 }
 
 const TONE_CLASS: Record<NoticeTone, string> = {
-  ok: "border-[#2b4a35] bg-[#16241b] text-[var(--c-ok)]",
-  warn: "border-[#4a3d22] bg-[#241d12] text-[var(--c-warn)]",
-  danger: "border-[#4a2a25] bg-[#241514] text-[var(--c-danger)]",
-  info: "border-[#25384f] bg-[#131c26] text-[var(--c-info)]",
+  ok: "border-[var(--c-ok-line)] bg-[var(--c-ok-bg)] text-[var(--c-ok)]",
+  warn: "border-[var(--c-warn-line)] bg-[var(--c-warn-bg)] text-[var(--c-warn)]",
+  danger: "border-[var(--c-danger-line)] bg-[var(--c-danger-bg)] text-[var(--c-danger)]",
+  info: "border-[var(--c-info-line)] bg-[var(--c-info-bg)] text-[var(--c-info)]",
 };
 
 export function useNotices() {
@@ -65,7 +65,7 @@ export function NoticeStack({
           type="button"
           key={item.id}
           onClick={() => onDismiss(item.id)}
-          className={`pointer-events-auto rounded-[var(--c-radius)] border px-3 py-2 text-left text-[12px] leading-5 shadow-lg shadow-black/40 ${TONE_CLASS[item.tone]}`}
+          className={`pointer-events-auto rounded-[var(--c-radius)] border px-3 py-2 text-left text-[12px] leading-5 shadow-lg ${TONE_CLASS[item.tone]}`}
         >
           {item.text}
         </button>

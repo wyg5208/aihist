@@ -3,6 +3,7 @@ import { ApiError } from "../../api";
 import { syncApi, type OverviewResponse, type Role } from "../api";
 import { relativeTime } from "../format";
 import { useSession } from "../session";
+import { currentTheme, toggleTheme, type Theme } from "../theme";
 import { Button } from "./Field";
 import { StatusPill } from "./StatusPill";
 
@@ -44,6 +45,7 @@ function lampFor(overview: OverviewResponse | null): Lamp {
 export function TopBar({ overview, refreshedAt, onRefreshed, notify }: TopBarProps) {
   const { user, role, can, signOut } = useSession();
   const [busy, setBusy] = useState(false);
+  const [theme, setTheme] = useState<Theme>(() => currentTheme());
   const [, setTick] = useState(0);
 
   // The relative time only stays true if something re-renders it.
@@ -106,6 +108,13 @@ export function TopBar({ overview, refreshedAt, onRefreshed, notify }: TopBarPro
             </span>
           )}
         </span>
+        <Button
+          tone="ghost"
+          onClick={() => setTheme(toggleTheme())}
+          title={theme === "dark" ? "切换到浅色主题" : "切换到深色主题"}
+        >
+          {theme === "dark" ? "浅色" : "深色"}
+        </Button>
         <Button tone="ghost" onClick={() => void signOut()}>
           退出
         </Button>

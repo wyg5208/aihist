@@ -2,12 +2,59 @@
  * Console palette. Imported last by `src/admin/main.tsx` and by nothing else,
  * so the public bundle keeps the paper-and-ink tokens untouched.
  *
+ * Two themes live here. `[data-theme="dark"]` is what the console ships with
+ * and what it falls back to when nothing has been chosen; `[data-theme="light"]`
+ * is the same console on paper. The attribute is set by a two-line inline script
+ * in `admin.html` before the first paint, so neither theme ever flashes.
+ *
  * The old `--paper` / `--ink` names are remapped rather than deleted: the shared
  * inputs, buttons and focus rings in `globals.css` reference them, and remapping
  * means one file controls the whole surface instead of a per-component sweep.
  */
 
+/*
+ * Aliases only. They resolve against whichever palette is active on `:root`,
+ * which is why this block is written once and not once per theme.
+ */
 :root {
+  --paper: var(--c-bg);
+  --paper-deep: var(--c-surface);
+  --ink: var(--c-text);
+  --ink-soft: var(--c-text-dim);
+  --muted: var(--c-text-mute);
+  --rule: var(--c-line);
+  --rule-strong: var(--c-line-strong);
+  --accent: var(--c-accent);
+  --accent-soft: var(--c-accent-soft);
+
+  --background: var(--c-bg);
+  --foreground: var(--c-text);
+  --card: var(--c-surface);
+  --card-foreground: var(--c-text);
+  --popover: var(--c-surface-2);
+  --popover-foreground: var(--c-text);
+  --primary: var(--c-accent);
+  --primary-foreground: var(--c-on-accent);
+  --secondary: var(--c-surface-2);
+  --secondary-foreground: var(--c-text);
+  --muted-foreground: var(--c-text-mute);
+  --border: var(--c-line);
+  --input: var(--c-line-strong);
+  --ring: var(--c-accent);
+  --radius: var(--c-radius);
+  --sidebar: var(--c-surface);
+  --sidebar-foreground: var(--c-text);
+  --sidebar-primary: var(--c-accent);
+  --sidebar-primary-foreground: var(--c-on-accent);
+  --sidebar-accent: var(--c-surface-2);
+  --sidebar-accent-foreground: var(--c-text);
+  --sidebar-border: var(--c-line);
+  --sidebar-ring: var(--c-accent);
+}
+
+/* Dark: the default, and the one that has to survive a missing `data-theme`. */
+:root,
+:root[data-theme="dark"] {
   color-scheme: dark;
 
   --c-bg: #0f1116;
@@ -25,39 +72,79 @@
   --c-info: #5b8fd6;
   --c-radius: 6px;
 
-  --paper: var(--c-bg);
-  --paper-deep: var(--c-surface);
-  --ink: var(--c-text);
-  --ink-soft: var(--c-text-dim);
-  --muted: var(--c-text-mute);
-  --rule: var(--c-line);
-  --rule-strong: var(--c-line-strong);
-  --accent: var(--c-accent);
-  --accent-soft: #3a1f1a;
+  /*
+   * A status colour is always a background *and* a border, so both have to
+   * flip together — otherwise the light theme inherits dark chips and reads as
+   * a rendering bug rather than a palette.
+   */
+  --c-ok-bg: #16241b;
+  --c-ok-line: #2b4a35;
+  --c-ok-bg-hover: #1c2e22;
+  --c-warn-bg: #241d12;
+  --c-warn-line: #4a3d22;
+  --c-warn-bg-hover: #2c2415;
+  --c-danger-bg: #241514;
+  --c-danger-line: #4a2a25;
+  --c-danger-bg-hover: #2c1a18;
+  --c-info-bg: #131c26;
+  --c-info-line: #25384f;
+  --c-info-bg-hover: #182533;
 
-  --background: var(--c-bg);
-  --foreground: var(--c-text);
-  --card: var(--c-surface);
-  --card-foreground: var(--c-text);
-  --popover: var(--c-surface-2);
-  --popover-foreground: var(--c-text);
-  --primary: var(--c-accent);
-  --primary-foreground: #101216;
-  --secondary: var(--c-surface-2);
-  --secondary-foreground: var(--c-text);
-  --muted-foreground: var(--c-text-mute);
-  --border: var(--c-line);
-  --input: var(--c-line-strong);
-  --ring: var(--c-accent);
-  --radius: var(--c-radius);
-  --sidebar: var(--c-surface);
-  --sidebar-foreground: var(--c-text);
-  --sidebar-primary: var(--c-accent);
-  --sidebar-primary-foreground: #101216;
-  --sidebar-accent: var(--c-surface-2);
-  --sidebar-accent-foreground: var(--c-text);
-  --sidebar-border: var(--c-line);
-  --sidebar-ring: var(--c-accent);
+  /* Text that sits on the accent fill, the login page's ambient glow, and the
+     scrim behind dialogs and drawers. */
+  --c-on-accent: #101216;
+  --c-glow: #1b2430;
+  --c-scrim: rgba(0, 0, 0, 0.62);
+  /*
+   * The focus ring is deliberately neutral, not the accent: it lights up on
+   * autofocus before anyone has typed, and a red ring on an empty field reads
+   * as a validation error. Each theme aims it at its own text colour.
+   */
+  --c-focus: #a9b3c2;
+  --c-accent-soft: #3a1f1a;
+}
+
+/*
+ * Light: a cool grey tool, not white paper. Pure white would tie the console to
+ * the public site's texture and lose the "this is a different thing" signal
+ * that the dark theme carries.
+ */
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --c-bg: #f5f6f8;
+  --c-surface: #ffffff;
+  --c-surface-2: #eef1f5;
+  --c-line: #e3e7ec;
+  --c-line-strong: #c3cad4;
+  --c-text: #14171c;
+  --c-text-dim: #4f5866;
+  --c-text-mute: #6f7887;
+  --c-accent: #bf4430;
+  --c-ok: #2c7a4b;
+  --c-warn: #8f6410;
+  --c-danger: #b23420;
+  --c-info: #2a5f9c;
+
+  --c-ok-bg: #e9f5ee;
+  --c-ok-line: #b9dcc8;
+  --c-ok-bg-hover: #dff0e6;
+  --c-warn-bg: #fdf3e1;
+  --c-warn-line: #ead2a5;
+  --c-warn-bg-hover: #fbe9cb;
+  --c-danger-bg: #fceceb;
+  --c-danger-line: #f0c7c1;
+  --c-danger-bg-hover: #f8ddd9;
+  --c-info-bg: #ebf2fb;
+  --c-info-line: #bcd0ea;
+  --c-info-bg-hover: #dfe9f8;
+
+  --c-on-accent: #ffffff;
+  --c-glow: #c9d8ea;
+  /* A 62% black scrim would read as a hole punched in a light page. */
+  --c-scrim: rgba(15, 17, 22, 0.3);
+  --c-focus: #3f4754;
+  --c-accent-soft: #f7e4e0;
 }
 
 /* `globals.css` paints a paper texture on the body; the console is a tool. */
@@ -85,9 +172,10 @@ body {
   color: var(--c-text-mute);
 }
 
-/* One focus treatment for the whole console. */
+/* One focus treatment for the whole console: neutral, so it never competes
+   with a status colour. */
 :is(a, button, input, select, textarea, [tabindex]):focus-visible {
-  outline: 2px solid var(--c-accent);
+  outline: 2px solid var(--c-focus);
   outline-offset: 1px;
   border-radius: 2px;
 }

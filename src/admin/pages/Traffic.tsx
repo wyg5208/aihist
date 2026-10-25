@@ -88,7 +88,7 @@ function BeaconSection({ days, beacon }: { days: number; beacon: TrafficResponse
       </div>
 
       {!beacon.enabled ? (
-        <div className="rounded-[var(--c-radius)] border border-[#4a3d22] bg-[#241d12] px-3 py-2 text-[11px] leading-5 text-[var(--c-warn)]">
+        <div className="rounded-[var(--c-radius)] border border-[var(--c-warn-line)] bg-[var(--c-warn-bg)] px-3 py-2 text-[11px] leading-5 text-[var(--c-warn)]">
           埋点已关闭（`ANALYTICS_ENABLED=false`）。客户端仍会发 beacon，服务端一律返回 204
           且不落库，因此下面的数字不会增长。
         </div>

@@ -65,9 +65,9 @@ export function ConfirmDialog({
         type="button"
         aria-label="取消"
         onClick={() => (busy ? undefined : onCancel())}
-        className="absolute inset-0 cursor-default bg-black/60"
+        className="absolute inset-0 cursor-default bg-[var(--c-scrim)]"
       />
-      <div className="relative w-full max-w-md rounded-[var(--c-radius)] border border-[var(--c-line-strong)] bg-[var(--c-surface)] shadow-2xl shadow-black/70">
+      <div className="relative w-full max-w-md rounded-[var(--c-radius)] border border-[var(--c-line-strong)] bg-[var(--c-surface)] shadow-2xl">
         <h2 className="border-b border-[var(--c-line)] px-4 py-2.5 text-[13px] text-[var(--c-text)]">
           {title}
         </h2>

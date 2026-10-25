@@ -2,6 +2,7 @@ import { useState, type FormEvent } from "react";
 import { ApiError } from "../api";
 import { INPUT_CLASS } from "./components/Field";
 import { useSession } from "./session";
+import { currentTheme, toggleTheme, type Theme } from "./theme";
 
 /**
  * The front door.
@@ -43,6 +44,9 @@ export function LoginPane() {
   // A second, silent path: after a lockout the honest message is not enough, so
   // we also show how long to wait when the header says so.
   const [retryAfter, setRetryAfter] = useState<number | null>(null);
+  // The login page is part of the console, so it can be read on paper too — and
+  // the choice made here is the one the console behind it opens with.
+  const [theme, setTheme] = useState<Theme>(() => currentTheme());
 
   const submit = async (event: FormEvent) => {
     event.preventDefault();
@@ -68,12 +72,21 @@ export function LoginPane() {
         className="pointer-events-none absolute inset-0 opacity-[0.35]"
         style={{
           background:
-            "radial-gradient(60rem 40rem at 50% -10%, #1b2430 0%, transparent 60%)",
+            "radial-gradient(60rem 40rem at 50% -10%, var(--c-glow) 0%, transparent 60%)",
         }}
       />
 
+      <button
+        type="button"
+        onClick={() => setTheme(toggleTheme())}
+        title={theme === "dark" ? "切换到浅色主题" : "切换到深色主题"}
+        className="absolute right-4 top-4 rounded-[var(--c-radius)] border border-[var(--c-line)] px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-text-dim)] transition-colors hover:border-[var(--c-line-strong)] hover:text-[var(--c-text)]"
+      >
+        {theme === "dark" ? "浅色" : "深色"}
+      </button>
+
       <div className="relative w-full max-w-sm">
-        <div className="rounded-[var(--c-radius)] border border-[var(--c-line)] bg-[var(--c-surface)] p-6 shadow-2xl shadow-black/50">
+        <div className="rounded-[var(--c-radius)] border border-[var(--c-line)] bg-[var(--c-surface)] p-6 shadow-xl">
           <p className="label">AI Chronicle · Console</p>
           <h1 className="mt-2 text-[18px] tracking-wide text-[var(--c-text)]">运营控制台</h1>
           <p className="mt-1.5 text-[11px] leading-5 text-[var(--c-text-mute)]">
@@ -114,7 +127,7 @@ export function LoginPane() {
             <button
               type="submit"
               disabled={busy}
-              className="mt-1 w-full rounded-[var(--c-radius)] border border-[var(--c-accent)] bg-[var(--c-accent)] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[#101216] transition-[filter] hover:brightness-110 disabled:cursor-wait disabled:opacity-60"
+              className="mt-1 w-full rounded-[var(--c-radius)] border border-[var(--c-accent)] bg-[var(--c-accent)] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--c-on-accent)] transition-[filter] hover:brightness-110 disabled:cursor-wait disabled:opacity-60"
             >
               {busy ? "验证中…" : "登录"}
             </button>
