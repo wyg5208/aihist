@@ -36,5 +36,8 @@ backend/_scratch_*.txt
 /backups/
 /service/
 
+# Third-party reference snapshots kept locally for reading only (~73 MB)
+/open_resources/
+
 # Real secrets. `deploy/api.env.example` is the tracked template.
 deploy/api.env
