@@ -1,0 +1,56 @@
+# Caddyfile for api.aihist.net — the only public surface of the backend once
+# the front end moves to Vercel.
+#
+# aihist.net itself is served by Vercel (see /vercel.json); nothing here answers
+# a page request. Two prefixes only, everything else is a hard 404, so a typo
+# can never reach an admin path or the OpenAPI docs by accident.
+#
+#   /api/*  -> 127.0.0.1:8000   (JSON API, including /api/v1/admin/*)
+#   /go/*   -> 127.0.0.1:8000   (partner redirect, 302)
+#
+# Vercel's rewrite is the proxy hop, so this server sees Vercel's address as
+# {remote_host}. `reverse_proxy` appends that to X-Forwarded-For and the client
+# address stays first, which is what `app.deps.client_ip` reads.
+#
+# Replace D:/srv/aihist with the real deploy path before installing.
+
+{
+	admin off
+}
+
+api.aihist.net {
+	encode zstd gzip
+
+	# Same structured log as the full site, so `ingest-access-log` keeps a
+	# usable source: ANALYTICS_LOG_PATH=D:/srv/aihist/logs/access.api.log
+	log {
+		output file D:/srv/aihist/logs/access.api.log {
+			roll_size 20mb
+			roll_keep 5
+		}
+		format json
+	}
+
+	header {
+		X-Content-Type-Options "nosniff"
+		-Server
+	}
+
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8000 {
+			header_up X-Real-IP {remote_host}
+		}
+	}
+
+	handle /go/* {
+		reverse_proxy 127.0.0.1:8000 {
+			header_up X-Real-IP {remote_host}
+		}
+	}
+
+	# No file server, no SPA fallback, no docs. Anything outside the two
+	# prefixes above is not part of this origin.
+	handle {
+		respond "Not Found" 404
+	}
+}

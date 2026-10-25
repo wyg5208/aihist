@@ -26,7 +26,7 @@
 | 数据库 | SQLite（默认，单文件）/ PostgreSQL（改 `DATABASE_URL` 即可） |
 | 构建 | `tsc --noEmit` → Vite → `scripts/build.mjs` → `build-pages.mjs`（种子静态页 + sitemap + robots + JSON-LD） |
 | 测试 | 后端 `pytest`（244 项，全部跑在 SQLite 上）；前端无单测，用 `scripts/check-*.mjs` 做行为断言 |
-| 部署 | Windows Server（`deploy/windows/*.ps1` + Caddy）或 Linux（systemd + nginx + cron） |
+| 部署 | 前端：Vercel（根目录 `vercel.json`，回源 `api.aihist.net`）或 Qoder Sites；后端：Windows Server（`deploy/windows/*.ps1` + Caddy）或 Linux（systemd + nginx + cron） |
 
 ## 本地开发
 
@@ -270,10 +270,13 @@ node scripts/release-gate.mjs      # G0 版本一致 → 构建 → 静态页 �
 
 退出码为 0 才可发布；`--skip` 只用于日常自测，对外发布不得跳过。
 
-两条通道彼此独立，可以分开发，但版本号只有一个：
+三条通道彼此独立，可以分开发，但版本号只有一个：
 
 - **静态站**（Qoder Sites）：构建产物 `dist/`，`spa` 为 `false`（`/admin/` 是例外，走 `admin.html`）。发布回执写入根目录 `*.qoder.site`（含 `releaseId` / `deploymentId` / `artifactSha256`），该文件已被 `.gitignore` 忽略；回滚即用回执里的 `releaseId` 退回上一版。
+- **静态站**（Vercel）：`vercel.json` 把 nginx 的路由规则复刻到平台侧——`/admin` 与 `/e/<slug>` 的 rewrite、`/api` 与 `/go` 回源 `https://api.aihist.net`、assets 一年 immutable、`/e/` 七天、`/admin` 加 `X-Robots-Tag`。构建命令仍是 `npm run build`，产物 `dist`，`cleanUrls` 必须保持 `false`：canonical 与 sitemap 里的规范地址带 `.html`，开了 `cleanUrls` 会把 159 条 URL（158 个种子页 + 首页）一起 308 掉。
 - **API 服务器**：Windows Server 用 `deploy\windows\install.ps1` → `install-service.ps1` → `register-tasks.ps1`；Linux 用 `deploy/bootstrap.sh` → `aihist-api.service` → `cron.d/aihist`。发布后用 `GET /api/v1/status` 核对 `seedVersion` 与 `panel.configured`，用 `GET /api/v1/standard` 核对 `rubricVersion` / `panelSize` / `minVotes` / `includeScore`。
+
+前端上 Vercel 时后端不搬家：SQLite 要在本机固定磁盘、采集是 6 小时的定时任务、租约与 track 限流都是进程内状态，这些都不成立在 Serverless 上。所以 `api.aihist.net` 只暴露两个前缀（`deploy/windows/Caddyfile.api`，其余路径硬 404），Vercel 用 rewrite 做服务端回源，浏览器始终只看 `aihist.net`，`src/api.ts` 的 `BASE = "/api/v1"` 与管理台的 host-only Cookie 都不用改。两个必须记住的代价：`/api` 上的 `CDN-Cache-Control: no-store` 不能删，Vercel 会按上游响应缓存 external rewrite，管理台会读到旧数据；`/e/<slug>.html` 的访问记录不再落在本机反代日志里，`ingest-access-log` 的 `crawl_hits` 链路会断。
 
 已知待办：本地构建的 canonical 是 `https://aihist.net/`，而托管侧回执记录的 canonical 落在 `*.qoder.zone`，两者尚未统一，正式对外发布前需要把 `SITE_ORIGIN` 与实际域名对齐。
 
