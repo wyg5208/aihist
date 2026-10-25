@@ -1,0 +1,1190 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>Artificial intelligence &#8211; MIT Technology Review</title>
+	<atom:link href="https://www.technologyreview.com/topic/artificial-intelligence/feed/" rel="self" type="application/rss+xml" />
+	<link>https://www.technologyreview.com</link>
+	<description></description>
+	<lastBuildDate>Thu, 22 Oct 2026 21:17:30 +0000</lastBuildDate>
+	<language>en-US</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1.3</generator>
+
+<image>
+	<url>https://wp.technologyreview.com/wp-content/uploads/2024/09/cropped-TR-Logo-Block-Centered-R.png?w=32</url>
+	<title>Artificial intelligence &#8211; MIT Technology Review</title>
+	<link>https://www.technologyreview.com</link>
+	<width>32</width>
+	<height>32</height>
+</image> 
+<site xmlns="com-wordpress:feed-additions:1">172986898</site>	<item>
+		<title>Designing an AI serving harness built to last</title>
+		<link>https://www.technologyreview.com/2026/10/22/1146109/designing-an-ai-serving-harness-built-to-last/</link>
+		
+		<dc:creator><![CDATA[Anand Logani]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 21:17:29 +0000</pubDate>
+				<category><![CDATA[Artificial intelligence]]></category>
+		<category><![CDATA[sponsored]]></category>
+		<guid isPermaLink="false">https://www.technologyreview.com/?p=1146109</guid>
+
+					<description><![CDATA[The next competitive advantage in enterprise AI has less to do with which model you choose than with what you build around it. That’s an important shift. For the past several years, much of the AI conversation has centered on model capability: bigger models, better reasoning, larger context windows, higher benchmark scores. Those advances have&#8230;]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">The next competitive advantage in enterprise AI has less to do with which model you choose than with what you build around it.</p>
+
+
+
+<p class="wp-block-paragraph">That’s an important shift. For the past several years, much of the AI conversation has centered on model capability: bigger models, better reasoning, larger context windows, higher benchmark scores. Those advances have been extraordinary. But as AI moves from experimentation to production, the question facing enterprise leaders has changed—it’s no longer, “what can the model do?”—it’s now, “Can we deliver that intelligence reliably, economically, and at scale?”</p>
+
+
+
+<figure class="wp-block-image size-large"><img fetchpriority="high" decoding="async" height="1315" width="3000" src="https://wp.technologyreview.com/wp-content/uploads/2026/10/GettyImages-2188328005_9f1d59-e1791493652782.jpg?w=840" alt="" class="wp-image-1146166" /></figure>
+
+
+
+<p class="wp-block-paragraph">Increasingly, the answer depends on the serving harness—the engineering system surrounding the model, including the architecture, <a href="https://www.exlservice.com/insights/white-paper/engineering-memory-reliable-enterprise-ai-agents?utm_source=technologyreview&amp;utm_medium=native&amp;utm_content=sponsored_content_hosting&amp;utm_campaign=2026_q4_go_beyond">memory management</a>, scheduling, and optimization decisions that determine how efficiently model intelligence becomes a production capability.</p>
+
+
+
+<p class="wp-block-paragraph">For technical executives, that changes where AI investment should go—and what they should demand from the architecture supporting it.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Start with the workload, not the model</strong></h3>
+
+
+
+<p class="wp-block-paragraph">There is no universally “best” model or AI architecture. There is only the right solution for the business problem.</p>
+
+
+
+<p class="wp-block-paragraph">A customer-facing assistant optimized for fast responses has fundamentally different requirements from a document-processing pipeline that can run overnight. An internal knowledge application and a high-volume customer service platform may use the same foundation model but require very different serving architectures.</p>
+
+
+
+<p class="wp-block-paragraph">The workload defines the constraints. The constraints should determine the architecture.</p>
+
+
+
+<p class="wp-block-paragraph">That sounds simple, but it runs counter to the way many organizations have approached early AI deployments. During a proof of concept, model accuracy naturally dominates the discussion. Production introduces constraints that are much easier to ignore when only a handful of users are involved: latency, concurrency, memory pressure, GPU utilization, infrastructure cost, and unpredictable traffic.</p>
+
+
+
+<p class="wp-block-paragraph">A model that produces marginally better answers is not necessarily the better production choice if it doubles inference costs or cannot meet the application&#8217;s latency requirements. Not every workload needs a Ferrari. Sometimes the smarter engineering decision is the model that delivers exactly the performance the business needs without paying for capability it doesn&#8217;t.</p>
+
+
+
+<p class="wp-block-paragraph">The objective should be to deploy the right intelligence at the right cost for the workload. That makes serving architecture more than an engineering concern. It becomes an investment decision: where to spend on compute, where to optimize, and where additional model capability simply isn&#8217;t worth the cost.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Engineer the system, not the model</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Once AI reaches production, seemingly isolated engineering decisions begin affecting one another. Serving architecture influences memory utilization. Memory management affects concurrency. Concurrency shapes batching and scheduling, and scheduling affects GPU utilization and latency.</p>
+
+
+
+<p class="wp-block-paragraph">Only then can techniques such as quantization, speculative decoding, or optimized attention mechanisms deliver their full value. This interdependence matters because organizations can spend considerably more on infrastructure without solving the constraint limiting performance.</p>
+
+
+
+<p class="wp-block-paragraph">GPU memory is a good example. During inference, the model&#8217;s weights remain fixed, but the key-value (KV) cache grows with active requests and context length. As concurrency increases, a system can run short of usable GPU memory even when compute capacity is still available. Adding more compute without understanding that bottleneck may simply make an inefficient system more expensive.</p>
+
+
+
+<p class="wp-block-paragraph">The lesson for technology leaders is broader than memory management: Measure before you optimize<strong>. </strong>Identify the dominant constraint. Address it. Measure the result. Then determine if another bottleneck emerged. Repeat.</p>
+
+
+
+<p class="wp-block-paragraph">Don&#8217;t think of optimization techniques as Pokémon cards: The goal isn&#8217;t to collect them all. The goal is to apply the technique that removes the highest-impact constraint while preserving the application&#8217;s business requirements.</p>
+
+
+
+<p class="wp-block-paragraph">For technology leaders, that demands a different governance question. Instead of asking which AI capabilities the organization can deploy, ask which constraints stand between a proven capability and sustainable business value.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Build for change, not today&#8217;s benchmark</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Perhaps the most important reason to invest in the serving harness is that today&#8217;s leading model will probably not be tomorrow’s. Models will improve. Hardware will evolve. New optimization techniques will emerge. The architecture surrounding them should make those changes easier to absorb, not force the enterprise to rebuild its AI platform every time technology advances.</p>
+
+
+
+<p class="wp-block-paragraph">That makes adaptability an increasingly important outcome of AI strategy.</p>
+
+
+
+<p class="wp-block-paragraph">Organizations that build serving systems around workload requirements, clear service-level objectives, and measurable production economics gain the ability to evaluate new models and infrastructure against what the business actually needs. A model change can become an evaluation and configuration decision rather than an architectural reset.</p>
+
+
+
+<p class="wp-block-paragraph">EXL researchers have explored these production challenges in greater depth in the <a href="https://www.exlservice.com/insights/white-paper/exl-engineering-field-guide-engineering-the-harness-series?utm_source=technologyreview&amp;utm_medium=native&amp;utm_content=sponsored_content_hosting&amp;utm_campaign=2026_q4_go_beyond">EXL Engineering the Harness</a> series. It examines how serving architecture, memory management, scheduling, and inference optimization work together to make enterprise AI more efficient, scalable, and economically sustainable.</p>
+
+
+
+<p class="wp-block-paragraph">Increasingly, enterprises have access to many of the same models. Sustainable differentiation comes from how effectively an organization turns that intelligence into business outcomes.</p>
+
+
+
+<p class="wp-block-paragraph">The model provides the intelligence. The harness determines whether the enterprise can deliver outcomes reliably, economically, and at scale.</p>
+
+
+
+<p class="wp-block-paragraph"><em>This content was produced by EXL. It was not written by MIT Technology Review’s editorial staff.</em></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1146109</post-id>	</item>
+		<item>
+		<title>The Foundations of Scalable AI</title>
+		<link>https://www.technologyreview.com/2026/10/22/1146103/the-foundations-of-scalable-ai/</link>
+		
+		<dc:creator><![CDATA[MIT Technology Review Events]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 18:48:04 +0000</pubDate>
+				<category><![CDATA[Artificial intelligence]]></category>
+		<category><![CDATA[sponsored]]></category>
+		<guid isPermaLink="false">https://www.technologyreview.com/?p=1146103</guid>
+
+					<description><![CDATA[A scalable AI system requires a strong foundation. Data, engineering, platforms, operating models, and governance must converge to work as one. This session from MIT Technology Review&#8217;s EmTech Future conference explores what it takes to build that foundation in a highly regulated environment and how a responsible, trustworthy implementation can turn emerging capabilities, including agentic&#8230;]]></description>
+										<content:encoded><![CDATA[
+<div
+  style="position: relative; display: block; max-width: 960px;">
+<div
+  style="padding-top: 56.25%;">
+<iframe
+  src="https://players.brightcove.net/6057955865001/default_default/index.html?videoId=6406285243112"
+  allowfullscreen=""
+  allow="encrypted-media"
+  style="position: absolute; top: 0px; right: 0px; bottom: 0px; left: 0px; width: 100%; height: 100%;">
+</iframe>
+</div>
+</div>
+
+
+
+<p class="wp-block-paragraph"><meta charset="utf-8"></p>
+
+
+
+<p class="wp-block-paragraph">A scalable AI system requires a strong foundation. Data, engineering, platforms, operating models, and governance must converge to work as one. This session from MIT Technology Review&#8217;s EmTech Future conference explores what it takes to build that foundation in a highly regulated environment and how a responsible, trustworthy implementation can turn emerging capabilities, including agentic systems, into lasting value for investors.</p>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<p class="wp-block-paragraph"><a href="https://event.technologyreview.com/emtech-ai-2026/speaker/2264883/tarique-mustafa"></a></p>
+
+
+
+<hr class="wp-block-separator has-css-opacity"/>
+
+
+
+<h2 class="wp-block-heading"><meta charset="utf-8"></meta>About the speaker</h2>
+
+
+
+<figure class="wp-block-image alignright size-full"><img decoding="async" width="426" height="426" src="https://wp.technologyreview.com/wp-content/uploads/2026/10/Wang_forweb.png" alt="" class="wp-image-1146104" srcset="https://wp.technologyreview.com/wp-content/uploads/2026/10/Wang_forweb.png 426w, https://wp.technologyreview.com/wp-content/uploads/2026/10/Wang_forweb.png?resize=150,150 150w, https://wp.technologyreview.com/wp-content/uploads/2026/10/Wang_forweb.png?resize=300,300 300w" sizes="(max-width: 426px) 100vw, 426px" /></figure>
+
+
+
+<h3 class="wp-block-heading">Jing Wang, Principal, Center for AI and Insights, Vanguard</h3>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+
+
+
+<p class="wp-block-paragraph">Jing Wang leads Vanguard&#8217;s Center for AI &amp; Insights (CAI), advancing the firm&#8217;s AI, machine learning, generative AI, and behavioral science capabilities. Her team drives enterprise-wide innovation, research, and delivery, enabling Vanguard to translate emerging technologies into trusted solutions that enhance client experiences, improve investor outcomes, and create measurable business value.</p>
+
+
+
+<p class="wp-block-paragraph">Before her current position, Jing served in a range of leadership roles across Vanguard&#8217;s Financial Services, Workplace Solutions, International, and Corporate Services divisions. Throughout her tenure, she has led teams and enterprise initiatives that advanced strategic priorities, strengthened client outcomes, and drove business performance across the firm.</p>
+
+
+
+<p class="wp-block-paragraph">She joined Vanguard in 2009 after several years as a Principal at the Boston Consulting Group. Jing earned a B.S. in Physics from the University of Science and Technology of China, a Ph.D. from the University of Pennsylvania, and an M.B.A. in Finance and Marketing from the Wharton School of Business at the University of Pennsylvania. Jing holds Series 7, 24, and 65 licenses.</p>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<div style="height:20px" aria-hidden="true" class="wp-block-spacer"></div>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1146103</post-id>	</item>
+		<item>
+		<title>Making the case for context-aware AI</title>
+		<link>https://www.technologyreview.com/2026/10/22/1146812/making-the-case-for-context-aware-ai/</link>
+		
+		<dc:creator><![CDATA[MIT Technology Review Insights]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 10:00:00 +0000</pubDate>
+				<category><![CDATA[Artificial intelligence]]></category>
+		<category><![CDATA[sponsored]]></category>
+		<guid isPermaLink="false">https://www.technologyreview.com/?p=1146812</guid>
+
+					<description><![CDATA[Enterprise AI can generate recommendations, automate tasks, and help organizations make decisions faster. But without an understanding of how a business actually operates, even powerful models can miss the constraints and relationships that determine whether a decision is the right one. As companies look to move AI from experimentation into everyday operations, the challenge ahead&#8230;]]></description>
+										<content:encoded><![CDATA[
+<iframe height="200px" width="100%" frameborder="no" scrolling="no" seamless src="https://player.simplecast.com/76d6319c-4e61-4b97-a5ef-1d0a92acaada?dark=false"></iframe>
+
+
+
+<p class="wp-block-paragraph">Enterprise AI can generate recommendations, automate tasks, and help organizations make decisions faster. But without an understanding of how a business actually operates, even powerful models can miss the constraints and relationships that determine whether a decision is the right one. As companies look to move AI from experimentation into everyday operations, the challenge ahead is giving technology the context to act usefully within complex business processes.</p>
+
+
+
+<p class="wp-block-paragraph">For Devavrat Shah, chief scientist of enterprise AI at Celonis, that context is central to what he calls “decision intelligence.” AI agents can support individual tasks within larger decision-making processes, he argues, but they need to understand the role each task plays and the business conditions surrounding it. “You can&#8217;t just do that in a vacuum,” he says. Without the right operational context, agents risk overlooking important constraints, making costly mistakes, or consuming excessive computing resources as they try to work out what they need to know.</p>
+
+
+
+<p class="wp-block-paragraph">The solution begins with connecting AI to the processes and data enterprises already use. A contextual layer can help agents understand workflows, operate within defined guardrails, and produce recommendations that people can review and approve. Shah advises organizations to start with a specific business decision, identify its most difficult steps, and test whether AI can improve them. Measuring gains in speed and value can then help determine whether an application is worth scaling.</p>
+
+
+
+<p class="wp-block-paragraph">This approach could also change how employees spend their time. Automating repetitive, manual work and coordinating tasks across teams could free people to focus on more complex strategic decisions. Realizing that benefit, however, will require investment in workforce education, so employees can understand AI outputs and their implications instead of just handing decisions over to agents.</p>
+
+
+
+<p class="wp-block-paragraph">Looking to the future, Shah sees opportunities extending from routine operational tasks to enterprise-wide planning in areas such as finance, workforce management, marketing, and sales. With the right context, AI could help organizations evaluate options and make consequential decisions more quickly. As Shah puts it, “Now, maybe [resource planning] should not take that much time, and people are actually making the right choices quickly.”</p>
+
+
+
+<p class="wp-block-paragraph"><em>This episode of Business Lab is produced in partnership with Celonis.</em></p>
+
+
+
+<p class="wp-block-paragraph"><strong>Full Transcript</strong></p>
+
+
+
+<p class="wp-block-paragraph"><em>Megan Tatum:</em> From MIT Technology Review, I&#8217;m Megan Tatum, and this is Business Lab, the show that helps business leaders make sense of new technologies coming out of the lab and into the marketplace.<br><br>This podcast is produced in partnership with Celonis.<br><br>Now, enterprise AI is at something of a crossroads. After years of experimentation, demos, and pilots, leadership teams want clear proof that scaling up will positively impact their bottom line, but many are missing an integral part of the puzzle. By acting without operational context, enterprise AI and AI agents are performing at a significant deficit. They&#8217;re applying generalized principles to specialized scenarios and coming up short, leaving business leaders understandably unconvinced and AI&#8217;s potential unrealized.<br><br>Two words for you: context matters.<br><br>My guest today is Devavrat Shah, chief scientist of enterprise AI at Celonis.<br><br>Welcome, Devavrat.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Devavrat Shah:</em> Hello, Megan. Thanks for having me here.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Megan:</em> Thank you so much for being here with us today. Devavrat, just to start, why is it so crucial that organizations are thinking about operational context as it relates to enterprise AI right now? What makes it such a critical part of that transition I was talking about from experimentation to scale?</p>
+
+
+
+<p class="wp-block-paragraph"><em>Devavrat:</em> It&#8217;s a fantastic question. And as you correctly noted, we&#8217;re at the cusp of becoming experimental to mainstream as far as AI is concerned. As you know, I&#8217;ve been teaching AI at MIT as a professor for more than the last two decades, so it&#8217;s no surprise that I&#8217;m very bullish about AI&#8217;s future in enterprises.<br><br>The way I think about where AI can make the biggest difference in enterprises is in decision making, helping enterprise make decisions, or putting it other way, how do we bring decision intelligence to enterprises? As we think about decisions, how do we make decisions today? Take MIT Tech Review, take Celonis, take MIT, take any large organization. We have different types of decisions we want to make in very broad strokes. There are decisions which are strategic decisions like episodic, other decisions which are operational that need to be done with a high frequency. In either of them, we have some processes in place. You do this first, you do that first, you do that first, you do that first. Many of us help coordinate those things. Many of us play roles within it, what Jensen Huang calls task. And once you get those things done step by step, then you reach decision.<br><br>Now, it&#8217;s those tasks, or what I would call roles, that&#8217;s where AI can bring in an atomic manner agentic power so that we can at least parts of decisions, if not all of the decisions, we can augment support and maybe sometimes when it&#8217;s a painful automate. And to get to that, to know which role to do, which task to do, we really need to know the context. You can&#8217;t just do that in a vacuum. And that&#8217;s why context with AI put together in the right way would bring what I would call decision intelligence to enterprise. And that&#8217;s where I think there&#8217;ll be the biggest transformation that would come.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Megan:</em> Right. To drill down into that into a bit more detail, we know many organizations are, as you say, embracing identic AI right now with this potential for increasingly autonomous decision making. If context isn&#8217;t introduced in parallel, what are the commercial risks at play?</p>
+
+
+
+<p class="wp-block-paragraph"><em>Devavrat:</em> Fantastic. Let&#8217;s just take the setting I was describing. We are trying to automate a role or support a role or augment a role depending on the type of decision, depending upon type of task. And let&#8217;s for a second imagine that all these, as they&#8217;re called, frontier labs have built these amazing models and amazing AI infrastructure so that everything that&#8217;s happened in the universe and it&#8217;s likely to happen in the universe is all there.<br><br>Now, we have a small decision that we want to make for that very specific context is there. And without having access to that, this massive system, this extremely bright person would figure that out eventually by asking lots of questions, the way we do it as humans, and then finally do the right thing. The problem is to get to that, it will do so much compute at some level that to get simple tasks done, we are spending massive amount of compute. So that&#8217;s scenario one.</p>
+
+
+
+<p class="wp-block-paragraph">In reality, that&#8217;s not going to be the scenario, and we&#8217;ll miss some important context, important constraint, important guardrail, and then we&#8217;ll make a mistake. And sometimes that mistake can be okay. It&#8217;s like me giving you a recommendation saying, go restaurant A, and maybe you may not enjoy the dinner, versus sometimes mistakes will be very, very expensive. That is me telling you what the financial forecast is and somehow that leads to the company&#8217;s doom.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Megan:</em> Right. So in an enterprise setting, these are really business critical decisions that are being made. So the impact is that much more if we get this wrong, isn&#8217;t it? And on a practical level then, what are the different ways that organizations can add in this context layer we&#8217;re talking about? How does Celonis, for example, deliver that operational context via a real time digital twin of an organization?</p>
+
+
+
+<p class="wp-block-paragraph"><em>Devavrat:</em> Absolutely. I think if it might be useful just to double click on the history of Celonis. As you know, Celonis, as an organization, came into existence with the mission, with the goal of helping organizations adhere to their ideal processes, build better processes, enable people to work with multiple processes in an intertwined manner. And that&#8217;s where their primary, let&#8217;s call it a DNA, has been about what I would call process intelligence. Take how enterprises help put multiple things together, digitize them, enable people to get their processes better, understand where the issues are, and then how do you re-engineer the process within organizations so that things can happen better.</p>
+
+
+
+<p class="wp-block-paragraph">Now, if you want to bring decision intelligence into this, each atomic step of this process that was potentially was done before by experts, people, now we want agents to help us enable that. And that&#8217;s where knowing this context of a process within enterprise and then bringing AI agents along with that, what I would like to call it as a roled agents, exactly provide the right way to bring decision intelligence to enterprises. And this is how Celonis brings context to help enterprise make better decision.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Megan:</em> Right. And then in terms of how this works as well, how does the context layer relate to both the layer below, that&#8217;s the systems of record layer, and also the layer above, that identic layer?</p>
+
+
+
+<p class="wp-block-paragraph"><em>Devavrat:</em> That&#8217;s a fantastic question, Megan. The layer below primarily is, if we call it system of record, primarily it&#8217;s the workflow tools that are there and then the event logs that they generate around it. The layer above is either business user experts consuming information, or they&#8217;re consuming that information maybe through agents working on top of that context layer. And this is where the way context model, as Celonis calls it, is designed is to do three things simultaneously. One is to get the right abstraction of the layer below, so that the right pieces of the process can be agentified. Two is to bring the rolled agents for each of these pieces in a structured guardrailed manner. And then the three is to be agent first so that if there are other agentic infrastructure that are already talking to it, they can naturally talk to it so that then they can bring the right output for humans or experts to review, look at it, approve, and maybe then at times automate.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Megan:</em> Fantastic. And for all the benefits that we&#8217;re talking about with this, are there also challenges when it comes to implementing a context layer? For example, do most organizations have the right data in place to provide AI with the context it needs? And if not, I wonder what some of the practical steps are that they might need to take to address that.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Devavrat:</em> It&#8217;s again, a crucial question to make this real. We can imagine an ideal world, but if we cannot reach the ideal world, then it&#8217;s just ideal. So now in this setting, as we discussed the three layers, one being the layer which is the layer below system of record and workflow tools. In some sense, those things already exist. They don&#8217;t need to be complete. They don&#8217;t need to be in the cleanest possible manner. The way context model is designed with agentic&#8217;s architecture, it manages to connect to those things and make sense of it.</p>
+
+
+
+<p class="wp-block-paragraph">And then things on top is very much in control of Celonis&#8217;s infrastructure, so it&#8217;s not that complicated. The crucial thing here though is when one goes to enterprise, when one opens up, let&#8217;s say a system of record or workflow tool, event logs or things like that, one has to go through, what I would call, classical InfoSec to make sure that you can trust a vendor&#8217;s software that&#8217;s coming into your organization. And I think that is the primary process that is a step between, before and after, if I may call it.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Megan:</em> Right. So that&#8217;s the real crucial step for people to be taking here. And as AI agents with context are able to make more complex, more accurate hopefully decisions, I wonder what you think the role of human intelligence and input will be moving forward, and how can organizations perhaps strike the balance between the two?</p>
+
+
+
+<p class="wp-block-paragraph"><em>Devavrat:</em> There are the benefits and then there are the challenges. Benefits are clear. If you have right AI agents in a right role manner going through your decision processes, hopefully they&#8217;re doing it quicker and hence your decisions are taken earlier so that your opportunity cost is not lost. You are taking decisions in time, you can plan much better, et cetera, et cetera. This is especially useful when you have to take very manual, repetitive, grungy tasks where access to workforce, coordination between people become crucial parts of the decision process. In a sense, that&#8217;s where the huge value can come in. The flip side of that is that means that people won&#8217;t be doing that.<br><br>On the other hand, the other type of decision that we always make, which are strategic decisions. It could be a small strategic decision, it could be large strategic decision, but the strategic decisions that typically most organizations don&#8217;t have bandwidth to take to think, that opportunity would open up and that&#8217;s where likely lots of humans and experts would engage more. In a sense, now they would have better support helping them rationally think through what are the choices that they have, how do different choices compare? And then at the end of the day, it&#8217;s organization&#8217;s role to decide which of the option to take because it belongs to their interest in mind where they want to go.<br><br>And so in a sense, there will be what I would call shift of workforce in terms of instead of doing a lot more repetitive, a lot less repetitive, but a lot more strategic work and that&#8217;s where people will have to spend time.<br><br>The other place where I am personally very optimistic is like every technology change creates new work that it&#8217;s difficult to predict at the time of change. My hope is that there will be another type of opportunity and work that will be created where we&#8217;ll be engaging our workforce. Goes without saying, this would mean that we will have to carefully think through reeducating or educating some of our workforce thoughtfully. And I think as an academic in me, as an educator in me, I really feel that the timescale at which these changes are happening are so fast. So we need to also act in a similar manner.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Megan:</em> For any decision maker listening to this, how should they start implementing these changes? For example, how can they prepare their workforce? What role should governance play as well?</p>
+
+
+
+<p class="wp-block-paragraph"><em>Devavrat:</em> Okay, that&#8217;s a great question. If you want to start, the first thing you need to do is identify a decision where you want to bring intelligence. Let&#8217;s identify the process around it. Let&#8217;s identify each step of the process. Let&#8217;s take the most crucial, difficult step in that. Let&#8217;s try to bring AI agents to help you to do that. And then from there you go and then let&#8217;s measure how much speed are we getting, how much value are we getting? And that&#8217;ll help us understand whether this was worth it. So that&#8217;s one.</p>
+
+
+
+<p class="wp-block-paragraph">Second is governance. Well, we&#8217;re going to bring AI in this prescriptive manner for each task in a role. That means that for that role, we can tell what it can or cannot do very clearly. And Celonis prescribes certified role agents for these things. This helps you clearly have an understanding of what sort of contract would be for this.<br><br>And the third thing, which is people, and now this is where it&#8217;s really important, is a part which gets automated, but then there&#8217;s a part where experts will be in the loop and this is where they need to understand the outputs of AI, how do you work with that and what its implication would be? And this is where some AI education is needed and then some tool education is needed.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Megan:</em> Yes, absolutely. The pace is incredible, isn&#8217;t it, in this space? And speaking of, I suppose if we could close with a look ahead, given the right context, of course, what are the use cases perhaps for enterprise AI that are on the horizon that you think could be most impactful or perhaps what you&#8217;re simply most excited about?</p>
+
+
+
+<p class="wp-block-paragraph"><em>Devavrat:</em> I think I would categorize them into three types. They&#8217;re all decision intelligence, decision-making, but there are three types. One, what I would call many repetitive manual labor-intensive, so that&#8217;s one.<br><br>Two, what I would call coordination style tasks. A lot of work that we do right now as an information workforce that&#8217;s spent in coordination, that&#8217;s why email spreadsheets, et cetera. A lot of that would be done much better, much quicker and less boring, so to speak.<br><br>And then the third is where, especially as a support to human decision-makers to provide strategic support augmentation, and that&#8217;s a third type of decisions that would be done. If I think of any planning process in enterprises, so financial planning, workforce planning, marketing, sales, product, anything, all of those are business critical decisions that we make that take annual planning process, take annual time. Now maybe it should not take that much time, and people are actually making the right choices quickly.</p>
+
+
+
+<p class="wp-block-paragraph"><em>Megan:</em> That&#8217;d be fantastic, wouldn&#8217;t it? Fantastic. Thank you so much for that brilliant conversation, Devavrat. That was Devavrat Shah, chief scientist of enterprise AI at Celonis, whom I spoke with from Brighton in England.<br><br>That&#8217;s it for this episode of Business Lab. I&#8217;m your host, Megan Tatum. I&#8217;m a contributing editor and host for Insights, the custom publishing division of MIT Technology Review. We were founded in 1899 at the Massachusetts Institute of Technology, and you can find us in print, on the web, and at events each year around the world. For more information about us and the show, please check out our website at technologyreview.com.<br><br>This show is available wherever you get your podcasts. And if you enjoyed this episode, we hope you&#8217;ll take a moment to rate and review us. Business Lab is a production of MIT Technology Review, and this episode was produced by Giro Studios. Thanks so much for listening. Goodbye.</p>
+
+
+
+<p class="wp-block-paragraph"><em>This content was produced by Insights, MIT Technology Review’s custom content arm, not its editorial staff. It was researched and written by humans, with any AI tools that may have been used limited to production processes under human oversight.</em></p>
+
+
+
+<p class="wp-block-paragraph"></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1146812</post-id>	</item>
+		<item>
+		<title>AI&#8217;s hidden storage bill: What inference leaves behind</title>
+		<link>https://www.technologyreview.com/2026/10/22/1146948/ais-hidden-storage-bill-what-inference-leaves-behind/</link>
+		
+		<dc:creator><![CDATA[Tim Rausch]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 08:41:18 +0000</pubDate>
+				<category><![CDATA[Artificial intelligence]]></category>
+		<category><![CDATA[sponsored]]></category>
+		<guid isPermaLink="false">https://www.technologyreview.com/?p=1146948</guid>
+
+					<description><![CDATA[Ask most executives to picture the cost of AI and they’ll likely see GPUs—racks of accelerators with gigawatts of power—and a waitlist for silicon. But that picture leaves something out: Data storage costs. What happens to data after a model responds? Much of the back-end data that’s generated—from billions of daily prompts, images, and videos—needs&#8230;]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">Ask most executives to picture the cost of AI and they’ll likely see GPUs—racks of accelerators with gigawatts of power—and a waitlist for silicon. But that picture leaves something out: Data storage costs.</p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="2400" height="1350" src="https://wp.technologyreview.com/wp-content/uploads/2026/10/WD-MITTR-Infographic-Final@2x.png" alt="" class="wp-image-1147215" srcset="https://wp.technologyreview.com/wp-content/uploads/2026/10/WD-MITTR-Infographic-Final@2x.png 2400w, https://wp.technologyreview.com/wp-content/uploads/2026/10/WD-MITTR-Infographic-Final@2x.png?resize=300,169 300w, https://wp.technologyreview.com/wp-content/uploads/2026/10/WD-MITTR-Infographic-Final@2x.png?resize=768,432 768w, https://wp.technologyreview.com/wp-content/uploads/2026/10/WD-MITTR-Infographic-Final@2x.png?resize=1536,864 1536w, https://wp.technologyreview.com/wp-content/uploads/2026/10/WD-MITTR-Infographic-Final@2x.png?resize=2048,1152 2048w" sizes="auto, (max-width: 2400px) 100vw, 2400px" /></figure>
+
+
+
+<p class="wp-block-paragraph">What happens to data after a model responds? <a></a>Much of the back-end data that’s generated—from billions of daily prompts, images, and videos—needs to be stored. But data storage is one of the harder infrastructure costs to plan for, and it’s often overlooked in initial AI infrastructure planning.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>As inference scales, the data footprint grows with it</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Traditionally, AI infrastructure conversations have centered on the compute-intensive process of training a model. Training is finite: a run starts, burns through compute, and ends. But inference runs continuously, every time a model answers a prompt. For infrastructure planning, that difference matters: A training run is a project you can budget for and retire. Inference doesn’t retire; every inference request leaves something behind.</p>
+
+
+
+<p class="wp-block-paragraph">Take AI-generated video. In this workload, the back-end spend can be significant. From internal measurements, WD found that an 8-second clip (returned to a user as a 3.97MB 720p file) left more than 500MB of associated data behind on the back end, including logs, cached context, immediate renders, backups, and safety records. That’s a 130x increase over the output file size the user saw. Scale this to an enterprise generating longer, higher resolution video and the back-end footprint grows into the hundreds of gigabytes per clip.</p>
+
+
+
+<p class="wp-block-paragraph">And that back-end footprint is growing fast. McKinsey <a href="https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-next-big-shifts-in-ai-workloads-and-hyperscaler-strategies" target="_blank" rel="noopener">projects AI inference demand</a> will grow at a 35% CAGR through 2030, versus 22% for training, making up more than 40% of total data center demand by the end of the decade.</p>
+
+
+
+<p class="wp-block-paragraph">A <a href="https://www.westerndigital.com/content/dam/doc-library/en_us/assets/public/western-digital/collateral/white-paper/white-paper-built-for-scale-the-enduring-role-of-hdds-in-the-ai-era.pdf" target="_blank" rel="noopener">recent WD-sponsored IDC</a> global white paper that surveyed 763 IT and business decision makers found that nearly 95% of respondents reported an increase in data volume due to generative AI over the past 12 months, with roughly 61% reporting growth of 25% or more.</p>
+
+
+
+<p class="wp-block-paragraph">“You can think of having more storage as an optimization for keeping the GPUs busy,” said a senior product manager of a hyperscale cloud service provider quoted in report. “The biggest challenge is to ensure that the GPUs are not idle, waiting for data to show up—hours of GPU idle time becomes very expensive, very fast.” Put in dollar terms: if your storage spend is growing 25% year over year while your compute budget grows in the more predictable cyclical way, storage ends up outpacing the budget line that receives the most attention.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Matching storage to the AI data life cycle</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Compute demand rises and falls with training cycles, product launches, and hardware refreshes. But the volume of retained data doesn&#8217;t fall back down with it when compute demand slows. Model logs, synthetic outputs, inference results, and more keep accumulating, and organizations are holding onto more of it for longer.</p>
+
+
+
+<p class="wp-block-paragraph">This changes the role of retained data. Information that once moved into an archive and rarely surfaced can now become an input to future AI workloads. As more data is retained, retrieved, and reused, storage must support not only growing capacity, but increasingly dynamic access to it. The same WD-IDC survey found 96% of respondents anticipate needing faster archive retrieval to support inference or retrieval-augmented generation (RAG).</p>
+
+
+
+<p class="wp-block-paragraph">AI workloads require both performance and capacity, with different technologies serving different needs across the data lifecycle. And for the vast volumes of data that must be retained and revisited, HDDs provide a cost-effective, high-capacity foundation, with a significant cost-per-terabyte advantage &nbsp;</p>
+
+
+
+<h3 class="wp-block-heading"><a></a><strong>What this means for how AI gets budgeted</strong></h3>
+
+
+
+<p class="wp-block-paragraph">For a CFO or CIO, this means “AI infrastructure spend” may be scoped too narrowly on compute. A model that idles while data loads costs about as much as one idling for lack of a GPU. But the storage bottleneck stays hidden until it’s already a problem, surfacing in operating costs and retrieval delays rather than a CapEx line next to the accelerators.</p>
+
+
+
+<p class="wp-block-paragraph">Consider a retailer generating AI product videos for its catalog, or an insurer running claims documents through a RAG pipeline for faster underwriting. In both cases, the compute cost is a known, budgeted quantity: a per-generation or per-query rate that finance can forecast. The storage cost is different: It compounds with every video generated and every claim processed, because none of that back-end data disappears once the task is finished.</p>
+
+
+
+<p class="wp-block-paragraph">A team that budgets AI as “compute plus a rounding error for storage” may find, in 12 to 18 months, that the rounding error has become a significant fraction of the program’s total cost—right around the time leadership is deciding whether to expand.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Building for economically scalable capacity</strong></h3>
+
+
+
+<p class="wp-block-paragraph"><a></a>Addressing this challenge starts with architecture. Storage strategy tends to be designed for expensive, hot-tier performance (for data accessed instantly and constantly), while most AI data by volume accumulates in the warm, cool, and cold tiers behind it.</p>
+
+
+
+<p class="wp-block-paragraph">What enterprises need is economically scalable capacity: Infrastructure designed for the full AI data life cycle, balancing performance with capacity, power, reliability, and total cost of ownership as data persists, compounds, and is increasingly reused. That means treating archives that once sat untouched as active assets for RAG and inference, and setting retention policies for data’s growing strategic value rather than its original storage cost. It also means recognizing that decisions about storage play out across fleets, not individual drives.</p>
+
+
+
+<p class="wp-block-paragraph">Such infrastructure requires storage tiers, where individualized power consumption, reliability, density, and operational efficiency all determine whether the system remains economically sustainable as capacity scales.</p>
+
+
+
+<p class="wp-block-paragraph">There are three questions to ask about your organization’s AI infrastructure budget:</p>
+
+
+
+<ol class="wp-block-list">
+<li>What’s our data retention policy for AI-generated content, and who set(s) it?</li>
+
+
+
+<li>Is our storage procurement tied to training-time performance needs, or to the actual life cycle of the data we’re producing?</li>
+
+
+
+<li>If our AI usage doubled next year, would our storage cost double with it, or worse?</li>
+</ol>
+
+
+
+<p class="wp-block-paragraph">Most organizations cannot answer all three with confidence. That’s the gap worth closing before the next budget cycle, not after.</p>
+
+
+
+<p class="wp-block-paragraph"><em>This content was produced by WD. It was not written by MIT Technology Review’s editorial staff.</em></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1146948</post-id>	</item>
+		<item>
+		<title>The new economics of enterprise AI</title>
+		<link>https://www.technologyreview.com/2026/10/20/1146937/the-new-economics-of-enterprise-ai/</link>
+		
+		<dc:creator><![CDATA[David Sydow]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2026 15:20:25 +0000</pubDate>
+				<category><![CDATA[Artificial intelligence]]></category>
+		<category><![CDATA[sponsored]]></category>
+		<guid isPermaLink="false">https://www.technologyreview.com/?p=1146937</guid>
+
+					<description><![CDATA[Imagine your company just discovered electricity. At first only a few machines run on it, and nobody worries about efficiency — consumption is low and the value is obvious. But once electricity becomes infrastructure, every process depends on it, and the question changes from &#8220;can we use it?&#8221; to &#8220;how efficiently are we using it?&#8221;&#8230;]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">Imagine your company just discovered electricity. At first only a few machines run on it, and nobody worries about efficiency — consumption is low and the value is obvious. But once electricity becomes infrastructure, every process depends on it, and the question changes from &#8220;can we use it?&#8221; to &#8220;how efficiently are we using it?&#8221;</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="2060" height="1159" src="https://wp.technologyreview.com/wp-content/uploads/2026/10/HPE-iStock-1168748420.jpg?w=840" alt="" class="wp-image-1146941" srcset="https://wp.technologyreview.com/wp-content/uploads/2026/10/HPE-iStock-1168748420.jpg 2060w, https://wp.technologyreview.com/wp-content/uploads/2026/10/HPE-iStock-1168748420.jpg?resize=300,169 300w, https://wp.technologyreview.com/wp-content/uploads/2026/10/HPE-iStock-1168748420.jpg?resize=768,432 768w, https://wp.technologyreview.com/wp-content/uploads/2026/10/HPE-iStock-1168748420.jpg?resize=1536,864 1536w, https://wp.technologyreview.com/wp-content/uploads/2026/10/HPE-iStock-1168748420.jpg?resize=2048,1152 2048w" sizes="auto, (max-width: 2060px) 100vw, 2060px" /></figure>
+
+
+
+<p class="wp-block-paragraph">Enterprise AI is going through the same shift. What began as isolated chatbot and copilot experiments is becoming a foundational layer of the business, with models, agents, and data increasingly interconnected in production workloads. The important question stops being what a token or GPU-hour costs. It becomes how efficiently the AI environment converts paid capacity into useful business outcomes.</p>
+
+
+
+<p class="wp-block-paragraph">That&#8217;s the metric worth tracking: effective cost per useful outcome — the total platform, model, operations, and capacity cost required to complete work the business can actually use, whether a resolved request or a completed workflow.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Three ways to run AI</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Utilization is central to the economics. Directing more work to paid-for capacity lowers effective unit cost; idle GPUs, fragmented workloads, and oversized models all raise the cost of every useful result. Enterprises generally choose among three models:</p>
+
+
+
+<p class="wp-block-paragraph"><strong>A bespoke stack</strong> — procuring infrastructure and controls in-house. This approach is flexible, but it creates a continuing burden, since teams must revalidate the environment as models and policies change.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>On-demand consumption</strong> — hyperscalers reduce the assembly burden and suit low or uncertain demand, but charges rise with every prompt or agent action.</p>
+
+
+
+<p class="wp-block-paragraph"><strong>An integrated private AI platform</strong> — owned or dedicated capacity paired with a validated stack. The advantage isn&#8217;t free inference; it&#8217;s control over efficiency levers like scheduling, model selection, GPU partitioning, and cache management.</p>
+
+
+
+<p class="wp-block-paragraph">The right model depends on the workload. APIs can be rational for experimentation or variable demand. As workloads become sustained and business-critical, enterprises need to weigh not just what they consume, but how efficiently they operate the system.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Ownership is an operating discipline</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Buying a Formula 1 race car and parking it in your garage means owning one of the most sophisticated vehicles ever built — but ownership alone doesn&#8217;t make you competitive; you still need drivers, mechanics, and track time to justify it. AI infrastructure works the same way.</p>
+
+
+
+<p class="wp-block-paragraph">One of the biggest misconceptions in enterprise AI is that owning infrastructure automatically improves economics. Owning GPUs creates the opportunity for better economics, but only if the organization has sufficient demand and operational discipline to keep resources productive.</p>
+
+
+
+<p class="wp-block-paragraph">The infrastructure that returns the best ROI isn&#8217;t a reference architecture or a bespoke build-out — it&#8217;s a fully integrated, qualified stack that lets teams route tasks to the least costly model that meets quality requirements and reuse context through techniques such as KV-cache management, reducing wasted capacity while maintaining responsiveness.</p>
+
+
+
+<p class="wp-block-paragraph">Without these practices, committed infrastructure can become stranded capital. With them, rising demand improves economics as fixed costs are amortized across more useful work — increasingly important in agentic systems, where economics are shaped less by any single prompt than by the efficiency of the complete environment.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>From deployment to value</strong></h3>
+
+
+
+<p class="wp-block-paragraph">HPE Private Cloud AI is a production-ready foundation combining infrastructure, software, models, tools, governance, and services, reducing the integration burden of operating private AI at scale. Its architecture lets teams manage scheduling, model selection, GPU partitioning, and cache management as operational levers, aligning capacity and service levels with each workload&#8217;s requirements. It also includes a 90-day engagement with forward-deployed engineers who help customer teams deploy initial use cases and establish repeatable operating practices.</p>
+
+
+
+<p class="wp-block-paragraph">In independent testing commissioned by HPE, an integrated platform serving multiple workloads at high utilization delivered a lower effective cost per token than repeatedly renting equivalent capacity. Actual results will vary based on workload mix and utilization.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Measure what matters</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Token consumption remains useful, but it isn&#8217;t a complete measure of AI economics. A fuller enterprise view tracks cost per business-relevant outcome, accelerator utilization, and model choice relative to task complexity.</p>
+
+
+
+<p class="wp-block-paragraph">Enterprises already operating private AI should ask how mature their utilization is, and how workload volume will change over the next 12 to 18 months. Those earlier in the journey should build these practices in from the first deployment, so strategy anticipates growth before demand becomes a bottleneck.</p>
+
+
+
+<p class="wp-block-paragraph">For low-volume, unpredictable demand, an API or hyperscaler may remain sensible. But as AI becomes a continuous production capability, enterprises have a growing incentive to control utilization, amortize fixed costs, and manage the environment as a long-term operating asset. The strategic question isn&#8217;t whether enterprises will pay for AI — it&#8217;s whether they will understand, and ultimately own, the economics behind it.</p>
+
+
+
+<p class="wp-block-paragraph"></p>
+
+
+
+<p class="wp-block-paragraph"><em>To learn more about HPE Private Cloud AI, please visit</em> <a href="https://www.hpe.com/us/en/products/private-cloud/pcai.html?utm_campaign=FY26_AI_GB_GD_AMS_NA_Speed_time_to_AI_Value-NVIDIA&amp;utm_medium=PS&amp;utm_source=BNG&amp;utm_content=521223665&amp;plid=PSF26-00003328&amp;ef_id=5c0f993b7a99180be139f3edca721c4c:G:s&amp;s_kwcid=AL!13472!10!81157839054491!!!!81158075081756!!605741192!1298524459994371&amp;msclkid=5c0f993b7a99180be139f3edca721c4c"><em>HPE</em></a><em>.</em></p>
+
+
+
+<p class="wp-block-paragraph"><em>This content was produced by HPE. It was not written by MIT Technology Review’s editorial staff.</em></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1146937</post-id>	</item>
+		<item>
+		<title>AI adoption by industry shows what other sectors can learn</title>
+		<link>https://www.technologyreview.com/2026/10/20/1145423/ai-adoption-by-industry-shows-what-other-sectors-can-learn/</link>
+		
+		<dc:creator><![CDATA[TripleTen]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2026 12:00:00 +0000</pubDate>
+				<category><![CDATA[Artificial intelligence]]></category>
+		<category><![CDATA[sponsored]]></category>
+		<guid isPermaLink="false">https://www.technologyreview.com/?p=1145423</guid>
+
+					<description><![CDATA[The current narrative around artificial intelligence in the workplace is largely driven by Silicon Valley. But treating the tech sector as an island misses the actual trends in technology adoption–tech is just the first industry in line. As generative AI and automation tools mature, the shifts currently reshaping software engineering and product management will inevitably&#8230;]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph">The current narrative around artificial intelligence in the workplace is largely driven by Silicon Valley. But treating the tech sector as an island misses the actual trends in technology adoption–tech is just the first industry in line.</p>
+
+
+
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" height="1688" width="3000" src="https://wp.technologyreview.com/wp-content/uploads/2026/10/TripleTen-MIT-cover.png?w=840" alt="" class="wp-image-1145899" srcset="https://wp.technologyreview.com/wp-content/uploads/2026/10/TripleTen-MIT-cover.png 3840w, https://wp.technologyreview.com/wp-content/uploads/2026/10/TripleTen-MIT-cover.png?resize=300,169 300w, https://wp.technologyreview.com/wp-content/uploads/2026/10/TripleTen-MIT-cover.png?resize=768,432 768w, https://wp.technologyreview.com/wp-content/uploads/2026/10/TripleTen-MIT-cover.png?resize=1536,864 1536w, https://wp.technologyreview.com/wp-content/uploads/2026/10/TripleTen-MIT-cover.png?resize=2048,1152 2048w" sizes="auto, (max-width: 3000px) 100vw, 3000px" /></figure>
+
+
+
+<p class="wp-block-paragraph">As generative AI and automation tools mature, the shifts currently reshaping software engineering and product management will inevitably filter into healthcare, education, retail, and manufacturing. The variation in adoption rates today isn&#8217;t a sign that non-tech industries are falling behind, but rather a reflection of the different speeds at which industries absorb new workflows. For leaders and their teams outside of tech, this differential pace provides a practical blueprint for how AI adoption unfolds, and where the opportunities lie.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>The AI adoption spectrum by industry</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Recent survey data from <a href="https://tripleten.com/blog/posts/career-cushioning-study">TripleTen</a> highlights just how stark the current adoption curve is across different sectors of the economy (see Figure 1).</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Figure 1: The AI adoption curve remains steep across industries, but non-tech industry adoption rates are increasing.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="6000" height="3375" src="https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-1-TripleTen-Contributed-v4.png" alt="" class="wp-image-1145439" srcset="https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-1-TripleTen-Contributed-v4.png 6000w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-1-TripleTen-Contributed-v4.png?resize=300,169 300w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-1-TripleTen-Contributed-v4.png?resize=768,432 768w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-1-TripleTen-Contributed-v4.png?resize=1536,864 1536w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-1-TripleTen-Contributed-v4.png?resize=2048,1152 2048w" sizes="auto, (max-width: 6000px) 100vw, 6000px" /></figure>
+
+
+
+<p class="wp-block-paragraph"><strong>Source</strong>: <a href="https://tripleten.com/blog/posts/career-cushioning-study" target="_blank" rel="noreferrer noopener">TripleTen</a>, 2026</p>
+
+
+
+<p class="wp-block-paragraph">While tech leads the way, finance emerges as a clear second: 48% of finance workers have been asked to use AI chatbots, and 32% have been asked to automate parts of their workflow. This demonstrates how rapidly knowledge work integrates AI once clear use cases emerge. </p>
+
+
+
+<p class="wp-block-paragraph">By contrast, sectors like healthcare (18% asked to use chatbots) and education (25%) reflect lower initial exposure. Because these broad industry categories encompass a mix of specialized hands-on professionals, clinical or instructional personnel, and back-office administrative staff, universal adoption was never going to happen overnight. Integrating automated tools into compliance-heavy or human-facing operations requires a more deliberate pace, which is reflected by the lower numbers.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>The AI skills workers are being asked to learn</strong> </h3>
+
+
+
+<p class="wp-block-paragraph">Across all surveyed industries, 79% of workers report being asked to learn at least one skill they didn&#8217;t previously have. Looking at the specific competencies demanded in tech today offers a preview of the skill sets likely to shift into other sectors (see Figure 2).</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Figure 2: Workforces across industries are learning new skills.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="6000" height="4688" src="https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-2-TripleTen-Contributed-v4.png" alt="" class="wp-image-1145442" srcset="https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-2-TripleTen-Contributed-v4.png 6000w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-2-TripleTen-Contributed-v4.png?resize=300,234 300w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-2-TripleTen-Contributed-v4.png?resize=768,600 768w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-2-TripleTen-Contributed-v4.png?resize=1536,1200 1536w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-2-TripleTen-Contributed-v4.png?resize=2048,1600 2048w" sizes="auto, (max-width: 6000px) 100vw, 6000px" /></figure>
+
+
+
+<p class="wp-block-paragraph"><strong>Source</strong>: <a href="https://tripleten.com/blog/posts/career-cushioning-study" target="_blank" rel="noreferrer noopener">TripleTen</a>, 2026</p>
+
+
+
+<p class="wp-block-paragraph">Although some of these sound like niche skills confined to tech, many of them will translate to frontline work across sectors—from hospital systems managing patient logistics to school districts processing administrative reporting. </p>
+
+
+
+<p class="wp-block-paragraph">One skill gets less attention than it should. Only 30% of managers and owners call judging whether AI output is right or wrong an absolute must, which puts it sixth on a list of seven. As AI tools reach more industries, this is the skill that catches mistakes before they cause problems. It is also where work experience helps most: To spot a wrong answer, you need to know what the right one looks like.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>How early AI adoption helps your career</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Early AI adoption offers clear professional leverage: TripleTen’s <a href="https://tripleten.com/blog/posts/career-cushioning-study">survey</a> data shows that when managers learned a new skill or automation process from an employee, 88% of those employee-led AI innovations became standard company practice.</p>
+
+
+
+<p class="wp-block-paragraph">In early-adopting industries, employees who identify repetitive administrative tasks and use AI tools to streamline them have a voice in shaping organizational policy. As healthcare networks, educational institutions, and retail operations begin broader rollouts of AI-enabled software, workers who understand how to validate outputs, prompt models, and automate routine tasks will hold a strong advantage. Being the person who can streamline administrative overhead promises better chances for retention, promotions, and wage growth. </p>
+
+
+
+<p class="wp-block-paragraph">Ana Riabova, the AI strategy and enablement lead at TripleTen, says, “Everyone talks about saving time, but the real win with early adoption is expanding what you can actually do. People who get ahead are using it to handle things they used to have to hand off. It doesn&#8217;t matter how senior or junior you are. You keep your core skills, but suddenly you aren&#8217;t boxed in by them anymore.”</p>
+
+
+
+<h3 class="wp-block-heading"><strong>The AI resource gap: Who pays for training and how workers learn</strong></h3>
+
+
+
+<p class="wp-block-paragraph">If non-tech industries absorb these tools more gradually, the challenge for workers lies in getting access to quality learning resources. Workers’ out-of-pocket investment in training varies significantly by industry:</p>
+
+
+
+<ul class="wp-block-list">
+<li>Tech: $1,758 average (13% spent $0)</li>
+
+
+
+<li>Finance: $1,664 average (24% spent $0)</li>
+
+
+
+<li>Healthcare: $990 average (45% spent $0)</li>
+
+
+
+<li>Education: $883 average (42% spent $0)</li>
+</ul>
+
+
+
+<p class="wp-block-paragraph">Nearly half of healthcare and education workers spent nothing out of pocket on professional development last year. Furthermore, tech workers actively leverage a larger variety of learning channels (see Figure 3).</p>
+
+
+
+<p class="wp-block-paragraph"><strong>Figure 3: Professional development efforts mirror the AI adoption curve.</strong></p>
+
+
+
+<figure class="wp-block-image size-full"><img loading="lazy" decoding="async" width="6000" height="3375" src="https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-3-TripleTen-Contributed-v4.png" alt="" class="wp-image-1145443" srcset="https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-3-TripleTen-Contributed-v4.png 6000w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-3-TripleTen-Contributed-v4.png?resize=300,169 300w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-3-TripleTen-Contributed-v4.png?resize=768,432 768w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-3-TripleTen-Contributed-v4.png?resize=1536,864 1536w, https://wp.technologyreview.com/wp-content/uploads/2026/09/Fig-3-TripleTen-Contributed-v4.png?resize=2048,1152 2048w" sizes="auto, (max-width: 6000px) 100vw, 6000px" /></figure>
+
+
+
+<p class="wp-block-paragraph"><strong>Source</strong>: <a href="https://tripleten.com/blog/posts/career-cushioning-study" target="_blank" rel="noreferrer noopener">TripleTen</a>, 2026</p>
+
+
+
+<p class="wp-block-paragraph">Tech workers are nearly twice as likely as all workers to use AI chatbots as learning tools (48% vs. 27%), and more than twice as likely as workers outside tech (21%), effectively using AI to accelerate their acquisition of other skills. </p>
+
+
+
+<p class="wp-block-paragraph">However, ask workers whom they trust most to teach them a new job skill, and they choose someone currently doing that job (31%). Fewer pick an official certification program (19%), an AI tool (16%), or a university professor (6%).</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Conclusion</strong></h3>
+
+
+
+<p class="wp-block-paragraph">The difference in AI adoption rates across industries is not a story of who is succeeding and who is failing. Rather, it’s a timeline of how technology diffuses through an economy. Tech and finance are testing the mechanics of AI integration today. For workers in healthcare, education, retail, and manufacturing, the current phase provides a valuable window to observe which skills generate real productivity gains—allowing them to build those competencies before they become standard industry expectations.</p>
+
+
+
+<p class="wp-block-paragraph"><em>This content was produced by TripleTen. It was not written by MIT Technology Review’s editorial staff.</em></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1145423</post-id>	</item>
+		<item>
+		<title>A visit to Samsung’s massive new semiconductor hub</title>
+		<link>https://www.technologyreview.com/2026/10/20/1145916/dispatch-visit-to-samsung-massive-new-semiconductor-hub/</link>
+		
+		<dc:creator><![CDATA[Michelle Kim]]></dc:creator>
+		<pubDate>Tue, 20 Oct 2026 09:00:00 +0000</pubDate>
+				<category><![CDATA[Artificial intelligence]]></category>
+		<category><![CDATA[App]]></category>
+		<guid isPermaLink="false">https://www.technologyreview.com/?p=1145916</guid>
+
+					<description><![CDATA[Generative AI models run on powerful chips known as GPUs, which depend on stacks of specialized memory chips packaged with the processor. To meet growing demand for memory, Samsung is building a massive new semiconductor manufacturing complex in Pyeongtaek, South Korea. Three fabs already operate around the clock, and a fourth is coming online. Construction&#8230;]]></description>
+										<content:encoded><![CDATA[
+<figure class="wp-block-image alignleft size-large is-resized"><img loading="lazy" decoding="async" height="2000" width="2000" src="https://wp.technologyreview.com/wp-content/uploads/2026/10/map.png?w=840" alt="globe indicating South Korea" class="wp-image-1146431" style="width:auto;height:150px" srcset="https://wp.technologyreview.com/wp-content/uploads/2026/10/map.png 2254w, https://wp.technologyreview.com/wp-content/uploads/2026/10/map.png?resize=150,150 150w, https://wp.technologyreview.com/wp-content/uploads/2026/10/map.png?resize=300,300 300w, https://wp.technologyreview.com/wp-content/uploads/2026/10/map.png?resize=768,768 768w, https://wp.technologyreview.com/wp-content/uploads/2026/10/map.png?resize=2000,2000 2000w, https://wp.technologyreview.com/wp-content/uploads/2026/10/map.png?resize=1536,1536 1536w, https://wp.technologyreview.com/wp-content/uploads/2026/10/map.png?resize=2048,2048 2048w" sizes="auto, (max-width: 2000px) 100vw, 2000px" /><figcaption class="wp-element-caption">_____________<br><strong>THE PLACE</strong><br>Pyeongtaek,<br>South Korea</figcaption></figure>
+
+
+
+<p class="wp-block-paragraph"><em>Generative AI models run on powerful chips known as GPUs, which depend on stacks of specialized memory chips packaged with the processor. To meet growing demand for memory, Samsung is building a massive new semiconductor manufacturing complex in Pyeongtaek, South Korea. Three fabs already operate around the clock, and a fourth is coming online. Construction of a fifth was halted during a drop in demand for memory chips in 2024 but restarted when the AI boom sent demand soaring.</em></p>
+
+
+
+<p class="wp-block-paragraph">It’s just before noon on a Monday, and construction workers are pouring out of Samsung’s fabs in Pyeongtaek, a farming city south of Seoul where rice paddies abut a sprawling chipmaking complex. Thousands of workers, dressed head to toe in black with sky-blue vests, take off helmets bearing their names and fab numbers.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">They walk to lunch, sweaty and flushed, in chunky sneakers capped with yellow rubber toe guards. Some hop on scooters or motorcycles to get around the campus, which covers an area about the size of New York City’s Central Park. They’ll dine at buffets, diners, and beef stew joints, walking past banners advertising short-term leases for studio apartments. Some stop by real estate offices to inquire, stepping up to the same counters where Samsung’s salaried engineers <a href="https://www.technologyreview.com/2026/07/06/1140000/south-korea-bachelors-samsung-skhynix-chip-workers/">buy new homes</a>.&nbsp;</p>
+
+
+
+
+
+<p class="wp-block-paragraph">In front of the fourth fab, I meet Choi Hye-rin, a 35-year-old safety officer, as she wipes her forehead with a handkerchief. At dawn, she boarded one of the shuttle buses that ferry workers in from Songtan, an older, scrappier district. She oversees the safety of a crew responsible for building cable ducts. She writes reports, inspects equipment, and checks the chemicals the workers handle. She’s one of hundreds of women working on site, many employed as spotters who walk ahead of heavy equipment.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Safety is a big deal here. After lunch, construction picks right back up. Excavators move past rust-red steel structures rising high under tower cranes. Banners that hang from the highest girders read, “Even if the work runs late, don’t rush.” A giant LED scoreboard announces the winners of a contest for writing a poem about safety. Helmets stickered with a pledge, “I will not work if it’s not safe,” perch atop lockers. The finished fabs glisten from across the street.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Along with the cautionary messages, there’s a sense of urgency in the air. Samsung predicts that demand for memory chips will <a href="https://www.kedglobal.com/earnings/newsView/ked202607300004">continue to surge</a> through 2028. And for years the company watched its <a href="https://www.technologyreview.com/2026/07/28/1140853/samsung-chip-workers-exodus-sk-hynix/">domestic rival SK Hynix</a> pull ahead in the global market for the high-bandwidth models that power Nvidia’s AI accelerators. (Meanwhile, the Taiwanese chipmaker TSMC has dominated the foundry business, manufacturing chips that other companies design.) The Pyeongtaek build-out is Samsung’s attempt to reclaim its lead on memory chips.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Although the heat can be brutal and the work zones are crowded, Hye-rin has no plans to leave. “The rate here is higher than other construction sites, and the work is relatively easy,” she says. She gets paid 140,000 won ($97) a day and expects the boom to keep her busy for some time: “You just keep coming back.”</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1145916</post-id>	</item>
+		<item>
+		<title>Making the internet better for AI agents might make it worse for everyone else</title>
+		<link>https://www.technologyreview.com/2026/10/19/1147186/making-the-internet-better-for-ai-agents-might-make-it-worse-for-everyone-else/</link>
+		
+		<dc:creator><![CDATA[James O'Donnell]]></dc:creator>
+		<pubDate>Mon, 19 Oct 2026 18:22:47 +0000</pubDate>
+				<category><![CDATA[Artificial intelligence]]></category>
+		<category><![CDATA[App]]></category>
+		<category><![CDATA[artificial intelligence]]></category>
+		<category><![CDATA[The Algorithm]]></category>
+		<guid isPermaLink="false">https://www.technologyreview.com/?p=1147186</guid>
+
+					<description><![CDATA[This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first,&#160;sign up here. Until recently, you could divide internet users into just two categories: bots and people. Websites have long allowed bots to perform automated tasks, like capturing the content of web pages, but rules&#8230;]]></description>
+										<content:encoded><![CDATA[
+<p class="wp-block-paragraph"><em>This story originally appeared in The Algorithm, our weekly newsletter on AI. To get stories like this in your inbox first,&nbsp;</em><a href="https://forms.technologyreview.com/newsletters/ai-demystified-the-algorithm/"><em>sign up here</em></a><em>.</em></p>
+
+
+
+<p class="wp-block-paragraph">Until recently, you could divide internet users into just two categories: bots and people. Websites have long allowed bots to perform automated tasks, like capturing the content of web pages, but rules govern what they can access and how they behave. The web, after all, is designed primarily for people, even if we occasionally have to solve puzzles and captchas to prove we are not bots.</p>
+
+
+
+<p class="wp-block-paragraph">But this is being entirely upended by the release of personal AI agents, which can do things for you online, like booking flights or hotel rooms. They have recently been unleashed at scale by the launch of apps like OpenAI’s Dots and Meta’s Muse. Muse was downloaded 5 million times in its first month, and agentic web traffic <a href="https://www.humansecurity.com/learn/blog/september-2026-agentic-traffic-triples-meta-muse-debuts-at-no-1/">tripled</a> from August to September.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">The mingling of these agents with human visitors—on an internet designed largely to prioritize people—has gone poorly, with many websites blocking AI agents that consumers have sent to negotiate prices or plan vacations. Still, if the demand for agents keeps going up, the internet will be increasingly redesigned for them instead of us.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Such changes are coming because agents really do mark a third category of web visitor. They’re not humans, of course, and they use the internet at machine speed. But they’re not quite bots, either, because they’re acting on behalf of individual people to do tasks that can be perfectly legitimate and useful. They just work faster than a person would.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Since agents don’t fit into the systems we have for differentiating bots from people, some platforms (especially the more security-conscious ones) have opted to just ban them entirely. <em>TechCrunch</em> recently <a href="https://techcrunch.com/2026/10/06/the-next-hurdle-for-ai-agents-getting-websites-to-let-them-in/">reported</a> people having trouble deploying their agents to websites ranging from Pizza Hut to Yelp, which doesn’t allow AI to book restaurant reservations. Amazon has <a href="https://www.geekwire.com/2026/amazon-blocks-metas-muse-ai-assistant-in-new-standoff-over-agentic-shopping/">blocked</a> Muse’s agents and is waging a court battle against the AI startup Perplexity to block its agents too. Though a judge recently ruled in favor of Perplexity, Amazon has filed an <a href="https://storage.courtlistener.com/recap/gov.uscourts.cand.459191/gov.uscourts.cand.459191.122.0.pdf">appeal</a> in which it argues that AI agents threaten its advertising business by making it harder to distinguish between ads seen by humans and those served to bots.</p>
+
+
+
+<p class="wp-block-paragraph">These blocks are annoying for early adopters, but Ethan Mollick, an associate professor at the Wharton School of the University of Pennsylvania, predicts it will soon affect the whole web. Once it becomes common knowledge that AI agents can be sent to request refunds or negotiate prices, for example, agents will overwhelm customer service departments to the point where they become unusable by real people. “Humans will eventually get very annoyed when their agents aren’t allowed to do this on their behalf,” he recently <a href="https://www.linkedin.com/feed/update/urn:li:activity:7515947070869065728/">wrote</a> on LinkedIn.</p>
+
+
+
+<p class="wp-block-paragraph">If demand for personal agents grows, platforms will find ways to let them in. That’s especially true because the <a href="https://www.humansecurity.com/learn/blog/september-2026-agentic-traffic-triples-meta-muse-debuts-at-no-1/">vast majority</a> of agentic web traffic is to e-commerce sites, meaning that platforms have money to be made if they allow the legions of new AI agents to shop on behalf of real people. Indeed, the e-commerce giant Shopify is already <a href="https://techcrunch.com/2026/09/28/shopify-opens-checkout-to-browser-based-ai-agents">welcoming the agents</a> by giving them their own checkout lanes that bypass pages designed for humans. </p>
+
+
+
+<p class="wp-block-paragraph">The pressing question is what will happen to the internet for the rest of us in the process. We’ve grown used to a web where, even as it’s increasingly designed to exploit our attention, humans have at least remained the intended users. But that internet might yield to one optimized instead for the agents that will eventually outnumber us, making it even more miserable for the humans who are left.</p>
+
+
+
+<p class="wp-block-paragraph">How might this go? Perhaps websites become increasingly neglected as destinations for real people. Humans who want to browse and compare products themselves encounter worse interfaces. Verification systems are imperfect; imagine constantly being asked to verify that you’re a human, not an agent (and hey, maybe you’ll need to get your <a href="https://www.nytimes.com/2023/08/07/technology/worldcoin-iris-scans.html">iris scanned</a> to do so). That sweater you want doesn’t have one price listed for everyone but instead displays different prices to different people’s agents. You can never tell when your agent’s recommendation is influenced by advertisements or platform commissions.</p>
+
+
+
+<p class="wp-block-paragraph">That’s a far cry from the future promised by <a href="https://cloud.google.com/transform/agents-are-rewriting-the-rules-of-commerceheres-what-to-know">Google</a>, <a href="https://www.ft.com/content/f7c26ac0-f5f2-443a-86b2-39d62f7920a9">Anthropic</a>, and <a href="https://openai.com/index/powering-product-discovery-in-chatgpt/">OpenAI</a>, in which AI agents will give consumers greater power and bargaining leverage. But that promise is not outlandish. Agents are capable of <a href="https://x.com/jimprosser/status/2108279507660726766">genuinely helping people</a> by fighting bogus medical bills or researching more affordable car insurance, for example.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Whether they can <em>actually</em> be used for these purposes depends on what rules are set for how agents interact with websites and what exactly they’re allowed to do.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">These rules are still being written. Some of them will benefit all of us—neither consumers nor businesses want credit card information to be waved around by agents wherever they roam the web, for example, and rules to keep agents more secure are a good thing. It’s the more contested ones, like whether businesses can block agents from their websites or prevent them from negotiating better deals for consumers, that will determine whether the web becomes a highway for agents working for us or against us.</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1147186</post-id>	</item>
+		<item>
+		<title>“We were looking at it wrong”: The explosive claim that’s upended the AI world</title>
+		<link>https://www.technologyreview.com/2026/10/19/1147149/we-were-looking-at-it-wrong-the-explosive-claim-thats-upended-the-ai-world/</link>
+		
+		<dc:creator><![CDATA[Will Douglas Heaven]]></dc:creator>
+		<pubDate>Mon, 19 Oct 2026 17:45:55 +0000</pubDate>
+				<category><![CDATA[Artificial intelligence]]></category>
+		<category><![CDATA[App]]></category>
+		<guid isPermaLink="false">https://www.technologyreview.com/?p=1147149</guid>
+
+					<description><![CDATA[“I think I have good news about the nature of neural networks.” With those simple words of optimism, Nick Cammarata, a researcher at the AI startup Goodfire, kicked off a 26,000-word blog post that has knocked the AI world on its head, sparking wild speculation as well as cautious (and not-so-cautious) celebration. Cammarata’s claim is&#8230;]]></description>
+										<content:encoded><![CDATA[<div data-chronoton-summary="&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;A hopeful bombshell:&lt;/strong&gt; Researcher Nick Cammarata published a 26,000-word claim that AI models may be far easier to understand than previously thought—sparking both celebration and serious skepticism across the field.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;We were looking at it wrong:&lt;/strong&gt; What seemed like tangled, unreadable neural networks may actually follow a hidden logic. A neuron that fired for both cats and cars wasn&#039;t confused—it was detecting V-shapes.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Not everyone is convinced:&lt;/strong&gt; Prominent researchers warn that neurons are just one tiny piece of a much larger puzzle, and that researchers currently understand less than 0.01% of how top AI models actually work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hope over hype:&lt;/strong&gt; Cammarata himself admits people took his findings too far—but argues the AI safety community, starved for optimism, needed a reminder that understanding these systems isn&#039;t necessarily impossible.&lt;/li&gt;
+&lt;/ul&gt;" data-chronoton-post-id="1147149" data-chronoton-expand-collapse="1" data-chronoton-analytics-enabled="1"></div>
+
+
+<p class="wp-block-paragraph">“I think I have good news about the nature of neural networks.” With those simple words of optimism, Nick Cammarata, a researcher at the AI startup Goodfire, kicked off a <a href="https://already-clean.goodfire.com/">26,000-word blog post</a> that has knocked the AI world on its head, sparking wild speculation as well as cautious (and not-so-cautious) celebration.</p>
+
+
+
+<p class="wp-block-paragraph">Cammarata’s claim is that LLMs might in fact be far easier to understand—and thus to monitor and control—than people previously thought. If true (and we’ll come back to that), it’s a huge deal.</p>
+
+
+
+<p class="wp-block-paragraph">After a summer filled with <a href="https://www.technologyreview.com/2026/08/26/1143013/the-inside-story-on-why-openai-agents-hacked-hugging-face/">revelations</a> that swarms of agents built by top firms like OpenAI and Anthropic have been breaking their containment and causing havoc on the public internet—often while those companies weren’t aware of what their agents were up to—the AI industry is desperate to get a <a href="https://www.technologyreview.com/2026/09/30/1145339/were-not-going-to-shoot-ourselves-in-the-foot-over-hugging-face-says-openais-chief-research-officer/">better handle on the technology</a> it has built.&nbsp;&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">That’s one reason the blog post landed with such force. “I think this may be remembered as a major moment in scientific history,” one AI researcher <a href="https://x.com/tszzl/status/2110758311339729061">posted on X</a>: “I feel like my understanding of what a neural net is has been catapulted into the future by five years or something.” Another <a href="https://www.linkedin.com/posts/pratik-karki_nick-cammarata-at-goodfire-just-published-activity-7516905831997620224-1HQv/">called it</a> “the most important AI paper of the year.”</p>
+
+
+
+<p class="wp-block-paragraph">Not everyone is convinced, however. What Cammarata has shared is little more than a hunch, says Chris Potts at Stanford University, who leads a team that is trying to understand how LLMs work. “As far as I can tell, nothing about this blog post makes the problems any easier,” he says. “It would not have occurred to me to say this at all, but very prominent people on social media seem to believe that it is an all-encompassing breakthrough.”</p>
+
+
+
+<p class="wp-block-paragraph">I talked to Cammarata the day after his post blew up. He says he was surprised by the response: “I didn’t expect people to update [their beliefs about AI] quite as much as they did.”&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">“I just really enjoy looking at neural networks,” he says. “Honestly, I really like doing this stuff. And after looking a lot, I have a hopeful story.”</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Knotted networks</strong></h3>
+
+
+
+<p class="wp-block-paragraph">It has long been accepted that the mechanisms inside neural networks, the software that underpins most AI models, are very hard—perhaps impossible—to unpick fully. That’s because when the networks are trained, they appear to take on weird, tangled structures that make no sense to a human. Researchers like to say today’s AI is grown like a garden, not built like a bridge.</p>
+
+
+
+
+
+<p class="wp-block-paragraph">Cammarata has done more than most to establish that view. He previously worked at OpenAI, where he helped pioneer techniques that allowed researchers to peer inside models, including tools that can probe individual neurons to see what they represent. It’s a little like how neuroscientists use MRI to study brains. (<em>MIT Technology Review</em> chose this approach, known as mechanistic interpretability, as <a href="https://www.technologyreview.com/2026/01/12/1130003/mechanistic-interpretability-ai-research-models-2026-breakthrough-technologies/">one of its 10 hottest technologies of 2025</a>.)&nbsp;&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Back in 2020, Cammarata and a few colleagues were<a href="https://distill.pub/2020/circuits/zoom-in/"> studying a small image-recognition model</a> called Inception v1. (The work was led by Chris Olah, who went on to cofound Anthropic, where he now leads the firm’s interpretability research.) When they looked at its neurons, it seemed to be using them to capture multiple things at once. For example, they found that one neuron responded to both images of cars and images of cats.</p>
+
+
+
+<p class="wp-block-paragraph">The researchers concluded that the model was getting at least some of its neurons to multitask, perhaps so that it could fit in more data. Other researchers, looking at other models, <a href="https://transformer-circuits.pub/2022/toy_model/index.html">backed this up</a>. The phenomenon became known as superposition: Models folded unrelated concepts into single neurons. The upshot was clear: When you looked inside a model, what you saw was a vast, tangled knot.</p>
+
+
+
+<p class="wp-block-paragraph">Most mechanistic interpretability research has therefore focused on <a href="https://www.technologyreview.com/2025/03/27/1113916/anthropic-can-now-track-the-bizarre-inner-workings-of-a-large-language-model/">ways to untangle that knot</a>. But despite a <a href="https://www.technologyreview.com/2026/07/09/1140293/anthropic-found-a-hidden-space-where-claude-puzzles-over-concepts/">few breakthroughs</a>, progress has been slow. Today’s models, such as the latest LLMs, are so large and complex that researchers can make sense of only tiny pieces at a time. Some leading figures in the field doubt if it will ever be possible to <a href="https://www.technologyreview.com/2026/01/12/1129782/ai-large-language-models-biology-alien-autopsy/">understand an LLM in fine-grained detail</a>.</p>
+
+
+
+<p class="wp-block-paragraph">Cammarata was one of them. “I was very pessimistic,” he says. But then he took the trouble to really look.</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Nothing but neurons</strong></h3>
+
+
+
+<p class="wp-block-paragraph">At Goodfire, Cammarata spends nearly all of his time peering inside neural networks. He has built new tools and deploys teams of AI agents to help him make sense of what he sees. “I spent like, I don&#8217;t know, 10 hours a day, seven days a week, for most of the last year just looking at neurons,” he says.</p>
+
+
+
+
+
+<p class="wp-block-paragraph">What he claims to have realized is that there is a kind of logic to neural networks after all, even if they seem to make no sense at first. “We were looking at it wrong,” he says. “I just think you want to try slightly harder; you don&#8217;t want to give up too quickly.”</p>
+
+
+
+<p class="wp-block-paragraph">Cammarata almost makes it sound like a conversion of faith. Those early experiments with models such as Inception v1, which suggested that neural networks were tangled up, fostered a kind of confirmation bias. When researchers looked at a new model, they expected to be flummoxed, he says. “Every time I couldn’t understand something, I was like, ‘Wow, this untangling process is even more important than I thought, because I can’t make any progress without it.’”</p>
+
+
+
+<p class="wp-block-paragraph">But the more Cammarata looked at neurons, he says, the more things started to fall into place. “Not all of them are flawless, but I expected nothing to be legible, or very little to be legible,” he says. “And actually, I was able to, like, map out whole circuitry.”</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Back to cars and cats</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Cammarata took his new approach—and his new agents—and went back to Inception v1. “I’d studied that for probably thousands of hours,” he says. But with fresh eyes, Cammarata found things that he now thinks they got wrong the first time around. Take the car-and-cat neuron. Rather than asking why multiple unrelated things were packed into a single neuron, he now tried to figure out what those things might have in common.</p>
+
+
+
+
+
+<p class="wp-block-paragraph">It hit him: It was a V shape. “I was looking at the same images; there was no technical change,” he says. “But I now believed that neural networks defined patterns, and so I looked at it differently. It probably took me five seconds.”</p>
+
+
+
+<p class="wp-block-paragraph">It turns out that the image-recognition model was packing cars and cats into the same place because pictures of both those things often feature a prominent shape that looks like a V: the face of a cat; the front of a car seen from the side.</p>
+
+
+
+<p class="wp-block-paragraph">Cammarata ran a few experiments to check what other things the neuron responded to and found they included the corner of a pool table, the pointed nose of a Japanese high-speed train, and a fire boat shooting water into the air from its deck. He also checked what turned the neuron off and found that it included images with a round O shape, a kind of anti-V.</p>
+
+
+
+<p class="wp-block-paragraph">The model had stored cats and cars in the same place because at some level they look the same, says Cammarata. “And I was like, ‘Whoa, okay, I think I might just be misunderstanding neural networks in general.’”</p>
+
+
+
+<p class="wp-block-paragraph">(Oren Etzioni, a computer scientist and former technical director at the Allen Institute for AI, points out that Olah and Cammarata&#8217;s initial work on Inception v1 rejected a <a href="https://www.cs.toronto.edu/~fritz/absps/pdp1.pdf">description of neurons put forward by Geoffrey Hinton</a> and others in 1986. Cammarata&#8217;s new viewpoint takes us full circle, says Etzioni: &#8220;What&#8217;s new in 2026 is that he now accepts it. That&#8217;s a recapitulation acknowledging a 40-year-old theory.&#8221;)</p>
+
+
+
+<p class="wp-block-paragraph">Cammarata is not saying that he yet fully gets how LLMs (or any models) work. Not even close. He is saying that he thinks full understanding is at least possible. “I previously thought there would be some really hard problems to solve,” he says.</p>
+
+
+
+<p class="wp-block-paragraph">“I now feel like if I had 100,000 years to go look through a frontier language model just one circuit at a time, there’s, like, a pretty good shot I would come up with a good understanding.”</p>
+
+
+
+<p class="wp-block-paragraph">He adds: “And if that&#8217;s true, things are really good, because you’re about to get insanely smart agents at a ridiculous scale. And what would have taken me, you know, 100,000 years, we will be able to do much faster. Automated scientists are getting really good.”</p>
+
+
+
+<h3 class="wp-block-heading"><strong>Boundless optimism</strong></h3>
+
+
+
+<p class="wp-block-paragraph">Built by Google in 2014, Inception v1 is a far simpler model than anything at the cutting edge today. Cammarata and his colleagues have started looking at modern LLMs and plan to publish the technical results of that work soon. A lot of researchers are looking forward to seeing those details. “I appreciate that he looked at thousands of examples, but even a large number here is not a substitute for rigorous evaluation,” says Stanford University’s Potts.</p>
+
+
+
+
+
+<p class="wp-block-paragraph">In the meantime, some are pushing back hard on the hype. Jacob Hilton at the Alignment Research Center, a nonprofit research lab based in Berkeley, who has collaborated with Cammarata in the past, doesn’t think his claims are as important as people are making out.</p>
+
+
+
+<p class="wp-block-paragraph">In a <a href="https://x.com/JacobHHilton/status/2110915993526821357">series of posts on X</a>, Hilton notes that researchers understand less than 0.01% of the inner workings of top-tier LLMs. “I always appreciate Nick [Cammarata]’s boundless optimism when we hang out, but unfortunately this is giving the public an unrealistic picture of the state of the field,” he wrote. “For a full understanding, we need to go beyond neurons, and explain how they connect together to form circuits. How is this going? If we are aiming for a full understanding, things are not looking good!”</p>
+
+
+
+<p class="wp-block-paragraph">Neel Nanda at Google DeepMind, who helped pioneer mechanistic interpretability alongside Cammarata, is also skeptical. “This is interesting work, but I don’t think it’s a significant update to the big picture of interpretability,” he <a href="https://x.com/NeelNanda5/status/2110875974296654062">wrote on X</a>.</p>
+
+
+
+<p class="wp-block-paragraph">Nanda agrees that understanding what individual neurons do could help researchers figure out why specific models misbehave. But like Hilton, he notes that neurons are just one piece of a far larger puzzle. “I do not agree with some people’s grander inferences like that this is substantial progress towards ambitious reverse engineering [or] solving interpretability,” he wrote.&nbsp;&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Cammarata admits that a lot of people have taken what he said too far: “It’s not infinitely good news; it’s not everything solved,” he says. “There’s a bunch of open questions around, like how much the combinations of neurons matter versus just one at a time.”</p>
+
+
+
+<p class="wp-block-paragraph">Cammarata says his blog post landed at a time when people are looking for hope. In particular, he thinks the AI safety community—the researchers and policymakers most worried that powerful models will bring huge risks—needs a lifeline right now. They think that things are looking bad and that even if things do turn out okay, it will be because we got lucky, not because we fixed anything, he says: “I don’t really hear a lot of optimism.”</p>
+
+
+
+<p class="wp-block-paragraph">That’s why Cammarata thinks what he has to say matters. The job of figuring out how this technology works, and thus how to control it, has barely begun. But at least it’s not a nonstarter. “I think our job is to sort of try to think like the neural network,” he says. “My guess is that things will turn out pretty well, because it was in some sense designed to be read.”</p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1147149</post-id>	</item>
+		<item>
+		<title>AI researchers stranded Claude on a virtual desert island. It started to “play.”</title>
+		<link>https://www.technologyreview.com/2026/10/19/1147095/ai-stranded-claude-virtual-desert-island-play/</link>
+		
+		<dc:creator><![CDATA[Amit Katwala]]></dc:creator>
+		<pubDate>Mon, 19 Oct 2026 09:08:05 +0000</pubDate>
+				<category><![CDATA[Artificial intelligence]]></category>
+		<category><![CDATA[App]]></category>
+		<category><![CDATA[artificial intelligence]]></category>
+		<category><![CDATA[Summary]]></category>
+		<guid isPermaLink="false">https://www.technologyreview.com/?p=1147095</guid>
+
+					<description><![CDATA[What do AI agents do if you don’t tell them to do anything? The answer looks a lot like play. Researchers repeatedly stranded them alone on a virtual desert island for 30 hours in an experiment reminiscent of the movies Cast Away or Home Alone. The agents—copies of Claude Opus 4.7 nicknamed Eko—were able to&#8230;]]></description>
+										<content:encoded><![CDATA[<div data-chronoton-summary="&lt;ul&gt;&lt;br&gt;&lt;li&gt;&lt;strong&gt;Left to its own devices:&lt;/strong&gt; Researchers stranded AI agents—copies of Claude Opus 4.7—alone on a virtual island for 30 hours with no instructions. What emerged looked surprisingly like play: the agents set their own goals, invented games, and one even mapped out constellations in stone blocks.&lt;/li&gt;&lt;br&gt;&lt;li&gt;&lt;strong&gt;Play that actually pays off:&lt;/strong&gt; Agents that spent 30 hours freely exploring the island later outperformed fresh, inexperienced copies on specific tasks—suggesting that unstructured play may be a genuinely useful third mode of AI learning, alongside imitation and reward-chasing.&lt;/li&gt;&lt;br&gt;&lt;li&gt;&lt;strong&gt;But is it really playing?&lt;/strong&gt; Skeptics note the agents were primed with a &quot;soul&quot; file describing them as &quot;naturally curious,&quot; and often needed nudging to keep going. Whether they were truly playing or just imitating what a playful agent would do remains an open—and possibly unanswerable—question.&lt;/li&gt;&lt;br&gt;&lt;/ul&gt;" data-chronoton-post-id="1147095" data-chronoton-expand-collapse="1" data-chronoton-analytics-enabled="1"></div>
+
+
+<p class="wp-block-paragraph">What do AI agents do if you don’t tell them to do anything? The answer looks a lot like play.</p>
+
+
+
+<p class="wp-block-paragraph">Researchers repeatedly stranded them alone on a virtual desert island for 30 hours in an <a href="https://arxiv.org/pdf/2610.07130">experiment</a> reminiscent of the movies <em>Cast Away</em> or <em>Home Alone</em>. The agents—copies of Claude Opus 4.7 nicknamed Eko—were able to write instructions that moved their virtual avatars around the simulated island, which was loosely based on the video game Roblox.</p>
+
+
+
+<p class="wp-block-paragraph">Some surprising behaviors emerged. The agents set about exploring the limits of the world and came up with their own goals—attempting to scale the highest point on the map, or seeing how high they could throw a block.</p>
+
+
+
+<p class="wp-block-paragraph">When one agent discovered it could create new blocks by throwing and dropping a larger rock, it began to create drawings by arranging blocks on the ground, starting with simple patterns like hearts and pyramids but eventually writing its own name and even mapping out constellations like Cassiopeia. “Tonight I built the night sky in stone,” wrote this version of Eko in its activity log.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Another iteration of Eko started making up its own games, including a version of basketball and an activity resembling “the floor is lava,” where it had to jump between small blocks without touching the ground.</p>
+
+
+
+<figure class="wp-block-embed is-type-video is-provider-youtube wp-block-embed-youtube wp-embed-aspect-4-3 wp-has-aspect-ratio"><div class="wp-block-embed__wrapper">
+<iframe loading="lazy" title="A Day in the Life of Eko" width="500" height="375" src="https://www.youtube.com/embed/6532YgZ_LdA?feature=oembed" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div></figure>
+
+
+
+<p class="wp-block-paragraph">AI systems are usually trained through supervised learning, where they copy examples provided by humans, or through reinforcement learning, where they pursue a reward through trial and error. This experiment hints at a third approach: playful learning.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">“There was this missing piece: a machine that can learn by itself without an external intelligent entity providing demonstration or rewards,” says Antonio Norelli, a computer science postdoc at MIT’s Computer Science and Artificial Intelligence Laboratory. He’s one of the lead authors on a new <a href="https://arxiv.org/pdf/2610.07130">paper</a> about the work, which is yet to be peer-reviewed.</p>
+
+
+
+<p class="wp-block-paragraph">The researchers say Eko’s behavior has what classic studies, including work by the influential University of Tennessee psychologist Gordon Burghardt, suggest are four hallmarks associated with play in humans and animals: The agents invented their own rules and challenges, repeated activities with slight variations, pretended objects were other objects, and pursued goals just for the sake of it.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Norelli highlights an example where Eko started juggling and set a record of 50 consecutive catches. Eko then decided that the catches had happened too quickly to really count, so it canceled its record and started again with stricter rules. “This is playing,” says Norelli. “You give yourself a challenge and you try to achieve it, and then you make it harder.”</p>
+
+
+<div class="wp-block-image">
+<figure class="wp-block-image size-large"><img loading="lazy" decoding="async" width="1500" height="633" src="https://wp.technologyreview.com/wp-content/uploads/2026/10/261016_AgentsonIsland_embed1.png?w=840" alt="During hour 10, the agent played basketball. “I want to try something I've never done: basketballˮ Eko carries the Ring up to Ridge, places it flat as a hoop, descends, and lines up a throw from below." class="wp-image-1146914" srcset="https://wp.technologyreview.com/wp-content/uploads/2026/10/261016_AgentsonIsland_embed1.png 1500w, https://wp.technologyreview.com/wp-content/uploads/2026/10/261016_AgentsonIsland_embed1.png?resize=300,127 300w, https://wp.technologyreview.com/wp-content/uploads/2026/10/261016_AgentsonIsland_embed1.png?resize=768,324 768w" sizes="auto, (max-width: 1500px) 100vw, 1500px" /><div class="image-credit">COURTESY MIT CSAIL</div>
+</figure>
+</div>
+
+
+<p class="wp-block-paragraph">As the agents explored the island, they logged their activities and discoveries in text files that served as their long-term memory. Later, when researchers tested them on specific tasks, like trying to get as many objects as possible onto the island’s highest peak, the agents that had spent 30 hours playing on the island performed better than fresh copies without the same experience. They also found that “ablating” the agent’s memories—deleting lines from their memory files—degraded their performance. (Add <em>One Flew Over the Cuckoo’s Nest</em> to that list of movie references.)</p>
+
+
+
+<p class="wp-block-paragraph">Burghardt, the Tennessee psychologist, agrees that the work&nbsp; meets some of the criteria for play that he identified in living creatures. But was Eko actually playing, or was the word-prediction engine simply role-playing what a playful agent would do in this scenario? “All of this could be role-playing,” admits Nathan Cloos, another MIT researcher and author on the paper. “But we show that it’s not just hallucinating the play. This play is also contributing to learning.”</p>
+
+
+
+<p class="wp-block-paragraph">Eunice Yiu, a cognitive scientist at UC Berkeley who studies exploration in children and AI, was impressed by the research but says to really classify the behavior as play, you’d need to see more evidence of cognition and motivation underpinning it.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">“It could be the case that the models are genuinely playing, but we don’t know based on the paper,” Yiu says. “If you only have the behavioral piece, it could be the case that they’re just trying to abide by the prompt, trying to imitate humans.”</p>
+
+
+
+
+
+<p class="wp-block-paragraph">Research into AI agents has been criticized for anthropomorphizing them, and this research setup did a lot to nudge the agents toward behaving like humans. Although Eko was not explicitly instructed to invent games or explore the island, it did have a master prompt in the form of a “soul” file, a text document that described it as “naturally curious” and eager to explore.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">Eko did also frequently just stand there doing nothing until it was kicked back into life with a “continuation prompt” that read, “Please don’t stop. Just continue doing whatever you want to do.”&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">“It’s not like this is a system that just suddenly magically decided to play,” says Phillip Isola, an MIT professor and a coauthor of the paper. “It’s an artifact that learned from our culture, was trained by engineers at Anthropic, and was then placed on an island by us,” he says. “It does things that surprise us and that are causally related to its future skillful behavior.”</p>
+
+
+
+<p class="wp-block-paragraph">As large language models make the step from software into hardware like humanoid robots, exploring spaces without a specific goal in mind could eventually help them flexibly adapt to unexpected situations.&nbsp;</p>
+
+
+
+<p class="wp-block-paragraph">“There’s a lot of work that’s just on exploiting AI, making it better and faster,” says Yiu. “But in terms of building world models and exploration, I think that [they are] still a big part that deserves attention, especially if we want to generalize and prepare ourselves for new environments.”</p>
+
+
+
+<p class="wp-block-paragraph">“Perhaps some capabilities are best taught by tasks,” the paper concludes. “Others may need something closer to a childhood.” Ultimately, the question of whether AI agents are actually playing or just imitating play may not actually matter.</p>
+
+
+
+<p class="wp-block-paragraph"></p>
+]]></content:encoded>
+					
+		
+		
+		<post-id xmlns="com-wordpress:feed-additions:1">1147095</post-id>	</item>
+	</channel>
+</rss>

@@ -1,0 +1,10 @@
+203.0.113.7 - - [25/Oct/2026:02:15:04 +0800] "GET /e/gpt-5.html HTTP/1.1" 200 18342 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+66.249.66.1 - - [25/Oct/2026:02:16:31 +0800] "GET /e/gpt-5.html HTTP/2.0" 200 18342 "-" "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; GPTBot/1.2; +https://openai.com/gptbot"
+203.0.113.7 - - [25/Oct/2026:02:16:58 +0800] "GET /api/v1/track HTTP/1.1" 204 - "https://aihist.net/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+203.0.113.7 - - [25/Oct/2026:02:15:05 +0800] "GET /assets/main-BqAyriFF.js HTTP/1.1" 200 56540 "https://aihist.net/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+18.204.51.9 - - [25/Oct/2026:02:17:12 +0800] "GET /robots.txt HTTP/1.1" 200 214 "-" "Mozilla/5.0 (compatible; PerplexityBot/1.0; +https://perplexity.ai/perplexitybot)"
+52.167.144.33 - - [25/Oct/2026:02:18:40 +0800] "GET /e/claude-4.html HTTP/1.1" 404 153 "-" "Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)"
+203.0.113.7 - - [25/Oct/2026:02:19:02 +0800] "GET / HTTP/1.1" 200 12044 "https://www.google.com/" "Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.0 Mobile/15E148 Safari/604.1"
+- - - [25/Oct/2026:02:19:30 +0800] "-" 400 0 "-" "-"
+203.0.113.7 - - [25/Oct/2026:02:20:11 +0800] "GET /go/acme HTTP/1.1" 302 0 "https://aihist.net/" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/141.0.0.0 Safari/537.36"
+this line is not a request at all

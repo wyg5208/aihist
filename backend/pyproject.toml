@@ -1,0 +1,43 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aihist-backend"
+version = "0.2.0"
+description = "AI 纪年 backend: FastAPI + SQLite"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115",
+  "uvicorn[standard]>=0.32",
+  # The asyncio extra pulls greenlet; without it `app.db.repo_sync` fails to import.
+  "sqlalchemy[asyncio]>=2.0.36",
+  "aiosqlite>=0.20",
+  # Kept so `DATABASE_URL` can be pointed at Postgres without reinstalling.
+  "psycopg[binary]>=3.2",
+  "alembic>=1.14",
+  "pydantic>=2.9",
+  "pydantic-settings>=2.6",
+  "httpx>=0.28",
+  "itsdangerous>=2.2",
+  "argon2-cffi>=23.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.3",
+  "pytest-asyncio>=0.24",
+]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
+
+[tool.setuptools.package-data]
+app = ["data/*.json"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+filterwarnings = ["ignore::DeprecationWarning"]

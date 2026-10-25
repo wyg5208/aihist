@@ -1,0 +1,142 @@
+/*
+ * Console palette. Imported last by `src/admin/main.tsx` and by nothing else,
+ * so the public bundle keeps the paper-and-ink tokens untouched.
+ *
+ * The old `--paper` / `--ink` names are remapped rather than deleted: the shared
+ * inputs, buttons and focus rings in `globals.css` reference them, and remapping
+ * means one file controls the whole surface instead of a per-component sweep.
+ */
+
+:root {
+  color-scheme: dark;
+
+  --c-bg: #0f1116;
+  --c-surface: #161922;
+  --c-surface-2: #1c2029;
+  --c-line: #262b36;
+  --c-line-strong: #38404f;
+  --c-text: #e6e8ec;
+  --c-text-dim: #9aa3b2;
+  --c-text-mute: #6b7484;
+  --c-accent: #d4573f;
+  --c-ok: #4f9d69;
+  --c-warn: #c9963f;
+  --c-danger: #d4573f;
+  --c-info: #5b8fd6;
+  --c-radius: 6px;
+
+  --paper: var(--c-bg);
+  --paper-deep: var(--c-surface);
+  --ink: var(--c-text);
+  --ink-soft: var(--c-text-dim);
+  --muted: var(--c-text-mute);
+  --rule: var(--c-line);
+  --rule-strong: var(--c-line-strong);
+  --accent: var(--c-accent);
+  --accent-soft: #3a1f1a;
+
+  --background: var(--c-bg);
+  --foreground: var(--c-text);
+  --card: var(--c-surface);
+  --card-foreground: var(--c-text);
+  --popover: var(--c-surface-2);
+  --popover-foreground: var(--c-text);
+  --primary: var(--c-accent);
+  --primary-foreground: #101216;
+  --secondary: var(--c-surface-2);
+  --secondary-foreground: var(--c-text);
+  --muted-foreground: var(--c-text-mute);
+  --border: var(--c-line);
+  --input: var(--c-line-strong);
+  --ring: var(--c-accent);
+  --radius: var(--c-radius);
+  --sidebar: var(--c-surface);
+  --sidebar-foreground: var(--c-text);
+  --sidebar-primary: var(--c-accent);
+  --sidebar-primary-foreground: #101216;
+  --sidebar-accent: var(--c-surface-2);
+  --sidebar-accent-foreground: var(--c-text);
+  --sidebar-border: var(--c-line);
+  --sidebar-ring: var(--c-accent);
+}
+
+/* `globals.css` paints a paper texture on the body; the console is a tool. */
+body {
+  background-color: var(--c-bg);
+  background-image: none;
+  color: var(--c-text);
+  font-family: var(--font-sans);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* Everything numeric in a console aligns by digit, not by word. */
+.num {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--c-text-mute);
+}
+
+/* One focus treatment for the whole console. */
+:is(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: 2px solid var(--c-accent);
+  outline-offset: 1px;
+  border-radius: 2px;
+}
+
+/* Thin scrollbars: a table with 25 rows scrolls a lot. */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--c-line-strong) transparent;
+}
+
+@keyframes admin-fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes admin-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.35;
+  }
+}
+
+/* A loading skeleton that never makes the layout jump. */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--c-surface-2) 0%,
+    var(--c-line) 50%,
+    var(--c-surface-2) 100%
+  );
+  background-size: 200% 100%;
+  animation: admin-fade 1.2s ease-in-out infinite alternate;
+  border-radius: 3px;
+}
+
+.live-dot {
+  animation: admin-pulse 1.6s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .skeleton,
+  .live-dot {
+    animation: none;
+  }
+}

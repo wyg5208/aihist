@@ -1,0 +1,32 @@
+# /etc/cron.d/aihist -- collection, analytics and backups.
+#
+# `run-sync` is the only thing that adds events. `ingest-access-log` is the only
+# thing that sees the JavaScript-free citation pages being read, and `prune` is
+# the only job allowed to delete rows — from four analytics tables and nowhere
+# else.
+#
+# Install:  cp deploy/cron.d/aihist /etc/cron.d/aihist
+#           chmod 0644 /etc/cron.d/aihist
+
+SHELL=/bin/bash
+PATH=/usr/local/bin:/usr/bin:/bin
+MAILTO=""
+
+# Every six hours. The trigger is `auto`, so a run that already succeeded within
+# the freshness window returns `not_due` instead of collecting twice.
+0 */6 * * * aihist /srv/aihist/deploy/run-sync.sh auto >> /var/log/aihist/sync.log 2>&1
+
+# Nightly compressed dump, 14 day retention.
+20 3 * * * aihist /srv/aihist/deploy/backup.sh >> /var/log/aihist/backup.log 2>&1
+
+# Hourly: turn new reverse-proxy lines into crawl_hits. The static reference
+# pages carry no JavaScript, so this log is the only evidence they were fetched
+# at all — including by GPTBot and friends. Exits 0 when ANALYTICS_LOG_PATH is
+# empty or the file is absent, so an unconfigured box writes one skip line per
+# hour instead of one failure per hour.
+17 * * * * aihist /srv/aihist/deploy/run-cli.sh ingest-access-log >> /var/log/aihist/analytics.log 2>&1
+
+# Weekly (Sunday 04:40): drop rows past their retention window — page_views
+# 90d, crawl_hits 120d, api_key_usage 400d, audit_log 730d. Events, sources,
+# sync runs and subscribers have no window and are never touched.
+40 4 * * 0 aihist /srv/aihist/deploy/run-cli.sh prune >> /var/log/aihist/prune.log 2>&1

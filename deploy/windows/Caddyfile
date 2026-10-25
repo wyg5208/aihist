@@ -1,0 +1,102 @@
+# Caddyfile for aihist.net on Windows Server.
+#
+# Caddy is a single exe with automatic HTTPS, which matters here: nginx for
+# Windows is single-process and missing several production features, and IIS
+# would need ARR + URL Rewrite to reach the same behaviour.
+#
+# Install as a service (Caddy supports `caddy run` under WinSW, or use
+# `caddy start` with a scheduled task).
+#
+# Replace D:/srv/aihist/dist with the real deploy path.
+
+{
+	admin off
+}
+
+# www → apex
+www.aihist.net {
+	redir https://aihist.net{uri} permanent
+}
+
+aihist.net {
+	encode zstd gzip
+
+	# Structured access log. This is the only record of the JavaScript-free
+	# citation pages being read, and the only record of GPTBot and friends
+	# fetching them. Point the backend at this file with
+	#     ANALYTICS_LOG_PATH=D:/srv/aihist/logs/access.log
+	#     ANALYTICS_LOG_FORMAT=caddy
+	# Rotation is detected by the ingester (a shorter file resets its offset),
+	# so nothing here has to cooperate with it.
+	log {
+		output file D:/srv/aihist/logs/access.log {
+			roll_size 20mb
+			roll_keep 5
+		}
+		format json
+	}
+
+	header {
+		X-Content-Type-Options "nosniff"
+		Referrer-Policy "strict-origin-when-cross-origin"
+		X-Frame-Options "SAMEORIGIN"
+		-Server
+	}
+
+	# API first: everything under /api goes to uvicorn, never to the file server.
+	handle /api/* {
+		reverse_proxy 127.0.0.1:8000 {
+			header_up X-Real-IP {remote_host}
+		}
+	}
+
+	# Partner redirect: /go/<code> counts the click and 302s to the partner's
+	# own site. Same backend as /api, but a distinct prefix so a partner code
+	# can never collide with a page or an asset.
+	handle /go/* {
+		reverse_proxy 127.0.0.1:8000 {
+			header_up X-Real-IP {remote_host}
+		}
+	}
+
+	# /admin → /admin/ so the relative asset URLs resolve.
+	handle /admin {
+		redir /admin/ 301
+	}
+
+	# Admin console: its own entry point, explicitly not indexable.
+	handle /admin/* {
+		root * D:/srv/aihist/dist
+		rewrite * /admin.html
+		header {
+			X-Robots-Tag "noindex, nofollow"
+			X-Content-Type-Options "nosniff"
+			Referrer-Policy "strict-origin-when-cross-origin"
+			X-Frame-Options "SAMEORIGIN"
+		}
+		file_server
+	}
+
+	# Hashed assets are immutable.
+	handle /assets/* {
+		root * D:/srv/aihist/dist
+		header Cache-Control "public, max-age=31536000, immutable"
+		file_server
+	}
+
+	# Event pages: /e/<slug> resolves to /e/<slug>.html.
+	handle /e/* {
+		root * D:/srv/aihist/dist
+		header Cache-Control "public, max-age=604800"
+		try_files {path} {path}.html
+		file_server
+	}
+
+	# Everything else is a prerendered file. There is deliberately no SPA
+	# fallback: an unknown URL must 404, not render the timeline.
+	handle {
+		root * D:/srv/aihist/dist
+		try_files {path} {path}.html
+		file_server
+	}
+}

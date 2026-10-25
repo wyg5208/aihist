@@ -1,0 +1,40 @@
+node_modules/
+dist/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.tsbuildinfo
+.qoder-sites/
+.qoder-sites.json
+# Release receipt written by the site host (releaseId / deploymentId).
+*.qoder.site
+coverage-report.json
+timeline-live.json
+
+# Python backend
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+
+# The SQLite database and its WAL sidecars
+*.db
+*.db-wal
+*.db-shm
+
+# Throwaway scripts written while wiring up a vendor panel
+backend/_probe_*.py
+backend/_smoke_*.py
+backend/_scratch_*.txt
+
+# Deployment artifacts. Anchored to the repository root on purpose:
+# `data/` must not swallow backend/app/data/seed.json.
+/data/
+/logs/
+/backups/
+/service/
+
+# Real secrets. `deploy/api.env.example` is the tracked template.
+deploy/api.env

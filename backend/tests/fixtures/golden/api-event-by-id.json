@@ -1,0 +1,51 @@
+{
+  "ok": true,
+  "event": {
+    "id": "d7999c25-8f8a-4ad8-96e0-574604723637",
+    "slug": "agentic-ai-foundation-2026",
+    "eventDate": "2026-10-22",
+    "datePrecision": "day",
+    "sortDate": "2026-10-22",
+    "year": 2026,
+    "title": "Anthropic 将 Agent Skills 捐赠给 Agentic AI Foundation",
+    "titleEn": "Donating Agent Skills to the Agentic AI Foundation",
+    "category": "policy",
+    "organization": "Anthropic",
+    "modelName": null,
+    "vendor": "Anthropic",
+    "series": null,
+    "importance": 74,
+    "confidence": "likely",
+    "sourceCount": 1,
+    "sourceFamilies": [
+      "official"
+    ],
+    "tags": [
+      "Anthropic",
+      "智能体",
+      "标准",
+      "监管"
+    ],
+    "origin": "seed",
+    "editorialStatus": "admitted",
+    "firstSeenAt": "2026-10-24T00:00:00.000Z",
+    "updatedAt": "2026-10-24T00:00:00.000Z",
+    "fingerprint": "1bdb4e3ef8f0222b122bbb0691e3381e971db5542481910afe9d94d919da8a19",
+    "summary": "Anthropic 宣布把 Agent Skills 捐赠给 Agentic AI Foundation，推动智能体工具描述格式的标准化。该基金会由多家 AI 公司共同参与。",
+    "summaryKind": "curated",
+    "sources": [
+      {
+        "name": "Anthropic",
+        "family": "official",
+        "title": "Donating Agent Skills to the Agentic AI Foundation",
+        "url": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation",
+        "publishedAt": "2026-10-22",
+        "externalId": "https://www.anthropic.com/news/donating-agent-skills-to-the-agentic-ai-foundation"
+      }
+    ],
+    "meta": {
+      "research_note": "Anthropic 官方新闻页核对"
+    },
+    "editorialReview": null
+  }
+}

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0"
+	xmlns:content="http://purl.org/rss/1.0/modules/content/"
+	xmlns:wfw="http://wellformedweb.org/CommentAPI/"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:atom="http://www.w3.org/2005/Atom"
+	xmlns:sy="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:slash="http://purl.org/rss/1.0/modules/slash/"
+	>
+
+<channel>
+	<title>量子位</title>
+	<atom:link href="https://www.qbitai.com/feed" rel="self" type="application/rss+xml" />
+	<link>https://www.qbitai.com</link>
+	<description>追踪人工智能新趋势，报道科技行业新突破</description>
+	<lastBuildDate>Fri, 23 Oct 2026 07:35:51 +0000</lastBuildDate>
+	<language>zh-Hans</language>
+	<sy:updatePeriod>
+	hourly	</sy:updatePeriod>
+	<sy:updateFrequency>
+	1	</sy:updateFrequency>
+	<generator>https://wordpress.org/?v=7.1</generator>
+	<item>
+		<title>百度世界2026前瞻：10+重磅分论坛，全面解码AI时代的智能组织进化路径</title>
+		<link>https://www.qbitai.com/2026/10/504901.html</link>
+		
+		<dc:creator><![CDATA[量子位的朋友们]]></dc:creator>
+		<pubDate>Fri, 23 Oct 2026 07:35:51 +0000</pubDate>
+				<category><![CDATA[资讯]]></category>
+		<category><![CDATA[百度]]></category>
+		<guid isPermaLink="false">https://www.qbitai.com/?p=504901</guid>
+
+					<description><![CDATA[10月21日，百度官方公众号发文披露了百度世界2026分论坛的更多议程信息。]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>又一国产决策模型发布！准确率超过微软和Jev等决策模型</title>
+		<link>https://www.qbitai.com/2026/10/504879.html</link>
+		
+		<dc:creator><![CDATA[量子位的朋友们]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 09:07:05 +0000</pubDate>
+				<category><![CDATA[资讯]]></category>
+		<category><![CDATA[蚂蚁]]></category>
+		<guid isPermaLink="false">https://www.qbitai.com/?p=504879</guid>
+
+					<description><![CDATA[10月22日，蚂蚁数科正式发布决策模型 LingDT-Decision-1.0。]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>特斯拉利润腰斩，一夜跌没“通用汽车”！马斯克：FSD在中国也会遥遥领先</title>
+		<link>https://www.qbitai.com/2026/10/504841.html</link>
+		
+		<dc:creator><![CDATA[杰西卡]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 07:14:48 +0000</pubDate>
+				<category><![CDATA[智能车参考]]></category>
+		<category><![CDATA[特斯拉]]></category>
+		<guid isPermaLink="false">https://www.qbitai.com/?p=504841</guid>
+
+					<description><![CDATA[FSD一年增长70万付费用户]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>既能“做选择题”，也能“做填空题”——星辰意图理解模型Xing4.0-29B-Intent发布</title>
+		<link>https://www.qbitai.com/2026/10/504832.html</link>
+		
+		<dc:creator><![CDATA[量子位的朋友们]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 07:11:14 +0000</pubDate>
+				<category><![CDATA[资讯]]></category>
+		<category><![CDATA[华为]]></category>
+		<category><![CDATA[电信]]></category>
+		<guid isPermaLink="false">https://www.qbitai.com/?p=504832</guid>
+
+					<description><![CDATA[中电信人工智能科技有限公司星辰通用人工智能实验室正式发布并开源意图理解专用模型 Xing4.0-29B-Intent]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>谁在给OpenAI供应具身数据？</title>
+		<link>https://www.qbitai.com/2026/10/504800.html</link>
+		
+		<dc:creator><![CDATA[梦瑶]]></dc:creator>
+		<pubDate>Thu, 22 Oct 2026 07:05:59 +0000</pubDate>
+				<category><![CDATA[资讯]]></category>
+		<category><![CDATA[OpenAI]]></category>
+		<guid isPermaLink="false">https://www.qbitai.com/?p=504800</guid>
+
+					<description><![CDATA[挤进全球Physical AI核心供应链]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>多智能体协同重构医疗AI！清华AIR孵化：医生AI分身“坐诊”医院</title>
+		<link>https://www.qbitai.com/2026/10/504734.html</link>
+		
+		<dc:creator><![CDATA[鹭羽]]></dc:creator>
+		<pubDate>Wed, 21 Oct 2026 11:30:59 +0000</pubDate>
+				<category><![CDATA[资讯]]></category>
+		<category><![CDATA[首页轮播]]></category>
+		<category><![CDATA[Agent]]></category>
+		<category><![CDATA[AI医疗]]></category>
+		<category><![CDATA[清华AIR]]></category>
+		<guid isPermaLink="false">https://www.qbitai.com/?p=504734</guid>
+
+					<description><![CDATA[医疗AI质变时刻]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>生数科技Motubrain团队将直播Physical AI训练全流程，持续半个月</title>
+		<link>https://www.qbitai.com/2026/10/504730.html</link>
+		
+		<dc:creator><![CDATA[量子位的朋友们]]></dc:creator>
+		<pubDate>Wed, 21 Oct 2026 09:45:22 +0000</pubDate>
+				<category><![CDATA[资讯]]></category>
+		<category><![CDATA[生数科技]]></category>
+		<guid isPermaLink="false">https://www.qbitai.com/?p=504730</guid>
+
+					<description><![CDATA[10月21日，生数科技世界模型团队正式开启Motubrain 2.0训练全流程公开直播]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>LeCun押注的世界模型，中国一家清华系公司已经做进了机器人</title>
+		<link>https://www.qbitai.com/2026/10/504653.html</link>
+		
+		<dc:creator><![CDATA[田, 晏林]]></dc:creator>
+		<pubDate>Wed, 21 Oct 2026 07:15:05 +0000</pubDate>
+				<category><![CDATA[资讯]]></category>
+		<guid isPermaLink="false">https://www.qbitai.com/?p=504653</guid>
+
+					<description><![CDATA[世界模型赛道新看点：千诀隐变量可辨识性方向的研究，比LeCun相近工作早一年，不堆画面预测，主打物理规律与跨本体复用。]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>量智齐飞！4个月9款车落地，轻舟城市NOA击穿10-20万体验天花板</title>
+		<link>https://www.qbitai.com/2026/10/504638.html</link>
+		
+		<dc:creator><![CDATA[思邈]]></dc:creator>
+		<pubDate>Wed, 21 Oct 2026 06:40:46 +0000</pubDate>
+				<category><![CDATA[资讯]]></category>
+		<category><![CDATA[智驾]]></category>
+		<category><![CDATA[轻舟智航]]></category>
+		<guid isPermaLink="false">https://www.qbitai.com/?p=504638</guid>
+
+					<description><![CDATA[百万台搭载打底，智驾普及与安全并重]]></description>
+		
+		
+		
+			</item>
+		<item>
+		<title>实探宁德时代总部：“去宁化”是喊太大声了</title>
+		<link>https://www.qbitai.com/2026/10/504618.html</link>
+		
+		<dc:creator><![CDATA[杰西卡]]></dc:creator>
+		<pubDate>Wed, 21 Oct 2026 04:35:56 +0000</pubDate>
+				<category><![CDATA[智能车参考]]></category>
+		<category><![CDATA[宁德时代]]></category>
+		<guid isPermaLink="false">https://www.qbitai.com/?p=504618</guid>
+
+					<description><![CDATA[电池开发，分工远比想象复杂]]></description>
+		
+		
+		
+			</item>
+	</channel>
+</rss>

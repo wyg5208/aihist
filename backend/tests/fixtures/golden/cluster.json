@@ -1,0 +1,2303 @@
+{
+  "exportedAt": "2026-10-24T15:38:01.575Z",
+  "nowMs": 1792856281575,
+  "clustered": [
+    {
+      "fingerprint": "6db4eec9752b708963c67cfcdd974c5ab56e30d96e5aa6c18793535d3b17359b",
+      "title": "智源众智 FlagOS 2.2 让前沿模型与多元算力协同演进",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/mhdJwMMzYFedMFHKfHWs?utm_source=rss&utm_medium=article"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国"
+      ]
+    },
+    {
+      "fingerprint": "f0e0b79029096a7712acaf79add03e521fd72179c43f1b82a3d770b1761fb21e",
+      "title": "刘铁岩、诺奖、图灵奖得主等嘉宾共话AI的下一个十年：Transformer一统天下之后，AI的下一张王牌是什么？",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/UmD4aAerZEts8sZ5t791?utm_source=rss&utm_medium=article"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国"
+      ]
+    },
+    {
+      "fingerprint": "3ea9b148e257d496a5a25fa9183c54bff5a076044656984ad8783d340be7fbfe",
+      "title": "AI Agent 正在改写 CPU 的价值：当 Token 变成行动，算力竞争不再只是拼 GPU",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/AkDgwN6h72cqUOJ35Zok?utm_source=rss&utm_medium=article"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国"
+      ]
+    },
+    {
+      "fingerprint": "aa8901f05cf54fc68b0da69b5b76844365b20ffa20c0bb5f5e952b5527799937",
+      "title": "PostgreSQL 19 发不出来？AI“找茬”太快，人类修Bug的速度跟不上了",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/Q6mgHWCSqV6KeZzee3NT?utm_source=rss&utm_medium=article"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国"
+      ]
+    },
+    {
+      "fingerprint": "e1332dfc20b1eb02cb81a024fb6a2c284919ea65412c08898b35dd185d50018c",
+      "title": "“让Token不空转”，讯飞如何把Agent推进企业核心流程",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/Lo9TLlRdvy4II38yaex0?utm_source=rss&utm_medium=article"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国"
+      ]
+    },
+    {
+      "fingerprint": "df9d1a54d364724ae32bd3fa8dea29d484d5bea7a7c76f497a3012b728146a61",
+      "title": "奥特曼最新 45 分钟访谈：一年不写代码、压力大到不想起床，还嫌 ChatGPT 太谄媚",
+      "category": "opinion",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/sI3z2UMCrB5PPVDWTsLo?utm_source=rss&utm_medium=article"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国"
+      ]
+    },
+    {
+      "fingerprint": "5beee2717b248de1ff6ec498f5935c72a3e00235326810947501f804fce7e493",
+      "title": "AI 赋能开发，Spotify 月代码变更量翻倍",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/rVqEbaXeaJ91UWlQF4F9?utm_source=rss&utm_medium=article"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国"
+      ]
+    },
+    {
+      "fingerprint": "8e63b57ef12a1e9f959a069651b077a2b0ad0516e4b327607ac272e990dd8840",
+      "title": "千问蒋冠军：构建Personal Agent技术框架，需要模型、记忆与生态协同推进",
+      "category": "research",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/6EJRFIef67xr3x6vyCJa?utm_source=rss&utm_medium=article",
+        "https://www.leiphone.com/category/industrynews/DHR4Qc9YwHX7lin8.html"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国",
+        "雷峰网"
+      ]
+    },
+    {
+      "fingerprint": "d4ae06e75c93466eb0f32a27347943974da9ff48c9756d1c53313998d2233391",
+      "title": "Foresight AI 正式可用，Gremlin 将智能体引入可靠性工程",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/2bKQkdiAcGEycHJLYPv5?utm_source=rss&utm_medium=article"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国"
+      ]
+    },
+    {
+      "fingerprint": "7af087bf83a972516453751a36cc101119958627634df688d3aefdec77e9ef23",
+      "title": "DeepSeek千亿融资逼近收官：结盟完美世界、中芯聚源等产业资本，募资翻倍押注具身智能",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/ViOyxiOSP2ihxuUyg1rD?utm_source=rss&utm_medium=article"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国"
+      ]
+    },
+    {
+      "fingerprint": "ba97974213e15e88c12b15a166d686a1caeae8017534204c07ac134e847210a4",
+      "title": "AI 智能体疯狂入侵人类系统：十几起漏洞依次排开，AI真正攻破了哪一层?",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.tmtpost.com/8179406.html"
+      ],
+      "evidenceNames": [
+        "钛媒体"
+      ]
+    },
+    {
+      "fingerprint": "0a31e01ad026d6889e5407a34875e4890c99330369e4d94b72998b83e13d836c",
+      "title": "智元两年投出47笔融资，多数投给了自家机器人的上游",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.tmtpost.com/8178163.html"
+      ],
+      "evidenceNames": [
+        "钛媒体"
+      ]
+    },
+    {
+      "fingerprint": "6a7462d9ea0a20a4823933b4157749631576391493cc4eb5a72001c2b3d7eca1",
+      "title": "谁在押注 Personal AI，谁又在害怕 Personal AI？",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.tmtpost.com/8179361.html"
+      ],
+      "evidenceNames": [
+        "钛媒体"
+      ]
+    },
+    {
+      "fingerprint": "a26f1e8a3159820859a352cc911b1c201a2e5601cfd1564d7c67ceca96985e3b",
+      "title": "覆盖存、拣、运全场景，海康机器人2026移动机器人新品发布会举行",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.leiphone.com/category/robot/h4vGHMyQ6b8drzy6.html"
+      ],
+      "evidenceNames": [
+        "雷峰网"
+      ]
+    },
+    {
+      "fingerprint": "67aab51e134daf8052f539961f2d1cc84d6e2f11b3ba5041f5bd2010dface854",
+      "title": "从“算力”到“Token 生产力”，硅基流动助力央国企大模型规模化落地",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.leiphone.com/category/industrynews/DVoE94j80j6cboxE.html"
+      ],
+      "evidenceNames": [
+        "雷峰网"
+      ]
+    },
+    {
+      "fingerprint": "920c621ee44a5faed1aa6a10f4cacd5131f4b15e94450fd80e6f927a9b0c3bd0",
+      "title": "为什么说奇瑞是一家AI公司？",
+      "category": "opinion",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.leiphone.com/category/transportation/j8cK1UDhub9VuCpu.html"
+      ],
+      "evidenceNames": [
+        "雷峰网"
+      ]
+    },
+    {
+      "fingerprint": "6b518bcc6a0e0e0d2609581620858040364ab29f437f26b665b7f9ccdeefc768",
+      "title": "擦窗机器人有了首个行业标准，你敢把窗户交给它吗？",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.leiphone.com/category/smarthome/iDkOEQuhDC14QfOE.html"
+      ],
+      "evidenceNames": [
+        "雷峰网"
+      ]
+    },
+    {
+      "fingerprint": "9de3c42a13c20a0f001664da3e5710739c30c11432827c820da810e1ddb124d5",
+      "title": "“AI店长”帮部分试用商家增长超30%，美团外卖薛冰：将赠送给全国所有商家",
+      "category": "policy",
+      "eventDate": "2026-10-23",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.leiphone.com/category/industrynews/tZI7pYBhiFduVfr6.html"
+      ],
+      "evidenceNames": [
+        "雷峰网"
+      ]
+    },
+    {
+      "fingerprint": "d7c9b4c8de6010e572571f20bd0c8903a69571de446de487db4bb5397fd46a94",
+      "title": "Sensorimotor Alignment: A Platonic Proxy for Embodied Policy Success",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31670v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "2dc0cbe0c0d448e25524a0d272d8363a9e05de8f18c478e74f02b2028c2c947d",
+      "title": "Direct Pass@$k$ Optimization for Thought Pruning: Balancing Quality and Diversity in Test-Time Reasoning",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31667v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "940b3742eb17e2be19f9a8ed012d6231f297ca461f93a13033a81f20eb700f12",
+      "title": "Cost-Aware Abstention for LLM-Based IT Ticket Classification",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31657v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "53e0a7c4558dfc93a119808aea24ce6f8780b35ad2e2c09ed854088339c7c153",
+      "title": "EpiSEM-Bench: Evaluating Safety and Evidence Recovery in LLM Agents under Missing Evidence",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31650v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "8a1a1282515e6e6f21434e24e22c1ce97b5bfd47f628c90fc10ba5993981f332",
+      "title": "Low-Bit N-Gram Embeddings for Language Models",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31646v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "7b48d28c2ad803a83ab412307e871131323e195edc555f6cb61ae74ca90d4c72",
+      "title": "Causal Chain of Thought: Mitigating Attention Leakage via Context Isolation",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31639v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "0af3aecdee5855904c9d9ee827dadae1d6d13a48354d050be3c2fb1d14e262c1",
+      "title": "Can an Agent Debug a Web Corpus? Agentic Auditing of Slovak FineWeb2",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31636v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "832cb020c311c7ae2a52d746100cdabf5ee7de3d21f212b15e4ef193e7845b3b",
+      "title": "BeNice! Closing Looping's Inference-Memory Gap via KV-Sharing",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31633v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "922e95733f4ba400f05925917f62c405d3c829c6e862c2620413d763c240b244",
+      "title": "Questioning Instrumental Convergence in RLVR: Checkpoint Evidence from OLMo-3",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31624v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "b3ee763858fd3b59b85c3423def5a6c7988027743ca1a4acc74e07d7548882fc",
+      "title": "Bilingual Language Models Capture Cross-Linguistic Influence in Second-Language Reading",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31620v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "3d1351fba331f8b673d82607ec0900b2374679e9d338aa266e6badc1185d3b4c",
+      "title": "How Ground Truth Shapes Retrieval Scores: Evidence-Aware Evaluation of a Retrieval-Augmented Generation System for Breast Lesions",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31606v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "5f030cfa55f27635e4b690b65104c10a8b94a961ab1b09bbdbc7370e5f0a2a78",
+      "title": "CRANE: Post-Hoc Counterfactual Retrieval for Multimodal Classifiers",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31594v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "4d19f58759e9bac6d6daace792574ad376356b489799807f0049a92d817714f7",
+      "title": "VERA: A Responsible AI Dashboard for Assessing LLM Deployments in Light of the EU AI Act",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31588v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "649e4df63b694b35920628afa28a5138a55e1382cc454950eca78e78c987628c",
+      "title": "Would an LLM Match into a Residency? Uncertainty, Reasoning and Image Use of Open Language Models on the Spanish MIR Examination",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31586v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "fcae13ad3000df51f713b42191fa9b609e448dcb9b618f8ea70ef19195209eb0",
+      "title": "Who Is Sycophantic to Whom? Confident LLMs, Human Deference, and the Collapse of Trust Calibration",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31579v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "8a4dd25cf474dd939d72244673204e90b3983bd5419fd95e34f4a862582deacc",
+      "title": "What Makes a Good Unmasking Policy? A Controlled Study of Learned Unmasking in Diffusion Language Models",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31576v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "4989e7bddb70482ba2ed8270695538298b4dd00661c303e08891564fdfc98dbf",
+      "title": "Social-HUMINT: An LLM-Augmented Unified Framework for Measuring Social Media Exposure",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "arxiv"
+      ],
+      "evidenceUrls": [
+        "https://arxiv.org/abs/2610.31573v1"
+      ],
+      "evidenceNames": [
+        "arXiv"
+      ]
+    },
+    {
+      "fingerprint": "957eb815467614616d2255a5a5b54481780311fd8d40b2a264a6765595d71408",
+      "title": "百度世界2026前瞻：10+重磅分论坛，全面解码AI时代的智能组织进化路径",
+      "category": "policy",
+      "eventDate": "2026-10-22",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.qbitai.com/2026/10/504901.html",
+        "https://www.leiphone.com/category/industrynews/vv6pTluWIUjUHMbi.html"
+      ],
+      "evidenceNames": [
+        "量子位",
+        "雷峰网"
+      ]
+    },
+    {
+      "fingerprint": "e06b83fba87578834be0f802a9eba9d2ebd3790e10f5b61628f1ab9ced908e59",
+      "title": "谁在给OpenAI供应具身数据？",
+      "category": "policy",
+      "eventDate": "2026-10-22",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.qbitai.com/2026/10/504800.html"
+      ],
+      "evidenceNames": [
+        "量子位"
+      ]
+    },
+    {
+      "fingerprint": "c3db464e75f229665e4c641d3bd79a8bd419425560b3aecebc06f55326775321",
+      "title": "企业 AI 越用越复杂，如何用一个 Gateway 管好模型、Agent 和成本？｜ 技术趋势",
+      "category": "policy",
+      "eventDate": "2026-10-22",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/v85ey09UlxhCDH4r3RS3?utm_source=rss&utm_medium=article"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国"
+      ]
+    },
+    {
+      "fingerprint": "5c82e548a0c9c4dc7c0938dc5de4b8d3f1870d8abbb9b78f0adee6c467e2f255",
+      "title": "面向 Qwen 系列模型线性注意力的高性能优化实践",
+      "category": "policy",
+      "eventDate": "2026-10-22",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.infoq.cn/article/o9OcWNkkwgKvsZmgY45d?utm_source=rss&utm_medium=article"
+      ],
+      "evidenceNames": [
+        "InfoQ 中国"
+      ]
+    },
+    {
+      "fingerprint": "7729f27f8e8b049a310e2cfc0108abc06f4b442b5d5533fce7fcd5a2f8c8cc02",
+      "title": "超智深融 算力圳浓——第二十二届CCF全国高性能计算学术大会在深圳成功举办",
+      "category": "research",
+      "eventDate": "2026-10-22",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.leiphone.com/category/chips/ZciUaXjdyyGRgNRl.html"
+      ],
+      "evidenceNames": [
+        "雷峰网"
+      ]
+    },
+    {
+      "fingerprint": "694d42068a3b1337a35c06b8cb09b3606b0ee6a043c05db736a41609ecfcc4fa",
+      "title": "多智能体协同重构医疗AI！清华AIR孵化：医生AI分身“坐诊”医院",
+      "category": "policy",
+      "eventDate": "2026-10-21",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.qbitai.com/2026/10/504734.html"
+      ],
+      "evidenceNames": [
+        "量子位"
+      ]
+    },
+    {
+      "fingerprint": "27c8f6a0cebe1bb947d848b40a4a0399153b39558feaca694803ec6636794499",
+      "title": "生数科技Motubrain团队将直播Physical AI训练全流程，持续半个月",
+      "category": "policy",
+      "eventDate": "2026-10-21",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.qbitai.com/2026/10/504730.html"
+      ],
+      "evidenceNames": [
+        "量子位"
+      ]
+    },
+    {
+      "fingerprint": "289d1e08432ea3e56af7a248dadf1e47638a7f5ca8d63e5606ed5b006a005f72",
+      "title": "LeCun押注的世界模型，中国一家清华系公司已经做进了机器人",
+      "category": "research",
+      "eventDate": "2026-10-21",
+      "importance": 32,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "media"
+      ],
+      "evidenceUrls": [
+        "https://www.qbitai.com/2026/10/504653.html"
+      ],
+      "evidenceNames": [
+        "量子位"
+      ]
+    },
+    {
+      "fingerprint": "5e4eef90ec978a432e14b163cefe3baaa891056ea7cbea4414661d746339ba74",
+      "title": "Using thousands of AI agents to uncover new leads in biological data",
+      "category": "research",
+      "eventDate": "2026-10-21",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "official"
+      ],
+      "evidenceUrls": [
+        "https://openai.com/index/scaling-ai-research-for-complex-biological-data"
+      ],
+      "evidenceNames": [
+        "OpenAI News"
+      ]
+    },
+    {
+      "fingerprint": "befe302231e06fe287c7c5adb5d385fa443509687647cc06c2243dfefcf8ed50",
+      "title": "Recursivesi 开源 flint",
+      "category": "model",
+      "eventDate": "2026-10-21",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/RecursiveSI/flint"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "b89a8e79165c1931ee1caca91ea7a97e66ae9a4c6c58092070adbd21066c8d2e",
+      "title": "Krafton 开源 Raon-1-mini-preview",
+      "category": "model",
+      "eventDate": "2026-10-21",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/KRAFTON/Raon-1-mini-preview"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "3cb409b38887a7212051d1d9eed563a6e6a341ed3edf58557dc26b38bd7a1cf7",
+      "title": "Advancing coding in low‑resource programming languages",
+      "category": "research",
+      "eventDate": "2026-10-19",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "official"
+      ],
+      "evidenceUrls": [
+        "https://openai.com/index/low-resource-programming-languages"
+      ],
+      "evidenceNames": [
+        "OpenAI News"
+      ]
+    },
+    {
+      "fingerprint": "ebfe00b8c95d3d554f45a96ca729a4a01538dbe875e30de4aa638dab263950c5",
+      "title": "Briaai 开源 Fibo-2.0-dev",
+      "category": "model",
+      "eventDate": "2026-10-18",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/briaai/Fibo-2.0-dev"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "bd0dea2d760415e160369b68613f83c56563c1d0a7682bc234325e20ec9ee553",
+      "title": "MiniMax 发布 MiniMax M3.1 Flash",
+      "category": "model",
+      "eventDate": "2026-10-17",
+      "importance": 60,
+      "confidence": "verified",
+      "sourceCount": 2,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/minimax/minimax-m3.1-flash-20261019",
+        "https://huggingface.co/MiniMaxAI/MiniMax-M3.1-Flash"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "2255dab181eb41db9ad273dd18115276d4cee5e723d42a53a678cdcde2aada0c",
+      "title": "NVIDIA 开源 NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16",
+      "category": "model",
+      "eventDate": "2026-10-16",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-Labs-Dory1.0-4B-BF16"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "e3de666a8a10b3d5fc265dd2ad77058861464238d7cf65bad286813d20f95db1",
+      "title": "Ornith Ai 开源 Ornith-1.5-122B",
+      "category": "model",
+      "eventDate": "2026-10-16",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/ornith-ai/Ornith-1.5-122B"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "ec2d546523ccd501223643250bc8cea9cc68a1ef2fd5b452878744a5e88b46e4",
+      "title": "Meta 发布 Muse Spark Open",
+      "category": "model",
+      "eventDate": "2026-10-15",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta/muse-spark-open-20261015"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "cb663514e4a1602c12013cafb57100e8c344340ebf77f375840f7f58a8e0bc94",
+      "title": "Bringing GPT-Rosalind to academic research labs",
+      "category": "research",
+      "eventDate": "2026-10-15",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "official"
+      ],
+      "evidenceUrls": [
+        "https://openai.com/index/introducing-the-rosalind-academic-plan"
+      ],
+      "evidenceNames": [
+        "OpenAI News"
+      ]
+    },
+    {
+      "fingerprint": "a9744e1411cde7788b2dfeae00fc7986c63beee0c18a0fe01b6ac736f6e6efa9",
+      "title": "Internscience 开源 Sage-A1.5",
+      "category": "model",
+      "eventDate": "2026-10-15",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/InternScience/Sage-A1.5"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "888edb0b0b578080db2d6b110fc6d188a4eac1a1a0fca83676c5f1a93281aba6",
+      "title": "腾讯 开源 Hy-Memory-30B-A3B",
+      "category": "model",
+      "eventDate": "2026-10-15",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/tencent/Hy-Memory-30B-A3B"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "5f0502bcd4153e8e09af3273b84c2176d6c4715e21f73e3f5a0c9b9acb944678",
+      "title": "Mistral AI 开源 Timestral-209M",
+      "category": "model",
+      "eventDate": "2026-10-14",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/mistralai/Timestral-209M"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "3f9d8980595a0be1e6aa31d88940dd421f92fb0093ddd07f193a778b6d3d1cc4",
+      "title": "Liquid AI 发布 LFM2.5-24B-A2B",
+      "category": "model",
+      "eventDate": "2026-10-13",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/liquid/lfm-2.5-24b-a2b-20261012"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "a982ae8b5b9e3aab4eba3b7d983e593c240b861c6b8d1fcdfcb6c9139dab1cc1",
+      "title": "Google 发布 Gemini 4 Argon",
+      "category": "model",
+      "eventDate": "2026-10-13",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-4-argon-20261013"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "5a2df1100410935652fdebb3c091f6d1450be2ac2a1166362827ebf8093a5227",
+      "title": "Gemini 4 Argon: Built to solve your hardest problems",
+      "category": "research",
+      "eventDate": "2026-10-13",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "official"
+      ],
+      "evidenceUrls": [
+        "https://blog.google/innovation-and-ai/models-and-research/gemini-models/introducing-gemini-4-argon/"
+      ],
+      "evidenceNames": [
+        "Google AI Blog"
+      ]
+    },
+    {
+      "fingerprint": "4dd6699f8739333656454fdd33dc9b679197004901fccdc8a4676951375eab03",
+      "title": "Black Forest Labs 开源 flux-3-image-klein",
+      "category": "model",
+      "eventDate": "2026-10-13",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/black-forest-labs/flux-3-image-klein"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "105ea631da1f01f6dfba8bb756336b2245eab3e0f90ef1af10d04ecef40b0e24",
+      "title": "NVIDIA 发布 Nemotron 3.5 Super VL",
+      "category": "model",
+      "eventDate": "2026-10-12",
+      "importance": 60,
+      "confidence": "verified",
+      "sourceCount": 2,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/nvidia/nemotron-3.5-super-vl-20261015",
+        "https://huggingface.co/nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "f1a00692dd4b77a4d33216966e7b6333d1f67a21f3ccdb46af71c5ef2b6e07d1",
+      "title": "Meta 发布 Muse Wonder",
+      "category": "model",
+      "eventDate": "2026-10-12",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta/muse-wonder-20261012"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "744fe495e9c09f4af3f863da40d90d6ecd88e38c439ab3feaa7fa957fba68fc1",
+      "title": "Openmoss Team 开源 MOSS-Image-Base",
+      "category": "model",
+      "eventDate": "2026-10-11",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "0e8b055e8577ebae3791fdb8d820e2fa066132404987be5fed0dd8d0e9b2c8e8",
+      "title": "阶跃星辰 发布 Step 5 Preview",
+      "category": "model",
+      "eventDate": "2026-10-08",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/stepfun/step-5-preview-20261008"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "17d873c2eb998e17b15b6eb7a23c0238fd80fcdd00a9f499cfcbf8f4503f3516",
+      "title": "NVIDIA 开源 Qwen3.8-Flash-Next-FP4-Local",
+      "category": "model",
+      "eventDate": "2026-10-08",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local",
+        "https://huggingface.co/nvidia/GLM-5.3-Flash-FP4-Local"
+      ],
+      "evidenceNames": [
+        "Hugging Face",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "95389680e93be9f61a93ad8eba232b55592dd71cb7a36759a08eaeb18dc8faaa",
+      "title": "Reflection 发布 Beam 1.0 501B A23B",
+      "category": "model",
+      "eventDate": "2026-10-07",
+      "importance": 45,
+      "confidence": "verified",
+      "sourceCount": 2,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/reflection/beam-1.0-501b-a23b-20261016",
+        "https://huggingface.co/reflection/Beam-1.0-501B-A23B"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "7bcdd3fe892e8674f0702764f014aec67991d59aceb4859e497f6fe18cb97787",
+      "title": "GPT-6 and Intelligent UI for everyone",
+      "category": "model",
+      "eventDate": "2026-10-07",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "official"
+      ],
+      "evidenceUrls": [
+        "https://openai.com/index/gpt-6-for-everyone"
+      ],
+      "evidenceNames": [
+        "OpenAI News"
+      ]
+    },
+    {
+      "fingerprint": "6e13183cd8061d831c9583fbc506569dd08295f4466e5eeaeb9a3c75eb0d9890",
+      "title": "Google 发布 Nano Banana 2.1",
+      "category": "model",
+      "eventDate": "2026-10-06",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-nano-banana-2.1-20261006"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "63cfe288725e57657b99a62e80b37692d8a966bead4f5a8014425d6ad6def12d",
+      "title": "Mistral AI 发布 Mistral Large 4",
+      "category": "model",
+      "eventDate": "2026-10-06",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/mistral-large-4-0-20261006"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "d881f181dc5778f450bd3669d820542acc693be4c0b4b9c9944536c1669c7fb1",
+      "title": "Sharing AI progress in mathematics",
+      "category": "research",
+      "eventDate": "2026-10-06",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "official"
+      ],
+      "evidenceUrls": [
+        "https://openai.com/index/sharing-ai-progress-in-mathematics"
+      ],
+      "evidenceNames": [
+        "OpenAI News"
+      ]
+    },
+    {
+      "fingerprint": "ae5d9747ac77a15ff8dbc5c0c67d63ace467dc8d67fd6d5ad249b3d118a78bed",
+      "title": "无问芯穹 发布 Ling 3.1 Flash",
+      "category": "model",
+      "eventDate": "2026-10-02",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/inclusionai/ling-3.1-flash-20261002"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "d8516fbb0311496044e217b1ec6225748d309c305062643aa68a2bffb80355e0",
+      "title": "Fishaudio 开源 drama-3",
+      "category": "model",
+      "eventDate": "2026-10-01",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/fishaudio/drama-3"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "8b71fc4b8188fb58679752cf8cd1e8c6cf3364858d3fbe1ad9615a91bb8aee80",
+      "title": "Upstage 发布 Solar Mini 4",
+      "category": "model",
+      "eventDate": "2026-09-23",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/upstage/solar-mini4-20260922"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "1f3d308cab6357c4e52c52d3b18fadf8eafeefee6cda43e9a892e3bf8da68071",
+      "title": "Anthropic 发布 Claude Sonnet 5.5",
+      "category": "model",
+      "eventDate": "2026-09-22",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-haiku-5.5-20261007",
+        "https://openrouter.ai/anthropic/claude-sonnet-5.5-20260928",
+        "https://openrouter.ai/anthropic/claude-opus-5.5-20260921"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "1499228df216bd73c51247e5beb0b34676ca9e6fbd5babdc9b7bcfe1b5fef0df",
+      "title": "Introducing GPT-6.1 Sol",
+      "category": "model",
+      "eventDate": "2026-09-22",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 6,
+      "families": [
+        "official",
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openai.com/index/introducing-gpt-6-1-sol",
+        "https://openai.com/index/airbnb-gpt-6-astra",
+        "https://openai.com/index/introducing-gpt-6-sol-and-luna",
+        "https://openrouter.ai/openai/gpt-6.1-sol-pro-20260929",
+        "https://openrouter.ai/openai/gpt-6.1-sol-20260929",
+        "https://openrouter.ai/openai/gpt-6-sol-pro-20260922"
+      ],
+      "evidenceNames": [
+        "OpenAI News",
+        "OpenAI News",
+        "OpenAI News",
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "24c74d806f027581c95bca616020078e96aad61ec7e3af3b4e6f56f981e6d917",
+      "title": "Cohere 发布 Command A+",
+      "category": "model",
+      "eventDate": "2026-09-22",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/cohere/command-a-plus-05-2026"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "3a8d6a8cf9782e29bee2734711e80dca7d50218321fc7487d4fc6a087f8cea76",
+      "title": "OpenAI 发布 GPT-6 Luna Pro",
+      "category": "model",
+      "eventDate": "2026-09-22",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-6-luna-pro-20260922",
+        "https://openrouter.ai/openai/gpt-6-luna-20260922"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "45fa8f1150aa312a5128ec8a55bf08730c01a0102f8a6c75ed29056b77f04865",
+      "title": "阿里云 Qwen 发布 Qwen3.8 Omni Flash",
+      "category": "model",
+      "eventDate": "2026-09-21",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.8-max-prime-20260923",
+        "https://openrouter.ai/qwen/qwen3.8-omni-flash-20260918"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "0fbe0bf23194da70adae76a98ba1e72cd4054d709c682d5147eca2a2cb8e5469",
+      "title": "NVIDIA 发布 Switchyard",
+      "category": "model",
+      "eventDate": "2026-09-21",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/nvidia/switchyard"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "8668ffe6f79ffae992069b12c4b80267482a286a27578982e94596662f3765b0",
+      "title": "小米 发布 MiMo-V2.6-Pro-UltraSpeed",
+      "category": "model",
+      "eventDate": "2026-09-21",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/xiaomi/mimo-v2.6-pro-ultraspeed-20260921",
+        "https://openrouter.ai/xiaomi/mimo-v2.6-flash-20260921",
+        "https://openrouter.ai/xiaomi/mimo-v2.6-pro-20260921"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "c512a1026cc40712eead01a842501df7e829420c216d534208df5913dabf9d96",
+      "title": "Convaiinnovations 开源 laya",
+      "category": "model",
+      "eventDate": "2026-09-18",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/convaiinnovations/laya"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "d94469b94571c30d0f4ec5e1e2c8b5a1eaba6cfc73d8b9dae637774169a3240f",
+      "title": "Meta Models 开源 Muse-Spark-Open-816B-A42B",
+      "category": "model",
+      "eventDate": "2026-09-15",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/meta-models/Muse-Spark-Open-816B-A42B"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "ff2a8bb6aad705e9ce11e34d739a3ab822fc484bd389a293e164e87662506f73",
+      "title": "Google 开源 embeddinggemma-2",
+      "category": "model",
+      "eventDate": "2026-09-14",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/google/embeddinggemma-2"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "7babf4d39a86900f990c03a25b8d96106f9f46abdb2a20886b65f13630181a5e",
+      "title": "Sakana AI 发布 Fugu Ultra v2",
+      "category": "model",
+      "eventDate": "2026-09-11",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/sakana/fugu-ultra-v2-20260911"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "4bed9020ee7a67e13466d101819da14bb93ac06b60c94c08b1e6a1e3a07543d6",
+      "title": "Sakana AI 发布 Fugu Max",
+      "category": "model",
+      "eventDate": "2026-09-11",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/sakana/fugu-max-20260911"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "94b545374f3c8b6059f7df8c5637b4fa834185ce8ca8ab76d9144f93568286e7",
+      "title": "DeepSeek 发布 DeepSeek V4.1 Flash 1017",
+      "category": "model",
+      "eventDate": "2026-09-10",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-v4.1-flash-20261017",
+        "https://openrouter.ai/deepseek/deepseek-v4.1-flash-20260910"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "a51eb65bd24c47eabe16e20c1baf8471ce754b0fe3dfd64d95b0d74a94635ec7",
+      "title": "无问芯穹 发布 Ling 3.0 Flash VL",
+      "category": "model",
+      "eventDate": "2026-09-10",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/inclusionai/ling-3.0-flash-vl-20260910"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "f98ec98b5aa5fe63a85ca7c29832cf55207e7fcd78e9651fed34f62a8056b9af",
+      "title": "Cognition helps Devin test its own work with GPT‑6 Astra",
+      "category": "model",
+      "eventDate": "2026-09-04",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 3,
+      "families": [
+        "official",
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openai.com/index/cognition-devin-testing-with-astra",
+        "https://openrouter.ai/openai/gpt-6-astra-20260903",
+        "https://openrouter.ai/openai/gpt-6-astra-pro-20260903"
+      ],
+      "evidenceNames": [
+        "OpenAI News",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "24f4ae9e7cfb019a4658f64aeac6756c378c3258c23b241751133fead8d0ba70",
+      "title": "阿里云 Qwen 发布 Qwen3.8 Max (0902)",
+      "category": "model",
+      "eventDate": "2026-09-03",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.8-max-20260902"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "4692e1f171c3bb94797c5ace6eef251849d429e48605f4b1a2b4e69b9d1143cd",
+      "title": "NVIDIA 开源 Nemotron-3.5-Parse",
+      "category": "model",
+      "eventDate": "2026-09-03",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/nvidia/Nemotron-3.5-Parse"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "e613cb975ed948f35f753be30063cea790d1b57a2f854af950e58064712604c1",
+      "title": "Meta 发布 Muse Spark 1.3 Contributor",
+      "category": "model",
+      "eventDate": "2026-09-02",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta/muse-spark-1.3-contributor-20260902",
+        "https://openrouter.ai/meta/muse-spark-1.3-20260902"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "44c3fec9e2315c12d1cc4cabd3dea5ab8c70f2c2907f940aa969c4ca6a44f636",
+      "title": "Google 发布 Gemini 3.8 Flash",
+      "category": "model",
+      "eventDate": "2026-09-02",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-3.8-flash-20260902"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "506d132c5778d8fa300a7ad13e488c08cfbcd5ccc48a7c256162617d00cc568e",
+      "title": "Anthropic 发布 Claude Fable 5.1",
+      "category": "model",
+      "eventDate": "2026-09-01",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-fable-5.1-20260831"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "85acd1e042601cd1aa15013b41b919fd235071e01a1c7afd47a707953c8ee7a9",
+      "title": "腾讯 发布 Hy4 preview",
+      "category": "model",
+      "eventDate": "2026-08-28",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/tencent/hy4-preview-20260827"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "1b143fcd7c1ac5f812c6bd2ac7209629045eb683f10c28d47d0e34c3074e82ba",
+      "title": "阿里云 Qwen 发布 Qwen3.8 Flash",
+      "category": "model",
+      "eventDate": "2026-08-24",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 2,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.8-flash-20260826",
+        "https://huggingface.co/Qwen/Qwen3.8-Flash-Next"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "f1744ca78207adf1db9fc077fc224faf8f2e77eca5e3ee3a83cae157afb8610d",
+      "title": "Meta 发布 Muse Spark 1.2 Contributor",
+      "category": "model",
+      "eventDate": "2026-08-21",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta/muse-spark-1.2-contributor-20260805"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "d7cf147611594ba6acfa41451a8295b31a24a13244d894c6ccb7f7c127c1125c",
+      "title": "DeepSeek 发布 DeepSeek V4 Flash Vision Exp",
+      "category": "model",
+      "eventDate": "2026-08-21",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-v4-flash-vision-exp-20260821"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "5c648be0769548106cc4b9958ec283e054c290f06e9750a7bba58fc84cc33417",
+      "title": "腾讯 发布 Hy-MT2-1.8B",
+      "category": "model",
+      "eventDate": "2026-08-20",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/tencent/hy-mt2-1.8b-20260521"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "1a9928ea4537303e77a3d77cdf28391df3794280e5d06a83f313f03f77b38fae",
+      "title": "腾讯 发布 Hy-MT2-30B-A3B",
+      "category": "model",
+      "eventDate": "2026-08-20",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/tencent/hy-mt2-30b-a3b-20260521"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "125c447103ed6632368932aee74b1021544171c853278e253cd8286ec06d6ccd",
+      "title": "腾讯 发布 Hy-MT2-7B",
+      "category": "model",
+      "eventDate": "2026-08-19",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/tencent/hy-mt2-7b-20260521"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "c5a44361b85e3e1fde763a4005290ffe1d68e8df597430f5cff5157300e15524",
+      "title": "Google 发布 Gemini 3.7 Flash",
+      "category": "model",
+      "eventDate": "2026-08-13",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-3.7-flash-20260813"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "79be6aa231354d227f0e6efb4b5ab9b6fec339e2ed66bb33b4a6d5eddc5df674",
+      "title": "阿里云 Qwen 发布 Qwen3.8 2.4T A95B",
+      "category": "model",
+      "eventDate": "2026-08-12",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.8-2.4t-a95b-20260812"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "b570a23c1aaf8157ee3de4a7502dc9801e502284fa9ac828fbfbb3d6d7635363",
+      "title": "DeepSeek 发布 DeepSeek V4 Pro 0813",
+      "category": "model",
+      "eventDate": "2026-08-12",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-v4-pro-20260813"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "ab4a9c35e4cb72071a07754d460051955f8aec3a146bf87d432e79bab27ca82f",
+      "title": "NVIDIA 发布 Nemotron 3.5 Lightning",
+      "category": "model",
+      "eventDate": "2026-08-11",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/nvidia/nemotron-3.5-lightning-20260807"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "3228054922fbf51bc293b044401148d73c2643296c59dfb89c6cefb8596162d6",
+      "title": "Sakana AI 发布 Sakana Namazu",
+      "category": "model",
+      "eventDate": "2026-08-11",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/sakana/namazu-20260811"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "ba064584cc3b667bd4bf99e1bf63f7500df5e88d844c5f1a2edc99744e7455d2",
+      "title": "Upstage 发布 Solar Pro 4",
+      "category": "model",
+      "eventDate": "2026-08-10",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/upstage/solar-pro4-20260810"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "1370b04a838eee90b60d69a92bfb1a21c640c78a3358e4ad55999da1a2fe28b3",
+      "title": "Meta 发布 Muse Glimmer 30B",
+      "category": "model",
+      "eventDate": "2026-08-09",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta/muse-glimmer-30b-20260810"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "d1dd58a7ee7f7aba503cadb7f6f9b2d910178150f1fdadac45e65605111b067d",
+      "title": "阿里云 Qwen 发布 Qwen3.8 27B",
+      "category": "model",
+      "eventDate": "2026-08-05",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 2,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.8-27b-20260814",
+        "https://huggingface.co/Qwen/Qwen3.8-27B"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "c8d4dd00ec03e07c9e461efafbb2ca691c03cfecbcebeef9af95433b55611540",
+      "title": "Meta 发布 Muse Spark 1.2",
+      "category": "model",
+      "eventDate": "2026-08-05",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta/muse-spark-1.2-20260805"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "534e7b5b047016803758ad17f54a74fe5bb687ba454109f8e0b905a3b8d3bd53",
+      "title": "DeepSeek 发布 DeepSeek V4 Flash 0731",
+      "category": "model",
+      "eventDate": "2026-07-31",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-v4-flash-20260731"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "f39ba095b463ab91bae6d08f63481c829466f4b9e26bfadabd6714917218656b",
+      "title": "Minimaxai 开源 MiniMax-H3",
+      "category": "model",
+      "eventDate": "2026-07-28",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/MiniMaxAI/MiniMax-H3"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "802a4d7d23d702e91997a7aa52e8293a6c523ea9f92bd7653a007d2dd99e0fce",
+      "title": "阿里云 Qwen 发布 Qwen3.7 Flash",
+      "category": "model",
+      "eventDate": "2026-07-27",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.7-flash-20260727"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "acfd2f0bd3673b14e4ef7a8de2f00e14a15994d37c53b4c9a440c5b19215f4b7",
+      "title": "Anthropic 发布 Claude Opus 5",
+      "category": "model",
+      "eventDate": "2026-07-24",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-opus-5-20260723"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "fdb0a0be32b9060fbf70f9e25721cc4b8fe101a00561f5d2ebce30394a9f19ac",
+      "title": "无问芯穹 发布 Ling 3.0 Flash",
+      "category": "model",
+      "eventDate": "2026-07-23",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/inclusionai/ling-3.0-flash-20260723"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "2e3f83ae438451002fcb193df3ff1396fa896971630a610ccf3b9f05e35618f5",
+      "title": "Lightricks 开源 LTX-2.5",
+      "category": "model",
+      "eventDate": "2026-07-23",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/Lightricks/LTX-2.5"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "03723ae2710b6f75bc59dafdfa75e6248f28761b664db1e518b98b13ea85c20e",
+      "title": "Google 发布 Gemini 3.5 Flash Lite",
+      "category": "model",
+      "eventDate": "2026-07-21",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-3.6-flash-20260721",
+        "https://openrouter.ai/google/gemini-3.5-flash-lite-20260721"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "0ed3375a8cafe5164d42a716d841d1a12a0950587ca9fd416c233a01dd696428",
+      "title": "月之暗面 发布 Kimi K3",
+      "category": "model",
+      "eventDate": "2026-07-16",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/moonshotai/kimi-k3-20260715"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "af5871361e27adf0f33c1f6acf63c51dd0d625d3e545cce8bdd8a619b87349ff",
+      "title": "Meta 发布 Muse Spark 1.1",
+      "category": "model",
+      "eventDate": "2026-07-16",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta/muse-spark-1.1-20260709"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "93cbe18138ce9e124d324b61b3308ef882cce118402edeb13fa0ed96cd3b47c9",
+      "title": "OpenAI 发布 GPT-5.6 Terra Pro",
+      "category": "model",
+      "eventDate": "2026-07-09",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 6,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5.6-luna-pro-20260709",
+        "https://openrouter.ai/openai/gpt-5.6-luna-20260709",
+        "https://openrouter.ai/openai/gpt-5.6-terra-pro-20260709",
+        "https://openrouter.ai/openai/gpt-5.6-terra-20260709",
+        "https://openrouter.ai/openai/gpt-5.6-sol-pro-20260709",
+        "https://openrouter.ai/openai/gpt-5.6-sol-20260709"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "0dfe7eb8ce67e1a2299dc977807228991fe5f373f7d92ff198230e5228013cb2",
+      "title": "腾讯 发布 Hy3",
+      "category": "model",
+      "eventDate": "2026-07-06",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/tencent/hy3-20260706"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "efe1511f67cb6b1d215e6fd7cec895c91acbaed4b9082aa35931ee8a3986533c",
+      "title": "Anthropic 发布 Claude Sonnet 5",
+      "category": "model",
+      "eventDate": "2026-06-30",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-sonnet-5-20260630"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "e432b3d9a956853d5c41229741110c24fd9f2cd1faefbd80295fd4f86969722a",
+      "title": "Google 发布 Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
+      "category": "model",
+      "eventDate": "2026-06-30",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-3.1-flash-lite-image-20260630"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "9341f9df6d58a3ebee979bd7d2ba95d6e428fde39b36eeb123d8767164992482",
+      "title": "百度 开源 Unlimited-OCR",
+      "category": "model",
+      "eventDate": "2026-06-19",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/baidu/Unlimited-OCR"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "03a1f0b5736dc22cf365b3dd80c40aad488a9da9fd06bc4be27681f319cdf698",
+      "title": "Zai Org 开源 GLM-5.2",
+      "category": "model",
+      "eventDate": "2026-06-16",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/zai-org/GLM-5.2"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    }
+  ]
+}

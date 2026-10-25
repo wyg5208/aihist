@@ -1,0 +1,43 @@
+[Unit]
+Description=AI 纪年 API (FastAPI)
+Documentation=https://aihist.net/
+After=network-online.target
+Wants=network-online.target
+# No database service: SQLite is a file. The only requirement is that
+# /srv/aihist/data exists and is writable before the app starts.
+
+[Service]
+Type=simple
+User=aihist
+Group=aihist
+WorkingDirectory=/srv/aihist
+EnvironmentFile=/etc/aihist/api.env
+# Two workers: every endpoint is read-only except the admin console, and the
+# collection run is guarded by a database lease, so concurrency is safe.
+ExecStart=/srv/aihist/.venv/bin/uvicorn app.main:app \
+    --host 127.0.0.1 \
+    --port 8000 \
+    --workers 2 \
+    --proxy-headers \
+    --forwarded-allow-ips 127.0.0.1
+Restart=on-failure
+RestartSec=3s
+KillSignal=SIGINT
+TimeoutStopSec=20s
+
+# Hardening. The service only needs to read the app and write nothing.
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+ProtectKernelTunables=true
+ProtectControlGroups=true
+ReadWritePaths=/srv/aihist
+ReadOnlyPaths=/etc/aihist
+
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=aihist-api
+
+[Install]
+WantedBy=multi-user.target
