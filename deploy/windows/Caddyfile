@@ -1,4 +1,10 @@
-# Caddyfile for aihist.net on Windows Server.
+# Caddyfile for aihist.net on Windows Server — the fully self-hosted shape,
+# where this box serves the pages and the API on one origin.
+#
+# When aihist.net is on Vercel, use Caddyfile.api instead. This file would make
+# the box answer page requests for a domain whose DNS points elsewhere, and
+# Vercel's rewrite would call back into a site that still believes it is the
+# only origin. switch-caddy.ps1 performs that swap.
 #
 # Caddy is a single exe with automatic HTTPS, which matters here: nginx for
 # Windows is single-process and missing several production features, and IIS

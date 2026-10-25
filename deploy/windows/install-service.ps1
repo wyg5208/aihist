@@ -65,7 +65,7 @@ $xml = @"
 <service>
   <id>$serviceName</id>
   <name>AI 纪年 API</name>
-  <description>FastAPI backend for aihist.net, reading a local SQLite database.</description>
+  <description>FastAPI backend for aihist.net, answered on api.aihist.net, reading a local SQLite database.</description>
   <executable>$python</executable>
   <arguments>-m uvicorn app.main:app --host 127.0.0.1 --port $Port --workers 2 --proxy-headers --forwarded-allow-ips 127.0.0.1</arguments>
   <workingdirectory>$AppDir</workingdirectory>
