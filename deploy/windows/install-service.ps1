@@ -61,13 +61,19 @@ foreach ($name in $AihistEnvNames) {
     }
 }
 
+# No --workers flag, on purpose. `--workers N` (even N=1) starts uvicorn's
+# multiprocess supervisor, which gives every worker its own in-process
+# rate-limit window and its own SQLite write pool, and which also swallows the
+# child's stdout/stderr so WinSW's <log> files stay at 0 bytes and a production
+# traceback becomes invisible. app/api/track.py documents the single-worker
+# assumption this console was written for.
 $xml = @"
 <service>
   <id>$serviceName</id>
   <name>AI 纪年 API</name>
   <description>FastAPI backend for aihist.net, answered on api.aihist.net, reading a local SQLite database.</description>
   <executable>$python</executable>
-  <arguments>-m uvicorn app.main:app --host 127.0.0.1 --port $Port --workers 2 --proxy-headers --forwarded-allow-ips 127.0.0.1</arguments>
+  <arguments>-m uvicorn app.main:app --host 127.0.0.1 --port $Port --proxy-headers --forwarded-allow-ips 127.0.0.1</arguments>
   <workingdirectory>$AppDir</workingdirectory>
   <env name="PYTHONUNBUFFERED" value="1"/>
 $envXml  <logpath>$(Join-Path $AppDir "logs")</logpath>
