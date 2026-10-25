@@ -178,6 +178,15 @@ input[type="search"]::-webkit-search-cancel-button {
   padding-top: 0.85rem;
 }
 
+.rail-card[data-era-kind="winter"] {
+  border-top-style: dashed;
+  border-top-color: var(--rule-strong);
+}
+
+.rail-card[data-era-kind="winter"] h2 {
+  color: var(--ink-soft);
+}
+
 .rail-heading {
   display: flex;
   align-items: baseline;

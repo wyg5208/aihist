@@ -2,7 +2,7 @@
   "ok": true,
   "items": [
     {
-      "id": "d7999c25-8f8a-4ad8-96e0-574604723637",
+      "id": "4255b4a1-5a66-4b12-b1f8-ef9574e40103",
       "slug": "agentic-ai-foundation-2026",
       "eventDate": "2026-10-22",
       "datePrecision": "day",
@@ -33,7 +33,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5e25b886-f8de-406b-a155-93bf72397d6f",
+      "id": "a88b4c6d-0a17-4371-8b07-d22bc3a87858",
       "slug": "openai-google-cloud-2026",
       "eventDate": "2026-10-21",
       "datePrecision": "day",
@@ -64,7 +64,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a4f62ac3-ce31-4228-a0e5-8193c3366036",
+      "id": "2b0bb5ae-0fb3-45a1-ae06-444ee19dec47",
       "slug": "anthropic-distillation-2026",
       "eventDate": "2026-10-20",
       "datePrecision": "day",
@@ -95,7 +95,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "457dbd47-9d3d-4b16-acac-2dde97ee86c0",
+      "id": "4bc89f18-5075-4e61-99eb-d00b598d7f9c",
       "slug": "gemini-4-argon-2026",
       "eventDate": "2026-10-13",
       "datePrecision": "day",
@@ -128,7 +128,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7fdc7dff-fd80-44f4-ac16-f93e1438c1de",
+      "id": "721b07fc-caff-440c-9048-ce97bbf73559",
       "slug": "claude-haiku-5-5-2026",
       "eventDate": "2026-10-07",
       "datePrecision": "day",
@@ -158,7 +158,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "27e1feb4-5900-4bbb-8a9a-1d9fa306884c",
+      "id": "15a6441d-a5db-40c1-af04-19a2cc8f8d5b",
       "slug": "gpt-6-1-2026",
       "eventDate": "2026-09-29",
       "datePrecision": "day",
@@ -189,7 +189,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "76cf36ec-a347-47cd-8527-1479f217d8f1",
+      "id": "125a7d6c-cecb-4494-a379-2f97be7673e7",
       "slug": "claude-sonnet-5-5-2026",
       "eventDate": "2026-09-28",
       "datePrecision": "day",
@@ -219,7 +219,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bcc3710c-e691-44f4-bb4b-0a6a186ff19c",
+      "id": "04b1023f-5f91-4584-a0e4-764236c71234",
       "slug": "gpt-6-2026",
       "eventDate": "2026-09-22",
       "datePrecision": "day",
@@ -251,7 +251,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e4b94bae-c819-4d81-b889-f0fe668859dc",
+      "id": "503232c0-e181-4777-b428-ca388f849979",
       "slug": "claude-opus-5-5-2026",
       "eventDate": "2026-09-22",
       "datePrecision": "day",
@@ -282,7 +282,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9f98fa88-3372-45fb-b6ce-4486bae1c62a",
+      "id": "fd5fbb69-6626-40b3-8d0b-e05f904883b7",
       "slug": "muse-2026",
       "eventDate": "2026-09-15",
       "datePrecision": "day",
@@ -313,7 +313,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d9a102ac-4f27-439b-b4c5-5a0a779c4f40",
+      "id": "2859256d-22b4-49b4-8c6f-d799cb4a49c3",
       "slug": "agents-api-2026",
       "eventDate": "2026-09-10",
       "datePrecision": "day",
@@ -343,7 +343,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3462b6dc-5b59-40f0-825d-5f8759a82079",
+      "id": "35ead063-0e1f-4fec-884e-8fac90892b4c",
       "slug": "gpt-6-astra-2026",
       "eventDate": "2026-09-03",
       "datePrecision": "day",
@@ -375,7 +375,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "46ab4020-e2f0-4648-b4fa-d50601af34af",
+      "id": "5bf631b0-4b8f-4c4e-abeb-41fd30ff1610",
       "slug": "glm-5-3-2026",
       "eventDate": "2026-08-25",
       "datePrecision": "day",
@@ -409,7 +409,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3ea9c394-7260-4459-a133-63474164a0ea",
+      "id": "85b9dd01-e92e-4077-8c39-98f108f6981f",
       "slug": "qwen3-8-2026",
       "eventDate": "2026-08-05",
       "datePrecision": "day",
@@ -441,7 +441,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "6564aac7-eada-418d-b332-f563f7170fd2",
+      "id": "f282359d-f4ec-4f33-9e0b-fd824af6fcad",
       "slug": "claude-opus-5-2026",
       "eventDate": "2026-07-24",
       "datePrecision": "day",
@@ -472,7 +472,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d122bb00-184c-456a-b0e0-2b0c7a71f073",
+      "id": "4e029cb5-e701-4a5b-9940-42fcebabacb3",
       "slug": "kimi-k3-2026",
       "eventDate": "2026-07-16",
       "datePrecision": "day",
@@ -503,7 +503,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8ce48ad4-87b1-4d2b-a14e-beaa23d6f225",
+      "id": "921fc37e-2679-4804-bdd9-9a8609d4f34f",
       "slug": "gpt-5-6-2026",
       "eventDate": "2026-07-09",
       "datePrecision": "day",
@@ -532,7 +532,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9052b75a-04ac-4245-af96-f2e93cded249",
+      "id": "f8c15475-d2be-4bf1-a6f4-1a24822d83a0",
       "slug": "grok-4-5-2026",
       "eventDate": "2026-07-08",
       "datePrecision": "day",
@@ -562,7 +562,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "28ad09ce-3b8d-41c1-9e20-09fcc9046abd",
+      "id": "8baf9004-1888-484a-8eb8-9a65483fdb38",
       "slug": "claude-sonnet-5-2026",
       "eventDate": "2026-06-30",
       "datePrecision": "day",
@@ -593,7 +593,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7b0c3848-f73e-4cc2-8f06-c8966c7b566b",
+      "id": "a093418e-8999-4e3e-8686-73e67f9a8019",
       "slug": "glm-5-2-2026",
       "eventDate": "2026-06-16",
       "datePrecision": "day",
@@ -625,7 +625,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "aad45233-c9dc-41e2-97a8-9b1395ea1a4c",
+      "id": "b0a16064-d8ee-41e0-b0ee-0bf9619a2ff8",
       "slug": "minimax-m3-2026",
       "eventDate": "2026-05-31",
       "datePrecision": "day",
@@ -657,7 +657,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "af249ee4-b5bb-4eef-8fe2-21769a04ff17",
+      "id": "d794d2dc-3d08-4e65-a864-21edcbd6ef7d",
       "slug": "gemini-3-5-flash-2026",
       "eventDate": "2026-05-19",
       "datePrecision": "day",
@@ -687,7 +687,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "04b722ad-7248-488b-8647-517a5a14dd53",
+      "id": "e8eb5f51-c699-43d5-8d3d-8f3526431cb9",
       "slug": "deepseek-v4-2026",
       "eventDate": "2026-04-23",
       "datePrecision": "day",
@@ -718,7 +718,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ba93185d-7f9f-4811-a95b-08d078253b56",
+      "id": "9a13ef50-2c83-4a53-b9d2-7d09d3d8e89b",
       "slug": "gpt-5-5-2026",
       "eventDate": "2026-04-23",
       "datePrecision": "day",
@@ -749,7 +749,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f2a56677-2b3f-494a-820f-33c8a5c87033",
+      "id": "61f89595-e978-4649-a532-093997abc21e",
       "slug": "glm-5-1-2026",
       "eventDate": "2026-04-03",
       "datePrecision": "day",
@@ -781,7 +781,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3e4df8fb-0dc0-4c46-b504-0e34e9a3a44f",
+      "id": "10b0521c-e94c-4cbc-9f3e-6f57709e0d48",
       "slug": "gpt-5-4-2026",
       "eventDate": "2026-03-05",
       "datePrecision": "day",
@@ -812,7 +812,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8018cc66-169a-4c39-b33d-e88f12c8a5ed",
+      "id": "166acb54-49ae-44d6-8995-3c2a57ddb19d",
       "slug": "gemini-3-1-2026",
       "eventDate": "2026-02-19",
       "datePrecision": "day",
@@ -842,7 +842,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9555d4d8-b875-409d-9779-f1d9c4fd3a5d",
+      "id": "d857882d-8d22-4d1e-8799-c5824309f832",
       "slug": "qwen3-5-2026",
       "eventDate": "2026-02-16",
       "datePrecision": "day",
@@ -874,7 +874,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "68ec23ab-9672-41a9-a446-b32db64c3f3b",
+      "id": "d3c40471-7f14-4b3e-ba2c-5ca751fd805b",
       "slug": "glm-5-2026",
       "eventDate": "2026-02-11",
       "datePrecision": "day",
@@ -905,7 +905,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "2ed7395c-1f63-41b7-8e8d-1c98174d56d2",
+      "id": "8a0c0a71-1ea7-466c-9e98-ca9e3dcb4bb9",
       "slug": "gpt-5-3-codex-2026",
       "eventDate": "2026-02-05",
       "datePrecision": "day",
@@ -937,7 +937,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5c08f362-d752-4452-8f4d-9c13d03b97f9",
+      "id": "7ffc75fd-fa60-4990-b649-8ed51dd01445",
       "slug": "glm-4-7-2025",
       "eventDate": "2025-12-22",
       "datePrecision": "day",
@@ -971,7 +971,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7172ed43-5ba5-42d7-8dd4-8fe96d2ab2b9",
+      "id": "a6090678-fb96-4ca7-ba93-bd08876d4db0",
       "slug": "gemini-3-flash-2025",
       "eventDate": "2025-12-17",
       "datePrecision": "day",
@@ -1001,7 +1001,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "aef95d80-c6d2-4d67-9b82-4caffe07bd16",
+      "id": "56768959-cdc3-43bb-84f9-f39c23fccca4",
       "slug": "gpt-5-2-2025",
       "eventDate": "2025-12-11",
       "datePrecision": "day",
@@ -1031,7 +1031,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "59bd7bf3-ab8b-4ec5-98d0-ac4f641e40f5",
+      "id": "4b31595e-1d9f-414e-ab5c-d3397585834f",
       "slug": "claude-opus-4-5-2025",
       "eventDate": "2025-11-24",
       "datePrecision": "day",
@@ -1061,7 +1061,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "54cbe810-63fa-4a59-944b-c0a796cf74b0",
+      "id": "23c18424-f869-4437-8d29-a62846ee82ee",
       "slug": "gemini-3-2025",
       "eventDate": "2025-11-18",
       "datePrecision": "day",
@@ -1093,7 +1093,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "2f9b6420-4fce-41ec-9260-ace66ee44281",
+      "id": "0d80ba06-76a1-4329-8021-04098562b0d6",
       "slug": "gpt-5-1-2025",
       "eventDate": "2025-11-13",
       "datePrecision": "day",
@@ -1122,7 +1122,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "cc803ebb-1583-42c3-b6ca-bc2903b13a83",
+      "id": "759fff41-8c12-4add-9a65-cd7a34c75540",
       "slug": "kimi-k2-thinking-2025",
       "eventDate": "2025-11-06",
       "datePrecision": "day",
@@ -1153,7 +1153,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "330fb9f8-11fa-434a-b4f4-36b677898c60",
+      "id": "62a5dd5f-85fa-42c7-a45d-d3e2c4a50c46",
       "slug": "minimax-m2-2025",
       "eventDate": "2025-10-23",
       "datePrecision": "day",
@@ -1185,7 +1185,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b70b2b93-74e1-4f8d-b693-c7cee3fb5138",
+      "id": "a2c14bef-a6a6-4956-847f-406e32bb85e0",
       "slug": "sora-2-2025",
       "eventDate": "2025-09-30",
       "datePrecision": "day",
@@ -1217,7 +1217,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "92c18cc5-cc0f-4abe-be4d-a6ea442e378c",
+      "id": "2361d574-a96f-4f80-a29c-9ebe684468ba",
       "slug": "glm-4-6-2025",
       "eventDate": "2025-09-30",
       "datePrecision": "day",
@@ -1249,7 +1249,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f82a788d-52c4-4eca-81e2-77aad9e67a06",
+      "id": "68e3bcc5-61f5-4bb6-a5b7-2cab46220d08",
       "slug": "china-ai-plus-2025",
       "eventDate": "2025-08-26",
       "datePrecision": "day",
@@ -1282,7 +1282,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4813d7c5-330f-4448-a704-bae1636bc298",
+      "id": "5864904a-24e5-4a43-bf1b-2ad2f468c4b3",
       "slug": "gpt-5-2025",
       "eventDate": "2025-08-07",
       "datePrecision": "day",
@@ -1312,7 +1312,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8557605d-634f-4e28-bd6c-8c5d1420c096",
+      "id": "1f7f12f1-726b-4fe6-a945-e4926c725505",
       "slug": "eu-gpai-2025",
       "eventDate": "2025-08-02",
       "datePrecision": "day",
@@ -1343,7 +1343,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e90913e3-3374-44b0-b1a1-5727059ff10e",
+      "id": "f90723f3-d9cf-4279-9271-33869c438cdb",
       "slug": "glm-4-5-2025",
       "eventDate": "2025-07-28",
       "datePrecision": "day",
@@ -1376,7 +1376,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4965cf75-48a0-4f67-b202-49370c2b10b6",
+      "id": "c7727701-1041-4376-93be-0e105143b2e2",
       "slug": "china-bci-policy-2025",
       "eventDate": "2025-07-23",
       "datePrecision": "day",
@@ -1409,7 +1409,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "6e687e78-97a3-42ac-b748-1ec607fc6066",
+      "id": "546b70dc-ada9-43e6-9c8a-e86057e48166",
       "slug": "kimi-k2-2025",
       "eventDate": "2025-07-11",
       "datePrecision": "day",
@@ -1441,7 +1441,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f755c717-962b-432d-87d7-b48d43bffd8b",
+      "id": "bc38b784-9c1b-429a-a0ec-b7284300a600",
       "slug": "grok-4-2025",
       "eventDate": "2025-07-09",
       "datePrecision": "day",
@@ -1472,7 +1472,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a2512f91-6f24-4f08-a969-6250da06faab",
+      "id": "53f03d45-1ac8-4c19-aca4-ec02f8822ed1",
       "slug": "claude-4-2025",
       "eventDate": "2025-05-22",
       "datePrecision": "day",
@@ -1502,7 +1502,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7b95927e-b6dc-4bd6-ad7f-a94c38dc93ee",
+      "id": "625419ca-fc6e-4c29-8819-3f70c682a21c",
       "slug": "qwen3-2025",
       "eventDate": "2025-04-29",
       "datePrecision": "day",
@@ -1533,7 +1533,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7a084cfe-b6b1-4091-9072-220ab13bb107",
+      "id": "8cf2d069-5de2-4602-a633-32189c30e7c8",
       "slug": "o3-2025",
       "eventDate": "2025-04-16",
       "datePrecision": "day",
@@ -1563,7 +1563,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "02f5a2c6-c150-4519-8097-ebfffd2e46a8",
+      "id": "74fdadea-b540-4d50-bd08-39f49e549645",
       "slug": "llama-4-2025",
       "eventDate": "2025-04-05",
       "datePrecision": "day",
@@ -1594,7 +1594,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8cb30675-df0c-4ede-9d67-e2f34e0baba8",
+      "id": "7cbd769a-9b96-4f35-a96a-8147c703fb0f",
       "slug": "ai-2027-forecast-2025",
       "eventDate": "2025-04-03",
       "datePrecision": "day",
@@ -1628,7 +1628,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ad7d08e1-8a32-41ec-bc73-0b95ea2c298c",
+      "id": "66809bc5-ca62-4a43-aed9-6930d21d187a",
       "slug": "gemini-2-5-pro-2025",
       "eventDate": "2025-03-25",
       "datePrecision": "day",
@@ -1659,7 +1659,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b0fd84a4-4c06-45ae-af11-b426971ed7c1",
+      "id": "06160db8-d812-4ae6-972c-7e6f6a834402",
       "slug": "gpt-4-5-2025",
       "eventDate": "2025-02-27",
       "datePrecision": "day",
@@ -1689,7 +1689,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b6a3fc76-bd27-468d-b30e-32a5e99779e3",
+      "id": "73a939b9-2907-4a2c-aa70-611e92f5c14f",
       "slug": "claude-3-7-2025",
       "eventDate": "2025-02-24",
       "datePrecision": "day",
@@ -1719,7 +1719,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b4fd768e-e371-46fa-a2f5-2cee72e60c15",
+      "id": "feb4b87e-0498-473d-a7e3-8aa1f1f787da",
       "slug": "paris-ai-summit-2025",
       "eventDate": "2025-02-11",
       "datePrecision": "day",
@@ -1749,7 +1749,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f2acb195-841b-4ac7-8efa-415162c6ab80",
+      "id": "55c621d7-f467-4ec3-8fc5-474429f5d327",
       "slug": "stargate-2025",
       "eventDate": "2025-01-21",
       "datePrecision": "day",
@@ -1782,7 +1782,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "906006b0-f53d-43b8-bed7-2bf960bbbfc2",
+      "id": "d18d5514-5113-45c2-8dcf-09e5a3d15673",
       "slug": "deepseek-r1-2025",
       "eventDate": "2025-01-20",
       "datePrecision": "day",
@@ -1819,7 +1819,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "0aafa461-2acd-4a34-b96f-7e39e52718ae",
+      "id": "e0fe9685-48d3-4c2d-9edf-be79aab0cf80",
       "slug": "deepseek-v3-2024",
       "eventDate": "2024-12-26",
       "datePrecision": "day",
@@ -1851,7 +1851,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5b77336e-0929-467f-beee-c4ebaabad9fb",
+      "id": "b0e71c7c-42be-49b8-bd4a-a85ce9ba8477",
       "slug": "gemini-2-2024",
       "eventDate": "2024-12-11",
       "datePrecision": "day",
@@ -1882,7 +1882,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7ffa159d-9db7-40b4-9773-f18f4e4b7546",
+      "id": "66ea3c38-95e8-41e9-a064-cbbfc65ae1e1",
       "slug": "hinton-nobel-lecture-2024",
       "eventDate": "2024-12-07",
       "datePrecision": "day",
@@ -1915,7 +1915,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bccda5d8-b756-420b-9258-e6c984fffd0f",
+      "id": "93c7c54f-8e78-4599-a3cf-72c84c279f3b",
       "slug": "nobel-chemistry-2024",
       "eventDate": "2024-10-09",
       "datePrecision": "day",
@@ -1947,7 +1947,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f821f552-8bbe-4355-9bb6-bdda226fe284",
+      "id": "7d34c589-52a5-4d95-bcac-de5a28188a11",
       "slug": "nobel-physics-2024",
       "eventDate": "2024-10-08",
       "datePrecision": "day",
@@ -1978,7 +1978,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9335a7cf-9ff7-4d4e-88b5-dcfae8c71651",
+      "id": "05ebcd99-fe23-46df-ba15-d61526e6963a",
       "slug": "o1-2024",
       "eventDate": "2024-09-12",
       "datePrecision": "day",
@@ -2010,7 +2010,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9e251987-eb43-4b17-bd4e-d2a55ca373e2",
+      "id": "1d8e1e93-2523-4f53-b8b3-17a99efdb8bc",
       "slug": "gpt-4o-2024",
       "eventDate": "2024-05-13",
       "datePrecision": "day",
@@ -2041,7 +2041,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "2164582d-af44-48a4-ae63-15754d203299",
+      "id": "0b9d2f79-7e20-4550-8346-ec6433db1dd0",
       "slug": "alphafold3-2024",
       "eventDate": "2024-05-08",
       "datePrecision": "day",
@@ -2072,7 +2072,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e7acb9da-1fee-4d29-8bbb-50e63234d806",
+      "id": "a7b36eb3-c8ec-4fca-84fd-4b50927422a2",
       "slug": "llama-3-2024",
       "eventDate": "2024-04-18",
       "datePrecision": "day",
@@ -2103,7 +2103,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "aa7f9e02-431b-4a31-9d44-c7905d47fdcb",
+      "id": "096c209a-90b7-4ac1-a9e7-5273d1ee434c",
       "slug": "eu-ai-act-adopted-2024",
       "eventDate": "2024-03-13",
       "datePrecision": "day",
@@ -2134,7 +2134,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "1eb504e6-da6d-4f69-8f60-acb6c0bdfd21",
+      "id": "8f02584f-0825-4f45-b23b-2acd1a3e2e3f",
       "slug": "claude-3-2024",
       "eventDate": "2024-03-04",
       "datePrecision": "day",
@@ -2164,7 +2164,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "fe77aaad-1aa1-4281-a313-d3a5291d2a67",
+      "id": "ddb30ee3-040b-460f-aebd-7c9503237e2d",
       "slug": "sora-2024",
       "eventDate": "2024-02-15",
       "datePrecision": "day",
@@ -2196,7 +2196,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a845011b-c2c5-4666-9387-3427cd240298",
+      "id": "36d910d3-fc7c-46c9-9c69-d53c203b8fc2",
       "slug": "glm-4-2024",
       "eventDate": "2024-01-16",
       "datePrecision": "day",
@@ -2230,7 +2230,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "83a26a9e-06b9-4a29-96af-f780d2de26cc",
+      "id": "44cebf88-33a5-4ab6-9ddf-bdce4fa744ef",
       "slug": "eu-ai-act-deal-2023",
       "eventDate": "2023-12-08",
       "datePrecision": "day",
@@ -2261,7 +2261,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3cf8776e-bdd3-48b3-9ab6-c70df95c20a1",
+      "id": "2ace7128-3cbc-4971-9555-1fb7b8d9500b",
       "slug": "gemini-1-2023",
       "eventDate": "2023-12-06",
       "datePrecision": "day",
@@ -2292,7 +2292,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bab8a8cc-81be-4966-a045-27c0c537502c",
+      "id": "a325a39d-2ccc-470e-8b81-fa7460f13aec",
       "slug": "us-ai-eo-2023",
       "eventDate": "2023-10-30",
       "datePrecision": "day",
@@ -2322,7 +2322,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "65d4e8d6-41a0-4be8-b266-1537dbf0e3dc",
+      "id": "f077c077-e7c8-4f2b-9117-07130a46a9e6",
       "slug": "chatglm3-6b-2023",
       "eventDate": "2023-10-25",
       "datePrecision": "day",
@@ -2353,7 +2353,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "56504b8a-8b7b-4885-a0d6-65549cdff0dc",
+      "id": "33bf5d34-9963-4000-b6dd-ee5c6b50583d",
       "slug": "mistral-7b-2023",
       "eventDate": "2023-09-27",
       "datePrecision": "day",
@@ -2383,7 +2383,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5ea0b523-bed4-4519-8b3e-5b7e86a9288a",
+      "id": "c60ab5b8-5adb-4a28-9a6d-0b8c6322d70f",
       "slug": "china-genai-rules-2023",
       "eventDate": "2023-07-13",
       "datePrecision": "day",
@@ -2415,7 +2415,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "0bee7145-3635-4d49-b10b-4bbd5375d101",
+      "id": "7d05ebde-a95e-4004-8fd4-4d9a1b142120",
       "slug": "chatglm2-6b-2023",
       "eventDate": "2023-06-25",
       "datePrecision": "day",
@@ -2446,7 +2446,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ecb23330-0e9a-4c6f-80ae-eb5921ae1c0c",
+      "id": "6a66f00f-2d5a-47c2-81b3-5fa11da6ee1d",
       "slug": "ai-risk-statement-2023",
       "eventDate": "2023-05-30",
       "datePrecision": "day",
@@ -2476,7 +2476,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c0e6d345-c557-48e9-bf97-8eabf3302d82",
+      "id": "06ca6f8b-cd8d-4329-825a-95181c8f7e22",
       "slug": "pause-letter-2023",
       "eventDate": "2023-03-29",
       "datePrecision": "day",
@@ -2507,7 +2507,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ea867b4f-9e8f-492c-ad57-6ce2d8829766",
+      "id": "320c5a0e-eca8-4eda-acd1-12e80b8f6f43",
       "slug": "us-copyright-2023",
       "eventDate": "2023-03-16",
       "datePrecision": "day",
@@ -2537,7 +2537,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9d3ca73f-4571-4263-89c4-2c13d570e372",
+      "id": "6e95579a-d3cc-4882-9fc3-91ccb5489462",
       "slug": "gpt-4-2023",
       "eventDate": "2023-03-14",
       "datePrecision": "day",
@@ -2569,7 +2569,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3388d737-bc84-4355-9359-dbb4dcae19bf",
+      "id": "847dda0e-9b26-4318-aa63-4ff5f2340b8c",
       "slug": "claude-2023",
       "eventDate": "2023-03-14",
       "datePrecision": "day",
@@ -2600,7 +2600,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "62343c39-94aa-4682-990e-fba73aa7cf96",
+      "id": "4c3f7ddd-13da-4753-aaae-185a33a393e6",
       "slug": "chatglm-6b-2023",
       "eventDate": "2023-03-14",
       "datePrecision": "day",
@@ -2632,7 +2632,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "69162561-5241-4285-90a6-b03f9ed6bbaf",
+      "id": "f845bfd6-755f-4587-ba19-3f7fa7a9e922",
       "slug": "llama-2023",
       "eventDate": "2023-02-24",
       "datePrecision": "day",
@@ -2663,7 +2663,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a1fef32b-a779-4c8e-baa8-7b291e9629e3",
+      "id": "26038d3f-d404-4535-8f25-6a9bc066ed3f",
       "slug": "chatgpt-2022",
       "eventDate": "2022-11-30",
       "datePrecision": "day",
@@ -2694,7 +2694,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9af94d21-6d68-482b-8cd1-5d3443a7804f",
+      "id": "724813ac-16e7-491b-8d34-1e59de0a190a",
       "slug": "stable-diffusion-2022",
       "eventDate": "2022-08-22",
       "datePrecision": "day",
@@ -2724,7 +2724,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c8b5594f-6584-4fae-be06-2d98a332037a",
+      "id": "07fc8100-fbdc-4b08-b692-514120484434",
       "slug": "dalle2-2022",
       "eventDate": "2022-04-06",
       "datePrecision": "day",
@@ -2753,7 +2753,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3ad983c2-fe29-4f21-a55a-2f1e111300cc",
+      "id": "bfc20c23-0804-4f8c-a04b-2b9cdaa9d249",
       "slug": "chinchilla-2022",
       "eventDate": "2022-03-29",
       "datePrecision": "day",
@@ -2785,7 +2785,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e34b8796-9ed9-465d-89ed-4c315b931f11",
+      "id": "add4248d-7d6a-4e1f-a99b-25b3a0c2af5f",
       "slug": "instructgpt-2022",
       "eventDate": "2022-03-04",
       "datePrecision": "day",
@@ -2818,7 +2818,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "147d9035-9a94-46c5-a851-2f4613e38057",
+      "id": "51d74009-7519-44a0-9c5a-de7ef290a7d6",
       "slug": "unesco-2021",
       "eventDate": "2021-11-23",
       "datePrecision": "day",
@@ -2848,7 +2848,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "23629be7-2256-41ff-8b3b-0da50820f0e6",
+      "id": "a57075f3-ee05-4448-b90e-dce07990494d",
       "slug": "copilot-2021",
       "eventDate": "2021-06-29",
       "datePrecision": "day",
@@ -2879,7 +2879,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d263437f-b873-4760-974d-a010fa3b7d7f",
+      "id": "b26b58a2-304c-472a-9ba2-0ce6bdcac2cb",
       "slug": "clip-dalle-2021",
       "eventDate": "2021-01-05",
       "datePrecision": "day",
@@ -2910,7 +2910,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "41fb344f-3791-4431-a439-5320034dc577",
+      "id": "d3dabde3-b208-4cc0-9811-730ce19dd242",
       "slug": "alphafold2-2020",
       "eventDate": "2020-11-30",
       "datePrecision": "day",
@@ -2942,7 +2942,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e03ba965-bb18-448a-b315-d0826cc209a1",
+      "id": "c1310738-2394-4801-8a50-5c78a8a90f2d",
       "slug": "gpt-3-2020",
       "eventDate": "2020-05-28",
       "datePrecision": "day",
@@ -2973,7 +2973,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4865c66a-98ef-46c4-9360-a0f056b5e094",
+      "id": "bc13f8f4-8295-4c0d-a7f7-fb7d3abe273f",
       "slug": "alphastar-2019",
       "eventDate": "2019-10-30",
       "datePrecision": "day",
@@ -3007,7 +3007,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4bac5e2c-25b1-4f03-9139-12221c8da856",
+      "id": "2f8b50dd-642a-4293-8929-7ab53a20ce64",
       "slug": "bitter-lesson-2019",
       "eventDate": "2019-03-13",
       "datePrecision": "day",
@@ -3041,7 +3041,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d30277f5-ac49-4c11-910e-0c35e72f813d",
+      "id": "561f98a3-8b7d-440b-bb73-e1ef024426ed",
       "slug": "gpt-2-2019",
       "eventDate": "2019-02-14",
       "datePrecision": "day",
@@ -3071,7 +3071,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "04a2a61b-2aa1-4ce0-a6bf-0cb96f3471ff",
+      "id": "bbd97f8a-8e34-42b7-90d4-dad1aed3c3b1",
       "slug": "bert-2018",
       "eventDate": "2018-10-11",
       "datePrecision": "day",
@@ -3104,7 +3104,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "18810923-b81f-4205-8c11-31e97a0e6fbd",
+      "id": "62b83768-3cb7-4122-8f99-7cb3de78b506",
       "slug": "gpt-1-2018",
       "eventDate": "2018-06-11",
       "datePrecision": "day",
@@ -3137,7 +3137,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7788bf0f-c505-4e65-b6e9-79f821834340",
+      "id": "28b4df04-7c84-43c4-bd7d-8478a03e120e",
       "slug": "alphago-zero-2017",
       "eventDate": "2017-10-19",
       "datePrecision": "day",
@@ -3171,7 +3171,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8d9693c2-5713-475e-829b-fa1e79771922",
+      "id": "b78d01ef-a8e8-4a72-a527-f41b498800f0",
       "slug": "china-ai-plan-2017",
       "eventDate": "2017-07-20",
       "datePrecision": "day",
@@ -3202,7 +3202,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "cfa05124-2a68-4f5d-8585-6f5e53f61faa",
+      "id": "48a3e26b-4489-46b3-b817-fc8f138de52b",
       "slug": "transformer-2017",
       "eventDate": "2017-06-12",
       "datePrecision": "day",
@@ -3234,7 +3234,38 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d9d91738-751b-4ce6-8eff-521dd6a80f7d",
+      "id": "85c0833e-658c-46d4-86dc-6ca319b1a2c3",
+      "slug": "wavenet-2016",
+      "eventDate": "2016-09",
+      "datePrecision": "month",
+      "sortDate": "2016-09-01",
+      "year": 2016,
+      "title": "WaveNet 直接建模原始波形，神经语音合成进入新阶段",
+      "titleEn": "WaveNet: A Generative Model for Raw Audio",
+      "category": "research",
+      "organization": "DeepMind",
+      "modelName": null,
+      "vendor": "Google",
+      "series": null,
+      "importance": 66,
+      "confidence": "likely",
+      "sourceCount": 1,
+      "sourceFamilies": [
+        "paper"
+      ],
+      "tags": [
+        "语音",
+        "算法",
+        "生成式 AI",
+        "评测"
+      ],
+      "origin": "seed",
+      "editorialStatus": "admitted",
+      "firstSeenAt": "2026-10-24T00:00:00.000Z",
+      "updatedAt": "2026-10-24T00:00:00.000Z"
+    },
+    {
+      "id": "b7009b98-bcf0-4b00-b75b-ee0578c0485c",
       "slug": "alphago-match-2016",
       "eventDate": "2016-03-15",
       "datePrecision": "day",
@@ -3267,7 +3298,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "82628cb5-10ea-48d6-a4a3-c4469288f2c7",
+      "id": "1b064ce2-5d74-41d7-b042-ce04d09faa08",
       "slug": "alphago-2016",
       "eventDate": "2016-01-27",
       "datePrecision": "day",
@@ -3300,7 +3331,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f680712c-a57a-46f7-ae71-f25366b64d3b",
+      "id": "ec04ff40-49e0-43d8-91af-e6d99c1b7425",
       "slug": "resnet-2015",
       "eventDate": "2015-12-10",
       "datePrecision": "day",
@@ -3331,7 +3362,39 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "878617e8-14fb-4c85-99f0-773b6ead71e4",
+      "id": "14d66a27-0783-4357-88c4-b53212ffa518",
+      "slug": "dqn-2015",
+      "eventDate": "2015-02-26",
+      "datePrecision": "day",
+      "sortDate": "2015-02-26",
+      "year": 2015,
+      "title": "DQN 登上《Nature》，深度强化学习直接从像素学习控制策略",
+      "titleEn": "Human-level control through deep reinforcement learning",
+      "category": "research",
+      "organization": "DeepMind",
+      "modelName": "DQN",
+      "vendor": "Google",
+      "series": null,
+      "importance": 86,
+      "confidence": "likely",
+      "sourceCount": 1,
+      "sourceFamilies": [
+        "paper"
+      ],
+      "tags": [
+        "强化学习",
+        "神经网络",
+        "算法",
+        "训练",
+        "科学"
+      ],
+      "origin": "seed",
+      "editorialStatus": "admitted",
+      "firstSeenAt": "2026-10-24T00:00:00.000Z",
+      "updatedAt": "2026-10-24T00:00:00.000Z"
+    },
+    {
+      "id": "b584911a-9365-49b3-8ace-9efda139cbd1",
       "slug": "seq2seq-2014",
       "eventDate": "2014-09-10",
       "datePrecision": "day",
@@ -3360,7 +3423,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "174bfddd-44a0-416c-ac29-214cb06cbb6b",
+      "id": "70b3a033-6fc4-47e2-9e46-11dbdf2f4c13",
       "slug": "gan-2014",
       "eventDate": "2014-06-10",
       "datePrecision": "day",
@@ -3390,7 +3453,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7d145339-f1c0-4083-b2a6-c10532087eac",
+      "id": "3aa161e9-5ac9-4ceb-9b07-4f507b3ed841",
       "slug": "word2vec-2013",
       "eventDate": "2013-01-16",
       "datePrecision": "day",
@@ -3422,7 +3485,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e65b1d53-8a45-4668-89c9-5a01ddbd54d8",
+      "id": "50388e70-2eb0-4a2c-8571-09e15b261896",
       "slug": "alexnet-2012",
       "eventDate": "2012-12-03",
       "datePrecision": "day",
@@ -3454,7 +3517,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "13d6e873-11c5-4cc6-97c7-bbb33b24e223",
+      "id": "4c387ed7-cf54-484c-933b-6a199aba91af",
       "slug": "siri-2011",
       "eventDate": "2011-10-04",
       "datePrecision": "day",
@@ -3484,7 +3547,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "421388ed-668b-4582-90bc-f04ee5c7603e",
+      "id": "9c813470-3778-4669-853c-b456f976e65d",
       "slug": "watson-2011",
       "eventDate": "2011-02-14",
       "datePrecision": "day",
@@ -3513,7 +3576,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5744a1f7-baf4-44e2-b333-e0a7c4f9510c",
+      "id": "8c1e2b92-d9da-45cd-b9a5-6704fe4f3cbb",
       "slug": "imagenet-2009",
       "eventDate": "2009-06",
       "datePrecision": "month",
@@ -3544,7 +3607,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "35aeef95-d568-4c74-a550-789ccbfff1ca",
+      "id": "efbe695d-0234-4d3a-ad2b-7109edd4c009",
       "slug": "dbn-2006",
       "eventDate": "2006-07-28",
       "datePrecision": "day",
@@ -3575,7 +3638,37 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9adde7b0-5a77-4674-bcdc-3866a2900290",
+      "id": "a666572c-0902-494d-8285-00ef1dcc8a52",
+      "slug": "darpa-grand-challenge-2005",
+      "eventDate": "2005-10-08",
+      "datePrecision": "day",
+      "sortDate": "2005-10-08",
+      "year": 2005,
+      "title": "Stanley 跑完 DARPA 沙漠挑战赛，自动驾驶走出实验室",
+      "titleEn": "Stanley: The Robot that Won the DARPA Grand Challenge",
+      "category": "milestone",
+      "organization": "Stanford University / DARPA",
+      "modelName": null,
+      "vendor": null,
+      "series": null,
+      "importance": 70,
+      "confidence": "likely",
+      "sourceCount": 1,
+      "sourceFamilies": [
+        "paper"
+      ],
+      "tags": [
+        "自动驾驶",
+        "机器人",
+        "评测"
+      ],
+      "origin": "seed",
+      "editorialStatus": "admitted",
+      "firstSeenAt": "2026-10-24T00:00:00.000Z",
+      "updatedAt": "2026-10-24T00:00:00.000Z"
+    },
+    {
+      "id": "25c4aaf5-d72e-409a-a7ca-6410899ec190",
       "slug": "roomba-2002",
       "eventDate": "2002-09",
       "datePrecision": "month",
@@ -3606,7 +3699,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8063ead7-a1e2-421d-b655-86b77c92a8fb",
+      "id": "55379504-8bd6-4cd2-9d7b-88078e93fce1",
       "slug": "lenet5-1998",
       "eventDate": "1998-11",
       "datePrecision": "month",
@@ -3636,7 +3729,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c7176e6c-7844-473f-9d5d-1b03e7c05195",
+      "id": "80d7364f-e013-4545-bfa2-0361bb5f0ca6",
       "slug": "lstm-1997",
       "eventDate": "1997-11",
       "datePrecision": "month",
@@ -3665,7 +3758,38 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "79300ce9-483c-46de-b29c-e7e7312b5728",
+      "id": "65293efd-4dfa-4314-afb4-43968be04e2e",
+      "slug": "robocup-1997",
+      "eventDate": "1997-08",
+      "datePrecision": "month",
+      "sortDate": "1997-08-01",
+      "year": 1997,
+      "title": "首届 RoboCup 机器人世界杯举行，机器人足球成为公开基准",
+      "titleEn": "RoboCup",
+      "category": "milestone",
+      "organization": "RoboCup Federation",
+      "modelName": null,
+      "vendor": null,
+      "series": null,
+      "importance": 58,
+      "confidence": "likely",
+      "sourceCount": 1,
+      "sourceFamilies": [
+        "official"
+      ],
+      "tags": [
+        "机器人",
+        "具身",
+        "评测",
+        "智能体"
+      ],
+      "origin": "seed",
+      "editorialStatus": "admitted",
+      "firstSeenAt": "2026-10-24T00:00:00.000Z",
+      "updatedAt": "2026-10-24T00:00:00.000Z"
+    },
+    {
+      "id": "f26d1c18-607d-47e8-8d5b-6538acf2e53e",
       "slug": "deep-blue-1997",
       "eventDate": "1997-05-11",
       "datePrecision": "day",
@@ -3695,7 +3819,37 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f0445b92-4ad3-434b-a2af-c3e057f5c39a",
+      "id": "461c0417-aae5-46d4-8691-809e2147dbfa",
+      "slug": "svm-1995",
+      "eventDate": "1995-09",
+      "datePrecision": "month",
+      "sortDate": "1995-09-01",
+      "year": 1995,
+      "title": "支持向量机提出，统计学习理论进入主流",
+      "titleEn": "Support-Vector Networks",
+      "category": "research",
+      "organization": "AT&T Bell Labs",
+      "modelName": null,
+      "vendor": null,
+      "series": null,
+      "importance": 72,
+      "confidence": "likely",
+      "sourceCount": 1,
+      "sourceFamilies": [
+        "paper"
+      ],
+      "tags": [
+        "算法",
+        "数学",
+        "科学"
+      ],
+      "origin": "seed",
+      "editorialStatus": "admitted",
+      "firstSeenAt": "2026-10-24T00:00:00.000Z",
+      "updatedAt": "2026-10-24T00:00:00.000Z"
+    },
+    {
+      "id": "03c35c55-928f-4131-9ea0-08ccd3b1caa0",
       "slug": "td-gammon-1992",
       "eventDate": "1992-06",
       "datePrecision": "month",
@@ -3728,7 +3882,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "62db96ec-a4a3-4237-90d6-2e9bb61a21df",
+      "id": "265cc4f7-62e9-4d21-8807-ee00b89154b7",
       "slug": "lenet-1989",
       "eventDate": "1989-06",
       "datePrecision": "month",
@@ -3758,7 +3912,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "91fefeb4-e16d-4138-bd09-24145c8a9dd8",
+      "id": "6ed80d46-ad83-4d7a-80f3-1747239f07dc",
       "slug": "brooks-subsumption-1987",
       "eventDate": "1987",
       "datePrecision": "year",
@@ -3791,7 +3945,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "113d8c9a-1905-4e80-ad19-958f1e76229d",
+      "id": "9decfbd6-d5ae-41a6-81a4-f840847784a2",
       "slug": "backprop-1986",
       "eventDate": "1986-10-09",
       "datePrecision": "day",
@@ -3822,7 +3976,37 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7668435d-a53c-420f-878a-ca4f9631d692",
+      "id": "3a81ac44-ded0-4af6-8175-926ae8ecb6d5",
+      "slug": "hopfield-1982",
+      "eventDate": "1982-04",
+      "datePrecision": "month",
+      "sortDate": "1982-04-01",
+      "year": 1982,
+      "title": "Hopfield 用能量函数描述神经网络，连接主义重新获得物理基础",
+      "titleEn": "Neural networks and physical systems with emergent collective computational abilities",
+      "category": "research",
+      "organization": "Caltech",
+      "modelName": null,
+      "vendor": null,
+      "series": null,
+      "importance": 80,
+      "confidence": "likely",
+      "sourceCount": 1,
+      "sourceFamilies": [
+        "paper"
+      ],
+      "tags": [
+        "神经网络",
+        "算法",
+        "科学"
+      ],
+      "origin": "seed",
+      "editorialStatus": "admitted",
+      "firstSeenAt": "2026-10-24T00:00:00.000Z",
+      "updatedAt": "2026-10-24T00:00:00.000Z"
+    },
+    {
+      "id": "b7f4866d-55e5-4127-973e-a18a5f5375e6",
       "slug": "fifth-generation-1982",
       "eventDate": "1982-04",
       "datePrecision": "month",
@@ -3853,7 +4037,38 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3e30d29a-e7c8-4d99-947a-7dec9ff21ed3",
+      "id": "4c4fb6e8-0324-4dfa-9e73-a6750ffd2a92",
+      "slug": "xcon-1980",
+      "eventDate": "1980",
+      "datePrecision": "year",
+      "sortDate": "1980-01-01",
+      "year": 1980,
+      "title": "DEC 部署 XCON 配置专家系统，专家系统进入大规模商用",
+      "titleEn": "R1: A Rule-Based Configurer of Computer Systems",
+      "category": "milestone",
+      "organization": "Carnegie Mellon University / DEC",
+      "modelName": null,
+      "vendor": null,
+      "series": null,
+      "importance": 68,
+      "confidence": "likely",
+      "sourceCount": 1,
+      "sourceFamilies": [
+        "paper"
+      ],
+      "tags": [
+        "专家系统",
+        "技术",
+        "算法",
+        "科学"
+      ],
+      "origin": "seed",
+      "editorialStatus": "admitted",
+      "firstSeenAt": "2026-10-24T00:00:00.000Z",
+      "updatedAt": "2026-10-24T00:00:00.000Z"
+    },
+    {
+      "id": "3a511834-23f7-41cb-ba16-1389a4ed305f",
       "slug": "simon-nobel-1978",
       "eventDate": "1978-10",
       "datePrecision": "month",
@@ -3883,7 +4098,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e84ac634-104d-4d32-b375-460ccf06e357",
+      "id": "478a652d-0ee1-44d3-ac9f-587376303321",
       "slug": "mycin-1974",
       "eventDate": "1974",
       "datePrecision": "year",
@@ -3914,7 +4129,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ac2faf6d-9707-45a1-b94b-d1420fe4a6a3",
+      "id": "1e4b10fa-5685-4306-b322-96612357d4de",
       "slug": "lighthill-report-1973",
       "eventDate": "1973-07",
       "datePrecision": "month",
@@ -3944,7 +4159,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d2edacf0-e481-4cc6-a65b-725dd92fd60a",
+      "id": "fc7de131-ad52-46a7-9735-16da02fe7537",
       "slug": "prolog-1972",
       "eventDate": "1972",
       "datePrecision": "year",
@@ -3975,7 +4190,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "afed47ef-6e50-4854-b39a-c7ae7dcae790",
+      "id": "0996cd0c-8dd4-46c2-8890-28cd7ce2d64f",
       "slug": "shrdlu-1971",
       "eventDate": "1971",
       "datePrecision": "year",
@@ -4006,7 +4221,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "210da0c5-7a1a-4bc8-bf28-c4fa0fb1d876",
+      "id": "7fa70202-b596-4e9d-b853-dcf960a93303",
       "slug": "perceptrons-1969",
       "eventDate": "1969",
       "datePrecision": "year",
@@ -4035,7 +4250,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ed2d5581-6016-49ca-b1d2-0240200e0e5e",
+      "id": "46b08a58-2193-483a-b14e-77c85e18ff4a",
       "slug": "shakey-1969",
       "eventDate": "1969",
       "datePrecision": "year",
@@ -4065,7 +4280,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5688cc70-512d-4e7d-96b2-83971fb3bc0a",
+      "id": "c004576a-fdd8-4744-a634-3199ebb493cf",
       "slug": "eliza-1966",
       "eventDate": "1966-01",
       "datePrecision": "month",
@@ -4095,7 +4310,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3363e7d0-e020-47eb-9d85-4fcd90c175e1",
+      "id": "5586614b-3681-436a-b2bb-ebc937e7bd5e",
       "slug": "fuzzy-sets-1965",
       "eventDate": "1965-06",
       "datePrecision": "month",
@@ -4126,7 +4341,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "6d2e29b4-e177-48db-ac82-8e056c6fe347",
+      "id": "b2ecd5a2-bc94-42ab-95b4-59fbd9674b88",
       "slug": "dendral-1965",
       "eventDate": "1965",
       "datePrecision": "year",
@@ -4156,7 +4371,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e10c6927-6186-440c-8a83-69a0bd13e262",
+      "id": "af63dde7-2729-487e-ba74-6362b85b9266",
       "slug": "unimate-1961",
       "eventDate": "1961",
       "datePrecision": "year",
@@ -4187,7 +4402,37 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "80208298-78c4-4a48-ba33-73665fdab3b7",
+      "id": "a8d584d3-e5ba-4189-885e-a206b2f8caf5",
+      "slug": "samuel-checkers-1959",
+      "eventDate": "1959-07",
+      "datePrecision": "month",
+      "sortDate": "1959-07-01",
+      "year": 1959,
+      "title": "Samuel 的跳棋程序从自我对弈中学习，机器学习获得工程演示",
+      "titleEn": "Some Studies in Machine Learning Using the Game of Checkers",
+      "category": "research",
+      "organization": "IBM",
+      "modelName": null,
+      "vendor": "IBM",
+      "series": null,
+      "importance": 74,
+      "confidence": "likely",
+      "sourceCount": 1,
+      "sourceFamilies": [
+        "paper"
+      ],
+      "tags": [
+        "强化学习",
+        "棋类",
+        "算法"
+      ],
+      "origin": "seed",
+      "editorialStatus": "admitted",
+      "firstSeenAt": "2026-10-24T00:00:00.000Z",
+      "updatedAt": "2026-10-24T00:00:00.000Z"
+    },
+    {
+      "id": "bf75cd33-cc09-4dec-bfda-0b71bc30e71f",
       "slug": "mit-ai-lab-1959",
       "eventDate": "1959-07",
       "datePrecision": "month",
@@ -4218,7 +4463,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a145ad26-8549-4128-baba-760d9b49deca",
+      "id": "37ed4090-0e2a-4c29-9c39-d32bb5c1a9ed",
       "slug": "gps-1959",
       "eventDate": "1959",
       "datePrecision": "year",
@@ -4249,7 +4494,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5cf02f60-e532-41da-8b25-3a7fc2234704",
+      "id": "31ee2d4f-ce19-4870-a234-960d0b1df738",
       "slug": "lisp-1958",
       "eventDate": "1958-10",
       "datePrecision": "month",
@@ -4279,7 +4524,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "52e03267-532d-4e2d-8558-706ccb4212d7",
+      "id": "cd54ebf7-35c9-4d09-a86a-1484d0ab7e17",
       "slug": "perceptron-1958",
       "eventDate": "1958-01",
       "datePrecision": "month",
@@ -4310,7 +4555,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5fab8be0-ee9d-4ae7-a243-6ffe284900c9",
+      "id": "1019bf9d-5ffd-4fd5-bee2-8e5465109de2",
       "slug": "logic-theorist-1956",
       "eventDate": "1956-08",
       "datePrecision": "month",
@@ -4340,7 +4585,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9df80ef7-f61d-4184-a4ea-2376408df434",
+      "id": "a3133463-9bad-4c35-b4b0-9fad73d93899",
       "slug": "dartmouth-1956",
       "eventDate": "1956",
       "datePrecision": "year",
@@ -4371,7 +4616,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a0e7d75f-3563-4bb1-9364-019463be6b34",
+      "id": "97fde7f0-8973-4266-ba27-d949f81b37c3",
       "slug": "turing-1950",
       "eventDate": "1950-10",
       "datePrecision": "month",
@@ -4400,7 +4645,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "23a41aea-c342-4799-8267-48fbcc1171e0",
+      "id": "7383e5c5-c53e-479b-8c38-3d8bb75cf56e",
       "slug": "hebb-1949",
       "eventDate": "1949",
       "datePrecision": "year",
@@ -4431,7 +4676,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "65baf646-62b4-4e8a-b495-0628a552713a",
+      "id": "e917d73b-6092-44d6-84fc-02b71a538918",
       "slug": "as-we-may-think-1945",
       "eventDate": "1945-07",
       "datePrecision": "month",
@@ -4461,7 +4706,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3f140b22-be7a-4fb1-9c1b-27a8441abc22",
+      "id": "2c728fd2-ceef-4fe7-a08c-26e474cad2fd",
       "slug": "mcculloch-pitts-1943",
       "eventDate": "1943-12",
       "datePrecision": "month",
@@ -4492,7 +4737,69 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "99360168-2f44-4551-95d9-f39842e93858",
+      "id": "c4d5c793-d6e4-492d-bc96-ca52f9f68e49",
+      "slug": "cybernetics-1943",
+      "eventDate": "1943-01",
+      "datePrecision": "month",
+      "sortDate": "1943-01-01",
+      "year": 1943,
+      "title": "Wiener 等人用反馈解释目的性行为，控制论纲领成形",
+      "titleEn": "Behavior, Purpose and Teleology",
+      "category": "research",
+      "organization": "MIT / Harvard Medical School",
+      "modelName": null,
+      "vendor": null,
+      "series": null,
+      "importance": 72,
+      "confidence": "likely",
+      "sourceCount": 1,
+      "sourceFamilies": [
+        "paper"
+      ],
+      "tags": [
+        "算法",
+        "科学",
+        "机器人",
+        "医疗"
+      ],
+      "origin": "seed",
+      "editorialStatus": "admitted",
+      "firstSeenAt": "2026-10-24T00:00:00.000Z",
+      "updatedAt": "2026-10-24T00:00:00.000Z"
+    },
+    {
+      "id": "4dc636e5-c590-418d-ac47-93bd65e8eb65",
+      "slug": "shannon-switching-1938",
+      "eventDate": "1938",
+      "datePrecision": "year",
+      "sortDate": "1938-01-01",
+      "year": 1938,
+      "title": "香农把布尔代数用于开关电路，数字电路获得设计方法",
+      "titleEn": "A Symbolic Analysis of Relay and Switching Circuits",
+      "category": "research",
+      "organization": "MIT",
+      "modelName": null,
+      "vendor": null,
+      "series": null,
+      "importance": 76,
+      "confidence": "likely",
+      "sourceCount": 2,
+      "sourceFamilies": [
+        "paper"
+      ],
+      "tags": [
+        "算法",
+        "硬件",
+        "数学",
+        "科学"
+      ],
+      "origin": "seed",
+      "editorialStatus": "admitted",
+      "firstSeenAt": "2026-10-24T00:00:00.000Z",
+      "updatedAt": "2026-10-24T00:00:00.000Z"
+    },
+    {
+      "id": "3ed49d4c-0403-4fc9-abd7-12b202d53ead",
       "slug": "turing-machine-1936",
       "eventDate": "1936-05",
       "datePrecision": "month",
@@ -4523,7 +4830,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "00161c0d-e46e-4bcd-8c7a-ff781ca032d7",
+      "id": "c29ece15-3626-48aa-b63f-4da308b3d3df",
       "slug": "godel-1931",
       "eventDate": "1931",
       "datePrecision": "year",
@@ -4554,7 +4861,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d9ab65ee-d8f8-4c89-b0f4-26b403c27bc0",
+      "id": "3ae2d806-256a-473c-ae25-a112009f7021",
       "slug": "rur-1920",
       "eventDate": "1920",
       "datePrecision": "year",
@@ -4584,7 +4891,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "023bf4fb-0140-468a-baa1-55df20b474c8",
+      "id": "a062405c-00c5-44b5-9a54-8e1759576b89",
       "slug": "el-ajedrecista-1912",
       "eventDate": "1912",
       "datePrecision": "year",
@@ -4614,7 +4921,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     }
   ],
-  "total": 148,
+  "total": 158,
   "truncated": false,
   "sync": {
     "lastSuccessAt": "2026-10-24T00:00:00.000Z",
@@ -4622,6 +4929,6 @@
     "lastStatus": "succeeded",
     "running": false,
     "stale": true,
-    "seedVersion": "2026.10.24.6"
+    "seedVersion": "2026.10.25.1"
   }
 }

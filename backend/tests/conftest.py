@@ -167,7 +167,7 @@ async def db_session(db_factory):
 
 @pytest.fixture
 async def seeded_db(db_factory):
-    """The five tables plus the 148 frozen seed rows."""
+    """The five tables plus the 158 frozen seed rows."""
     from datetime import datetime, timezone
 
     from app.db import repo_events
@@ -177,7 +177,7 @@ async def seeded_db(db_factory):
     async with db_factory() as session:
         inserted = await repo_events.insert_events(session, seed_rows(now))
         await session.commit()
-    assert inserted == 148, f"seed should insert 148 rows, got {inserted}"
+    assert inserted == 158, f"seed should insert 158 rows, got {inserted}"
     return db_factory
 
 

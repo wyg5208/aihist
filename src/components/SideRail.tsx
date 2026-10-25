@@ -64,9 +64,9 @@ export function SideRail({
 
   return (
     <aside className="space-y-7" aria-label="档案侧栏">
-      <section className="rail-card" aria-labelledby="era-heading">
+      <section className="rail-card" data-era-kind={era.kind} aria-labelledby="era-heading">
         <div className="rail-heading">
-          <h2 id="era-heading">时代摘要</h2>
+          <h2 id="era-heading">{era.kind === "winter" ? "低谷期" : "时代摘要"}</h2>
           <span className="font-mono text-[9px] tracking-[0.1em] text-[var(--muted)]">
             {era.from}—{upper}
           </span>

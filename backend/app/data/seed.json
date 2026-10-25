@@ -1,6 +1,6 @@
 {
-  "seedVersion": "2026.10.24.6",
-  "count": 148,
+  "seedVersion": "2026.10.25.1",
+  "count": 158,
   "events": [
     {
       "seedId": "turing-1950",
@@ -7460,6 +7460,70 @@
       "curatedImportance": 78
     },
     {
+      "seedId": "shannon-switching-1938",
+      "origin": "seed",
+      "category": "research",
+      "title": "香农把布尔代数用于开关电路，数字电路获得设计方法",
+      "titleEn": "A Symbolic Analysis of Relay and Switching Circuits",
+      "summary": "香农在 MIT 学位论文中证明继电器与开关电路可以用布尔代数描述，并给出电路化简的系统方法。它把逻辑运算与物理器件对应起来，成为数字电路设计的理论起点，也是此后计算机承载符号推理的前提。",
+      "summaryKind": "curated",
+      "eventDate": "1938",
+      "datePrecision": "year",
+      "sortDate": "1938-01-01",
+      "year": 1938,
+      "organization": "MIT",
+      "modelName": null,
+      "tags": [
+        "算法",
+        "硬件",
+        "数学",
+        "科学"
+      ],
+      "meta": {
+        "research_note": "AIEE 论文 DOI 与 MIT 学位论文馆藏页核对；论文 1938 年发表，源自 1937 年硕士论文"
+      },
+      "modelKey": null,
+      "familyKey": null,
+      "aliases": [],
+      "urls": [
+        "doi.org/10.1109/T-AIEE.1938.5057767",
+        "dspace.mit.edu/handle/1721.1/11173"
+      ],
+      "evidence": [
+        {
+          "name": "Transactions of the AIEE",
+          "family": "paper",
+          "title": "A Symbolic Analysis of Relay and Switching Circuits",
+          "url": "https://doi.org/10.1109/T-AIEE.1938.5057767",
+          "publishedAt": "1938-01-01",
+          "externalId": "https://doi.org/10.1109/T-AIEE.1938.5057767"
+        },
+        {
+          "name": "MIT DSpace",
+          "family": "paper",
+          "title": "A Symbolic Analysis of Relay and Switching Circuits",
+          "url": "https://dspace.mit.edu/handle/1721.1/11173",
+          "publishedAt": "1938-01-01",
+          "externalId": "https://dspace.mit.edu/handle/1721.1/11173"
+        }
+      ],
+      "tokens": [
+        "symbolic",
+        "analysis",
+        "relay",
+        "switching",
+        "circuits"
+      ],
+      "signals": {
+        "headLab": false,
+        "hnPoints": 0,
+        "hfLikes": 0,
+        "officialPrimary": true,
+        "mediaOnly": false
+      },
+      "curatedImportance": 76
+    },
+    {
       "seedId": "mcculloch-pitts-1943",
       "origin": "seed",
       "category": "research",
@@ -7522,6 +7586,59 @@
         "mediaOnly": false
       },
       "curatedImportance": 76
+    },
+    {
+      "seedId": "cybernetics-1943",
+      "origin": "seed",
+      "category": "research",
+      "title": "Wiener 等人用反馈解释目的性行为，控制论纲领成形",
+      "titleEn": "Behavior, Purpose and Teleology",
+      "summary": "维纳、罗森布鲁斯与比奇洛在《科学哲学》发表文章，用负反馈统一解释机器与生物的目的性行为。这一纲领催生了控制论运动与 1948 年的《控制论》一书，也为此后的自动控制、机器人学与神经计算提供了共同语言。",
+      "summaryKind": "curated",
+      "eventDate": "1943-01",
+      "datePrecision": "month",
+      "sortDate": "1943-01-01",
+      "year": 1943,
+      "organization": "MIT / Harvard Medical School",
+      "modelName": null,
+      "tags": [
+        "算法",
+        "科学",
+        "机器人",
+        "医疗"
+      ],
+      "meta": {
+        "research_note": "期刊 DOI 核对；记录纲领性论文，1948 年《控制论》成书另计"
+      },
+      "modelKey": null,
+      "familyKey": null,
+      "aliases": [],
+      "urls": [
+        "doi.org/10.1086/286788"
+      ],
+      "evidence": [
+        {
+          "name": "Philosophy of Science",
+          "family": "paper",
+          "title": "Behavior, Purpose and Teleology",
+          "url": "https://doi.org/10.1086/286788",
+          "publishedAt": "1943-01-01",
+          "externalId": "https://doi.org/10.1086/286788"
+        }
+      ],
+      "tokens": [
+        "behavior",
+        "purpose",
+        "teleology"
+      ],
+      "signals": {
+        "headLab": false,
+        "hnPoints": 0,
+        "hfLikes": 0,
+        "officialPrimary": true,
+        "mediaOnly": false
+      },
+      "curatedImportance": 72
     },
     {
       "seedId": "as-we-may-think-1945",
@@ -7840,6 +7957,61 @@
         "mediaOnly": false
       },
       "curatedImportance": 58
+    },
+    {
+      "seedId": "samuel-checkers-1959",
+      "origin": "seed",
+      "category": "research",
+      "title": "Samuel 的跳棋程序从自我对弈中学习，机器学习获得工程演示",
+      "titleEn": "Some Studies in Machine Learning Using the Game of Checkers",
+      "summary": "塞缪尔的跳棋程序通过自我对弈不断调整评估函数，最终达到能战胜作者的业余强手水平。它是最早完整演示“从经验中改进策略”的系统之一，让机器学习成为可以被工程检验的研究方向。",
+      "summaryKind": "curated",
+      "eventDate": "1959-07",
+      "datePrecision": "month",
+      "sortDate": "1959-07-01",
+      "year": 1959,
+      "organization": "IBM",
+      "modelName": null,
+      "tags": [
+        "强化学习",
+        "棋类",
+        "算法"
+      ],
+      "meta": {
+        "research_note": "IBM Journal 论文 DOI 核对"
+      },
+      "modelKey": null,
+      "familyKey": null,
+      "aliases": [],
+      "urls": [
+        "doi.org/10.1147/rd.33.0210"
+      ],
+      "evidence": [
+        {
+          "name": "IBM Journal of Research and Development",
+          "family": "paper",
+          "title": "Some Studies in Machine Learning Using the Game of Checkers",
+          "url": "https://doi.org/10.1147/rd.33.0210",
+          "publishedAt": "1959-07-01",
+          "externalId": "https://doi.org/10.1147/rd.33.0210"
+        }
+      ],
+      "tokens": [
+        "some",
+        "studies",
+        "machine",
+        "learning",
+        "game",
+        "checkers"
+      ],
+      "signals": {
+        "headLab": false,
+        "hnPoints": 0,
+        "hfLikes": 0,
+        "officialPrimary": true,
+        "mediaOnly": false
+      },
+      "curatedImportance": 74
     },
     {
       "seedId": "unimate-1961",
@@ -8326,6 +8498,62 @@
       "curatedImportance": 64
     },
     {
+      "seedId": "xcon-1980",
+      "origin": "seed",
+      "category": "milestone",
+      "title": "DEC 部署 XCON 配置专家系统，专家系统进入大规模商用",
+      "titleEn": "R1: A Rule-Based Configurer of Computer Systems",
+      "summary": "卡内基梅隆为 DEC 开发的 XCON（原名 R1）按客户订单自动配置 VAX 系统，把数千条规则接入真实生产流程。它证明了专家系统可以带来可度量的商业收益，推动了 1980 年代专家系统产业的扩张。",
+      "summaryKind": "curated",
+      "eventDate": "1980",
+      "datePrecision": "year",
+      "sortDate": "1980-01-01",
+      "year": 1980,
+      "organization": "Carnegie Mellon University / DEC",
+      "modelName": null,
+      "tags": [
+        "专家系统",
+        "技术",
+        "算法",
+        "科学"
+      ],
+      "meta": {
+        "research_note": "期刊论文 DOI 核对；系统 1980 年在 DEC 投产，方法与评估见 1982 年论文"
+      },
+      "modelKey": null,
+      "familyKey": null,
+      "aliases": [],
+      "urls": [
+        "doi.org/10.1016/0004-3702(82)90021-2"
+      ],
+      "evidence": [
+        {
+          "name": "Artificial Intelligence",
+          "family": "paper",
+          "title": "R1: A Rule-Based Configurer of Computer Systems",
+          "url": "https://doi.org/10.1016/0004-3702(82)90021-2",
+          "publishedAt": "1982-09",
+          "externalId": "https://doi.org/10.1016/0004-3702(82)90021-2"
+        }
+      ],
+      "tokens": [
+        "r1",
+        "rule",
+        "based",
+        "configurer",
+        "computer",
+        "systems"
+      ],
+      "signals": {
+        "headLab": false,
+        "hnPoints": 0,
+        "hfLikes": 0,
+        "officialPrimary": true,
+        "mediaOnly": false
+      },
+      "curatedImportance": 68
+    },
+    {
       "seedId": "fifth-generation-1982",
       "origin": "seed",
       "category": "policy",
@@ -8379,6 +8607,63 @@
         "mediaOnly": false
       },
       "curatedImportance": 62
+    },
+    {
+      "seedId": "hopfield-1982",
+      "origin": "seed",
+      "category": "research",
+      "title": "Hopfield 用能量函数描述神经网络，连接主义重新获得物理基础",
+      "titleEn": "Neural networks and physical systems with emergent collective computational abilities",
+      "summary": "霍普菲尔德把对称连接的反馈网络与自旋玻璃模型对应，用能量函数说明网络如何收敛到稳定状态并完成联想记忆。它让神经网络重新回到物理学与工程学的共同视野，为 1980 年代连接主义复兴铺路。",
+      "summaryKind": "curated",
+      "eventDate": "1982-04",
+      "datePrecision": "month",
+      "sortDate": "1982-04-01",
+      "year": 1982,
+      "organization": "Caltech",
+      "modelName": null,
+      "tags": [
+        "神经网络",
+        "算法",
+        "科学"
+      ],
+      "meta": {
+        "research_note": "PNAS 论文 DOI 核对；2024 年诺贝尔物理学奖追认此项工作"
+      },
+      "modelKey": null,
+      "familyKey": null,
+      "aliases": [],
+      "urls": [
+        "doi.org/10.1073/pnas.79.8.2554"
+      ],
+      "evidence": [
+        {
+          "name": "PNAS",
+          "family": "paper",
+          "title": "Neural networks and physical systems with emergent collective computational abilities",
+          "url": "https://doi.org/10.1073/pnas.79.8.2554",
+          "publishedAt": "1982-04-01",
+          "externalId": "https://doi.org/10.1073/pnas.79.8.2554"
+        }
+      ],
+      "tokens": [
+        "neural",
+        "networks",
+        "physical",
+        "systems",
+        "emergent",
+        "collective",
+        "computational",
+        "abilities"
+      ],
+      "signals": {
+        "headLab": false,
+        "hnPoints": 0,
+        "hfLikes": 0,
+        "officialPrimary": true,
+        "mediaOnly": false
+      },
+      "curatedImportance": 80
     },
     {
       "seedId": "brooks-subsumption-1987",
@@ -8508,6 +8793,109 @@
       "curatedImportance": 58
     },
     {
+      "seedId": "svm-1995",
+      "origin": "seed",
+      "category": "research",
+      "title": "支持向量机提出，统计学习理论进入主流",
+      "titleEn": "Support-Vector Networks",
+      "summary": "Cortes 与 Vapnik 用最大间隔与核技巧把线性分类器扩展到非线性问题，并在统计学习理论框架下给出可操作的结构化求解方法。支持向量机在此后十余年成为小样本分类的主力方法，直到深度学习兴起才让出位置。",
+      "summaryKind": "curated",
+      "eventDate": "1995-09",
+      "datePrecision": "month",
+      "sortDate": "1995-09-01",
+      "year": 1995,
+      "organization": "AT&T Bell Labs",
+      "modelName": null,
+      "tags": [
+        "算法",
+        "数学",
+        "科学"
+      ],
+      "meta": {
+        "research_note": "Machine Learning 期刊论文 DOI 核对"
+      },
+      "modelKey": null,
+      "familyKey": null,
+      "aliases": [],
+      "urls": [
+        "doi.org/10.1007/BF00994018"
+      ],
+      "evidence": [
+        {
+          "name": "Machine Learning",
+          "family": "paper",
+          "title": "Support-Vector Networks",
+          "url": "https://doi.org/10.1007/BF00994018",
+          "publishedAt": "1995-09-01",
+          "externalId": "https://doi.org/10.1007/BF00994018"
+        }
+      ],
+      "tokens": [
+        "support",
+        "vector",
+        "networks"
+      ],
+      "signals": {
+        "headLab": false,
+        "hnPoints": 0,
+        "hfLikes": 0,
+        "officialPrimary": true,
+        "mediaOnly": false
+      },
+      "curatedImportance": 72
+    },
+    {
+      "seedId": "robocup-1997",
+      "origin": "seed",
+      "category": "milestone",
+      "title": "首届 RoboCup 机器人世界杯举行，机器人足球成为公开基准",
+      "titleEn": "RoboCup",
+      "summary": "首届 RoboCup 与 IJCAI-97 同期在名古屋举行，40 余支队伍参加仿真与实物联赛。它把多智能体协作、实时感知与运动控制放进可比较的公开赛制，成为机器人研究的长期基准。",
+      "summaryKind": "curated",
+      "eventDate": "1997-08",
+      "datePrecision": "month",
+      "sortDate": "1997-08-01",
+      "year": 1997,
+      "organization": "RoboCup Federation",
+      "modelName": null,
+      "tags": [
+        "机器人",
+        "具身",
+        "评测",
+        "智能体"
+      ],
+      "meta": {
+        "research_note": "RoboCup 官方简史页核对；1996 年先办过 Pre-RoboCup-96"
+      },
+      "modelKey": null,
+      "familyKey": null,
+      "aliases": [],
+      "urls": [
+        "robocup.org/a_brief_history_of_robocup"
+      ],
+      "evidence": [
+        {
+          "name": "RoboCup",
+          "family": "official",
+          "title": "RoboCup",
+          "url": "https://www.robocup.org/a_brief_history_of_robocup",
+          "publishedAt": "1997-08-01",
+          "externalId": "https://www.robocup.org/a_brief_history_of_robocup"
+        }
+      ],
+      "tokens": [
+        "robocup"
+      ],
+      "signals": {
+        "headLab": false,
+        "hnPoints": 0,
+        "hfLikes": 0,
+        "officialPrimary": true,
+        "mediaOnly": false
+      },
+      "curatedImportance": 58
+    },
+    {
       "seedId": "roomba-2002",
       "origin": "seed",
       "category": "milestone",
@@ -8559,6 +8947,61 @@
       "curatedImportance": 52
     },
     {
+      "seedId": "darpa-grand-challenge-2005",
+      "origin": "seed",
+      "category": "milestone",
+      "title": "Stanley 跑完 DARPA 沙漠挑战赛，自动驾驶走出实验室",
+      "titleEn": "Stanley: The Robot that Won the DARPA Grand Challenge",
+      "summary": "斯坦福的 Stanley 在约 212 公里的沙漠赛道上跑完全程，成为首支完成 DARPA 大奖赛的无人车队伍。赛事把激光雷达、概率感知与路径规划放进同一套公开评测，直接推动此后十年的自动驾驶研发。",
+      "summaryKind": "curated",
+      "eventDate": "2005-10-08",
+      "datePrecision": "day",
+      "sortDate": "2005-10-08",
+      "year": 2005,
+      "organization": "Stanford University / DARPA",
+      "modelName": null,
+      "tags": [
+        "自动驾驶",
+        "机器人",
+        "评测"
+      ],
+      "meta": {
+        "research_note": "赛事结果与系统细节见 Journal of Field Robotics 论文；论文 2006 年发表"
+      },
+      "modelKey": null,
+      "familyKey": null,
+      "aliases": [],
+      "urls": [
+        "doi.org/10.1002/rob.20147"
+      ],
+      "evidence": [
+        {
+          "name": "Journal of Field Robotics",
+          "family": "paper",
+          "title": "Stanley: The Robot that Won the DARPA Grand Challenge",
+          "url": "https://doi.org/10.1002/rob.20147",
+          "publishedAt": "2006-09",
+          "externalId": "https://doi.org/10.1002/rob.20147"
+        }
+      ],
+      "tokens": [
+        "stanley",
+        "robot",
+        "won",
+        "darpa",
+        "grand",
+        "challenge"
+      ],
+      "signals": {
+        "headLab": false,
+        "hnPoints": 0,
+        "hfLikes": 0,
+        "officialPrimary": true,
+        "mediaOnly": false
+      },
+      "curatedImportance": 70
+    },
+    {
       "seedId": "siri-2011",
       "origin": "seed",
       "category": "milestone",
@@ -8598,6 +9041,119 @@
       ],
       "tokens": [
         "siri"
+      ],
+      "signals": {
+        "headLab": false,
+        "hnPoints": 0,
+        "hfLikes": 0,
+        "officialPrimary": true,
+        "mediaOnly": false
+      },
+      "curatedImportance": 66
+    },
+    {
+      "seedId": "dqn-2015",
+      "origin": "seed",
+      "category": "research",
+      "title": "DQN 登上《Nature》，深度强化学习直接从像素学习控制策略",
+      "titleEn": "Human-level control through deep reinforcement learning",
+      "summary": "DeepMind 用同一套网络结构与超参数，从原始像素和游戏得分信号学会 49 款 Atari 游戏，其中多款超过人类专业测试者。它把深度网络与 Q 学习结合，证明端到端强化学习能处理高维感知输入。",
+      "summaryKind": "curated",
+      "eventDate": "2015-02-26",
+      "datePrecision": "day",
+      "sortDate": "2015-02-26",
+      "year": 2015,
+      "organization": "DeepMind",
+      "modelName": "DQN",
+      "tags": [
+        "强化学习",
+        "神经网络",
+        "算法",
+        "训练",
+        "科学"
+      ],
+      "meta": {
+        "research_note": "Nature 论文 DOI 核对"
+      },
+      "modelKey": null,
+      "familyKey": null,
+      "aliases": [],
+      "urls": [
+        "doi.org/10.1038/nature14236"
+      ],
+      "evidence": [
+        {
+          "name": "Nature",
+          "family": "paper",
+          "title": "Human-level control through deep reinforcement learning",
+          "url": "https://doi.org/10.1038/nature14236",
+          "publishedAt": "2015-02-26",
+          "externalId": "https://doi.org/10.1038/nature14236"
+        }
+      ],
+      "tokens": [
+        "human",
+        "level",
+        "control",
+        "through",
+        "deep",
+        "reinforcement",
+        "learning"
+      ],
+      "signals": {
+        "headLab": false,
+        "hnPoints": 0,
+        "hfLikes": 0,
+        "officialPrimary": true,
+        "mediaOnly": false
+      },
+      "curatedImportance": 86
+    },
+    {
+      "seedId": "wavenet-2016",
+      "origin": "seed",
+      "category": "research",
+      "title": "WaveNet 直接建模原始波形，神经语音合成进入新阶段",
+      "titleEn": "WaveNet: A Generative Model for Raw Audio",
+      "summary": "DeepMind 用扩张因果卷积直接建模原始音频波形，在英语与普通话语音合成评测中明显优于当时的拼接式系统。它把语音合成从声学参数管线推向端到端神经生成，也示范了生成模型在时序信号上的通用性。",
+      "summaryKind": "curated",
+      "eventDate": "2016-09",
+      "datePrecision": "month",
+      "sortDate": "2016-09-01",
+      "year": 2016,
+      "organization": "DeepMind",
+      "modelName": null,
+      "tags": [
+        "语音",
+        "算法",
+        "生成式 AI",
+        "评测"
+      ],
+      "meta": {
+        "research_note": "arXiv 预印本核对"
+      },
+      "modelKey": null,
+      "familyKey": null,
+      "aliases": [],
+      "urls": [
+        "arxiv.org/abs/1609.03499"
+      ],
+      "evidence": [
+        {
+          "name": "arXiv",
+          "family": "paper",
+          "title": "WaveNet: A Generative Model for Raw Audio",
+          "url": "https://arxiv.org/abs/1609.03499",
+          "publishedAt": "2016-09-01",
+          "externalId": "https://arxiv.org/abs/1609.03499"
+        }
+      ],
+      "tokens": [
+        "wavenet",
+        "generative",
+        "model",
+        "raw",
+        "audio"
       ],
       "signals": {
         "headLab": false,

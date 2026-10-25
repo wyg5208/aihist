@@ -94,14 +94,14 @@ async def test_content_counters_match_the_seed(db_factory, admin_settings, seede
     body = await fetch_overview(db_factory, admin_settings)
     content = body["content"]
 
-    assert content["total"] == 148
+    assert content["total"] == 158
     # Curated seed rows ship already admitted, and are the only origin present.
-    assert content["admitted"] == 148
+    assert content["admitted"] == 158
     assert content["legacy"] == 0
-    assert content["live"] == 148
+    assert content["live"] == 158
     assert content["hold"] == 0
     assert content["excluded"] == 0
-    assert content["byOrigin"] == [{"key": "seed", "count": 148}]
+    assert content["byOrigin"] == [{"key": "seed", "count": 158}]
 
 
 async def test_health_flags_rows_that_cannot_be_cited(db_factory, admin_settings, seeded_db):

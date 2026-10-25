@@ -31,7 +31,7 @@ export function TimelineYear({ year, items, expandedId, onToggle, onKeyword }: P
           </span>
         </h2>
         <p className="truncate font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--muted)]">
-          {era.title}
+          {era.kind === "winter" ? `低谷 · ${era.title}` : era.title}
         </p>
       </div>
 

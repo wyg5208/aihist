@@ -77,16 +77,16 @@ async def test_first_run_inserts_seed_and_collects(db_factory):
     assert outcome["ok"] is True
     assert outcome["busy"] is False
     result = outcome["result"]
-    assert result["seedInserted"] == 148
+    assert result["seedInserted"] == 158
     assert result["rawCount"] > 0
     assert result["createdCount"] > 0
     assert result["status"] in ("succeeded", "partial")
-    assert "seed:148" in (result["notes"] or "")
+    assert "seed:158" in (result["notes"] or "")
 
     async with db_factory() as session:
         events = await session.scalar(select(func.count()).select_from(Event))
         raw = await session.scalar(select(func.count()).select_from(RawItem))
-    assert events == 148 + result["createdCount"]
+    assert events == 158 + result["createdCount"]
     assert raw == result["rawCount"]
     assert await seed_version_of(db_factory) is not None
 
@@ -98,13 +98,13 @@ async def test_second_run_reuses_the_seed(db_factory):
     async with db_factory() as session:
         second = await run_sync(session, now=now(), fetch=fetch, editorial=False)
 
-    assert first["result"]["seedInserted"] == 148
+    assert first["result"]["seedInserted"] == 158
     assert second["result"]["seedInserted"] == 0
-    assert "seed:148" not in (second["result"]["notes"] or "")
+    assert "seed:158" not in (second["result"]["notes"] or "")
 
     async with db_factory() as session:
         events = await session.scalar(select(func.count()).select_from(Event))
-    assert events == 148 + second["result"]["createdCount"] + first["result"]["createdCount"]
+    assert events == 158 + second["result"]["createdCount"] + first["result"]["createdCount"]
 
 
 async def test_editorial_gate_fails_closed_without_a_panel(db_factory):
@@ -124,7 +124,7 @@ async def test_editorial_gate_fails_closed_without_a_panel(db_factory):
 
     async with db_factory() as session:
         events = await session.scalar(select(func.count()).select_from(Event))
-    assert events == 148, "nothing unvetted may reach the public timeline"
+    assert events == 158, "nothing unvetted may reach the public timeline"
 
 
 async def test_panel_includes_candidates(db_factory):
@@ -201,7 +201,7 @@ async def test_judge_failure_keeps_everything_out(db_factory):
 
     async with db_factory() as session:
         events = await session.scalar(select(func.count()).select_from(Event))
-    assert events == 148
+    assert events == 158
 
 
 async def test_rule_and_panel_verdicts_are_disjoint(db_factory):
@@ -282,7 +282,7 @@ async def test_each_run_is_recorded(db_factory):
     for run in runs:
         assert run.status in ("succeeded", "partial")
         assert run.finished_at is not None
-    assert runs[0].notes and runs[0].notes.startswith("seed:148")
+    assert runs[0].notes and runs[0].notes.startswith("seed:158")
 
 
 async def test_a_failing_fetch_degrades_to_partial(db_factory):

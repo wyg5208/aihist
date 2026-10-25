@@ -220,7 +220,7 @@ class ReviewDecision(Base):
 # Admin console tables (migration 0002_admin_console)
 #
 # Everything below is additive. The five tables above keep their exact shape so
-# the public API contract tests and the 148-row curated seed stay valid.
+# the public API contract tests and the 158-row curated seed stay valid.
 # ---------------------------------------------------------------------------
 
 

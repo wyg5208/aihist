@@ -7,7 +7,7 @@ import { keywordsFor } from "./keywords.mjs";
  * the captured OpenRouter, Hugging Face, arXiv and official-news payloads.
  * Seeds are inserted by the first sync, never by migration SQL.
  */
-export const SEED_VERSION = "2026.10.24.6";
+export const SEED_VERSION = "2026.10.25.1";
 
 function seed(def) {
   const date = def.date;
@@ -2512,6 +2512,31 @@ export const SEED_EVENTS = [
     note: "原始论文与维基百科条目核对",
   }),
   seed({
+    id: "shannon-switching-1938",
+    date: "1938",
+    category: "research",
+    title: "香农把布尔代数用于开关电路，数字电路获得设计方法",
+    titleEn: "A Symbolic Analysis of Relay and Switching Circuits",
+    summary:
+      "香农在 MIT 学位论文中证明继电器与开关电路可以用布尔代数描述，并给出电路化简的系统方法。它把逻辑运算与物理器件对应起来，成为数字电路设计的理论起点，也是此后计算机承载符号推理的前提。",
+    org: "MIT",
+    importance: 76,
+    tags: ["算法", "硬件", "数学"],
+    sources: [
+      {
+        name: "Transactions of the AIEE",
+        family: "paper",
+        url: "https://doi.org/10.1109/T-AIEE.1938.5057767",
+      },
+      {
+        name: "MIT DSpace",
+        family: "paper",
+        url: "https://dspace.mit.edu/handle/1721.1/11173",
+      },
+    ],
+    note: "AIEE 论文 DOI 与 MIT 学位论文馆藏页核对；论文 1938 年发表，源自 1937 年硕士论文",
+  }),
+  seed({
     id: "mcculloch-pitts-1943",
     date: "1943-12",
     category: "research",
@@ -2535,6 +2560,26 @@ export const SEED_EVENTS = [
       },
     ],
     note: "原始论文与维基百科条目核对",
+  }),
+  seed({
+    id: "cybernetics-1943",
+    date: "1943-01",
+    category: "research",
+    title: "Wiener 等人用反馈解释目的性行为，控制论纲领成形",
+    titleEn: "Behavior, Purpose and Teleology",
+    summary:
+      "维纳、罗森布鲁斯与比奇洛在《科学哲学》发表文章，用负反馈统一解释机器与生物的目的性行为。这一纲领催生了控制论运动与 1948 年的《控制论》一书，也为此后的自动控制、机器人学与神经计算提供了共同语言。",
+    org: "MIT / Harvard Medical School",
+    importance: 72,
+    tags: ["算法", "科学", "机器人"],
+    sources: [
+      {
+        name: "Philosophy of Science",
+        family: "paper",
+        url: "https://doi.org/10.1086/286788",
+      },
+    ],
+    note: "期刊 DOI 核对；记录纲领性论文，1948 年《控制论》成书另计",
   }),
   seed({
     id: "as-we-may-think-1945",
@@ -2661,6 +2706,26 @@ export const SEED_EVENTS = [
       },
     ],
     note: "维基百科年表与条目核对",
+  }),
+  seed({
+    id: "samuel-checkers-1959",
+    date: "1959-07",
+    category: "research",
+    title: "Samuel 的跳棋程序从自我对弈中学习，机器学习获得工程演示",
+    titleEn: "Some Studies in Machine Learning Using the Game of Checkers",
+    summary:
+      "塞缪尔的跳棋程序通过自我对弈不断调整评估函数，最终达到能战胜作者的业余强手水平。它是最早完整演示“从经验中改进策略”的系统之一，让机器学习成为可以被工程检验的研究方向。",
+    org: "IBM",
+    importance: 74,
+    tags: ["强化学习", "棋类", "算法"],
+    sources: [
+      {
+        name: "IBM Journal of Research and Development",
+        family: "paper",
+        url: "https://doi.org/10.1147/rd.33.0210",
+      },
+    ],
+    note: "IBM Journal 论文 DOI 核对",
   }),
   seed({
     id: "unimate-1961",
@@ -2858,6 +2923,27 @@ export const SEED_EVENTS = [
     note: "诺贝尔奖官方页面核对",
   }),
   seed({
+    id: "xcon-1980",
+    date: "1980",
+    category: "milestone",
+    title: "DEC 部署 XCON 配置专家系统，专家系统进入大规模商用",
+    titleEn: "R1: A Rule-Based Configurer of Computer Systems",
+    summary:
+      "卡内基梅隆为 DEC 开发的 XCON（原名 R1）按客户订单自动配置 VAX 系统，把数千条规则接入真实生产流程。它证明了专家系统可以带来可度量的商业收益，推动了 1980 年代专家系统产业的扩张。",
+    org: "Carnegie Mellon University / DEC",
+    importance: 68,
+    tags: ["专家系统", "技术", "算法"],
+    sources: [
+      {
+        name: "Artificial Intelligence",
+        family: "paper",
+        url: "https://doi.org/10.1016/0004-3702(82)90021-2",
+        date: "1982-09",
+      },
+    ],
+    note: "期刊论文 DOI 核对；系统 1980 年在 DEC 投产，方法与评估见 1982 年论文",
+  }),
+  seed({
     id: "fifth-generation-1982",
     date: "1982-04",
     category: "policy",
@@ -2876,6 +2962,26 @@ export const SEED_EVENTS = [
       },
     ],
     note: "维基百科年表与条目核对",
+  }),
+  seed({
+    id: "hopfield-1982",
+    date: "1982-04",
+    category: "research",
+    title: "Hopfield 用能量函数描述神经网络，连接主义重新获得物理基础",
+    titleEn: "Neural networks and physical systems with emergent collective computational abilities",
+    summary:
+      "霍普菲尔德把对称连接的反馈网络与自旋玻璃模型对应，用能量函数说明网络如何收敛到稳定状态并完成联想记忆。它让神经网络重新回到物理学与工程学的共同视野，为 1980 年代连接主义复兴铺路。",
+    org: "Caltech",
+    importance: 80,
+    tags: ["神经网络", "算法", "科学"],
+    sources: [
+      {
+        name: "PNAS",
+        family: "paper",
+        url: "https://doi.org/10.1073/pnas.79.8.2554",
+      },
+    ],
+    note: "PNAS 论文 DOI 核对；2024 年诺贝尔物理学奖追认此项工作",
   }),
   seed({
     id: "brooks-subsumption-1987",
@@ -2930,6 +3036,46 @@ export const SEED_EVENTS = [
     note: "原始论文与维基百科条目核对",
   }),
   seed({
+    id: "svm-1995",
+    date: "1995-09",
+    category: "research",
+    title: "支持向量机提出，统计学习理论进入主流",
+    titleEn: "Support-Vector Networks",
+    summary:
+      "Cortes 与 Vapnik 用最大间隔与核技巧把线性分类器扩展到非线性问题，并在统计学习理论框架下给出可操作的结构化求解方法。支持向量机在此后十余年成为小样本分类的主力方法，直到深度学习兴起才让出位置。",
+    org: "AT&T Bell Labs",
+    importance: 72,
+    tags: ["算法", "数学", "科学"],
+    sources: [
+      {
+        name: "Machine Learning",
+        family: "paper",
+        url: "https://doi.org/10.1007/BF00994018",
+      },
+    ],
+    note: "Machine Learning 期刊论文 DOI 核对",
+  }),
+  seed({
+    id: "robocup-1997",
+    date: "1997-08",
+    category: "milestone",
+    title: "首届 RoboCup 机器人世界杯举行，机器人足球成为公开基准",
+    titleEn: "RoboCup",
+    summary:
+      "首届 RoboCup 与 IJCAI-97 同期在名古屋举行，40 余支队伍参加仿真与实物联赛。它把多智能体协作、实时感知与运动控制放进可比较的公开赛制，成为机器人研究的长期基准。",
+    org: "RoboCup Federation",
+    importance: 58,
+    tags: ["机器人", "具身", "评测"],
+    sources: [
+      {
+        name: "RoboCup",
+        family: "official",
+        url: "https://www.robocup.org/a_brief_history_of_robocup",
+      },
+    ],
+    note: "RoboCup 官方简史页核对；1996 年先办过 Pre-RoboCup-96",
+  }),
+  seed({
     id: "roomba-2002",
     date: "2002-09",
     category: "milestone",
@@ -2950,6 +3096,27 @@ export const SEED_EVENTS = [
     note: "维基百科年表与条目核对",
   }),
   seed({
+    id: "darpa-grand-challenge-2005",
+    date: "2005-10-08",
+    category: "milestone",
+    title: "Stanley 跑完 DARPA 沙漠挑战赛，自动驾驶走出实验室",
+    titleEn: "Stanley: The Robot that Won the DARPA Grand Challenge",
+    summary:
+      "斯坦福的 Stanley 在约 212 公里的沙漠赛道上跑完全程，成为首支完成 DARPA 大奖赛的无人车队伍。赛事把激光雷达、概率感知与路径规划放进同一套公开评测，直接推动此后十年的自动驾驶研发。",
+    org: "Stanford University / DARPA",
+    importance: 70,
+    tags: ["自动驾驶", "机器人", "评测"],
+    sources: [
+      {
+        name: "Journal of Field Robotics",
+        family: "paper",
+        url: "https://doi.org/10.1002/rob.20147",
+        date: "2006-09",
+      },
+    ],
+    note: "赛事结果与系统细节见 Journal of Field Robotics 论文；论文 2006 年发表",
+  }),
+  seed({
     id: "siri-2011",
     date: "2011-10-04",
     category: "milestone",
@@ -2968,6 +3135,47 @@ export const SEED_EVENTS = [
       },
     ],
     note: "苹果官方新闻稿核对",
+  }),
+  seed({
+    id: "dqn-2015",
+    date: "2015-02-26",
+    category: "research",
+    title: "DQN 登上《Nature》，深度强化学习直接从像素学习控制策略",
+    titleEn: "Human-level control through deep reinforcement learning",
+    summary:
+      "DeepMind 用同一套网络结构与超参数，从原始像素和游戏得分信号学会 49 款 Atari 游戏，其中多款超过人类专业测试者。它把深度网络与 Q 学习结合，证明端到端强化学习能处理高维感知输入。",
+    org: "DeepMind",
+    modelName: "DQN",
+    importance: 86,
+    tags: ["强化学习", "神经网络", "算法"],
+    sources: [
+      {
+        name: "Nature",
+        family: "paper",
+        url: "https://doi.org/10.1038/nature14236",
+      },
+    ],
+    note: "Nature 论文 DOI 核对",
+  }),
+  seed({
+    id: "wavenet-2016",
+    date: "2016-09",
+    category: "research",
+    title: "WaveNet 直接建模原始波形，神经语音合成进入新阶段",
+    titleEn: "WaveNet: A Generative Model for Raw Audio",
+    summary:
+      "DeepMind 用扩张因果卷积直接建模原始音频波形，在英语与普通话语音合成评测中明显优于当时的拼接式系统。它把语音合成从声学参数管线推向端到端神经生成，也示范了生成模型在时序信号上的通用性。",
+    org: "DeepMind",
+    importance: 66,
+    tags: ["语音", "算法", "生成式 AI"],
+    sources: [
+      {
+        name: "arXiv",
+        family: "paper",
+        url: "https://arxiv.org/abs/1609.03499",
+      },
+    ],
+    note: "arXiv 预印本核对",
   }),
   seed({
     id: "alphago-zero-2017",

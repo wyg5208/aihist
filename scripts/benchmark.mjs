@@ -189,6 +189,11 @@ export const BENCHMARK = [
     note: "ResNet 残差学习",
     vendor: "Microsoft",
   }),
+  b("dqn-2015", 2015, "research", 86, {
+    phrase: "deep reinforcement learning",
+    note: "DQN 从像素学会 Atari 控制策略",
+    vendor: "Google",
+  }),
   b("alphago-2016", 2016, "research", 92, {
     tokens: ["mastering", "neural"],
     note: "AlphaGo 登上 Nature",
