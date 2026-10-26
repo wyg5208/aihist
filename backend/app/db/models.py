@@ -470,6 +470,47 @@ class ApiKeyUsage(Base):
     __table_args__ = (Index("ux_api_key_usage_key_day", "key_id", "day", unique=True),)
 
 
+class ApiApplication(Base):
+    """A request for an open-data key, decided by a person on the console.
+
+    The row outlives the decision: an approved row points at the key it produced
+    (`key_id`), a rejected one keeps the reason in `note`. Nothing is deleted, so
+    "why did this address get a key in March" stays answerable after the key
+    itself is revoked.
+
+    No token column here on purpose. The only proof the applicant controls the
+    address is the approval mail itself, which carries the key's single
+    plaintext — there is no confirm link to replay and no second secret to
+    store.
+    """
+
+    __tablename__ = "api_applications"
+
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    email: Mapped[str] = mapped_column(String(254), nullable=False)
+    name: Mapped[str] = mapped_column(String(80), nullable=False, default="")
+    purpose: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    site_url: Mapped[str] = mapped_column(String(300), nullable=False, default="")
+    status: Mapped[str] = mapped_column(String(12), nullable=False, default="pending")
+    note: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    monthly_quota: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=1000, server_default="1000"
+    )
+    key_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=utc_now
+    )
+    decided_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    decided_by: Mapped[str] = mapped_column(String(40), nullable=False, default="")
+
+    __table_args__ = (
+        Index("ix_api_applications_status", "status", "created_at"),
+        Index("ix_api_applications_email", "email"),
+    )
+
+
 class Partner(Base):
     """Sponsorship ledger. A row here never influences admission or ranking."""
 

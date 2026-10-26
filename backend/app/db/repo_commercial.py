@@ -32,7 +32,8 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.analytics import local_day
 from app.analytics.ua import classify_ua, detect_crawler
-from app.db.models import ApiKey, ApiKeyUsage, Partner, PartnerClick, utc_now
+from app.db import repo_growth
+from app.db.models import ApiApplication, ApiKey, ApiKeyUsage, Partner, PartnerClick, utc_now
 
 # `aih_` + 32 chars. The prefix column is `String(12)`, so it holds the marker
 # plus eight entropy characters: enough to tell two keys apart in a log line.
@@ -46,6 +47,17 @@ SCOPES: tuple[str, ...] = ("read",)
 
 PARTNER_KINDS: tuple[str, ...] = ("sponsor", "partner", "mirror")
 PARTNER_STATUSES: tuple[str, ...] = ("prospect", "active", "paused", "ended")
+
+APPLICATION_STATUSES: tuple[str, ...] = ("pending", "approved", "rejected")
+
+# The same default the console's "new key" form uses. A person may grant more
+# on approval; the number is stored on the application so the decision shows
+# what was actually granted, not what the form once suggested.
+DEFAULT_APPLICATION_QUOTA = 1000
+MAX_APPLICANT_NAME = 80
+MAX_APPLICANT_PURPOSE = 1000
+MAX_APPLICANT_SITE = 300
+MAX_DECISION_NOTE = 500
 
 # Lowercase, digits and hyphens: a `/go/<code>` must survive being read aloud
 # over the phone and being typed into a chat window.
@@ -178,6 +190,133 @@ async def record_usage(
 def _dialect_name(session: AsyncSession) -> str:
     bind = session.get_bind()
     return bind.dialect.name if bind is not None else "postgresql"
+
+
+# ---------------------------------------------------------------------------
+# Applications
+# ---------------------------------------------------------------------------
+
+
+async def create_application(
+    session: AsyncSession,
+    *,
+    email: str,
+    name: str,
+    purpose: str,
+    site_url: str = "",
+    now: datetime | None = None,
+) -> ApiApplication:
+    """Insert a pending row. The caller commits.
+
+    The address goes through the subscriber list's normaliser, so `A@B` and
+    `a@b` cannot become two applications and "is this address already waiting"
+    remains a single indexed equality.
+    """
+    row = ApiApplication(
+        id=uuid.uuid4(),
+        email=repo_growth.normalize_email(email),
+        name=(name or "").strip()[:MAX_APPLICANT_NAME],
+        purpose=(purpose or "").strip()[:MAX_APPLICANT_PURPOSE],
+        site_url=(site_url or "").strip()[:MAX_APPLICANT_SITE],
+        status="pending",
+        note="",
+        monthly_quota=DEFAULT_APPLICATION_QUOTA,
+        created_at=now or utc_now(),
+    )
+    session.add(row)
+    await session.flush()
+    return row
+
+
+async def find_application(
+    session: AsyncSession, application_id: uuid.UUID
+) -> ApiApplication | None:
+    return await session.get(ApiApplication, application_id)
+
+
+async def find_pending_application(
+    session: AsyncSession, email: str
+) -> ApiApplication | None:
+    """The oldest pending row for this address, if one exists.
+
+    Only `pending` counts: an approved address asking again (lost key, second
+    product) is a decision for a person, and a rejected one asking again after
+    circumstances changed is the same. Deduplicating those silently would hide
+    exactly the signals the queue exists to surface.
+    """
+    normalized = repo_growth.normalize_email(email)
+    if not normalized:
+        return None
+    return await session.scalar(
+        select(ApiApplication)
+        .where(
+            ApiApplication.email == normalized, ApiApplication.status == "pending"
+        )
+        .order_by(ApiApplication.created_at)
+        .limit(1)
+    )
+
+
+async def list_applications(
+    session: AsyncSession,
+    *,
+    status: str | None = None,
+    page: int = 1,
+    size: int = 50,
+) -> tuple[list[ApiApplication], int, dict[str, int]]:
+    """One page of the queue plus per-status totals for the tabs."""
+    statement = select(ApiApplication)
+    if status and status in APPLICATION_STATUSES:
+        statement = statement.where(ApiApplication.status == status)
+
+    total = int(
+        await session.scalar(select(func.count()).select_from(statement.subquery())) or 0
+    )
+    rows = await session.execute(
+        statement.order_by(ApiApplication.created_at.desc(), ApiApplication.id)
+        .offset(max(page - 1, 0) * size)
+        .limit(size)
+    )
+
+    counts = {name: 0 for name in APPLICATION_STATUSES}
+    grouped = await session.execute(
+        select(ApiApplication.status, func.count()).group_by(ApiApplication.status)
+    )
+    for name, count in grouped.all():
+        counts[str(name)] = int(count)
+    return list(rows.scalars().all()), total, counts
+
+
+async def decide_application(
+    session: AsyncSession,
+    row: ApiApplication,
+    *,
+    status: str,
+    note: str = "",
+    key_id: uuid.UUID | None = None,
+    monthly_quota: int | None = None,
+    decided_by: str = "",
+    now: datetime | None = None,
+) -> ApiApplication:
+    """Close a pending row exactly once.
+
+    A second decision raises rather than overwriting: the endpoint turns that
+    into a 409, and the audit trail keeps the first decision as the real one.
+    """
+    if status not in ("approved", "rejected"):
+        raise ValueError(f"unknown decision: {status}")
+    if row.status != "pending":
+        raise ValueError("application already decided")
+    row.status = status
+    row.note = (note or "")[:MAX_DECISION_NOTE]
+    row.decided_at = now or utc_now()
+    row.decided_by = (decided_by or "")[:40]
+    if key_id is not None:
+        row.key_id = key_id
+    if monthly_quota is not None:
+        row.monthly_quota = max(int(monthly_quota), 0)
+    await session.flush()
+    return row
 
 
 # ---------------------------------------------------------------------------
@@ -328,18 +467,25 @@ async def record_click(
 
 
 __all__ = [
+    "APPLICATION_STATUSES",
+    "DEFAULT_APPLICATION_QUOTA",
     "KEY_MARKER",
     "KEY_PREFIX_LEN",
     "PARTNER_KINDS",
     "PARTNER_STATUSES",
     "SCOPES",
+    "create_application",
     "create_key",
     "create_partner",
+    "decide_application",
+    "find_application",
     "find_key",
     "find_key_by_hash",
     "find_partner",
     "find_partner_by_code",
+    "find_pending_application",
     "hash_key",
+    "list_applications",
     "looks_like_code",
     "month_start",
     "month_totals",

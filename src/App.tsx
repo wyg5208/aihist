@@ -459,6 +459,12 @@ export default function App() {
               >
                 收录标准
               </button>
+              <a
+                href="/api/v1/open/apply"
+                className="underline decoration-[var(--rule-strong)] underline-offset-4 hover:text-[var(--accent)]"
+              >
+                API 申请
+              </a>
               <span>数据来自公开接口 · 观点与事实以原链为准</span>
             </span>
           </p>

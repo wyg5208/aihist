@@ -611,6 +611,53 @@ export const partnersApi = {
     patch<{ ok: boolean; partner: PartnerRow }>(`/partners/${encodeURIComponent(id)}`, body),
 };
 
+/** One public application, as `GET /applications` reports it. */
+export interface ApplicationRow {
+  id: string;
+  email: string;
+  name: string;
+  /** Free text from a stranger: render as text, never as markup. */
+  purpose: string;
+  siteUrl: string;
+  status: "pending" | "approved" | "rejected" | string;
+  note: string;
+  monthlyQuota: number;
+  keyId: string | null;
+  createdAt: string | null;
+  decidedAt: string | null;
+  decidedBy: string;
+}
+
+/** `plaintext` and `email` are present on approve only. */
+export interface ApplicationDecision {
+  ok: boolean;
+  application: ApplicationRow;
+  key?: ApiKeyRow;
+  plaintext?: string;
+  email?: { configured: boolean; sent: boolean; error: string | null };
+}
+
+export const applicationsApi = {
+  list: (
+    filters: { status?: string; page?: number; size?: number },
+    signal?: AbortSignal,
+  ) =>
+    get<{
+      ok: boolean;
+      applications: ApplicationRow[];
+      total: number;
+      page: number;
+      size: number;
+      /** Per-status totals for the filter, computed before pagination. */
+      counts: Record<string, number>;
+    }>(`/applications${query({ ...filters })}`, signal),
+  /** Issues a key and mails it. The response is the only place the key exists. */
+  approve: (id: string, body: { monthlyQuota?: number; note?: string }) =>
+    post<ApplicationDecision>(`/applications/${encodeURIComponent(id)}/approve`, body),
+  reject: (id: string, body: { note: string }) =>
+    post<ApplicationDecision>(`/applications/${encodeURIComponent(id)}/reject`, body),
+};
+
 export const usersApi = {
   list: (signal?: AbortSignal) =>
     get<{ ok: boolean; items: AdminUserRow[] }>("/users", signal),

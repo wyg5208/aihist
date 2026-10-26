@@ -163,6 +163,29 @@ def api_key_record(row: Any, *, requests: int = 0, errors: int = 0) -> dict[str,
     }
 
 
+def application_record(row: Any) -> dict[str, Any]:
+    """One application. `purpose` is free text written by a stranger: the page
+    renders it as text, never as markup.
+
+    `keyId` points at the credential an approval minted, so the queue can link
+    to the key that a decision produced without a second lookup.
+    """
+    return {
+        "id": str(row.id),
+        "email": row.email or "",
+        "name": row.name or "",
+        "purpose": row.purpose or "",
+        "siteUrl": row.site_url or "",
+        "status": row.status or "pending",
+        "note": row.note or "",
+        "monthlyQuota": int(row.monthly_quota or 0),
+        "keyId": str(row.key_id) if row.key_id else None,
+        "createdAt": timestamp(row.created_at),
+        "decidedAt": timestamp(row.decided_at),
+        "decidedBy": row.decided_by or "",
+    }
+
+
 def partner_record(row: Any, *, clicks: int = 0) -> dict[str, Any]:
     return {
         "id": str(row.id),

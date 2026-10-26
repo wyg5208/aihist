@@ -18,10 +18,12 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 
 from app.api import admin as admin_api
+from app.api import admin_applications as admin_applications_api
 from app.api import admin_commercial as admin_commercial_api
 from app.api import admin_growth as admin_growth_api
 from app.api import admin_ops as admin_ops_api
 from app.api import admin_system as admin_system_api
+from app.api import apply as apply_api
 from app.api import growth as growth_api
 from app.api import open as open_api
 from app.api import public as public_api
@@ -101,6 +103,11 @@ def create_app() -> FastAPI:
     app.include_router(admin_ops_api.router, prefix="/api/v1/admin", tags=["admin"])
     app.include_router(admin_growth_api.router, prefix="/api/v1/admin", tags=["admin"])
     app.include_router(admin_commercial_api.router, prefix="/api/v1/admin", tags=["admin"])
+    # The application queue sits next to the keys it mints, but in its own module:
+    # it is the only admin surface a stranger's text reaches.
+    app.include_router(
+        admin_applications_api.router, prefix="/api/v1/admin", tags=["admin"]
+    )
     app.include_router(admin_system_api.router, prefix="/api/v1/admin", tags=["admin"])
     # Public, unauthenticated, always 204: see the module docstring for why the
     # response never varies.
@@ -111,6 +118,9 @@ def create_app() -> FastAPI:
     # Commercial surface: a keyed read API and the one tracked outbound link.
     # `/go` sits at the root because it is a link people paste, not an API path.
     app.include_router(open_api.router, prefix="/api/v1/open", tags=["open"])
+    # The application form renders its own HTML: it is reached from a link on the
+    # site, not from the SPA, and the process that stores the row serves the page.
+    app.include_router(apply_api.router, prefix="/api/v1/open", tags=["open"])
     app.include_router(redirect_api.router, tags=["redirect"])
 
     @app.get("/api/v1/health")

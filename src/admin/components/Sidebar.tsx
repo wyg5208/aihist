@@ -45,6 +45,7 @@ export const NAV: NavGroup[] = [
     items: [
       { name: "partners", label: "合作台账", permission: "manage" },
       { name: "keys", label: "开放 API", permission: "manage" },
+      { name: "applications", label: "API 申请", permission: "manage" },
     ],
   },
   {

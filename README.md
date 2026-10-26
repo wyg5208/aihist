@@ -1,6 +1,6 @@
 # AI 纪年 / AI Chronicle
 
-> **当前版本**：v0.4.0 ｜ **更新日期**：2026-10-25 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
+> **当前版本**：v0.5.0 ｜ **更新日期**：2026-10-26 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
 
 一个中文的人工智能编年史站点：记录里程碑、模型发布、研究突破与产业事件。条目来自固定公开源（OpenRouter、Hugging Face、arXiv、Hacker News、官方公告与科技媒体 RSS），经指纹去重、跨源合并与置信度计算后，还要通过规则预筛和五家不同厂商的大模型评审（至少三票同意）才入档。完整规则见 [收录标准](docs/AI纪年_收录标准_v1.0.md)。
 
@@ -165,7 +165,7 @@ scripts/export-seed.mjs                 从 functions/lib/seed.mjs 重导 seed.j
 
 ## 数据与接口
 
-数据库 16 张表（SQLite 与 PostgreSQL 共用一套模型）。档案五张：`events`、`raw_items`、`sync_runs`、`sync_state`、`review_decisions`；运营十一张：`admin_users`、`audit_log`、`page_views`、`crawl_hits`、`log_ingest_state`、`source_health`、`subscribers`、`api_keys`、`api_key_usage`、`partners`、`partner_clicks`。
+数据库 17 张表（SQLite 与 PostgreSQL 共用一套模型）。档案五张：`events`、`raw_items`、`sync_runs`、`sync_state`、`review_decisions`；运营十二张：`admin_users`、`audit_log`、`page_views`、`crawl_hits`、`log_ingest_state`、`source_health`、`subscribers`、`api_keys`、`api_key_usage`、`api_applications`、`partners`、`partner_clicks`。
 
 公开接口：
 
@@ -176,9 +176,10 @@ scripts/export-seed.mjs                 从 functions/lib/seed.mjs 重导 seed.j
 - `POST /api/v1/track`：埋点，无 Cookie、IP 只存哈希，恒返回 204
 - `POST /api/v1/subscribe`、`GET /api/v1/subscribe/confirm?token=`、`GET /api/v1/unsubscribe?token=`
 - `GET  /api/v1/open/events`、`GET /api/v1/open/events/<slug>`：需 `X-API-Key`，`OPEN_API_ENABLED=false` 时 404
+- `GET  /api/v1/open/apply`、`POST /api/v1/open/apply`：申请页（后端渲染的 HTML），同一开关，未开放时 404
 - `GET  /go/<code>`：合作方跳转与点击计数，302
 
-管理接口（`/api/v1/admin/*`，需会话与对应权限）：登录/登出/会话、改密、审计日志、触发同步（202）、运行列表与详情、暂缓队列、总览、来源健康、评审席位、流量、条目列表与详情、条目处置、订阅者（含 CSV 导出）、API Key 签发与吊销、合作方统计与配置、账号管理、配置体检。
+管理接口（`/api/v1/admin/*`，需会话与对应权限）：登录/登出/会话、改密、审计日志、触发同步（202）、运行列表与详情、暂缓队列、总览、来源健康、评审席位、流量、条目列表与详情、条目处置、订阅者（含 CSV 导出）、API Key 签发与吊销、开放 API 申请队列（列表/批准签发/拒绝）、合作方统计与配置、账号管理、配置体检。
 
 公开的 `/timeline`、`/status`、`/events` 字段集由 `backend/tests/test_api_contract.py` 严格断言，新字段一律只进 `/api/v1/admin/*`。
 
@@ -236,6 +237,8 @@ python -m app.cli create-owner --username you
 ```
 
 `ingest-access-log --dry-run` 只计数、不写库、不动 offset，用来校验日志格式是否还对得上（nginx 与 Caddy 样例在 `dev/fixtures/access/`）。增量读靠 `log_ingest_state` 的字节偏移，日志变短就当作轮转并从零重读；没有换行符的尾行留给下一轮，避免服务器半写时丢整行。
+
+开放数据 API 走「申请—审核—签发」，不建账号体系：站点页脚的「API 申请」指向 `/api/v1/open/apply`（后端渲染的 HTML 表单，与 `OPEN_API_ENABLED` 同开关），提交只落一条 `api_applications` 的 `pending` 行；管理台 `#/applications` 读完用途后，批准即签发只读密钥并写审计，拒绝也保留记录与理由。邮件是可选通道：配置 `SMTP_HOST` 后密钥随批准邮件发出（纯文本，含配额、端点与规则），未配置时明文只在批准响应里出现一次，由运营手动转发——两种情况下签发都不依赖邮件是否成功。表单侧只有两件廉价防护：同一地址每小时 5 次提交上限，以及浏览器看不见的诱饵字段（命中者照常看到成功页，但不落库）。
 
 ## 版本管理
 

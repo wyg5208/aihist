@@ -21,9 +21,9 @@ from app.db.session import SQLITE_BUSY_TIMEOUT_MS, apply_sqlite_pragmas
 
 BACKEND = Path(__file__).resolve().parent.parent
 
-# 0001 (editorial) + 0002 (admin console). The second group is additive; the
-# first five must keep their exact shape because the public API contract and the
-# 158-row curated seed are frozen against them.
+# 0001 (editorial) + 0002 (admin console) + 0003 (application queue). The
+# second group is additive; the first five must keep their exact shape because
+# the public API contract and the 158-row curated seed are frozen against them.
 EXPECTED_TABLES = {
     "events",
     "raw_items",
@@ -41,6 +41,7 @@ EXPECTED_TABLES = {
     "api_key_usage",
     "partners",
     "partner_clicks",
+    "api_applications",
 }
 
 EXPECTED_INDEXES = {
@@ -73,6 +74,8 @@ EXPECTED_INDEXES = {
     "ux_api_key_usage_key_day",
     "ux_partners_code",
     "ix_partner_clicks_partner_day",
+    "ix_api_applications_status",
+    "ix_api_applications_email",
 }
 
 # Columns added by 0002 to tables that already shipped in 0001. Asserted

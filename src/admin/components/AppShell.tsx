@@ -9,6 +9,7 @@ import { Sidebar, NAV, NAV_NAMES } from "./Sidebar";
 import { TopBar } from "./TopBar";
 import { Overview } from "../pages/Overview";
 import { ApiKeys } from "../pages/ApiKeys";
+import { Applications } from "../pages/Applications";
 import { Audit } from "../pages/Audit";
 import { Content } from "../pages/Content";
 import { Editorial } from "../pages/Editorial";
@@ -99,6 +100,8 @@ function pageFor(name: string): ReactNode {
       return <Partners />;
     case "keys":
       return <ApiKeys />;
+    case "applications":
+      return <Applications />;
     case "users":
       return <Users />;
     case "audit":

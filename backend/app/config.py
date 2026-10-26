@@ -97,6 +97,18 @@ class Settings(BaseSettings):
     # a deployment detail.
     open_api_enabled: bool = False
 
+    # Outbound mail, used for exactly one message: an approved API key. An empty
+    # host means "no mailer" — the console then shows the plaintext once and the
+    # operator forwards it by hand, which keeps approval independent of a mail
+    # server being reachable. STARTTLS is off for port 465 (implicit TLS) and on
+    # for 587 (submission).
+    smtp_host: str = ""
+    smtp_port: int = 465
+    smtp_user: str = ""
+    smtp_password: str = ""
+    smtp_from: str = ""
+    smtp_starttls: bool = False
+
 
 @lru_cache
 def get_settings() -> Settings:
