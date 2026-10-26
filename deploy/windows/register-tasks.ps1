@@ -1,7 +1,7 @@
 # Registers the four recurring jobs. This is the Windows replacement for
 # deploy/cron.d/aihist: there is no cron on Windows Server.
 #
-#   aihist-sync       every 6 hours   (the only thing that ever writes new events)
+#   aihist-sync       daily 01:05     (the only thing that ever writes new events)
 #   aihist-backup     daily 03:20     (SQLite backup API + rotation)
 #   aihist-analytics  hourly          (access log -> crawl_hits)
 #   aihist-prune      weekly, Sun      (analytics retention)
@@ -13,12 +13,12 @@
 #
 # usage (elevated):
 #   powershell -ExecutionPolicy Bypass -File deploy\windows\register-tasks.ps1
-#   ... -SyncHours 4 -BackupAt 02:30 -PruneAt 04:40
+#   ... -SyncAt 00:20 -BackupAt 02:30 -PruneAt 04:40
 
 [CmdletBinding()]
 param(
     [string]$AppDir = "D:\srv\aihist",
-    [int]$SyncHours = 6,
+    [string]$SyncAt = "01:05",
     [string]$BackupAt = "03:20",
     [string]$PruneAt = "04:40"
 )
@@ -54,13 +54,12 @@ function New-AihistSettings {
         -ExecutionTimeLimit (New-TimeSpan -Hours 1)
 }
 
-Write-Host "==> aihist-sync (every $SyncHours h)"
-# Five minutes past the hour, so it never collides with the backup at :20.
-$startAt = (Get-Date).Date.AddHours(1).AddMinutes(5)
-$syncTrigger = New-ScheduledTaskTrigger `
-    -Once -At $startAt `
-    -RepetitionInterval (New-TimeSpan -Hours $SyncHours) `
-    -RepetitionDuration (New-TimeSpan -Days 3650)
+Write-Host "==> aihist-sync (daily at $SyncAt)"
+# Daily and anchored to a clock time, not "N hours after the installer happened to
+# run": STALE_AFTER_HOURS in app/api/public.py (26 hours) and the admin `stale`
+# alert are both sized against this cadence. Moving this trigger means moving that
+# number too, otherwise /api/v1/status starts calling a healthy site stale.
+$syncTrigger = New-ScheduledTaskTrigger -Daily -At $SyncAt
 
 Register-ScheduledTask `
     -TaskName "aihist-sync" `
@@ -84,7 +83,8 @@ Register-ScheduledTask `
     -Force | Out-Null
 
 Write-Host "==> aihist-analytics (hourly)"
-# Seventeen minutes past, so it never lands on top of the sync at :05.
+# Seventeen minutes past the hour. The daily sync owns :05, so the two never
+# overlap even when the sync runs long.
 $analyticsStart = (Get-Date).Date.AddHours(1).AddMinutes(17)
 $analyticsTrigger = New-ScheduledTaskTrigger `
     -Once -At $analyticsStart `

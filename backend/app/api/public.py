@@ -28,7 +28,14 @@ from app.config import get_settings
 router = APIRouter()
 
 CONFIDENCE_KEYS = frozenset({"verified", "likely", "single"})
-FRESH_HOURS = 6
+# `stale` answers exactly one question — has the scheduler stopped producing
+# successes — so it is measured against the real cadence, not against a generic
+# "recently". Collection runs once a day at 01:05
+# (deploy/windows/register-tasks.ps1, deploy/cron.d/aihist); a six-hour window
+# made a perfectly healthy site report stale=true for eighteen hours of every
+# day. Twenty-six hours is the daily gap plus two hours of grace: a run that
+# lands late does not flip the flag, a missed day does.
+STALE_AFTER_HOURS = 26
 MAX_LIMIT = 1200
 
 
@@ -43,13 +50,13 @@ def _as_int(value: str | None, minimum: int, maximum: int) -> int | None:
     return parsed
 
 
-def _is_fresh(state: repo_sync.SyncState | None) -> bool:
+def _is_stale(state: repo_sync.SyncState | None) -> bool:
     if state is None or state.last_success_at is None:
-        return False
+        return True
     stamp = state.last_success_at
     if stamp.tzinfo is None:
         stamp = stamp.replace(tzinfo=timezone.utc)
-    return (datetime.now(timezone.utc) - stamp).total_seconds() < FRESH_HOURS * 3600
+    return (datetime.now(timezone.utc) - stamp).total_seconds() >= STALE_AFTER_HOURS * 3600
 
 
 def _sync_summary(state: repo_sync.SyncState | None) -> dict:
@@ -60,7 +67,7 @@ def _sync_summary(state: repo_sync.SyncState | None) -> dict:
         "lastAttemptAt": iso(state.last_attempt_at) if state else None,
         "lastStatus": (state.last_status if state else None) or None,
         "running": repo_sync.lease_is_held(state, int(time.time() * 1000)),
-        "stale": not _is_fresh(state),
+        "stale": _is_stale(state),
         "seedVersion": (state.seed_version if state else None) or None,
     }
 

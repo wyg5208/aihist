@@ -53,7 +53,12 @@ router = APIRouter()
 
 MANUAL_TRIGGER = "manual"
 AUTO_TRIGGER = "auto"
-FRESH_HOURS = 6
+# An `?trigger=auto` call is a no-op when a run already succeeded very recently,
+# so a duplicated cron firing does not collect twice. This is a dedupe guard, not
+# the freshness signal: it has to stay far below the collection cadence (daily
+# 01:05), otherwise the scheduled run skips itself every day. The public `stale`
+# flag uses a different, cadence-sized window in app/api/public.py.
+DUE_HOURS = 2
 
 # `asyncio.create_task` results are only weakly referenced; keep them alive for
 # the lifetime of the process so a long run is not garbage collected midway.
@@ -62,13 +67,13 @@ _background: set[asyncio.Task[Any]] = set()
 _hasher = PasswordHasher()
 
 
-def _is_fresh(state: repo_sync.SyncState | None) -> bool:
+def _recently_succeeded(state: repo_sync.SyncState | None) -> bool:
     if state is None or state.last_success_at is None:
         return False
     stamp = state.last_success_at
     if stamp.tzinfo is None:
         stamp = stamp.replace(tzinfo=timezone.utc)
-    return (datetime.now(timezone.utc) - stamp).total_seconds() < FRESH_HOURS * 3600
+    return (datetime.now(timezone.utc) - stamp).total_seconds() < DUE_HOURS * 3600
 
 
 def _as_utc(stamp: datetime | None) -> datetime | None:
@@ -294,7 +299,7 @@ async def trigger_sync(
         raise HTTPException(
             status_code=409, detail="sync_busy", headers={"retry-after": "20"}
         )
-    if trigger == AUTO_TRIGGER and _is_fresh(state):
+    if trigger == AUTO_TRIGGER and _recently_succeeded(state):
         return SyncResponse(triggered=False, status="not_due", run_id=None, result=None)
 
     run_id = uuid.uuid4()

@@ -15,7 +15,14 @@ import { isSlug } from "./lib/slug.mjs";
 import { seriesFor, vendorFor } from "./lib/taxonomy.mjs";
 import { runSync } from "./lib/pipeline.mjs";
 
-const FRESH_HOURS = 6;
+// `stale` is measured against the collection cadence (daily 01:05), not against
+// a generic "recently": see STALE_AFTER_HOURS in app/api/public.py for the same
+// number and the reasoning behind it.
+const STALE_AFTER_HOURS = 26;
+// Auto triggers are deduplicated in a much shorter window. One number cannot
+// answer both "did we just run" and "is the scheduler broken": a 26-hour dedupe
+// window would make tomorrow's cron call itself `not_due` forever.
+const DUE_HOURS = 2;
 const MANUAL_COOLDOWN_MS = 3 * 60_000;
 const CONFIDENCE_KEYS = new Set(["verified", "likely", "single"]);
 const KNOWN_ACTIONS = new Set(["timeline", "event", "status", "standard", "sync"]);
@@ -118,10 +125,16 @@ function runItem(row) {
   };
 }
 
-function isFresh(state) {
+function isStale(state) {
+  if (!state?.last_success_at) return true;
+  const stamp = Date.parse(state.last_success_at);
+  return !Number.isFinite(stamp) || Date.now() - stamp >= STALE_AFTER_HOURS * 3600_000;
+}
+
+function ranRecently(state) {
   if (!state?.last_success_at) return false;
   const stamp = Date.parse(state.last_success_at);
-  return Number.isFinite(stamp) && Date.now() - stamp < FRESH_HOURS * 3600_000;
+  return Number.isFinite(stamp) && Date.now() - stamp < DUE_HOURS * 3600_000;
 }
 
 function syncSummary(state) {
@@ -130,7 +143,7 @@ function syncSummary(state) {
     lastAttemptAt: state?.last_attempt_at || null,
     lastStatus: state?.last_status || null,
     running: leaseIsHeld(state),
-    stale: !isFresh(state),
+    stale: isStale(state),
     seedVersion: state?.seed_version || null,
   };
 }
@@ -230,7 +243,7 @@ async function sync({ request, supabase, runtime }) {
     return fail("sync_busy", 409, { "retry-after": "20" });
   }
 
-  if (trigger === "auto" && isFresh(state)) {
+  if (trigger === "auto" && ranRecently(state)) {
     return json({ ok: true, triggered: false, status: "not_due", runId: null, result: null });
   }
 

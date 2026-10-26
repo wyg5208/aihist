@@ -52,9 +52,11 @@ from app.schemas.admin import (
     partner_record,
 )
 
-# A run is "stale" once the last success is older than this. The cron runs
-# hourly, so eight hours means several consecutive misses.
-STALE_HOURS = 8
+# A run is "stale" once the last success is older than this. Collection is daily
+# (01:05), so 26 hours means a whole missed day — not a single late run. Keep it
+# in step with STALE_AFTER_HOURS in app/api/public.py: both answer "is the
+# scheduler broken", and two different answers would be worse than none.
+STALE_HOURS = 26
 HOLDS_BACKLOG_LIMIT = 20
 SOURCE_FAILURE_LIMIT = 3
 

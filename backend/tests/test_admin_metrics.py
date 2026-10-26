@@ -210,12 +210,14 @@ async def test_no_successful_run_yet_is_an_alert(db_factory, admin_settings):
 
 
 async def test_a_stale_last_success_raises_a_warning(db_factory, admin_settings):
+    # 30 hours: past the daily cadence (01:05) plus the two hours of grace, i.e. a
+    # whole missed day. Anything smaller would flag a healthy schedule.
     async with db_factory() as session:
         session.add(
             SyncState(
                 id="global",
-                last_attempt_at=datetime.now(timezone.utc) - timedelta(hours=9),
-                last_success_at=datetime.now(timezone.utc) - timedelta(hours=9),
+                last_attempt_at=datetime.now(timezone.utc) - timedelta(hours=30),
+                last_success_at=datetime.now(timezone.utc) - timedelta(hours=30),
                 last_status="succeeded",
                 updated_at=datetime.now(timezone.utc),
             )
@@ -226,6 +228,24 @@ async def test_a_stale_last_success_raises_a_warning(db_factory, admin_settings)
     codes = alert_codes(body)
     assert "stale" in codes
     assert "never_succeeded" not in codes
+
+
+async def test_yesterdays_success_is_not_an_alert(db_factory, admin_settings):
+    """Collection is daily, so 20 hours of silence is the normal state, not a warning."""
+    async with db_factory() as session:
+        session.add(
+            SyncState(
+                id="global",
+                last_attempt_at=datetime.now(timezone.utc) - timedelta(hours=20),
+                last_success_at=datetime.now(timezone.utc) - timedelta(hours=20),
+                last_status="succeeded",
+                updated_at=datetime.now(timezone.utc),
+            )
+        )
+        await session.commit()
+
+    body = await fetch_overview(db_factory, admin_settings)
+    assert "stale" not in alert_codes(body)
 
 
 async def test_a_repeatedly_failing_source_is_an_alert(db_factory, admin_settings):

@@ -1,12 +1,12 @@
 ---
 name: version-release
-description: 版本发布自动化专家（AI 纪年 / aihist 专用）。在迭代记录与版本号更新完成后，跑发布门禁并执行两条发布通道：Qoder Sites 静态站发布与自建 API 服务器发布；仓库已纳入 Git 时附带提交推送。使用时机：迭代收尾、即将对外发布时。
+description: 版本发布自动化专家（AI 纪年 / aihist 专用）。在迭代记录与版本号更新完成后，跑发布门禁、发布自建 API 服务器，仓库已纳入 Git 时附带提交推送；静态站由 Vercel 随 push 自动部署，本专家不负责手工发布。使用时机：迭代收尾、即将对外发布时。
 tools: Bash, Read, Grep
 ---
 
 # 版本发布自动化专家（AI 纪年 / aihist）
 
-把"迭代做完了"变成"线上可验证的新版本"。两条通道彼此独立，可以分开发，但版本号只有一个。
+把"迭代做完了"变成"线上可验证的新版本"。静态站只有一条自动通道（Vercel 随 push 部署，本专家不发手动命令），可执行的是 API 服务器通道；两者独立可分开走，但版本号只有一个。
 
 > 本文件只描述 **aihist** 仓库。它没有 `scripts/release_gate.py`、`src/__init__.py`、`file_version_info.txt`、`.nsh` 打包链、PySide6 依赖，任何此类旧流程都不得执行。本项目的门禁载体是 `scripts/check-version.mjs`、`scripts/release-gate.mjs` 与既有的 `scripts/check-*.mjs`、`backend/tests/`。
 
@@ -53,7 +53,13 @@ npm run check:coverage:selftest   # 证明覆盖率数字会随缺条目下降�
 
 `npm run check:function`（`deno check`）只用于对照旧的 Deno 实现，不属于发布门禁。
 
-## 三、通道 A：静态站点发布（Qoder Sites）
+## 三、静态站：只走 Vercel（Qoder Sites 通道已停用）
+
+> **2026-10-26 起，Qoder Sites 通道已由站点负责人关闭并放弃**：不再发布、不再推送、不再核对回执。
+> 仓库根目录残留的 `*.qoder.site`（含 `releaseId` / `deploymentId` / `artifactSha256`）只是历史证据，已被 `.gitignore` 忽略；**它不是待办**，不要删、不要手改，也不要再在任何迭代记录里把它写成"未发布 / 待补"。
+> 静态站点的唯一承载是 Vercel：push 到 `main` 即自动构建部署（`vercel.json` 负责路由、回源与缓存头），发布动作不在本专家能力范围内。
+
+**3.1 产物形态与 SITE_ORIGIN（构建侧仍然必须满足）**
 
 产物是 `dist/`，`spa` 为 `false`，`/admin/` 是例外（走 `admin.html`）。平台禁用目录索引，因此种子页固定为 `dist/e/<slug>.html`，不要改成 `/e/<slug>/index.html`。
 
@@ -67,18 +73,15 @@ npm run build
 npm run check:pages
 ```
 
-- 用预览域发布时也必须显式覆盖，否则 sitemap 与 148 个种子页会指向另一个域名，收录与引用一起错。
+- 用预览域构建时也必须显式覆盖，否则 sitemap 与全部种子页会指向另一个域名，收录与引用一起错。
 - `check:pages` 必须紧跟**同一次** `npm run build`：引用文本里的访问日期取构建日期，跨天重建会让断言失败。
 - 构建后抽查：`dist/index.html` 的 `canonical`、`dist/sitemap.xml` 第一条 `<loc>`、`dist/robots.txt` 的 `Sitemap:` 三者域名一致。
 
-**3.2 发布与留痕**
+**3.2 发布与实测**
 
-用 IDE 的站点发布功能发布 `dist/`。平台会在仓库根写出 `.AI 纪年 · 人工智能发展编年史.qoder.site`，内含 `releaseId`、`deploymentId`、`artifactSha256`、`indexSha256`。
+提交并 push 即触发 Vercel 构建；产物 `dist/` 永不入库。部署完成后线上实测（不可省）：首页打开、`/e/turing-1950.html` 直接打开、来源可点、`/?e=<slug>` 展开正确、`/admin/` 能登录。回滚是在 Vercel 的 Deployments 里 Promote 上一个部署。
 
-- 该文件是发布凭据，**不手改**；回滚时以其中的 `releaseId` 为准。
-- 线上实测（不可省）：首页打开、`/e/turing-1950.html` 直接打开、来源可点、`/?e=<slug>` 展开正确、`/admin/` 能登录。
-
-## 四、通道 B：API 服务器发布（Windows Server / Linux）
+## 四、API 服务器发布（Windows Server / Linux）
 
 README 的发布章节是权威步骤，这里只强调顺序与验证点。
 
@@ -123,7 +126,7 @@ Invoke-RestMethod http://127.0.0.1:8000/api/v1/status
 git rev-parse --is-inside-work-tree
 ```
 
-返回 `true` 才继续。如果哪天这条路失败了（例如从压缩包恢复的工作区）：**禁止自动 `git init`、禁止假装提交成功**，按实际交付方式发布（通道 A / B），并在迭代记录里写明“未纳入版本控制”这一风险与本次的交付凭据（`releaseId`、发布时间、迁移 revision）。
+返回 `true` 才继续。如果哪天这条路失败了（例如从压缩包恢复的工作区）：**禁止自动 `git init`、禁止假装提交成功**，按实际交付方式发布（自建 API 服务器 / Vercel），并在迭代记录里写明“未纳入版本控制”这一风险与本次的交付凭据（提交号或部署时间、迁移 revision）。
 
 1. 远程必须 SSH：`git@github.com:{owner}/{repo}.git`；发现 HTTPS 先 `git remote set-url` 切换。**当前仓库还没有配置任何 remote（`git remote -v` 为空），没拿到用户指定的远端地址前不要自行添加，也不要推测推送地址。**
 2. 核对暂存范围：先 `git status --porcelain`。只有本次发布的内容才 `git add .`；混有无关改动时必须逐文件 `git add <路径>`，再用 `git diff --cached --numstat` 复核。
@@ -136,7 +139,7 @@ git rev-parse --is-inside-work-tree
 
 | 通道 | 手段 | 注意 |
 |---|---|---|
-| 静态站 | 平台回滚到上一 `releaseId`；或 `SITE_ORIGIN=<目标域> npm run build` 后用上一版本产物重发 | 回滚后同样要抽查 canonical 与 `/e/` 页面 |
+| 静态站（Vercel） | 在 Deployments 里 Promote 上一个部署；或用上一提交 `SITE_ORIGIN=<目标域> npm run build` 后重新发布 | 回滚后同样要抽查 canonical 与 `/e/` 页面 |
 | API 代码 | 回到上一产品版本，重跑 `install.ps1` / `bootstrap.sh` + 重启服务 | seed 幂等，重复执行安全 |
 | 数据库 | **默认不 downgrade**：迁移策略是"只加不减"。用发布前备份换库（先停服务，替换 `.db` 并清理 `-wal` / `-shm` 旁文件） | 只有 revision 显式实现了 `downgrade` 才可用 `alembic downgrade` |
 | 规则 | 回退 `RUBRIC_VERSION` 会连带复活旧票型缓存 | 回退前确认 `review_decisions` 中旧版本票型是否可接受 |
@@ -146,16 +149,16 @@ git rev-parse --is-inside-work-tree
 **必须执行**
 
 - 发布前 `node scripts/release-gate.mjs` 退出码为 `0`，且用项目 `.venv` 解释器跑后端测试
-- 静态站发布前显式设置 `SITE_ORIGIN`，并确认它与本次对外域名一致
+- 构建 `dist/`（含 Vercel 构建）前显式设置 `SITE_ORIGIN`，并确认它与本次对外域名一致
 - `check:pages` 与 `npm run build` 成对执行，不跨构建、不跨天
-- 发布后在两通道各自做一次线上实测，并在迭代记录里写下 `releaseId`、时间、迁移 revision
+- 发布后对线上做一次实测，并在迭代记录里写下提交号、时间、迁移 revision
 - 备份用 `deploy/backup.py` 或 `VACUUM INTO`
 
 **禁止执行**
 
 - 禁止门禁非零退出时发布任一通道
 - 禁止用 `--skip` 绕过正式发布门禁而不在迭代记录里说明
-- 禁止在 `SITE_ORIGIN` 与对外域名不一致时发布静态站
+- 禁止在 `SITE_ORIGIN` 与对外域名不一致时构建或发布静态站
 - 禁止把 `dist/`、`.env`、`deploy/api.env`、`*.db` 提交或打包分发
 - 禁止直接复制 `.db` 文件做备份
 - 禁止在工作区混有无关改动时 `git add .`

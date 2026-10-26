@@ -1,10 +1,10 @@
 # AI 纪年 / AI Chronicle
 
-> **当前版本**：v0.6.2 ｜ **更新日期**：2026-10-26 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
+> **当前版本**：v0.6.3 ｜ **更新日期**：2026-10-26 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
 
 一个中文的人工智能编年史站点：记录里程碑、模型发布、研究突破与产业事件。条目来自固定公开源（OpenRouter、Hugging Face、arXiv、Hacker News、官方公告与科技媒体 RSS），经指纹去重、跨源合并与置信度计算后，还要通过规则预筛和五家不同厂商的大模型评审（至少三票同意）才入档。完整规则见 [收录标准](docs/AI纪年_收录标准_v1.0.md)。
 
-采集与访问完全解耦：后台定时任务每 6 小时跑一次，管理台可手动触发，浏览页面不会发起任何同步。未经评审的条目一律暂缓，不会退回"没人看过就发布"的新闻流。
+采集与访问完全解耦：后台定时任务每天 01:05 跑一次，管理台可手动触发，浏览页面不会发起任何同步。未经评审的条目一律暂缓，不会退回"没人看过就发布"的新闻流。
 
 ## 站点形态
 
@@ -26,7 +26,7 @@
 | 数据库 | SQLite（默认，单文件）/ PostgreSQL（改 `DATABASE_URL` 即可） |
 | 构建 | `tsc --noEmit` → Vite → `scripts/build.mjs` → `build-pages.mjs`（种子静态页 + sitemap + robots + JSON-LD） |
 | 测试 | 后端 `pytest`（244 项，全部跑在 SQLite 上）；前端无单测，用 `scripts/check-*.mjs` 做行为断言 |
-| 部署 | 前端：Vercel（根目录 `vercel.json`，回源 `api.aihist.net`）或 Qoder Sites；后端：Windows Server（`deploy/windows/*.ps1` + Caddy）或 Linux（systemd + nginx + cron） |
+| 部署 | 前端：Vercel（根目录 `vercel.json`，回源 `api.aihist.net`）；后端：Windows Server（`deploy/windows/*.ps1` + Caddy）或 Linux（systemd + nginx + cron） |
 
 ## 本地开发
 
@@ -277,14 +277,12 @@ node scripts/release-gate.mjs      # G0 版本一致 → 构建 → 静态页 �
 
 退出码为 0 才可发布；`--skip` 只用于日常自测，对外发布不得跳过。
 
-三条通道彼此独立，可以分开发，但版本号只有一个：
+两条通道彼此独立，可以分开发，但版本号只有一个：
 
-- **静态站**（Qoder Sites）：构建产物 `dist/`，`spa` 为 `false`（`/admin/` 是例外，走 `admin.html`）。发布回执写入根目录 `*.qoder.site`（含 `releaseId` / `deploymentId` / `artifactSha256`），该文件已被 `.gitignore` 忽略；回滚即用回执里的 `releaseId` 退回上一版。
+- ~~**静态站**（Qoder Sites）~~：**2026-10-26 已停用**。该通道已由站点负责人关闭，不再发布、不再推送、不再核对回执；根目录的 `*.qoder.site` 只是历史凭据（已被 `.gitignore` 忽略），不是待办。静态站只走 Vercel。
 - **静态站**（Vercel）：`vercel.json` 把 nginx 的路由规则复刻到平台侧——`/admin` 与 `/e/<slug>` 的 rewrite、`/api` 与 `/go` 回源 `https://api.aihist.net`、assets 一年 immutable、`/e/` 七天、`/admin` 加 `X-Robots-Tag`。构建命令仍是 `npm run build`，产物 `dist`，`cleanUrls` 必须保持 `false`：canonical 与 sitemap 里的规范地址带 `.html`，开了 `cleanUrls` 会把 159 条 URL（158 个种子页 + 首页）一起 308 掉。
 - **API 服务器**：Windows Server 用 `deploy\windows\install.ps1 -ApiHost api.aihist.net` → `install-service.ps1` → `register-tasks.ps1` → `switch-caddy.ps1`；Linux 用 `deploy/bootstrap.sh` → `aihist-api.service` → `cron.d/aihist`。`install.ps1` 默认不构建 `dist\`（前端归 Vercel），仍要整站自托管时加 `-BuildSite`；`-SiteOrigin` 必须等于 api.env 里的 `SITE_ORIGIN`，否则直接中断——订阅确认链接与来源分类都从它拼出来。`switch-caddy.ps1` 把 Caddy 从「全站」换成 `Caddyfile.api`（只留 `/api` 与 `/go`，其余硬 404）：先 `caddy validate`、再备份旧文件、最后重启并探活，回滚命令由它自己打印。发布后用 `GET /api/v1/status` 核对 `seedVersion` 与 `panel.configured`，用 `GET /api/v1/standard` 核对 `rubricVersion` / `panelSize` / `minVotes` / `includeScore`。
 
-前端上 Vercel 时后端不搬家：SQLite 要在本机固定磁盘、采集是 6 小时的定时任务、租约与 track 限流都是进程内状态，这些都不成立在 Serverless 上。所以 `api.aihist.net` 只暴露两个前缀（`deploy/windows/Caddyfile.api`，其余路径硬 404），Vercel 用 rewrite 做服务端回源，浏览器始终只看 `aihist.net`，`src/api.ts` 的 `BASE = "/api/v1"` 与管理台的 host-only Cookie 都不用改。两个必须记住的代价：`/api` 上的 `CDN-Cache-Control: no-store` 不能删，Vercel 会按上游响应缓存 external rewrite，管理台会读到旧数据；`/e/<slug>.html` 的访问记录不再落在本机反代日志里，`ingest-access-log` 的 `crawl_hits` 链路会断（`switch-caddy.ps1` 结尾会比对 `ANALYTICS_LOG_PATH`，指向旧的 `access.log` 时告警）。
-
-已知待办：本地构建的 canonical 是 `https://aihist.net/`，而托管侧回执记录的 canonical 落在 `*.qoder.zone`，两者尚未统一，正式对外发布前需要把 `SITE_ORIGIN` 与实际域名对齐。
+前端上 Vercel 时后端不搬家：SQLite 要在本机固定磁盘、采集是每天 01:05 的定时任务、租约与 track 限流都是进程内状态，这些都不成立在 Serverless 上。所以 `api.aihist.net` 只暴露两个前缀（`deploy/windows/Caddyfile.api`，其余路径硬 404），Vercel 用 rewrite 做服务端回源，浏览器始终只看 `aihist.net`，`src/api.ts` 的 `BASE = "/api/v1"` 与管理台的 host-only Cookie 都不用改。两个必须记住的代价：`/api` 上的 `CDN-Cache-Control: no-store` 不能删，Vercel 会按上游响应缓存 external rewrite，管理台会读到旧数据；`/e/<slug>.html` 的访问记录不再落在本机反代日志里，`ingest-access-log` 的 `crawl_hits` 链路会断（`switch-caddy.ps1` 结尾会比对 `ANALYTICS_LOG_PATH`，指向旧的 `access.log` 时告警）。
 
 来源归属与第三方许可证见 `PROVENANCE.md` 和 `vendor/`。

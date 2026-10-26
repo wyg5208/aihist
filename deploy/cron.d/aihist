@@ -12,9 +12,12 @@ SHELL=/bin/bash
 PATH=/usr/local/bin:/usr/bin:/bin
 MAILTO=""
 
-# Every six hours. The trigger is `auto`, so a run that already succeeded within
-# the freshness window returns `not_due` instead of collecting twice.
-0 */6 * * * aihist /srv/aihist/deploy/run-sync.sh auto >> /var/log/aihist/sync.log 2>&1
+# Daily at 01:05, the same slot as the Windows task (deploy/windows/register-tasks.ps1).
+# The cadence and STALE_AFTER_HOURS in app/api/public.py are one decision: a window
+# shorter than the gap reports a healthy site as stale all day, a window longer than
+# the gap hides a dead scheduler. Move this line, move that number.
+# The trigger is `auto`, so a second firing within two hours is a `not_due` no-op.
+5 1 * * * aihist /srv/aihist/deploy/run-sync.sh auto >> /var/log/aihist/sync.log 2>&1
 
 # Nightly compressed dump, 14 day retention.
 20 3 * * * aihist /srv/aihist/deploy/backup.sh >> /var/log/aihist/backup.log 2>&1
