@@ -35,6 +35,7 @@ node scripts/release-gate.mjs
 | **G0** 版本一致性 | `package.json` / `backend/pyproject.toml` / `README.md` 顶部三处产品版本不一致 | `scripts/check-version.mjs` |
 | **G1** 构建 | TypeScript 类型错误、Vite 构建失败、种子静态页/sitemap/robots 生成失败 | `npm run build`（`tsc --noEmit` + `scripts/build.mjs` + `build-pages.mjs`） |
 | **G2** 静态页 | canonical / OG / JSON-LD / 来源链接 / 引用格式 / sitemap 与 `SITE_ORIGIN` 不一致 | `npm run check:pages` |
+| **G2b** 检查器自检 | `check:pages` 本身失效却仍报绿（篡改副本必须能被抓出） | `npm run check:pages:selftest` |
 | **G3** 采集管线 | 源解析、聚类、指纹去重、重复同步的幂等性 | `npm run check:pipeline` |
 | **G4** 收录门槛 | 规则预筛分、票型聚合、fail-closed、历史审计、公开接口结构 | `npm run check:editorial` |
 | **G5** 覆盖率 | 基准集总量/年代/厂商/类目/高重要度分层的阈值 | `npm run check:coverage` |
@@ -42,12 +43,11 @@ node scripts/release-gate.mjs
 
 退出码：`0` 全绿可发布；`1` 有红灯，停下；`2` 门禁跑不起来（缺解释器、`--skip` 写了不存在的步骤、`--from` 写错）。摘要行里的 `failed (exit N)` 是**子命令自己的退出码**，例如 `pytest` 收集错误也会返回 `2`，不要把它当成门禁参数错误。
 
-**`--skip` 的使用边界**：日常自测可以跳过 `G5`（覆盖率，要跑完整离线同步）或 `G6`（后端测试，本机约 30 秒）；**对外发布禁止 skip**，确需跳过必须在迭代记录的“验证与门禁结果”里写明原因与补偿验证。本机实测全套约 40 秒，其中 `G6` 占大头。
+**`--skip` 的使用边界**：日常自测可以跳过 `G5`（覆盖率，要跑完整离线同步）或 `G6`（后端测试，本机约 105 秒）；**对外发布禁止 skip**，确需跳过必须在迭代记录的“验证与门禁结果”里写明原因与补偿验证。本机实测全套约 135 秒（G0 0.1 / G1 11 / G2 0.8 / G2b 12 / G3 1.6 / G4 2.5 / G5 1.1 / G6 105），G6 占八成。
 
-**检查器自检**（不在 release-gate 内，改动检查器本身后必跑，常规发布前建议跑一次）：
+**检查器自检**：`check:pages` 的反例自检已经作为 **G2b** 进入门禁（它需要 G1 刚构出的 `dist/`，所以紧跟 G2）。`check:coverage:selftest` 仍不在门禁内，改动 `coverage.mjs` / 阈值逻辑后必须手跑：
 
 ```powershell
-npm run check:pages:selftest      # 用篡改副本证明 check:pages 会失败
 npm run check:coverage:selftest   # 证明覆盖率数字会随缺条目下降、阈值失败时退出码非零
 ```
 
@@ -170,6 +170,7 @@ git rev-parse --is-inside-work-tree
 | G1 失败于 `tsc --noEmit` | 代码 | 修类型错误；不要加 `// @ts-ignore` 掩盖 |
 | G2 失败于 canonical / 引用文本 | 构建参数 | 多数是 `SITE_ORIGIN` 没设或与页面域名不一致；确认后重建 |
 | G2 失败于"页面不存在" | 产物陈旧 | `dist/` 没重建或只删了 `e/`；重跑 `npm run build` |
+| G2b 失败于“sitemap: expected N urls” | 夹具漂移或真缺页 | 先看 N 是否等于本版种子数 + 1；期望值应是派生值，若自测文件里又出现写死的数字，把它改回去而不是改种子 |
 | G3/G4 失败 | 逻辑或夹具 | 先确认是否改过 `functions/lib/*`：改过就重导 golden，没改过就是实现错 |
 | G4 失败且涉及席位/阈值 | 规则漂移 | 核对 `rules.py` 与 `functions/lib/editorial.mjs` 的 `RUBRIC_VERSION` / `PANEL_SIZE` 是否已同步（当前存在 `chronicle-v2` vs `chronicle-v1` 的已知偏差） |
 | G5 阈值不达标 | 内容缺口 | 补种子或修匹配规则；**不得下调 `DEFAULT_THRESHOLDS` 来糊弄**，确需调整必须在迭代记录里给出数据依据 |

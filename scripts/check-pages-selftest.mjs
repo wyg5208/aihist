@@ -156,7 +156,10 @@ const cases = [
   },
   {
     name: "sitemap missing url",
-    expect: "sitemap: expected 149 urls, found 148",
+    // Derived from the control run: the pristine sitemap is the source of truth,
+    // so this assertion survives any change to the seed count.
+    expect: (ctx) =>
+      `sitemap: expected ${ctx.sitemapCount} urls, found ${ctx.sitemapCount - 1}`,
     mutate: async (ctx) => {
       await edit(join(ctx.dist, "sitemap.xml"), (xml) =>
         replaceOnce(
@@ -266,11 +269,12 @@ async function main() {
     await cp(SOURCE_DIST, join(base, "dist"), { recursive: true });
 
     let buildDate = "";
+    let sitemapCount = 0;
     for (const testCase of cases) {
       index += 1;
       const root = join(base, `case-${index}`);
       await cp(join(base, "dist"), join(root, "dist"), { recursive: true });
-      const ctx = { root, dist: join(root, "dist"), buildDate };
+      const ctx = { root, dist: join(root, "dist"), buildDate, sitemapCount };
 
       let result = null;
       let setupError = "";
@@ -290,8 +294,9 @@ async function main() {
           }
         } else {
           buildDate = result.buildDate;
+          sitemapCount = result.stats.sitemapUrls;
           console.log(
-            `ok   control — pristine copy passes (${result.stats.pages} pages)`
+            `ok   control — pristine copy passes (${result.stats.pages} pages, sitemap ${sitemapCount})`
           );
         }
         continue;
@@ -312,9 +317,11 @@ async function main() {
         continue;
       }
 
-      const hit = result.errors.find((message) =>
-        message.includes(testCase.expect)
-      );
+      const wanted =
+        typeof testCase.expect === "function"
+          ? testCase.expect(ctx)
+          : testCase.expect;
+      const hit = result.errors.find((message) => message.includes(wanted));
       if (!result.ok && hit) {
         console.log(`ok   ${testCase.name} — ${hit}`);
       } else {
@@ -323,7 +330,7 @@ async function main() {
           ? "no errors reported"
           : result.errors.slice(0, 3).join(" | ");
         console.error(
-          `fail ${testCase.name}: expected “${testCase.expect}”, got ${actual}`
+          `fail ${testCase.name}: expected “${wanted}”, got ${actual}`
         );
       }
     }

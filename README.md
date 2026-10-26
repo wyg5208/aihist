@@ -74,13 +74,13 @@ npm run dev          # http://127.0.0.1:5173，/api 代理到 127.0.0.1:8000
 | `npm run preview` | 预览构建产物 |
 | `npm run check:version` | 产品版本三处一致（G0） |
 | `npm run check:pages` | 校验 `dist/e/*.html`、sitemap、robots、首页 JSON-LD |
-| `npm run check:pages:selftest` | 用篡改副本验证检查器本身会失败 |
+| `npm run check:pages:selftest` | 用篡改副本验证检查器本身会失败（G2b） |
 | `npm run check:pipeline` | 采集解析、聚类、幂等性 |
 | `npm run check:editorial` | 规则预筛、五席票型聚合、失败关闭、历史审计、公开接口 |
 | `npm run check:coverage` | 基准集覆盖率（先跑离线同步，不写库） |
 | `npm run check:coverage:selftest` | 覆盖率检查器自检 |
 | `npm run check:function` | `deno check functions/index.ts`，需安装 Deno，仅用于对照参考实现 |
-| `npm run release:gate` | 发布门禁：串行跑 G0–G6，红灯即停 |
+| `npm run release:gate` | 发布门禁：串行跑 G0–G6（G2 后紧跟 G2b 检查器自检），红灯即停 |
 | `cd backend && python -m pytest -q` | 后端接口、采集管线、租约、迁移与 SQLite PRAGMA |
 
 `npm run build` 分两步：Vite 产出 `dist/index.html` 与资源，随后 `scripts/build-pages.mjs` 为每个种子生成 `dist/e/<slug>.html`（当前 158 个），并写出 `dist/sitemap.xml`（159 条 URL）、`dist/robots.txt`，向首页注入 `WebSite` + `Organization` JSON-LD。
@@ -107,12 +107,13 @@ node scripts/release-gate.mjs --from G4  # 从某一步开始
 | **G0** 版本一致性 | 产品版本三处不一致 | `scripts/check-version.mjs` | 0.1s |
 | **G1** 构建 | 类型错误、Vite 失败、静态页生成失败 | `npm run build` | ~12s |
 | **G2** 站点文件 | 静态页/sitemap/robots/JSON-LD 缺项或错址 | `scripts/check-pages.mjs` | ~1s |
+| **G2b** 检查器自检 | `check:pages` 本身失效却仍报绿（篡改副本必须能被抓出） | `scripts/check-pages-selftest.mjs` | ~12s |
 | **G3** 采集管线 | 解析、聚类、幂等性回归 | `scripts/check-pipeline.mjs` | ~2s |
 | **G4** 收录门槛 | 规则预筛、五席聚合、失败关闭、公开接口 | `scripts/check-editorial.mjs` | ~2s |
 | **G5** 覆盖率 | 基准集召回不达阈值 | `scripts/check-coverage.mjs` | ~2s |
 | **G6** 后端测试 | 接口契约、租约、迁移、SQLite PRAGMA | `pytest` | ~90s |
 
-退出码语义：`0` 全绿、`1` 有检查不通过、`2` 环境跑不起来（例如找不到 `backend/.venv`）。G6 占全套约八成时间，是唯一值得日常跳过的一步；对外发布不得跳过任何一步。摘要行里的 `failed (exit N)` 是子命令的退出码，不是门禁自身的退出码。
+退出码语义：`0` 全绿、`1` 有检查不通过、`2` 环境跑不起来（例如找不到 `backend/.venv`）。G6 占全套约八成时间，是唯一值得日常跳过的一步；对外发布不得跳过任何一步。G2b 约 12 秒，但它拦的是「检查器自己瞎了」这类最隐蔽的失效——它曾因为一条写死的期望条数烂了五个版本没人发现，所以不再留在门禁外面。摘要行里的 `failed (exit N)` 是子命令的退出码，不是门禁自身的退出码。
 
 ## 目录结构
 
@@ -147,9 +148,9 @@ site.config.mjs          站点名称、标题、描述与 SITE_ORIGIN
 scripts/build.mjs                       Vite 构建后串起静态页生成
 scripts/build-pages.mjs                 种子静态页、sitemap、robots、首页结构化数据
 scripts/check-version.mjs               G0：产品版本三处 + 规则/数据版本现状
-scripts/release-gate.mjs                G0–G6 串行门禁
+scripts/release-gate.mjs                G0–G6（含 G2b 检查器自检）串行门禁
 scripts/check-pages.mjs                 静态页与站点文件全量断言
-scripts/check-pages-selftest.mjs        检查器反例自检
+scripts/check-pages-selftest.mjs        G2b：检查器反例自检
 scripts/check-pipeline.mjs              采集管线检查
 scripts/check-editorial.mjs             收录门槛检查（含离线五席夹具）
 scripts/benchmark.mjs                   覆盖率基准集（人工维护的"应当存在"清单）
@@ -271,7 +272,7 @@ python -m app.cli create-owner --username you
 发布产物里的绝对地址全部来自 `site.config.mjs` 的 `SITE_ORIGIN`，发布到哪个域名就用它构建，否则 canonical、`og:url`、sitemap 与 158 个种子页会一起指错。**先定域名，再构建，最后校验**——`check:pages` 必须与同一次 `npm run build` 配对，否则校验的是上一次产物。
 
 ```sh
-node scripts/release-gate.mjs      # G0 版本一致 → 构建 → 静态页 → 管线 → 收录门槛 → 覆盖率 → 后端测试
+node scripts/release-gate.mjs      # G0 版本一致 → 构建 → 静态页 → 检查器自检 → 管线 → 收录门槛 → 覆盖率 → 后端测试
 ```
 
 退出码为 0 才可发布；`--skip` 只用于日常自测，对外发布不得跳过。

@@ -49,6 +49,16 @@ const STEPS = [
     cwd: ROOT,
   },
   {
+    // G2's own self-test. A checker that silently passes is worse than no
+    // checker, so the gate proves the checker still fails on mutated copies.
+    // Placed right after G2: it needs the fresh dist/ from G1, and it is cheap
+    // enough to run before the slow steps.
+    id: "G2b",
+    name: "static page checker self-test",
+    run: ["npm", ["run", "check:pages:selftest"]],
+    cwd: ROOT,
+  },
+  {
     id: "G3",
     name: "ingest pipeline",
     run: ["npm", ["run", "check:pipeline"]],
