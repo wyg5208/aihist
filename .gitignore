@@ -29,6 +29,10 @@ backend/_probe_*.py
 backend/_smoke_*.py
 backend/_scratch_*.txt
 
+# Local scratch space: screenshots, working notes, one-off probes.
+# Never tracked; anchored to the repository root on purpose.
+/temp/
+
 # Deployment artifacts. Anchored to the repository root on purpose:
 # `data/` must not swallow backend/app/data/seed.json.
 /data/
