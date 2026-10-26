@@ -22,11 +22,24 @@ export function Drawer({ open, title, subtitle, onClose, children, footer, width
   const panel = useRef<HTMLDivElement | null>(null);
   const restoreTo = useRef<Element | null>(null);
 
+  /**
+   * Callers hand in a fresh arrow for `onClose` on every render, and a drawer
+   * that holds a form re-renders on every keystroke. Reading the handler from a
+   * ref keeps the open/close effect keyed on `open` alone: with `onClose` in the
+   * dependency list the effect tore down and re-focused the panel after each
+   * character, which pulled the caret out of the field being typed into.
+   */
+  const close = useRef(onClose);
+
+  useEffect(() => {
+    close.current = onClose;
+  }, [onClose]);
+
   useEffect(() => {
     if (!open) return;
     restoreTo.current = document.activeElement;
     const onKey = (event: KeyboardEvent) => {
-      if (event.key === "Escape") onClose();
+      if (event.key === "Escape") close.current();
     };
     document.addEventListener("keydown", onKey);
     panel.current?.focus();
@@ -34,7 +47,7 @@ export function Drawer({ open, title, subtitle, onClose, children, footer, width
       document.removeEventListener("keydown", onKey);
       if (restoreTo.current instanceof HTMLElement) restoreTo.current.focus();
     };
-  }, [open, onClose]);
+  }, [open]);
 
   if (!open) return null;
 
