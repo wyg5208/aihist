@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Category, Confidence, FilterOption, TimelineItem } from "./types";
 import { CATEGORY_ORDER } from "./lib/format";
+import { ARCHIVE_START_YEAR } from "./lib/eras";
 import { readEventSlug, writeEventSlug } from "./lib/permalink";
 import { trackPageView } from "./lib/track";
 import { useTimeline } from "./hooks/useTimeline";
@@ -336,7 +337,7 @@ export default function App() {
         )}
 
         <div className="mt-2 grid gap-10 lg:mt-4 lg:grid-cols-[minmax(0,1fr)_18.5rem] lg:gap-12">
-          <main id="main">
+          <main id="main" className="min-w-0">
             <YearScrubber years={years} activeYear={activeYear} onJump={jumpTo} />
 
             {timeline.truncated && (
@@ -384,7 +385,7 @@ export default function App() {
             )}
           </main>
 
-          <div className="lg:sticky lg:top-0 lg:max-h-dvh lg:overflow-y-auto lg:py-6 scrollbar-thin">
+          <div className="min-w-0 lg:sticky lg:top-0 lg:max-h-dvh lg:overflow-y-auto lg:py-6 scrollbar-thin">
             <SideRail
               items={timeline.items}
               activeYear={activeYear}
@@ -410,7 +411,7 @@ export default function App() {
                 关于
               </p>
               <p className="prose-note mt-2">
-                AI 纪年按年份编排人工智能的关键事件、模型发布与重要研究，从 1912 年的早期自动机
+                AI 纪年按年份编排人工智能的关键事件、模型发布与重要研究，从 {ARCHIVE_START_YEAR} 年的早期自动机
                 延伸到当前模型发布。经典阶段参考{" "}
                 <a
                   href="https://en.wikipedia.org/wiki/Timeline_of_artificial_intelligence"

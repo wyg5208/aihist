@@ -1,4 +1,6 @@
 import { formatCount, relativeTime, staleLabel } from "../lib/format";
+import { ARCHIVE_START_YEAR } from "../lib/eras";
+import { ThemeToggle } from "./ThemeToggle";
 
 interface Props {
   total: number;
@@ -25,7 +27,7 @@ export function Masthead({
     <header className="pt-6 sm:pt-10">
       <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[var(--ink)] pb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--ink-soft)] sm:text-[11px]">
         <p>AI Chronicle · 公开来源采集与交叉验证</p>
-        <div className="flex items-baseline gap-4">
+        <div className="flex flex-wrap items-baseline gap-3 sm:gap-4">
           <button
             type="button"
             onClick={onStandard}
@@ -33,7 +35,10 @@ export function Masthead({
           >
             收录标准
           </button>
-          <p className="text-[var(--muted)]">Vol. I · 1950—{new Date().getFullYear()}</p>
+          <p className="whitespace-nowrap text-[var(--muted)]">
+            Vol. I · {ARCHIVE_START_YEAR}—{new Date().getFullYear()}
+          </p>
+          <ThemeToggle />
         </div>
       </div>
 

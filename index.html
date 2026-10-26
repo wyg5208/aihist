@@ -8,7 +8,29 @@
       content="AI 纪年：记录人工智能的关键事件、大模型发布与重要研究。条目来自公开接口与官方公告，经去重与交叉验证入档。"
     />
     <meta name="theme-color" content="#f6f2e9" />
-    <meta name="color-scheme" content="light" />
+    <meta name="color-scheme" content="light dark" />
+    <script>
+      // Theme boot: runs before the module graph and before the first paint, so
+      // the wrong palette never flashes. Kept in sync with `src/lib/theme.ts`
+      // (same storage key, same two chrome colours, same system fallback).
+      (function () {
+        var saved = null;
+        try {
+          saved = localStorage.getItem("aihist.theme");
+        } catch (error) {
+          /* storage blocked: fall through to the system preference */
+        }
+        var theme =
+          saved === "dark" || saved === "light"
+            ? saved
+            : window.matchMedia("(prefers-color-scheme: dark)").matches
+              ? "dark"
+              : "light";
+        document.documentElement.dataset.theme = theme;
+        var meta = document.querySelector('meta[name="theme-color"]');
+        if (meta) meta.setAttribute("content", theme === "dark" ? "#14120f" : "#f6f2e9");
+      })();
+    </script>
     <meta property="og:title" content="AI 纪年 · 人工智能发展编年史" />
     <meta
       property="og:description"

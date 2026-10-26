@@ -28,6 +28,12 @@ const PAGES_DIR = join(DIST, "e");
 const SLUG_RE = /^[a-z0-9]+(?:-[a-z0-9]+)*$/;
 
 const STYLE = `
+/*
+ * The citation page follows the OS preference rather than the toggle: these
+ * pages are built as documents and check-pages allows no executable JavaScript,
+ * so a choice stored on the timeline cannot be read here. Same two palettes as
+ * src/globals.css.
+ */
 :root {
   --paper: #f6f2e9;
   --paper-deep: #efe9dc;
@@ -37,9 +43,24 @@ const STYLE = `
   --rule: #d8cfbf;
   --rule-strong: #b9ae9b;
   --accent: #a6382b;
+  --cite-wash: rgba(255, 255, 255, 0.35);
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --paper: #14120f;
+    --paper-deep: #1b1814;
+    --ink: #ece6d9;
+    --ink-soft: #c2b8a7;
+    --muted: #8c8272;
+    --rule: #322c25;
+    --rule-strong: #4b4337;
+    --accent: #d3705f;
+    --cite-wash: rgba(255, 255, 255, 0.04);
+  }
 }
 * { box-sizing: border-box; }
-html { background: var(--paper); color-scheme: light; }
+html { background: var(--paper); color-scheme: light dark; }
 body {
   margin: 0;
   background: var(--paper);
@@ -180,7 +201,7 @@ h2 {
 }
 .source-title { margin: 0.25rem 0 0; font-size: 0.92rem; line-height: 1.55; overflow-wrap: anywhere; }
 .source-host { margin-top: 0.2rem; letter-spacing: 0.04em; }
-.cite { padding: 1rem 1.1rem; border: 1px dashed var(--rule-strong); background: rgba(255, 255, 255, 0.35); }
+.cite { padding: 1rem 1.1rem; border: 1px dashed var(--rule-strong); background: var(--cite-wash); }
 .cite p {
   margin: 0;
   font-family: ui-monospace, SFMono-Regular, "Cascadia Mono", monospace;
@@ -209,6 +230,19 @@ h2 {
   .facts > div:last-child { border-bottom: 0; }
 }
 @media print {
+  /* A dark page still has to print as black on white. */
+  :root {
+    color-scheme: light;
+    --paper: #ffffff;
+    --paper-deep: #ffffff;
+    --ink: #000000;
+    --ink-soft: #222222;
+    --muted: #555555;
+    --rule: #cccccc;
+    --rule-strong: #999999;
+    --accent: #a6382b;
+    --cite-wash: transparent;
+  }
   body { background: #fff; }
   .masthead, .back, .skip { display: none; }
   .cite { background: none; }
@@ -288,7 +322,8 @@ function renderPage(seed, sources, buildDate) {
   <title>${escapeHtml(seed.title)} · ${escapeHtml(SITE_NAME)}</title>
   <meta name="description" content="${escapeHtml(description)}" />
   <meta name="theme-color" content="#f6f2e9" />
-  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14120f" />
+  <meta name="color-scheme" content="light dark" />
   <meta name="robots" content="index,follow" />
   <link rel="canonical" href="${escapeHtml(pageUrl)}" />
   <meta property="og:type" content="article" />

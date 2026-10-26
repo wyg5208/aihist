@@ -154,7 +154,7 @@ export function SideRail({
             <li
               key={family}
               className={`font-mono text-[9px] tracking-[0.05em] ${
-                families.has(family) ? "text-[var(--ink-soft)]" : "text-[var(--rule-strong)]"
+                families.has(family) ? "text-[var(--ink-soft)]" : "text-[var(--muted)]"
               }`}
             >
               {familyLabel(family)}

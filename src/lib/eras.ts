@@ -1,5 +1,12 @@
 export type EraKind = "foundation" | "boom" | "winter";
 
+/**
+ * The archive opens with Torres Quevedo's chess automaton rather than with
+ * Dartmouth: nine of the seeded entries predate 1950, so the masthead, the footer
+ * and the earliest era band all have to agree on this number.
+ */
+export const ARCHIVE_START_YEAR = 1912;
+
 export interface Era {
   from: number;
   kind: EraKind;
@@ -91,6 +98,12 @@ export const ERAS: Era[] = [
     kind: "foundation",
     title: "学科诞生与两条路线",
     text: "从图灵测试到达特茅斯会议，AI 作为学科诞生；Lisp、GPS 与 SHRDLU 确立符号推理路线，感知机开启连接主义的第一轮热潮。",
+  },
+  {
+    from: 1912,
+    kind: "foundation",
+    title: "前史：自动机与可计算性",
+    text: "在计算机出现之前，机械自动机、形式逻辑与可计算性理论先铺好道路：象棋自动机演示机械决策，《R.U.R.》把「机器人」写进语汇，哥德尔与图灵划定形式系统的边界，形式神经元与赫布规则给出学习的第一种描述。",
   },
 ];
 

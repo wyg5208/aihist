@@ -18,7 +18,15 @@
   scrollbar-gutter: stable;
 }
 
+/*
+ * Two palettes, one set of tokens. Light is the archive's default — paper, ink,
+ * one red rule; dark is the same archive at night, so no component has to know
+ * which one is active. `[data-theme]` is written by the inline script in
+ * `index.html` before the first paint, then by the masthead toggle.
+ */
 :root {
+  color-scheme: light;
+
   --paper: #f6f2e9;
   --paper-deep: #efe9db;
   --ink: #1c1a17;
@@ -59,6 +67,47 @@
   --sidebar-accent-foreground: var(--ink);
   --sidebar-border: var(--rule);
   --sidebar-ring: var(--rule-strong);
+
+  /* Values a token swap cannot derive: a dark ink wash over near-black paper
+     disappears, and the distribution bars would invert into glare. Each theme
+     therefore names its own. */
+  --wash-accent: rgba(166, 56, 43, 0.045);
+  --wash-ink: rgba(28, 26, 23, 0.04);
+  --row-hover: rgba(28, 26, 23, 0.022);
+  --scrim: rgba(28, 26, 23, 0.52);
+  --bar-model: #3d372e;
+  --bar-research: #6b5f4b;
+  --bar-opinion: #948873;
+}
+
+/*
+ * Guarded, because the console sets `data-theme` on the same element and ships
+ * its own palette: an unguarded `:root[data-theme="dark"]` here would outrank
+ * the aliases in `src/admin/theme.css` and repaint the console as paper.
+ */
+:root[data-theme="dark"]:not([data-surface="admin"]) {
+  color-scheme: dark;
+
+  --paper: #14120f;
+  --paper-deep: #1b1814;
+  --ink: #ece6d9;
+  --ink-soft: #c2b8a7;
+  --muted: #948a79;
+  --rule: #322c25;
+  --rule-strong: #4b4337;
+  --accent: #d3705f;
+  --accent-soft: #3b221c;
+
+  --chart-4: #b3a48b;
+  --chart-5: #574e40;
+
+  --wash-accent: rgba(211, 112, 95, 0.08);
+  --wash-ink: rgba(236, 230, 217, 0.035);
+  --row-hover: rgba(236, 230, 217, 0.05);
+  --scrim: rgba(0, 0, 0, 0.68);
+  --bar-model: #cfc6b6;
+  --bar-research: #a89b88;
+  --bar-opinion: #7b7263;
 }
 
 @theme inline {
@@ -111,6 +160,7 @@
 
 html {
   scroll-behavior: auto;
+  background-color: var(--paper);
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -123,16 +173,8 @@ body {
   margin: 0;
   background-color: var(--paper);
   background-image:
-    radial-gradient(
-      1100px 520px at 8% -8%,
-      rgba(166, 56, 43, 0.045),
-      transparent 62%
-    ),
-    radial-gradient(
-      900px 480px at 102% 0%,
-      rgba(28, 26, 23, 0.04),
-      transparent 58%
-    );
+    radial-gradient(1100px 520px at 8% -8%, var(--wash-accent), transparent 62%),
+    radial-gradient(900px 480px at 102% 0%, var(--wash-ink), transparent 58%);
   background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-sans);
@@ -170,7 +212,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .standard-dialog::backdrop {
-  background: rgba(28, 26, 23, 0.52);
+  background: var(--scrim);
 }
 
 .rail-card {
@@ -285,7 +327,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 @media (prefers-reduced-motion: no-preference) {
   .entry-row:hover {
-    background-color: rgba(28, 26, 23, 0.022);
+    background-color: var(--row-hover);
   }
 }
 
@@ -572,15 +614,15 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .dist-bar[data-category="model"] > span {
-  background: #3d372e;
+  background: var(--bar-model);
 }
 
 .dist-bar[data-category="research"] > span {
-  background: #6b5f4b;
+  background: var(--bar-research);
 }
 
 .dist-bar[data-category="opinion"] > span {
-  background: #948873;
+  background: var(--bar-opinion);
 }
 
 .dist-bar[data-category="policy"] > span {
