@@ -178,8 +178,8 @@ body {
   background-attachment: fixed;
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 15px;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
@@ -238,7 +238,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .rail-heading h2 {
   font-family: var(--font-serif);
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   letter-spacing: 0.02em;
   color: var(--ink);
 }
@@ -286,9 +286,9 @@ input[type="search"]::-webkit-search-cancel-button {
   border: 1px solid var(--rule-strong);
   padding: 0.05rem 0.4rem;
   font-family: var(--font-mono);
-  font-size: 9px;
+  font-size: 10.5px;
   line-height: 1.6;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   color: var(--ink-soft);
   white-space: nowrap;
   background: color-mix(in srgb, var(--paper) 70%, transparent);
@@ -305,7 +305,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .confidence-mark {
-  font-size: 7px;
+  font-size: 8px;
   letter-spacing: -0.1em;
 }
 
@@ -350,10 +350,10 @@ input[type="search"]::-webkit-search-cancel-button {
   align-items: baseline;
   gap: 0.4em;
   border: 1px solid var(--rule);
-  padding: 0.28rem 0.55rem;
+  padding: 0.32rem 0.62rem;
   font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.08em;
+  font-size: 11.5px;
+  letter-spacing: 0.06em;
   color: var(--ink-soft);
   background: transparent;
   transition:
@@ -379,7 +379,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .chip-count {
-  font-size: 9px;
+  font-size: 10.5px;
   color: var(--muted);
 }
 
@@ -407,8 +407,8 @@ input[type="search"]::-webkit-search-cancel-button {
 .filter-field-label {
   flex: none;
   font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.16em;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
   color: var(--muted);
 }
 
@@ -423,7 +423,7 @@ input[type="search"]::-webkit-search-cancel-button {
   background: transparent;
   padding: 0.22rem 0;
   font-family: var(--font-sans);
-  font-size: 11.5px;
+  font-size: 13px;
   color: var(--ink);
   cursor: pointer;
 }
@@ -446,7 +446,7 @@ input[type="search"]::-webkit-search-cancel-button {
   border: 0;
   outline: none;
   font-family: var(--font-serif);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   color: var(--ink);
 }
 
@@ -467,9 +467,9 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .scrubber button {
   flex: none;
-  padding: 0.2rem 0.4rem;
+  padding: 0.22rem 0.45rem;
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11.5px;
   letter-spacing: 0.04em;
   color: var(--muted);
   transition: color 140ms ease;
@@ -489,8 +489,8 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .prose-note {
-  font-size: 12px;
-  line-height: 1.85;
+  font-size: 13.5px;
+  line-height: 1.8;
   color: var(--ink-soft);
 }
 
@@ -513,15 +513,15 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .detail-meta dt {
   font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.16em;
+  font-size: 10.5px;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--muted);
 }
 
 .detail-meta dd {
   margin-top: 0.15rem;
-  font-size: 12px;
+  font-size: 13.5px;
   color: var(--ink);
 }
 
@@ -535,7 +535,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .evidence-index {
   font-family: var(--font-mono);
-  font-size: 10px;
+  font-size: 11px;
   color: var(--muted);
   padding-top: 0.1rem;
 }
@@ -561,7 +561,7 @@ input[type="search"]::-webkit-search-cancel-button {
   border-radius: 2px;
   padding: 0.08rem 0.38rem;
   font-family: var(--font-sans);
-  font-size: 10.5px;
+  font-size: 12px;
   line-height: 1.6;
   color: var(--ink-soft);
   background: transparent;
@@ -592,7 +592,7 @@ input[type="search"]::-webkit-search-cancel-button {
 .keyword-count {
   margin-left: 0.28rem;
   font-family: var(--font-mono);
-  font-size: 8.5px;
+  font-size: 10px;
   color: var(--muted);
 }
 
@@ -640,7 +640,7 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .spark-label {
   font-family: var(--font-mono);
-  font-size: 7px;
+  font-size: 8px;
   fill: var(--muted);
 }
 
@@ -665,7 +665,7 @@ input[type="search"]::-webkit-search-cancel-button {
   color: var(--paper);
   padding: 0.5rem 0.9rem;
   font-family: var(--font-mono);
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.14em;
 }
 

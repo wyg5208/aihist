@@ -28,6 +28,8 @@ from app.db.models import AuditLog, Subscriber
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from conftest import client_for  # noqa: E402
 
+from app.api import growth as growth_api  # noqa: E402
+
 PASSWORD = "correct horse battery staple"
 PASSWORD_HASH = PasswordHasher().hash(PASSWORD)
 CSRF = {"X-Requested-With": "admin"}
@@ -37,8 +39,10 @@ SUBSCRIBE = "/api/v1/subscribe"
 @pytest.fixture(autouse=True)
 def clear_throttle():
     auth.reset_throttle()
+    growth_api.reset_form_throttle()
     yield
     auth.reset_throttle()
+    growth_api.reset_form_throttle()
 
 
 @pytest.fixture
@@ -345,3 +349,68 @@ async def test_the_table_stays_empty_when_nobody_signed_up(db_factory, admin_set
     assert export.text.lstrip("\ufeff").startswith("email,")
     async with db_factory() as session:
         assert await session.scalar(select(func.count()).select_from(Subscriber)) == 0
+
+
+# ---------------------------------------------------------------------------
+# The HTML form (the footer's "订阅更新" entry)
+# ---------------------------------------------------------------------------
+
+FORM = "/api/v1/subscribe/form"
+
+
+async def test_the_form_is_a_scriptless_page_with_the_campaign_tag(db_factory, admin_settings):
+    async with client_for(db_factory, admin_settings) as client:
+        page = await client.get("/api/v1/subscribe?src=bili01")
+    assert page.status_code == 200
+    assert page.headers["x-robots-tag"] == "noindex, nofollow"
+    assert 'action="/api/v1/subscribe/form"' in page.text
+    assert 'name="src" value="bili01"' in page.text
+    assert "<script" not in page.text, "the form must work with no build step"
+
+
+async def test_submitting_the_form_records_consent_and_shows_the_confirm_link(
+    db_factory, admin_settings
+):
+    async with client_for(db_factory, admin_settings) as client:
+        response = await client.post(
+            FORM,
+            data={"email": " Reader@Example.com ", "consent": "on", "src": "xiaohongshu_01"},
+            headers={"referer": "https://www.xiaohongshu.com/explore/abc"},
+        )
+    assert response.status_code == 200, response.text
+    assert "还差一步" in response.text
+    assert "https://aihist.net/api/v1/subscribe/confirm?token=" in response.text
+
+    stored = await rows(db_factory)
+    assert len(stored) == 1
+    row = stored[0]
+    assert row.email == "reader@example.com"
+    assert row.status == "pending"
+    assert row.source_path == "/subscribe?src=xiaohongshu_01"
+    assert row.source_channel == "social", "the profile link must not land in `other`"
+    assert row.consented_at is not None
+
+
+async def test_the_form_ignores_the_honeypot_and_requires_consent(db_factory, admin_settings):
+    async with client_for(db_factory, admin_settings) as client:
+        bot = await client.post(
+            FORM,
+            data={"email": "bot@example.com", "consent": "on", "website": "http://spam"},
+        )
+        no_consent = await client.post(FORM, data={"email": "human@example.com"})
+        bad_address = await client.post(FORM, data={"email": "not-an-address", "consent": "on"})
+    assert bot.status_code == 200 and "已收到" in bot.text
+    assert no_consent.status_code == 400 and "勾选" in no_consent.text
+    assert bad_address.status_code == 400 and "邮箱格式" in bad_address.text
+    assert await rows(db_factory) == []
+
+
+async def test_the_form_stops_after_five_posts_from_one_caller(db_factory, admin_settings):
+    async with client_for(db_factory, admin_settings) as client:
+        for index in range(5):
+            await client.post(
+                FORM, data={"email": f"reader{index}@example.com", "consent": "on"}
+            )
+        blocked = await client.post(FORM, data={"email": "late@example.com", "consent": "on"})
+    assert blocked.status_code == 429
+    assert len(await rows(db_factory)) == 5

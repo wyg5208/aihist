@@ -58,6 +58,12 @@ function allowedInternalHref(href, slug, slugs) {
   if (href === `/?e=${slug}`) return true;
   if (href === pagePath(slug)) return true;
   if (href.startsWith("/?e=")) return slugs.has(href.slice(4));
+  // The correction page is a live route rather than an archive address: the
+  // slug travels as a query parameter, so the same "does this entry exist"
+  // question applies to it.
+  if (href.startsWith("/api/v1/correct?slug=")) {
+    return slugs.has(href.slice("/api/v1/correct?slug=".length));
+  }
   if (href.startsWith("/e/") && href.endsWith(".html")) {
     return slugs.has(href.slice(3, -5));
   }

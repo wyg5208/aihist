@@ -26,11 +26,11 @@ export function TimelineYear({ year, items, expandedId, onToggle, onKeyword }: P
           className="flex items-baseline gap-2 font-serif text-[1.7rem] leading-none tracking-[-0.02em] text-[var(--ink)]"
         >
           {year}
-          <span className="font-mono text-[9px] tracking-[0.14em] text-[var(--muted)]">
+          <span className="font-mono text-[10.5px] tracking-[0.14em] text-[var(--muted)]">
             {items.length} 条
           </span>
         </h2>
-        <p className="truncate font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--muted)]">
+        <p className="truncate font-mono text-[10.5px] uppercase tracking-[0.16em] text-[var(--muted)]">
           {era.kind === "winter" ? `低谷 · ${era.title}` : era.title}
         </p>
       </div>

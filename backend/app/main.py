@@ -24,6 +24,7 @@ from app.api import admin_growth as admin_growth_api
 from app.api import admin_ops as admin_ops_api
 from app.api import admin_system as admin_system_api
 from app.api import apply as apply_api
+from app.api import correct as correct_api
 from app.api import growth as growth_api
 from app.api import open as open_api
 from app.api import public as public_api
@@ -121,6 +122,9 @@ def create_app() -> FastAPI:
     # The application form renders its own HTML: it is reached from a link on the
     # site, not from the SPA, and the process that stores the row serves the page.
     app.include_router(apply_api.router, prefix="/api/v1/open", tags=["open"])
+    # Reader corrections: a reader-facing page with a prefilled mailto, served
+    # by the same process because it needs the entry's sources to be useful.
+    app.include_router(correct_api.router, prefix="/api/v1", tags=["growth"])
     app.include_router(redirect_api.router, tags=["redirect"])
 
     @app.get("/api/v1/health")

@@ -58,7 +58,7 @@ export function CadenceSpark({ items }: Props) {
     <section className="rail-card" aria-labelledby="cadence-heading">
       <div className="rail-heading">
         <h2 id="cadence-heading">季度入档量</h2>
-        <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--muted)]">
+        <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-[var(--muted)]">
           近 8 季 · {total} 条
         </span>
       </div>
@@ -107,7 +107,7 @@ export function CadenceSpark({ items }: Props) {
           );
         })}
       </svg>
-      <p className="mt-1 text-[10px] leading-4 text-[var(--muted)]">
+      <p className="mt-1 text-[11.5px] leading-4 text-[var(--muted)]">
         历史种子与自动采集共同计入；当前季度以朱红标记。
       </p>
     </section>

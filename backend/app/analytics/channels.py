@@ -74,8 +74,14 @@ SOCIAL_REFERRERS = frozenset(
         "telegram.me",
         "bilibili.com",
         "douyin.com",
+        # A visit from a WeChat article always carries the article origin, so
+        # this one host stands for the whole public-account channel.
+        "mp.weixin.qq.com",
+        "xiaohongshu.com",
         "juejin.cn",
         "segmentfault.com",
+        "sspai.com",
+        "okjike.com",
         "producthunt.com",
         "github.com",
     }

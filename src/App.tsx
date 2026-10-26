@@ -283,7 +283,7 @@ export default function App() {
         跳到时间轴
       </a>
 
-      <div className="mx-auto max-w-[1180px] px-4 pb-14 sm:px-6 lg:px-8">
+      <div className="mx-auto w-full max-w-[1180px] px-4 pb-14 sm:px-6 lg:max-w-[1480px] lg:px-8 2xl:max-w-[1760px] 2xl:px-10">
         <Masthead
           total={timeline.total || timeline.items.length}
           modelCount={modelCount}
@@ -323,25 +323,25 @@ export default function App() {
             role="status"
             className="mt-3 flex flex-wrap items-baseline justify-between gap-2 border-l-2 border-[var(--accent)] pl-3"
           >
-            <p className="text-[12px] leading-5 text-[var(--ink-soft)]">
+            <p className="text-[13.5px] leading-6 text-[var(--ink-soft)]">
               地址中的条目「{missingSlug}」没有找到，可能已被合并，或尚未同步到本页。
             </p>
             <button
               type="button"
               onClick={dismissMissingSlug}
-              className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--accent)] underline underline-offset-4"
+              className="font-mono text-[11.5px] uppercase tracking-[0.14em] text-[var(--accent)] underline underline-offset-4"
             >
               回到时间轴
             </button>
           </div>
         )}
 
-        <div className="mt-2 grid gap-10 lg:mt-4 lg:grid-cols-[minmax(0,1fr)_18.5rem] lg:gap-12">
+        <div className="mt-2 grid gap-10 lg:mt-4 lg:grid-cols-[minmax(0,1fr)_20rem] lg:gap-10 2xl:grid-cols-[minmax(0,1fr)_22rem] 2xl:gap-12">
           <main id="main" className="min-w-0">
             <YearScrubber years={years} activeYear={activeYear} onJump={jumpTo} />
 
             {timeline.truncated && (
-              <p className="mt-3 border-l-2 border-[var(--accent)] pl-3 text-[11px] leading-5 text-[var(--ink-soft)]">
+              <p className="mt-3 border-l-2 border-[var(--accent)] pl-3 text-[12.5px] leading-6 text-[var(--ink-soft)]">
                 档案较大，当前只载入最近 1200 条；更早的条目仍保存在数据库中。
               </p>
             )}
@@ -375,7 +375,7 @@ export default function App() {
                     onKeyword={focusKeyword}
                   />
                 ))}
-                <p className="mt-8 border-t border-[var(--rule)] pt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--muted)]">
+                <p className="mt-8 border-t border-[var(--rule)] pt-3 font-mono text-[10.5px] uppercase tracking-[0.14em] text-[var(--muted)]">
                   档案到此为止 · 共 {filtered.length} 条
                   {filtered.length !== timeline.items.length
                     ? `（全档 ${timeline.items.length} 条）`
@@ -407,7 +407,7 @@ export default function App() {
         <footer className="mt-16 border-t border-[var(--ink)] pt-5">
           <div className="grid gap-7 sm:grid-cols-3">
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--muted)]">
+              <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
                 关于
               </p>
               <p className="prose-note mt-2">
@@ -425,7 +425,7 @@ export default function App() {
               </p>
             </div>
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--muted)]">
+              <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
                 采集
               </p>
               <p className="prose-note mt-2">
@@ -436,13 +436,13 @@ export default function App() {
               </p>
             </div>
             <div>
-              <p className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--muted)]">
+              <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
                 边界
               </p>
               <p className="prose-note mt-2">
                 采集与访问完全解耦：后台定时任务每 6 小时运行一次，管理台可手动触发，
                 浏览页面不会发起任何同步。
-                自动条目先经规则预筛，再由三个独立模型分别打分；至少两票同意且达到入档线才收录。
+                自动条目先经规则预筛，再由五家厂商各一席的模型评审：至少三票同意、中位分不低于 75 才收录。
                 票型分裂、评审不可用或未配置评审模型时，条目暂缓并隐藏，不进入公开时间轴。
                 摘要明确标注人工校订、模型生成或来源摘录；新闻与论文只保留标题、短摘录与原链。
                 种子条目另有静态引用页（/e/…），不依赖接口即可打开；自动条目只提供 ?e= 深链。
@@ -450,9 +450,9 @@ export default function App() {
             </div>
           </div>
 
-          <p className="mt-7 flex flex-wrap items-baseline justify-between gap-2 border-t border-[var(--rule)] pt-3 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--muted)]">
+          <p className="mt-7 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 border-t border-[var(--rule)] pt-4 font-mono text-[12px] uppercase tracking-[0.1em] text-[var(--muted)]">
             <span>AI Chronicle · Vol. I · 公开档案</span>
-            <span className="flex flex-wrap items-baseline gap-4">
+            <span className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
               <button
                 type="button"
                 onClick={() => setStandardOpen(true)}
@@ -461,10 +461,22 @@ export default function App() {
                 收录标准
               </button>
               <a
+                href="/api/v1/subscribe?src=footer"
+                className="underline decoration-[var(--rule-strong)] underline-offset-4 hover:text-[var(--accent)]"
+              >
+                订阅更新
+              </a>
+              <a
                 href="/api/v1/open/apply"
                 className="underline decoration-[var(--rule-strong)] underline-offset-4 hover:text-[var(--accent)]"
               >
                 API 申请
+              </a>
+              <a
+                href="/api/v1/correct"
+                className="underline decoration-[var(--rule-strong)] underline-offset-4 hover:text-[var(--accent)]"
+              >
+                发现错误
               </a>
               <span>数据来自公开接口 · 观点与事实以原链为准</span>
             </span>

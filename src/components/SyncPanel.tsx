@@ -34,7 +34,7 @@ export function SyncPanel({
     <section className="rail-card" aria-labelledby="sync-heading">
       <div className="rail-heading">
         <h2 id="sync-heading">同步台</h2>
-        <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-[var(--muted)]">
+        <span className="font-mono text-[10.5px] uppercase tracking-[0.2em] text-[var(--muted)]">
           Sync desk
         </span>
       </div>
@@ -45,7 +45,7 @@ export function SyncPanel({
           data-state={running ? "running" : phase}
           aria-hidden="true"
         />
-        <p className="font-mono text-[11px] uppercase tracking-[0.16em]">
+        <p className="font-mono text-[12.5px] uppercase tracking-[0.16em]">
           {PHASE_LABEL[phase]}
           {latest && !running && (
             <span className="ml-2 text-[var(--muted)]">
@@ -55,11 +55,11 @@ export function SyncPanel({
         </p>
       </div>
 
-      <p className="mt-2 text-[12px] leading-5 text-[var(--ink-soft)]" aria-live="polite">
+      <p className="mt-2 text-[13.5px] leading-5 text-[var(--ink-soft)]" aria-live="polite">
         {notice}
       </p>
 
-      <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.14em] text-[var(--muted)]">
+      <p className="mt-2 font-mono text-[10.5px] uppercase tracking-[0.14em] text-[var(--muted)]">
         {panel
           ? panel.configured
             ? `评审面板 ${panel.models.length} 个模型 · 至少 ${panel.minVotes} 票`
@@ -68,7 +68,7 @@ export function SyncPanel({
       </p>
 
       {panel && !panel.configured && (
-        <p className="mt-2 border-l-2 border-[var(--accent)] pl-2 text-[11px] leading-5 text-[var(--ink-soft)]">
+        <p className="mt-2 border-l-2 border-[var(--accent)] pl-2 text-[12.5px] leading-5 text-[var(--ink-soft)]">
           未经评审的自动条目暂缓并隐藏，只保留人工校订条目。
           <button
             type="button"
@@ -89,27 +89,27 @@ export function SyncPanel({
       )}
 
       {latest && latest.failedSources.length > 0 && (
-        <p className="mt-3 text-[11px] leading-5 text-[var(--accent)]">
+        <p className="mt-3 text-[12.5px] leading-5 text-[var(--accent)]">
           未取回：{latest.failedSources.map(sourceLabel).join("、")}
         </p>
       )}
 
       <div className="mt-5 border-t border-[var(--rule)] pt-3">
-        <div className="flex items-baseline justify-between font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--muted)]">
+        <div className="flex items-baseline justify-between font-mono text-[10.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
           <span>最近记录</span>
           <span>{snapshot?.sync.eventCount ? `${snapshot.sync.eventCount} 条在档` : "—"}</span>
         </div>
         <ol className="mt-2 space-y-2">
           {runs.length === 0 && (
-            <li className="text-[11px] text-[var(--muted)]">还没有同步记录。</li>
+            <li className="text-[12.5px] text-[var(--muted)]">还没有同步记录。</li>
           )}
           {runs.map((run) => (
-            <li key={run.id} className="grid grid-cols-[1fr_auto] gap-2 text-[11px]">
+            <li key={run.id} className="grid grid-cols-[1fr_auto] gap-2 text-[12.5px]">
               <span className="truncate text-[var(--ink-soft)]">
                 {formatTimestamp(run.startedAt)} · {run.trigger === "manual" ? "手动" : "定时"}
               </span>
               <span
-                className="font-mono text-[10px] uppercase tracking-wide"
+                className="font-mono text-[11.5px] uppercase tracking-wide"
                 data-run-status={run.status}
               >
                 {run.status === "succeeded"
@@ -123,11 +123,11 @@ export function SyncPanel({
             </li>
           ))}
         </ol>
-        <p className="mt-3 text-[10px] leading-4 text-[var(--muted)]">
+        <p className="mt-3 text-[11.5px] leading-4 text-[var(--muted)]">
           采集由后台定时任务执行，访问本页不会触发同步。
         </p>
         {snapshot?.sync.lastSuccessAt && (
-          <p className="mt-1 font-mono text-[9px] text-[var(--muted)]">
+          <p className="mt-1 font-mono text-[10.5px] text-[var(--muted)]">
             上次成功 {relativeTime(snapshot.sync.lastSuccessAt)}
           </p>
         )}
@@ -137,13 +137,13 @@ export function SyncPanel({
         <button
           type="button"
           onClick={onRefresh}
-          className="border border-[var(--ink)] px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] transition-colors motion-safe:hover:bg-[var(--ink)] motion-safe:hover:text-[var(--paper)]"
+          className="border border-[var(--ink)] px-3 py-1.5 font-mono text-[11.5px] uppercase tracking-[0.18em] transition-colors motion-safe:hover:bg-[var(--ink)] motion-safe:hover:text-[var(--paper)]"
         >
           刷新状态
         </button>
         <a
           href="/admin/"
-          className="font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] underline underline-offset-4 transition-colors hover:text-[var(--accent)]"
+          className="font-mono text-[11.5px] uppercase tracking-[0.16em] text-[var(--muted)] underline underline-offset-4 transition-colors hover:text-[var(--accent)]"
         >
           进入管理台
         </a>
@@ -155,7 +155,7 @@ export function SyncPanel({
 function Metric({ label, value }: { label: string; value: number }) {
   return (
     <div className="px-1 py-3 text-center first:text-left last:text-right">
-      <dt className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--muted)]">
+      <dt className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-[var(--muted)]">
         {label}
       </dt>
       <dd className="mt-0.5 font-serif text-xl leading-none">{value}</dd>

@@ -67,7 +67,7 @@ export function SideRail({
       <section className="rail-card" data-era-kind={era.kind} aria-labelledby="era-heading">
         <div className="rail-heading">
           <h2 id="era-heading">{era.kind === "winter" ? "低谷期" : "时代摘要"}</h2>
-          <span className="font-mono text-[9px] tracking-[0.1em] text-[var(--muted)]">
+          <span className="font-mono text-[10.5px] tracking-[0.1em] text-[var(--muted)]">
             {era.from}—{upper}
           </span>
         </div>
@@ -78,7 +78,7 @@ export function SideRail({
       <section className="rail-card" aria-labelledby="distribution-heading">
         <div className="rail-heading">
           <h2 id="distribution-heading">类别分布</h2>
-          <span className="font-mono text-[9px] tracking-[0.1em] text-[var(--muted)]">
+          <span className="font-mono text-[10.5px] tracking-[0.1em] text-[var(--muted)]">
             {formatCount(items.length)} 条
           </span>
         </div>
@@ -88,8 +88,8 @@ export function SideRail({
             const meta = CATEGORY_META[key];
             return (
               <li key={key} className="grid grid-cols-[auto_1fr_auto] items-center gap-2">
-                <span className="w-24 font-mono text-[10px] tracking-[0.05em] text-[var(--ink-soft)]">
-                  <span aria-hidden="true" className="mr-1 text-[8px] text-[var(--muted)]">
+                <span className="w-24 font-mono text-[11.5px] tracking-[0.05em] text-[var(--ink-soft)]">
+                  <span aria-hidden="true" className="mr-1 text-[9.5px] text-[var(--muted)]">
                     {meta.mark}
                   </span>
                   {meta.label}
@@ -97,7 +97,7 @@ export function SideRail({
                 <span className="dist-bar" data-category={key}>
                   <span style={{ width: `${Math.round((count / max) * 100)}%` }} />
                 </span>
-                <span className="w-7 text-right font-mono text-[10px] tabular-nums text-[var(--muted)]">
+                <span className="w-7 text-right font-mono text-[11.5px] tabular-nums text-[var(--muted)]">
                   {count}
                 </span>
               </li>
@@ -110,7 +110,7 @@ export function SideRail({
         <section className="rail-card" aria-labelledby="keyword-heading">
           <div className="rail-heading">
             <h2 id="keyword-heading">关键词索引</h2>
-            <span className="font-mono text-[9px] tracking-[0.1em] text-[var(--muted)]">
+            <span className="font-mono text-[10.5px] tracking-[0.1em] text-[var(--muted)]">
               {topKeywords.length} / {formatCount(keywordCounts.size)}
             </span>
           </div>
@@ -141,7 +141,7 @@ export function SideRail({
       <section className="rail-card" aria-labelledby="method-heading">
         <div className="rail-heading">
           <h2 id="method-heading">来源与校验</h2>
-          <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--muted)]">
+          <span className="font-mono text-[10.5px] uppercase tracking-[0.16em] text-[var(--muted)]">
             Method
           </span>
         </div>
@@ -153,7 +153,7 @@ export function SideRail({
           {Object.keys(FAMILY_LABELS).map((family) => (
             <li
               key={family}
-              className={`font-mono text-[9px] tracking-[0.05em] ${
+              className={`font-mono text-[10.5px] tracking-[0.05em] ${
                 families.has(family) ? "text-[var(--ink-soft)]" : "text-[var(--muted)]"
               }`}
             >
@@ -164,7 +164,7 @@ export function SideRail({
             </li>
           ))}
         </ul>
-        <p className="mt-2 text-[10px] leading-4 text-[var(--muted)]">
+        <p className="mt-2 text-[11.5px] leading-4 text-[var(--muted)]">
           不授予删除权限；条目通过指纹去重，重跑同步不会重复入档。
         </p>
       </section>

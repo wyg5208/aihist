@@ -17,7 +17,7 @@ export function ThemeToggle() {
       aria-pressed={dark}
       aria-label={`切换到${next}主题`}
       title={`切换到${next}主题`}
-      className="border border-[var(--rule)] px-1.5 py-px font-mono text-[9px] tracking-[0.14em] text-[var(--ink-soft)] transition-colors hover:border-[var(--rule-strong)] hover:text-[var(--accent)]"
+      className="border border-[var(--rule)] px-1.5 py-px font-mono text-[10.5px] tracking-[0.14em] text-[var(--ink-soft)] transition-colors hover:border-[var(--rule-strong)] hover:text-[var(--accent)]"
     >
       {next}
     </button>

@@ -63,9 +63,9 @@ export function EventRow({ item, expanded, onToggle, onKeyword }: Props) {
         aria-expanded={expanded}
         aria-controls={detailId}
         onClick={() => onToggle(item.id)}
-        className="grid w-full grid-cols-[2.7rem_0.9rem_minmax(0,1fr)] items-start gap-x-2 py-3.5 text-left sm:grid-cols-[5.2rem_1rem_minmax(0,1fr)] sm:gap-x-3 sm:py-4"
+        className="grid w-full grid-cols-[3.2rem_0.9rem_minmax(0,1fr)] items-start gap-x-2 py-3.5 text-left sm:grid-cols-[6.2rem_1rem_minmax(0,1fr)] sm:gap-x-3 sm:py-4"
       >
-        <span className="pt-0.5 font-mono text-[10px] leading-5 tracking-[0.04em] text-[var(--muted)] tabular-nums sm:text-[11px]">
+        <span className="pt-0.5 font-mono text-[11.5px] leading-5 tracking-[0.03em] text-[var(--muted)] tabular-nums sm:text-[12.5px]">
           {formatRowDate(item.eventDate, item.datePrecision)}
         </span>
 
@@ -81,7 +81,7 @@ export function EventRow({ item, expanded, onToggle, onKeyword }: Props) {
         <span className="min-w-0">
           <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
             <span
-              className={`font-mono text-[9px] uppercase tracking-[0.14em] ${
+              className={`font-mono text-[11.5px] uppercase tracking-[0.1em] ${
                 item.category === "milestone" ? "text-[var(--accent)]" : "text-[var(--muted)]"
               }`}
             >
@@ -95,17 +95,17 @@ export function EventRow({ item, expanded, onToggle, onKeyword }: Props) {
             </span>
           </span>
 
-          <span className="entry-title mt-1 block font-serif text-[15.5px] leading-[1.4] text-[var(--ink)] sm:text-[17px]">
+          <span className="entry-title mt-1.5 block font-serif text-[16.5px] leading-[1.4] text-[var(--ink)] sm:text-[18.5px]">
             {item.title}
           </span>
 
           {item.titleEn && item.titleEn !== item.title && (
-            <span className="mt-0.5 block font-sans text-[11px] leading-4 text-[var(--muted)]">
+            <span className="mt-0.5 block font-sans text-[12.5px] leading-5 text-[var(--muted)]">
               {item.titleEn}
             </span>
           )}
 
-          <span className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 font-mono text-[9.5px] tracking-[0.03em] text-[var(--muted)]">
+          <span className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 font-mono text-[11px] tracking-[0.02em] text-[var(--muted)]">
             {item.organization && <span>{item.organization}</span>}
             {item.modelName && item.modelName !== item.organization && (
               <span>· {item.modelName}</span>
@@ -124,7 +124,7 @@ export function EventRow({ item, expanded, onToggle, onKeyword }: Props) {
       {expanded && (
         <div
           id={detailId}
-          className="ml-[3.6rem] border-t border-dashed border-[var(--rule)] pt-3 sm:ml-[6.2rem]"
+          className="ml-[4.2rem] border-t border-dashed border-[var(--rule)] pt-3 sm:ml-[7.4rem]"
         >
           <EventDetail
             detail={detail}

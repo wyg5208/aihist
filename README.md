@@ -1,6 +1,6 @@
 # AI 纪年 / AI Chronicle
 
-> **当前版本**：v0.5.1 ｜ **更新日期**：2026-10-25 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
+> **当前版本**：v0.6.1 ｜ **更新日期**：2026-10-26 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
 
 一个中文的人工智能编年史站点：记录里程碑、模型发布、研究突破与产业事件。条目来自固定公开源（OpenRouter、Hugging Face、arXiv、Hacker News、官方公告与科技媒体 RSS），经指纹去重、跨源合并与置信度计算后，还要通过规则预筛和五家不同厂商的大模型评审（至少三票同意）才入档。完整规则见 [收录标准](docs/AI纪年_收录标准_v1.0.md)。
 
@@ -47,7 +47,7 @@ python -m venv .venv
 .venv/Scripts/python -m pip install -e .            # Linux: .venv/bin/python
 .venv/Scripts/python -m app.cli hash-password "your passphrase"    # 把输出填进 ADMIN_PASSWORD_HASH
 .venv/Scripts/python -m alembic upgrade head        # 建表
-.venv/Scripts/python -m app.cli seed                # 灌入 148 条种子
+.venv/Scripts/python -m app.cli seed                # 灌入 158 条种子
 .venv/Scripts/python -m uvicorn app.main:app --port 8000
 ```
 
@@ -83,7 +83,7 @@ npm run dev          # http://127.0.0.1:5173，/api 代理到 127.0.0.1:8000
 | `npm run release:gate` | 发布门禁：串行跑 G0–G6，红灯即停 |
 | `cd backend && python -m pytest -q` | 后端接口、采集管线、租约、迁移与 SQLite PRAGMA |
 
-`npm run build` 分两步：Vite 产出 `dist/index.html` 与资源，随后 `scripts/build-pages.mjs` 为每个种子生成 `dist/e/<slug>.html`（当前 148 个），并写出 `dist/sitemap.xml`（149 条 URL）、`dist/robots.txt`，向首页注入 `WebSite` + `Organization` JSON-LD。
+`npm run build` 分两步：Vite 产出 `dist/index.html` 与资源，随后 `scripts/build-pages.mjs` 为每个种子生成 `dist/e/<slug>.html`（当前 158 个），并写出 `dist/sitemap.xml`（159 条 URL）、`dist/robots.txt`，向首页注入 `WebSite` + `Organization` JSON-LD。
 
 静态页的绝对地址来自 `site.config.mjs` 的 `SITE_ORIGIN`（默认 `https://aihist.net`），构建时可覆盖：
 
@@ -121,12 +121,12 @@ src/                     React 前端（时间轴、筛选、详情、同步状�
 src/admin/               运营台 SPA：pages/ 14 个页面 + components/ 与 router
 admin.html               管理台入口，noindex
 backend/                 FastAPI 后端
-  app/api/               公开接口（public/open/growth/track/redirect）与管理接口（admin*）
+  app/api/               公开接口（public/open/growth/correct/track/redirect）与管理接口（admin*）
   app/db/                SQLAlchemy 模型与仓储（SQLite / PostgreSQL 双方言）
   app/editorial/         收录规则、标准文本、厂商预设、评审面板与聚合
   app/analytics/         UA 分类、访问日志解析、摄取与保留策略（纯函数为主）
   app/ingest/            采集管线、编辑门槛、聚类与种子
-  app/data/seed.json     人工校订的 148 条历史种子（构建与灌库的唯一来源）
+  app/data/seed.json     人工校订的 158 条历史种子（构建与灌库的唯一来源）
   alembic/               迁移脚本
   tests/                 后端测试，全部跑在 SQLite 上
 functions/               JS 参考实现：sources / normalize / cluster / editorial / pipeline
@@ -136,6 +136,7 @@ scripts/                 构建、检查与门禁脚本（清单见下）
 deploy/                  部署配置：windows/（安装、服务、任务计划、Caddy）、nginx/、systemd、cron
 docs/                    收录标准、产品规划、借鉴计划、llm_api_guide/（外部资料存档）
 docs/开发记录/            迭代记录，命名 v{版本}_{日期}_{主题}.md
+docs/推广/                推广执行包：归因码表与内容骨架（对外发布前照单执行）
 .qoder/agents/           迭代记录与版本发布的作业规则（iteration-doc / version-release）
 site.config.mjs          站点名称、标题、描述与 SITE_ORIGIN
 ```
@@ -175,6 +176,8 @@ scripts/export-seed.mjs                 从 functions/lib/seed.mjs 重导 seed.j
 - `GET  /api/v1/standard`：门槛、维度、硬性排除、票数规则的机器可读版本
 - `POST /api/v1/track`：埋点，无 Cookie、IP 只存哈希，恒返回 204
 - `POST /api/v1/subscribe`、`GET /api/v1/subscribe/confirm?token=`、`GET /api/v1/unsubscribe?token=`
+- `GET  /api/v1/subscribe?src=`：无 JS 订阅表单页（页脚「订阅更新」入口），表单提交到 `POST /api/v1/subscribe/form`
+- `GET  /api/v1/correct?slug=`：无 JS 纠错页，条目详情与每个静态页的「发现错误」都指到这里，出口是一个预填好条目与来源的 `mailto`
 - `GET  /api/v1/open/events`、`GET /api/v1/open/events/<slug>`：需 `X-API-Key`，`OPEN_API_ENABLED=false` 时 404
 - `GET  /api/v1/open/apply`、`POST /api/v1/open/apply`：申请页（后端渲染的 HTML），同一开关，未开放时 404
 - `GET  /go/<code>`：合作方跳转与点击计数，302
@@ -265,7 +268,7 @@ python -m app.cli create-owner --username you
 
 ## 发布
 
-发布产物里的绝对地址全部来自 `site.config.mjs` 的 `SITE_ORIGIN`，发布到哪个域名就用它构建，否则 canonical、`og:url`、sitemap 与 148 个种子页会一起指错。**先定域名，再构建，最后校验**——`check:pages` 必须与同一次 `npm run build` 配对，否则校验的是上一次产物。
+发布产物里的绝对地址全部来自 `site.config.mjs` 的 `SITE_ORIGIN`，发布到哪个域名就用它构建，否则 canonical、`og:url`、sitemap 与 158 个种子页会一起指错。**先定域名，再构建，最后校验**——`check:pages` 必须与同一次 `npm run build` 配对，否则校验的是上一次产物。
 
 ```sh
 node scripts/release-gate.mjs      # G0 版本一致 → 构建 → 静态页 → 管线 → 收录门槛 → 覆盖率 → 后端测试

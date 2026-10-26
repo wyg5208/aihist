@@ -115,6 +115,15 @@ def test_channel_and_page_kind_buckets():
     assert classify("https://chatgpt.com/", "aihist.net") == "ai"
     assert classify("https://www.google.com/", "aihist.net") == "search"
     assert classify("https://news.ycombinator.com/", "aihist.net") == "social"
+    # The channels the promotion plan actually uses; each one falls into
+    # `other` the moment its host is not listed.
+    assert classify("https://www.bilibili.com/video/BV1", "aihist.net") == "social"
+    assert classify("https://www.zhihu.com/question/1", "aihist.net") == "social"
+    assert classify("https://juejin.cn/post/1", "aihist.net") == "social"
+    assert classify("https://mp.weixin.qq.com/s/abc", "aihist.net") == "social"
+    assert classify("https://www.xiaohongshu.com/explore/abc", "aihist.net") == "social"
+    assert classify("https://sspai.com/post/1", "aihist.net") == "social"
+    assert classify("https://okjike.com/post/1", "aihist.net") == "social"
     assert classify("https://example.org/post", "aihist.net") == "other"
 
     kind = track_api.page_kind

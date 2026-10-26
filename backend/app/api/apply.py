@@ -22,7 +22,6 @@ it cannot honour.
 from __future__ import annotations
 
 import html
-import time
 from typing import Any
 from urllib.parse import parse_qs
 
@@ -31,6 +30,7 @@ from fastapi.responses import HTMLResponse
 from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.analytics import ip_digest
+from app.analytics.throttle import SlidingWindow
 from app.config import Settings, get_settings
 from app.db import repo_commercial, repo_growth
 from app.deps import client_ip, get_session
@@ -41,28 +41,17 @@ RATE_LIMIT = 5
 RATE_WINDOW_SECONDS = 3600.0
 MIN_PURPOSE_CHARS = 10
 
-# Process-local sliding window, same trade-off as `track.py`: correct for the
-# single-worker deployment this service assumes, and a cache rather than state.
-_hits: dict[str, list[float]] = {}
+# Same window the subscribe form uses; one implementation, two callers.
+_window = SlidingWindow(RATE_LIMIT, RATE_WINDOW_SECONDS)
 
 
 def reset_rate_limit() -> None:
     """Testing seam."""
-    _hits.clear()
+    _window.reset()
 
 
 def allow(key: str, *, moment: float | None = None) -> bool:
-    now = time.monotonic() if moment is None else moment
-    cutoff = now - RATE_WINDOW_SECONDS
-    stamps = [stamp for stamp in _hits.get(key, ()) if stamp >= cutoff]
-    if len(stamps) >= RATE_LIMIT:
-        _hits[key] = stamps
-        return False
-    if len(_hits) > 4096:
-        _hits.clear()
-    stamps.append(now)
-    _hits[key] = stamps
-    return True
+    return _window.allow(key, moment=moment)
 
 
 # ---------------------------------------------------------------------------
@@ -202,12 +191,25 @@ def _result(*, title: str, heading: str, paragraphs: list[str], status_code: int
 
 
 def _closed() -> HTMLResponse:
-    return _result(
-        title="通道未开放",
-        heading="开放数据接口尚未开放",
-        paragraphs=["这个通道当前没有启用，申请书不会被受理。请稍后再来。"],
-        status_code=404,
+    """The switch is off, but the page still has to be a way out.
+
+    The footer link that lands here is always visible — it does not follow this
+    switch — so a reader who taps it deserves an answer better than "nothing
+    here": when the form opens, and what is readable meanwhile. Status stays 404
+    because the channel genuinely does not exist yet; the body is what a person
+    sees, and a 404 with a route home is still a route home.
+    """
+    body = (
+        '  <p class="mark">AI 纪年 · 开放数据 API</p>\n'
+        '  <h1>开放数据接口尚未开放</h1>\n'
+        '  <p class="lede">读取接口与这张申请表会同时启用。当前阶段只开放阅读，不接收申请。</p>\n'
+        '  <p>档案本身随时可读：每条都带来源地址，可逐条核对。'
+        "开放后这里会先通知订阅者，再对外放号。</p>\n"
+        '  <hr class="rule">\n'
+        '  <p class="note"><a href="/api/v1/subscribe?src=apply">订阅开放通知</a> · '
+        '<a href="/">先看时间轴</a></p>\n'
     )
+    return _page(title="通道未开放", body=body, status_code=404)
 
 
 def _consent_required() -> HTMLResponse:

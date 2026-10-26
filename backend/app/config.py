@@ -80,6 +80,10 @@ class Settings(BaseSettings):
     fetch_budget_seconds: int = 120
 
     site_origin: str = "https://aihist.net"
+    # Where reader corrections go. Empty derives `correct@<site host>` so the
+    # correction page never ships a dead address; set it to a mailbox someone
+    # actually reads before inviting reports.
+    contact_email: str = ""
 
     # First-party analytics. Disabled means `POST /api/v1/track` answers 204 and
     # writes nothing, so the beacon can stay wired up on the client while the

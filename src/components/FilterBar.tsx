@@ -67,7 +67,7 @@ export function FilterBar({
         <div className="search-field">
           <label
             htmlFor="archive-search"
-            className="shrink-0 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]"
+            className="shrink-0 font-mono text-[11.5px] uppercase tracking-[0.16em] text-[var(--muted)]"
           >
             检索
           </label>
@@ -98,7 +98,7 @@ export function FilterBar({
             id="archive-count"
             role="status"
             aria-live="polite"
-            className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--muted)]"
+            className="font-mono text-[11.5px] uppercase tracking-[0.12em] text-[var(--muted)]"
           >
             <span className="text-[var(--ink)]">{formatCount(shown)}</span>
             {" / "}
@@ -109,7 +109,7 @@ export function FilterBar({
             <button
               type="button"
               onClick={onClear}
-              className="font-mono text-[10px] uppercase tracking-[0.14em] text-[var(--accent)] underline decoration-[var(--accent)] underline-offset-4"
+              className="font-mono text-[11.5px] uppercase tracking-[0.12em] text-[var(--accent)] underline decoration-[var(--accent)] underline-offset-4"
             >
               清除
             </button>
@@ -148,7 +148,7 @@ export function FilterBar({
       </div>
 
       <div className="mt-2 flex flex-wrap items-center gap-1.5">
-        <span className="mr-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--muted)]">
+        <span className="mr-1 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--muted)]">
           可信度
         </span>
         <button

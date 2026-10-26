@@ -367,6 +367,7 @@ ${sourcesHtml}
     <footer class="page-foot">
       <span>静态引用页 · 档案版本 ${escapeHtml(SEED_VERSION)} · 构建于 ${escapeHtml(buildDate)}</span>
       <a href="/?e=${escapeHtml(seed.seedId)}">在时间轴中查看 →</a>
+      <a href="/api/v1/correct?slug=${escapeHtml(seed.seedId)}">发现错误？→</a>
     </footer>
   </main>
 </body>

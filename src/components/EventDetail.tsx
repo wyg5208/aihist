@@ -84,7 +84,7 @@ export function EventDetail({
   if (loading) {
     return (
       <div className="pb-6" role="status" aria-live="polite">
-        <p className="font-mono text-[10px] uppercase tracking-[0.18em] text-[var(--muted)]">
+        <p className="font-mono text-[11.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
           正在读取证据与摘要
         </p>
         <div className="mt-3 space-y-2" aria-hidden="true">
@@ -98,13 +98,13 @@ export function EventDetail({
   if (error || !detail) {
     return (
       <div className="pb-6" role="alert">
-        <p className="text-[13px] text-[var(--ink-soft)]">
+        <p className="text-[14.5px] text-[var(--ink-soft)]">
           详情未能读取，时间轴条目本身仍然有效。
         </p>
         <button
           type="button"
           onClick={onRetry}
-          className="mt-2 font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--accent)] underline underline-offset-4"
+          className="mt-2 font-mono text-[11.5px] uppercase tracking-[0.16em] text-[var(--accent)] underline underline-offset-4"
         >
           重新读取详情
         </button>
@@ -120,12 +120,12 @@ export function EventDetail({
   const votes = review?.votes?.filter((vote) => vote.judge !== "rule") || [];
 
   return (
-    <div className="pb-7">
+    <div className="max-w-[58rem] pb-7">
       <div className="border-l-2 border-[var(--accent)] pl-3 sm:pl-4">
-        <p className="text-[13.5px] leading-6 text-[var(--ink-soft)] sm:text-sm">
+        <p className="text-[15px] leading-7 text-[var(--ink-soft)] sm:text-[16px]">
           {detail.summary}
         </p>
-        <p className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1 font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--muted)]">
+        <p className="mt-2 flex flex-wrap items-baseline gap-x-3 gap-y-1 font-mono text-[10.5px] uppercase tracking-[0.16em] text-[var(--muted)]">
           <span>{summaryKindLabel(detail.summaryKind)}</span>
           <span aria-hidden="true">·</span>
           <span>{detail.origin === "seed" ? "人工校订条目" : "自动聚合条目"}</span>
@@ -138,7 +138,7 @@ export function EventDetail({
 
       {detail.tags.length > 0 && (
         <div className="mt-3 flex flex-wrap items-baseline gap-1.5">
-          <span className="mr-1 font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--muted)]">
+          <span className="mr-1 font-mono text-[10.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
             关键词
           </span>
           {detail.tags.map((tag) => (
@@ -168,10 +168,10 @@ export function EventDetail({
       {review && (
         <div className="mt-4 border border-[var(--rule)] px-3 py-2.5">
           <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-            <h4 className="font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--muted)]">
+            <h4 className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
               收录评审
             </h4>
-            <p className="font-mono text-[9px] tracking-[0.06em] text-[var(--ink-soft)]">
+            <p className="font-mono text-[10.5px] tracking-[0.06em] text-[var(--ink-soft)]">
               {review.includeVotes}/{review.validVotes} 票同意 · 中位分 {review.score} ·{" "}
               {review.version}
             </p>
@@ -183,7 +183,7 @@ export function EventDetail({
                   key={`${vote.judge}-${index}`}
                   className="border-t border-[var(--rule)] pt-1.5"
                 >
-                  <p className="flex items-baseline justify-between gap-2 font-mono text-[9px]">
+                  <p className="flex items-baseline justify-between gap-2 font-mono text-[10.5px]">
                     <span className="min-w-0 truncate text-[var(--muted)]" title={vote.model}>
                       {vote.model}
                     </span>
@@ -198,7 +198,7 @@ export function EventDetail({
                     </span>
                   </p>
                   {vote.reason && (
-                    <p className="mt-0.5 text-[10.5px] leading-4 text-[var(--muted)]">
+                    <p className="mt-0.5 text-[12px] leading-5 text-[var(--muted)]">
                       {vote.reason}
                     </p>
                   )}
@@ -206,8 +206,8 @@ export function EventDetail({
               ))}
             </ol>
           )}
-          <p className="mt-2 font-mono text-[9px] tracking-[0.04em] text-[var(--muted)]">
-            {review.source === "rule" ? "规则预筛" : "三个独立模型分别打分"} ·{" "}
+          <p className="mt-2 font-mono text-[10.5px] tracking-[0.04em] text-[var(--muted)]">
+            {review.source === "rule" ? "规则预筛" : "五家厂商各一席评审"} ·{" "}
             {formatTimestamp(review.at)}
           </p>
         </div>
@@ -215,16 +215,16 @@ export function EventDetail({
 
       {meta.length > 0 && (
         <div className="mt-4">
-          <h4 className="font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--muted)]">
+          <h4 className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
             结构化附注
           </h4>
           <dl className="mt-1.5 grid gap-x-6 gap-y-1.5 sm:grid-cols-2">
             {meta.map((row) => (
               <div key={`${row.label}-${row.value}`} className="flex items-baseline gap-3">
-                <dt className="w-16 shrink-0 font-mono text-[9px] uppercase tracking-[0.1em] text-[var(--muted)]">
+                <dt className="w-16 shrink-0 font-mono text-[10.5px] uppercase tracking-[0.1em] text-[var(--muted)]">
                   {row.label}
                 </dt>
-                <dd className="min-w-0 break-words text-[12px] text-[var(--ink-soft)]">
+                <dd className="min-w-0 break-words text-[13.5px] text-[var(--ink-soft)]">
                   {row.value}
                 </dd>
               </div>
@@ -234,7 +234,7 @@ export function EventDetail({
       )}
 
       <div className="mt-5">
-        <h4 className="font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--muted)]">
+        <h4 className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
           证据链 · {sources.length} 条
         </h4>
         <ol className="mt-1.5 border-t border-[var(--rule)]">
@@ -243,19 +243,19 @@ export function EventDetail({
               <span className="evidence-index">{String(index + 1).padStart(2, "0")}</span>
               <div className="min-w-0">
                 <p className="flex flex-wrap items-baseline gap-x-2 gap-y-0.5">
-                  <span className="font-mono text-[9px] uppercase tracking-[0.12em] text-[var(--accent)]">
+                  <span className="font-mono text-[10.5px] uppercase tracking-[0.12em] text-[var(--accent)]">
                     {familyLabel(source.family)}
                   </span>
-                  <span className="font-mono text-[9px] tracking-[0.06em] text-[var(--muted)]">
+                  <span className="font-mono text-[10.5px] tracking-[0.06em] text-[var(--muted)]">
                     {source.name}
                   </span>
                   {source.publishedAt && (
-                    <span className="font-mono text-[9px] text-[var(--muted)]">
+                    <span className="font-mono text-[10.5px] text-[var(--muted)]">
                       {source.publishedAt.slice(0, 10)}
                     </span>
                   )}
                 </p>
-                <p className="mt-0.5 text-[12.5px] leading-5 text-[var(--ink-soft)]">
+                <p className="mt-0.5 text-[14px] leading-5 text-[var(--ink-soft)]">
                   <a
                     href={source.url}
                     target="_blank"
@@ -265,19 +265,19 @@ export function EventDetail({
                     {source.title || source.url}
                   </a>
                 </p>
-                <p className="mt-0.5 font-mono text-[9px] text-[var(--muted)]">
+                <p className="mt-0.5 font-mono text-[10.5px] text-[var(--muted)]">
                   {hostLabel(source.url)}
                 </p>
               </div>
             </li>
           ))}
           {sources.length === 0 && (
-            <li className="py-3 text-[12px] text-[var(--muted)]">暂无可用证据链接。</li>
+            <li className="py-3 text-[13.5px] text-[var(--muted)]">暂无可用证据链接。</li>
           )}
         </ol>
       </div>
 
-      <p className="mt-4 border-t border-[var(--rule)] pt-2 font-mono text-[9px] tracking-[0.08em] text-[var(--muted)]">
+      <p className="mt-4 border-t border-[var(--rule)] pt-2 font-mono text-[10.5px] tracking-[0.08em] text-[var(--muted)]">
         档案编号 {detail.fingerprint.slice(0, 16).toUpperCase()}
         <span className="mx-2" aria-hidden="true">·</span>
         类别「{categoryLabel}」
@@ -328,7 +328,7 @@ function CopyActions({ detail }: { detail: Detail }) {
   };
 
   return (
-    <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1 font-mono text-[9px] uppercase tracking-[0.16em]">
+    <div className="mt-3 flex flex-wrap items-baseline gap-x-4 gap-y-1 font-mono text-[10.5px] uppercase tracking-[0.16em]">
       <button
         type="button"
         disabled={!slug}
@@ -359,6 +359,16 @@ function CopyActions({ detail }: { detail: Detail }) {
           className="text-[var(--accent)] underline underline-offset-4"
         >
           静态引用页 ↗
+        </a>
+      )}
+      {slug && (
+        <a
+          href={`/api/v1/correct?slug=${encodeURIComponent(slug)}`}
+          target="_blank"
+          rel="noreferrer"
+          className="text-[var(--accent)] underline underline-offset-4"
+        >
+          报告问题 ↗
         </a>
       )}
       {!slug && (

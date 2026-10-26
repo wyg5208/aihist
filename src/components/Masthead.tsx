@@ -25,7 +25,7 @@ export function Masthead({
 }: Props) {
   return (
     <header className="pt-6 sm:pt-10">
-      <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[var(--ink)] pb-3 font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--ink-soft)] sm:text-[11px]">
+      <div className="flex flex-wrap items-baseline justify-between gap-3 border-b border-[var(--ink)] pb-3 font-mono text-[11.5px] uppercase tracking-[0.16em] text-[var(--ink-soft)] sm:text-[12.5px]">
         <p>AI Chronicle · 公开来源采集与交叉验证</p>
         <div className="flex flex-wrap items-baseline gap-3 sm:gap-4">
           <button
@@ -47,15 +47,15 @@ export function Masthead({
           <h1 className="font-serif text-[clamp(3.4rem,9vw,6.8rem)] leading-[0.86] tracking-[-0.03em] text-[var(--ink)]">
             AI 纪年
           </h1>
-          <p className="mt-4 max-w-xl text-pretty text-sm leading-7 text-[var(--ink-soft)] sm:text-base">
+          <p className="mt-4 max-w-[46rem] text-pretty text-[15.5px] leading-8 text-[var(--ink-soft)] sm:text-[17px]">
             记录人工智能的关键节点、模型发布与重要研究。条目来自公开接口与官方公告，
-            经过去重与交叉验证后入档；自动条目还要通过三个独立模型评审，至少两票同意。
-            置信度、证据与评审票型随每条记录公开。
+            经过去重与交叉验证后入档；自动条目还要经五家厂商各一席的模型评审，
+            至少三票同意且中位分不低于 75 才收录。置信度、证据与评审票型随每条记录公开。
           </p>
         </div>
 
         <div className="lg:pb-1">
-          <p className="flex min-w-[13rem] items-center gap-2 border-b border-[var(--rule)] pb-2 font-mono text-[11px] uppercase tracking-[0.18em]">
+          <p className="flex min-w-[13rem] items-center gap-2 border-b border-[var(--rule)] pb-2 font-mono text-[12.5px] uppercase tracking-[0.16em]">
             <span
               className="sync-dot"
               data-state={running ? "running" : "idle"}
@@ -64,7 +64,7 @@ export function Masthead({
             {running ? "后台采集中" : "后台定时更新"}
           </p>
           <p
-            className="mt-2 max-w-[16rem] font-mono text-[10px] leading-4 tracking-wide text-[var(--muted)]"
+            className="mt-2 max-w-[19rem] font-mono text-[11.5px] leading-5 tracking-wide text-[var(--muted)]"
             role="status"
             aria-live="polite"
           >
@@ -72,7 +72,7 @@ export function Masthead({
           </p>
           <a
             href="/admin/"
-            className="mt-2 inline-block font-mono text-[10px] uppercase tracking-[0.16em] text-[var(--muted)] underline underline-offset-4 transition-colors hover:text-[var(--accent)]"
+            className="mt-2 inline-block font-mono text-[11.5px] uppercase tracking-[0.14em] text-[var(--muted)] underline underline-offset-4 transition-colors hover:text-[var(--accent)]"
           >
             管理台
           </a>
@@ -111,13 +111,13 @@ function Stat({
         last ? "" : "border-b border-[var(--rule)] sm:border-b-0 sm:border-r"
       }`}
     >
-      <dt className="font-mono text-[10px] uppercase tracking-[0.2em] text-[var(--muted)]">
+      <dt className="font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--muted)]">
         {label}
       </dt>
       <dd className="mt-1.5 font-serif text-2xl leading-none text-[var(--ink)] sm:text-3xl">
         {value}
       </dd>
-      <dd className="mt-2 font-mono text-[10px] text-[var(--muted)]">{note}</dd>
+      <dd className="mt-2 font-mono text-[11.5px] text-[var(--muted)]">{note}</dd>
     </div>
   );
 }
