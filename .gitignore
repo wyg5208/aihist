@@ -43,5 +43,10 @@ backend/_scratch_*.txt
 # Third-party reference snapshots kept locally for reading only (~73 MB)
 /open_resources/
 
+# WeClaw 技术专栏稿件的本地镜像（149 篇，约 3 MB）。原稿在 WeClaw 自己的
+# 仓库里维护，这里只是写作时随手放进来的拷贝，不属于本站内容，不入库。
+# 前导斜杠锚定仓库根，避免误伤别处的同名目录。
+/docs/9_Weclaw_blogs/
+
 # Real secrets. `deploy/api.env.example` is the tracked template.
 deploy/api.env
