@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Confidence, TimelineItem } from "../types";
+import { BrandMark } from "../components/BrandMark";
 import { EventDetail } from "../components/EventDetail";
 import { SubscribeForm } from "../components/SubscribeForm";
 import { ThemeSwitcher } from "../components/ThemeSwitcher";
@@ -79,7 +80,7 @@ export function AuroraView({ archive }: { archive: ArchiveController }) {
       <header className="au-nav">
         <div className={`${wrap} flex h-[70px] items-center gap-7`}>
           <a href="/" className="flex items-center gap-2.5 whitespace-nowrap">
-            <span className="au-orb" aria-hidden="true" />
+            <BrandMark variant="glow" size={28} />
             <span className="text-[18px] font-bold tracking-[-0.01em] text-[var(--ink)]">
               AI 纪年
             </span>
@@ -359,7 +360,7 @@ export function AuroraView({ archive }: { archive: ArchiveController }) {
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.3fr]">
             <div>
               <a href="/" className="flex items-center gap-2.5 whitespace-nowrap">
-                <span className="au-orb" aria-hidden="true" />
+                <BrandMark variant="glow" size={28} />
                 <span className="text-[18px] font-bold text-[var(--ink)]">AI 纪年</span>
                 <span className="font-mono text-[10px] uppercase tracking-[0.24em] text-[var(--muted)]">
                   Chronicle

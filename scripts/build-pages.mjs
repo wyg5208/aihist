@@ -325,6 +325,8 @@ function renderPage(seed, sources, buildDate) {
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#14120f" />
   <meta name="color-scheme" content="light dark" />
   <meta name="robots" content="index,follow" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="canonical" href="${escapeHtml(pageUrl)}" />
   <meta property="og:type" content="article" />
   <meta property="og:site_name" content="${escapeHtml(SITE_NAME)}" />

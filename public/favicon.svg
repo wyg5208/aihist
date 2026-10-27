@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <style>
+    /* The tab cannot follow `data-theme` (it has no access to the page), so it
+       follows the system preference instead — the same rule the boot script
+       uses when nothing is stored. Slips only: at favicon sizes the cord shows
+       up as copper specks between the slips and the mark reads as a grille. */
+    @media (prefers-color-scheme: dark) {
+      .slip { fill: #e9edf8; }
+      .accent { fill: #a98bff; }
+    }
+  </style>
+  <rect class="slip" x="4" y="10" width="11" height="44" rx="5.5" fill="#0f1c2b" />
+  <rect class="slip" x="19" y="10" width="11" height="44" rx="5.5" fill="#0f1c2b" />
+  <rect class="accent" x="34" y="10" width="11" height="44" rx="5.5" fill="#a67c3d" />
+  <rect class="slip" x="49" y="10" width="11" height="44" rx="5.5" fill="#0f1c2b" />
+</svg>

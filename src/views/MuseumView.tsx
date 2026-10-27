@@ -1,6 +1,7 @@
 import { Fragment } from "react";
 import type { ReactNode } from "react";
 import type { Category, Confidence, TimelineItem } from "../types";
+import { BrandMark } from "../components/BrandMark";
 import { EventDetail } from "../components/EventDetail";
 import { SubscribeForm } from "../components/SubscribeForm";
 import { ThemeSwitcher } from "../components/ThemeSwitcher";
@@ -132,9 +133,7 @@ export function MuseumView({ archive }: { archive: ArchiveController }) {
           </nav>
 
           <a href="/" className="flex items-center gap-2 whitespace-nowrap justify-self-start sm:gap-2.75 lg:justify-self-center">
-            <span className="mu-seal" aria-hidden="true">
-              纪年
-            </span>
+            <BrandMark variant="seal" size={30} />
             <span className="font-serif text-[22px] tracking-[0.02em] text-[var(--ink)] sm:text-[23px]">AI 纪年</span>
             <em className="hidden font-sans text-[10px] not-italic uppercase tracking-[0.24em] text-[var(--muted)] sm:inline">
               Chronicle
@@ -438,9 +437,7 @@ export function MuseumView({ archive }: { archive: ArchiveController }) {
           <div className="grid gap-8.5 sm:grid-cols-2 lg:grid-cols-[1.6fr_1fr_1fr_1.3fr]">
             <div>
               <a href="/" className="flex items-center gap-2.75 whitespace-nowrap">
-                <span className="mu-seal" aria-hidden="true">
-                  纪年
-                </span>
+                <BrandMark variant="seal" size={30} />
                 <span className="font-serif text-[22px] tracking-[0.02em] text-[#f4eeda]">AI 纪年</span>
                 <em className="font-sans text-[10px] not-italic uppercase tracking-[0.24em] text-[#8d9c92]">
                   Chronicle

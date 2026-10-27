@@ -1,5 +1,6 @@
 import type { ReactNode } from "react";
 import type { Confidence, TimelineItem } from "../types";
+import { BrandMark } from "../components/BrandMark";
 import { EventDetail } from "../components/EventDetail";
 import { SubscribeForm } from "../components/SubscribeForm";
 import { ThemeSwitcher } from "../components/ThemeSwitcher";
@@ -459,7 +460,7 @@ export function EditorialView({ archive }: { archive: ArchiveController }) {
           <div className="grid gap-9 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.4fr]">
             <div>
               <a href="/" className="flex items-center gap-2.5 whitespace-nowrap text-[#f6efe1]">
-                <BrandMark tone="gold" />
+                <BrandMark tone="onDeep" />
                 <span className="font-serif text-[22px] tracking-[0.02em]">AI 纪年</span>
                 <span className="font-mono text-[10.5px] uppercase tracking-[0.22em] text-[#8d949f]">
                   Chronicle
@@ -564,23 +565,6 @@ export function EditorialView({ archive }: { archive: ArchiveController }) {
         </div>
       </footer>
     </div>
-  );
-}
-
-function BrandMark({ tone = "ink" }: { tone?: "ink" | "gold" }) {
-  return (
-    <span
-      className={`relative block h-[26px] w-[26px] shrink-0 ${
-        tone === "gold" ? "bg-[var(--accent-mark)]" : "bg-[var(--ink)]"
-      }`}
-      aria-hidden="true"
-    >
-      <span
-        className={`absolute right-[7px] top-[7px] h-3 w-3 ${
-          tone === "gold" ? "bg-[#0f1c2b]" : "bg-[var(--accent-mark)]"
-        }`}
-      />
-    </span>
   );
 }
 

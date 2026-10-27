@@ -470,6 +470,42 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 /* -------------------------------------------------------------------------
+ * 纪年标识 — four slips and a cord, drawn once for all three views.
+ *
+ * The geometry lives in `src/components/BrandMark.tsx`; the colours are
+ * tokens, so a palette swap re-brands the mark: `--accent` draws the cord
+ * (copper / cyan / gold) and `--accent-mark` tints the third slip. The
+ * variants keep each view's old chrome, so the three lockups still read as
+ * three editions rather than one template with three palettes.
+ * ------------------------------------------------------------------------- */
+
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: none;
+}
+
+.brand-mark > svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* 极光：was a conic-gradient orb; the halo moves onto the mark itself. */
+.brand-mark--glow {
+  filter: drop-shadow(0 0 9px rgba(84, 227, 255, 0.5));
+}
+
+/* 博物馆：was the 纪年 seal; the frame stays, the glyphs become the mark.
+   The rule is drawn outside the box so the slips keep the room the two
+   characters used to take inside it. */
+.brand-mark--seal {
+  padding: 2px;
+  box-shadow: 0 0 0 1px var(--accent-mark);
+}
+
+/* -------------------------------------------------------------------------
  * Three views, not one view in three palettes. `data-theme` picks the layout
  * as well as the palette, so the chrome below is scoped to the view that owns
  * it: the sticky stack differs because the headers differ, the card stock
@@ -544,24 +580,6 @@ input[type="search"]::-webkit-search-cancel-button {
   background: color-mix(in srgb, var(--paper) 72%, transparent);
   backdrop-filter: blur(18px);
   border-bottom: 1px solid var(--rule);
-}
-
-.au-orb {
-  position: relative;
-  width: 28px;
-  height: 28px;
-  flex: none;
-  border-radius: 50%;
-  background: conic-gradient(from 210deg, #54e3ff, #a98bff, #5ff0b4, #54e3ff);
-  box-shadow: 0 0 22px rgba(84, 227, 255, 0.45);
-}
-
-.au-orb::after {
-  content: "";
-  position: absolute;
-  inset: 7px;
-  border-radius: 50%;
-  background: var(--paper);
 }
 
 .au-title span {
@@ -645,20 +663,6 @@ input[type="search"]::-webkit-search-cancel-button {
   background: color-mix(in srgb, var(--paper) 94%, transparent);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--rule);
-}
-
-.mu-seal {
-  display: grid;
-  place-items: center;
-  width: 30px;
-  height: 30px;
-  flex: none;
-  border: 1px solid var(--accent-mark);
-  color: var(--accent-mark);
-  font-family: var(--font-sans);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 0.06em;
 }
 
 .mu-card {
