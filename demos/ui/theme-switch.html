@@ -1,0 +1,766 @@
+<!doctype html>
+<html lang="zh-CN" data-theme="editorial">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 纪年 · 三套主题可切换</title>
+<script>
+  // 与正式站一致的思路：首帧之前就把主题写进 <html>，避免闪一下默认色。
+  (function () {
+    try {
+      var q = new URLSearchParams(location.search).get("t");
+      if (q === "editorial" || q === "aurora" || q === "museum") {
+        document.documentElement.dataset.theme = q;
+        return;
+      }
+      var saved = localStorage.getItem("aihist.ui-theme");
+      if (saved === "editorial" || saved === "aurora" || saved === "museum") {
+        document.documentElement.dataset.theme = saved;
+      }
+    } catch (e) {}
+  })();
+</script>
+<style>
+  /* ============================================================
+     一套结构，三套皮肤。
+     主题 1 典藏（editorial） = 方案 01：墨蓝 + 铜金 + 米纸
+     主题 2 极光（aurora）    = 方案 03：近黑 + 青紫光晕 + 玻璃卡
+     主题 3 博物馆（museum）  = 方案 05：米白 + 森林绿 + 金
+     组件只读变量，主题只改变量（少量结构性差异写在末尾）。
+     ============================================================ */
+  :root{
+    --sans:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+    --serif:Georgia,"Songti SC","Noto Serif SC","Source Han Serif SC",serif;
+
+    --bg:#faf7f0;
+    --ink:#0f1c2b;
+    --ink-2:#3d4d5e;
+    --muted:#7d8a97;
+    --line:#ded6c5;
+    --line-2:#c3b9a4;
+
+    --brand:#a67c3d;
+    --brand-text:#8a6529;
+    --accent:#1b4a72;
+
+    --panel:#fffdf8;
+    --panel-2:#f2ece0;
+    --card:transparent;
+
+    --nav-bg:rgba(250,247,240,.94);
+    --strip-bg:#0f1c2b;
+    --strip-ink:#cbbfa6;
+    --strip-strong:#f4ead6;
+
+    --foot-bg:#0f1c2b;
+    --foot-ink:#c5bcaa;
+    --foot-head:#f6efe1;
+    --foot-rule:#2a3a4d;
+
+    --action-bg:#0f1c2b;
+    --action-ink:#f6efe1;
+    --action-sub:#c8bfae;
+    --action-k:#a67c3d;
+
+    --btn-solid-bg:#0f1c2b;
+    --btn-solid-ink:#fdf8ee;
+    --btn-brand-bg:#a67c3d;
+    --btn-brand-ink:#1b1206;
+
+    --chip-on-bg:#0f1c2b;
+    --chip-on-ink:#f7f0e2;
+
+    --ok-bg:#eef5ef;--ok-ink:#245c3c;
+    --mid-bg:#faf3e2;--mid-ink:#7a5a1e;
+    --tag-ink:#1b4a72;
+
+    --r:2px;
+    --r-card:2px;
+    --shadow:none;
+    --display:var(--serif);
+    --display-weight:400;
+    --h1-size:clamp(44px,6vw,78px);
+    --h1-track:-.02em;
+    --entry-cols:96px minmax(0,1fr);
+
+    --sw-editorial:linear-gradient(135deg,#0f1c2b 55%,#a67c3d 55%);
+    --sw-aurora:linear-gradient(135deg,#06070d 45%,#54e3ff 45%,#a98bff);
+    --sw-museum:linear-gradient(135deg,#123a2c 55%,#b08d4f 55%);
+  }
+
+  /* ---------- 主题 2：极光 ---------- */
+  :root[data-theme="aurora"]{
+    --bg:#06070d;
+    --ink:#e9edf8;
+    --ink-2:#aab2c8;
+    --muted:#7d86a1;
+    --line:rgba(255,255,255,.10);
+    --line-2:rgba(255,255,255,.22);
+
+    --brand:#54e3ff;
+    --brand-text:#54e3ff;
+    --accent:#a98bff;
+
+    --panel:rgba(255,255,255,.045);
+    --panel-2:rgba(255,255,255,.07);
+    --card:rgba(255,255,255,.035);
+
+    --nav-bg:rgba(6,7,13,.72);
+    --strip-bg:#06070d;
+    --strip-ink:#8b93ab;
+    --strip-strong:#e9edf8;
+
+    --foot-bg:rgba(255,255,255,.02);
+    --foot-ink:#aab2c8;
+    --foot-head:#ffffff;
+    --foot-rule:rgba(255,255,255,.10);
+
+    --action-bg:linear-gradient(120deg,rgba(84,227,255,.13),rgba(169,139,255,.17));
+    --action-ink:#e9edf8;
+    --action-sub:#aab2c8;
+    --action-k:#54e3ff;
+
+    --btn-solid-bg:linear-gradient(100deg,#54e3ff,#a98bff);
+    --btn-solid-ink:#080a14;
+    --btn-brand-bg:linear-gradient(100deg,#54e3ff,#a98bff);
+    --btn-brand-ink:#080a14;
+
+    --chip-on-bg:rgba(84,227,255,.16);
+    --chip-on-ink:#54e3ff;
+
+    --ok-bg:rgba(95,240,180,.13);--ok-ink:#5ff0b4;
+    --mid-bg:rgba(255,196,107,.13);--mid-ink:#ffc46b;
+    --tag-ink:#9fc6ff;
+
+    --r:10px;
+    --r-card:16px;
+    --shadow:0 26px 60px -40px rgba(0,0,0,.9);
+    --display:var(--sans);
+    --display-weight:800;
+    --h1-size:clamp(40px,5.2vw,66px);
+    --h1-track:-.04em;
+  }
+
+  /* ---------- 主题 3：博物馆 ---------- */
+  :root[data-theme="museum"]{
+    --bg:#f4f0e5;
+    --ink:#13241d;
+    --ink-2:#41544a;
+    --muted:#7d8a80;
+    --line:#ddd6c4;
+    --line-2:#c8bfa8;
+
+    --brand:#b08d4f;
+    --brand-text:#866428;
+    --accent:#1c5340;
+
+    --panel:#fbf9f3;
+    --panel-2:#efe9da;
+    --card:#fbf9f3;
+
+    --nav-bg:rgba(244,240,229,.94);
+    --strip-bg:#123a2c;
+    --strip-ink:#cfc0a0;
+    --strip-strong:#f2e8d0;
+
+    --foot-bg:#0e2a20;
+    --foot-ink:#c2b99f;
+    --foot-head:#f4eeda;
+    --foot-rule:#26463a;
+
+    --action-bg:#123a2c;
+    --action-ink:#efe7d2;
+    --action-sub:#c3b898;
+    --action-k:#d5b578;
+
+    --btn-solid-bg:#123a2c;
+    --btn-solid-ink:#f6f1e3;
+    --btn-brand-bg:#b08d4f;
+    --btn-brand-ink:#20180a;
+
+    --chip-on-bg:#123a2c;
+    --chip-on-ink:#f4eeda;
+
+    --ok-bg:#e6efe7;--ok-ink:#1c6b45;
+    --mid-bg:#f6edda;--mid-ink:#8a6516;
+    --tag-ink:#1c5340;
+
+    --r:6px;
+    --r-card:9px;
+    --shadow:0 22px 44px -38px rgba(19,36,29,.75);
+    --display:var(--serif);
+    --display-weight:400;
+    --h1-size:clamp(40px,5.4vw,68px);
+    --h1-track:-.02em;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background-color:var(--bg);color:var(--ink);
+    font:15px/1.62 var(--sans);-webkit-font-smoothing:antialiased;
+    transition:background-color .25s ease,color .25s ease;
+  }
+  :root[data-theme="editorial"] body,
+  :root[data-theme="museum"] body{
+    background-image:radial-gradient(900px 460px at 88% -8%,rgba(176,141,79,.10),transparent 62%);
+    background-attachment:fixed;
+  }
+  :root[data-theme="aurora"] body{
+    background-image:
+      radial-gradient(720px 500px at 12% -8%,rgba(84,227,255,.16),transparent 60%),
+      radial-gradient(720px 520px at 88% -4%,rgba(169,139,255,.18),transparent 62%),
+      linear-gradient(rgba(255,255,255,.022) 1px,transparent 1px),
+      linear-gradient(90deg,rgba(255,255,255,.022) 1px,transparent 1px);
+    background-size:auto,auto,64px 64px,64px 64px;
+    background-attachment:fixed;
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:color-mix(in srgb,var(--brand) 26%,transparent)}
+  :focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+  .wrap{max-width:1440px;margin:0 auto;padding:0 30px}
+  @media (max-width:700px){.wrap{padding:0 16px}}
+
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:7px;height:38px;padding:0 16px;
+    border-radius:var(--r);border:1px solid transparent;font-size:13.5px;font-weight:600;
+    font-family:var(--sans);cursor:pointer;transition:.16s;white-space:nowrap}
+  .btn.sm{height:32px;padding:0 13px;font-size:12.5px}
+  .btn.solid{background:var(--btn-solid-bg);color:var(--btn-solid-ink)}
+  .btn.solid:hover{filter:brightness(1.08)}
+  .btn.brand{background:var(--btn-brand-bg);color:var(--btn-brand-ink)}
+  .btn.brand:hover{filter:brightness(1.06)}
+  .btn.line{border-color:var(--line-2);color:var(--ink);background:transparent}
+  .btn.line:hover{border-color:var(--brand);color:var(--brand)}
+
+  /* ---------- 顶部条 ---------- */
+  .strip{background:var(--strip-bg);color:var(--strip-ink);font-size:11.5px;letter-spacing:.1em}
+  .strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;min-height:32px;padding-top:4px;padding-bottom:4px}
+  .strip b{color:var(--strip-strong)}
+  .strip .links{display:flex;gap:16px;flex-wrap:wrap;justify-content:flex-end}
+  .strip a:hover{color:var(--strip-strong)}
+  @media (max-width:720px){.strip .links{display:none}}
+
+  /* ---------- 导航（三套主题共用） ---------- */
+  .nav{position:sticky;top:0;z-index:60;background:var(--nav-bg);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+  .nav .wrap{display:flex;align-items:center;gap:26px;height:70px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--display);font-size:21px;font-weight:var(--display-weight);letter-spacing:.01em;white-space:nowrap}
+  .brand i{width:24px;height:24px;flex:none;background:var(--brand);border-radius:calc(var(--r) / 2)}
+  :root[data-theme="aurora"] .brand i{background:conic-gradient(from 210deg,#54e3ff,#a98bff,#5ff0b4,#54e3ff);border-radius:50%;box-shadow:0 0 18px rgba(84,227,255,.5)}
+  .brand em{font-family:var(--sans);font-style:normal;font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted)}
+  .links{display:flex;gap:22px;font-size:13.8px;color:var(--ink-2)}
+  .links a{padding:6px 0;border-bottom:2px solid transparent}
+  .links a:hover{color:var(--ink)}
+  .links a.on{color:var(--ink);font-weight:600;border-color:var(--brand)}
+  .nav-right{margin-left:auto;display:flex;align-items:center;gap:9px}
+  @media (max-width:1180px){.links{display:none}}
+  @media (max-width:620px){.nav-right .hide-sm{display:none}.brand em{display:none}}
+
+  /* 主题切换器 */
+  .switcher{display:flex;align-items:center;gap:3px;padding:3px;border:1px solid var(--line);border-radius:calc(var(--r) + 4px);background:var(--panel);margin-right:5px}
+  .switcher button{display:inline-flex;align-items:center;gap:6px;height:28px;padding:0 9px;border:0;border-radius:calc(var(--r) + 1px);background:transparent;color:var(--muted);font:12px var(--sans);cursor:pointer;transition:.15s}
+  .switcher button i{width:11px;height:11px;border-radius:3px;flex:none;box-shadow:inset 0 0 0 1px rgba(0,0,0,.08)}
+  .switcher button[data-set="editorial"] i{background:var(--sw-editorial)}
+  .switcher button[data-set="aurora"] i{background:var(--sw-aurora)}
+  .switcher button[data-set="museum"] i{background:var(--sw-museum)}
+  .switcher button:hover{color:var(--ink);background:var(--panel-2)}
+  .switcher button[aria-pressed="true"]{background:var(--chip-on-bg);color:var(--chip-on-ink);font-weight:600}
+  @media (max-width:820px){.switcher button span{display:none}.switcher button{padding:0 7px}}
+
+  /* ---------- 首屏 ---------- */
+  .hero{padding:44px 0 30px;border-bottom:1px solid var(--line)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:44px;align-items:start}
+  @media (max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:28px}}
+  .eyebrow{display:flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--brand-text);font-weight:700}
+  .eyebrow::after{content:"";height:1px;width:110px;background:var(--line-2)}
+  h1{margin:14px 0 0;font-family:var(--display);font-size:var(--h1-size);line-height:1.02;letter-spacing:var(--h1-track);font-weight:var(--display-weight);color:var(--ink)}
+  :root[data-theme="aurora"] h1{
+    background-image:linear-gradient(96deg,#ffffff 0%,#54e3ff 34%,#a98bff 88%);
+    -webkit-background-clip:text;background-clip:text;color:transparent;line-height:1.06;
+  }
+  .subtitle{margin:12px 0 0;font-size:12.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--muted)}
+  :root[data-theme="museum"] .subtitle{color:var(--brand-text);letter-spacing:.2em}
+  .lede{margin:16px 0 0;max-width:54ch;font-size:16.2px;line-height:1.78;color:var(--ink-2)}
+  .lede b{color:var(--ink);font-weight:600;box-shadow:inset 0 -.5em 0 color-mix(in srgb,var(--brand) 18%,transparent)}
+  .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:24px}
+  .hero-note{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:16px;font-size:12.5px;color:var(--muted)}
+  .hero-note b{color:var(--ink)}
+  .hint{font-size:12.5px;color:var(--muted)}
+
+  .panel{background:var(--panel);border:1px solid var(--line);border-radius:var(--r-card);padding:18px 20px 20px;box-shadow:var(--shadow)}
+  .panel h2{margin:0 0 14px;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border-radius:calc(var(--r-card) - 4px);overflow:hidden}
+  .stat{background:var(--panel);padding:12px 10px 13px}
+  :root[data-theme="aurora"] .stat{background:transparent}
+  .stat .n{font-family:var(--display);font-weight:var(--display-weight);font-size:28px;line-height:1;letter-spacing:-.02em}
+  .stat .n small{font-family:var(--sans);font-size:11.5px;font-weight:600;color:var(--muted);margin-left:3px}
+  .stat .l{font-size:12px;color:var(--muted);margin-top:6px}
+  .sync{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:var(--ink-2)}
+  .dot{width:7px;height:7px;border-radius:50%;background:#2f8f5b;box-shadow:0 0 0 3px rgba(47,143,91,.16)}
+  .panel .mini{display:flex;flex-wrap:wrap;gap:12px;margin-top:12px;padding-top:12px;border-top:1px solid var(--line);font-size:12.5px}
+  .panel .mini a{color:var(--accent);border-bottom:1px solid color-mix(in srgb,var(--accent) 34%,transparent)}
+  .panel .mini a:hover{color:var(--brand);border-color:var(--brand)}
+
+  /* ---------- 三张行动卡 ---------- */
+  .band{padding:26px 0 4px}
+  .band-grid{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:12px}
+  @media (max-width:940px){.band-grid{grid-template-columns:1fr}}
+  .band-card{display:flex;flex-direction:column;gap:9px;padding:18px 20px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--panel)}
+  .band-card .k{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .band-card h3{margin:0;font-family:var(--display);font-weight:var(--display-weight);font-size:19px;line-height:1.35}
+  .band-card p{margin:0;font-size:13.4px;line-height:1.65;color:var(--ink-2)}
+  .band-card .row{display:flex;align-items:center;gap:10px;margin-top:auto;padding-top:6px}
+  .band-card .row form{display:flex;flex:1;min-width:0}
+  .band-card input[type=email]{flex:1;min-width:0;height:38px;padding:0 11px;border:1px solid var(--line-2);border-right:0;border-radius:var(--r) 0 0 var(--r);background:transparent;color:var(--ink);font:13.5px var(--sans)}
+  .band-card input::placeholder{color:var(--muted)}
+  .band-card .note{font-size:11.5px;color:var(--muted)}
+  .band-card.primary{background:var(--action-bg);border-color:transparent;color:var(--action-ink)}
+  .band-card.primary .k{color:var(--action-k)}
+  .band-card.primary p{color:var(--action-sub)}
+  .band-card.primary .note{color:var(--action-sub)}
+  :root[data-theme="aurora"] .band-card.primary{border-color:rgba(169,139,255,.3)}
+  .band-card.primary input[type=email]{border-color:rgba(127,127,127,.45);color:var(--action-ink)}
+  .band-card.primary input::placeholder{color:var(--action-sub)}
+  :root[data-theme="aurora"] .band-card.primary input[type=email]{background:rgba(0,0,0,.25);border-color:rgba(255,255,255,.22)}
+
+  /* ---------- 工具栏 ---------- */
+  .toolbar{position:sticky;top:70px;z-index:40;background:var(--nav-bg);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);margin-top:22px}
+  .toolbar .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding-top:12px;padding-bottom:12px}
+  .search{display:flex;align-items:center;gap:8px;flex:1;min-width:220px;height:38px;padding:0 12px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel)}
+  .search:focus-within{border-color:var(--brand)}
+  .search input{border:0;outline:0;background:transparent;width:100%;font:13.8px var(--sans);color:var(--ink)}
+  .search input::placeholder{color:var(--muted)}
+  .chips{display:flex;flex-wrap:wrap;gap:5px}
+  .chip{height:32px;display:inline-flex;align-items:center;gap:6px;padding:0 11px;border:1px solid var(--line);border-radius:999px;background:transparent;font:12.5px var(--sans);color:var(--ink-2);cursor:pointer}
+  .chip:hover{border-color:var(--line-2);color:var(--ink)}
+  .chip[aria-pressed="true"]{background:var(--chip-on-bg);border-color:transparent;color:var(--chip-on-ink)}
+  .chip .c{font-size:10.5px;opacity:.65}
+  .sel{height:32px;border:1px solid var(--line);border-radius:var(--r);background:var(--panel);color:var(--ink-2);font:12.5px var(--sans);padding:0 7px}
+  .count{margin-left:auto;font-size:12px;color:var(--muted);white-space:nowrap}
+  .count b{color:var(--ink)}
+  @media (max-width:820px){.toolbar{position:static}.count{margin-left:0}}
+
+  /* ---------- 时间轴 ---------- */
+  main{padding-bottom:40px}
+  .year{margin-top:30px}
+  .year-head{display:flex;align-items:baseline;gap:12px;padding-bottom:9px;border-bottom:2px solid var(--ink)}
+  :root[data-theme="aurora"] .year-head{border-bottom-width:1px;border-color:var(--line-2)}
+  .year-head h2{margin:0;font-family:var(--display);font-weight:var(--display-weight);font-size:28px;line-height:1;letter-spacing:-.03em}
+  .year-head .era{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--brand-text);font-weight:700}
+  .year-head .n{margin-left:auto;font-size:12px;color:var(--muted)}
+
+  .entries{display:grid;grid-template-columns:1fr}
+  .entry{display:grid;grid-template-columns:var(--entry-cols);gap:18px;padding:15px 8px;border-bottom:1px solid var(--line);transition:background .14s}
+  .entry:hover{background:var(--panel)}
+  :root[data-theme="aurora"] .entry:hover{background:var(--card);border-radius:var(--r-card)}
+  .when{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:2px}
+  .when b{display:block;font-family:var(--sans);font-size:16px;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .when .cat{display:inline-block;margin-top:6px;font-size:10.5px;letter-spacing:.08em;padding:1px 6px;border:1px solid var(--line-2);border-radius:calc(var(--r) / 2);color:var(--ink-2)}
+  .entry h3{margin:0;font-family:var(--display);font-weight:var(--display-weight);font-size:18px;line-height:1.42;letter-spacing:-.005em}
+  .entry h3 a:hover{color:var(--accent)}
+  .entry h3 .en{font-family:var(--sans);font-size:12px;color:var(--muted);font-weight:400;margin-left:5px;letter-spacing:0}
+  .entry p{margin:5px 0 0;font-size:13.5px;line-height:1.68;color:var(--ink-2);max-width:88ch}
+  .meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 12px;margin-top:9px;font-size:11.8px;color:var(--muted)}
+  .meta .sep{width:1px;height:10px;background:var(--line-2)}
+  .badge{display:inline-flex;align-items:center;gap:5px;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:600;background:var(--ok-bg);color:var(--ok-ink)}
+  .badge::before{content:"";width:5px;height:5px;border-radius:50%;background:currentColor}
+  .badge.mid{background:var(--mid-bg);color:var(--mid-ink)}
+  .tag{color:var(--tag-ink)}
+  .tag:hover{color:var(--brand)}
+  .expand{margin-left:auto;font-size:12px;font-weight:600;color:var(--accent)}
+  .expand:hover{color:var(--brand)}
+
+  .more{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:24px;padding:15px 18px;border:1px solid var(--line);border-radius:var(--r-card);background:var(--panel)}
+  .more p{margin:0;font-size:13.2px;color:var(--ink-2)}
+
+  /* ---------- 尾部 CTA ---------- */
+  .cta{margin-top:30px;padding:28px 30px;border-radius:var(--r-card);background:var(--action-bg);color:var(--action-ink);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:22px;align-items:center;border:1px solid transparent}
+  :root[data-theme="aurora"] .cta{border-color:rgba(169,139,255,.3)}
+  @media (max-width:820px){.cta{grid-template-columns:1fr;padding:22px}}
+  .cta h2{margin:0;font-family:var(--display);font-weight:var(--display-weight);font-size:24px;letter-spacing:-.02em}
+  .cta p{margin:7px 0 0;font-size:13.5px;color:var(--action-sub);max-width:56ch}
+  .cta .acts{display:flex;flex-wrap:wrap;gap:9px}
+
+  /* ---------- 页脚 ---------- */
+  footer{background:var(--foot-bg);color:var(--foot-ink);margin-top:40px;border-top:1px solid var(--line)}
+  :root[data-theme="museum"] footer{border-top:3px solid var(--brand)}
+  .foot{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.3fr;gap:32px;padding:40px 0 30px}
+  @media (max-width:900px){.foot{grid-template-columns:1fr 1fr}}
+  @media (max-width:560px){.foot{grid-template-columns:1fr}}
+  footer .brand{color:var(--foot-head);font-size:20px}
+  footer .brand em{color:var(--foot-ink);opacity:.7}
+  footer h4{margin:0 0 12px;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--brand);font-weight:700}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px;font-size:13.4px}
+  footer ul a{color:var(--foot-ink)}
+  footer ul a:hover{color:var(--foot-head)}
+  footer .about p{margin:13px 0 0;font-size:12.8px;line-height:1.8;color:var(--foot-ink);opacity:.82;max-width:38ch}
+  .foot-sub form{display:flex;margin-top:12px}
+  .foot-sub input{flex:1;min-width:0;height:38px;background:transparent;border:1px solid var(--foot-rule);border-right:0;border-radius:var(--r) 0 0 var(--r);color:var(--foot-head);padding:0 10px;font:13px var(--sans)}
+  .foot-sub input::placeholder{color:var(--foot-ink);opacity:.6}
+  .foot-sub small{display:block;margin-top:9px;font-size:11.5px;color:var(--foot-ink);opacity:.7}
+  .fbottom{display:flex;flex-wrap:wrap;align-items:center;gap:10px 20px;padding:14px 0 20px;border-top:1px solid var(--foot-rule);font-size:12px;color:var(--foot-ink);opacity:.85}
+  .fbottom .links{display:flex;gap:16px;flex-wrap:wrap}
+  .fbottom a:hover{color:var(--foot-head)}
+  .fbottom .copy{margin-left:auto}
+
+  /* ============================================================
+     结构性差异（只有主题 3 换布局：时间轴改双列卡片）
+     ============================================================ */
+  :root[data-theme="museum"] .entries{grid-template-columns:1fr 1fr;gap:11px;margin-top:13px}
+  :root[data-theme="museum"] .entries > .entry:only-child{grid-column:1 / -1}
+  :root[data-theme="museum"] .entry{grid-template-columns:1fr;gap:7px;padding:13px 15px;background:var(--card);border:1px solid var(--line);border-radius:var(--r-card)}
+  :root[data-theme="museum"] .entry:hover{border-color:var(--brand);background:var(--card)}
+  :root[data-theme="museum"] .when{display:flex;flex-wrap:wrap;align-items:center;gap:7px;padding-top:0}
+  :root[data-theme="museum"] .when b{font-size:12px;font-weight:600;color:var(--ink)}
+  :root[data-theme="museum"] .when .cat{margin-top:0}
+  :root[data-theme="museum"] .entry h3{font-size:17.5px}
+  :root[data-theme="museum"] .meta{padding-top:7px;border-top:1px dashed var(--line)}
+  @media (max-width:900px){:root[data-theme="museum"] .entries{grid-template-columns:1fr}}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition:none!important;animation:none!important;scroll-behavior:auto!important}
+  }
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <div class="wrap">
+    <span><b>v0.6.3</b> · 公开来源采集 · 每日 01:05 同步 · 最近更新 3 小时前 · 当前主题：<b id="theme-name">典藏</b></span>
+    <span class="links"><a href="#">收录标准</a><a href="#">数据来源</a><a href="#">引用指南</a><a href="/admin/">管理台</a></span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#"><i aria-hidden="true"></i>AI 纪年 <em>Chronicle</em></a>
+    <nav class="links">
+      <a class="on" href="#">时间轴</a>
+      <a href="#">模型谱系</a>
+      <a href="#">研究图谱</a>
+      <a href="#">引用指南</a>
+      <a href="#">收录标准</a>
+    </nav>
+    <div class="nav-right">
+      <div class="switcher" role="group" aria-label="切换外观主题">
+        <button type="button" data-set="editorial" aria-pressed="true" aria-label="切换到典藏主题（墨蓝 + 铜金）" title="主题一：典藏（墨蓝 + 铜金）"><i aria-hidden="true"></i><span>典藏</span></button>
+        <button type="button" data-set="aurora" aria-pressed="false" aria-label="切换到极光主题（深色 + 青紫）" title="主题二：极光（深色 + 青紫）"><i aria-hidden="true"></i><span>极光</span></button>
+        <button type="button" data-set="museum" aria-pressed="false" aria-label="切换到博物馆主题（米白 + 森林绿）" title="主题三：博物馆（米白 + 森林绿）"><i aria-hidden="true"></i><span>博物馆</span></button>
+      </div>
+      <a class="btn line sm hide-sm" href="/api/v1/open/apply">API 申请</a>
+      <a class="btn brand sm" href="/api/v1/subscribe?src=nav">订阅更新</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Vol. I · 1912 — 2026</p>
+          <h1>AI 纪年</h1>
+          <p class="subtitle">人工智能发展编年史</p>
+          <p class="lede">从 1912 年的象棋自动机到 2026 年的前沿模型，按年份编排关键事件、模型发布与重要研究。每条记录都附<b>来源、证据与置信度</b>，自动条目还要经五家厂商各一席的模型评审，至少三票同意才入档。</p>
+          <div class="hero-cta">
+            <a class="btn brand" href="#timeline">开始浏览档案 →</a>
+            <a class="btn line" href="/api/v1/open/apply">申请 API Key</a>
+            <span class="hint">已订阅 <b>1,240</b> 位读者 · 每周一封，只讲新增</span>
+          </div>
+          <div class="hero-note">
+            <span>当前主题可随时切换，选择会记在这台设备上</span>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h2>档案速览</h2>
+          <div class="stats">
+            <div class="stat"><div class="n">158<small>条</small></div><div class="l">已入档事件</div></div>
+            <div class="stat"><div class="n">45<small>个</small></div><div class="l">来源站点</div></div>
+            <div class="stat"><div class="n">195<small>条</small></div><div class="l">引用链接</div></div>
+            <div class="stat"><div class="n">5<small>席</small></div><div class="l">评审席位</div></div>
+          </div>
+          <div class="sync"><span class="dot" aria-hidden="true"></span>采集正常 · 下次 01:05 自动运行</div>
+          <div class="mini">
+            <a href="/api/v1/open/apply">开放 API 文档</a>
+            <a href="#">数据下载</a>
+            <a href="/api/v1/correct">纠错</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="band-grid">
+        <div class="band-card primary">
+          <span class="k">保持同步 · Subscribe</span>
+          <h3>每周一封邮件，只写这一周新增了什么</h3>
+          <p>模型发布、重要论文与政策变化，附来源与原链。不发广告，随时退订。</p>
+          <div class="row">
+            <form onsubmit="return false">
+              <input type="email" placeholder="you@example.com" aria-label="邮箱地址">
+              <button class="btn brand" type="submit">订阅</button>
+            </form>
+          </div>
+          <span class="note">1,240 位读者 · 无垃圾邮件</span>
+        </div>
+        <div class="band-card">
+          <span class="k">开发者 · Open API</span>
+          <h3>把这份档案接进你的产品</h3>
+          <p>REST 接口返回结构化事件、证据链接与置信度，免费额度每秒 5 次。</p>
+          <div class="row"><a class="btn line" href="/api/v1/open/apply">申请 API Key</a></div>
+          <span class="note">通常 1 个工作日内开通</span>
+        </div>
+        <div class="band-card">
+          <span class="k">共建 · Contribute</span>
+          <h3>发现错漏，或推荐一条记录</h3>
+          <p>每条记录都可追溯，指出问题会进入人工复核队列。</p>
+          <div class="row"><a class="btn line" href="/api/v1/correct">提交纠错</a></div>
+          <span class="note">收录标准公开可查</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="wrap">
+      <label class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" opacity=".55"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" placeholder="搜索标题、机构、模型或标签，例如：Gemini">
+      </label>
+      <div class="chips">
+        <button class="chip" aria-pressed="true">全部 <span class="c">158</span></button>
+        <button class="chip" aria-pressed="false">里程碑 <span class="c">14</span></button>
+        <button class="chip" aria-pressed="false">模型 <span class="c">62</span></button>
+        <button class="chip" aria-pressed="false">研究 <span class="c">48</span></button>
+        <button class="chip" aria-pressed="false">政策 <span class="c">21</span></button>
+      </div>
+      <select class="sel"><option>全部厂商</option><option>OpenAI</option><option>Anthropic</option><option>Google DeepMind</option></select>
+      <select class="sel"><option>全部可信度</option><option>已证实</option><option>较可信</option></select>
+      <span class="count"><b>158</b> / 158 条</span>
+    </div>
+  </div>
+
+  <div class="wrap" id="timeline">
+    <section class="year">
+      <div class="year-head"><h2>2026</h2><span class="era">前沿模型的竞赛年</span><span class="n">30 条</span></div>
+      <div class="entries">
+
+        <article class="entry">
+          <div class="when"><b>10-22</b>2026<span class="cat">政策</span></div>
+          <div>
+            <h3><a href="#">Anthropic 将 Agent Skills 捐赠给 Agentic AI Foundation</a></h3>
+            <p>技能描述格式转为中立基金会托管，行业获得一份可互操作的智能体能力清单；这是本年度第三起主流厂商向开放标准让渡协议控制权的事件。</p>
+            <div class="meta">
+              <span class="badge">已证实</span><span class="sep"></span><span>Anthropic</span><span class="sep"></span><span>来源 3 家</span><span class="sep"></span><span>评审 5/5 · 中位 91</span>
+              <a class="tag" href="#">#智能体</a><a class="tag" href="#">#标准</a>
+              <a class="expand" href="#">展开证据 →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="when"><b>10-21</b>2026<span class="cat">合作</span></div>
+          <div>
+            <h3><a href="#">OpenAI 模型将登陆 Google Cloud</a></h3>
+            <p>两家在推理算力上长期竞争的公司达成部署合作，企业客户可在自有云环境中调用闭源模型，多云托管成为默认选项。</p>
+            <div class="meta">
+              <span class="badge">已证实</span><span class="sep"></span><span>OpenAI · Google Cloud</span><span class="sep"></span><span>来源 4 家</span>
+              <a class="tag" href="#">#云计算</a>
+              <a class="expand" href="#">展开证据 →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="when"><b>10-13</b>2026<span class="cat">模型</span></div>
+          <div>
+            <h3><a href="#">Google 发布 Gemini 4 Argon</a><span class="en">Gemini 4</span></h3>
+            <p>强调长程推理与工具调用，官方基准在编程与科学问答上提升明显；上下文窗口维持 200 万 token，新增可审计的推理摘要。</p>
+            <div class="meta">
+              <span class="badge">已证实</span><span class="sep"></span><span>Google DeepMind</span><span class="sep"></span><span>来源 5 家</span><span class="sep"></span><span>中位分 91</span>
+              <a class="tag" href="#">#Gemini</a><a class="tag" href="#">#推理</a>
+              <a class="expand" href="#">展开证据 →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="when"><b>10-07</b>2026<span class="cat">模型</span></div>
+          <div>
+            <h3><a href="#">Anthropic 发布 Claude Haiku 5.5</a></h3>
+            <p>面向高并发场景的小尺寸模型，价格较上一代下降约三成，官方称在长文档抽取任务上已接近 Sonnet 5。</p>
+            <div class="meta">
+              <span class="badge">已证实</span><span class="sep"></span><span>Anthropic</span><span class="sep"></span><span>中位分 86</span>
+              <a class="tag" href="#">#Claude</a>
+              <a class="expand" href="#">展开证据 →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="when"><b>09-29</b>2026<span class="cat">模型</span></div>
+          <div>
+            <h3><a href="#">OpenAI 发布 GPT-6.1 Sol</a></h3>
+            <p>在 GPT-6 基础上强化多步规划与失败恢复，智能体任务的最长连续步数从 40 步扩展到 200 步。</p>
+            <div class="meta">
+              <span class="badge mid">较可信</span><span class="sep"></span><span>OpenAI</span><span class="sep"></span><span>中位分 79</span>
+              <a class="tag" href="#">#GPT</a><a class="tag" href="#">#智能体</a>
+              <a class="expand" href="#">展开证据 →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="when"><b>09-15</b>2026<span class="cat">模型</span></div>
+          <div>
+            <h3><a href="#">Meta 发布 Muse 系列，开源多模态模型</a></h3>
+            <p>权重以开放许可发布，含 8B 与 70B 两档；社区在发布 48 小时内完成十余种推理框架的适配。</p>
+            <div class="meta">
+              <span class="badge">已证实</span><span class="sep"></span><span>Meta AI</span><span class="sep"></span><span>来源 5 家</span>
+              <a class="tag" href="#">#开源</a><a class="tag" href="#">#多模态</a>
+              <a class="expand" href="#">展开证据 →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="when"><b>08-25</b>2026<span class="cat">模型</span></div>
+          <div>
+            <h3><a href="#">智谱发布 GLM-5.3，后训练带来编码与安全能力提升</a></h3>
+            <p>在开源权重的基础上补强工具调用与安全对齐，代码基准接近闭源一线水平。</p>
+            <div class="meta">
+              <span class="badge">已证实</span><span class="sep"></span><span>Z.ai</span><span class="sep"></span><span>中位分 81</span>
+              <a class="tag" href="#">#GLM</a><a class="tag" href="#">#开源</a>
+              <a class="expand" href="#">展开证据 →</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="entry">
+          <div class="when"><b>08-05</b>2026<span class="cat">模型</span></div>
+          <div>
+            <h3><a href="#">阿里云发布 Qwen3.8 系列</a></h3>
+            <p>覆盖开源与闭源两档，多模态理解与中文长文本能力同步提升。</p>
+            <div class="meta">
+              <span class="badge">已证实</span><span class="sep"></span><span>Alibaba Qwen</span><span class="sep"></span><span>中位分 83</span>
+              <a class="tag" href="#">#Qwen</a><a class="tag" href="#">#多模态</a>
+              <a class="expand" href="#">展开证据 →</a>
+            </div>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <section class="year">
+      <div class="year-head"><h2>1950</h2><span class="era">起点</span><span class="n">1 条</span></div>
+      <div class="entries">
+        <article class="entry">
+          <div class="when"><b>10</b>1950<span class="cat">研究</span></div>
+          <div>
+            <h3><a href="#">图灵发表《计算机器与智能》，提出模仿游戏</a><span class="en">Computing Machinery and Intelligence</span></h3>
+            <p>文章奠定了此后人工智能讨论的核心问题，也是「图灵测试」名称的来源。Mind 期刊 DOI 可查。</p>
+            <div class="meta">
+              <span class="badge">已证实</span><span class="sep"></span><span>University of Manchester</span><span class="sep"></span><span>来源 2 家</span>
+              <a class="tag" href="#">#图灵测试</a>
+              <a class="expand" href="#">展开证据 →</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <div class="cta">
+      <div>
+        <h2>订阅，或直接把档案接进你的产品</h2>
+        <p>每周一封邮件只写新增记录；开放 API 返回结构化事件、证据与原链，免费额度每秒 5 次，通常 1 个工作日内开通。</p>
+      </div>
+      <div class="acts">
+        <a class="btn brand" href="/api/v1/subscribe?src=band">订阅更新</a>
+        <a class="btn line" style="border-color:currentColor;color:inherit" href="/api/v1/open/apply">申请 API</a>
+      </div>
+    </div>
+
+    <div class="more">
+      <p>档案到此为止 · 共 <b>158</b> 条记录，覆盖 1912—2026。需要完整数据集？</p>
+      <div style="display:flex;gap:9px;flex-wrap:wrap">
+        <a class="btn line sm" href="#">下载 JSON</a>
+        <a class="btn line sm" href="/api/v1/open/apply">API 接入</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <div class="about">
+        <a class="brand" href="#"><i aria-hidden="true"></i>AI 纪年 <em>Chronicle</em></a>
+        <p>按年份编排人工智能的关键事件、模型发布与重要研究。条目来自公开接口与官方公告，经去重与交叉验证入档，置信度与证据随每条记录公开。</p>
+      </div>
+      <div>
+        <h4>浏览</h4>
+        <ul><li><a href="#">时间轴</a></li><li><a href="#">模型谱系</a></li><li><a href="#">研究图谱</a></li><li><a href="#">收录标准</a></li></ul>
+      </div>
+      <div>
+        <h4>开放</h4>
+        <ul><li><a href="/api/v1/open/apply">API 申请</a></li><li><a href="#">数据下载</a></li><li><a href="#">引用指南</a></li><li><a href="/api/v1/correct">发现错误</a></li></ul>
+      </div>
+      <div class="foot-sub">
+        <h4>每周一封</h4>
+        <form onsubmit="return false">
+          <input type="email" placeholder="you@example.com" aria-label="邮箱地址">
+          <button class="btn brand" type="submit">订阅</button>
+        </form>
+        <small>1,240 位读者 · 只写新增，随时退订</small>
+      </div>
+    </div>
+    <div class="fbottom">
+      <span>© 2026 AI 纪年 · Vol. I</span>
+      <span class="links"><a href="/api/v1/subscribe?src=footer">订阅更新</a><a href="/api/v1/open/apply">API 申请</a><a href="/api/v1/correct">发现错误</a><a href="#">隐私</a></span>
+      <span class="copy">数据来自公开接口 · 观点与事实以原链为准</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var KEY = "aihist.ui-theme";
+    var NAMES = { editorial: "典藏", aurora: "极光", museum: "博物馆" };
+    var buttons = Array.prototype.slice.call(document.querySelectorAll(".switcher button"));
+    var label = document.getElementById("theme-name");
+
+    function apply(theme, persist) {
+      document.documentElement.dataset.theme = theme;
+      buttons.forEach(function (button) {
+        button.setAttribute("aria-pressed", String(button.dataset.set === theme));
+      });
+      if (label) label.textContent = NAMES[theme] || theme;
+      if (persist) {
+        try { localStorage.setItem(KEY, theme); } catch (e) {}
+        // 手动点选后去掉预览用的 ?t=，以免刷新后被地址栏参数盖回去。
+        try {
+          var url = new URL(location.href);
+          if (url.searchParams.has("t")) {
+            url.searchParams.delete("t");
+            history.replaceState(null, "", url);
+          }
+        } catch (e) {}
+      }
+    }
+
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        apply(button.dataset.set, true);
+      });
+    });
+
+    // 首帧脚本可能已设置过主题，这里同步按钮状态与文案。
+    apply(document.documentElement.dataset.theme || "editorial", false);
+  })();
+</script>
+
+</body>
+</html>

@@ -7,12 +7,12 @@
       name="description"
       content="AI 纪年：记录人工智能的关键事件、大模型发布与重要研究。条目来自公开接口与官方公告，经去重与交叉验证入档。"
     />
-    <meta name="theme-color" content="#f6f2e9" />
+    <meta name="theme-color" content="#faf7f0" />
     <meta name="color-scheme" content="light dark" />
     <script>
       // Theme boot: runs before the module graph and before the first paint, so
       // the wrong palette never flashes. Kept in sync with `src/lib/theme.ts`
-      // (same storage key, same two chrome colours, same system fallback).
+      // (same storage key, same three chrome colours, same legacy mapping).
       (function () {
         var saved = null;
         try {
@@ -20,15 +20,19 @@
         } catch (error) {
           /* storage blocked: fall through to the system preference */
         }
-        var theme =
-          saved === "dark" || saved === "light"
-            ? saved
-            : window.matchMedia("(prefers-color-scheme: dark)").matches
-              ? "dark"
-              : "light";
+        // Readers who chose before there were three palettes keep a sensible one.
+        if (saved === "light") saved = "editorial";
+        if (saved === "dark") saved = "aurora";
+        var chosen = saved === "editorial" || saved === "aurora" || saved === "museum";
+        var theme = chosen
+          ? saved
+          : window.matchMedia("(prefers-color-scheme: dark)").matches
+            ? "aurora"
+            : "editorial";
         document.documentElement.dataset.theme = theme;
+        var chrome = { editorial: "#faf7f0", aurora: "#06070d", museum: "#f4f0e5" };
         var meta = document.querySelector('meta[name="theme-color"]');
-        if (meta) meta.setAttribute("content", theme === "dark" ? "#14120f" : "#f6f2e9");
+        if (meta) meta.setAttribute("content", chrome[theme]);
       })();
     </script>
     <meta property="og:title" content="AI 纪年 · 人工智能发展编年史" />

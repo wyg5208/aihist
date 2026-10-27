@@ -1,0 +1,509 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 纪年 · 方案一 典藏卷轴</title>
+<style>
+  :root{
+    --paper:#faf7f0;
+    --paper-2:#f2ece0;
+    --ink:#0f1c2b;
+    --ink-2:#3d4d5e;
+    --muted:#7d8a97;
+    --rule:#ded6c5;
+    --rule-2:#c3b9a4;
+    --gold:#a67c3d;
+    --gold-soft:#f0e4cd;
+    --blue:#1b4a72;
+    --max:1460px;
+    --serif:Georgia,"Songti SC","Noto Serif SC","Source Han Serif SC",serif;
+    --sans:"Segoe UI","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0;background:var(--paper);color:var(--ink);
+    font:15px/1.62 var(--sans);
+    -webkit-font-smoothing:antialiased;
+    background-image:radial-gradient(900px 460px at 88% -6%,rgba(166,124,61,.10),transparent 62%);
+  }
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--gold-soft)}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px}
+  @media (max-width:720px){.wrap{padding:0 18px}}
+
+  /* ---------- top strip + nav ---------- */
+  .strip{background:var(--ink);color:#cbbfa6;font-size:11.5px;letter-spacing:.12em}
+  .strip .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;height:34px}
+  .strip b{color:#f4ead6;font-weight:600}
+  .strip .strip-links{display:flex;gap:18px}
+  .strip a:hover{color:#fff}
+
+  .nav{position:sticky;top:0;z-index:50;background:rgba(250,247,240,.94);backdrop-filter:blur(12px);border-bottom:1px solid var(--rule)}
+  .nav .wrap{display:flex;align-items:center;gap:28px;height:68px}
+  .brand{display:flex;align-items:center;gap:11px;font-family:var(--serif);font-size:22px;letter-spacing:.02em}
+  .brand .mark{width:26px;height:26px;background:var(--ink);position:relative;flex:none}
+  .brand .mark::after{content:"";position:absolute;inset:7px 7px auto auto;width:12px;height:12px;background:var(--gold)}
+  .brand em{font-family:var(--sans);font-style:normal;font-size:10.5px;letter-spacing:.22em;color:var(--muted);text-transform:uppercase}
+  .nav-links{display:flex;align-items:center;gap:26px;font-size:14px;color:var(--ink-2)}
+  .nav-links a{position:relative;padding:6px 0}
+  .nav-links a:hover{color:var(--ink)}
+  .nav-links a.on{color:var(--ink);font-weight:600}
+  .nav-links a.on::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--gold)}
+  .nav-actions{margin-left:auto;display:flex;align-items:center;gap:10px}
+  .btn{display:inline-flex;align-items:center;gap:8px;height:38px;padding:0 18px;border-radius:2px;font-size:13.5px;font-weight:600;border:1px solid transparent;transition:.16s}
+  .btn.solid{background:var(--ink);color:#fdf8ee}
+  .btn.solid:hover{background:#1a2c40}
+  .btn.gold{background:var(--gold);color:#1b1206}
+  .btn.gold:hover{background:#b88a45}
+  .btn.ghost{border-color:var(--rule-2);color:var(--ink)}
+  .btn.ghost:hover{border-color:var(--ink);background:#fff}
+  .btn.sm{height:34px;padding:0 14px;font-size:12.5px}
+  @media (max-width:1080px){.nav-links{display:none}}
+  @media (max-width:560px){.nav-actions .ghost{display:none}.strip .strip-links{display:none}}
+
+  /* ---------- hero ---------- */
+  .hero{padding:54px 0 38px;border-bottom:1px solid var(--rule)}
+  .hero-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:48px;align-items:start}
+  @media (max-width:1000px){.hero-grid{grid-template-columns:1fr;gap:32px}}
+  .eyebrow{display:flex;align-items:center;gap:10px;font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .eyebrow::before{content:"";width:34px;height:1px;background:var(--gold)}
+  h1{font-family:var(--serif);font-size:clamp(46px,6.2vw,82px);line-height:.98;letter-spacing:-.015em;margin:16px 0 0}
+  h1 small{display:block;font-family:var(--sans);font-size:15px;letter-spacing:.3em;color:var(--muted);font-weight:400;margin-top:14px}
+  .lede{margin:18px 0 0;max-width:52ch;font-size:16.5px;line-height:1.78;color:var(--ink-2)}
+  .lede b{color:var(--ink);font-weight:600;border-bottom:1px solid var(--gold);padding-bottom:1px}
+  .hero-cta{display:flex;flex-wrap:wrap;align-items:center;gap:12px;margin-top:26px}
+  .hero-cta .hint{font-size:12.5px;color:var(--muted)}
+  .hero-cta .hint i{font-style:normal;color:var(--ink);font-weight:600}
+
+  .panel{background:#fffdf8;border:1px solid var(--rule);border-top:3px solid var(--ink);padding:18px 20px 20px}
+  .panel h2{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin:0 0 14px;font-weight:700}
+  .stats{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--rule)}
+  .stat{background:#fffdf8;padding:12px 10px 13px}
+  .stat .n{font-family:var(--serif);font-size:29px;line-height:1;letter-spacing:-.02em}
+  .stat .l{font-size:12px;color:var(--muted);margin-top:6px}
+  .panel .sync{display:flex;align-items:center;gap:8px;margin-top:14px;font-size:12px;color:var(--ink-2)}
+  .dot{width:7px;height:7px;background:#2f8f5b;border-radius:50%;box-shadow:0 0 0 3px rgba(47,143,91,.15)}
+  .panel .mini{display:flex;gap:14px;margin-top:12px;padding-top:12px;border-top:1px solid var(--rule);font-size:12.5px}
+  .panel .mini a{color:var(--blue);border-bottom:1px solid rgba(27,74,114,.3)}
+  .panel .mini a:hover{color:var(--gold);border-color:var(--gold)}
+
+  /* ---------- action band ---------- */
+  .band{padding:30px 0 8px}
+  .band-grid{display:grid;grid-template-columns:1.25fr 1fr 1fr;gap:14px}
+  @media (max-width:940px){.band-grid{grid-template-columns:1fr}}
+  .band-card{display:flex;flex-direction:column;gap:10px;padding:20px 22px;border:1px solid var(--rule);background:#fffdf8}
+  .band-card .k{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);font-weight:700}
+  .band-card h3{margin:0;font-family:var(--serif);font-size:20px;line-height:1.3}
+  .band-card p{margin:0;font-size:13.5px;color:var(--ink-2);line-height:1.65}
+  .band-card.primary{background:var(--ink);border-color:var(--ink);color:#f6efe1}
+  .band-card.primary .k{color:var(--gold)}
+  .band-card.primary p{color:#c8bfae}
+  .band-card .row{display:flex;align-items:center;gap:12px;margin-top:auto}
+  .band-card .row form{display:flex;gap:0;flex:1}
+  .band-card input[type=email]{flex:1;min-width:0;height:38px;padding:0 12px;border:1px solid var(--rule-2);border-right:0;background:#fff;font:14px var(--sans);color:var(--ink)}
+  .band-card.primary input[type=email]{background:#16273a;border-color:#33465c;color:#f6efe1}
+  .band-card.primary input[type=email]::placeholder{color:#8b96a4}
+  .band-card .note{font-size:11.5px;color:var(--muted)}
+  .band-card.primary .note{color:#8f9aa8}
+
+  /* ---------- filters ---------- */
+  .toolbar{position:sticky;top:68px;z-index:30;background:rgba(250,247,240,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule);margin-top:26px}
+  .toolbar .wrap{display:flex;align-items:center;gap:16px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+  .search{display:flex;align-items:center;gap:9px;flex:1;min-width:240px;height:38px;padding:0 12px;background:#fff;border:1px solid var(--rule);border-radius:2px}
+  .search svg{flex:none;color:var(--muted)}
+  .search input{border:0;outline:0;width:100%;height:100%;background:transparent;font:14px var(--sans);color:var(--ink)}
+  .chips{display:flex;flex-wrap:wrap;gap:6px}
+  .chip{height:32px;display:inline-flex;align-items:center;gap:6px;padding:0 12px;border:1px solid var(--rule);border-radius:2px;background:transparent;font:12.5px var(--sans);color:var(--ink-2);cursor:pointer}
+  .chip:hover{border-color:var(--rule-2);color:var(--ink)}
+  .chip[aria-pressed=true]{background:var(--ink);border-color:var(--ink);color:#f7f0e2}
+  .chip .c{font-size:11px;opacity:.6}
+  .sel{height:34px;border:1px solid var(--rule);background:#fff;font:12.5px var(--sans);color:var(--ink-2);padding:0 8px;border-radius:2px}
+  .count{font-size:12px;color:var(--muted);margin-left:auto}
+  .count b{color:var(--ink)}
+  @media (max-width:760px){.toolbar{position:static}.count{margin-left:0}}
+
+  /* ---------- timeline ---------- */
+  main{padding-bottom:60px}
+  .year{margin-top:34px}
+  .year-head{display:flex;align-items:baseline;gap:14px;padding:0 0 10px;border-bottom:2px solid var(--ink);position:sticky;top:126px;background:var(--paper);z-index:20}
+  .year-head h2{font-family:var(--serif);font-size:30px;line-height:1;margin:0;letter-spacing:-.02em}
+  .year-head .era{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .year-head .n{margin-left:auto;font-size:12px;color:var(--muted)}
+  @media (max-width:760px){.year-head{position:static}}
+
+  .entry{display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;padding:16px 8px;border-bottom:1px solid var(--rule);transition:background .15s}
+  .entry:hover{background:#fffdf8}
+  @media (max-width:640px){.entry{grid-template-columns:1fr;gap:8px}}
+  .when{font-size:12.5px;color:var(--muted);font-variant-numeric:tabular-nums;padding-top:3px}
+  .when b{display:block;font-size:15px;color:var(--ink);font-weight:600;letter-spacing:.01em}
+  .when .cat{display:inline-block;margin-top:6px;font-size:11px;letter-spacing:.08em;padding:1px 6px;border:1px solid var(--rule-2);border-radius:2px;color:var(--ink-2)}
+  .entry h3{margin:0;font-family:var(--serif);font-size:19.5px;line-height:1.42;letter-spacing:-.005em}
+  .entry h3 a:hover{color:var(--blue)}
+  .en{font-family:var(--sans);font-size:12.5px;color:var(--muted);font-weight:400;margin-left:6px}
+  .summary{margin:5px 0 0;font-size:13.8px;line-height:1.7;color:var(--ink-2);max-width:84ch}
+  .meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px;margin-top:9px;font-size:12px;color:var(--muted)}
+  .meta .sep{width:1px;height:11px;background:var(--rule)}
+  .tag{color:var(--blue)}
+  .tag:hover{color:var(--gold)}
+  .badge{display:inline-flex;align-items:center;gap:5px;padding:1px 7px;border:1px solid var(--rule-2);border-radius:2px;font-size:11px;letter-spacing:.06em;color:var(--ink-2)}
+  .badge.ok{border-color:#9db9a9;background:#eef5ef;color:#245c3c}
+  .badge.ok::before{content:"";width:5px;height:5px;border-radius:50%;background:#2f8f5b}
+  .badge.mid{border-color:#d5c49a;background:#faf3e2;color:#7a5a1e}
+  .badge.mid::before{content:"";width:5px;height:5px;border-radius:50%;background:#b08a2e}
+  .badge.dim{border-style:dashed}
+  .expand{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--blue);margin-left:auto}
+  .expand:hover{color:var(--gold)}
+
+  .more{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:26px;padding:16px 20px;border:1px solid var(--rule);background:#fffdf8}
+  .more p{margin:0;font-size:13.5px;color:var(--ink-2)}
+
+  /* ---------- footer ---------- */
+  footer{background:var(--ink);color:#c5bcaa;margin-top:40px}
+  .foot-top{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.4fr;gap:36px;padding:48px 0 36px}
+  @media (max-width:940px){.foot-top{grid-template-columns:1fr 1fr;gap:28px}}
+  @media (max-width:560px){.foot-top{grid-template-columns:1fr}}
+  footer .brand{color:#f6efe1}
+  footer .brand .mark{background:var(--gold)}
+  footer .brand .mark::after{background:#0f1c2b}
+  footer .brand em{color:#8d949f}
+  footer p{font-size:13.2px;line-height:1.85;color:#a9b1bd;margin:14px 0 0;max-width:40ch}
+  footer h4{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:0 0 14px;font-weight:700}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:13.5px}
+  footer ul a{color:#c9cfd8}
+  footer ul a:hover{color:#fff;border-bottom:1px solid var(--gold)}
+  .foot-sub p{margin:0 0 12px;color:#a9b1bd;font-size:13px}
+  .foot-sub form{display:flex}
+  .foot-sub input{flex:1;min-width:0;height:40px;background:#16273a;border:1px solid #33465c;border-right:0;color:#f6efe1;padding:0 12px;font:14px var(--sans)}
+  .foot-sub input::placeholder{color:#7f8a98}
+  .foot-sub .btn{border-radius:0}
+  .foot-sub small{display:block;margin-top:10px;font-size:11.5px;color:#7d8794}
+  .foot-bottom{display:flex;flex-wrap:wrap;align-items:center;gap:12px 24px;padding:16px 0 22px;border-top:1px solid #2a3a4d;font-size:12px;color:#8d949f}
+  .foot-bottom .links{display:flex;gap:20px;flex-wrap:wrap}
+  .foot-bottom .links a:hover{color:#fff}
+  .foot-bottom .copy{margin-left:auto}
+</style>
+</head>
+<body>
+
+<div class="strip">
+  <div class="wrap">
+    <span><b>v0.6.3</b> · 公开来源采集 · 每日 01:05 同步 · 最近更新 3 小时前</span>
+    <span class="strip-links">
+      <a href="#">收录标准</a>
+      <a href="#">数据来源</a>
+      <a href="/admin/">管理台</a>
+    </span>
+  </div>
+</div>
+
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#">
+      <span class="mark" aria-hidden="true"></span>
+      AI 纪年 <em>Chronicle</em>
+    </a>
+    <nav class="nav-links">
+      <a class="on" href="#">时间轴</a>
+      <a href="#">模型谱系</a>
+      <a href="#">研究图谱</a>
+      <a href="#">引用指南</a>
+      <a href="#">收录标准</a>
+    </nav>
+    <div class="nav-actions">
+      <a class="btn ghost sm" href="/api/v1/open/apply">API 申请</a>
+      <a class="btn gold sm" href="/api/v1/subscribe?src=nav">订阅更新</a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <p class="eyebrow">Vol. I · 1912 — 2026</p>
+          <h1>AI 纪年<small>人工智能发展编年史</small></h1>
+          <p class="lede">
+            从 1912 年的象棋自动机到 2026 年的前沿模型，按年份编排人工智能的关键事件、模型发布与重要研究。
+            每条记录都附<b>来源、证据与置信度</b>，自动条目还要经五家厂商各一席的模型评审，至少三票同意才入档。
+          </p>
+          <div class="hero-cta">
+            <a class="btn gold" href="#timeline">开始浏览档案 →</a>
+            <a class="btn ghost" href="/api/v1/open/apply">申请 API Key</a>
+            <span class="hint">已订阅 <i>1,240</i> 位读者 · 每周一封，只讲新增</span>
+          </div>
+        </div>
+
+        <aside class="panel">
+          <h2>档案速览</h2>
+          <div class="stats">
+            <div class="stat"><div class="n">158</div><div class="l">已入档条目</div></div>
+            <div class="stat"><div class="n">45</div><div class="l">来源站点</div></div>
+            <div class="stat"><div class="n">195</div><div class="l">引用链接</div></div>
+            <div class="stat"><div class="n">5</div><div class="l">评审席位</div></div>
+          </div>
+          <div class="sync"><span class="dot" aria-hidden="true"></span> 采集正常 · 下次 01:05 自动运行</div>
+          <div class="mini">
+            <a href="/api/v1/open/apply">开放 API 文档</a>
+            <a href="#">数据下载</a>
+            <a href="/api/v1/correct">纠错</a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <section class="band">
+    <div class="wrap">
+      <div class="band-grid">
+        <div class="band-card primary">
+          <span class="k">保持同步 · Subscribe</span>
+          <h3>每周一封邮件，只写这一周新增了什么</h3>
+          <p>模型发布、重要论文与政策变化，附来源与原链。不发广告，随时退订。</p>
+          <div class="row">
+            <form onsubmit="return false">
+              <input type="email" placeholder="you@example.com" aria-label="邮箱地址">
+              <button class="btn gold" type="submit">订阅</button>
+            </form>
+          </div>
+          <span class="note">1,240 位读者 · 无垃圾邮件</span>
+        </div>
+        <div class="band-card">
+          <span class="k">开发者 · Open API</span>
+          <h3>把这份档案接进你的产品</h3>
+          <p>REST 接口，返回结构化事件、证据链接与置信度。免费额度每秒 5 次。</p>
+          <div class="row"><a class="btn ghost" href="/api/v1/open/apply">申请 API Key</a></div>
+          <span class="note">通常 1 个工作日内开通</span>
+        </div>
+        <div class="band-card">
+          <span class="k">共建 · Contribute</span>
+          <h3>发现错漏，或推荐一条记录</h3>
+          <p>每条记录都可追溯。指出问题会进入人工复核队列，修订记录公开可见。</p>
+          <div class="row"><a class="btn ghost" href="/api/v1/correct">提交纠错</a></div>
+          <span class="note">收录标准公开可查</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="toolbar">
+    <div class="wrap">
+      <label class="search">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" placeholder="搜索标题、机构、模型或标签，例如：Gemini">
+      </label>
+      <div class="chips">
+        <button class="chip" aria-pressed="true">全部 <span class="c">158</span></button>
+        <button class="chip" aria-pressed="false">里程碑 <span class="c">14</span></button>
+        <button class="chip" aria-pressed="false">模型 <span class="c">62</span></button>
+        <button class="chip" aria-pressed="false">研究 <span class="c">48</span></button>
+        <button class="chip" aria-pressed="false">政策 <span class="c">21</span></button>
+      </div>
+      <select class="sel"><option>全部厂商</option><option>OpenAI</option><option>Anthropic</option><option>Google DeepMind</option></select>
+      <select class="sel"><option>全部可信度</option><option>已证实</option><option>较可信</option></select>
+      <span class="count"><b>158</b> / 158 条</span>
+    </div>
+  </div>
+
+  <div class="wrap" id="timeline">
+    <section class="year">
+      <div class="year-head">
+        <h2>2026</h2><span class="era">前沿模型的竞赛年</span><span class="n">30 条</span>
+      </div>
+
+      <article class="entry">
+        <div class="when"><b>10-22</b>2026<span class="cat">政策</span></div>
+        <div>
+          <h3><a href="#">Anthropic 将 Agent Skills 捐赠给 Agentic AI Foundation</a><span class="en">Agent Skills</span></h3>
+          <p class="summary">技能描述格式转为中立基金会托管，行业获得一份可互操作的智能体能力清单；这也是本年度第三起主流厂商向开放标准让渡协议控制权的事件。</p>
+          <div class="meta">
+            <span class="badge ok">已证实</span>
+            <span class="sep"></span>
+            <span>Anthropic</span>
+            <span class="sep"></span>
+            <span>来源 3 家</span>
+            <span class="sep"></span>
+            <a class="tag" href="#">#智能体</a>
+            <a class="tag" href="#">#标准</a>
+            <a class="expand" href="#">展开证据 →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="when"><b>10-21</b>2026<span class="cat">政策</span></div>
+        <div>
+          <h3><a href="#">OpenAI 模型将登陆 Google Cloud</a></h3>
+          <p class="summary">两家在推理算力上长期竞争的公司达成部署合作，企业客户可在自有云环境中调用闭源模型，多云托管成为默认选项。</p>
+          <div class="meta">
+            <span class="badge ok">已证实</span>
+            <span class="sep"></span>
+            <span>OpenAI · Google Cloud</span>
+            <span class="sep"></span>
+            <span>来源 4 家</span>
+            <span class="sep"></span>
+            <a class="tag" href="#">#云计算</a>
+            <a class="expand" href="#">展开证据 →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="when"><b>10-13</b>2026<span class="cat">模型</span></div>
+        <div>
+          <h3><a href="#">Google 发布 Gemini 4 Argon</a></h3>
+          <p class="summary">强调长程推理与工具调用，官方基准在编程与科学问答上提升明显；上下文窗口维持 200 万 token，新增可审计的推理摘要。</p>
+          <div class="meta">
+            <span class="badge ok">已证实</span>
+            <span class="sep"></span>
+            <span>Google DeepMind</span>
+            <span class="sep"></span>
+            <span>评审 5/5 · 中位 91</span>
+            <span class="sep"></span>
+            <a class="tag" href="#">#Gemini</a>
+            <a class="tag" href="#">#推理</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="when"><b>10-07</b>2026<span class="cat">模型</span></div>
+        <div>
+          <h3><a href="#">Anthropic 发布 Claude Haiku 5.5</a></h3>
+          <p class="summary">面向高并发场景的小尺寸模型，价格较上一代下降约三成，官方称在长文档抽取任务上已接近 Sonnet 5。</p>
+          <div class="meta">
+            <span class="badge ok">已证实</span>
+            <span class="sep"></span>
+            <span>Anthropic</span>
+            <span class="sep"></span>
+            <span>评审 5/5 · 中位 86</span>
+            <span class="sep"></span>
+            <a class="tag" href="#">#Claude</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="when"><b>09-29</b>2026<span class="cat">模型</span></div>
+        <div>
+          <h3><a href="#">OpenAI 发布 GPT-6.1 Sol</a></h3>
+          <p class="summary">在 GPT-6 基础上强化多步规划与失败恢复，智能体任务的最长连续步数从 40 步扩展到 200 步。</p>
+          <div class="meta">
+            <span class="badge mid">较可信</span>
+            <span class="sep"></span>
+            <span>OpenAI</span>
+            <span class="sep"></span>
+            <span>评审 4/5 · 中位 79</span>
+            <span class="sep"></span>
+            <a class="tag" href="#">#GPT</a>
+            <a class="tag" href="#">#智能体</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div class="when"><b>09-15</b>2026<span class="cat">模型</span></div>
+        <div>
+          <h3><a href="#">Meta 发布 Muse 系列，开源多模态模型</a></h3>
+          <p class="summary">权重以开放许可发布，包含 8B 与 70B 两档；社区在发布 48 小时内完成了十余种推理框架的适配。</p>
+          <div class="meta">
+            <span class="badge ok">已证实</span>
+            <span class="sep"></span>
+            <span>Meta AI</span>
+            <span class="sep"></span>
+            <span>来源 5 家</span>
+            <span class="sep"></span>
+            <a class="tag" href="#">#开源</a>
+            <a class="tag" href="#">#多模态</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <section class="year">
+      <div class="year-head">
+        <h2>1950</h2><span class="era">起点</span><span class="n">1 条</span>
+      </div>
+      <article class="entry">
+        <div class="when"><b>10</b>1950<span class="cat">研究</span></div>
+        <div>
+          <h3><a href="#">图灵发表《计算机器与智能》，提出模仿游戏</a><span class="en">Computing Machinery and Intelligence</span></h3>
+          <p class="summary">文章奠定了此后人工智能讨论的核心问题，也是「图灵测试」名称的来源。</p>
+          <div class="meta">
+            <span class="badge ok">已证实</span>
+            <span class="sep"></span>
+            <span>University of Manchester</span>
+            <span class="sep"></span>
+            <span>Mind · DOI 可查</span>
+            <span class="sep"></span>
+            <a class="tag" href="#">#图灵测试</a>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <div class="more">
+      <p>档案到此为止 · 共 <b>158</b> 条记录，覆盖 1912—2026。需要完整数据集？</p>
+      <div style="display:flex;gap:10px">
+        <a class="btn ghost sm" href="#">下载 JSON</a>
+        <a class="btn ghost sm" href="/api/v1/open/apply">API 接入</a>
+      </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div>
+        <a class="brand" href="#">
+          <span class="mark" aria-hidden="true"></span>
+          AI 纪年 <em>Chronicle</em>
+        </a>
+        <p>按年份编排人工智能的关键事件、模型发布与重要研究。条目来自公开接口与官方公告，经去重与交叉验证入档，置信度与证据随每条记录公开。</p>
+      </div>
+      <div>
+        <h4>浏览</h4>
+        <ul>
+          <li><a href="#">时间轴</a></li>
+          <li><a href="#">模型谱系</a></li>
+          <li><a href="#">研究图谱</a></li>
+          <li><a href="#">收录标准</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>开放</h4>
+        <ul>
+          <li><a href="/api/v1/open/apply">API 申请</a></li>
+          <li><a href="#">数据下载</a></li>
+          <li><a href="#">引用指南</a></li>
+          <li><a href="/api/v1/correct">发现错误</a></li>
+        </ul>
+      </div>
+      <div class="foot-sub">
+        <h4>每周一封</h4>
+        <p>只写这一周新增了什么，附来源与原链。</p>
+        <form onsubmit="return false">
+          <input type="email" placeholder="you@example.com" aria-label="邮箱地址">
+          <button class="btn gold" type="submit">订阅</button>
+        </form>
+        <small>已订阅 1,240 位读者 · 随时退订</small>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 AI 纪年 · Vol. I</span>
+      <span class="links">
+        <a href="/api/v1/subscribe?src=footer">订阅更新</a>
+        <a href="/api/v1/open/apply">API 申请</a>
+        <a href="/api/v1/correct">发现错误</a>
+        <a href="#">隐私</a>
+      </span>
+      <span class="copy">数据来自公开接口 · 观点与事实以原链为准</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

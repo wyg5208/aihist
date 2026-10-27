@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI 纪年 · 首页改版 5 个方案</title>
+<style>
+  :root{
+    --bg:#0d0f14;--panel:#15181f;--line:#262b36;--text:#e8eaf1;--text-2:#9aa2b4;--muted:#6f7891;
+    --gold:#d4a45c;--cyan:#5ad1e6;
+    --sans:"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif;
+    --serif:Georgia,"Songti SC","Noto Serif SC",serif;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font:15px/1.65 var(--sans);-webkit-font-smoothing:antialiased}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:1400px;margin:0 auto;padding:0 28px}
+  header{padding:52px 0 30px;border-bottom:1px solid var(--line)}
+  .kicker{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--gold)}
+  h1{font-family:var(--serif);font-size:clamp(30px,4.2vw,46px);line-height:1.15;margin:14px 0 0;letter-spacing:-.01em}
+  .lede{max-width:70ch;margin:14px 0 0;color:var(--text-2);font-size:15.5px;line-height:1.8}
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:26px}
+  .fix{border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:14px 16px}
+  .fix b{display:block;font-size:13.5px;color:#fff}
+  .fix span{display:block;font-size:12.5px;color:var(--muted);margin-top:5px;line-height:1.6}
+  @media (max-width:900px){.grid4{grid-template-columns:1fr 1fr}}
+  @media (max-width:520px){.grid4{grid-template-columns:1fr}}
+
+  .live{display:flex;flex-wrap:wrap;align-items:center;gap:14px 18px;margin-top:24px;padding:16px 18px;
+    border:1px solid #3a3320;border-radius:12px;background:linear-gradient(100deg,#1d1a12,#15181f 60%)}
+  .live .k{display:block;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:4px}
+  .live b{font-size:14.5px;color:#fff;font-weight:600}
+  .live .dots{display:flex;gap:6px}
+  .live .dots i{width:16px;height:16px;border-radius:4px;border:1px solid rgba(255,255,255,.16)}
+  .live .go-btn{margin-left:auto;display:inline-flex;align-items:center;gap:7px;height:38px;padding:0 16px;
+    border-radius:8px;background:var(--gold);color:#1a1408;font-size:13.5px;font-weight:700}
+  .live .go-btn:hover{filter:brightness(1.07)}
+  @media (max-width:620px){.live .go-btn{margin-left:0;width:100%;justify-content:center}}
+
+  main{padding:34px 0 20px}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media (max-width:1000px){.cards{grid-template-columns:1fr}}
+  .card{border:1px solid var(--line);background:var(--panel);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+  .card .head{display:flex;align-items:flex-start;gap:14px;padding:18px 20px 14px}
+  .num{flex:none;width:30px;height:30px;border-radius:8px;display:grid;place-items:center;font-size:13px;font-weight:700;background:#222735;color:var(--gold);border:1px solid #333a4b}
+  .card h2{margin:0;font-size:17px;letter-spacing:-.01em}
+  .card .sub{margin:3px 0 0;font-size:12.5px;color:var(--muted)}
+  .swatch{margin-left:auto;display:flex;gap:5px;padding-top:4px}
+  .swatch i{width:14px;height:14px;border-radius:3px;border:1px solid rgba(255,255,255,.14)}
+  .frame{position:relative;overflow:hidden;background:#fff;border-top:1px solid var(--line);border-bottom:1px solid var(--line);cursor:pointer}
+  .frame iframe{width:1440px;height:960px;border:0;transform-origin:top left;pointer-events:none;display:block}
+  .card .body{padding:14px 20px 18px;display:flex;flex-direction:column;gap:8px}
+  .card .body p{margin:0;font-size:13.2px;color:var(--text-2);line-height:1.7}
+  .card .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:2px}
+  .card .tags span{font-size:11.5px;padding:2px 8px;border-radius:999px;border:1px solid #2e3543;color:var(--muted)}
+  .card .go{margin-top:6px;display:inline-flex;align-items:center;gap:6px;font-size:13px;font-weight:600;color:var(--cyan)}
+  .card .go:hover{text-decoration:underline}
+  .card.plan{background:linear-gradient(160deg,#171c26,#12151c)}
+  .card.plan .head{padding-bottom:6px}
+  .card.plan .body{gap:14px;padding-top:6px;padding-bottom:22px}
+  .card.plan h4{margin:0 0 8px;font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .card.plan ol{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:9px;font-size:13px;color:var(--text-2);line-height:1.68}
+  .card.plan ol b{color:#fff;font-weight:600}
+  .card.plan .refs{display:grid;grid-template-columns:1fr 1fr;gap:8px 16px;font-size:12.5px;color:var(--text-2)}
+  .card.plan .refs div{border-top:1px solid #2a3140;padding-top:7px}
+  .card.plan .refs b{display:block;color:#fff;font-weight:600;font-size:12.8px}
+  .card.plan .refs span{color:var(--muted)}
+  .card.plan .pick{border:1px dashed #3b4252;border-radius:9px;padding:11px 13px;font-size:12.5px;color:var(--muted);line-height:1.6}
+  .card.plan .pick b{color:var(--gold)}
+  .card.plan .num{color:var(--cyan);border-color:#33405a}
+
+  .notes{margin-top:38px;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .notes h3{margin:0;padding:16px 20px;font-size:14px;border-bottom:1px solid var(--line);background:#12151c}
+  .notes table{width:100%;border-collapse:collapse;font-size:13px}
+  .notes th,.notes td{padding:11px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+  .notes th{font-weight:600;color:var(--text);background:#12151c;font-size:12px;letter-spacing:.04em}
+  .notes td{color:var(--text-2)}
+  .notes tr:last-child td{border-bottom:0}
+  .notes td:first-child{color:var(--text);width:180px}
+  footer{border-top:1px solid var(--line);margin-top:34px}
+  footer .wrap{padding-top:26px;padding-bottom:50px;color:var(--muted);font-size:12.5px}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <p class="kicker">AI 纪年 · 首页改版提案 · 2026-10</p>
+    <h1>5 个方向，一份更大气、更好用的首页</h1>
+    <p class="lede">针对当前版本的四点不满：配色不够大气、缺少导航与页脚、卡片内标签纵向堆叠浪费空间、订阅与 API 入口藏得太深。5 个方案共用同一套内容与结构改造原则，只换视觉语言与信息密度组织方式。</p>
+    <div class="grid4">
+      <div class="fix"><b>① 颜色</b><span>每个方案给出一套完整品牌色（主色 + 辅助色 + 中性纸色），不再是「米色纸 + 一点红」，并明确深色模式对应色。</span></div>
+      <div class="fix"><b>② 导航与页脚</b><span>五个方案都补齐：粘性顶栏（Logo / 主导航 / API / 订阅）+ 四栏页脚（浏览、开放、订阅、版权与入口）。</span></div>
+      <div class="fix"><b>③ 空间利用</b><span>卡片内「日期 · 类别 · 机构 · 置信度 · 评审分 · 标签」改为一行横排（flex-wrap），摘要压到 2 行，单条高度下降约 30%。</span></div>
+      <div class="fix"><b>④ 关键入口</b><span>订阅与 API 在首屏出现两次：顶栏常驻按钮 + 首屏 CTA 区块；页脚与正文尾部再各留一次，形成 4 次触达。</span></div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="live">
+    <div>
+      <span class="k">推荐先看这个</span>
+      <b>三套主题已做成可实时切换的同一页：1 典藏 / 3 极光 / 5 博物馆</b>
+    </div>
+    <span class="dots" aria-hidden="true">
+      <i style="background:linear-gradient(135deg,#0f1c2b 55%,#a67c3d 55%)"></i>
+      <i style="background:linear-gradient(135deg,#06070d 45%,#54e3ff 45%,#a98bff)"></i>
+      <i style="background:linear-gradient(135deg,#123a2c 55%,#b08d4f 55%)"></i>
+    </span>
+    <a class="go-btn" href="theme-switch.html">打开可切换版本 →</a>
+  </div>
+
+  <div class="cards">
+
+    <article class="card">
+      <div class="head">
+        <span class="num">01</span>
+        <div><h2>典藏卷轴</h2><p class="sub">深墨蓝 + 铜金 · 编辑部气质</p></div>
+        <div class="swatch"><i style="background:#0f1c2b"></i><i style="background:#a67c3d"></i><i style="background:#faf7f0"></i></div>
+      </div>
+      <div class="frame"><iframe src="01-editorial-grand.html" title="方案一预览" loading="lazy"></iframe></div>
+      <div class="body">
+        <p>对标《纽约时报》与学术出版社官网：衬线大标题、细分隔线、金色只做强调。适合强调「档案」的严肃与权威，深色页脚压住整页，气质最稳。</p>
+        <div class="tags"><span>粘性顶栏</span><span>首屏三卡 CTA</span><span>横向元信息</span><span>深色页脚</span></div>
+        <a class="go" href="01-editorial-grand.html">整页打开 →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="head">
+        <span class="num">02</span>
+        <div><h2>现代产品站</h2><p class="sub">白底 + 电光蓝 · 类 Linear / Stripe</p></div>
+        <div class="swatch"><i style="background:#3554f0"></i><i style="background:#7b3ff2"></i><i style="background:#f5f7fc"></i></div>
+      </div>
+      <div class="frame"><iframe src="02-modern-saas.html" title="方案二预览" loading="lazy"></iframe></div>
+      <div class="body">
+        <p>悬浮胶囊导航 + 圆角卡片 + 柔和阴影，右侧常驻订阅 / API 侧栏。首屏右侧放「本周新增」实时卡，把「每天在更新」变成第一眼可见的产品价值。</p>
+        <div class="tags"><span>悬浮导航</span><span>侧栏常驻入口</span><span>卡片网格</span><span>渐变 CTA 带</span></div>
+        <a class="go" href="02-modern-saas.html">整页打开 →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="head">
+        <span class="num">03</span>
+        <div><h2>深色极光</h2><p class="sub">近黑 + 青紫光晕 · 类 Anthropic / Raycast</p></div>
+        <div class="swatch"><i style="background:#06070d"></i><i style="background:#54e3ff"></i><i style="background:#a98bff"></i></div>
+      </div>
+      <div class="frame"><iframe src="03-dark-aurora.html" title="方案三预览" loading="lazy"></iframe></div>
+      <div class="body">
+        <p>深色底 + 极光渐变 + 玻璃卡片，首屏用 Bento 网格把统计、趋势与订阅入口压进一屏。最「科技感」，也最容易在社交平台截图中出彩。</p>
+        <div class="tags"><span>深色主题</span><span>Bento 首屏</span><span>渐变标题</span><span>玻璃卡片</span></div>
+        <a class="go" href="03-dark-aurora.html">整页打开 →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="head">
+        <span class="num">04</span>
+        <div><h2>瑞士网格</h2><p class="sub">黑白 + 朱红 · 信息密度最高</p></div>
+        <div class="swatch"><i style="background:#ffffff"></i><i style="background:#0c0c0c"></i><i style="background:#d93a1c"></i></div>
+      </div>
+      <div class="frame"><iframe src="04-swiss-grid.html" title="方案四预览" loading="lazy"></iframe></div>
+      <div class="body">
+        <p>全页无圆角、细黑线分区、条目标题按表格排布，一屏可读 8–10 条。右侧红色区块直接放订阅与 API，是四个方向里「最不像杂志、最像工具」的一种。</p>
+        <div class="tags"><span>表格化列表</span><span>零留白浪费</span><span>红色行动区</span><span>高密度</span></div>
+        <a class="go" href="04-swiss-grid.html">整页打开 →</a>
+      </div>
+    </article>
+
+    <article class="card">
+      <div class="head">
+        <span class="num">05</span>
+        <div><h2>博物馆暖调</h2><p class="sub">米白 + 森林绿 + 金 · 类博物馆官网</p></div>
+        <div class="swatch"><i style="background:#123a2c"></i><i style="background:#b08d4f"></i><i style="background:#f4f0e5"></i></div>
+      </div>
+      <div class="frame"><iframe src="05-museum-warm.html" title="方案五预览" loading="lazy"></iframe></div>
+      <div class="body">
+        <p>保留现有暖纸底的基因，但把「一点红」换成森林绿 + 金的双色体系；条目改为双列卡片 + 横向元信息行，年份滑轨常驻，首屏右侧直接放订阅框。</p>
+        <div class="tags"><span>双列卡片</span><span>年份滑轨</span><span>首屏订阅框</span><span>三栏承诺条</span></div>
+        <a class="go" href="05-museum-warm.html">整页打开 →</a>
+      </div>
+    </article>
+
+
+    <article class="card plan">
+      <div class="head">
+        <span class="num">→</span>
+        <div><h2>下一步怎么落地</h2><p class="sub">选定方向后，改动集中在 4 个文件</p></div>
+      </div>
+      <div class="body">
+        <div>
+          <h4>落地步骤</h4>
+          <ol>
+            <li><b>设计令牌</b>：把选中方案的四层色板写进 globals.css，同时补齐深色模式对应值。</li>
+            <li><b>新增 SiteNav</b>：72px 粘性顶栏，右侧常驻「API 申请 + 订阅更新」，移动端折叠成抽屉。</li>
+            <li><b>改 EventRow</b>：日期列 + 内容列，元信息全部横排、摘要两行截断，展开区保留原有证据结构。</li>
+            <li><b>重写页脚 + 新增 SubscribeCard</b>：四栏页脚带订阅表单，正文尾部再加一条 CTA 带。</li>
+          </ol>
+        </div>
+        <div>
+          <h4>对标参考</h4>
+          <div class="refs">
+            <div><b>NYT / 大英百科</b><span>衬线标题 + 细分隔线（方案一）</span></div>
+            <div><b>Stripe / Linear</b><span>胶囊导航 + 渐变主色（方案二）</span></div>
+            <div><b>Anthropic / Raycast</b><span>深色底 + 光晕 + 玻璃卡（方案三）</span></div>
+            <div><b>Swiss Style 网格</b><span>零圆角 + 表格化密度（方案四）</span></div>
+            <div><b>MoMA / 博物馆官网</b><span>暖纸底 + 森林绿 + 金（方案五）</span></div>
+            <div><b>Vercel</b><span>首屏把「订阅/文档」做成主按钮</span></div>
+          </div>
+        </div>
+        <div class="pick"><b>取舍建议：</b>想保留「档案」气质选 01/05；想突出「产品与 API」选 02/04；想抢占视觉记忆点选 03。也可以取 01 的排版 + 05 的配色。</div>
+        <a class="go" href="01-editorial-grand.html">从方案一开始看 →</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="notes">
+    <h3>五个方案共同的改造清单（可直接落到现有组件）</h3>
+    <table>
+      <thead><tr><th>问题</th><th>统一处理</th><th>涉及组件</th></tr></thead>
+      <tbody>
+        <tr><td>配色不大气</td><td>建立「主色 / 强调色 / 纸色 / 线色」四层令牌，主色承担大色块（首屏行动区、页脚、导航选中态），强调色只用于一句话 CTA 与关键数字</td><td>globals.css 令牌层</td></tr>
+        <tr><td>缺导航栏</td><td>72px 粘性顶栏：Logo、主导航（时间轴 / 模型谱系 / 研究 / 引用指南 / 收录标准）、右侧 API 申请 + 订阅更新</td><td>新增 SiteNav</td></tr>
+        <tr><td>缺底栏</td><td>四栏页脚：关于、浏览、开放（API / 下载 / 引用 / 纠错）、订阅表单；底部一行放版权与四个常驻入口</td><td>重写 footer</td></tr>
+        <tr><td>标签纵向堆叠</td><td>EventRow 改为「日期列 + 内容列」，内容列顶部一行横排：类别徽章 · 机构 · 来源数 · 评审分 · 标签；摘要 clamp 两行</td><td>EventRow / EventDetail</td></tr>
+        <tr><td>订阅藏得深</td><td>入口四连：顶栏按钮、首屏 CTA 区块、正文尾部条带、页脚表单；埋点沿用 ?src=nav / hero / band / footer</td><td>Masthead / footer / 新增 SubscribeCard</td></tr>
+      </tbody>
+    </table>
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    静态原型，仅用于视觉方案比对：数据取自 seed.json 的真实条目，链接指向现有接口路径，交互未接入。
+  </div>
+</footer>
+
+<script>
+  function fit(){
+    document.querySelectorAll('.frame').forEach(function(f){
+      var iframe = f.querySelector('iframe');
+      var s = f.clientWidth / 1440;
+      iframe.style.transform = 'scale(' + s + ')';
+      f.style.height = (960 * s) + 'px';
+    });
+  }
+  window.addEventListener('resize', fit);
+  window.addEventListener('load', fit);
+  fit();
+</script>
+
+</body>
+</html>

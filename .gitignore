@@ -50,3 +50,7 @@ backend/_scratch_*.txt
 
 # Real secrets. `deploy/api.env.example` is the tracked template.
 deploy/api.env
+
+# Logo 候选渲染图（5 个方向的主图与图标，约 5.7 MB 二进制）。选型早已结束，
+# 落地的是 src/ 里的矢量重绘；原图留在本地供对照，不入库。
+/demos/logo/

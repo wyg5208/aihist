@@ -63,10 +63,27 @@ export function EventRow({ item, expanded, onToggle, onKeyword }: Props) {
         aria-expanded={expanded}
         aria-controls={detailId}
         onClick={() => onToggle(item.id)}
-        className="grid w-full grid-cols-[3.2rem_0.9rem_minmax(0,1fr)] items-start gap-x-2 py-3.5 text-left sm:grid-cols-[6.2rem_1rem_minmax(0,1fr)] sm:gap-x-3 sm:py-4"
+        className="grid w-full grid-cols-[4.8rem_0.75rem_minmax(0,1fr)] items-start gap-x-2 py-3 text-left sm:grid-cols-[6.2rem_0.9rem_minmax(0,1fr)] sm:gap-x-3 sm:py-3.5"
       >
-        <span className="pt-0.5 font-mono text-[11.5px] leading-5 tracking-[0.03em] text-[var(--muted)] tabular-nums sm:text-[12.5px]">
-          {formatRowDate(item.eventDate, item.datePrecision)}
+        {/* The date column also carries the category, so the row spends one line
+            on provenance instead of two: date over category on the left, title
+            then a single horizontal meta line on the right. */}
+        <span className="pt-0.5">
+          <span className="block font-mono text-[11px] leading-5 tracking-[0.02em] text-[var(--muted)] tabular-nums sm:text-[11.5px]">
+            {formatRowDate(item.eventDate, item.datePrecision)}
+          </span>
+          <span
+            className={`mt-1 block font-mono text-[10px] uppercase tracking-[0.08em] ${
+              item.category === "milestone"
+                ? "text-[var(--accent)]"
+                : "text-[var(--muted)]"
+            }`}
+          >
+            <span aria-hidden="true" className="mr-1">
+              {meta.mark}
+            </span>
+            {meta.label}
+          </span>
         </span>
 
         <span className="relative flex h-full min-h-6 justify-center" aria-hidden="true">
@@ -79,23 +96,7 @@ export function EventRow({ item, expanded, onToggle, onKeyword }: Props) {
         </span>
 
         <span className="min-w-0">
-          <span className="flex flex-wrap items-center gap-x-2 gap-y-1">
-            <span
-              className={`font-mono text-[11.5px] uppercase tracking-[0.1em] ${
-                item.category === "milestone" ? "text-[var(--accent)]" : "text-[var(--muted)]"
-              }`}
-            >
-              <span aria-hidden="true" className="mr-1">
-                {meta.mark}
-              </span>
-              {meta.label}
-            </span>
-            <span className="ml-auto">
-              <ConfidenceBadge confidence={item.confidence} />
-            </span>
-          </span>
-
-          <span className="entry-title mt-1.5 block font-serif text-[16.5px] leading-[1.4] text-[var(--ink)] sm:text-[18.5px]">
+          <span className="entry-title block font-serif text-[16.5px] leading-[1.4] text-[var(--ink)] sm:text-[18px]">
             {item.title}
           </span>
 
@@ -105,16 +106,25 @@ export function EventRow({ item, expanded, onToggle, onKeyword }: Props) {
             </span>
           )}
 
-          <span className="mt-1.5 flex flex-wrap items-baseline gap-x-2 gap-y-0.5 font-mono text-[11px] tracking-[0.02em] text-[var(--muted)]">
+          <span className="mt-1.5 flex flex-wrap items-center gap-x-2.5 gap-y-1 text-[11.5px] leading-5 text-[var(--muted)]">
+            <ConfidenceBadge confidence={item.confidence} />
             {item.organization && <span>{item.organization}</span>}
             {item.modelName && item.modelName !== item.organization && (
               <span>· {item.modelName}</span>
             )}
-            <span>· {item.sourceCount} 条证据</span>
+            <span className="font-mono text-[11px] tracking-[0.02em]">
+              · {item.sourceCount} 条证据
+            </span>
             {item.tags?.length > 0 && (
-              <span className="row-keywords">· {item.tags.slice(0, 3).join(" / ")}</span>
+              <span className="row-keywords font-mono text-[11px] tracking-[0.02em]">
+                · {item.tags.slice(0, 3).join(" / ")}
+              </span>
             )}
-            <span className="text-[var(--ink-soft)]" aria-hidden="true">
+            {/* The row is the button; this is only the affordance that says so. */}
+            <span
+              className="ml-auto border border-[var(--rule)] px-1.5 font-mono text-[11px] leading-4 text-[var(--ink-soft)]"
+              aria-hidden="true"
+            >
               {expanded ? "−" : "+"}
             </span>
           </span>
@@ -124,7 +134,7 @@ export function EventRow({ item, expanded, onToggle, onKeyword }: Props) {
       {expanded && (
         <div
           id={detailId}
-          className="ml-[4.2rem] border-t border-dashed border-[var(--rule)] pt-3 sm:ml-[7.4rem]"
+          className="ml-[6.55rem] border-t border-dashed border-[var(--rule)] pb-4 pt-3 sm:ml-[8.6rem]"
         >
           <EventDetail
             detail={detail}

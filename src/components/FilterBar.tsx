@@ -117,6 +117,8 @@ export function FilterBar({
         </div>
       </div>
 
+      {/* Category and confidence share one wrapping row: they are the same kind
+          of control, and a second row cost 40px above the first entry. */}
       <div className="mt-3 flex flex-wrap items-center gap-1.5">
         <button
           type="button"
@@ -145,9 +147,10 @@ export function FilterBar({
             </button>
           );
         })}
-      </div>
-
-      <div className="mt-2 flex flex-wrap items-center gap-1.5">
+        <span
+          className="mx-1 h-4 w-px bg-[var(--rule)]"
+          aria-hidden="true"
+        />
         <span className="mr-1 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--muted)]">
           可信度
         </span>

@@ -20,7 +20,9 @@ export function TimelineYear({ year, items, expandedId, onToggle, onKeyword }: P
       className="year-section mt-10 first:mt-6"
       aria-labelledby={`year-heading-${year}`}
     >
-      <div className="sticky top-0 z-20 flex items-baseline justify-between gap-4 border-b border-[var(--ink)] bg-[var(--paper)] px-0.5 py-2">
+      {/* 3.5rem is the site header; the year heading parks right under it so a
+          jump never hides the year it landed on. */}
+      <div className="sticky top-14 z-20 flex items-baseline justify-between gap-4 border-b border-[var(--ink)] bg-[var(--paper)] px-0.5 py-2">
         <h2
           id={`year-heading-${year}`}
           className="flex items-baseline gap-2 font-serif text-[1.7rem] leading-none tracking-[-0.02em] text-[var(--ink)]"

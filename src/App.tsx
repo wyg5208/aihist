@@ -1,11 +1,13 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import type { Category, Confidence, FilterOption, TimelineItem } from "./types";
 import { CATEGORY_ORDER } from "./lib/format";
-import { ARCHIVE_START_YEAR } from "./lib/eras";
 import { readEventSlug, writeEventSlug } from "./lib/permalink";
 import { trackPageView } from "./lib/track";
 import { useTimeline } from "./hooks/useTimeline";
 import { useSync } from "./hooks/useSync";
+import { SiteNav } from "./components/SiteNav";
+import { SiteFooter } from "./components/SiteFooter";
+import { CtaBand } from "./components/CtaBand";
 import { Masthead } from "./components/Masthead";
 import { FilterBar } from "./components/FilterBar";
 import { YearScrubber } from "./components/YearScrubber";
@@ -283,7 +285,9 @@ export default function App() {
         跳到时间轴
       </a>
 
-      <div className="mx-auto w-full max-w-[1180px] px-4 pb-14 sm:px-6 lg:max-w-[1480px] lg:px-8 2xl:max-w-[1760px] 2xl:px-10">
+      <SiteNav onStandard={() => setStandardOpen(true)} />
+
+      <div className="mx-auto w-full max-w-[1180px] px-4 pb-0 sm:px-6 lg:max-w-[1480px] lg:px-8 2xl:max-w-[1760px] 2xl:px-10">
         <Masthead
           total={timeline.total || timeline.items.length}
           modelCount={modelCount}
@@ -385,7 +389,7 @@ export default function App() {
             )}
           </main>
 
-          <div className="min-w-0 lg:sticky lg:top-0 lg:max-h-dvh lg:overflow-y-auto lg:py-6 scrollbar-thin">
+          <div className="min-w-0 lg:sticky lg:top-14 lg:max-h-[calc(100dvh-3.5rem)] lg:overflow-y-auto lg:py-6 scrollbar-thin">
             <SideRail
               items={timeline.items}
               activeYear={activeYear}
@@ -404,85 +408,10 @@ export default function App() {
           </div>
         </div>
 
-        <footer className="mt-16 border-t border-[var(--ink)] pt-5">
-          <div className="grid gap-7 sm:grid-cols-3">
-            <div>
-              <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
-                关于
-              </p>
-              <p className="prose-note mt-2">
-                AI 纪年按年份编排人工智能的关键事件、模型发布与重要研究，从 {ARCHIVE_START_YEAR} 年的早期自动机
-                延伸到当前模型发布。经典阶段参考{" "}
-                <a
-                  href="https://en.wikipedia.org/wiki/Timeline_of_artificial_intelligence"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="underline decoration-[var(--rule)] underline-offset-2"
-                >
-                  维基百科 AI 年表
-                </a>
-                ，再以原始论文或机构页面核对；近期条目由公开接口持续补充。
-              </p>
-            </div>
-            <div>
-              <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
-                采集
-              </p>
-              <p className="prose-note mt-2">
-                OpenRouter、Hugging Face、arXiv、Hacker News、OpenAI 与 Google 官方博客、
-                Anthropic 站点地图，以及 TechCrunch、The Verge、MIT Technology Review；
-                中文侧采集量子位、InfoQ 中国、钛媒体与雷峰网。
-                同一来源只计一次，跨类别命中才升级为「已证实」。
-              </p>
-            </div>
-            <div>
-              <p className="font-mono text-[10.5px] uppercase tracking-[0.18em] text-[var(--muted)]">
-                边界
-              </p>
-              <p className="prose-note mt-2">
-                采集与访问完全解耦：后台定时任务每天 01:05 运行一次，管理台可手动触发，
-                浏览页面不会发起任何同步。
-                自动条目先经规则预筛，再由五家厂商各一席的模型评审：至少三票同意、中位分不低于 75 才收录。
-                票型分裂、评审不可用或未配置评审模型时，条目暂缓并隐藏，不进入公开时间轴。
-                摘要明确标注人工校订、模型生成或来源摘录；新闻与论文只保留标题、短摘录与原链。
-                种子条目另有静态引用页（/e/…），不依赖接口即可打开；自动条目只提供 ?e= 深链。
-              </p>
-            </div>
-          </div>
-
-          <p className="mt-7 flex flex-wrap items-baseline justify-between gap-x-6 gap-y-3 border-t border-[var(--rule)] pt-4 font-mono text-[12px] uppercase tracking-[0.1em] text-[var(--muted)]">
-            <span>AI Chronicle · Vol. I · 公开档案</span>
-            <span className="flex flex-wrap items-baseline gap-x-5 gap-y-2">
-              <button
-                type="button"
-                onClick={() => setStandardOpen(true)}
-                className="underline decoration-[var(--rule-strong)] underline-offset-4 hover:text-[var(--accent)]"
-              >
-                收录标准
-              </button>
-              <a
-                href="/api/v1/subscribe?src=footer"
-                className="underline decoration-[var(--rule-strong)] underline-offset-4 hover:text-[var(--accent)]"
-              >
-                订阅更新
-              </a>
-              <a
-                href="/api/v1/open/apply"
-                className="underline decoration-[var(--rule-strong)] underline-offset-4 hover:text-[var(--accent)]"
-              >
-                API 申请
-              </a>
-              <a
-                href="/api/v1/correct"
-                className="underline decoration-[var(--rule-strong)] underline-offset-4 hover:text-[var(--accent)]"
-              >
-                发现错误
-              </a>
-              <span>数据来自公开接口 · 观点与事实以原链为准</span>
-            </span>
-          </p>
-        </footer>
+        <CtaBand />
       </div>
+
+      <SiteFooter onStandard={() => setStandardOpen(true)} />
 
       <StandardDialog
         open={standardOpen}

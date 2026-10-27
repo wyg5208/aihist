@@ -19,23 +19,41 @@
 }
 
 /*
- * Two palettes, one set of tokens. Light is the archive's default — paper, ink,
- * one red rule; dark is the same archive at night, so no component has to know
- * which one is active. `[data-theme]` is written by the inline script in
- * `index.html` before the first paint, then by the masthead toggle.
+ * Three palettes, one set of tokens. The archive is readable in three moods —
+ * `editorial` (paper, ink-blue ground, copper rule), `aurora` (night ground,
+ * cyan and violet light), `museum` (linen, forest green, gold) — and no
+ * component has to know which one is active. `[data-theme]` is written by the
+ * inline script in `index.html` before the first paint, then by the switcher in
+ * the site header.
+ *
+ * Two tokens cannot be derived from a swap. `--ink` is body text, so it turns
+ * light on the night ground and can no longer paint the dark band (hero CTA,
+ * footer); `--deep` / `--on-deep` name that band explicitly. `--accent` stays
+ * text-safe (≥4.5:1 on `--paper`) while `--accent-mark` carries the decorative
+ * tint that legs and dots are drawn with.
  */
 :root {
   color-scheme: light;
 
-  --paper: #f6f2e9;
-  --paper-deep: #efe9db;
-  --ink: #1c1a17;
-  --ink-soft: #4a443a;
-  --muted: #867d6d;
-  --rule: #d9d1c0;
-  --rule-strong: #b5ab98;
-  --accent: #a6382b;
-  --accent-soft: #ecdcd2;
+  --paper: #faf7f0;
+  --paper-deep: #f1ead9;
+  --ink: #0f1c2b;
+  --ink-soft: #3d4d5e;
+  --muted: #6b7787;
+  --rule: #ded6c5;
+  --rule-strong: #c3b9a4;
+  --accent: #8a5f2a;
+  --accent-soft: #efe0c6;
+  --accent-mark: #a67c3d;
+
+  --deep: #0f1c2b;
+  --on-deep: #f7f0e0;
+  --on-deep-soft: #c9bfab;
+  --deep-rule: rgba(247, 240, 224, 0.16);
+  --cta-bg: var(--deep);
+  --cta-ink: var(--on-deep);
+  --band-btn-bg: var(--on-deep);
+  --band-btn-ink: var(--deep);
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -54,7 +72,7 @@
   --input: var(--rule);
   --ring: var(--rule-strong);
   --radius: 0.125rem;
-  --chart-1: var(--accent);
+  --chart-1: var(--accent-mark);
   --chart-2: var(--ink);
   --chart-3: var(--rule-strong);
   --chart-4: #6f6555;
@@ -71,43 +89,89 @@
   /* Values a token swap cannot derive: a dark ink wash over near-black paper
      disappears, and the distribution bars would invert into glare. Each theme
      therefore names its own. */
-  --wash-accent: rgba(166, 56, 43, 0.045);
-  --wash-ink: rgba(28, 26, 23, 0.04);
-  --row-hover: rgba(28, 26, 23, 0.022);
-  --scrim: rgba(28, 26, 23, 0.52);
-  --bar-model: #3d372e;
-  --bar-research: #6b5f4b;
-  --bar-opinion: #948873;
+  --wash-accent: rgba(166, 124, 61, 0.075);
+  --wash-ink: rgba(15, 28, 43, 0.035);
+  --row-hover: rgba(15, 28, 43, 0.026);
+  --scrim: rgba(15, 28, 43, 0.52);
+  --bar-model: #233a52;
+  --bar-research: #6a5a3c;
+  --bar-opinion: #8d8677;
 }
 
-/*
- * Guarded, because the console sets `data-theme` on the same element and ships
- * its own palette: an unguarded `:root[data-theme="dark"]` here would outrank
- * the aliases in `src/admin/theme.css` and repaint the console as paper.
- */
-:root[data-theme="dark"]:not([data-surface="admin"]) {
+/* 极光：night ground, cyan rule, violet light. */
+:root[data-theme="aurora"]:not([data-surface="admin"]) {
   color-scheme: dark;
 
-  --paper: #14120f;
-  --paper-deep: #1b1814;
-  --ink: #ece6d9;
-  --ink-soft: #c2b8a7;
-  --muted: #948a79;
-  --rule: #322c25;
-  --rule-strong: #4b4337;
-  --accent: #d3705f;
-  --accent-soft: #3b221c;
+  --paper: #06070d;
+  --paper-deep: #0c0f18;
+  --ink: #e9edf8;
+  --ink-soft: #aab2c8;
+  --muted: #7d86a1;
+  --rule: rgba(255, 255, 255, 0.1);
+  --rule-strong: rgba(255, 255, 255, 0.22);
+  --accent: #54e3ff;
+  --accent-soft: rgba(84, 227, 255, 0.14);
+  --accent-mark: #a98bff;
 
-  --chart-4: #b3a48b;
+  --deep: rgba(255, 255, 255, 0.045);
+  --on-deep: #e9edf8;
+  --on-deep-soft: #aab2c8;
+  --deep-rule: rgba(255, 255, 255, 0.12);
+  --cta-bg: linear-gradient(100deg, #7ae7ff, #b49bff);
+  --cta-ink: #080a14;
+  --band-btn-bg: linear-gradient(100deg, #7ae7ff, #b49bff);
+  --band-btn-ink: #080a14;
+
+  --radius: 0.5rem;
+
+  --chart-4: #9fc6ff;
   --chart-5: #574e40;
 
-  --wash-accent: rgba(211, 112, 95, 0.08);
-  --wash-ink: rgba(236, 230, 217, 0.035);
-  --row-hover: rgba(236, 230, 217, 0.05);
-  --scrim: rgba(0, 0, 0, 0.68);
-  --bar-model: #cfc6b6;
-  --bar-research: #a89b88;
-  --bar-opinion: #7b7263;
+  --wash-accent: rgba(84, 227, 255, 0.1);
+  --wash-ink: rgba(169, 139, 255, 0.11);
+  --row-hover: rgba(255, 255, 255, 0.045);
+  --scrim: rgba(0, 0, 0, 0.7);
+  --bar-model: #9fc6ff;
+  --bar-research: #a98bff;
+  --bar-opinion: #5ff0b4;
+}
+
+/* 博物馆：linen ground, forest ink, gold rule. */
+:root[data-theme="museum"]:not([data-surface="admin"]) {
+  color-scheme: light;
+
+  --paper: #f4f0e5;
+  --paper-deep: #ebe5d4;
+  --ink: #123a2c;
+  --ink-soft: #42564a;
+  --muted: #77857b;
+  --rule: #dbd3bf;
+  --rule-strong: #c4b99e;
+  --accent: #866428;
+  --accent-soft: #eadfc4;
+  --accent-mark: #b08d4f;
+
+  --deep: #123a2c;
+  --on-deep: #f3ebd6;
+  --on-deep-soft: #c5b998;
+  --deep-rule: rgba(243, 235, 214, 0.18);
+  --cta-bg: var(--deep);
+  --cta-ink: var(--on-deep);
+  --band-btn-bg: var(--on-deep);
+  --band-btn-ink: var(--deep);
+
+  --radius: 0.375rem;
+
+  --chart-4: #8a6f3f;
+  --chart-5: #c4b99e;
+
+  --wash-accent: rgba(176, 141, 79, 0.1);
+  --wash-ink: rgba(18, 58, 44, 0.04);
+  --row-hover: rgba(18, 58, 44, 0.035);
+  --scrim: rgba(18, 36, 29, 0.55);
+  --bar-model: #2f5b46;
+  --bar-research: #8a6f3f;
+  --bar-opinion: #7f9184;
 }
 
 @theme inline {
@@ -182,6 +246,204 @@ body {
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+/*
+ * The night ground carries a faint 64px grid, so the header and the CTA band
+ * have something to sit on; the two light palettes stay plain paper. Headings
+ * drop the display serif there as well — a lit serif on near-black reads as a
+ * costume, while the sans face matches the light behind it.
+ */
+:root[data-theme="aurora"]:not([data-surface="admin"]) body {
+  background-image:
+    radial-gradient(820px 520px at 10% -10%, var(--wash-accent), transparent 62%),
+    radial-gradient(760px 520px at 92% -6%, var(--wash-ink), transparent 62%),
+    linear-gradient(rgba(255, 255, 255, 0.022) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.022) 1px, transparent 1px);
+  background-size: auto, auto, 64px 64px, 64px 64px;
+}
+
+:root[data-theme="aurora"]:not([data-surface="admin"]) .font-serif {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+  letter-spacing: -0.02em;
+}
+
+/* -------------------------------------------------------------------------
+ * Site chrome. The header is sticky on every page, so the controls keep one set
+ * of names instead of a Tailwind string repeated in five components.
+ * ------------------------------------------------------------------------- */
+.site-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  border-bottom: 1px solid var(--rule);
+  background: color-mix(in srgb, var(--paper) 90%, transparent);
+  backdrop-filter: blur(14px);
+}
+
+.nav-link {
+  position: relative;
+  padding: 0.3rem 0;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  transition: color 140ms ease;
+  white-space: nowrap;
+}
+
+.nav-link:hover {
+  color: var(--ink);
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.15rem;
+  height: 1px;
+  background: var(--accent-mark);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 160ms ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/* Segmented control: one swatch per palette, label names it on wide screens. */
+.theme-switcher {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  padding: 2px;
+  border: 1px solid var(--rule);
+  border-radius: calc(var(--radius) + 2px);
+}
+
+.theme-switcher button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.24rem 0.45rem;
+  border-radius: calc(var(--radius) + 1px);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  color: var(--muted);
+  transition: background-color 140ms ease, color 140ms ease;
+}
+
+.theme-switcher button:hover {
+  color: var(--ink);
+  background: var(--paper-deep);
+}
+
+.theme-switcher button[aria-pressed="true"] {
+  color: var(--ink);
+  background: color-mix(in srgb, var(--accent-mark) 18%, transparent);
+  font-weight: 600;
+}
+
+.theme-swatch {
+  display: block;
+  width: 11px;
+  height: 11px;
+  flex: none;
+  border-radius: 3px;
+  box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.12);
+}
+
+.theme-swatch[data-theme-swatch="editorial"] {
+  background: linear-gradient(135deg, #0f1c2b 55%, #a67c3d 55%);
+}
+
+.theme-swatch[data-theme-swatch="aurora"] {
+  background: linear-gradient(135deg, #06070d 45%, #54e3ff 45%, #a98bff);
+}
+
+.theme-swatch[data-theme-swatch="museum"] {
+  background: linear-gradient(135deg, #123a2c 55%, #b08d4f 55%);
+}
+
+/* Buttons: one filled (the action we want), one outlined, one plain link. */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  border: 1px solid transparent;
+  border-radius: calc(var(--radius) + 1px);
+  padding: 0.42rem 0.95rem;
+  font-family: var(--font-sans);
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.25;
+  white-space: nowrap;
+  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
+}
+
+.btn-cta {
+  background: var(--cta-bg);
+  color: var(--cta-ink);
+}
+
+.btn-cta:hover {
+  filter: brightness(1.08);
+}
+
+.btn-outline {
+  border-color: var(--rule-strong);
+  color: var(--ink);
+}
+
+.btn-outline:hover {
+  border-color: var(--accent-mark);
+  color: var(--accent);
+}
+
+.btn-sm {
+  padding: 0.28rem 0.7rem;
+  font-size: 12.5px;
+}
+
+/* Inside the dark band the filled button inverts: cream on navy reads as the
+   primary action on the light palettes, and the night palette lights it instead. */
+.btn-band {
+  background: var(--band-btn-bg);
+  color: var(--band-btn-ink);
+}
+
+.btn-band:hover {
+  filter: brightness(0.96);
+}
+
+.btn-band-outline {
+  border-color: var(--deep-rule);
+  color: var(--on-deep);
+}
+
+.btn-band-outline:hover {
+  border-color: var(--on-deep);
+}
+
+/* The dark band that closes the page: CTA strip and footer share one surface. */
+.deep-band {
+  background: var(--deep);
+  color: var(--on-deep);
+}
+
+/* No colour shift on hover inside the band: `--paper` is the same surface on
+   the light palettes but near-black on the night one, so the nudge is ink-contrast
+   in one palette and invisible in another. Underline only. */
+.deep-band a {
+  text-underline-offset: 4px;
+  transition: text-decoration-color 140ms ease;
+}
+
+.deep-band a:hover {
+  text-decoration-color: currentColor;
 }
 
 ::selection {
@@ -318,7 +580,7 @@ input[type="search"]::-webkit-search-cancel-button {
 }
 
 .year-section {
-  scroll-margin-top: 1.25rem;
+  scroll-margin-top: 4.75rem;
 }
 
 .entry-row {
