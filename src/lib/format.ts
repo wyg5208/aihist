@@ -12,7 +12,7 @@ export const CATEGORY_META: Record<
   Category,
   { label: string; mark: string; short: string }
 > = {
-  milestone: { label: "里程碑", mark: "■", short: "里程" },
+  milestone: { label: "里程碑", mark: "■", short: "里程碑" },
   model: { label: "模型发布", mark: "◆", short: "模型" },
   research: { label: "研究突破", mark: "●", short: "研究" },
   opinion: { label: "观点·访谈", mark: "▲", short: "观点" },
@@ -88,6 +88,25 @@ export function formatRowDate(date: string, precision: DatePrecision) {
   if (precision === "year") return date.slice(0, 4);
   if (precision === "month") return date.slice(0, 7).replace("-", ".");
   return date.slice(0, 10).replace(/-/g, ".");
+}
+
+/**
+ * The same date, but only as much of it as the precision actually supports:
+ * a year-precision entry printing `1912-01-01` claims a day that nobody knows.
+ */
+export function shortDate(date: string, precision: DatePrecision) {
+  if (!date) return "—";
+  if (precision === "day") return date.slice(5, 10);
+  if (precision === "month") return date.slice(0, 7);
+  return date.slice(0, 4);
+}
+
+/** The editorial column stacks a bold day over its year. */
+export function splitDate(date: string, precision: DatePrecision) {
+  if (!date) return { main: "—", year: "" };
+  if (precision === "day") return { main: date.slice(5, 10), year: date.slice(0, 4) };
+  if (precision === "month") return { main: date.slice(5, 7), year: date.slice(0, 4) };
+  return { main: date.slice(0, 4), year: "" };
 }
 
 export function formatFullDate(date: string, precision: DatePrecision) {

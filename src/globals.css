@@ -49,11 +49,10 @@
   --deep: #0f1c2b;
   --on-deep: #f7f0e0;
   --on-deep-soft: #c9bfab;
-  --deep-rule: rgba(247, 240, 224, 0.16);
-  --cta-bg: var(--deep);
-  --cta-ink: var(--on-deep);
-  --band-btn-bg: var(--on-deep);
-  --band-btn-ink: var(--deep);
+  /* Card stock sits a shade above the paper; the footer is its own ink. */
+  --surface: #fffdf8;
+  --foot-bg: #0f1c2b;
+  --ok: #2f8f5b;
 
   --background: var(--paper);
   --foreground: var(--ink);
@@ -87,15 +86,11 @@
   --sidebar-ring: var(--rule-strong);
 
   /* Values a token swap cannot derive: a dark ink wash over near-black paper
-     disappears, and the distribution bars would invert into glare. Each theme
-     therefore names its own. */
+     disappears, so each theme names its own. */
   --wash-accent: rgba(166, 124, 61, 0.075);
   --wash-ink: rgba(15, 28, 43, 0.035);
   --row-hover: rgba(15, 28, 43, 0.026);
   --scrim: rgba(15, 28, 43, 0.52);
-  --bar-model: #233a52;
-  --bar-research: #6a5a3c;
-  --bar-opinion: #8d8677;
 }
 
 /* 极光：night ground, cyan rule, violet light. */
@@ -116,11 +111,9 @@
   --deep: rgba(255, 255, 255, 0.045);
   --on-deep: #e9edf8;
   --on-deep-soft: #aab2c8;
-  --deep-rule: rgba(255, 255, 255, 0.12);
-  --cta-bg: linear-gradient(100deg, #7ae7ff, #b49bff);
-  --cta-ink: #080a14;
-  --band-btn-bg: linear-gradient(100deg, #7ae7ff, #b49bff);
-  --band-btn-ink: #080a14;
+  --surface: rgba(255, 255, 255, 0.045);
+  --foot-bg: rgba(255, 255, 255, 0.015);
+  --ok: #5ff0b4;
 
   --radius: 0.5rem;
 
@@ -131,9 +124,6 @@
   --wash-ink: rgba(169, 139, 255, 0.11);
   --row-hover: rgba(255, 255, 255, 0.045);
   --scrim: rgba(0, 0, 0, 0.7);
-  --bar-model: #9fc6ff;
-  --bar-research: #a98bff;
-  --bar-opinion: #5ff0b4;
 }
 
 /* 博物馆：linen ground, forest ink, gold rule. */
@@ -154,11 +144,9 @@
   --deep: #123a2c;
   --on-deep: #f3ebd6;
   --on-deep-soft: #c5b998;
-  --deep-rule: rgba(243, 235, 214, 0.18);
-  --cta-bg: var(--deep);
-  --cta-ink: var(--on-deep);
-  --band-btn-bg: var(--on-deep);
-  --band-btn-ink: var(--deep);
+  --surface: #fbf9f3;
+  --foot-bg: #0e2a20;
+  --ok: #1c6b45;
 
   --radius: 0.375rem;
 
@@ -169,9 +157,6 @@
   --wash-ink: rgba(18, 58, 44, 0.04);
   --row-hover: rgba(18, 58, 44, 0.035);
   --scrim: rgba(18, 36, 29, 0.55);
-  --bar-model: #2f5b46;
-  --bar-research: #8a6f3f;
-  --bar-opinion: #7f9184;
 }
 
 @theme inline {
@@ -269,50 +254,6 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* -------------------------------------------------------------------------
- * Site chrome. The header is sticky on every page, so the controls keep one set
- * of names instead of a Tailwind string repeated in five components.
- * ------------------------------------------------------------------------- */
-.site-nav {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  border-bottom: 1px solid var(--rule);
-  background: color-mix(in srgb, var(--paper) 90%, transparent);
-  backdrop-filter: blur(14px);
-}
-
-.nav-link {
-  position: relative;
-  padding: 0.3rem 0;
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  color: var(--ink-soft);
-  transition: color 140ms ease;
-  white-space: nowrap;
-}
-
-.nav-link:hover {
-  color: var(--ink);
-}
-
-.nav-link::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -0.15rem;
-  height: 1px;
-  background: var(--accent-mark);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 160ms ease;
-}
-
-.nav-link:hover::after {
-  transform: scaleX(1);
-}
-
 /* Segmented control: one swatch per palette, label names it on wide screens. */
 .theme-switcher {
   display: flex;
@@ -367,85 +308,6 @@ body {
   background: linear-gradient(135deg, #123a2c 55%, #b08d4f 55%);
 }
 
-/* Buttons: one filled (the action we want), one outlined, one plain link. */
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.4rem;
-  border: 1px solid transparent;
-  border-radius: calc(var(--radius) + 1px);
-  padding: 0.42rem 0.95rem;
-  font-family: var(--font-sans);
-  font-size: 13.5px;
-  font-weight: 600;
-  line-height: 1.25;
-  white-space: nowrap;
-  transition: background-color 140ms ease, border-color 140ms ease, color 140ms ease;
-}
-
-.btn-cta {
-  background: var(--cta-bg);
-  color: var(--cta-ink);
-}
-
-.btn-cta:hover {
-  filter: brightness(1.08);
-}
-
-.btn-outline {
-  border-color: var(--rule-strong);
-  color: var(--ink);
-}
-
-.btn-outline:hover {
-  border-color: var(--accent-mark);
-  color: var(--accent);
-}
-
-.btn-sm {
-  padding: 0.28rem 0.7rem;
-  font-size: 12.5px;
-}
-
-/* Inside the dark band the filled button inverts: cream on navy reads as the
-   primary action on the light palettes, and the night palette lights it instead. */
-.btn-band {
-  background: var(--band-btn-bg);
-  color: var(--band-btn-ink);
-}
-
-.btn-band:hover {
-  filter: brightness(0.96);
-}
-
-.btn-band-outline {
-  border-color: var(--deep-rule);
-  color: var(--on-deep);
-}
-
-.btn-band-outline:hover {
-  border-color: var(--on-deep);
-}
-
-/* The dark band that closes the page: CTA strip and footer share one surface. */
-.deep-band {
-  background: var(--deep);
-  color: var(--on-deep);
-}
-
-/* No colour shift on hover inside the band: `--paper` is the same surface on
-   the light palettes but near-black on the night one, so the nudge is ink-contrast
-   in one palette and invisible in another. Underline only. */
-.deep-band a {
-  text-underline-offset: 4px;
-  transition: text-decoration-color 140ms ease;
-}
-
-.deep-band a:hover {
-  text-decoration-color: currentColor;
-}
-
 ::selection {
   background: var(--accent-soft);
   color: var(--ink);
@@ -477,112 +339,6 @@ input[type="search"]::-webkit-search-cancel-button {
   background: var(--scrim);
 }
 
-.rail-card {
-  border-top: 1px solid var(--ink);
-  padding-top: 0.85rem;
-}
-
-.rail-card[data-era-kind="winter"] {
-  border-top-style: dashed;
-  border-top-color: var(--rule-strong);
-}
-
-.rail-card[data-era-kind="winter"] h2 {
-  color: var(--ink-soft);
-}
-
-.rail-heading {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: 0.75rem;
-}
-
-.rail-heading h2 {
-  font-family: var(--font-serif);
-  font-size: 1.02rem;
-  letter-spacing: 0.02em;
-  color: var(--ink);
-}
-
-.sync-dot {
-  display: inline-block;
-  width: 7px;
-  height: 7px;
-  background: var(--rule-strong);
-  flex: none;
-}
-
-.sync-dot[data-state="running"] {
-  background: var(--accent);
-}
-
-.sync-dot[data-state="done"] {
-  background: var(--ink);
-}
-
-.sync-dot[data-state="failed"] {
-  background: var(--accent);
-}
-
-@keyframes sync-pulse {
-  0%,
-  100% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.28;
-  }
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .sync-dot[data-state="running"] {
-    animation: sync-pulse 1.8s steps(2, end) infinite;
-  }
-}
-
-.confidence-badge {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.35em;
-  border: 1px solid var(--rule-strong);
-  padding: 0.05rem 0.4rem;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  line-height: 1.6;
-  letter-spacing: 0.1em;
-  color: var(--ink-soft);
-  white-space: nowrap;
-  background: color-mix(in srgb, var(--paper) 70%, transparent);
-}
-
-.confidence-badge[data-level="verified"] {
-  border-color: var(--ink);
-  color: var(--ink);
-}
-
-.confidence-badge[data-level="single"] {
-  border-style: dashed;
-  color: var(--muted);
-}
-
-.confidence-mark {
-  font-size: 8px;
-  letter-spacing: -0.1em;
-}
-
-.confidence-badge[data-level="verified"] .confidence-mark {
-  color: var(--accent);
-}
-
-[data-run-status="failed"] {
-  color: var(--accent);
-}
-
-.year-section {
-  scroll-margin-top: 4.75rem;
-}
-
 .entry-row {
   transition: background-color 160ms ease;
 }
@@ -591,169 +347,6 @@ input[type="search"]::-webkit-search-cancel-button {
   .entry-row:hover {
     background-color: var(--row-hover);
   }
-}
-
-.entry-title {
-  text-wrap: pretty;
-}
-
-.entry-link {
-  text-decoration-color: var(--rule-strong);
-  text-underline-offset: 3px;
-}
-
-.entry-link:hover {
-  text-decoration-color: var(--accent);
-  color: var(--accent);
-}
-
-.filter-chip {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 0.4em;
-  border: 1px solid var(--rule);
-  padding: 0.32rem 0.62rem;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.06em;
-  color: var(--ink-soft);
-  background: transparent;
-  transition:
-    border-color 140ms ease,
-    color 140ms ease,
-    background-color 140ms ease;
-  white-space: nowrap;
-}
-
-.filter-chip:hover {
-  border-color: var(--rule-strong);
-  color: var(--ink);
-}
-
-.filter-chip[aria-pressed="true"] {
-  border-color: var(--ink);
-  background: var(--ink);
-  color: var(--paper);
-}
-
-.filter-chip[aria-pressed="true"] .chip-count {
-  color: color-mix(in srgb, var(--paper) 70%, transparent);
-}
-
-.chip-count {
-  font-size: 10.5px;
-  color: var(--muted);
-}
-
-.filter-chip[aria-pressed="true"] .chip-mark {
-  color: var(--paper);
-}
-
-.filter-field {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  min-width: 0;
-  border: 1px solid var(--rule);
-  padding: 0.12rem 0.5rem 0.12rem 0.55rem;
-}
-
-.filter-field:focus-within {
-  border-color: var(--ink);
-}
-
-.filter-field[data-active="true"] {
-  border-color: var(--accent);
-}
-
-.filter-field-label {
-  flex: none;
-  font-family: var(--font-mono);
-  font-size: 10.5px;
-  letter-spacing: 0.14em;
-  color: var(--muted);
-}
-
-.filter-field[data-active="true"] .filter-field-label {
-  color: var(--accent);
-}
-
-.filter-select {
-  flex: 1;
-  min-width: 0;
-  border: 0;
-  background: transparent;
-  padding: 0.22rem 0;
-  font-family: var(--font-sans);
-  font-size: 13px;
-  color: var(--ink);
-  cursor: pointer;
-}
-
-.filter-select:focus-visible {
-  outline: none;
-}
-
-.search-field {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  border-bottom: 1px solid var(--ink);
-  padding-bottom: 0.4rem;
-}
-
-.search-field input {
-  width: 100%;
-  background: transparent;
-  border: 0;
-  outline: none;
-  font-family: var(--font-serif);
-  font-size: 1.0625rem;
-  color: var(--ink);
-}
-
-.search-field input::placeholder {
-  color: var(--muted);
-}
-
-.search-field:focus-within {
-  border-bottom-color: var(--accent);
-}
-
-.scrubber {
-  display: flex;
-  gap: 0.15rem;
-  overflow-x: auto;
-  padding-bottom: 0.35rem;
-}
-
-.scrubber button {
-  flex: none;
-  padding: 0.22rem 0.45rem;
-  font-family: var(--font-mono);
-  font-size: 11.5px;
-  letter-spacing: 0.04em;
-  color: var(--muted);
-  transition: color 140ms ease;
-}
-
-.scrubber button:hover {
-  color: var(--ink);
-}
-
-.scrubber button[data-active="true"] {
-  background: var(--accent);
-  color: var(--paper);
-}
-
-.scrubber button[data-empty="true"] {
-  opacity: 0.42;
-}
-
-.prose-note {
-  font-size: 13.5px;
-  line-height: 1.8;
-  color: var(--ink-soft);
 }
 
 .detail-meta {
@@ -847,65 +440,6 @@ input[type="search"]::-webkit-search-cancel-button {
   background: color-mix(in srgb, var(--accent) 7%, transparent);
 }
 
-.row-keywords {
-  color: var(--ink-soft);
-}
-
-.keyword-count {
-  margin-left: 0.28rem;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--muted);
-}
-
-.dist-bar {
-  height: 3px;
-  background: var(--rule);
-  position: relative;
-  overflow: hidden;
-}
-
-.dist-bar > span {
-  display: block;
-  height: 100%;
-  background: var(--ink);
-}
-
-.dist-bar[data-category="milestone"] > span {
-  background: var(--accent);
-}
-
-.dist-bar[data-category="model"] > span {
-  background: var(--bar-model);
-}
-
-.dist-bar[data-category="research"] > span {
-  background: var(--bar-research);
-}
-
-.dist-bar[data-category="opinion"] > span {
-  background: var(--bar-opinion);
-}
-
-.dist-bar[data-category="policy"] > span {
-  background: var(--rule-strong);
-}
-
-.spark-bar {
-  fill: var(--rule-strong);
-  transition: fill 140ms ease;
-}
-
-.spark-bar[data-current="true"] {
-  fill: var(--accent);
-}
-
-.spark-label {
-  font-family: var(--font-mono);
-  font-size: 8px;
-  fill: var(--muted);
-}
-
 .sr-only {
   position: absolute;
   width: 1px;
@@ -933,6 +467,268 @@ input[type="search"]::-webkit-search-cancel-button {
 
 .skip-link:focus {
   top: 1rem;
+}
+
+/* -------------------------------------------------------------------------
+ * Three views, not one view in three palettes. `data-theme` picks the layout
+ * as well as the palette, so the chrome below is scoped to the view that owns
+ * it: the sticky stack differs because the headers differ, the card stock
+ * differs because the three pages are different objects — a printed scroll, a
+ * night console, a catalogue of cards.
+ * ------------------------------------------------------------------------- */
+
+/* 01 · 典藏卷轴 — hairlines, square cards, a three-tier sticky stack. */
+.ed-strip {
+  background: var(--ink);
+  color: #cbbfa6;
+}
+
+.ed-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.ed-panel {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-top: 3px solid var(--ink);
+}
+
+.ed-toolbar {
+  position: sticky;
+  top: 68px;
+  z-index: 30;
+  background: color-mix(in srgb, var(--paper) 96%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+
+/* 68px header + 58px toolbar: the year heading parks under both. */
+.ed-year-head {
+  position: sticky;
+  top: 126px;
+  z-index: 20;
+  background: var(--paper);
+}
+
+.ed-band-primary {
+  background: var(--ink);
+  color: #f6efe1;
+}
+
+.ed-foot {
+  background: var(--foot-bg);
+  color: #c5bcaa;
+}
+
+.ed-foot h4 {
+  color: var(--accent-mark);
+}
+
+@media (max-width: 760px) {
+  .ed-toolbar,
+  .ed-year-head {
+    position: static;
+  }
+}
+
+/* 03 · 深色极光 — glass panels, pill controls, glow on the primary action. */
+.au-nav {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: color-mix(in srgb, var(--paper) 72%, transparent);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.au-orb {
+  position: relative;
+  width: 28px;
+  height: 28px;
+  flex: none;
+  border-radius: 50%;
+  background: conic-gradient(from 210deg, #54e3ff, #a98bff, #5ff0b4, #54e3ff);
+  box-shadow: 0 0 22px rgba(84, 227, 255, 0.45);
+}
+
+.au-orb::after {
+  content: "";
+  position: absolute;
+  inset: 7px;
+  border-radius: 50%;
+  background: var(--paper);
+}
+
+.au-title span {
+  background: linear-gradient(96deg, #fff 8%, #54e3ff 46%, #a98bff 88%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.au-glow {
+  background: linear-gradient(100deg, #54e3ff, #a98bff);
+  color: #080a14;
+  box-shadow: 0 10px 34px -12px rgba(84, 227, 255, 0.55);
+}
+
+.au-glow:hover {
+  filter: brightness(1.08);
+}
+
+.au-line {
+  border: 1px solid var(--rule-strong);
+  background: rgba(255, 255, 255, 0.03);
+  color: var(--ink);
+  border-radius: 999px;
+}
+
+.au-line:hover {
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.32);
+}
+
+.au-cell {
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 16px;
+  backdrop-filter: blur(8px);
+}
+
+.au-cell-wide {
+  background: linear-gradient(100deg, rgba(84, 227, 255, 0.12), rgba(169, 139, 255, 0.14));
+  border-color: rgba(169, 139, 255, 0.3);
+}
+
+.au-cta {
+  background: linear-gradient(
+    120deg,
+    rgba(84, 227, 255, 0.1),
+    rgba(169, 139, 255, 0.14) 60%,
+    rgba(95, 240, 180, 0.08)
+  );
+  border: 1px solid rgba(169, 139, 255, 0.28);
+  border-radius: 22px;
+}
+
+.au-entry {
+  border-bottom: 1px solid var(--rule);
+  transition: background-color 180ms ease, border-color 180ms ease;
+}
+
+.au-entry:hover {
+  background: rgba(255, 255, 255, 0.035);
+  border-color: var(--rule-strong);
+  border-radius: 14px;
+}
+
+.au-foot {
+  background: var(--foot-bg);
+  border-top: 1px solid var(--rule);
+}
+
+/* 05 · 博物馆暖调 — cards on linen, a green notice strip, a year scrubber. */
+.mu-notice {
+  background: var(--deep);
+  color: #cfc0a0;
+}
+
+.mu-nav {
+  position: sticky;
+  top: 0;
+  z-index: 40;
+  background: color-mix(in srgb, var(--paper) 94%, transparent);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--rule);
+}
+
+.mu-seal {
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  flex: none;
+  border: 1px solid var(--accent-mark);
+  color: var(--accent-mark);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.mu-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: var(--surface);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  transition: border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.mu-card:hover {
+  border-color: var(--accent-mark);
+  box-shadow: 0 14px 30px -26px rgba(19, 36, 29, 0.8);
+}
+
+.mu-scrub {
+  position: sticky;
+  top: 74px;
+  z-index: 30;
+  background: color-mix(in srgb, var(--paper) 96%, transparent);
+  backdrop-filter: blur(8px);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule-strong);
+}
+
+.mu-scrub button[data-active="true"] {
+  background: var(--deep);
+  color: #f4eeda;
+}
+
+.mu-green {
+  background: var(--deep);
+  color: #f6f1e3;
+}
+
+.mu-green:hover {
+  background: #1c5340;
+}
+
+.mu-foot {
+  background: var(--foot-bg);
+  color: #c2b99f;
+  border-top: 3px solid var(--accent-mark);
+}
+
+.mu-foot h4 {
+  color: var(--accent-mark);
+}
+
+.mu-promises {
+  display: grid;
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+@media (min-width: 860px) {
+  .mu-promises {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1000px) {
+  .mu-scrub {
+    position: static;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
