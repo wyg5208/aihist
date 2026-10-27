@@ -33,7 +33,7 @@ from app.editorial.rules import (
 from app.ingest.cluster import cluster_candidates, confidence_of, fingerprint_of
 from app.ingest.normalize import CATEGORY_KEYS, normalize_results
 from app.ingest.seed import SEED_EVENTS, SEED_VERSION
-from app.ingest.sources import SOURCES, load_sources
+from app.ingest.sources import SOURCE_TIMEOUT_MS, SOURCES, load_sources
 
 DEFAULT_RUN_BUDGET_MS = 300_000
 DEFAULT_FETCH_BUDGET_MS = 120_000
@@ -548,7 +548,7 @@ async def run_sync(
             from app.ingest.sources import httpx_fetch
 
             async def _fetch(url: str):
-                return await httpx_fetch(url, timeout_ms=7_000)
+                return await httpx_fetch(url, timeout_ms=SOURCE_TIMEOUT_MS)
 
             results = await load_sources(
                 SOURCES, fetch=_fetch, deadline_ms=deadline_ms, concurrency=concurrency
@@ -559,10 +559,7 @@ async def run_sync(
         if failed_sources:
             status = "failed" if len(failed_sources) == len(results) else "partial"
             notes.append(f"sources:{len(failed_sources)}/{len(results)}")
-            notes.append(
-                "failed:"
-                + ",".join(f"{entry['key']}={entry['error'] or 'unknown'}" for entry in normalized["failed"])
-            )
+            notes.append(_failure_note(normalized["failed"]))
 
         # Per-source liveness for the console's health matrix. Same defensive
         # posture as the slug backfill below: a bookkeeping failure must never
@@ -884,6 +881,23 @@ async def run_sync(
 
 def _elapsed_ms(start_ms: int) -> int:
     return int(time.time() * 1000) - start_ms
+
+
+def _failure_note(failed: list[dict[str, Any]]) -> str:
+    """`failed:arxiv=timeout(12002ms),infoq=network(613ms)`.
+
+    The elapsed time is the point of the line: a source that burned its whole
+    budget and one that refused in 600 ms are different incidents, and the run
+    row is the only place that distinction survives. `to_large`-style labels used
+    to flatten both into `timeout`.
+    """
+    parts = []
+    for entry in failed:
+        code = entry.get("error") or "unknown"
+        ms = entry.get("ms")
+        suffix = f"({int(ms)}ms)" if isinstance(ms, (int, float)) else ""
+        parts.append(f"{entry.get('key')}={code}{suffix}")
+    return "failed:" + ",".join(parts)
 
 
 def _run_detail(results: list[dict[str, Any]], notes: list[str]) -> dict[str, Any]:

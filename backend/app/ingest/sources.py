@@ -3,6 +3,17 @@
 Every outbound URL is a constant from this module; redirects are re-checked
 against the same host list. The parsing stays regex-based so the output is
 identical to the reference implementation.
+
+This module is the production path and has moved ahead of the JS reference on
+the *failure* side only; parsing is still byte-for-byte parity. Three deliberate
+divergences, all from the 2026-10-27 run that reported eight sources as
+`timeout` with no way to tell what actually happened:
+
+* `httpx` errors keep their identity (`dns`, `network`, `protocol`, `timeout`)
+instead of every one of them becoming a timeout.
+* A transient failure is retried once, inside the same shared budget.
+* The per-source budget is 12 s, not 7 s — 7 s sat inside the noise band of an
+intercontinental handshake.
 """
 
 from __future__ import annotations
@@ -10,6 +21,7 @@ from __future__ import annotations
 import asyncio
 import json
 import re
+import socket
 import time
 from dataclasses import dataclass, field
 from typing import Any, Awaitable, Callable
@@ -51,6 +63,18 @@ ARXIV_QUERY = "+OR+".join(["cat:cs.AI", "cat:cs.CL", "cat:cs.LG", "cat:cs.MA", "
 
 MAX_BODY_BYTES = 3 * 1024 * 1024
 
+# Per-source budget. 17 sources over 5 slots is four waves, so the worst case is
+# 4 * (SOURCE_TIMEOUT_MS + RETRY_TIMEOUT_MS) = 68 s against the 120 s fetch
+# budget — there is room to be generous with a single source.
+SOURCE_TIMEOUT_MS = 12_000
+
+# The retry only has to outlast a resolver hiccup, not a dead endpoint.
+RETRY_TIMEOUT_MS = 5_000
+
+# Retried once. Everything else (http_404, parse_error, empty_source, too_large,
+# bad_redirect) is a property of the source, not of the moment.
+TRANSIENT_ERRORS = frozenset({"dns", "network", "protocol", "timeout"})
+
 
 def _hn_url(query: str, days: int) -> str:
     from urllib.parse import quote
@@ -71,7 +95,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "OpenRouter",
         "kind": "openrouter",
         "url": "https://openrouter.ai/api/v1/models",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     {
         "key": "arxiv",
@@ -83,7 +107,7 @@ SOURCES: list[dict[str, Any]] = [
             + ARXIV_QUERY
             + "&sortBy=submittedDate&sortOrder=descending&max_results=30"
         ),
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     {
         "key": "qbitai",
@@ -91,7 +115,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "量子位",
         "kind": "feed",
         "url": "https://www.qbitai.com/feed",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
         "domestic": True,
         "aiOnly": True,
     },
@@ -101,7 +125,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "InfoQ 中国",
         "kind": "feed",
         "url": "https://www.infoq.cn/feed",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
         "domestic": True,
         "aiOnly": True,
     },
@@ -111,7 +135,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "钛媒体",
         "kind": "feed",
         "url": "https://www.tmtpost.com/rss",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
         "domestic": True,
         "aiOnly": True,
     },
@@ -121,7 +145,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "雷峰网",
         "kind": "feed",
         "url": "https://www.leiphone.com/feed",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
         "domestic": True,
         "aiOnly": True,
     },
@@ -131,7 +155,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "Hacker News · LLM",
         "kind": "hn",
         "url": _hn_url("LLM", 14),
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     {
         "key": "hn-ai",
@@ -139,7 +163,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "Hacker News · AI",
         "kind": "hn",
         "url": _hn_url("AI", 14),
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     {
         "key": "openai",
@@ -147,7 +171,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "OpenAI News",
         "kind": "feed",
         "url": "https://openai.com/news/rss.xml",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     {
         "key": "google",
@@ -155,7 +179,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "Google AI Blog",
         "kind": "feed",
         "url": "https://blog.google/technology/ai/rss/",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     {
         "key": "anthropic",
@@ -163,7 +187,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "Anthropic News",
         "kind": "sitemap",
         "url": "https://www.anthropic.com/sitemap.xml",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     {
         "key": "techcrunch",
@@ -171,7 +195,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "TechCrunch AI",
         "kind": "feed",
         "url": "https://techcrunch.com/category/artificial-intelligence/feed/",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     {
         "key": "verge",
@@ -179,7 +203,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "The Verge AI",
         "kind": "feed",
         "url": "https://www.theverge.com/rss/ai-artificial-intelligence/index.xml",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     {
         "key": "mittr",
@@ -187,7 +211,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "MIT Technology Review AI",
         "kind": "feed",
         "url": "https://www.technologyreview.com/topic/artificial-intelligence/feed",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     # Hugging Face endpoints are the slowest at the edge. They run last so a
     # timeout cannot consume the fetch slots the faster feeds need.
@@ -197,7 +221,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "Hugging Face Blog",
         "kind": "feed",
         "url": "https://huggingface.co/blog/feed.xml",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     {
         "key": "hf-trending",
@@ -205,7 +229,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "Hugging Face Trending",
         "kind": "hf",
         "url": "https://huggingface.co/api/models?sort=trendingScore&direction=-1&limit=60",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
     {
         "key": "hf-textgen",
@@ -213,7 +237,7 @@ SOURCES: list[dict[str, Any]] = [
         "name": "Hugging Face 文本生成",
         "kind": "hf",
         "url": "https://huggingface.co/api/models?sort=likes&direction=-1&filter=text-generation&limit=40",
-        "timeout": 7000,
+        "timeout": SOURCE_TIMEOUT_MS,
     },
 ]
 
@@ -465,6 +489,19 @@ def parse_hn(payload: Any) -> list[dict[str, Any]]:
     return out
 
 
+class SourceFailure(Exception):
+    """An upstream failure that already knows its own machine-readable code.
+
+    `load_source` reports `str(exc)` as the error when it has nothing better, so
+    wrapping the transport taxonomy here is what keeps `timeout` from meaning
+    "anything at all went wrong".
+    """
+
+    def __init__(self, code: str) -> None:
+        super().__init__(code)
+        self.code = code
+
+
 async def httpx_fetch(url: str, *, timeout_ms: int) -> FetchResult:
     try:
         async with httpx.AsyncClient(follow_redirects=True) as client:
@@ -486,20 +523,91 @@ async def httpx_fetch(url: str, *, timeout_ms: int) -> FetchResult:
                 headers=dict(response.headers),
             )
     except httpx.HTTPError as error:  # reported as a fixed code, never raised
-        raise TimeoutError("timeout") from error
+        raise SourceFailure(_fetch_error_code(error)) from error
+
+
+def _cause_chain(error: BaseException, depth: int = 4) -> list[BaseException]:
+    chain: list[BaseException] = []
+    current: BaseException | None = error
+    while current is not None and len(chain) < depth:
+        chain.append(current)
+        current = current.__cause__ or current.__context__
+    return chain
+
+
+def _fetch_error_code(error: httpx.HTTPError) -> str:
+    """Name the transport failure instead of collapsing it into `timeout`.
+
+    Until now every `httpx.HTTPError` was reported as `timeout`, so an NXDOMAIN
+    that failed in 600 ms and a socket that really hung for 12 s wrote the same
+    word to the run row — which is exactly the evidence a flaky night needs.
+    httpx chains twice for a resolver failure (`ConnectError -> ConnectError ->
+    gaierror`), hence the walk instead of a single `__cause__` check.
+    """
+    if any(isinstance(item, socket.gaierror) for item in _cause_chain(error)):
+        return "dns"
+    if isinstance(error, httpx.TimeoutException):
+        return "timeout"
+    if isinstance(error, httpx.RemoteProtocolError):
+        return "protocol"
+    return "network"
 
 
 def _classify_error(message: str, timed_out: bool) -> str:
-    # Mirrors the JS heuristic: only purely lowercase/underscore messages are
-    # treated as codes (`http_404` therefore degrades to `network`).
-    if re.fullmatch(r"[a-z_]+", message):
+    # Only a purely lowercase/underscore/digit message is a code: `http_404`
+    # survives as itself, an arbitrary exception message degrades to a guess.
+    if re.fullmatch(r"[a-z0-9_]+", message):
         code = message
     else:
         code = "timeout" if timed_out else "network"
     return "too_large" if code == "body_too_large" else code
 
 
-async def load_source(source: dict[str, Any], *, fetch: Fetcher, deadline_ms: int) -> dict[str, Any]:
+async def _fetch_items(
+    source: dict[str, Any], *, fetch: Fetcher, budget_ms: int
+) -> list[dict[str, Any]]:
+    """One attempt: fetch, re-check the redirect, parse. Raises on any failure."""
+    result = await asyncio.wait_for(fetch(source["url"]), timeout=budget_ms / 1000)
+    if not host_allowed(result.url):
+        raise ValueError("bad_redirect")
+    if not result.ok:
+        raise ValueError(f"http_{result.status}")
+    body = result.text
+    if result.content_length and result.content_length > MAX_BODY_BYTES:
+        raise ValueError("body_too_large")
+    if len(body) > MAX_BODY_BYTES:
+        raise ValueError("body_too_large")
+    kind = source.get("kind")
+    items: list[dict[str, Any]] = []
+    if kind == "feed":
+        items = parse_feed(body)
+    elif kind == "sitemap":
+        items = parse_sitemap(body)
+    elif kind == "arxiv":
+        items = parse_arxiv(body)
+    else:
+        try:
+            payload = json.loads(body)
+        except json.JSONDecodeError as error:
+            raise ValueError("parse_error") from error
+        if kind == "openrouter":
+            items = parse_openrouter(payload)
+        elif kind == "hf":
+            items = parse_hf(payload)
+        elif kind == "hn":
+            items = parse_hn(payload)
+    if not items:
+        raise ValueError("empty_source")
+    return items
+
+
+async def load_source(
+    source: dict[str, Any],
+    *,
+    fetch: Fetcher,
+    deadline_ms: int,
+    retry_ms: int = RETRY_TIMEOUT_MS,
+) -> dict[str, Any]:
     started = int(time.time() * 1000)
     if started >= deadline_ms:
         return {
@@ -510,62 +618,47 @@ async def load_source(source: dict[str, Any], *, fetch: Fetcher, deadline_ms: in
             "error": "deadline",
             "items": [],
             "ms": 0,
+            "attempts": 0,
         }
-    remaining = max(250, deadline_ms - started)
-    budget_ms = min(source.get("timeout", 7000), remaining)
-    try:
-        result = await asyncio.wait_for(fetch(source["url"]), timeout=budget_ms / 1000)
-        if not host_allowed(result.url):
-            raise ValueError("bad_redirect")
-        if not result.ok:
-            raise ValueError(f"http_{result.status}")
-        body = result.text
-        if result.content_length and result.content_length > MAX_BODY_BYTES:
-            raise ValueError("body_too_large")
-        if len(body) > MAX_BODY_BYTES:
-            raise ValueError("body_too_large")
-        kind = source.get("kind")
-        items: list[dict[str, Any]] = []
-        if kind == "feed":
-            items = parse_feed(body)
-        elif kind == "sitemap":
-            items = parse_sitemap(body)
-        elif kind == "arxiv":
-            items = parse_arxiv(body)
+    budget_ms = min(source.get("timeout", SOURCE_TIMEOUT_MS), max(250, deadline_ms - started))
+    attempts = 0
+    while True:
+        attempts += 1
+        try:
+            items = await _fetch_items(source, fetch=fetch, budget_ms=budget_ms)
+        except asyncio.CancelledError:
+            raise
+        except asyncio.TimeoutError:
+            error = "timeout"
+        except SourceFailure as failure:
+            error = failure.code
+        except Exception as exc:  # noqa: BLE001 - a broken upstream is data, not a crash
+            message = str(exc)
+            timed_out = isinstance(exc, TimeoutError) or "timeout" in message.lower()
+            error = _classify_error(message, timed_out)
         else:
-            try:
-                payload = json.loads(body)
-            except json.JSONDecodeError as error:
-                raise ValueError("parse_error") from error
-            if kind == "openrouter":
-                items = parse_openrouter(payload)
-            elif kind == "hf":
-                items = parse_hf(payload)
-            elif kind == "hn":
-                items = parse_hn(payload)
-        if not items:
-            raise ValueError("empty_source")
-        return {
-            "key": source["key"],
-            "family": source["family"],
-            "name": source["name"],
-            "kind": source.get("kind"),
-            "url": source["url"],
-            "domestic": bool(source.get("domestic")),
-            "aiOnly": bool(source.get("aiOnly")),
-            "ok": True,
-            "error": None,
-            "items": items,
-            "ms": int(time.time() * 1000) - started,
-        }
-    except asyncio.TimeoutError:
-        error = "timeout"
-    except asyncio.CancelledError:
-        raise
-    except Exception as exc:  # noqa: BLE001 - a broken upstream is data, not a crash
-        message = str(exc)
-        timed_out = isinstance(exc, TimeoutError) or "timeout" in message.lower()
-        error = _classify_error(message, timed_out)
+            return {
+                "key": source["key"],
+                "family": source["family"],
+                "name": source["name"],
+                "kind": source.get("kind"),
+                "url": source["url"],
+                "domestic": bool(source.get("domestic")),
+                "aiOnly": bool(source.get("aiOnly")),
+                "ok": True,
+                "error": None,
+                "items": items,
+                "ms": int(time.time() * 1000) - started,
+                "attempts": attempts,
+            }
+
+        # A blip gets one more try; a 404 or a mangled feed does not. The retry
+        # shares the run's deadline, so a slow wave can still skip it.
+        remaining = deadline_ms - int(time.time() * 1000)
+        if attempts > 1 or error not in TRANSIENT_ERRORS or remaining <= 250:
+            break
+        budget_ms = min(retry_ms, remaining)
+
     return {
         "key": source["key"],
         "family": source["family"],
@@ -574,6 +667,7 @@ async def load_source(source: dict[str, Any], *, fetch: Fetcher, deadline_ms: in
         "error": error,
         "items": [],
         "ms": int(time.time() * 1000) - started,
+        "attempts": attempts,
     }
 
 
