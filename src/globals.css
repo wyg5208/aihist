@@ -768,46 +768,161 @@ input[type="search"]::-webkit-search-cancel-button {
  */
 .show-launcher {
   position: fixed;
-  right: 18px;
-  bottom: 18px;
+  right: 20px;
+  bottom: 20px;
   z-index: 55;
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  height: 42px;
-  padding: 0 16px 0 13px;
-  border: 1px solid var(--rule-strong);
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--paper) 90%, transparent);
-  backdrop-filter: blur(10px);
-  color: var(--ink);
-  font-size: 13px;
-  font-weight: 600;
-  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
-  transition: transform 160ms ease, border-color 160ms ease;
+  gap: 11px;
+  min-height: 54px;
+  padding: 8px 15px 8px 9px;
+  border: 0;
+  border-radius: 14px;
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.26), 0 2px 6px rgba(0, 0, 0, 0.16),
+    0 0 0 1px color-mix(in srgb, var(--accent-mark) 45%, transparent);
+  transition: transform 170ms ease, box-shadow 170ms ease, opacity 170ms ease;
+}
+
+/* 外扩的一圈呼吸环，只在空白状态下慢慢扫出去：不抢焦点，但会被看见。 */
+.show-launcher::after {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  pointer-events: none;
+  box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-mark) 55%, transparent);
+  animation: show-launcher-pulse 3.4s ease-out infinite;
+}
+
+@keyframes show-launcher-pulse {
+  0% {
+    opacity: 0.85;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-mark) 55%, transparent);
+  }
+  70% {
+    opacity: 0;
+    box-shadow: 0 0 0 15px color-mix(in srgb, var(--accent-mark) 0%, transparent);
+  }
+  100% {
+    opacity: 0;
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--accent-mark) 0%, transparent);
+  }
 }
 
 .show-launcher:hover:not(:disabled) {
-  transform: translateY(-1px);
-  border-color: var(--ink);
+  transform: translateY(-2px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.3), 0 2px 8px rgba(0, 0, 0, 0.18),
+    0 0 0 1px color-mix(in srgb, var(--accent-mark) 70%, transparent);
+}
+
+.show-launcher:focus-visible {
+  outline: 2px solid var(--accent-mark);
+  outline-offset: 3px;
 }
 
 .show-launcher:disabled {
-  opacity: 0.5;
+  opacity: 0.45;
   cursor: default;
 }
 
+.show-launcher:disabled::after,
+.show-launcher.is-seen::after {
+  animation: none;
+  opacity: 0;
+}
+
 .show-launcher-glyph {
-  font-size: 9px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  flex: none;
+  padding-left: 2px;
+  border-radius: 50%;
+  background: var(--accent-mark);
+  color: var(--paper);
+  font-size: 11px;
   line-height: 1;
-  color: var(--accent-mark);
+}
+
+.show-launcher-label {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  text-align: left;
+}
+
+.show-launcher-title {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.show-launcher-sub {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 400;
+  letter-spacing: 0.1em;
+  line-height: 1;
+  opacity: 0.66;
+  white-space: nowrap;
 }
 
 .show-launcher-count {
+  margin-left: 1px;
+  padding: 3px 7px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--paper) 15%, transparent);
   font-family: var(--font-mono);
-  font-size: 10.5px;
+  font-size: 10px;
+  font-weight: 400;
   letter-spacing: 0.06em;
-  color: var(--muted);
+  line-height: 1.4;
+  opacity: 0.9;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .show-launcher::after {
+    animation: none;
+  }
+
+  .show-launcher:hover:not(:disabled) {
+    transform: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .show-launcher {
+    right: 12px;
+    bottom: 12px;
+    gap: 8px;
+    min-height: 48px;
+    padding: 6px 12px 6px 7px;
+    border-radius: 12px;
+  }
+
+  .show-launcher-glyph {
+    width: 30px;
+    height: 30px;
+    font-size: 10px;
+  }
+
+  .show-launcher-title {
+    font-size: 13px;
+  }
+
+  .show-launcher-sub {
+    display: none;
+  }
+
+  .show-launcher-count {
+    display: none;
+  }
 }
 
 .show-dialog {
@@ -1274,6 +1389,10 @@ input[type="search"]::-webkit-search-cancel-button {
   left: 18px;
   right: 18px;
   bottom: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 2px 8px;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.06em;
@@ -1291,6 +1410,24 @@ input[type="search"]::-webkit-search-cancel-button {
   color: #fff;
   opacity: 0.92;
   backdrop-filter: blur(6px);
+}
+
+/* 来源链接长得像图注的一部分，但虚线下划提示它是可点的。 */
+.show-credit-src {
+  color: inherit;
+  text-decoration: underline dotted;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2.5px;
+  white-space: nowrap;
+}
+
+.show-credit-src:hover {
+  text-decoration-style: solid;
+}
+
+.show-credit-src:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
 }
 
 .show-plate-grid line {
@@ -1665,11 +1802,6 @@ input[type="search"]::-webkit-search-cancel-button {
 
   .show-field-row {
     gap: 20px;
-  }
-
-  .show-launcher {
-    right: 12px;
-    bottom: 12px;
   }
 }
 

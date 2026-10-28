@@ -1,23 +1,106 @@
 {
-  "note": "真实配图登记表。键是条目的 slug（没有 slug 时用 id）。src 指向 public/visuals 下的文件；credit 与 license 必填——没有出处与授权说明的图不进放映。cover 字段可选，用于裁切时的人物/主体位置。当前 14 条为 AI 生成示意图（kind=illustration，非史实照片，图注随图展示）；其余条目继续使用程序化编年图版。",
+  "note": "配图登记表。键是条目的 slug（没有 slug 时用 id）。src 指向 public/visuals 下的文件；credit 与 license 必填——没有出处与授权说明的图不进放映。真图来自 Wikimedia Commons，全部按 API 返回的 LicenseShortName 登记，sourceUrl 指回文件页供核对；CC BY 与 CC BY-SA 要求在放映里署名，所以图注常驻作者与许可，末尾的外链可点回原始文件页。另有 11 条 AI 生成示意图（kind=illustration，图注写明「非史实照片」），其余条目继续使用程序化编年图版。",
   "items": {
+    "el-ajedrecista-1912": {
+      "src": "/visuals/el-ajedrecista-1912.jpg",
+      "alt": "两位学者在木制棋桌前查看国际象棋自动机 El Ajedrecista",
+      "credit": "Wikimedia Commons（Gonzalo Torres Quevedo 向 Norbert Wiener 演示）",
+      "license": "Public domain",
+      "kind": "photo",
+      "fit": "contain",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gonzalo_showing_El_Ajedrecista_to_Norbert_Wiener.jpg"
+    },
+    "rur-1920": {
+      "src": "/visuals/rur-1920.jpg",
+      "alt": "《R.U.R.》1924 年巴黎首演的舞台布景，一位演员俯身在实验台前",
+      "credit": "Henri Manuel 摄（1924 年巴黎首演）· Wikimedia Commons",
+      "license": "Public domain",
+      "kind": "photo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:R._U._R._(Karel_%C4%8Capek)_-_Com%C3%A9die_des_Champs-%C3%89lys%C3%A9es,_26_mars_1924.jpg"
+    },
+    "godel-1931": {
+      "src": "/visuals/godel-1931.jpg",
+      "alt": "青年哥德尔的黑白肖像，戴圆框眼镜",
+      "credit": "Wikimedia Commons（1925 年维也纳学生照）",
+      "license": "Public domain",
+      "kind": "photo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Young_Kurt_G%C3%B6del_as_a_student_in_1925.jpg"
+    },
     "turing-1950": {
       "src": "/visuals/turing-1950.jpg",
-      "alt": "打字机、棋盘与打成孔洞的纸带卷成一个巨大的问号",
-      "credit": "AI 生成示意图",
-      "license": "非史实照片",
-      "kind": "illustration"
+      "alt": "图灵 1951 年的黑白肖像",
+      "credit": "Elliott & Fry 摄（1951）· Wikimedia Commons",
+      "license": "Public domain",
+      "kind": "photo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Alan_Turing_(1951).jpg"
+    },
+    "perceptron-1958": {
+      "src": "/visuals/perceptron-1958.jpg",
+      "alt": "Mark I 感知机的光电输入装置与操作员",
+      "credit": "美国海军国家博物馆 · Wikimedia Commons",
+      "license": "Public domain",
+      "kind": "photo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:330-PSA-80-60_(USN_710739)_(20897323365).jpg"
+    },
+    "shakey-1969": {
+      "src": "/visuals/shakey-1969.jpg",
+      "alt": "博物馆展柜中的 Shakey 机器人，机身上装有摄像头",
+      "credit": "The wub · Wikimedia Commons（计算机历史博物馆藏）",
+      "license": "CC BY-SA 4.0",
+      "kind": "photo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:SRI_Shakey_robot,_1969,_Computer_History_Museum.jpg"
+    },
+    "deep-blue-1997": {
+      "src": "/visuals/deep-blue-1997.jpg",
+      "alt": "计算机历史博物馆陈列的 IBM RS/6000 SP 机柜，深蓝的硬件平台",
+      "credit": "Erik Pitti · Wikimedia Commons（深蓝硬件，博物馆陈列）",
+      "license": "CC BY 2.0",
+      "kind": "photo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Say_hello_to_Deep_Blue_(2586059148).jpg"
+    },
+    "roomba-2002": {
+      "src": "/visuals/roomba-2002.jpg",
+      "alt": "俯视的 Roomba 扫地机器人，面板上印着 iRobot 字样",
+      "credit": "Anthony DeRobertis · Wikimedia Commons",
+      "license": "CC BY-SA 2.0",
+      "kind": "photo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Gray_and_black_Roomba_docked_at_recharging_station.jpg"
+    },
+    "darpa-grand-challenge-2005": {
+      "src": "/visuals/darpa-grand-challenge-2005.jpg",
+      "alt": "斯坦福 Stanley 自动驾驶车，车顶装着传感器阵列",
+      "credit": "DARPA · Wikimedia Commons",
+      "license": "Public domain",
+      "kind": "photo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Stanley2.JPG"
+    },
+    "watson-2011": {
+      "src": "/visuals/watson-2011.jpg",
+      "alt": "《危险边缘》舞台上的 Watson 显示屏，显示金额与 WATSON 字样",
+      "credit": "Atomic Taco · Wikimedia Commons（《危险边缘》舞台复刻）",
+      "license": "CC BY-SA 2.0",
+      "kind": "photo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:IBM_Watson_w_Jeopardy.jpg"
+    },
+    "imagenet-2009": {
+      "src": "/visuals/imagenet-2009.jpg",
+      "alt": "李飞飞在讲台前演讲，面前是 ITU 标志",
+      "credit": "ITU Pictures · Wikimedia Commons（李飞飞，2017 年演讲）",
+      "license": "CC BY 2.0",
+      "kind": "photo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Fei-Fei_Li_at_AI_for_Good_2017.jpg"
+    },
+    "nobel-physics-2024": {
+      "src": "/visuals/nobel-physics-2024.jpg",
+      "alt": "杰弗里·辛顿在 2024 年诺贝尔周新闻发布会上的特写",
+      "credit": "Arthur Petron · Wikimedia Commons（2024 诺贝尔周发布会）",
+      "license": "CC BY-SA 4.0",
+      "kind": "photo",
+      "sourceUrl": "https://commons.wikimedia.org/wiki/File:Geoffrey_E._Hinton,_2024_Nobel_Prize_Laureate_in_Physics_(cropped1).jpg"
     },
     "dartmouth-1956": {
       "src": "/visuals/dartmouth-1956.jpg",
       "alt": "空荡的研讨教室，黑板上画着节点与箭头连成的示意图",
-      "credit": "AI 生成示意图",
-      "license": "非史实照片",
-      "kind": "illustration"
-    },
-    "deep-blue-1997": {
-      "src": "/visuals/deep-blue-1997.jpg",
-      "alt": "棋桌上一局进行中的国际象棋，身后是 1990 年代的老式电脑",
       "credit": "AI 生成示意图",
       "license": "非史实照片",
       "kind": "illustration"
@@ -81,13 +164,6 @@
     "eu-ai-act-adopted-2024": {
       "src": "/visuals/eu-ai-act-adopted-2024.jpg",
       "alt": "摊开的厚法典上方悬着十二颗星组成的圆环，书页上浮出网格",
-      "credit": "AI 生成示意图",
-      "license": "非史实照片",
-      "kind": "illustration"
-    },
-    "nobel-physics-2024": {
-      "src": "/visuals/nobel-physics-2024.jpg",
-      "alt": "一枚刻着节点网络的圆形徽章，浮在点阵般的网络之上",
       "credit": "AI 生成示意图",
       "license": "非史实照片",
       "kind": "illustration"

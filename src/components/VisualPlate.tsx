@@ -75,10 +75,13 @@ export function VisualPlate({ spec }: { spec: PlateSpec }) {
 
 function motif(spec: PlateSpec): ReactNode {
   if (spec.motif === "aperture") {
+    // 和轨道同理：七环时九层方框按 30 递增会让最后一层变成负尺寸。
+    // 收到 212 / (层数 - 1) 的间距，最内层始终留得住。
+    const step = Math.min(30, 212 / (spec.rings + 1));
     return (
       <>
         {Array.from({ length: spec.rings + 2 }, (_, index) => {
-          const size = 236 - index * 30;
+          const size = 236 - index * step;
           return (
             <rect
               key={index}
@@ -89,7 +92,7 @@ function motif(spec: PlateSpec): ReactNode {
               rx={5}
               fill="none"
               stroke="var(--plate-accent)"
-              strokeOpacity={Number((0.62 - index * 0.085).toFixed(3))}
+              strokeOpacity={Number(Math.max(0, 0.62 - index * 0.085).toFixed(3))}
               strokeWidth={1.6}
               transform={`rotate(${spec.tilt + index * 11})`}
             />
@@ -101,10 +104,13 @@ function motif(spec: PlateSpec): ReactNode {
   }
 
   if (spec.motif === "orbit") {
+    // 七环时 pitch 44 会把最内环推到负半径（252 - 6×44 = -12），
+    // SVG 会当作非法属性报错并吞掉那一环；按环数收紧间距，内环始终为正。
+    const pitch = Math.min(44, 220 / (spec.rings - 1));
     return (
       <>
         {Array.from({ length: spec.rings }, (_, index) => {
-          const radius = 252 - index * 44;
+          const radius = 252 - index * pitch;
           return (
             <ellipse
               key={index}

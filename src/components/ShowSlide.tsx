@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import type { TimelineItem } from "../types";
 import { CATEGORY_META, CONFIDENCE_META, formatCount, summaryKindLabel } from "../lib/format";
 import { plateSpec } from "../lib/plate";
-import { visualFor } from "../lib/visuals";
+import { visualCredit, visualFor } from "../lib/visuals";
 import { useEventDetail } from "../hooks/useEventDetail";
 import { VisualPlate } from "./VisualPlate";
 
@@ -43,16 +43,35 @@ export function ShowSlide({ item, onOpen }: Props) {
             className="show-photo"
             src={visual.src}
             alt={visual.alt}
-            style={visual.cover ? { objectPosition: visual.cover } : undefined}
+            style={
+              visual.cover || visual.fit
+                ? { objectPosition: visual.cover, objectFit: visual.fit }
+                : undefined
+            }
             onError={() => setBrokenSrc(visual.src)}
           />
         ) : (
           <VisualPlate spec={spec} />
         )}
         <figcaption className="show-credit">
-          {showImage && visual
-            ? `${visual.credit} · ${visual.license}`
-            : `编年图版 No.${String(spec.plateNo).padStart(3, "0")} · 依类别与标签生成`}
+          {showImage && visual ? (
+            <>
+              {visualCredit(visual)}
+              {visual.sourceUrl ? (
+                <a
+                  className="show-credit-src"
+                  href={visual.sourceUrl}
+                  target="_blank"
+                  rel="noreferrer"
+                  title="打开原始文件页核对这张图与它的授权"
+                >
+                  原图 ↗
+                </a>
+              ) : null}
+            </>
+          ) : (
+            `编年图版 No.${String(spec.plateNo).padStart(3, "0")} · 依类别与标签生成`
+          )}
         </figcaption>
       </figure>
 

@@ -20,6 +20,11 @@ export interface VisualEntry {
   sourceUrl?: string;
   /** CSS object-position, for crops that would otherwise cut a face off. */
   cover?: string;
+  /**
+   * `contain` 留给“宁可留白也不能裁”的横构图：整幅缩进画框，上下留出的
+   * 是主题的 --plate-bg，所以不用把纸色烤进 JPEG。默认铺满（cover）。
+   */
+  fit?: "cover" | "contain";
 }
 
 interface Manifest {

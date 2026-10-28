@@ -99,6 +99,8 @@ export function ShowOverlay({ show, onOpenEntry }: Props) {
       event.preventDefault();
       show.prev();
     } else if (event.key === " ") {
+      // 焦点落在图注的来源链接上时，空格留给浏览器去点那个链接。
+      if ((event.target as HTMLElement).closest("a")) return;
       event.preventDefault();
       show.togglePlay();
     } else if (event.key === "Home") {
