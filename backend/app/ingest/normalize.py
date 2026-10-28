@@ -311,6 +311,46 @@ def format_context(value: object) -> str:
     return f"{int(number)} token"
 
 
+MAX_CARD_CHARS = 180
+"""How much of a vendor model card survives into a summary.
+
+`panel.candidate_payload` shows the judges the first 260 characters, so the card
+is cut well before that: the mechanical facts in the parenthetical have to
+survive that truncation, or the ballot once again reads as a catalogue stub.
+"""
+
+_WS_RUN = compile_ascii(r"\s+")
+
+
+def card_text_of(value: object) -> str:
+    """Collapse a model card into one line, cut at a word boundary."""
+    text = _WS_RUN.sub(" ", str(value or "")).strip()
+    if len(text) > MAX_CARD_CHARS:
+        text = text[:MAX_CARD_CHARS].rsplit(" ", 1)[0].rstrip(" ,;.") + "…"
+    return text
+
+
+def model_card_summary(
+    card: object, *, headline: str, facts: list[str]
+) -> str:
+    """The vendor's own model card, with the mechanical facts after it.
+
+    The catalogue's `description` is the only capability evidence this source
+    carries. It names the architecture ("sparse mixture-of-experts"), the active
+    parameters ("3.8B activate per token"), or — for a re-listing — the model it
+    duplicates ("the same underlying model as GPT-6.1 Terra"). A summary that
+    lists nothing but the context window reads to the review panel as
+    「仅目录条目」 and scores as noise, which is how every catalogue model used to
+    end up excluded at 40-50 while its card described a new architecture. It is
+    the card that separates DeepSeek V4.1 Flash from DeepSeek V4.1 Flash 1017.
+    """
+    text = card_text_of(card)
+    tail = "，".join(fact for fact in facts if fact)
+    if not text:
+        return f"{headline}，{tail}。" if tail else f"{headline}。"
+    return f"{text}（{headline}，{tail}）" if tail else text
+
+
 def modality_text(inputs: object) -> str:
     if not isinstance(inputs, list):
         inputs = []
@@ -557,12 +597,16 @@ def openrouter_candidates(
         date = iso_day(created)
         context = format_context(model.get("contextLength"))
         modality = modality_text(model.get("inputModalities")) or (model.get("modality") or "")
-        parts = [f"{display_name} 由 {vendor} 提供，{'开放权重' if open_weights else '闭源 API'}模型。"]
-        if context:
-            parts.append(f"上下文窗口 {context}。")
-        if modality:
-            parts.append(f"支持{modality}，输出为文本。")
-        parts.append("条目由 OpenRouter 模型目录自动汇总。")
+        parts = model_card_summary(
+            model.get("description"),
+            headline=f"{display_name} 由 {vendor} 提供",
+            facts=[
+                "开放权重" if open_weights else "闭源 API",
+                f"上下文窗口 {context}" if context else "",
+                f"支持{modality}" if modality else "",
+            ],
+        )
+
         out.append(
             base_candidate(
                 {
@@ -570,8 +614,8 @@ def openrouter_candidates(
                     "category": "model",
                     "title": f"{vendor} 发布 {display_name}",
                     "titleEn": name,
-                    "summary": "".join(parts),
-                    "summaryKind": "template",
+                    "summary": parts,
+                    "summaryKind": "card" if card_text_of(model.get("description")) else "template",
                     "eventDate": date,
                     "organization": vendor,
                     "modelName": display_name,
@@ -725,7 +769,6 @@ def hf_candidates(
         summary = (
             f"{display_name} 在 Hugging Face 开源发布，作者 {vendor}。"
             f"当前获得 {likes:,} 次点赞、{downloads:,} 次下载。"
-            "条目由 Hugging Face 模型库自动汇总。"
         )
         out.append(
             base_candidate(

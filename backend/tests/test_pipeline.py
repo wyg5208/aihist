@@ -107,6 +107,40 @@ async def test_second_run_reuses_the_seed(db_factory):
     assert events == 158 + second["result"]["createdCount"] + first["result"]["createdCount"]
 
 
+async def test_a_seed_revision_refreshes_existing_rows(db_factory):
+    """A corrected seed reaches rows that are already in the database.
+
+    Seeds used to be insert-only, so the source-family fix (journal entries
+    filed as `official`) would have stopped at the deployment that re-seeded
+    an empty database. The refresh rewrites the evidence projection only:
+    the operator's verdict and the first sighting stay where they were.
+    """
+    from app.db import repo_events
+    from app.ingest.pipeline import seed_rows
+
+    async with db_factory() as session:
+        assert await repo_events.upsert_seed_events(session, seed_rows(now())) == 158
+
+    async with db_factory() as session:
+        row = await session.scalar(select(Event).where(Event.slug == "alphago-match-2016"))
+        row.source_families = ["official"]
+        row.confidence = "likely"
+        row.editorial_status = "hold"
+        await session.commit()
+        first_seen = row.first_seen_at
+
+    async with db_factory() as session:
+        assert await repo_events.upsert_seed_events(session, seed_rows(now())) == 0
+
+    async with db_factory() as session:
+        row = await session.scalar(select(Event).where(Event.slug == "alphago-match-2016"))
+
+    assert row.source_families == ["paper", "official"]
+    assert row.confidence == "verified"
+    assert row.editorial_status == "hold"
+    assert row.first_seen_at == first_seen
+
+
 async def test_editorial_gate_fails_closed_without_a_panel(db_factory):
     async with db_factory() as session:
         outcome = await run_sync(

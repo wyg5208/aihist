@@ -80,8 +80,12 @@ async def _with_session(work):
 
 
 async def _seed(session) -> int:
-    """Insert the frozen seed; idempotent because it upserts on fingerprint."""
-    inserted = await repo_events.insert_events(session, seed_rows(utc_now()))
+    """Insert the frozen seed; idempotent because it upserts on fingerprint.
+
+    A re-run also refreshes the evidence columns of rows that are already
+    there, so a corrected source family reaches the live archive.
+    """
+    inserted = await repo_events.upsert_seed_events(session, seed_rows(utc_now()))
     state = await repo_sync.read_state(session)
     if state is None:
         session.add(SyncState(id=STATE_ID, seed_version=SEED_VERSION))

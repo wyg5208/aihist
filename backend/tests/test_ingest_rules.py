@@ -187,6 +187,57 @@ def test_hf_keeps_the_release_and_drops_the_repackaging() -> None:
     assert drops[0]["publishedAt"] == "2025-09-01T00:00:00Z"
 
 
+# --- what the panel is shown about a catalogue model --------------------------
+
+
+def test_a_catalogue_model_is_described_by_its_own_card() -> None:
+    item = openrouter_item("deepseek/deepseek-v4.1-flash-1017", OLD)
+    item["description"] = (
+        "DeepSeek V4.1 Flash is a sparse mixture-of-experts model.\n\n"
+        "It is served under the `deepseek-flash` API name."
+    )
+    candidate = openrouter_candidates({"items": [item]}, NOW_MS)[0]
+
+    assert candidate["summaryKind"] == "card"
+    assert candidate["summary"].startswith("DeepSeek V4.1 Flash is a sparse")
+    # The card is one line, so a model card's paragraphs do not become the summary.
+    assert "\n" not in candidate["summary"]
+    assert "开放权重" in candidate["summary"]
+    # The pipeline's own workings are not part of the event.
+    assert "自动汇总" not in candidate["summary"]
+
+
+def test_a_catalogue_entry_without_a_card_falls_back_to_the_facts() -> None:
+    item = openrouter_item("vendor/thing-1", OLD)
+    item["description"] = ""
+    candidate = openrouter_candidates({"items": [item]}, NOW_MS)[0]
+
+    assert candidate["summaryKind"] == "template"
+    assert candidate["summary"] == "thing-1 由 Vendor 提供，开放权重，上下文窗口 66K token。"
+    assert "自动汇总" not in candidate["summary"]
+
+
+def test_the_card_keeps_room_for_the_facts_after_it() -> None:
+    item = openrouter_item("vendor/thing-1", OLD)
+    item["description"] = "word " * 200
+    candidate = openrouter_candidates({"items": [item]}, NOW_MS)[0]
+
+    # `panel.candidate_payload` truncates at 260 characters, so the facts have to
+    # fit inside that budget or the ballot reads as a catalogue stub again.
+    assert len(candidate["summary"]) < 260
+    assert candidate["summary"].endswith("开放权重，上下文窗口 66K token）")
+
+
+def test_a_hugging_face_summary_states_its_evidence_not_its_plumbing() -> None:
+    candidate = hf_candidates(
+        {"items": [hf_item("deepseek-ai/DeepSeek-V4.1-Flash", tags=["fp8"])]}, NOW_MS
+    )[0]
+
+    assert candidate["summary"].startswith("DeepSeek-V4.1-Flash 在 Hugging Face 开源发布")
+    assert "500 次点赞" in candidate["summary"]
+    assert "自动汇总" not in candidate["summary"]
+
+
 # --- a backfill has to see past the daily slice -------------------------------
 
 

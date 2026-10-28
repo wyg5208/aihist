@@ -50,6 +50,37 @@ def test_audit_threshold_follows_disqualify() -> None:
     assert should_audit_out({"disqualify": None, "score": 25}) is False
 
 
+def test_a_generations_flagship_still_reaches_the_ballot() -> None:
+    """A tier suffix is a handicap, not a veto.
+
+    `Gemini 3.8 Flash` is the flagship of its generation, but its `familyKey`
+    (`gemini-3.8`) differs from its `modelKey`, so it used to lose 8 points and
+    land at 33 — below `RULE_PANEL_THRESHOLD`, which meant the panel never saw
+    the only Gemini 3.8 entry the catalogue had.
+    """
+    candidate = {
+        "key": "openrouter:google/gemini-3.8-flash",
+        "category": "model",
+        "title": "Google 发布 Gemini 3.8 Flash",
+        "titleEn": "Google: Gemini 3.8 Flash",
+        "modelName": "Gemini 3.8 Flash",
+        "modelKey": "gemini-3.8-flash",
+        "familyKey": "gemini-3.8",
+        "eventDate": "2026-09-02",
+        "families": ["openrouter", "huggingface"],
+        "signals": {"headLab": True},
+        "evidence": [
+            {"family": "openrouter", "name": "OpenRouter", "url": "https://openrouter.ai/x"},
+            {"family": "huggingface", "name": "Hugging Face", "url": "https://hf.co/x"},
+        ],
+    }
+
+    assessment = assess_candidate(candidate)
+
+    assert assessment["eligible"] is True, assessment
+    assert "同族包装变体" in assessment["reasons"]
+
+
 @pytest.mark.parametrize(
     ("payload", "expected"),
     [

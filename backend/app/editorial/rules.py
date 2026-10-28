@@ -30,7 +30,13 @@ def utc_now() -> datetime:
 # rubric. Rollback is `policy` out of three places + this constant back to v2;
 # `collect_verdicts` keeps the history either way, because that is data, not a
 # rule.
-RUBRIC_VERSION = "chronicle-v3"
+# v4: a catalogue model is now shown to the panel as its vendor model card rather
+# than a template that listed the context window and nothing else, and a tier
+# suffix costs 4 points instead of 8. Both change what a cached ballot was a
+# judgement *about*, so every cached verdict has to be re-taken; without the bump
+# the 148 model releases the panel filed as 「仅目录条目」 would stay excluded
+# forever, because a decision is reused whenever its rubric version matches.
+RUBRIC_VERSION = "chronicle-v4"
 INCLUDE_SCORE = 75
 # One judge per domestic vendor: DeepSeek, Qwen, GLM, Kimi, MiniMax. Five
 # vendors rather than five copies of one model, so no single vendor's bias can
@@ -226,7 +232,14 @@ def rule_score_of(candidate: Candidate) -> int:
         score += 10
 
     if candidate.get("category") == "model" and MAJOR_MODEL.search(title):
-        score += -8 if has_tier_variant(candidate) else 6
+        # A tier suffix costs half of what it used to. At -8 the penalty fired on
+        # every member of a family — `Gemini 3.8 Flash` is the flagship of its
+        # generation, but the catalogue rarely lists the `Pro` it would be
+        # redundant with, so the only entry the family had was the one penalised,
+        # and 33 points kept it off the ballot entirely. The handicap still
+        # applies, it just no longer decides on its own; -4 leaves the candidate
+        # above `RULE_PANEL_THRESHOLD` for the panel to judge on the model card.
+        score += -4 if has_tier_variant(candidate) else 6
     if _DECIMAL_VERSION.search(candidate.get("modelName") or ""):
         score -= 4
 

@@ -1,6 +1,6 @@
 {
-  "exportedAt": "2026-10-28T08:13:35.086Z",
-  "nowMs": 1793175215086,
+  "exportedAt": "2026-10-28T09:52:12.098Z",
+  "nowMs": 1793181132098,
   "assessments": [
     {
       "key": "openrouter:minimax/minimax-m3.1-flash",
@@ -16,13 +16,13 @@
     },
     {
       "key": "openrouter:deepseek/deepseek-v4.1-flash-1017",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -88,13 +88,13 @@
     },
     {
       "key": "openrouter:nvidia/nemotron-3.5-super-vl",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -210,37 +210,37 @@
     },
     {
       "key": "openrouter:inclusionai/ling-3.1-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:openai/gpt-6.1-sol-pro",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:openai/gpt-6.1-sol",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -286,7 +286,7 @@
     },
     {
       "key": "openrouter:z-ai/glm-5.3-prime",
-      "score": 23,
+      "score": 27,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -298,13 +298,13 @@
     },
     {
       "key": "openrouter:qwen/qwen3.8-max-prime",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -354,7 +354,7 @@
     },
     {
       "key": "openrouter:openai/gpt-6-luna-pro",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -366,7 +366,7 @@
     },
     {
       "key": "openrouter:openai/gpt-6-luna",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -378,7 +378,7 @@
     },
     {
       "key": "openrouter:openai/gpt-6-sol-pro",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -390,7 +390,7 @@
     },
     {
       "key": "openrouter:openai/gpt-6-sol",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -432,25 +432,25 @@
     },
     {
       "key": "openrouter:xiaomi/mimo-v2.6-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:xiaomi/mimo-v2.6-pro",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -466,13 +466,13 @@
     },
     {
       "key": "openrouter:qwen/qwen3.8-omni-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -488,7 +488,7 @@
     },
     {
       "key": "openrouter:z-ai/glm-5.3-flashx",
-      "score": 23,
+      "score": 27,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -544,25 +544,25 @@
     },
     {
       "key": "openrouter:inclusionai/ling-3.0-flash-vl",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:deepseek/deepseek-v4.1-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -602,7 +602,7 @@
     },
     {
       "key": "openrouter:openai/gpt-6-astra",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -614,7 +614,7 @@
     },
     {
       "key": "openrouter:openai/gpt-6-astra-pro",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -626,13 +626,13 @@
     },
     {
       "key": "openrouter:qwen/qwen3.8-max-0902",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -658,13 +658,13 @@
     },
     {
       "key": "openrouter:google/gemini-3.8-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -700,19 +700,19 @@
     },
     {
       "key": "openrouter:qwen/qwen3.8-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:z-ai/glm-5.3-flash",
-      "score": 23,
+      "score": 27,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -794,13 +794,13 @@
     },
     {
       "key": "openrouter:google/gemini-3.7-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -838,7 +838,7 @@
     },
     {
       "key": "openrouter:deepseek/deepseek-v4-pro-0813",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -910,7 +910,7 @@
     },
     {
       "key": "openrouter:deepseek/deepseek-v4-flash-0731",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -932,13 +932,13 @@
     },
     {
       "key": "openrouter:qwen/qwen3.7-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -954,13 +954,13 @@
     },
     {
       "key": "openrouter:inclusionai/ling-3.0-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -976,25 +976,25 @@
     },
     {
       "key": "openrouter:google/gemini-3.6-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:google/gemini-3.5-flash-lite",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1050,73 +1050,73 @@
     },
     {
       "key": "openrouter:openai/gpt-5.6-luna-pro",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:openai/gpt-5.6-luna",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:openai/gpt-5.6-terra-pro",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:openai/gpt-5.6-terra",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:openai/gpt-5.6-sol-pro",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:openai/gpt-5.6-sol",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1286,13 +1286,13 @@
     },
     {
       "key": "openrouter:qwen/qwen3.7-plus",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1308,13 +1308,13 @@
     },
     {
       "key": "openrouter:stepfun/step-3.7-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1330,13 +1330,13 @@
     },
     {
       "key": "openrouter:qwen/qwen3.7-max",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1352,13 +1352,13 @@
     },
     {
       "key": "openrouter:google/gemini-3.5-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1374,13 +1374,13 @@
     },
     {
       "key": "openrouter:google/gemini-3.1-flash-lite",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1426,13 +1426,13 @@
     },
     {
       "key": "openrouter:qwen/qwen3.6-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1458,13 +1458,13 @@
     },
     {
       "key": "openrouter:openai/gpt-5.5-pro",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1480,7 +1480,7 @@
     },
     {
       "key": "openrouter:deepseek/deepseek-v4-pro",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -1492,7 +1492,7 @@
     },
     {
       "key": "openrouter:deepseek/deepseek-v4-flash",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -1514,13 +1514,13 @@
     },
     {
       "key": "openrouter:xiaomi/mimo-v2.5-pro",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1606,19 +1606,19 @@
     },
     {
       "key": "openrouter:qwen/qwen3.6-plus",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:z-ai/glm-5v-turbo",
-      "score": 27,
+      "score": 31,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -1702,25 +1702,25 @@
     },
     {
       "key": "openrouter:openai/gpt-5.4-nano",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:openai/gpt-5.4-mini",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1736,7 +1736,7 @@
     },
     {
       "key": "openrouter:z-ai/glm-5-turbo",
-      "score": 27,
+      "score": 31,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -1780,13 +1780,13 @@
     },
     {
       "key": "openrouter:openai/gpt-5.4-pro",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1812,13 +1812,13 @@
     },
     {
       "key": "openrouter:google/gemini-3.1-flash-lite-preview",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1896,13 +1896,13 @@
     },
     {
       "key": "openrouter:openai/gpt-5.3-codex",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -1918,13 +1918,13 @@
     },
     {
       "key": "openrouter:google/gemini-3.1-pro-preview",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -2010,13 +2010,13 @@
     },
     {
       "key": "openrouter:stepfun/step-3.5-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -2086,7 +2086,7 @@
     },
     {
       "key": "openrouter:z-ai/glm-4.7-flash",
-      "score": 23,
+      "score": 27,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -2098,13 +2098,13 @@
     },
     {
       "key": "openrouter:openai/gpt-5.2-codex",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -2152,7 +2152,7 @@
     },
     {
       "key": "openrouter:google/gemini-3-flash-preview",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -2184,13 +2184,13 @@
     },
     {
       "key": "openrouter:openai/gpt-5.2-pro",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -2246,13 +2246,13 @@
     },
     {
       "key": "openrouter:openai/gpt-5.1-codex-max",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -2348,25 +2348,25 @@
     },
     {
       "key": "openrouter:openai/gpt-5.1-codex",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:openai/gpt-5.1-codex-mini",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -2442,7 +2442,7 @@
     },
     {
       "key": "openrouter:openai/gpt-5-image-mini",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -2514,7 +2514,7 @@
     },
     {
       "key": "openrouter:openai/gpt-5-pro",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -2596,7 +2596,7 @@
     },
     {
       "key": "openrouter:qwen/qwen3-coder-flash",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -2688,7 +2688,7 @@
     },
     {
       "key": "openrouter:openai/gpt-5-mini",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -2700,7 +2700,7 @@
     },
     {
       "key": "openrouter:openai/gpt-5-nano",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -2762,7 +2762,7 @@
     },
     {
       "key": "openrouter:qwen/qwen3-30b-a3b-instruct-2507",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -2784,7 +2784,7 @@
     },
     {
       "key": "openrouter:z-ai/glm-4.5-air",
-      "score": 23,
+      "score": 27,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -2796,7 +2796,7 @@
     },
     {
       "key": "openrouter:qwen/qwen3-235b-a22b-thinking-2507",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -2828,13 +2828,13 @@
     },
     {
       "key": "openrouter:google/gemini-2.5-flash-lite",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -2920,25 +2920,25 @@
     },
     {
       "key": "openrouter:google/gemini-2.5-flash",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:google/gemini-2.5-pro",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -2956,13 +2956,13 @@
     },
     {
       "key": "openrouter:google/gemini-2.5-pro-preview",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -3070,25 +3070,25 @@
     },
     {
       "key": "openrouter:openai/gpt-4.1-mini",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
     {
       "key": "openrouter:openai/gpt-4.1-nano",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -3606,7 +3606,7 @@
     },
     {
       "key": "openrouter:openai/gpt-4o-mini",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -3618,7 +3618,7 @@
     },
     {
       "key": "openrouter:openai/gpt-4o-mini-2024-07-18",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -3670,7 +3670,7 @@
     },
     {
       "key": "openrouter:openai/gpt-4-turbo",
-      "score": 35,
+      "score": 39,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -3692,13 +3692,13 @@
     },
     {
       "key": "openrouter:openai/gpt-3.5-turbo-0613",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -3714,13 +3714,13 @@
     },
     {
       "key": "openrouter:openai/gpt-3.5-turbo-instruct",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -3766,13 +3766,13 @@
     },
     {
       "key": "openrouter:openai/gpt-3.5-turbo",
-      "score": 31,
+      "score": 35,
       "flags": [],
       "reasons": [
         "同族包装变体"
       ],
       "disqualify": null,
-      "eligible": false,
+      "eligible": true,
       "families": [],
       "sourceNames": []
     },
@@ -9837,7 +9837,7 @@
     },
     {
       "key": "hf:deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "score": 37,
+      "score": 41,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -10093,7 +10093,7 @@
     },
     {
       "key": "hf:deepseek-ai/DeepSeek-V4.1-Flash",
-      "score": 37,
+      "score": 41,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -10239,7 +10239,7 @@
     },
     {
       "key": "hf:deepseek-ai/DeepSeek-V4-Pro",
-      "score": 41,
+      "score": 45,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -10311,7 +10311,7 @@
     },
     {
       "key": "hf:deepseek-ai/DeepSeek-V4.1-Flash",
-      "score": 37,
+      "score": 41,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -10353,7 +10353,7 @@
     },
     {
       "key": "hf:deepseek-ai/DeepSeek-V4-Flash-0731",
-      "score": 41,
+      "score": 45,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -10485,7 +10485,7 @@
     },
     {
       "key": "hf:deepseek-ai/DeepSeek-V4.1-Flash-1017",
-      "score": 37,
+      "score": 41,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -10547,7 +10547,7 @@
     },
     {
       "key": "hf:deepseek-ai/DeepSeek-V4-Flash",
-      "score": 41,
+      "score": 45,
       "flags": [],
       "reasons": [
         "同族包装变体"

@@ -523,6 +523,16 @@ async def _insert_in_batches(
     return inserted
 
 
+async def _refresh_seed_in_batches(
+    session: AsyncSession, rows: list[dict[str, Any]], size: int = 20
+) -> int:
+    """Seed rows take the upsert path: a seed revision must reach live rows."""
+    inserted = 0
+    for index in range(0, len(rows), size):
+        inserted += await repo_events.upsert_seed_events(session, rows[index : index + size])
+    return inserted
+
+
 async def run_sync(
     session: AsyncSession,
     *,
@@ -588,7 +598,7 @@ async def run_sync(
             try:
                 await _guard_heartbeat(session, token, run_id)
                 rows = seed_rows(now_iso_now)
-                seed_inserted = await _insert_in_batches(session, rows, 20)
+                seed_inserted = await _refresh_seed_in_batches(session, rows, 20)
                 notes.append(f"seed:{len(rows)}")
             except SyncError:
                 raise

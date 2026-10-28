@@ -22,6 +22,7 @@ from app import auth
 from app.config import Settings
 from app.db import repo_admin, repo_events
 from app.db.models import CollectVerdict, RawItem, ReviewDecision
+from app.editorial.rules import RUBRIC_VERSION
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from conftest import client_for  # noqa: E402
@@ -132,7 +133,7 @@ async def seed_library(db_factory) -> dict[str, str]:
             ReviewDecision(
                 id=EVENT_FP,
                 fingerprint=EVENT_FP,
-                rubric_version="chronicle-v3",
+                rubric_version=RUBRIC_VERSION,
                 decision="include",
                 score=88,
                 include_votes=5,
@@ -339,7 +340,7 @@ async def test_the_detail_joins_the_trail_and_the_ballot(db_factory, admin_setti
     assert body["item"]["reasonLabel"] == "已纳入"
     assert len(body["verdicts"]) == 1
     assert body["verdicts"][0]["stage"] == "panel"
-    assert body["review"]["rubricVersion"] == "chronicle-v3"
+    assert body["review"]["rubricVersion"] == RUBRIC_VERSION
     assert body["review"]["decision"] == "include"
     assert body["review"]["validVotes"] == 5
     assert len(body["review"]["votes"]) == 5

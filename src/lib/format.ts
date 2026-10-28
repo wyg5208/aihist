@@ -76,6 +76,7 @@ export function familyLabel(family: string) {
 export function summaryKindLabel(kind: string) {
   if (kind === "curated") return "人工校订";
   if (kind === "generated") return "模型生成";
+  if (kind === "card") return "厂商模型卡";
   if (kind === "excerpt") return "来源摘录";
   return "自动汇总";
 }

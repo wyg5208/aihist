@@ -55,6 +55,46 @@ async def insert_events(session: AsyncSession, rows: Sequence[dict[str, Any]]) -
     return max(result.rowcount or 0, 0)
 
 
+# Seeds carry curated content, so a revision to them — a corrected source
+# family, say — has to reach rows that already exist in production.
+# `insert_events` is deliberately insert-or-ignore; this adds the refresh half
+# and rewrites only the evidence projection. The operator verdict, the slug and
+# the first sighting are left alone, so an edit made in the console survives.
+SEED_REFRESH_COLUMNS = ("sources", "source_families", "source_count", "confidence", "updated_at")
+
+
+async def upsert_seed_events(session: AsyncSession, rows: Sequence[dict[str, Any]]) -> int:
+    """Insert missing seed rows and refresh the existing ones.
+
+    Returns how many rows were newly inserted, which is what the sync report's
+    `seedInserted` means on both a first run and a re-run.
+    """
+    if not rows:
+        return 0
+    fingerprints = [row["fingerprint"] for row in rows]
+    result = await session.execute(
+        select(Event.fingerprint).where(Event.fingerprint.in_(fingerprints))
+    )
+    existing = set(result.scalars().all())
+    missing = [row for row in rows if row["fingerprint"] not in existing]
+    present = [row for row in rows if row["fingerprint"] in existing]
+    if missing:
+        await session.execute(_insert_ignore(session, Event, missing))
+    if present:
+        if _dialect_name(session) == "sqlite":
+            statement = sqlite_insert(Event).values(present)
+        else:
+            statement = pg_insert(Event).values(present)
+        excluded = statement.excluded
+        statement = statement.on_conflict_do_update(
+            index_elements=[Event.fingerprint],
+            set_={column: getattr(excluded, column) for column in SEED_REFRESH_COLUMNS},
+        )
+        await session.execute(statement)
+    await session.commit()
+    return len(missing)
+
+
 async def insert_raw_items(session: AsyncSession, rows: Sequence[dict[str, Any]]) -> int:
     if not rows:
         return 0

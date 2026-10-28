@@ -7,7 +7,7 @@ import { keywordsFor } from "./keywords.mjs";
  * the captured OpenRouter, Hugging Face, arXiv and official-news payloads.
  * Seeds are inserted by the first sync, never by migration SQL.
  */
-export const SEED_VERSION = "2026.10.25.1";
+export const SEED_VERSION = "2026.10.28.1";
 
 function seed(def) {
   const date = def.date;
@@ -87,8 +87,8 @@ export const SEED_EVENTS = [
     importance: 94,
     tags: ["turing-test", "philosophy"],
     sources: [
-      { name: "Mind (Oxford)", url: "https://doi.org/10.1093/mind/LIX.236.433" },
-      { name: "Turing Archive", url: "https://academic.oup.com/mind/article/LIX/236/433/986238" },
+      { name: "Mind (Oxford)", family: "paper", url: "https://doi.org/10.1093/mind/LIX.236.433" },
+      { name: "Turing Archive", family: "paper", url: "https://academic.oup.com/mind/article/LIX/236/433/986238" },
     ],
     note: "期刊 DOI 与 Oxford Academic 页面核对",
   }),
@@ -106,6 +106,7 @@ export const SEED_EVENTS = [
     sources: [
       {
         name: "AI Magazine (2006 reprint)",
+        family: "paper",
         url: "https://doi.org/10.1609/aimag.v27i4.1904",
         title: "A Proposal for the Dartmouth Summer Research Project on Artificial Intelligence",
         date: "2006-12-15",
@@ -125,7 +126,7 @@ export const SEED_EVENTS = [
     importance: 84,
     tags: ["perceptron", "neural-networks"],
     sources: [
-      { name: "Psychological Review", url: "https://doi.org/10.1037/h0042519" },
+      { name: "Psychological Review", family: "paper", url: "https://doi.org/10.1037/h0042519" },
     ],
     note: "APA PsycNet DOI 核对",
   }),
@@ -140,7 +141,7 @@ export const SEED_EVENTS = [
     org: "MIT",
     importance: 80,
     tags: ["eliza", "chatbot", "nlp"],
-    sources: [{ name: "Communications of the ACM", url: "https://doi.org/10.1145/365153.365168" }],
+    sources: [{ name: "Communications of the ACM", family: "paper", url: "https://doi.org/10.1145/365153.365168" }],
     note: "ACM Digital Library DOI 核对",
   }),
   seed({
@@ -168,7 +169,7 @@ export const SEED_EVENTS = [
     org: "Carnegie Mellon University / University of Toronto",
     importance: 88,
     tags: ["backpropagation", "neural-networks"],
-    sources: [{ name: "Nature", url: "https://www.nature.com/articles/323533a0" }],
+    sources: [{ name: "Nature", family: "paper", url: "https://www.nature.com/articles/323533a0" }],
     note: "Nature 论文页面核对",
   }),
   seed({
@@ -213,7 +214,7 @@ export const SEED_EVENTS = [
     importance: 84,
     tags: ["lstm", "rnn"],
     sources: [
-      { name: "Neural Computation", url: "https://doi.org/10.1162/neco.1997.9.8.1735" },
+      { name: "Neural Computation", family: "paper", url: "https://doi.org/10.1162/neco.1997.9.8.1735" },
     ],
     note: "期刊 DOI 核对",
   }),
@@ -245,7 +246,7 @@ export const SEED_EVENTS = [
     importance: 80,
     tags: ["deep-learning", "dbn"],
     sources: [
-      { name: "Science", url: "https://www.science.org/doi/10.1126/science.1127647" },
+      { name: "Science", family: "paper", url: "https://www.science.org/doi/10.1126/science.1127647" },
     ],
     note: "Science 论文页面核对",
   }),
@@ -293,6 +294,7 @@ export const SEED_EVENTS = [
     sources: [
       {
         name: "NeurIPS 2012",
+        family: "paper",
         url: "https://papers.nips.cc/paper_files/paper/2012/hash/c399862d3b9d6b76c8436e924a68c45b-Abstract.html",
       },
     ],
@@ -309,7 +311,7 @@ export const SEED_EVENTS = [
     org: "Google",
     importance: 82,
     tags: ["word2vec", "nlp", "embeddings"],
-    sources: [{ name: "arXiv", url: "https://arxiv.org/abs/1301.3781" }],
+    sources: [{ name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/1301.3781" }],
     note: "arXiv 论文核对",
   }),
   seed({
@@ -323,7 +325,7 @@ export const SEED_EVENTS = [
     org: "Université de Montréal",
     importance: 86,
     tags: ["gan", "generative-models"],
-    sources: [{ name: "arXiv", url: "https://arxiv.org/abs/1406.2661" }],
+    sources: [{ name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/1406.2661" }],
     note: "arXiv 论文核对",
   }),
   seed({
@@ -337,7 +339,7 @@ export const SEED_EVENTS = [
     org: "Google",
     importance: 82,
     tags: ["seq2seq", "machine-translation"],
-    sources: [{ name: "arXiv", url: "https://arxiv.org/abs/1409.3215" }],
+    sources: [{ name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/1409.3215" }],
     note: "arXiv 论文核对",
   }),
   seed({
@@ -351,7 +353,7 @@ export const SEED_EVENTS = [
     org: "Microsoft Research",
     importance: 84,
     tags: ["resnet", "computer-vision"],
-    sources: [{ name: "arXiv", url: "https://arxiv.org/abs/1512.03385" }],
+    sources: [{ name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/1512.03385" }],
     note: "arXiv 论文核对",
   }),
   seed({
@@ -365,7 +367,7 @@ export const SEED_EVENTS = [
     org: "Google DeepMind",
     importance: 92,
     tags: ["alphago", "reinforcement-learning", "go"],
-    sources: [{ name: "Nature", url: "https://www.nature.com/articles/nature16961" }],
+    sources: [{ name: "Nature", family: "paper", url: "https://www.nature.com/articles/nature16961" }],
     note: "Nature 论文页面核对",
   }),
   seed({
@@ -380,7 +382,7 @@ export const SEED_EVENTS = [
     importance: 94,
     tags: ["alphago", "go", "milestone"],
     sources: [
-      { name: "Nature", url: "https://www.nature.com/articles/nature16961" },
+      { name: "Nature", family: "paper", url: "https://www.nature.com/articles/nature16961" },
       {
         name: "DeepMind",
         url: "https://deepmind.google/research/alphago/",
@@ -399,7 +401,7 @@ export const SEED_EVENTS = [
     org: "Google Brain / Google Research",
     importance: 98,
     tags: ["transformer", "attention", "deep-learning"],
-    sources: [{ name: "arXiv", url: "https://arxiv.org/abs/1706.03762" }],
+    sources: [{ name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/1706.03762" }],
     note: "arXiv 论文核对",
   }),
   seed({
@@ -432,7 +434,7 @@ export const SEED_EVENTS = [
     org: "Google AI Language",
     importance: 91,
     tags: ["bert", "nlp", "pretraining"],
-    sources: [{ name: "arXiv", url: "https://arxiv.org/abs/1810.04805" }],
+    sources: [{ name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/1810.04805" }],
     note: "arXiv 论文核对",
   }),
   seed({
@@ -467,7 +469,7 @@ export const SEED_EVENTS = [
     importance: 96,
     tags: ["gpt", "few-shot", "scaling"],
     sources: [
-      { name: "arXiv", url: "https://arxiv.org/abs/2005.14165" },
+      { name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/2005.14165" },
       { name: "OpenAI", url: "https://openai.com/index/language-models-are-few-shot-learners/" },
     ],
     note: "arXiv 论文与 OpenAI 官方页面核对",
@@ -488,7 +490,7 @@ export const SEED_EVENTS = [
         name: "DeepMind",
         url: "https://deepmind.google/discover/blog/computational-predictions-of-protein-structures-associated-with-covid-19/",
       },
-      { name: "Nature", url: "https://www.nature.com/articles/s41586-021-03819-2" },
+      { name: "Nature", family: "paper", url: "https://www.nature.com/articles/s41586-021-03819-2" },
     ],
     note: "DeepMind 公告与 Nature 论文核对",
   }),
@@ -505,7 +507,7 @@ export const SEED_EVENTS = [
     tags: ["clip", "dalle", "multimodal"],
     sources: [
       { name: "OpenAI", url: "https://openai.com/index/dall-e/" },
-      { name: "arXiv", url: "https://arxiv.org/abs/2103.00020" },
+      { name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/2103.00020" },
     ],
     note: "OpenAI 公告与 CLIP 论文核对",
   }),
@@ -555,7 +557,7 @@ export const SEED_EVENTS = [
     org: "OpenAI",
     importance: 86,
     tags: ["rlhf", "alignment", "instructgpt"],
-    sources: [{ name: "arXiv", url: "https://arxiv.org/abs/2203.02155" }],
+    sources: [{ name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/2203.02155" }],
     note: "arXiv 论文核对",
   }),
   seed({
@@ -569,7 +571,7 @@ export const SEED_EVENTS = [
     org: "Google DeepMind",
     importance: 83,
     tags: ["scaling-laws", "chinchilla"],
-    sources: [{ name: "arXiv", url: "https://arxiv.org/abs/2203.15556" }],
+    sources: [{ name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/2203.15556" }],
     note: "arXiv 论文核对",
   }),
   seed({
@@ -635,7 +637,7 @@ export const SEED_EVENTS = [
     tags: ["llama", "open-weights", "meta"],
     sources: [
       { name: "Meta AI", url: "https://ai.meta.com/blog/large-language-model-llama-meta-ai/" },
-      { name: "arXiv", url: "https://arxiv.org/abs/2302.13971" },
+      { name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/2302.13971" },
     ],
     note: "Meta 官方博客与论文核对",
   }),
@@ -655,7 +657,7 @@ export const SEED_EVENTS = [
     tags: ["gpt", "multimodal", "openai"],
     sources: [
       { name: "OpenAI", url: "https://openai.com/index/gpt-4-research/" },
-      { name: "arXiv", url: "https://arxiv.org/abs/2303.08774" },
+      { name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/2303.08774" },
     ],
     note: "OpenAI 公告与技术报告核对",
   }),
@@ -711,7 +713,7 @@ export const SEED_EVENTS = [
     tags: ["mistral", "open-weights"],
     sources: [
       { name: "Mistral AI", url: "https://mistral.ai/news/announcing-mistral-7b" },
-      { name: "arXiv", url: "https://arxiv.org/abs/2310.06825" },
+      { name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/2310.06825" },
     ],
     note: "官方公告与论文核对",
   }),
@@ -858,7 +860,7 @@ export const SEED_EVENTS = [
         name: "DeepMind",
         url: "https://deepmind.google/technologies/alphafold/",
       },
-      { name: "Nature", url: "https://www.nature.com/articles/s41586-024-07487-w" },
+      { name: "Nature", family: "paper", url: "https://www.nature.com/articles/s41586-024-07487-w" },
     ],
     note: "DeepMind 公告与 Nature 论文核对",
   }),
@@ -967,7 +969,7 @@ export const SEED_EVENTS = [
     importance: 88,
     tags: ["deepseek", "moe", "open-weights"],
     sources: [
-      { name: "arXiv", url: "https://arxiv.org/abs/2412.19437" },
+      { name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/2412.19437" },
       { name: "Hugging Face", family: "huggingface", url: "https://huggingface.co/deepseek-ai/DeepSeek-V3" },
     ],
     note: "论文与 Hugging Face 模型页核对",
@@ -987,7 +989,7 @@ export const SEED_EVENTS = [
     importance: 95,
     tags: ["deepseek", "reasoning", "open-weights"],
     sources: [
-      { name: "arXiv", url: "https://arxiv.org/abs/2501.12948" },
+      { name: "arXiv", family: "arxiv", url: "https://arxiv.org/abs/2501.12948" },
       { name: "Hugging Face", family: "huggingface", url: "https://huggingface.co/deepseek-ai/DeepSeek-R1" },
     ],
     note: "论文与 Hugging Face 模型页核对",

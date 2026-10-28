@@ -2,7 +2,7 @@
   "ok": true,
   "items": [
     {
-      "id": "dcd7c925-3c11-4436-ae04-549ffd72d9a1",
+      "id": "0dc26711-979d-41f5-b695-f537b7c8c5b0",
       "slug": "agentic-ai-foundation-2026",
       "eventDate": "2026-10-22",
       "datePrecision": "day",
@@ -33,7 +33,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "321935cf-1dd7-422d-be89-537eff8b20b0",
+      "id": "910f0c70-18e8-427b-bb8d-fa282348385b",
       "slug": "openai-google-cloud-2026",
       "eventDate": "2026-10-21",
       "datePrecision": "day",
@@ -64,7 +64,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7e249d71-2a14-454e-a6a9-ee21d79e93d2",
+      "id": "31302c7b-ea0d-4fa9-a8e9-81b9e42be12f",
       "slug": "anthropic-distillation-2026",
       "eventDate": "2026-10-20",
       "datePrecision": "day",
@@ -95,7 +95,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3e00c704-4866-4155-afc6-9e2dba6409c2",
+      "id": "b4be20da-c9c6-4bdb-baf2-d8423e698d83",
       "slug": "gemini-4-argon-2026",
       "eventDate": "2026-10-13",
       "datePrecision": "day",
@@ -128,7 +128,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "28faa12c-c747-41a9-8a6e-d2e3e84fdd0b",
+      "id": "f3e3943c-df86-4755-8a60-adf1a6e1c88d",
       "slug": "claude-haiku-5-5-2026",
       "eventDate": "2026-10-07",
       "datePrecision": "day",
@@ -158,7 +158,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "47fc7827-7679-455d-9ee7-5afe896f1640",
+      "id": "a3da0643-d8dc-4fb3-8f98-86a382faef0c",
       "slug": "gpt-6-1-2026",
       "eventDate": "2026-09-29",
       "datePrecision": "day",
@@ -189,7 +189,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "957042b2-892d-40b6-8247-3eecdb401018",
+      "id": "867dd48e-81e2-46b4-9ed4-ba7d037eb9a2",
       "slug": "claude-sonnet-5-5-2026",
       "eventDate": "2026-09-28",
       "datePrecision": "day",
@@ -219,7 +219,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "73cff0b4-0ca0-42ad-8b08-6526bbfaecad",
+      "id": "11a050f1-93e7-40b4-917b-146830a9d014",
       "slug": "gpt-6-2026",
       "eventDate": "2026-09-22",
       "datePrecision": "day",
@@ -251,7 +251,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5a4028fc-d1dc-4bfc-b044-f5f51a2c7cc5",
+      "id": "8b40e59d-5dce-4d78-a04c-34e8ee33225f",
       "slug": "claude-opus-5-5-2026",
       "eventDate": "2026-09-22",
       "datePrecision": "day",
@@ -282,7 +282,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "db8342cb-83cc-4f5d-9ba0-c9dcf7a57023",
+      "id": "f7a08855-dd81-4ff6-b0cd-87ebfdc1bfa9",
       "slug": "muse-2026",
       "eventDate": "2026-09-15",
       "datePrecision": "day",
@@ -313,7 +313,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "1d81d045-6b00-452d-9b41-36d62654eb93",
+      "id": "824e6bac-e7c6-48a2-b4e1-af928f96bb30",
       "slug": "agents-api-2026",
       "eventDate": "2026-09-10",
       "datePrecision": "day",
@@ -343,7 +343,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "01bfff1b-d4dc-4155-a862-733191bd2749",
+      "id": "265d46c2-27bb-45a8-8f8d-ab4087037a48",
       "slug": "gpt-6-astra-2026",
       "eventDate": "2026-09-03",
       "datePrecision": "day",
@@ -375,7 +375,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "12cf8ac2-fa9c-44f3-a471-76ee6f18b746",
+      "id": "c8d109d5-ded2-421d-b7ea-8f4411356810",
       "slug": "glm-5-3-2026",
       "eventDate": "2026-08-25",
       "datePrecision": "day",
@@ -409,7 +409,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a3ed36c4-cb59-4346-abdb-3a8d827fa657",
+      "id": "886796db-fb24-4fd1-ba2c-8ae0a33d6f17",
       "slug": "qwen3-8-2026",
       "eventDate": "2026-08-05",
       "datePrecision": "day",
@@ -441,7 +441,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "cdcd5c5e-8ea4-4896-b41c-619a680aec76",
+      "id": "9a56aaf2-9ec7-429c-9b6f-6568bce0fcaf",
       "slug": "claude-opus-5-2026",
       "eventDate": "2026-07-24",
       "datePrecision": "day",
@@ -472,7 +472,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "30a748b6-dee8-4f8a-90a5-562346f87726",
+      "id": "d5aba7ab-109b-4011-9db2-d846e8ee6694",
       "slug": "kimi-k3-2026",
       "eventDate": "2026-07-16",
       "datePrecision": "day",
@@ -503,7 +503,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ec3b87bf-62a8-4f88-9f85-7564db39e5db",
+      "id": "7b20f740-bc3d-4088-b8a0-5fa8bd59074f",
       "slug": "gpt-5-6-2026",
       "eventDate": "2026-07-09",
       "datePrecision": "day",
@@ -532,7 +532,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "fafd5d45-d866-4082-8e2d-80199ce0e789",
+      "id": "eb9c64e2-450f-4c82-8a38-39419cd0f9ce",
       "slug": "grok-4-5-2026",
       "eventDate": "2026-07-08",
       "datePrecision": "day",
@@ -562,7 +562,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a5a3c05c-3238-42af-9a2c-057ddaa24f79",
+      "id": "d84c385b-6256-46d9-b2a3-2a1c1244d330",
       "slug": "claude-sonnet-5-2026",
       "eventDate": "2026-06-30",
       "datePrecision": "day",
@@ -593,7 +593,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c70630e2-2155-49cf-9578-534090af915b",
+      "id": "4fc54c30-1b2c-4668-99bb-236da232115f",
       "slug": "glm-5-2-2026",
       "eventDate": "2026-06-16",
       "datePrecision": "day",
@@ -625,7 +625,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "50dca6cd-b503-417a-b220-38709f26e2e1",
+      "id": "28a3748e-30f7-4fa9-ab12-0fd11785fb37",
       "slug": "minimax-m3-2026",
       "eventDate": "2026-05-31",
       "datePrecision": "day",
@@ -657,7 +657,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "508a2361-47cb-41ee-8d0b-7533eca575fc",
+      "id": "e4c8c664-d004-49cd-bbed-59448466b301",
       "slug": "gemini-3-5-flash-2026",
       "eventDate": "2026-05-19",
       "datePrecision": "day",
@@ -687,7 +687,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3188c4cd-43e3-4d28-9dbd-fbcd70c0b066",
+      "id": "aa9b5436-9c72-4840-beac-0732b06c6656",
       "slug": "deepseek-v4-2026",
       "eventDate": "2026-04-23",
       "datePrecision": "day",
@@ -718,7 +718,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9faa0aa3-a8ab-4a86-8ab9-358b5860c1b8",
+      "id": "e8633576-759b-4a60-997f-44a5b443c3e9",
       "slug": "gpt-5-5-2026",
       "eventDate": "2026-04-23",
       "datePrecision": "day",
@@ -749,7 +749,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bd7a28ff-7e86-4fe2-b90d-8ba82cde65e0",
+      "id": "1ccee063-87bf-43ef-9fd5-6db85e1593b5",
       "slug": "glm-5-1-2026",
       "eventDate": "2026-04-03",
       "datePrecision": "day",
@@ -781,7 +781,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "906ecf8d-6c92-4839-85fc-2ed9fd22892f",
+      "id": "de4a19a6-0087-425a-a5ad-f74b16cdef95",
       "slug": "gpt-5-4-2026",
       "eventDate": "2026-03-05",
       "datePrecision": "day",
@@ -812,7 +812,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9b9c3251-9e8b-413e-ac94-2613b616a841",
+      "id": "959f5a22-eb0e-49fe-afff-e86c3cc51c6e",
       "slug": "gemini-3-1-2026",
       "eventDate": "2026-02-19",
       "datePrecision": "day",
@@ -842,7 +842,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "261071b8-d2f8-40b3-98bb-b1c2dcfe7c4b",
+      "id": "a2471297-fba4-480a-b100-1ae8bb5cb886",
       "slug": "qwen3-5-2026",
       "eventDate": "2026-02-16",
       "datePrecision": "day",
@@ -874,7 +874,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "1202b8c7-8c99-44e5-a7fc-81569f21f92a",
+      "id": "18834bbe-db6f-4caa-91ed-a379864f9808",
       "slug": "glm-5-2026",
       "eventDate": "2026-02-11",
       "datePrecision": "day",
@@ -905,7 +905,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7dcd6a32-7ec3-4704-ba4e-5dbcb7f4f752",
+      "id": "94ab8089-fd6a-4391-bffe-1de53e3bb676",
       "slug": "gpt-5-3-codex-2026",
       "eventDate": "2026-02-05",
       "datePrecision": "day",
@@ -937,7 +937,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "77665a0c-eb1d-42ee-a934-4f01549ef04e",
+      "id": "c32c5e62-f680-49ba-8d15-936538d28e5c",
       "slug": "glm-4-7-2025",
       "eventDate": "2025-12-22",
       "datePrecision": "day",
@@ -971,7 +971,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "032de005-5f42-4177-a5d8-db772224f3b6",
+      "id": "80c93d5e-e833-4738-a12a-3cd74056f442",
       "slug": "gemini-3-flash-2025",
       "eventDate": "2025-12-17",
       "datePrecision": "day",
@@ -1001,7 +1001,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "6d97caff-f2ac-4222-a34d-d33ff5b0269e",
+      "id": "6d72c293-943c-42dc-a562-63feecdf5389",
       "slug": "gpt-5-2-2025",
       "eventDate": "2025-12-11",
       "datePrecision": "day",
@@ -1031,7 +1031,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3e65ea3b-85f3-4557-a36c-a61d56c98e6d",
+      "id": "cf895b51-561a-453f-a860-de6c50cbaefe",
       "slug": "claude-opus-4-5-2025",
       "eventDate": "2025-11-24",
       "datePrecision": "day",
@@ -1061,7 +1061,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "219487ab-4814-4e34-bc72-52dbee696b2c",
+      "id": "ad1a0c66-4419-423b-8a63-a961c401156c",
       "slug": "gemini-3-2025",
       "eventDate": "2025-11-18",
       "datePrecision": "day",
@@ -1093,7 +1093,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "62d57d15-2602-40ce-a3c6-825079c8a019",
+      "id": "4ad0d921-f1fa-4f2a-b544-c01a5a186428",
       "slug": "gpt-5-1-2025",
       "eventDate": "2025-11-13",
       "datePrecision": "day",
@@ -1122,7 +1122,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7231c50a-7230-4aaf-ae81-8edffdd052b3",
+      "id": "e6fcd1ad-731d-4caa-a41e-4814f2a735b5",
       "slug": "kimi-k2-thinking-2025",
       "eventDate": "2025-11-06",
       "datePrecision": "day",
@@ -1153,7 +1153,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "fbf4da41-543a-431d-9bdd-d438c8e07d52",
+      "id": "6ad903c2-e74d-4b24-96bd-cb4d51e2b48b",
       "slug": "minimax-m2-2025",
       "eventDate": "2025-10-23",
       "datePrecision": "day",
@@ -1185,7 +1185,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8c307678-46af-4194-82d3-cb9067c71516",
+      "id": "7d668cd1-e1ff-45ae-95b2-4de654226b20",
       "slug": "sora-2-2025",
       "eventDate": "2025-09-30",
       "datePrecision": "day",
@@ -1217,7 +1217,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "20a54018-c939-4235-a92c-55ccea6daf29",
+      "id": "6ef2a5c0-0629-46a4-a633-85355655c8e8",
       "slug": "glm-4-6-2025",
       "eventDate": "2025-09-30",
       "datePrecision": "day",
@@ -1249,7 +1249,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b3c9e2d8-5594-4386-893c-b811f7c554c1",
+      "id": "a90b6f4a-15d6-4dc7-bb0e-353b5029fc53",
       "slug": "china-ai-plus-2025",
       "eventDate": "2025-08-26",
       "datePrecision": "day",
@@ -1282,7 +1282,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8984f815-9071-45b4-86b2-f2726301b75c",
+      "id": "2738842c-13c2-4ad6-95a8-a59f53983dff",
       "slug": "gpt-5-2025",
       "eventDate": "2025-08-07",
       "datePrecision": "day",
@@ -1312,7 +1312,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a5c894fc-39bf-41ff-8dbf-43a9478e177e",
+      "id": "cd129b3b-d6e5-4421-9c1d-c41a87ab6607",
       "slug": "eu-gpai-2025",
       "eventDate": "2025-08-02",
       "datePrecision": "day",
@@ -1343,7 +1343,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "0026e392-73ac-4fd5-970a-d7218ced9413",
+      "id": "a4e8090e-71aa-4e9e-a215-f46be45127e4",
       "slug": "glm-4-5-2025",
       "eventDate": "2025-07-28",
       "datePrecision": "day",
@@ -1376,7 +1376,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "20b052a4-5517-4844-97fd-f3da1e54f14d",
+      "id": "9c31c29d-d0a9-4911-80fc-c1742eadf0d3",
       "slug": "china-bci-policy-2025",
       "eventDate": "2025-07-23",
       "datePrecision": "day",
@@ -1409,7 +1409,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c3b3f7ff-4c2f-4552-8807-df6ac6dea6b2",
+      "id": "66fcceca-f80d-41e4-ab70-527ee1ccbc58",
       "slug": "kimi-k2-2025",
       "eventDate": "2025-07-11",
       "datePrecision": "day",
@@ -1441,7 +1441,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "0c614e02-146c-4885-944f-8b705c6203d5",
+      "id": "e1f54442-d36c-4b72-b3ee-38da93c72a49",
       "slug": "grok-4-2025",
       "eventDate": "2025-07-09",
       "datePrecision": "day",
@@ -1472,7 +1472,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "dd2d9f7a-5b11-47e9-86c6-06e95dbc69a1",
+      "id": "fe09e9d9-a9c7-4378-9069-fd47a78feca5",
       "slug": "claude-4-2025",
       "eventDate": "2025-05-22",
       "datePrecision": "day",
@@ -1502,7 +1502,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3670f177-f5cc-4bb7-9093-ef7208ec9a13",
+      "id": "8cb377af-f452-43a7-8efe-1b65e8c55be0",
       "slug": "qwen3-2025",
       "eventDate": "2025-04-29",
       "datePrecision": "day",
@@ -1533,7 +1533,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "57dd5b0c-bd9f-4a9b-a25f-0e38d5c14cbb",
+      "id": "681dcbb9-b66b-48b0-96b0-d7e389b6f226",
       "slug": "o3-2025",
       "eventDate": "2025-04-16",
       "datePrecision": "day",
@@ -1563,7 +1563,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8363de77-b5e1-4884-a8e6-23813a2e13f9",
+      "id": "98e78b20-7a7a-42bd-9439-ede9f828236a",
       "slug": "llama-4-2025",
       "eventDate": "2025-04-05",
       "datePrecision": "day",
@@ -1594,7 +1594,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "058c938d-a1c8-498f-913c-af4c1d531d28",
+      "id": "ccbd77b3-50f8-4057-af7f-22ee92dc7e48",
       "slug": "ai-2027-forecast-2025",
       "eventDate": "2025-04-03",
       "datePrecision": "day",
@@ -1628,7 +1628,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ff5bcb78-382d-4de1-ad70-b2d539611d49",
+      "id": "ea834658-0dac-4587-9630-3a338712721e",
       "slug": "gemini-2-5-pro-2025",
       "eventDate": "2025-03-25",
       "datePrecision": "day",
@@ -1659,7 +1659,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4d966296-56c1-451c-ad87-63661b1390b8",
+      "id": "d3e4a051-cd7b-4ea0-8b9e-d14652b7b4af",
       "slug": "gpt-4-5-2025",
       "eventDate": "2025-02-27",
       "datePrecision": "day",
@@ -1689,7 +1689,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "69ee1d8c-e6a0-4f6e-8606-0910efff5273",
+      "id": "6f398e67-fd8b-47e3-a7d7-408c6e0e7027",
       "slug": "claude-3-7-2025",
       "eventDate": "2025-02-24",
       "datePrecision": "day",
@@ -1719,7 +1719,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "950be17c-f730-49b2-819e-d53a153b71ce",
+      "id": "fea20c53-e8b1-4e64-8273-0323bc1d406e",
       "slug": "paris-ai-summit-2025",
       "eventDate": "2025-02-11",
       "datePrecision": "day",
@@ -1749,7 +1749,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "973e685d-4043-421f-bb47-035c13e0c16a",
+      "id": "382c4220-a693-4325-920b-657a48c066a7",
       "slug": "stargate-2025",
       "eventDate": "2025-01-21",
       "datePrecision": "day",
@@ -1782,7 +1782,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "48b734c3-6171-4738-ac6f-8780b0cf1d8b",
+      "id": "bc22aa2e-2596-4843-9d45-ac59bc291124",
       "slug": "deepseek-r1-2025",
       "eventDate": "2025-01-20",
       "datePrecision": "day",
@@ -1799,7 +1799,7 @@
       "confidence": "verified",
       "sourceCount": 2,
       "sourceFamilies": [
-        "official",
+        "arxiv",
         "huggingface"
       ],
       "tags": [
@@ -1819,7 +1819,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3383b1a4-59ba-4fdf-90b3-610e91b9528d",
+      "id": "37bb14b5-a093-40f5-9282-783d784f007b",
       "slug": "deepseek-v3-2024",
       "eventDate": "2024-12-26",
       "datePrecision": "day",
@@ -1836,7 +1836,7 @@
       "confidence": "verified",
       "sourceCount": 2,
       "sourceFamilies": [
-        "official",
+        "arxiv",
         "huggingface"
       ],
       "tags": [
@@ -1851,7 +1851,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "563c2ab8-a19e-4845-b0dd-711419a44db6",
+      "id": "e1c0d214-2b87-4549-8ce1-2ab9e0d62e73",
       "slug": "gemini-2-2024",
       "eventDate": "2024-12-11",
       "datePrecision": "day",
@@ -1882,7 +1882,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5acd8afe-1a93-43a4-8b05-19ca136e2db5",
+      "id": "15696131-e84c-4b7b-8037-cebfbfcbf31f",
       "slug": "hinton-nobel-lecture-2024",
       "eventDate": "2024-12-07",
       "datePrecision": "day",
@@ -1915,7 +1915,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "97cc7b43-7488-4bd6-96b1-691741690a19",
+      "id": "ddee5627-2584-48a9-b307-8171b9b24a75",
       "slug": "nobel-chemistry-2024",
       "eventDate": "2024-10-09",
       "datePrecision": "day",
@@ -1947,7 +1947,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "dacc2f2a-b9f6-4c60-b654-35e2f993a42e",
+      "id": "e23ce55d-2008-49f0-ba6c-613f2e63b3d3",
       "slug": "nobel-physics-2024",
       "eventDate": "2024-10-08",
       "datePrecision": "day",
@@ -1978,7 +1978,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "19df0144-3828-4f24-9c5f-3cec5b5ea08b",
+      "id": "fc5432c0-6683-4a3d-8dd5-d67caa005655",
       "slug": "o1-2024",
       "eventDate": "2024-09-12",
       "datePrecision": "day",
@@ -2010,7 +2010,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "0bfcbe73-6a90-4698-8df9-d269d8d1feef",
+      "id": "7344606e-8d52-42da-a3bc-beaa3a7681ff",
       "slug": "gpt-4o-2024",
       "eventDate": "2024-05-13",
       "datePrecision": "day",
@@ -2041,7 +2041,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "81f6d6fc-81f5-489b-b62b-9c966d1d8d30",
+      "id": "f0d63391-7a52-4764-b3be-0893a11421cb",
       "slug": "alphafold3-2024",
       "eventDate": "2024-05-08",
       "datePrecision": "day",
@@ -2055,10 +2055,11 @@
       "vendor": "Google",
       "series": null,
       "importance": 91,
-      "confidence": "likely",
+      "confidence": "verified",
       "sourceCount": 2,
       "sourceFamilies": [
-        "official"
+        "official",
+        "paper"
       ],
       "tags": [
         "alphafold",
@@ -2072,7 +2073,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "25dc1999-8d91-4d6c-9416-be47d8a9b86e",
+      "id": "c9749e13-248c-4677-8ddd-8842bc6611b3",
       "slug": "llama-3-2024",
       "eventDate": "2024-04-18",
       "datePrecision": "day",
@@ -2103,7 +2104,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c866596f-d6fc-4889-82c2-a941aa0f9b25",
+      "id": "0c5bebde-8aec-428a-9460-4ce53cb557a3",
       "slug": "eu-ai-act-adopted-2024",
       "eventDate": "2024-03-13",
       "datePrecision": "day",
@@ -2134,7 +2135,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bbce009c-8d6d-40aa-ae99-6bef17280389",
+      "id": "3d18b6e8-2f2f-4257-8d27-94496de4863f",
       "slug": "claude-3-2024",
       "eventDate": "2024-03-04",
       "datePrecision": "day",
@@ -2164,7 +2165,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3c389668-c5c7-4000-91a0-e14b5b5538c3",
+      "id": "b0c676e8-d832-4902-a81f-52f75e2426e0",
       "slug": "sora-2024",
       "eventDate": "2024-02-15",
       "datePrecision": "day",
@@ -2196,7 +2197,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5eb35e54-75ef-4860-9036-a0cd378c8cdf",
+      "id": "25f2ad55-f7bc-4fe6-babf-4075ceaf4f9f",
       "slug": "glm-4-2024",
       "eventDate": "2024-01-16",
       "datePrecision": "day",
@@ -2230,7 +2231,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c29d4144-0b14-4e5e-b731-d5149831dc0e",
+      "id": "2ba0b9ab-1ec7-4944-9ebb-d3305a5f71c2",
       "slug": "eu-ai-act-deal-2023",
       "eventDate": "2023-12-08",
       "datePrecision": "day",
@@ -2261,7 +2262,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b42c866f-8f60-41c9-8ccc-91852aae52f7",
+      "id": "889d0720-eb86-410b-b363-b708e5cea28d",
       "slug": "gemini-1-2023",
       "eventDate": "2023-12-06",
       "datePrecision": "day",
@@ -2292,7 +2293,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4d09744f-525a-4589-9135-a11f24d3b104",
+      "id": "7ea5bc64-87af-43b8-8a69-753bc83525bd",
       "slug": "us-ai-eo-2023",
       "eventDate": "2023-10-30",
       "datePrecision": "day",
@@ -2322,7 +2323,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "2074ac70-eb89-4d61-b495-0b5ad1be05a2",
+      "id": "8261ac07-61a1-4ffe-80b1-30244ac78900",
       "slug": "chatglm3-6b-2023",
       "eventDate": "2023-10-25",
       "datePrecision": "day",
@@ -2353,7 +2354,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9ec6a17c-efca-48fa-8ece-23f9c56b13dd",
+      "id": "444ae2fa-6c1f-49c1-8dda-a0e3c89f1dd8",
       "slug": "mistral-7b-2023",
       "eventDate": "2023-09-27",
       "datePrecision": "day",
@@ -2367,10 +2368,11 @@
       "vendor": "Mistral",
       "series": "Mistral",
       "importance": 80,
-      "confidence": "likely",
+      "confidence": "verified",
       "sourceCount": 2,
       "sourceFamilies": [
-        "official"
+        "official",
+        "arxiv"
       ],
       "tags": [
         "Mistral",
@@ -2383,7 +2385,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e9963e07-9e0f-46f1-99a2-b2eb6ed536d6",
+      "id": "199e1c8e-7afd-4014-8817-a96867bc3cbb",
       "slug": "china-genai-rules-2023",
       "eventDate": "2023-07-13",
       "datePrecision": "day",
@@ -2415,7 +2417,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bcae6488-203d-4b34-a56f-d1f7dd3d5ee7",
+      "id": "7f10c4be-fe3a-4559-8175-a1d809d14712",
       "slug": "chatglm2-6b-2023",
       "eventDate": "2023-06-25",
       "datePrecision": "day",
@@ -2446,7 +2448,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ecf6fcb5-09fa-48df-a528-4201bab41ceb",
+      "id": "0c19dd9c-953c-4b6e-b1cb-28e1b646f67b",
       "slug": "ai-risk-statement-2023",
       "eventDate": "2023-05-30",
       "datePrecision": "day",
@@ -2476,7 +2478,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "078fda7f-c699-45ab-9603-e63a745b45cd",
+      "id": "76679127-4cf1-434e-8cf2-dcd1f67b0e42",
       "slug": "pause-letter-2023",
       "eventDate": "2023-03-29",
       "datePrecision": "day",
@@ -2507,7 +2509,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "05c31df8-bf17-4b82-8605-a2f039ade6f6",
+      "id": "84614258-fa09-4e93-807a-fe9f23f74a0f",
       "slug": "us-copyright-2023",
       "eventDate": "2023-03-16",
       "datePrecision": "day",
@@ -2537,7 +2539,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b975877a-4ae5-4b25-80e8-e245527d4a0b",
+      "id": "e29077ad-48e2-4595-9b1e-5b1a608f7806",
       "slug": "gpt-4-2023",
       "eventDate": "2023-03-14",
       "datePrecision": "day",
@@ -2551,10 +2553,11 @@
       "vendor": "OpenAI",
       "series": "GPT",
       "importance": 97,
-      "confidence": "likely",
+      "confidence": "verified",
       "sourceCount": 2,
       "sourceFamilies": [
-        "official"
+        "official",
+        "arxiv"
       ],
       "tags": [
         "GPT",
@@ -2569,7 +2572,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9a12eabf-18b5-4b9a-b361-b9db66eb9e74",
+      "id": "18da3b76-a075-4e01-b7bb-3bd6272949f5",
       "slug": "claude-2023",
       "eventDate": "2023-03-14",
       "datePrecision": "day",
@@ -2600,7 +2603,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "48aa8b32-bfd8-4533-b63f-cd67fdf9008c",
+      "id": "c134025b-9bdd-4297-9eb5-aca53d5d8efe",
       "slug": "chatglm-6b-2023",
       "eventDate": "2023-03-14",
       "datePrecision": "day",
@@ -2632,7 +2635,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b4679cdf-0969-4ede-8a86-e196d7c924aa",
+      "id": "34a2f28a-b55c-4309-9ffd-c89612e6cecf",
       "slug": "llama-2023",
       "eventDate": "2023-02-24",
       "datePrecision": "day",
@@ -2646,10 +2649,11 @@
       "vendor": "Meta",
       "series": "Llama",
       "importance": 91,
-      "confidence": "likely",
+      "confidence": "verified",
       "sourceCount": 2,
       "sourceFamilies": [
-        "official"
+        "official",
+        "arxiv"
       ],
       "tags": [
         "Llama",
@@ -2663,7 +2667,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "0f7526d9-8f01-4293-9028-b0aa7953694b",
+      "id": "bd893068-8e99-4192-be02-a76cd43939d9",
       "slug": "chatgpt-2022",
       "eventDate": "2022-11-30",
       "datePrecision": "day",
@@ -2694,7 +2698,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "998eaafd-b4a7-4e64-98c7-ac96aa88375e",
+      "id": "9cae4f5b-0833-45bc-8d9a-17f0405de755",
       "slug": "stable-diffusion-2022",
       "eventDate": "2022-08-22",
       "datePrecision": "day",
@@ -2724,7 +2728,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ef5287fd-8ef5-4dc1-b554-bd851259f5d9",
+      "id": "52c23700-d365-4ec2-b88f-c645d8074600",
       "slug": "dalle2-2022",
       "eventDate": "2022-04-06",
       "datePrecision": "day",
@@ -2753,7 +2757,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "48d7a8a7-3bd9-4fa8-9484-1b707d45896a",
+      "id": "ca93648a-861f-43fc-8391-aba652381800",
       "slug": "chinchilla-2022",
       "eventDate": "2022-03-29",
       "datePrecision": "day",
@@ -2770,7 +2774,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "arxiv"
       ],
       "tags": [
         "缩放定律",
@@ -2785,7 +2789,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bd84bdce-4a48-4716-abd6-d96d20c81708",
+      "id": "40adabff-2da9-49d8-8d83-4b02f208cc62",
       "slug": "instructgpt-2022",
       "eventDate": "2022-03-04",
       "datePrecision": "day",
@@ -2802,7 +2806,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "arxiv"
       ],
       "tags": [
         "rlhf",
@@ -2818,7 +2822,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "332b54da-c946-458d-82fd-f3f485786401",
+      "id": "d3978f96-df06-4eb9-95d2-250eb0a2199d",
       "slug": "unesco-2021",
       "eventDate": "2021-11-23",
       "datePrecision": "day",
@@ -2848,7 +2852,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d1baa144-e225-4de1-9cf0-a4e71f9d0fe7",
+      "id": "f60d0802-2e9e-44ca-983b-055a11d94d32",
       "slug": "copilot-2021",
       "eventDate": "2021-06-29",
       "datePrecision": "day",
@@ -2879,7 +2883,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c99660cd-3708-4d28-a335-973b51abf168",
+      "id": "c6dea053-a34a-4491-a2ce-fe6dfd3c72e6",
       "slug": "clip-dalle-2021",
       "eventDate": "2021-01-05",
       "datePrecision": "day",
@@ -2893,10 +2897,11 @@
       "vendor": "OpenAI",
       "series": "DALL·E",
       "importance": 88,
-      "confidence": "likely",
+      "confidence": "verified",
       "sourceCount": 2,
       "sourceFamilies": [
-        "official"
+        "official",
+        "arxiv"
       ],
       "tags": [
         "clip",
@@ -2910,7 +2915,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4a6733ed-337a-451e-8143-0a02905bbd4b",
+      "id": "81087b2c-59e8-4a46-8444-af626c890608",
       "slug": "alphafold2-2020",
       "eventDate": "2020-11-30",
       "datePrecision": "day",
@@ -2924,10 +2929,11 @@
       "vendor": "Google",
       "series": null,
       "importance": 95,
-      "confidence": "likely",
+      "confidence": "verified",
       "sourceCount": 2,
       "sourceFamilies": [
-        "official"
+        "official",
+        "paper"
       ],
       "tags": [
         "alphafold",
@@ -2942,7 +2948,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "cd14ae7d-da2f-4827-9598-c126240407e6",
+      "id": "2e212e5f-4249-426a-a53b-704bc152cb31",
       "slug": "gpt-3-2020",
       "eventDate": "2020-05-28",
       "datePrecision": "day",
@@ -2956,9 +2962,10 @@
       "vendor": "OpenAI",
       "series": "GPT",
       "importance": 96,
-      "confidence": "likely",
+      "confidence": "verified",
       "sourceCount": 2,
       "sourceFamilies": [
+        "arxiv",
         "official"
       ],
       "tags": [
@@ -2973,7 +2980,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b0afd4a8-7d48-4f8f-bde6-3b7aa8a61d8c",
+      "id": "53a0999f-d969-4746-985b-c92029430695",
       "slug": "alphastar-2019",
       "eventDate": "2019-10-30",
       "datePrecision": "day",
@@ -3007,7 +3014,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ae5561d8-05cc-4e84-be9b-9f124032dad5",
+      "id": "84b69c0e-ef80-44ff-a504-e6cca1e0084f",
       "slug": "bitter-lesson-2019",
       "eventDate": "2019-03-13",
       "datePrecision": "day",
@@ -3041,7 +3048,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "65aeaa15-0990-4b35-be3c-2a17d03b03cb",
+      "id": "038e52b8-607c-42b4-bb55-b506f0806224",
       "slug": "gpt-2-2019",
       "eventDate": "2019-02-14",
       "datePrecision": "day",
@@ -3071,7 +3078,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "700fccf8-68da-4931-ab08-d9d4e2b6f42a",
+      "id": "b8b5eadd-83ff-40de-ad94-02a42d61712f",
       "slug": "bert-2018",
       "eventDate": "2018-10-11",
       "datePrecision": "day",
@@ -3088,7 +3095,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "arxiv"
       ],
       "tags": [
         "bert",
@@ -3104,7 +3111,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "13ced92e-a592-41ef-ae51-7318b049aa3d",
+      "id": "5ddd92b0-d891-41e2-8310-ed6fa3728f3d",
       "slug": "gpt-1-2018",
       "eventDate": "2018-06-11",
       "datePrecision": "day",
@@ -3137,7 +3144,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "91c98cbe-1a45-42e1-8ca2-c89b9868d360",
+      "id": "c16e3bee-4134-4e5f-9f43-bb4684caef3d",
       "slug": "alphago-zero-2017",
       "eventDate": "2017-10-19",
       "datePrecision": "day",
@@ -3171,7 +3178,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "506b286b-5da2-4454-9f79-a0c0382b961c",
+      "id": "b4d3ab98-885d-42b7-be33-abe76bbacebd",
       "slug": "china-ai-plan-2017",
       "eventDate": "2017-07-20",
       "datePrecision": "day",
@@ -3202,7 +3209,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "0a841443-b4dd-4d03-8418-20988264bf5b",
+      "id": "0e49e606-7f36-4e91-9029-9942e8630c3d",
       "slug": "transformer-2017",
       "eventDate": "2017-06-12",
       "datePrecision": "day",
@@ -3219,7 +3226,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "arxiv"
       ],
       "tags": [
         "注意力机制",
@@ -3234,7 +3241,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "54be332b-4536-44b5-aa4e-0be8548be9b5",
+      "id": "6fb76913-fd3e-4ae8-a775-c2e95d6d6600",
       "slug": "wavenet-2016",
       "eventDate": "2016-09",
       "datePrecision": "month",
@@ -3265,7 +3272,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d5dd6ab9-321f-472a-811d-0ddc32a2d1f2",
+      "id": "c74b6cd4-454d-45d3-bf76-667b5c72bbaf",
       "slug": "alphago-match-2016",
       "eventDate": "2016-03-15",
       "datePrecision": "day",
@@ -3279,9 +3286,10 @@
       "vendor": "Google",
       "series": null,
       "importance": 94,
-      "confidence": "likely",
+      "confidence": "verified",
       "sourceCount": 2,
       "sourceFamilies": [
+        "paper",
         "official"
       ],
       "tags": [
@@ -3298,7 +3306,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "84284630-2ae8-41e9-9eb9-3b1b564958f3",
+      "id": "08f3dfd0-6c5d-4793-9046-06c0feae436c",
       "slug": "alphago-2016",
       "eventDate": "2016-01-27",
       "datePrecision": "day",
@@ -3315,7 +3323,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "paper"
       ],
       "tags": [
         "alphago",
@@ -3331,7 +3339,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bd4340d3-563c-44ff-bd65-50fad2537216",
+      "id": "206aafbb-7989-4e75-a175-45ef1c350fa3",
       "slug": "resnet-2015",
       "eventDate": "2015-12-10",
       "datePrecision": "day",
@@ -3348,7 +3356,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "arxiv"
       ],
       "tags": [
         "resnet",
@@ -3362,7 +3370,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "183a2caf-a17c-4e3f-ad6b-5f48f8b2e9fc",
+      "id": "ae45661e-2d97-4869-b58e-cb92bef5eb46",
       "slug": "dqn-2015",
       "eventDate": "2015-02-26",
       "datePrecision": "day",
@@ -3394,7 +3402,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a551c8a5-5846-4fd9-97bf-1fa85bf0bf88",
+      "id": "29e8df35-eebc-4deb-8cb7-20089ff917c5",
       "slug": "seq2seq-2014",
       "eventDate": "2014-09-10",
       "datePrecision": "day",
@@ -3411,7 +3419,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "arxiv"
       ],
       "tags": [
         "序列到序列",
@@ -3423,7 +3431,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5e38e3a6-ae60-4e50-9bf9-a33d9a19829a",
+      "id": "8183d1be-ee00-48f2-9ec2-4bd722909aa9",
       "slug": "gan-2014",
       "eventDate": "2014-06-10",
       "datePrecision": "day",
@@ -3440,7 +3448,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "arxiv"
       ],
       "tags": [
         "gan",
@@ -3453,7 +3461,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "306d346b-9422-4e79-b6ff-96585b51d600",
+      "id": "00c3fdbe-18d4-4180-9bd3-8992403d44a2",
       "slug": "word2vec-2013",
       "eventDate": "2013-01-16",
       "datePrecision": "day",
@@ -3470,7 +3478,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "arxiv"
       ],
       "tags": [
         "word2vec",
@@ -3485,7 +3493,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4657d900-49be-4279-937f-52e7e30df22d",
+      "id": "c1aed048-4f6e-4bb2-a14f-34f3110ea348",
       "slug": "alexnet-2012",
       "eventDate": "2012-12-03",
       "datePrecision": "day",
@@ -3502,7 +3510,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "paper"
       ],
       "tags": [
         "alexnet",
@@ -3517,7 +3525,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "6d072acf-0f39-4499-b7a2-fb8aa64270a2",
+      "id": "1f52ee04-d055-4e50-9f93-d1ce40675f90",
       "slug": "siri-2011",
       "eventDate": "2011-10-04",
       "datePrecision": "day",
@@ -3547,7 +3555,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8a5ede7a-e8b6-4e98-8a07-a404df7fc453",
+      "id": "dfea6b0c-1d86-4e2f-ae80-ba7051b9a47c",
       "slug": "watson-2011",
       "eventDate": "2011-02-14",
       "datePrecision": "day",
@@ -3576,7 +3584,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a1cb86d7-0aca-4bbd-b9ca-7cbe0968129a",
+      "id": "13cb0d02-71b4-49fb-b5f6-fe277455dffd",
       "slug": "imagenet-2009",
       "eventDate": "2009-06",
       "datePrecision": "month",
@@ -3607,7 +3615,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "73fab7e0-b189-4f13-915b-787fd9686f2b",
+      "id": "b1898379-5160-4a50-99a4-b563ed3bce20",
       "slug": "dbn-2006",
       "eventDate": "2006-07-28",
       "datePrecision": "day",
@@ -3624,7 +3632,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "paper"
       ],
       "tags": [
         "深度学习",
@@ -3638,7 +3646,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "78bb6396-0ef0-4ca0-a193-6d4d21084a42",
+      "id": "7c0811b6-f403-4b23-ada5-e2a39ea11291",
       "slug": "darpa-grand-challenge-2005",
       "eventDate": "2005-10-08",
       "datePrecision": "day",
@@ -3668,7 +3676,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "0605b9ab-c83d-450e-8c43-8ddcbe60e72c",
+      "id": "03b67be7-b6d1-4eac-a454-c4e4a67465e6",
       "slug": "roomba-2002",
       "eventDate": "2002-09",
       "datePrecision": "month",
@@ -3699,7 +3707,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "92db8b66-ffde-4bad-8a4f-21186abbe976",
+      "id": "acbbeb8b-03dd-4e20-a470-acf94b82a97a",
       "slug": "lenet5-1998",
       "eventDate": "1998-11",
       "datePrecision": "month",
@@ -3729,7 +3737,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "356a4fc4-e679-49e4-8b6a-5cbc803eb967",
+      "id": "cf2c9634-e1e3-40f6-8c96-a8b0fd1ae32b",
       "slug": "lstm-1997",
       "eventDate": "1997-11",
       "datePrecision": "month",
@@ -3746,7 +3754,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "paper"
       ],
       "tags": [
         "lstm",
@@ -3758,7 +3766,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "21f856c4-2e12-4472-8381-06475a24e609",
+      "id": "200b6564-40a7-4528-8808-27a3443ad38d",
       "slug": "robocup-1997",
       "eventDate": "1997-08",
       "datePrecision": "month",
@@ -3789,7 +3797,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "71e23466-789a-433e-9048-1c0cc7130c76",
+      "id": "205f38ba-62d6-4a89-8c02-32e970cc23cb",
       "slug": "deep-blue-1997",
       "eventDate": "1997-05-11",
       "datePrecision": "day",
@@ -3819,7 +3827,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b5253c71-d7a1-492a-a126-31d62319e196",
+      "id": "20345e37-ade6-44f7-a5f6-b5c1bb4a58f1",
       "slug": "svm-1995",
       "eventDate": "1995-09",
       "datePrecision": "month",
@@ -3849,7 +3857,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9c5aa1e8-d59b-4258-900f-56f06c024336",
+      "id": "3ef59b8a-aa3d-408a-89ba-faac888e9130",
       "slug": "td-gammon-1992",
       "eventDate": "1992-06",
       "datePrecision": "month",
@@ -3882,7 +3890,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "80ac3c66-b665-4347-84ab-7361bfd14a50",
+      "id": "2fd4bebe-3e29-4fa4-887a-e88e29fb68e8",
       "slug": "lenet-1989",
       "eventDate": "1989-06",
       "datePrecision": "month",
@@ -3912,7 +3920,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "1d88adfd-9d89-4648-b897-86bc25619bf4",
+      "id": "4dc75abe-6bf6-4f22-be59-a219a637b2a1",
       "slug": "brooks-subsumption-1987",
       "eventDate": "1987",
       "datePrecision": "year",
@@ -3945,7 +3953,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "874bf606-b7ba-4b83-99ce-895c3b6d6b7d",
+      "id": "74ca6b46-2860-4635-971b-c70674e3e2c7",
       "slug": "backprop-1986",
       "eventDate": "1986-10-09",
       "datePrecision": "day",
@@ -3962,7 +3970,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "paper"
       ],
       "tags": [
         "反向传播",
@@ -3976,7 +3984,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "fc20f13e-f9e7-4edc-bf5c-8a81dd9228b4",
+      "id": "80b2f77c-ee68-4976-b65a-c83f9a56db1d",
       "slug": "hopfield-1982",
       "eventDate": "1982-04",
       "datePrecision": "month",
@@ -4006,7 +4014,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3da47b85-2d66-48f3-8223-b1a88a836338",
+      "id": "4508f65c-30ee-4cb2-991f-6f0507a3f9b0",
       "slug": "fifth-generation-1982",
       "eventDate": "1982-04",
       "datePrecision": "month",
@@ -4037,7 +4045,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c6e01b38-566e-46b4-8bc9-8261d7ef23e1",
+      "id": "4cf680bf-0bbb-4e32-8f82-348573a5e55b",
       "slug": "xcon-1980",
       "eventDate": "1980",
       "datePrecision": "year",
@@ -4068,7 +4076,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "1f71b256-6caa-4529-aad4-d23a55336780",
+      "id": "5f28d5f3-a3fe-4fb0-8d7d-807238b61c18",
       "slug": "simon-nobel-1978",
       "eventDate": "1978-10",
       "datePrecision": "month",
@@ -4098,7 +4106,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "dfa0694d-e475-4ad9-8ea2-34bd09bb363b",
+      "id": "a1f68eeb-04ec-4206-8356-2ad6c130058c",
       "slug": "mycin-1974",
       "eventDate": "1974",
       "datePrecision": "year",
@@ -4129,7 +4137,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4b0977cb-7ce8-4d73-a576-28ca5519074b",
+      "id": "775112a3-d371-4a65-8315-463123ecdd2d",
       "slug": "lighthill-report-1973",
       "eventDate": "1973-07",
       "datePrecision": "month",
@@ -4159,7 +4167,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8bb3464b-49e0-4551-ad23-7ba5ad136f02",
+      "id": "51992312-d4e6-431f-b7c9-9048ef7e98cf",
       "slug": "prolog-1972",
       "eventDate": "1972",
       "datePrecision": "year",
@@ -4190,7 +4198,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a2bef9dd-b7f0-4d31-ac54-e0c93b1245cc",
+      "id": "f29f8846-b346-4e48-b9d3-e199f3b889da",
       "slug": "shrdlu-1971",
       "eventDate": "1971",
       "datePrecision": "year",
@@ -4221,7 +4229,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b90fe96a-a22b-4521-a43f-f4c62a61e2ee",
+      "id": "fa24edad-f711-4a13-9871-c772022e0f78",
       "slug": "perceptrons-1969",
       "eventDate": "1969",
       "datePrecision": "year",
@@ -4250,7 +4258,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a5323052-1b99-41ac-a046-230b673653cf",
+      "id": "85367529-6347-45d5-9286-832e50b7b6a9",
       "slug": "shakey-1969",
       "eventDate": "1969",
       "datePrecision": "year",
@@ -4280,7 +4288,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "36826b13-d511-4054-8ff5-94bdfcb0ae38",
+      "id": "d9d9002a-f90e-48e3-bd9a-3bd55ab0a652",
       "slug": "eliza-1966",
       "eventDate": "1966-01",
       "datePrecision": "month",
@@ -4297,7 +4305,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "paper"
       ],
       "tags": [
         "eliza",
@@ -4310,7 +4318,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7b8ed07c-3620-4826-b227-d0dc4a807370",
+      "id": "9a90a45c-dfef-4727-aa3c-968f59beeca3",
       "slug": "fuzzy-sets-1965",
       "eventDate": "1965-06",
       "datePrecision": "month",
@@ -4341,7 +4349,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "896d1cdb-8ea7-4ff0-8e3a-c10e07e0de4b",
+      "id": "25988ade-3449-4922-9f2d-97cc0094b0ee",
       "slug": "dendral-1965",
       "eventDate": "1965",
       "datePrecision": "year",
@@ -4371,7 +4379,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "199c5b77-e16d-4e3e-ad3e-11db4b67c0d2",
+      "id": "70cbea11-c055-4500-a189-ddbab17cb859",
       "slug": "unimate-1961",
       "eventDate": "1961",
       "datePrecision": "year",
@@ -4402,7 +4410,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7c430bc1-d2bd-4a1e-b5f8-1197fa445763",
+      "id": "441b7da6-2b32-4a78-b8fe-5051400c1c45",
       "slug": "samuel-checkers-1959",
       "eventDate": "1959-07",
       "datePrecision": "month",
@@ -4432,7 +4440,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e896ceeb-4358-4285-897b-fd505e5a4839",
+      "id": "ba8210b7-4b26-4b3b-be67-13d7a1897380",
       "slug": "mit-ai-lab-1959",
       "eventDate": "1959-07",
       "datePrecision": "month",
@@ -4463,7 +4471,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d6aed4e4-f341-4e94-8df1-2947df0ebce1",
+      "id": "6ffd9bea-8107-42df-936f-4554b034b737",
       "slug": "gps-1959",
       "eventDate": "1959",
       "datePrecision": "year",
@@ -4494,7 +4502,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bfe4892c-a489-4132-8589-b2bb570ef820",
+      "id": "b163a813-7a98-468c-a22b-d286cb755f3f",
       "slug": "lisp-1958",
       "eventDate": "1958-10",
       "datePrecision": "month",
@@ -4524,7 +4532,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d2d0e0bc-5de0-4c31-bac7-db2b2ba0665f",
+      "id": "6f60a8dd-5185-44eb-b4dc-5ce76bd7f5bb",
       "slug": "perceptron-1958",
       "eventDate": "1958-01",
       "datePrecision": "month",
@@ -4541,7 +4549,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "paper"
       ],
       "tags": [
         "感知机",
@@ -4555,7 +4563,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f7475d2b-0a30-44af-aaeb-b14ccebf013d",
+      "id": "7d2a4fd2-f346-43a0-84ba-984974f1c2de",
       "slug": "logic-theorist-1956",
       "eventDate": "1956-08",
       "datePrecision": "month",
@@ -4585,7 +4593,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "924e8dc9-a5ad-4bab-9d83-73050e5d607e",
+      "id": "12907ac8-4a06-4052-bf57-dab092428b38",
       "slug": "dartmouth-1956",
       "eventDate": "1956",
       "datePrecision": "year",
@@ -4602,7 +4610,7 @@
       "confidence": "likely",
       "sourceCount": 1,
       "sourceFamilies": [
-        "official"
+        "paper"
       ],
       "tags": [
         "达特茅斯会议",
@@ -4616,7 +4624,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "aa245082-42ca-45b5-a270-57169c7e6481",
+      "id": "22d3dfd0-b3c2-4403-a923-c9b034fd983c",
       "slug": "turing-1950",
       "eventDate": "1950-10",
       "datePrecision": "month",
@@ -4633,7 +4641,7 @@
       "confidence": "likely",
       "sourceCount": 2,
       "sourceFamilies": [
-        "official"
+        "paper"
       ],
       "tags": [
         "图灵测试",
@@ -4645,7 +4653,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "38962dfe-52a3-4ea0-a90e-640287129d85",
+      "id": "b59e9901-6382-4bba-b82c-1f43062e9cf0",
       "slug": "hebb-1949",
       "eventDate": "1949",
       "datePrecision": "year",
@@ -4676,7 +4684,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "02bde6e0-6401-4114-8f8f-9d154c36b339",
+      "id": "4de48933-6499-41dd-823d-f3cedf03246f",
       "slug": "as-we-may-think-1945",
       "eventDate": "1945-07",
       "datePrecision": "month",
@@ -4706,7 +4714,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e8536448-350e-4755-975d-7d2761051c2c",
+      "id": "c4ba102c-b06c-47e0-b981-34ef646e2fef",
       "slug": "mcculloch-pitts-1943",
       "eventDate": "1943-12",
       "datePrecision": "month",
@@ -4737,7 +4745,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ca696aa8-aa96-4fde-81bb-706532217266",
+      "id": "99993315-cf1d-442f-86db-c3d116b21918",
       "slug": "cybernetics-1943",
       "eventDate": "1943-01",
       "datePrecision": "month",
@@ -4768,7 +4776,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "dd34b97c-8251-4f9d-8f04-64baa4e3e522",
+      "id": "f9405a12-eec5-4db0-b124-465e3559f4c6",
       "slug": "shannon-switching-1938",
       "eventDate": "1938",
       "datePrecision": "year",
@@ -4799,7 +4807,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4d730b65-1e9c-45fd-8e82-d68cba00a366",
+      "id": "a00a38fe-2574-4ecd-9908-e0d5a2d6090c",
       "slug": "turing-machine-1936",
       "eventDate": "1936-05",
       "datePrecision": "month",
@@ -4830,7 +4838,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d83a50f8-a496-48c6-b74a-60c7a0fef227",
+      "id": "3b71349c-47d7-4c2b-8b59-ad8170624e9f",
       "slug": "godel-1931",
       "eventDate": "1931",
       "datePrecision": "year",
@@ -4861,7 +4869,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c08ae3f6-41eb-4b30-9002-ed673fe814ca",
+      "id": "5a060cb3-2e90-4442-9e1f-b6b25cc06dd0",
       "slug": "rur-1920",
       "eventDate": "1920",
       "datePrecision": "year",
@@ -4891,7 +4899,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "754a1819-13f7-4c38-ba8c-5db3a3350e51",
+      "id": "94c5b78f-3085-4bd3-bcf0-d19ab9a1f495",
       "slug": "el-ajedrecista-1912",
       "eventDate": "1912",
       "datePrecision": "year",
@@ -4929,6 +4937,6 @@
     "lastStatus": "succeeded",
     "running": false,
     "stale": true,
-    "seedVersion": "2026.10.25.1"
+    "seedVersion": "2026.10.28.1"
   }
 }

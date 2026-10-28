@@ -1,6 +1,6 @@
 {
   "name": "qoder-site-react-starter",
-  "version": "0.11.0",
+  "version": "0.12.0",
   "private": true,
   "engines": {
     "node": ">=22.12.0 <23"

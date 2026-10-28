@@ -267,6 +267,36 @@ function modalityText(inputs) {
   return `${[...new Set(list)].join("、")}输入`;
 }
 
+const MAX_CARD_CHARS = 180;
+
+/** Collapse a model card into one line, cut at a word boundary. */
+function cardTextOf(value) {
+  let text = String(value || "")
+    .replace(/\s+/g, " ")
+    .trim();
+  if (text.length > MAX_CARD_CHARS) {
+    text = `${text.slice(0, MAX_CARD_CHARS).replace(/\s+\S*$/, "").replace(/[ ,;.]+$/, "")}…`;
+  }
+  return text;
+}
+
+/**
+ * The vendor's own model card, with the mechanical facts after it.
+ *
+ * The catalogue's `description` is the only capability evidence this source
+ * carries: it names the architecture, the active parameters, or — for a
+ * re-listing — the model it duplicates. A summary that lists nothing but the
+ * context window reads to the review panel as 「仅目录条目」 and scores as noise,
+ * which is how every catalogue model used to end up excluded at 40-50 while its
+ * card described a new architecture.
+ */
+function modelCardSummary(card, { headline, facts }) {
+  const text = cardTextOf(card);
+  const tail = facts.filter(Boolean).join("，");
+  if (!text) return tail ? `${headline}，${tail}。` : `${headline}。`;
+  return tail ? `${text}（${headline}，${tail}）` : text;
+}
+
 function isoDay(value) {
   if (!value) return "";
   const date = new Date(value);
@@ -433,18 +463,22 @@ function openRouterCandidates(payload) {
     const date = isoDay(model.created);
     const ctx = formatContext(model.contextLength);
     const modality = modalityText(model.inputModalities) || model.modality || "";
-    const parts = [`${displayName} 由 ${vendor} 提供，${openWeights ? "开放权重" : "闭源 API"}模型。`];
-    if (ctx) parts.push(`上下文窗口 ${ctx}。`);
-    if (modality) parts.push(`支持${modality}，输出为文本。`);
-    parts.push("条目由 OpenRouter 模型目录自动汇总。");
+    const parts = modelCardSummary(model.description, {
+      headline: `${displayName} 由 ${vendor} 提供`,
+      facts: [
+        openWeights ? "开放权重" : "闭源 API",
+        ctx ? `上下文窗口 ${ctx}` : "",
+        modality ? `支持${modality}` : "",
+      ],
+    });
     out.push(
       baseCandidate({
         key: `openrouter:${model.id}`,
         category: "model",
         title: `${vendor} 发布 ${displayName}`,
         titleEn: model.name,
-        summary: parts.join(""),
-        summaryKind: "template",
+        summary: parts,
+        summaryKind: cardTextOf(model.description) ? "card" : "template",
         eventDate: date,
         organization: vendor,
         modelName: displayName,
@@ -500,8 +534,7 @@ function hfCandidates(payload) {
     const downloads = Number(model.downloads) || 0;
     const summary =
       `${displayName} 在 Hugging Face 开源发布，作者 ${vendor}。` +
-      `当前获得 ${likes.toLocaleString("en-US")} 次点赞、${downloads.toLocaleString("en-US")} 次下载。` +
-      "条目由 Hugging Face 模型库自动汇总。";
+      `当前获得 ${likes.toLocaleString("en-US")} 次点赞、${downloads.toLocaleString("en-US")} 次下载。`;
     out.push(
       baseCandidate({
         key: `hf:${model.id}`,

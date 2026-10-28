@@ -7,7 +7,10 @@
  * split or unparseable panel leaves the candidate out (fail closed).
  */
 
-export const RUBRIC_VERSION = "chronicle-v3";
+// v4: a catalogue model reaches the panel as its vendor model card instead of a
+// template that listed the context window and nothing else, and a tier suffix
+// costs 4 points instead of 8.
+export const RUBRIC_VERSION = "chronicle-v4";
 export const INCLUDE_SCORE = 75;
 // One judge per domestic vendor: DeepSeek, Qwen, GLM, Kimi, MiniMax. Five
 // vendors rather than five copies of one model, so no single vendor's bias can
@@ -158,7 +161,13 @@ function ruleScoreOf(candidate) {
   if (BINDING_POLICY.test(title) && candidate.category === "policy") score += 10;
 
   if (candidate.category === "model" && MAJOR_MODEL.test(title)) {
-    score += hasTierVariant(candidate) ? -8 : 6;
+    // A tier suffix now costs half of what it used to. At -8 the penalty fired on
+    // every member of a family — `Gemini 3.8 Flash` is the flagship of its
+    // generation, but the catalogue rarely lists the `Pro` it would be redundant
+    // with, so the only entry the family had was the one penalised, and 33 points
+    // kept it off the ballot entirely. -4 leaves it above RULE_PANEL_THRESHOLD
+    // for the panel to judge on the model card.
+    score += hasTierVariant(candidate) ? -4 : 6;
   }
   if (/\d+\.\d+/.test(candidate.modelName || "")) score -= 4;
 

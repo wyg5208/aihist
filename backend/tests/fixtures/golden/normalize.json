@@ -1,6 +1,6 @@
 {
-  "exportedAt": "2026-10-28T08:13:35.086Z",
-  "nowMs": 1793175215086,
+  "exportedAt": "2026-10-28T09:52:12.098Z",
+  "nowMs": 1793181132098,
   "failed": [],
   "candidates": [
     {
@@ -12,7 +12,7 @@
       "sortDate": "2026-10-19",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "MiniMax",
       "modelName": "MiniMax M3.1 Flash",
       "modelKey": "minimax-m3.1-flash",
@@ -31,6 +31,9 @@
       "tags": [
         "开源",
         "MiniMax",
+        "智能体",
+        "多模态",
+        "评测",
         "国内"
       ],
       "signals": {
@@ -80,7 +83,7 @@
       "sortDate": "2026-10-17",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V4.1 Flash 1017",
       "modelKey": "deepseek-v4.1-flash",
@@ -148,7 +151,7 @@
       "sortDate": "2026-10-17",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Elorian",
       "modelName": "Glimpse",
       "modelKey": "glimpse",
@@ -165,7 +168,9 @@
       ],
       "tags": [
         "闭源",
-        "Elorian"
+        "Elorian",
+        "推理",
+        "多模态"
       ],
       "signals": {
         "headLab": false,
@@ -214,7 +219,7 @@
       "sortDate": "2026-10-16",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Reflection",
       "modelName": "Beam 1.0 501B A23B",
       "modelKey": "beam-1.0-501b-a23b",
@@ -234,7 +239,10 @@
       ],
       "tags": [
         "开源",
-        "Reflection"
+        "Reflection",
+        "推理",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -281,7 +289,7 @@
       "sortDate": "2026-10-16",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Inception",
       "modelName": "Mercury 3",
       "modelKey": "mercury-3",
@@ -299,7 +307,9 @@
       ],
       "tags": [
         "闭源",
-        "Inception"
+        "Inception",
+        "智能体",
+        "图像生成"
       ],
       "signals": {
         "headLab": false,
@@ -346,7 +356,7 @@
       "sortDate": "2026-10-15",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Moondream",
       "modelName": "Moondream 3 Preview",
       "modelKey": "moondream3",
@@ -364,7 +374,8 @@
       ],
       "tags": [
         "开源",
-        "Moondream"
+        "Moondream",
+        "多模态"
       ],
       "signals": {
         "headLab": false,
@@ -412,7 +423,7 @@
       "sortDate": "2026-10-15",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Moondream",
       "modelName": "Moondream 3.1",
       "modelKey": "moondream3.1-9b-a2b",
@@ -429,7 +440,8 @@
       ],
       "tags": [
         "开源",
-        "Moondream"
+        "Moondream",
+        "多模态"
       ],
       "signals": {
         "headLab": false,
@@ -477,7 +489,7 @@
       "sortDate": "2026-10-15",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Muse Spark Open",
       "modelKey": "muse-spark-open",
@@ -497,6 +509,8 @@
       "tags": [
         "开源",
         "Meta",
+        "智能体",
+        "编程",
         "语音"
       ],
       "signals": {
@@ -548,7 +562,7 @@
       "sortDate": "2026-10-15",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "NVIDIA",
       "modelName": "Nemotron 3.5 Super VL",
       "modelKey": "nemotron-3.5-super-vl",
@@ -568,6 +582,7 @@
       "tags": [
         "开源",
         "NVIDIA",
+        "多模态",
         "芯片"
       ],
       "signals": {
@@ -617,7 +632,7 @@
       "sortDate": "2026-10-15",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Unbiased",
       "modelName": "Pareto 26.10",
       "modelKey": "pareto-26.10",
@@ -634,7 +649,11 @@
       ],
       "tags": [
         "闭源",
-        "Unbiased"
+        "Unbiased",
+        "智能体",
+        "多模态",
+        "编程",
+        "搜索"
       ],
       "signals": {
         "headLab": false,
@@ -682,7 +701,7 @@
       "sortDate": "2026-10-13",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Unbiased",
       "modelName": "Pareto 26.9",
       "modelKey": "pareto-26.9",
@@ -699,7 +718,11 @@
       ],
       "tags": [
         "闭源",
-        "Unbiased"
+        "Unbiased",
+        "智能体",
+        "多模态",
+        "编程",
+        "搜索"
       ],
       "signals": {
         "headLab": false,
@@ -747,7 +770,7 @@
       "sortDate": "2026-10-13",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Liquid AI",
       "modelName": "LFM2.5-24B-A2B",
       "modelKey": "lfm-2.5-24b-a2b",
@@ -766,7 +789,9 @@
       ],
       "tags": [
         "开源",
-        "Liquid AI"
+        "Liquid AI",
+        "推理",
+        "智能体"
       ],
       "signals": {
         "headLab": true,
@@ -813,7 +838,7 @@
       "sortDate": "2026-10-13",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 4 Argon",
       "modelKey": "gemini-4-argon",
@@ -833,6 +858,10 @@
       "tags": [
         "闭源",
         "Google",
+        "推理",
+        "智能体",
+        "编程",
+        "科学",
         "语音"
       ],
       "signals": {
@@ -884,7 +913,7 @@
       "sortDate": "2026-10-13",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Scaledown",
       "modelName": "Summarize",
       "modelKey": "summarize",
@@ -950,7 +979,7 @@
       "sortDate": "2026-10-13",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Scaledown",
       "modelName": "Extract",
       "modelKey": "extract",
@@ -1016,7 +1045,7 @@
       "sortDate": "2026-10-12",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Muse Wonder",
       "modelKey": "muse-wonder",
@@ -1035,6 +1064,8 @@
       "tags": [
         "闭源",
         "Meta",
+        "推理",
+        "智能体",
         "语音"
       ],
       "signals": {
@@ -1086,7 +1117,7 @@
       "sortDate": "2026-10-08",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阶跃星辰",
       "modelName": "Step 5 Preview",
       "modelKey": "step-5",
@@ -1106,6 +1137,7 @@
       "tags": [
         "开源",
         "阶跃星辰",
+        "智能体",
         "国内"
       ],
       "signals": {
@@ -1155,7 +1187,7 @@
       "sortDate": "2026-10-07",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Haiku 5.5",
       "modelKey": "claude-haiku-5.5",
@@ -1223,7 +1255,7 @@
       "sortDate": "2026-10-06",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Nano Banana 2.1",
       "modelKey": "gemini-nano-banana-2.1",
@@ -1242,7 +1274,8 @@
       ],
       "tags": [
         "闭源",
-        "Google"
+        "Google",
+        "图像生成"
       ],
       "signals": {
         "headLab": true,
@@ -1290,7 +1323,7 @@
       "sortDate": "2026-10-06",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Large 4",
       "modelKey": "mistral-large-4-0",
@@ -1308,7 +1341,11 @@
       ],
       "tags": [
         "闭源",
-        "Mistral AI"
+        "Mistral AI",
+        "推理",
+        "智能体",
+        "多模态",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -1356,7 +1393,7 @@
       "sortDate": "2026-10-02",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "无问芯穹",
       "modelName": "Ling 3.1 Flash",
       "modelKey": "ling-3.1-flash",
@@ -1376,6 +1413,7 @@
       "tags": [
         "闭源",
         "无问芯穹",
+        "推理",
         "国内"
       ],
       "signals": {
@@ -1423,7 +1461,7 @@
       "sortDate": "2026-09-29",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-6.1 Sol Pro",
       "modelKey": "gpt-6.1-sol-pro",
@@ -1443,7 +1481,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -1492,7 +1531,7 @@
       "sortDate": "2026-09-29",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-6.1 Sol",
       "modelKey": "gpt-6.1-sol",
@@ -1511,7 +1550,9 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -1560,7 +1601,7 @@
       "sortDate": "2026-09-28",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Sonnet 5.5",
       "modelKey": "claude-sonnet-5.5",
@@ -1628,7 +1669,7 @@
       "sortDate": "2026-09-25",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Typesafe",
       "modelName": "Jev Router",
       "modelKey": "jev-router",
@@ -1647,6 +1688,7 @@
       "tags": [
         "闭源",
         "Typesafe",
+        "推理",
         "语音"
       ],
       "signals": {
@@ -1698,7 +1740,7 @@
       "sortDate": "2026-09-25",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Perceptron",
       "modelName": "Perceptron Mk1.5",
       "modelKey": "perceptron-mk1.5",
@@ -1716,6 +1758,9 @@
       "tags": [
         "闭源",
         "感知机",
+        "推理",
+        "智能体",
+        "具身",
         "语音"
       ],
       "signals": {
@@ -1766,7 +1811,7 @@
       "sortDate": "2026-09-24",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Fireworks",
       "modelName": "Ember-1",
       "modelKey": "ember-1",
@@ -1784,7 +1829,10 @@
       ],
       "tags": [
         "闭源",
-        "Fireworks"
+        "Fireworks",
+        "推理",
+        "搜索",
+        "国内"
       ],
       "signals": {
         "headLab": false,
@@ -1832,7 +1880,7 @@
       "sortDate": "2026-09-23",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 5.3 Prime",
       "modelKey": "glm-5.3-prime",
@@ -1898,7 +1946,7 @@
       "sortDate": "2026-09-23",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.8 Max Prime",
       "modelKey": "qwen3.8-max-prime",
@@ -1967,7 +2015,7 @@
       "sortDate": "2026-09-23",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Aion Labs",
       "modelName": "Aion 3.5 Mini",
       "modelKey": "aion-3.5-mini",
@@ -2033,7 +2081,7 @@
       "sortDate": "2026-09-23",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Aion Labs",
       "modelName": "Aion 3.5",
       "modelKey": "aion-3.5",
@@ -2098,7 +2146,7 @@
       "sortDate": "2026-09-23",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Upstage",
       "modelName": "Solar Mini 4",
       "modelKey": "solar-mini4",
@@ -2117,7 +2165,8 @@
       ],
       "tags": [
         "闭源",
-        "Upstage"
+        "Upstage",
+        "智能体"
       ],
       "signals": {
         "headLab": true,
@@ -2164,7 +2213,7 @@
       "sortDate": "2026-09-22",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Cohere",
       "modelName": "Command A+",
       "modelKey": "command-a-plus",
@@ -2181,7 +2230,8 @@
       ],
       "tags": [
         "闭源",
-        "Cohere"
+        "Cohere",
+        "智能体"
       ],
       "signals": {
         "headLab": true,
@@ -2229,7 +2279,7 @@
       "sortDate": "2026-09-22",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-6 Luna Pro",
       "modelKey": "gpt-6-luna-pro",
@@ -2249,7 +2299,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -2298,7 +2349,7 @@
       "sortDate": "2026-09-22",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-6 Luna",
       "modelKey": "gpt-6-luna",
@@ -2366,7 +2417,7 @@
       "sortDate": "2026-09-22",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-6 Sol Pro",
       "modelKey": "gpt-6-sol-pro",
@@ -2386,7 +2437,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -2435,7 +2487,7 @@
       "sortDate": "2026-09-22",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-6 Sol",
       "modelKey": "gpt-6-sol",
@@ -2503,7 +2555,7 @@
       "sortDate": "2026-09-22",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Opus 5.5",
       "modelKey": "claude-opus-5.5",
@@ -2522,7 +2574,10 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "推理",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -2571,7 +2626,7 @@
       "sortDate": "2026-09-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "NVIDIA",
       "modelName": "Switchyard",
       "modelKey": "switchyard",
@@ -2589,6 +2644,7 @@
       "tags": [
         "闭源",
         "NVIDIA",
+        "开源",
         "芯片"
       ],
       "signals": {
@@ -2636,7 +2692,7 @@
       "sortDate": "2026-09-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "小米",
       "modelName": "MiMo-V2.6-Pro-UltraSpeed",
       "modelKey": "mimo-v2.6-pro-ultraspeed",
@@ -2657,6 +2713,7 @@
       "tags": [
         "闭源",
         "小米",
+        "大模型",
         "语音"
       ],
       "signals": {
@@ -2707,7 +2764,7 @@
       "sortDate": "2026-09-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "小米",
       "modelName": "MiMo-V2.6-Flash",
       "modelKey": "mimo-v2.6-flash",
@@ -2727,6 +2784,7 @@
       "tags": [
         "开源",
         "小米",
+        "大模型",
         "语音"
       ],
       "signals": {
@@ -2777,7 +2835,7 @@
       "sortDate": "2026-09-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "小米",
       "modelName": "MiMo-V2.6-Pro",
       "modelKey": "mimo-v2.6-pro",
@@ -2797,6 +2855,7 @@
       "tags": [
         "开源",
         "小米",
+        "大模型",
         "语音"
       ],
       "signals": {
@@ -2847,7 +2906,7 @@
       "sortDate": "2026-09-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "xAI",
       "modelName": "Grok 4.7",
       "modelKey": "grok-4.7",
@@ -2865,7 +2924,9 @@
       ],
       "tags": [
         "闭源",
-        "xAI"
+        "xAI",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -2914,7 +2975,7 @@
       "sortDate": "2026-09-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.8 Omni Flash",
       "modelKey": "qwen3.8-omni-flash",
@@ -2934,6 +2995,8 @@
       "tags": [
         "闭源",
         "阿里云 Qwen",
+        "推理",
+        "智能体",
         "多模态",
         "语音",
         "国内"
@@ -2986,7 +3049,7 @@
       "sortDate": "2026-09-18",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Prism Ml",
       "modelName": "Ternary Bonsai 2 27B",
       "modelKey": "ternary-bonsai-2-27b",
@@ -3006,7 +3069,10 @@
       ],
       "tags": [
         "开源",
-        "Prism Ml"
+        "Prism Ml",
+        "推理",
+        "编程",
+        "国内"
       ],
       "signals": {
         "headLab": false,
@@ -3054,7 +3120,7 @@
       "sortDate": "2026-09-18",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 5.3 FlashX",
       "modelKey": "glm-5.3-flashx",
@@ -3073,7 +3139,8 @@
       ],
       "tags": [
         "闭源",
-        "Z.ai"
+        "Z.ai",
+        "多模态"
       ],
       "signals": {
         "headLab": false,
@@ -3122,7 +3189,7 @@
       "sortDate": "2026-09-12",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Inference Net",
       "modelName": "Schematron V2 Turbo",
       "modelKey": "schematron-v2-turbo",
@@ -3188,7 +3255,7 @@
       "sortDate": "2026-09-12",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Inference Net",
       "modelName": "Schematron V2 Small",
       "modelKey": "schematron-v2-small",
@@ -3254,7 +3321,7 @@
       "sortDate": "2026-09-11",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Sakana AI",
       "modelName": "Fugu Ultra v2",
       "modelKey": "fugu-ultra-v2",
@@ -3273,7 +3340,8 @@
       ],
       "tags": [
         "闭源",
-        "Sakana AI"
+        "Sakana AI",
+        "智能体"
       ],
       "signals": {
         "headLab": true,
@@ -3322,7 +3390,7 @@
       "sortDate": "2026-09-11",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Sakana AI",
       "modelName": "Fugu Max",
       "modelKey": "fugu-max",
@@ -3340,7 +3408,8 @@
       ],
       "tags": [
         "闭源",
-        "Sakana AI"
+        "Sakana AI",
+        "智能体"
       ],
       "signals": {
         "headLab": true,
@@ -3389,7 +3458,7 @@
       "sortDate": "2026-09-10",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "无问芯穹",
       "modelName": "Ling 3.0 Flash VL",
       "modelKey": "ling-3.0-flash-vl",
@@ -3458,7 +3527,7 @@
       "sortDate": "2026-09-10",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V4.1 Flash",
       "modelKey": "deepseek-v4.1-flash",
@@ -3525,7 +3594,7 @@
       "sortDate": "2026-09-08",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Inception",
       "modelName": "Mercury 2.5",
       "modelKey": "mercury-2.5",
@@ -3543,7 +3612,10 @@
       ],
       "tags": [
         "闭源",
-        "Inception"
+        "Inception",
+        "大模型",
+        "推理",
+        "图像生成"
       ],
       "signals": {
         "headLab": false,
@@ -3590,7 +3662,7 @@
       "sortDate": "2026-09-08",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Nex Agi",
       "modelName": "Nex-N2.5-Mini",
       "modelKey": "nex-n2.5-mini",
@@ -3610,6 +3682,8 @@
       "tags": [
         "开源",
         "Nex Agi",
+        "智能体",
+        "编程",
         "AGI"
       ],
       "signals": {
@@ -3658,7 +3732,7 @@
       "sortDate": "2026-09-08",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Nex Agi",
       "modelName": "Nex-N2.5-Pro",
       "modelKey": "nex-n2.5-pro",
@@ -3678,6 +3752,8 @@
       "tags": [
         "开源",
         "Nex Agi",
+        "智能体",
+        "编程",
         "AGI"
       ],
       "signals": {
@@ -3726,7 +3802,7 @@
       "sortDate": "2026-09-04",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-6 Astra",
       "modelKey": "gpt-6-astra",
@@ -3745,7 +3821,10 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "编程",
+        "科学",
+        "搜索"
       ],
       "signals": {
         "headLab": true,
@@ -3794,7 +3873,7 @@
       "sortDate": "2026-09-04",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-6 Astra Pro",
       "modelKey": "gpt-6-astra-pro",
@@ -3814,7 +3893,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -3863,7 +3943,7 @@
       "sortDate": "2026-09-03",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.8 Max (0902)",
       "modelKey": "qwen3.8-max",
@@ -3932,7 +4012,7 @@
       "sortDate": "2026-09-02",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Muse Spark 1.3 Contributor",
       "modelKey": "muse-spark-1.3-contributor",
@@ -3952,7 +4032,10 @@
       ],
       "tags": [
         "闭源",
-        "Meta"
+        "Meta",
+        "推理",
+        "智能体",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -4002,7 +4085,7 @@
       "sortDate": "2026-09-02",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Muse Spark 1.3",
       "modelKey": "muse-spark-1.3",
@@ -4021,7 +4104,11 @@
       ],
       "tags": [
         "闭源",
-        "Meta"
+        "Meta",
+        "推理",
+        "智能体",
+        "多模态",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -4071,7 +4158,7 @@
       "sortDate": "2026-09-02",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 3.8 Flash",
       "modelKey": "gemini-3.8-flash",
@@ -4091,6 +4178,9 @@
       "tags": [
         "闭源",
         "Google",
+        "推理",
+        "智能体",
+        "编程",
         "语音"
       ],
       "signals": {
@@ -4142,7 +4232,7 @@
       "sortDate": "2026-09-01",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Fable 5.1",
       "modelKey": "claude-fable-5.1",
@@ -4161,7 +4251,9 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -4210,7 +4302,7 @@
       "sortDate": "2026-08-31",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Ibm Granite",
       "modelName": "Granite 4.2 8B",
       "modelKey": "granite-4.2-8b",
@@ -4229,7 +4321,9 @@
       ],
       "tags": [
         "开源",
-        "Ibm Granite"
+        "Ibm Granite",
+        "推理",
+        "智能体"
       ],
       "signals": {
         "headLab": false,
@@ -4276,7 +4370,7 @@
       "sortDate": "2026-08-28",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "腾讯",
       "modelName": "Hy4 preview",
       "modelKey": "hy4",
@@ -4295,6 +4389,8 @@
       "tags": [
         "开源",
         "腾讯",
+        "智能体",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -4342,7 +4438,7 @@
       "sortDate": "2026-08-26",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.8 Flash",
       "modelKey": "qwen3.8-flash",
@@ -4361,6 +4457,10 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "推理",
+        "智能体",
+        "多模态",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -4410,7 +4510,7 @@
       "sortDate": "2026-08-26",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 5.3 Flash",
       "modelKey": "glm-5.3-flash",
@@ -4429,7 +4529,11 @@
       ],
       "tags": [
         "开源",
-        "Z.ai"
+        "Z.ai",
+        "智能体",
+        "多模态",
+        "算法",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -4478,7 +4582,7 @@
       "sortDate": "2026-08-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Muse Spark 1.2 Contributor",
       "modelKey": "muse-spark-1.2-contributor",
@@ -4498,7 +4602,8 @@
       ],
       "tags": [
         "闭源",
-        "Meta"
+        "Meta",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -4548,7 +4653,7 @@
       "sortDate": "2026-08-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V4 Flash Vision Exp",
       "modelKey": "deepseek-v4-flash-vision-exp",
@@ -4617,7 +4722,7 @@
       "sortDate": "2026-08-20",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "腾讯",
       "modelName": "Hy-MT2-1.8B",
       "modelKey": "hy-mt2-1.8b",
@@ -4683,7 +4788,7 @@
       "sortDate": "2026-08-20",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "腾讯",
       "modelName": "Hy-MT2-30B-A3B",
       "modelKey": "hy-mt2-30b-a3b",
@@ -4750,7 +4855,7 @@
       "sortDate": "2026-08-19",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "腾讯",
       "modelName": "Hy-MT2-7B",
       "modelKey": "hy-mt2-7b",
@@ -4816,7 +4921,7 @@
       "sortDate": "2026-08-18",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 5.3",
       "modelKey": "glm-5.3",
@@ -4834,7 +4939,10 @@
       ],
       "tags": [
         "开源",
-        "Z.ai"
+        "Z.ai",
+        "推理",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -4881,7 +4989,7 @@
       "sortDate": "2026-08-14",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.8 27B",
       "modelKey": "qwen3.8-27b",
@@ -4900,6 +5008,10 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "智能体",
+        "多模态",
+        "编程",
+        "搜索",
         "国内"
       ],
       "signals": {
@@ -4949,7 +5061,7 @@
       "sortDate": "2026-08-13",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 3.7 Flash",
       "modelKey": "gemini-3.7-flash",
@@ -4969,6 +5081,10 @@
       "tags": [
         "闭源",
         "Google",
+        "推理",
+        "智能体",
+        "多模态",
+        "编程",
         "语音"
       ],
       "signals": {
@@ -5020,7 +5136,7 @@
       "sortDate": "2026-08-12",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Bytedance Seed",
       "modelName": "Seed 2.1 Turbo",
       "modelKey": "seed-2-1-turbo",
@@ -5039,7 +5155,10 @@
       ],
       "tags": [
         "闭源",
-        "Bytedance Seed"
+        "Bytedance Seed",
+        "智能体",
+        "多模态",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -5088,7 +5207,7 @@
       "sortDate": "2026-08-12",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.8 2.4T A95B",
       "modelKey": "qwen3.8-2.4t-a95b",
@@ -5155,7 +5274,7 @@
       "sortDate": "2026-08-12",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Bytedance Seed",
       "modelName": "Seed-2.0-Code",
       "modelKey": "seed-2.0-code",
@@ -5174,7 +5293,9 @@
       ],
       "tags": [
         "闭源",
-        "Bytedance Seed"
+        "Bytedance Seed",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -5223,7 +5344,7 @@
       "sortDate": "2026-08-12",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V4 Pro 0813",
       "modelKey": "deepseek-v4-pro",
@@ -5290,7 +5411,7 @@
       "sortDate": "2026-08-12",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "xAI",
       "modelName": "Grok 4.6",
       "modelKey": "grok-4.6",
@@ -5308,7 +5429,8 @@
       ],
       "tags": [
         "闭源",
-        "xAI"
+        "xAI",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -5357,7 +5479,7 @@
       "sortDate": "2026-08-11",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "NVIDIA",
       "modelName": "Nemotron 3.5 Lightning",
       "modelKey": "nemotron-3.5-lightning",
@@ -5377,6 +5499,7 @@
       "tags": [
         "开源",
         "NVIDIA",
+        "智能体",
         "芯片"
       ],
       "signals": {
@@ -5424,7 +5547,7 @@
       "sortDate": "2026-08-11",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Sakana AI",
       "modelName": "Sakana Namazu",
       "modelKey": "sakana-namazu",
@@ -5441,7 +5564,10 @@
       ],
       "tags": [
         "闭源",
-        "Sakana AI"
+        "Sakana AI",
+        "推理",
+        "训练",
+        "国内"
       ],
       "signals": {
         "headLab": true,
@@ -5490,7 +5616,7 @@
       "sortDate": "2026-08-10",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Upstage",
       "modelName": "Solar Pro 4",
       "modelKey": "solar-pro4",
@@ -5509,7 +5635,9 @@
       ],
       "tags": [
         "闭源",
-        "Upstage"
+        "Upstage",
+        "大模型",
+        "智能体"
       ],
       "signals": {
         "headLab": true,
@@ -5556,7 +5684,7 @@
       "sortDate": "2026-08-09",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Muse Glimmer 30B",
       "modelKey": "muse-glimmer-30b",
@@ -5575,7 +5703,10 @@
       ],
       "tags": [
         "开源",
-        "Meta"
+        "Meta",
+        "智能体",
+        "多模态",
+        "AGI"
       ],
       "signals": {
         "headLab": true,
@@ -5623,7 +5754,7 @@
       "sortDate": "2026-08-05",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Muse Spark 1.2",
       "modelKey": "muse-spark-1.2",
@@ -5642,7 +5773,9 @@
       ],
       "tags": [
         "闭源",
-        "Meta"
+        "Meta",
+        "推理",
+        "智能体"
       ],
       "signals": {
         "headLab": true,
@@ -5692,7 +5825,7 @@
       "sortDate": "2026-07-31",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V4 Flash 0731",
       "modelKey": "deepseek-v4-flash",
@@ -5712,6 +5845,7 @@
       "tags": [
         "开源",
         "DeepSeek",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -5759,7 +5893,7 @@
       "sortDate": "2026-07-30",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Thinkingmachines",
       "modelName": "Inkling Small",
       "modelKey": "inkling-small",
@@ -5779,6 +5913,7 @@
       "tags": [
         "开源",
         "Thinkingmachines",
+        "多模态",
         "语音"
       ],
       "signals": {
@@ -5828,7 +5963,7 @@
       "sortDate": "2026-07-27",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.7 Flash",
       "modelKey": "qwen3.7-flash",
@@ -5847,6 +5982,11 @@
       "tags": [
         "闭源",
         "阿里云 Qwen",
+        "推理",
+        "智能体",
+        "多模态",
+        "编程",
+        "搜索",
         "国内"
       ],
       "signals": {
@@ -5896,7 +6036,7 @@
       "sortDate": "2026-07-24",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Opus 5",
       "modelKey": "claude-opus-5",
@@ -5915,7 +6055,10 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "推理",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -5964,7 +6107,7 @@
       "sortDate": "2026-07-23",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "无问芯穹",
       "modelName": "Ling 3.0 Flash",
       "modelKey": "ling-3.0-flash",
@@ -6031,7 +6174,7 @@
       "sortDate": "2026-07-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Poolside",
       "modelName": "Laguna S 2.1",
       "modelKey": "laguna-s-2.1",
@@ -6049,7 +6192,9 @@
       ],
       "tags": [
         "开源",
-        "Poolside"
+        "Poolside",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -6096,7 +6241,7 @@
       "sortDate": "2026-07-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 3.6 Flash",
       "modelKey": "gemini-3.6-flash",
@@ -6116,6 +6261,8 @@
       "tags": [
         "闭源",
         "Google",
+        "智能体",
+        "编程",
         "语音"
       ],
       "signals": {
@@ -6167,7 +6314,7 @@
       "sortDate": "2026-07-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 3.5 Flash Lite",
       "modelKey": "gemini-3.5-flash-lite",
@@ -6188,6 +6335,7 @@
       "tags": [
         "闭源",
         "Google",
+        "智能体",
         "语音"
       ],
       "signals": {
@@ -6239,7 +6387,7 @@
       "sortDate": "2026-07-20",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meituan",
       "modelName": "LongCat 2.0",
       "modelKey": "longcat-2.0",
@@ -6257,7 +6405,8 @@
       ],
       "tags": [
         "开源",
-        "Meituan"
+        "Meituan",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -6304,7 +6453,7 @@
       "sortDate": "2026-07-17",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Thinkingmachines",
       "modelName": "Inkling",
       "modelKey": "inkling",
@@ -6323,6 +6472,7 @@
       "tags": [
         "开源",
         "Thinkingmachines",
+        "多模态",
         "语音"
       ],
       "signals": {
@@ -6372,7 +6522,7 @@
       "sortDate": "2026-07-17",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Openrouter",
       "modelName": "Auto Router (Beta)",
       "modelKey": "auto-beta",
@@ -6441,7 +6591,7 @@
       "sortDate": "2026-07-16",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "月之暗面",
       "modelName": "Kimi K3",
       "modelKey": "kimi-k3",
@@ -6460,6 +6610,10 @@
       "tags": [
         "开源",
         "月之暗面",
+        "推理",
+        "智能体",
+        "多模态",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -6509,7 +6663,7 @@
       "sortDate": "2026-07-16",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Muse Spark 1.1",
       "modelKey": "muse-spark-1.1",
@@ -6528,7 +6682,10 @@
       ],
       "tags": [
         "闭源",
-        "Meta"
+        "Meta",
+        "推理",
+        "智能体",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -6578,7 +6735,7 @@
       "sortDate": "2026-07-09",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.6 Luna Pro",
       "modelKey": "gpt-5.6-luna-pro",
@@ -6598,7 +6755,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -6647,7 +6805,7 @@
       "sortDate": "2026-07-09",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.6 Luna",
       "modelKey": "gpt-5.6-luna",
@@ -6715,7 +6873,7 @@
       "sortDate": "2026-07-09",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.6 Terra Pro",
       "modelKey": "gpt-5.6-terra-pro",
@@ -6735,7 +6893,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -6784,7 +6943,7 @@
       "sortDate": "2026-07-09",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.6 Terra",
       "modelKey": "gpt-5.6-terra",
@@ -6803,7 +6962,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -6852,7 +7012,7 @@
       "sortDate": "2026-07-09",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.6 Sol Pro",
       "modelKey": "gpt-5.6-sol-pro",
@@ -6872,7 +7032,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -6921,7 +7082,7 @@
       "sortDate": "2026-07-09",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.6 Sol",
       "modelKey": "gpt-5.6-sol",
@@ -6940,7 +7101,10 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -6989,7 +7153,7 @@
       "sortDate": "2026-07-08",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "xAI",
       "modelName": "Grok 4.5",
       "modelKey": "grok-4.5",
@@ -7007,7 +7171,8 @@
       ],
       "tags": [
         "闭源",
-        "xAI"
+        "xAI",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -7056,7 +7221,7 @@
       "sortDate": "2026-07-07",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Aion Labs",
       "modelName": "Aion-3.0-Mini",
       "modelKey": "aion-3.0-mini",
@@ -7075,7 +7240,8 @@
       ],
       "tags": [
         "闭源",
-        "Aion Labs"
+        "Aion Labs",
+        "国内"
       ],
       "signals": {
         "headLab": false,
@@ -7122,7 +7288,7 @@
       "sortDate": "2026-07-07",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Aion Labs",
       "modelName": "Aion-3.0",
       "modelKey": "aion-3.0",
@@ -7187,7 +7353,7 @@
       "sortDate": "2026-07-06",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "腾讯",
       "modelName": "Hy3",
       "modelKey": "hy3",
@@ -7205,6 +7371,8 @@
       "tags": [
         "开源",
         "腾讯",
+        "推理",
+        "智能体",
         "国内"
       ],
       "signals": {
@@ -7252,7 +7420,7 @@
       "sortDate": "2026-07-02",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Poolside",
       "modelName": "Laguna XS 2.1",
       "modelKey": "laguna-xs-2.1",
@@ -7270,7 +7438,9 @@
       ],
       "tags": [
         "开源",
-        "Poolside"
+        "Poolside",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -7317,7 +7487,7 @@
       "sortDate": "2026-06-30",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Sonnet 5",
       "modelKey": "claude-sonnet-5",
@@ -7336,7 +7506,9 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -7385,7 +7557,7 @@
       "sortDate": "2026-06-30",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Nano Banana 2 Lite (Gemini 3.1 Flash Lite Image)",
       "modelKey": "gemini-3.1-flash-lite-image",
@@ -7457,7 +7629,7 @@
       "sortDate": "2026-06-24",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Sakana AI",
       "modelName": "Fugu Ultra",
       "modelKey": "fugu-ultra",
@@ -7475,7 +7647,8 @@
       ],
       "tags": [
         "闭源",
-        "Sakana AI"
+        "Sakana AI",
+        "智能体"
       ],
       "signals": {
         "headLab": true,
@@ -7523,7 +7696,7 @@
       "sortDate": "2026-06-18",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Nano Banana 2 (Gemini 3.1 Flash Image)",
       "modelKey": "gemini-3.1-flash-image",
@@ -7546,7 +7719,8 @@
       ],
       "tags": [
         "闭源",
-        "Google"
+        "Google",
+        "图像生成"
       ],
       "signals": {
         "headLab": true,
@@ -7594,7 +7768,7 @@
       "sortDate": "2026-06-18",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Nano Banana Pro (Gemini 3 Pro Image)",
       "modelKey": "gemini-3-pro-image",
@@ -7616,7 +7790,8 @@
       ],
       "tags": [
         "闭源",
-        "Google"
+        "Google",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -7664,7 +7839,7 @@
       "sortDate": "2026-06-16",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 5.2",
       "modelKey": "glm-5.2",
@@ -7682,7 +7857,9 @@
       ],
       "tags": [
         "开源",
-        "Z.ai"
+        "Z.ai",
+        "推理",
+        "智能体"
       ],
       "signals": {
         "headLab": false,
@@ -7729,7 +7906,7 @@
       "sortDate": "2026-06-13",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Openrouter",
       "modelName": "Fusion",
       "modelKey": "fusion",
@@ -7746,7 +7923,7 @@
       ],
       "tags": [
         "闭源",
-        "大模型"
+        "搜索"
       ],
       "signals": {
         "headLab": false,
@@ -7793,7 +7970,7 @@
       "sortDate": "2026-06-12",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "月之暗面",
       "modelName": "Kimi K2.7 Code",
       "modelKey": "kimi-k2.7-code",
@@ -7813,6 +7990,7 @@
       "tags": [
         "开源",
         "月之暗面",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -7861,7 +8039,7 @@
       "sortDate": "2026-06-09",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Fable 5",
       "modelKey": "claude-fable-5",
@@ -7880,7 +8058,9 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "推理",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -7929,7 +8109,7 @@
       "sortDate": "2026-06-04",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "NVIDIA",
       "modelName": "Nemotron 3.5 Content Safety",
       "modelKey": "nemotron-3.5-content-safety",
@@ -7950,6 +8130,8 @@
       "tags": [
         "开源",
         "NVIDIA",
+        "多模态",
+        "训练",
         "芯片",
         "安全"
       ],
@@ -7999,7 +8181,7 @@
       "sortDate": "2026-06-04",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "NVIDIA",
       "modelName": "Nemotron 3 Ultra",
       "modelKey": "nemotron-3-ultra-550b-a55b",
@@ -8019,6 +8201,8 @@
       "tags": [
         "开源",
         "NVIDIA",
+        "推理",
+        "算法",
         "芯片"
       ],
       "signals": {
@@ -8066,7 +8250,7 @@
       "sortDate": "2026-06-03",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.7 Plus",
       "modelKey": "qwen3.7-plus",
@@ -8133,7 +8317,7 @@
       "sortDate": "2026-05-31",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "MiniMax",
       "modelName": "MiniMax M3",
       "modelKey": "minimax-m3",
@@ -8151,6 +8335,8 @@
       "tags": [
         "开源",
         "MiniMax",
+        "大模型",
+        "多模态",
         "国内"
       ],
       "signals": {
@@ -8200,7 +8386,7 @@
       "sortDate": "2026-05-28",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阶跃星辰",
       "modelName": "Step 3.7 Flash",
       "modelKey": "step-3.7-flash",
@@ -8220,6 +8406,7 @@
       "tags": [
         "开源",
         "阶跃星辰",
+        "多模态",
         "国内"
       ],
       "signals": {
@@ -8269,7 +8456,7 @@
       "sortDate": "2026-05-27",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Opus 4.8",
       "modelKey": "claude-opus-4.8",
@@ -8288,7 +8475,8 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -8337,7 +8525,7 @@
       "sortDate": "2026-05-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.7 Max",
       "modelKey": "qwen3.7-max",
@@ -8356,6 +8544,8 @@
       "tags": [
         "闭源",
         "阿里云 Qwen",
+        "智能体",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -8403,7 +8593,7 @@
       "sortDate": "2026-05-20",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "xAI",
       "modelName": "Grok Build 0.1",
       "modelKey": "grok-build-0.1",
@@ -8422,7 +8612,9 @@
       ],
       "tags": [
         "闭源",
-        "xAI"
+        "xAI",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -8471,7 +8663,7 @@
       "sortDate": "2026-05-19",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 3.5 Flash",
       "modelKey": "gemini-3.5-flash",
@@ -8491,6 +8683,9 @@
       "tags": [
         "闭源",
         "Google",
+        "推理",
+        "多模态",
+        "编程",
         "语音"
       ],
       "signals": {
@@ -8542,7 +8737,7 @@
       "sortDate": "2026-05-12",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Perceptron",
       "modelName": "Perceptron Mk1",
       "modelKey": "perceptron-mk1",
@@ -8559,7 +8754,10 @@
       ],
       "tags": [
         "闭源",
-        "感知机"
+        "感知机",
+        "推理",
+        "多模态",
+        "具身"
       ],
       "signals": {
         "headLab": false,
@@ -8608,7 +8806,7 @@
       "sortDate": "2026-05-07",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 3.1 Flash Lite",
       "modelKey": "gemini-3.1-flash-lite",
@@ -8629,6 +8827,7 @@
       "tags": [
         "闭源",
         "Google",
+        "多模态",
         "语音"
       ],
       "signals": {
@@ -8680,7 +8879,7 @@
       "sortDate": "2026-05-05",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT Chat Latest",
       "modelKey": "gpt-chat-latest",
@@ -8748,7 +8947,7 @@
       "sortDate": "2026-04-30",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "xAI",
       "modelName": "Grok 4.3",
       "modelKey": "grok-4.3",
@@ -8766,7 +8965,9 @@
       ],
       "tags": [
         "闭源",
-        "xAI"
+        "xAI",
+        "推理",
+        "智能体"
       ],
       "signals": {
         "headLab": false,
@@ -8815,7 +9016,7 @@
       "sortDate": "2026-04-30",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Medium 3.5",
       "modelKey": "mistral-medium-3-5",
@@ -8833,7 +9034,9 @@
       ],
       "tags": [
         "闭源",
-        "Mistral AI"
+        "Mistral AI",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -8882,7 +9085,7 @@
       "sortDate": "2026-04-27",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.5 Plus 2026-04-20",
       "modelKey": "qwen3.5-plus-20260420",
@@ -8904,6 +9107,7 @@
       "tags": [
         "闭源",
         "阿里云 Qwen",
+        "多模态",
         "国内"
       ],
       "signals": {
@@ -8953,7 +9157,7 @@
       "sortDate": "2026-04-27",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.6 Flash",
       "modelKey": "qwen3.6-flash",
@@ -9021,7 +9225,7 @@
       "sortDate": "2026-04-27",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.6 35B A3B",
       "modelKey": "qwen3.6-35b-a3b",
@@ -9041,6 +9245,8 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "多模态",
+        "云计算",
         "国内"
       ],
       "signals": {
@@ -9090,7 +9296,7 @@
       "sortDate": "2026-04-27",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.6 27B",
       "modelKey": "qwen3.6-27b",
@@ -9109,6 +9315,7 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "多模态",
         "国内"
       ],
       "signals": {
@@ -9158,7 +9365,7 @@
       "sortDate": "2026-04-24",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.5 Pro",
       "modelKey": "gpt-5.5-pro",
@@ -9177,7 +9384,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -9226,7 +9434,7 @@
       "sortDate": "2026-04-24",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.5",
       "modelKey": "gpt-5.5",
@@ -9244,7 +9452,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -9293,7 +9502,7 @@
       "sortDate": "2026-04-24",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V4 Pro 0423",
       "modelKey": "deepseek-v4-pro",
@@ -9360,7 +9569,7 @@
       "sortDate": "2026-04-24",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V4 Flash 0423",
       "modelKey": "deepseek-v4-flash",
@@ -9427,7 +9636,7 @@
       "sortDate": "2026-04-22",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "腾讯",
       "modelName": "Hy3 preview",
       "modelKey": "hy3",
@@ -9446,6 +9655,8 @@
       "tags": [
         "开源",
         "腾讯",
+        "推理",
+        "智能体",
         "国内"
       ],
       "signals": {
@@ -9493,7 +9704,7 @@
       "sortDate": "2026-04-22",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "小米",
       "modelName": "MiMo-V2.5-Pro",
       "modelKey": "mimo-v2.5-pro",
@@ -9512,7 +9723,9 @@
       ],
       "tags": [
         "开源",
-        "小米"
+        "小米",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -9559,7 +9772,7 @@
       "sortDate": "2026-04-22",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "小米",
       "modelName": "MiMo-V2.5",
       "modelKey": "mimo-v2.5",
@@ -9578,6 +9791,8 @@
       "tags": [
         "开源",
         "小米",
+        "智能体",
+        "多模态",
         "语音"
       ],
       "signals": {
@@ -9628,7 +9843,7 @@
       "sortDate": "2026-04-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.4 Image 2",
       "modelKey": "gpt-5.4-image-2",
@@ -9648,7 +9863,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "图像生成"
       ],
       "signals": {
         "headLab": true,
@@ -9697,7 +9913,7 @@
       "sortDate": "2026-04-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Openrouter",
       "modelName": "Pareto Code Router",
       "modelKey": "pareto-code",
@@ -9715,7 +9931,7 @@
       ],
       "tags": [
         "闭源",
-        "大模型"
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -9762,7 +9978,7 @@
       "sortDate": "2026-04-20",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "月之暗面",
       "modelName": "Kimi K2.6",
       "modelKey": "kimi-k2.6",
@@ -9781,6 +9997,9 @@
       "tags": [
         "开源",
         "月之暗面",
+        "智能体",
+        "多模态",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -9829,7 +10048,7 @@
       "sortDate": "2026-04-16",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Opus 4.7",
       "modelKey": "claude-opus-4.7",
@@ -9848,7 +10067,9 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -9897,7 +10118,7 @@
       "sortDate": "2026-04-07",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 5.1",
       "modelKey": "glm-5.1",
@@ -9915,7 +10136,8 @@
       ],
       "tags": [
         "开源",
-        "Z.ai"
+        "Z.ai",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -9962,7 +10184,7 @@
       "sortDate": "2026-04-03",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemma 4 26B A4B",
       "modelKey": "gemma-4-26b-a4b",
@@ -10031,7 +10253,7 @@
       "sortDate": "2026-04-02",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemma 4 31B",
       "modelKey": "gemma-4-31b",
@@ -10050,7 +10272,8 @@
       ],
       "tags": [
         "开源",
-        "Google"
+        "Google",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -10099,7 +10322,7 @@
       "sortDate": "2026-04-02",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.6 Plus",
       "modelKey": "qwen3.6-plus",
@@ -10118,6 +10341,7 @@
       "tags": [
         "闭源",
         "阿里云 Qwen",
+        "算法",
         "国内"
       ],
       "signals": {
@@ -10167,7 +10391,7 @@
       "sortDate": "2026-04-01",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 5V Turbo",
       "modelKey": "glm-5v-turbo",
@@ -10186,7 +10410,11 @@
       ],
       "tags": [
         "闭源",
-        "Z.ai"
+        "Z.ai",
+        "大模型",
+        "智能体",
+        "多模态",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -10235,7 +10463,7 @@
       "sortDate": "2026-04-01",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Arcee Ai",
       "modelName": "Trinity Large Thinking",
       "modelKey": "trinity-large",
@@ -10254,7 +10482,9 @@
       ],
       "tags": [
         "开源",
-        "Arcee Ai"
+        "Arcee Ai",
+        "推理",
+        "智能体"
       ],
       "signals": {
         "headLab": false,
@@ -10301,7 +10531,7 @@
       "sortDate": "2026-03-31",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "xAI",
       "modelName": "Grok 4.20 Multi-Agent",
       "modelKey": "grok-4.20-multi-agent",
@@ -10322,7 +10552,8 @@
       "tags": [
         "闭源",
         "xAI",
-        "智能体"
+        "智能体",
+        "搜索"
       ],
       "signals": {
         "headLab": false,
@@ -10371,7 +10602,7 @@
       "sortDate": "2026-03-31",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "xAI",
       "modelName": "Grok 4.20",
       "modelKey": "grok-4.20",
@@ -10389,7 +10620,9 @@
       ],
       "tags": [
         "闭源",
-        "xAI"
+        "xAI",
+        "推理",
+        "智能体"
       ],
       "signals": {
         "headLab": false,
@@ -10438,7 +10671,7 @@
       "sortDate": "2026-03-30",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Lyria 3 Pro Preview",
       "modelKey": "lyria-3-pro",
@@ -10506,7 +10739,7 @@
       "sortDate": "2026-03-30",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Lyria 3 Clip Preview",
       "modelKey": "lyria-3-clip",
@@ -10574,7 +10807,7 @@
       "sortDate": "2026-03-20",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Rekaai",
       "modelName": "Reka Edge",
       "modelKey": "reka-edge",
@@ -10591,7 +10824,8 @@
       ],
       "tags": [
         "开源",
-        "Rekaai"
+        "Rekaai",
+        "多模态"
       ],
       "signals": {
         "headLab": false,
@@ -10640,7 +10874,7 @@
       "sortDate": "2026-03-18",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "MiniMax",
       "modelName": "MiniMax M2.7",
       "modelKey": "minimax-m2.7",
@@ -10658,6 +10892,7 @@
       "tags": [
         "开源",
         "MiniMax",
+        "大模型",
         "国内"
       ],
       "signals": {
@@ -10705,7 +10940,7 @@
       "sortDate": "2026-03-17",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.4 Nano",
       "modelKey": "gpt-5.4-nano",
@@ -10773,7 +11008,7 @@
       "sortDate": "2026-03-17",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.4 Mini",
       "modelKey": "gpt-5.4-mini",
@@ -10841,7 +11076,7 @@
       "sortDate": "2026-03-16",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Small 4",
       "modelKey": "mistral-small",
@@ -10907,7 +11142,7 @@
       "sortDate": "2026-03-15",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 5 Turbo",
       "modelKey": "glm-5-turbo",
@@ -10926,7 +11161,8 @@
       ],
       "tags": [
         "闭源",
-        "Z.ai"
+        "Z.ai",
+        "智能体"
       ],
       "signals": {
         "headLab": false,
@@ -10973,7 +11209,7 @@
       "sortDate": "2026-03-11",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "NVIDIA",
       "modelName": "Nemotron 3 Super",
       "modelKey": "nemotron-3-super-120b-a12b",
@@ -10993,6 +11229,7 @@
       "tags": [
         "开源",
         "NVIDIA",
+        "智能体",
         "芯片"
       ],
       "signals": {
@@ -11040,7 +11277,7 @@
       "sortDate": "2026-03-10",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Bytedance Seed",
       "modelName": "Seed-2.0-Lite",
       "modelKey": "seed-2.0-lite",
@@ -11059,7 +11296,9 @@
       ],
       "tags": [
         "闭源",
-        "Bytedance Seed"
+        "Bytedance Seed",
+        "智能体",
+        "多模态"
       ],
       "signals": {
         "headLab": false,
@@ -11108,7 +11347,7 @@
       "sortDate": "2026-03-10",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.5-9B",
       "modelKey": "qwen3.5-9b",
@@ -11127,6 +11366,10 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "大模型",
+        "推理",
+        "多模态",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -11176,7 +11419,7 @@
       "sortDate": "2026-03-05",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.4 Pro",
       "modelKey": "gpt-5.4-pro",
@@ -11195,7 +11438,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -11244,7 +11488,7 @@
       "sortDate": "2026-03-05",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.4",
       "modelKey": "gpt-5.4",
@@ -11311,7 +11555,7 @@
       "sortDate": "2026-03-04",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Inception",
       "modelName": "Mercury 2",
       "modelKey": "mercury-2",
@@ -11329,7 +11573,10 @@
       ],
       "tags": [
         "闭源",
-        "Inception"
+        "Inception",
+        "大模型",
+        "推理",
+        "图像生成"
       ],
       "signals": {
         "headLab": false,
@@ -11376,7 +11623,7 @@
       "sortDate": "2026-03-03",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 3.1 Flash Lite Preview",
       "modelKey": "gemini-3.1-flash-lite",
@@ -11449,7 +11696,7 @@
       "sortDate": "2026-02-26",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Bytedance Seed",
       "modelName": "Seed-2.0-Mini",
       "modelKey": "seed-2.0-mini",
@@ -11517,7 +11764,7 @@
       "sortDate": "2026-02-26",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
       "modelKey": "gemini-3.1-flash-image",
@@ -11541,7 +11788,8 @@
       ],
       "tags": [
         "闭源",
-        "Google"
+        "Google",
+        "图像生成"
       ],
       "signals": {
         "headLab": true,
@@ -11589,7 +11837,7 @@
       "sortDate": "2026-02-25",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.5-35B-A3B",
       "modelKey": "qwen3.5-35b-a3b",
@@ -11609,6 +11857,8 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "多模态",
+        "算法",
         "国内"
       ],
       "signals": {
@@ -11658,7 +11908,7 @@
       "sortDate": "2026-02-25",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.5-27B",
       "modelKey": "qwen3.5-27b",
@@ -11677,6 +11927,8 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "多模态",
+        "算法",
         "国内"
       ],
       "signals": {
@@ -11726,7 +11978,7 @@
       "sortDate": "2026-02-25",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.5-122B-A10B",
       "modelKey": "qwen3.5-122b-a10b",
@@ -11746,6 +11998,8 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "多模态",
+        "算法",
         "国内"
       ],
       "signals": {
@@ -11795,7 +12049,7 @@
       "sortDate": "2026-02-25",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.5-Flash",
       "modelKey": "qwen3.5-flash-02-23",
@@ -11814,6 +12068,8 @@
       "tags": [
         "闭源",
         "阿里云 Qwen",
+        "多模态",
+        "算法",
         "国内"
       ],
       "signals": {
@@ -11863,7 +12119,7 @@
       "sortDate": "2026-02-25",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 3.1 Pro Preview Custom Tools",
       "modelKey": "gemini-3.1-pro-preview-customtools",
@@ -11937,7 +12193,7 @@
       "sortDate": "2026-02-24",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.3-Codex",
       "modelKey": "gpt-5.3-codex",
@@ -11956,7 +12212,10 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -12005,7 +12264,7 @@
       "sortDate": "2026-02-23",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Aion Labs",
       "modelName": "Aion-2.0",
       "modelKey": "aion-2.0",
@@ -12023,7 +12282,8 @@
       ],
       "tags": [
         "闭源",
-        "Aion Labs"
+        "Aion Labs",
+        "国内"
       ],
       "signals": {
         "headLab": false,
@@ -12070,7 +12330,7 @@
       "sortDate": "2026-02-19",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 3.1 Pro Preview",
       "modelKey": "gemini-3.1-pro",
@@ -12091,6 +12351,9 @@
       "tags": [
         "闭源",
         "Google",
+        "推理",
+        "智能体",
+        "编程",
         "语音"
       ],
       "signals": {
@@ -12142,7 +12405,7 @@
       "sortDate": "2026-02-17",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Sonnet 4.6",
       "modelKey": "claude-sonnet-4.6",
@@ -12161,7 +12424,9 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -12210,7 +12475,7 @@
       "sortDate": "2026-02-16",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.5 Plus 2026-02-15",
       "modelKey": "qwen3.5-plus-02-15",
@@ -12232,6 +12497,8 @@
       "tags": [
         "闭源",
         "阿里云 Qwen",
+        "多模态",
+        "算法",
         "国内"
       ],
       "signals": {
@@ -12281,7 +12548,7 @@
       "sortDate": "2026-02-16",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3.5 397B A17B",
       "modelKey": "qwen3.5-397b-a17b",
@@ -12301,6 +12568,8 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "多模态",
+        "算法",
         "国内"
       ],
       "signals": {
@@ -12350,7 +12619,7 @@
       "sortDate": "2026-02-12",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "MiniMax",
       "modelName": "MiniMax M2.5",
       "modelKey": "minimax-m2.5",
@@ -12368,6 +12637,7 @@
       "tags": [
         "开源",
         "MiniMax",
+        "大模型",
         "国内"
       ],
       "signals": {
@@ -12415,7 +12685,7 @@
       "sortDate": "2026-02-11",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 5",
       "modelKey": "glm-5",
@@ -12433,7 +12703,9 @@
       ],
       "tags": [
         "开源",
-        "Z.ai"
+        "Z.ai",
+        "大模型",
+        "智能体"
       ],
       "signals": {
         "headLab": false,
@@ -12480,7 +12752,7 @@
       "sortDate": "2026-02-04",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Opus 4.6",
       "modelKey": "claude-opus-4.6",
@@ -12499,7 +12771,9 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -12548,7 +12822,7 @@
       "sortDate": "2026-02-04",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 Coder Next",
       "modelKey": "qwen3-coder-next",
@@ -12567,6 +12841,8 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "智能体",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -12614,7 +12890,7 @@
       "sortDate": "2026-02-01",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Openrouter",
       "modelName": "Free Models Router",
       "modelKey": "free",
@@ -12680,7 +12956,7 @@
       "sortDate": "2026-01-29",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阶跃星辰",
       "modelName": "Step 3.5 Flash",
       "modelKey": "step-3.5-flash",
@@ -12700,6 +12976,7 @@
       "tags": [
         "开源",
         "阶跃星辰",
+        "大模型",
         "国内"
       ],
       "signals": {
@@ -12747,7 +13024,7 @@
       "sortDate": "2026-01-27",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "月之暗面",
       "modelName": "Kimi K2.5",
       "modelKey": "kimi-k2.5",
@@ -12766,6 +13043,9 @@
       "tags": [
         "开源",
         "月之暗面",
+        "智能体",
+        "多模态",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -12814,7 +13094,7 @@
       "sortDate": "2026-01-27",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Upstage",
       "modelName": "Solar Pro 3",
       "modelKey": "solar-pro-3",
@@ -12880,7 +13160,7 @@
       "sortDate": "2026-01-23",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "MiniMax",
       "modelName": "MiniMax M2-her",
       "modelKey": "minimax-m2-her",
@@ -12898,6 +13178,7 @@
       "tags": [
         "闭源",
         "MiniMax",
+        "大模型",
         "国内"
       ],
       "signals": {
@@ -12945,7 +13226,7 @@
       "sortDate": "2026-01-21",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Writer",
       "modelName": "Palmyra X5",
       "modelKey": "palmyra-x5",
@@ -12963,7 +13244,8 @@
       ],
       "tags": [
         "闭源",
-        "Writer"
+        "Writer",
+        "智能体"
       ],
       "signals": {
         "headLab": false,
@@ -13010,7 +13292,7 @@
       "sortDate": "2026-01-19",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT Audio",
       "modelKey": "gpt-audio",
@@ -13077,7 +13359,7 @@
       "sortDate": "2026-01-19",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT Audio Mini",
       "modelKey": "gpt-audio-mini",
@@ -13145,7 +13427,7 @@
       "sortDate": "2026-01-19",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 4.7 Flash",
       "modelKey": "glm-4.7-flash",
@@ -13164,7 +13446,9 @@
       ],
       "tags": [
         "开源",
-        "Z.ai"
+        "Z.ai",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -13211,7 +13495,7 @@
       "sortDate": "2026-01-14",
       "year": 2026,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.2-Codex",
       "modelKey": "gpt-5.2-codex",
@@ -13230,7 +13514,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -13278,7 +13563,7 @@
       "sortDate": "2025-12-23",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Bytedance Seed",
       "modelName": "Seed 1.6 Flash",
       "modelKey": "seed-1.6-flash",
@@ -13297,7 +13582,8 @@
       ],
       "tags": [
         "闭源",
-        "Bytedance Seed"
+        "Bytedance Seed",
+        "多模态"
       ],
       "signals": {
         "headLab": false,
@@ -13346,7 +13632,7 @@
       "sortDate": "2025-12-23",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Bytedance Seed",
       "modelName": "Seed 1.6",
       "modelKey": "seed-1.6",
@@ -13364,7 +13650,8 @@
       ],
       "tags": [
         "闭源",
-        "Bytedance Seed"
+        "Bytedance Seed",
+        "多模态"
       ],
       "signals": {
         "headLab": false,
@@ -13413,7 +13700,7 @@
       "sortDate": "2025-12-23",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "MiniMax",
       "modelName": "MiniMax M2.1",
       "modelKey": "minimax-m2.1",
@@ -13431,6 +13718,9 @@
       "tags": [
         "开源",
         "MiniMax",
+        "大模型",
+        "智能体",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -13478,7 +13768,7 @@
       "sortDate": "2025-12-22",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 4.7",
       "modelKey": "glm-4.7",
@@ -13496,7 +13786,8 @@
       ],
       "tags": [
         "开源",
-        "Z.ai"
+        "Z.ai",
+        "推理"
       ],
       "signals": {
         "headLab": false,
@@ -13543,7 +13834,7 @@
       "sortDate": "2025-12-17",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 3 Flash Preview",
       "modelKey": "gemini-3-flash",
@@ -13564,6 +13855,9 @@
       "tags": [
         "闭源",
         "Google",
+        "推理",
+        "智能体",
+        "编程",
         "语音"
       ],
       "signals": {
@@ -13615,7 +13909,7 @@
       "sortDate": "2025-12-14",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "NVIDIA",
       "modelName": "Nemotron 3 Nano 30B A3B",
       "modelKey": "nemotron-3-nano-30b-a3b",
@@ -13637,6 +13931,7 @@
       "tags": [
         "开源",
         "NVIDIA",
+        "智能体",
         "芯片"
       ],
       "signals": {
@@ -13684,7 +13979,7 @@
       "sortDate": "2025-12-10",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.2 Chat",
       "modelKey": "gpt-5.2",
@@ -13752,7 +14047,7 @@
       "sortDate": "2025-12-10",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.2 Pro",
       "modelKey": "gpt-5.2-pro",
@@ -13771,7 +14066,9 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -13820,7 +14117,7 @@
       "sortDate": "2025-12-10",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.2",
       "modelKey": "gpt-5.2",
@@ -13838,7 +14135,9 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理",
+        "智能体"
       ],
       "signals": {
         "headLab": true,
@@ -13887,7 +14186,7 @@
       "sortDate": "2025-12-09",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Devstral 2 2512",
       "modelKey": "devstral",
@@ -13906,7 +14205,10 @@
       ],
       "tags": [
         "开源",
-        "Mistral AI"
+        "Mistral AI",
+        "智能体",
+        "算法",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -13954,7 +14256,7 @@
       "sortDate": "2025-12-08",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Relace",
       "modelName": "Relace Search",
       "modelKey": "relace-search",
@@ -14019,7 +14321,7 @@
       "sortDate": "2025-12-08",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 4.6V",
       "modelKey": "glm-4.6v",
@@ -14037,7 +14339,9 @@
       ],
       "tags": [
         "开源",
-        "Z.ai"
+        "Z.ai",
+        "推理",
+        "多模态"
       ],
       "signals": {
         "headLab": false,
@@ -14086,7 +14390,7 @@
       "sortDate": "2025-12-05",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Openrouter",
       "modelName": "Body Builder (beta)",
       "modelKey": "bodybuilder",
@@ -14151,7 +14455,7 @@
       "sortDate": "2025-12-04",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.1-Codex-Max",
       "modelKey": "gpt-5.1-codex-max",
@@ -14171,7 +14475,9 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -14219,7 +14525,7 @@
       "sortDate": "2025-12-02",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Amazon",
       "modelName": "Nova 2 Lite",
       "modelKey": "nova-2-lite-v1",
@@ -14238,7 +14544,8 @@
       ],
       "tags": [
         "闭源",
-        "Amazon"
+        "Amazon",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -14288,7 +14595,7 @@
       "sortDate": "2025-12-02",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Ministral 3 14B 2512",
       "modelKey": "ministral-14b",
@@ -14356,7 +14663,7 @@
       "sortDate": "2025-12-02",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Ministral 3 8B 2512",
       "modelKey": "ministral-8b",
@@ -14424,7 +14731,7 @@
       "sortDate": "2025-12-02",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Ministral 3 3B 2512",
       "modelKey": "ministral-3b",
@@ -14492,7 +14799,7 @@
       "sortDate": "2025-12-01",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Large 3 2512",
       "modelKey": "mistral-large",
@@ -14560,7 +14867,7 @@
       "sortDate": "2025-12-01",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V3.2",
       "modelKey": "deepseek-v3.2",
@@ -14578,6 +14885,9 @@
       "tags": [
         "开源",
         "DeepSeek",
+        "大模型",
+        "推理",
+        "智能体",
         "国内"
       ],
       "signals": {
@@ -14625,7 +14935,7 @@
       "sortDate": "2025-11-24",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Opus 4.5",
       "modelKey": "claude-opus-4.5",
@@ -14644,7 +14954,11 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "推理",
+        "智能体",
+        "多模态",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -14693,7 +15007,7 @@
       "sortDate": "2025-11-20",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Nano Banana Pro (Gemini 3 Pro Image Preview)",
       "modelKey": "gemini-3-pro-image",
@@ -14716,7 +15030,8 @@
       ],
       "tags": [
         "闭源",
-        "Google"
+        "Google",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -14764,7 +15079,7 @@
       "sortDate": "2025-11-13",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.1",
       "modelKey": "gpt-5.1",
@@ -14782,7 +15097,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -14831,7 +15147,7 @@
       "sortDate": "2025-11-13",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.1-Codex",
       "modelKey": "gpt-5.1-codex",
@@ -14850,7 +15166,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -14898,7 +15215,7 @@
       "sortDate": "2025-11-13",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5.1-Codex-Mini",
       "modelKey": "gpt-5.1-codex-mini",
@@ -14966,7 +15283,7 @@
       "sortDate": "2025-11-06",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "月之暗面",
       "modelName": "Kimi K2 Thinking",
       "modelKey": "kimi-k2",
@@ -14986,6 +15303,8 @@
       "tags": [
         "开源",
         "月之暗面",
+        "推理",
+        "智能体",
         "国内"
       ],
       "signals": {
@@ -15033,7 +15352,7 @@
       "sortDate": "2025-10-31",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Amazon",
       "modelName": "Nova Premier 1.0",
       "modelKey": "nova-premier-v1",
@@ -15052,7 +15371,9 @@
       ],
       "tags": [
         "闭源",
-        "Amazon"
+        "Amazon",
+        "推理",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -15100,7 +15421,7 @@
       "sortDate": "2025-10-30",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Perplexity",
       "modelName": "Sonar Pro Search",
       "modelKey": "sonar-pro-search",
@@ -15120,6 +15441,8 @@
       "tags": [
         "闭源",
         "Perplexity",
+        "推理",
+        "智能体",
         "搜索"
       ],
       "signals": {
@@ -15168,7 +15491,7 @@
       "sortDate": "2025-10-30",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Voxtral Small 24B 2507",
       "modelKey": "voxtral-small-24b",
@@ -15238,7 +15561,7 @@
       "sortDate": "2025-10-29",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "gpt-oss-safeguard-20b",
       "modelKey": "gpt-oss-safeguard-20b",
@@ -15258,7 +15581,9 @@
       ],
       "tags": [
         "开源",
-        "OpenAI"
+        "OpenAI",
+        "推理",
+        "安全"
       ],
       "signals": {
         "headLab": true,
@@ -15305,7 +15630,7 @@
       "sortDate": "2025-10-23",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "MiniMax",
       "modelName": "MiniMax M2",
       "modelKey": "minimax-m2",
@@ -15323,6 +15648,9 @@
       "tags": [
         "开源",
         "MiniMax",
+        "大模型",
+        "智能体",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -15370,7 +15698,7 @@
       "sortDate": "2025-10-20",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Ibm Granite",
       "modelName": "Granite 4.0 Micro",
       "modelKey": "granite-4.0-h-micro",
@@ -15389,7 +15717,8 @@
       ],
       "tags": [
         "开源",
-        "Ibm Granite"
+        "Ibm Granite",
+        "训练"
       ],
       "signals": {
         "headLab": false,
@@ -15436,7 +15765,7 @@
       "sortDate": "2025-10-16",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5 Image Mini",
       "modelKey": "gpt-5-image-mini",
@@ -15505,7 +15834,7 @@
       "sortDate": "2025-10-15",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Haiku 4.5",
       "modelKey": "claude-haiku-4.5",
@@ -15573,7 +15902,7 @@
       "sortDate": "2025-10-14",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 VL 8B Instruct",
       "modelKey": "qwen3-vl-8b",
@@ -15593,6 +15922,8 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "推理",
+        "多模态",
         "国内"
       ],
       "signals": {
@@ -15641,7 +15972,7 @@
       "sortDate": "2025-10-14",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5 Image",
       "modelKey": "gpt-5-image",
@@ -15660,7 +15991,9 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理",
+        "图像生成"
       ],
       "signals": {
         "headLab": true,
@@ -15709,7 +16042,7 @@
       "sortDate": "2025-10-07",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Nano Banana (Gemini 2.5 Flash Image)",
       "modelKey": "gemini-2.5-flash-image",
@@ -15731,7 +16064,8 @@
       ],
       "tags": [
         "闭源",
-        "Google"
+        "Google",
+        "图像生成"
       ],
       "signals": {
         "headLab": true,
@@ -15779,7 +16113,7 @@
       "sortDate": "2025-10-06",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 VL 30B A3B Thinking",
       "modelKey": "qwen3-vl-30b-a3b",
@@ -15800,6 +16134,8 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "推理",
+        "多模态",
         "国内"
       ],
       "signals": {
@@ -15848,7 +16184,7 @@
       "sortDate": "2025-10-06",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 VL 30B A3B Instruct",
       "modelKey": "qwen3-vl-30b-a3b",
@@ -15869,6 +16205,7 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "多模态",
         "国内"
       ],
       "signals": {
@@ -15917,7 +16254,7 @@
       "sortDate": "2025-10-06",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5 Pro",
       "modelKey": "gpt-5-pro",
@@ -15936,7 +16273,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -15985,7 +16323,7 @@
       "sortDate": "2025-09-30",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 4.6",
       "modelKey": "glm-4.6",
@@ -16050,7 +16388,7 @@
       "sortDate": "2025-09-29",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Sonnet 4.5",
       "modelKey": "claude-sonnet-4.5",
@@ -16069,7 +16407,9 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -16118,7 +16458,7 @@
       "sortDate": "2025-09-29",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V3.2 Exp",
       "modelKey": "deepseek-v3.2-exp",
@@ -16137,6 +16477,7 @@
       "tags": [
         "开源",
         "DeepSeek",
+        "大模型",
         "国内"
       ],
       "signals": {
@@ -16184,7 +16525,7 @@
       "sortDate": "2025-09-27",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Thedrummer",
       "modelName": "Cydonia 24B V4.1",
       "modelKey": "cydonia-24b-v4.1",
@@ -16250,7 +16591,7 @@
       "sortDate": "2025-09-26",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Relace",
       "modelName": "Relace Apply 3",
       "modelKey": "relace-apply-3",
@@ -16268,7 +16609,8 @@
       ],
       "tags": [
         "闭源",
-        "Relace"
+        "Relace",
+        "大模型"
       ],
       "signals": {
         "headLab": false,
@@ -16315,7 +16657,7 @@
       "sortDate": "2025-09-23",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 VL 235B A22B Instruct",
       "modelKey": "qwen3-vl-235b-a22b",
@@ -16336,6 +16678,7 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "多模态",
         "国内"
       ],
       "signals": {
@@ -16384,7 +16727,7 @@
       "sortDate": "2025-09-22",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V3.1 Terminus",
       "modelKey": "deepseek-v3.1-terminus",
@@ -16450,7 +16793,7 @@
       "sortDate": "2025-09-17",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 Coder Flash",
       "modelKey": "qwen3-coder-flash",
@@ -16470,6 +16813,8 @@
       "tags": [
         "闭源",
         "阿里云 Qwen",
+        "智能体",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -16517,7 +16862,7 @@
       "sortDate": "2025-09-11",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 Next 80B A3B Thinking",
       "modelKey": "qwen3-next-80b-a3b",
@@ -16538,6 +16883,7 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "推理",
         "国内"
       ],
       "signals": {
@@ -16585,7 +16931,7 @@
       "sortDate": "2025-09-11",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 Next 80B A3B Instruct",
       "modelKey": "qwen3-next-80b-a3b",
@@ -16653,7 +16999,7 @@
       "sortDate": "2025-09-04",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "月之暗面",
       "modelName": "Kimi K2 0905",
       "modelKey": "kimi-k2",
@@ -16720,7 +17066,7 @@
       "sortDate": "2025-08-26",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Nousresearch",
       "modelName": "Hermes 4 405B",
       "modelKey": "hermes-4-405b",
@@ -16740,6 +17086,7 @@
       "tags": [
         "开源",
         "Nousresearch",
+        "推理",
         "搜索"
       ],
       "signals": {
@@ -16787,7 +17134,7 @@
       "sortDate": "2025-08-21",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V3.1",
       "modelKey": "deepseek-chat-v3.1",
@@ -16805,6 +17152,7 @@
       "tags": [
         "开源",
         "DeepSeek",
+        "推理",
         "国内"
       ],
       "signals": {
@@ -16852,7 +17200,7 @@
       "sortDate": "2025-08-13",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Medium 3.1",
       "modelKey": "mistral-medium-3.1",
@@ -16919,7 +17267,7 @@
       "sortDate": "2025-08-11",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 4.5V",
       "modelKey": "glm-4.5v",
@@ -16937,7 +17285,10 @@
       ],
       "tags": [
         "开源",
-        "Z.ai"
+        "Z.ai",
+        "大模型",
+        "智能体",
+        "多模态"
       ],
       "signals": {
         "headLab": false,
@@ -16985,7 +17336,7 @@
       "sortDate": "2025-08-07",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5",
       "modelKey": "gpt-5",
@@ -17003,7 +17354,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -17052,7 +17404,7 @@
       "sortDate": "2025-08-07",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5 Mini",
       "modelKey": "gpt-5-mini",
@@ -17071,7 +17423,9 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理",
+        "安全"
       ],
       "signals": {
         "headLab": true,
@@ -17120,7 +17474,7 @@
       "sortDate": "2025-08-07",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-5 Nano",
       "modelKey": "gpt-5-nano",
@@ -17188,7 +17542,7 @@
       "sortDate": "2025-08-05",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "gpt-oss-120b",
       "modelKey": "gpt-oss-120b",
@@ -17207,7 +17561,9 @@
       ],
       "tags": [
         "开源",
-        "OpenAI"
+        "OpenAI",
+        "推理",
+        "智能体"
       ],
       "signals": {
         "headLab": true,
@@ -17254,7 +17610,7 @@
       "sortDate": "2025-08-05",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "gpt-oss-20b",
       "modelKey": "gpt-oss-20b",
@@ -17320,7 +17676,7 @@
       "sortDate": "2025-08-05",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthropic",
       "modelName": "Claude Opus 4.1",
       "modelKey": "claude-opus-4.1",
@@ -17339,7 +17695,10 @@
       ],
       "tags": [
         "闭源",
-        "Anthropic"
+        "Anthropic",
+        "推理",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -17388,7 +17747,7 @@
       "sortDate": "2025-08-01",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Codestral 2508",
       "modelKey": "codestral",
@@ -17406,7 +17765,8 @@
       ],
       "tags": [
         "闭源",
-        "Mistral AI"
+        "Mistral AI",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -17454,7 +17814,7 @@
       "sortDate": "2025-07-31",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 Coder 30B A3B Instruct",
       "modelKey": "qwen3-coder-30b-a3b",
@@ -17523,7 +17883,7 @@
       "sortDate": "2025-07-29",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 30B A3B Instruct 2507",
       "modelKey": "qwen3-30b-a3b-instruct",
@@ -17592,7 +17952,7 @@
       "sortDate": "2025-07-25",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 4.5",
       "modelKey": "glm-4.5",
@@ -17610,7 +17970,9 @@
       ],
       "tags": [
         "开源",
-        "Z.ai"
+        "Z.ai",
+        "大模型",
+        "智能体"
       ],
       "signals": {
         "headLab": false,
@@ -17657,7 +18019,7 @@
       "sortDate": "2025-07-25",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Z.ai",
       "modelName": "GLM 4.5 Air",
       "modelKey": "glm-4.5-air",
@@ -17676,7 +18038,8 @@
       ],
       "tags": [
         "开源",
-        "Z.ai"
+        "Z.ai",
+        "智能体"
       ],
       "signals": {
         "headLab": false,
@@ -17723,7 +18086,7 @@
       "sortDate": "2025-07-25",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 235B A22B Thinking 2507",
       "modelKey": "qwen3-235b-a22b-thinking",
@@ -17745,6 +18108,7 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "推理",
         "国内"
       ],
       "signals": {
@@ -17792,7 +18156,7 @@
       "sortDate": "2025-07-23",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 Coder 480B A35B",
       "modelKey": "qwen3-coder",
@@ -17813,6 +18177,8 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "智能体",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -17860,7 +18226,7 @@
       "sortDate": "2025-07-22",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "字节跳动",
       "modelName": "UI-TARS 7B",
       "modelKey": "ui-tars-1.5-7b",
@@ -17879,6 +18245,8 @@
       "tags": [
         "开源",
         "字节跳动",
+        "智能体",
+        "多模态",
         "国内"
       ],
       "signals": {
@@ -17927,7 +18295,7 @@
       "sortDate": "2025-07-22",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 2.5 Flash Lite",
       "modelKey": "gemini-2.5-flash-lite",
@@ -17948,6 +18316,7 @@
       "tags": [
         "闭源",
         "Google",
+        "推理",
         "语音"
       ],
       "signals": {
@@ -17999,7 +18368,7 @@
       "sortDate": "2025-07-21",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 235B A22B Instruct 2507",
       "modelKey": "qwen3-235b-a22b",
@@ -18068,7 +18437,7 @@
       "sortDate": "2025-07-11",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "月之暗面",
       "modelName": "Kimi K2 0711",
       "modelKey": "kimi-k2",
@@ -18135,7 +18504,7 @@
       "sortDate": "2025-07-09",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Cognitivecomputations",
       "modelName": "Uncensored",
       "modelKey": "dolphin-mistral-24b-venice-edition",
@@ -18152,7 +18521,8 @@
       ],
       "tags": [
         "开源",
-        "Cognitivecomputations"
+        "Cognitivecomputations",
+        "训练"
       ],
       "signals": {
         "headLab": false,
@@ -18199,7 +18569,7 @@
       "sortDate": "2025-07-08",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "腾讯",
       "modelName": "Hunyuan A13B Instruct",
       "modelKey": "hunyuan-a13b",
@@ -18219,6 +18589,7 @@
       "tags": [
         "开源",
         "腾讯",
+        "推理",
         "国内"
       ],
       "signals": {
@@ -18266,7 +18637,7 @@
       "sortDate": "2025-07-07",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Morph",
       "modelName": "Morph V3 Large",
       "modelKey": "morph-v3-large",
@@ -18331,7 +18702,7 @@
       "sortDate": "2025-07-07",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Morph",
       "modelName": "Morph V3 Fast",
       "modelKey": "morph-v3-fast",
@@ -18396,7 +18767,7 @@
       "sortDate": "2025-06-20",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Small 3.2 24B",
       "modelKey": "mistral-small-3.2-24b",
@@ -18463,7 +18834,7 @@
       "sortDate": "2025-06-17",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "MiniMax",
       "modelName": "MiniMax M1",
       "modelKey": "minimax-m1",
@@ -18481,6 +18852,8 @@
       "tags": [
         "闭源",
         "MiniMax",
+        "开源",
+        "推理",
         "国内"
       ],
       "signals": {
@@ -18528,7 +18901,7 @@
       "sortDate": "2025-06-17",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 2.5 Flash",
       "modelKey": "gemini-2.5-flash",
@@ -18548,6 +18921,9 @@
       "tags": [
         "闭源",
         "Google",
+        "推理",
+        "编程",
+        "科学",
         "语音"
       ],
       "signals": {
@@ -18599,7 +18975,7 @@
       "sortDate": "2025-06-17",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 2.5 Pro",
       "modelKey": "gemini-2.5-pro",
@@ -18619,6 +18995,9 @@
       "tags": [
         "闭源",
         "Google",
+        "推理",
+        "编程",
+        "科学",
         "语音"
       ],
       "signals": {
@@ -18670,7 +19049,7 @@
       "sortDate": "2025-06-10",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "o3 Pro",
       "modelKey": "o3-pro",
@@ -18688,7 +19067,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -18737,7 +19117,7 @@
       "sortDate": "2025-06-05",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemini 2.5 Pro Preview 06-05",
       "modelKey": "gemini-2.5-pro",
@@ -18760,6 +19140,9 @@
       "tags": [
         "闭源",
         "Google",
+        "推理",
+        "编程",
+        "科学",
         "语音"
       ],
       "signals": {
@@ -18810,7 +19193,7 @@
       "sortDate": "2025-05-28",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "R1 0528",
       "modelKey": "deepseek-r1",
@@ -18829,6 +19212,7 @@
       "tags": [
         "开源",
         "DeepSeek",
+        "推理",
         "国内"
       ],
       "signals": {
@@ -18876,7 +19260,7 @@
       "sortDate": "2025-05-07",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Medium 3",
       "modelKey": "mistral-medium-3",
@@ -18943,7 +19327,7 @@
       "sortDate": "2025-04-30",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Llama Guard 4 12B",
       "modelKey": "llama-guard-4-12b",
@@ -18963,7 +19347,10 @@
       ],
       "tags": [
         "开源",
-        "Meta"
+        "Meta",
+        "多模态",
+        "训练",
+        "安全"
       ],
       "signals": {
         "headLab": true,
@@ -19011,7 +19398,7 @@
       "sortDate": "2025-04-28",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 30B A3B",
       "modelKey": "qwen3-30b-a3b",
@@ -19031,6 +19418,8 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "大模型",
+        "推理",
         "国内"
       ],
       "signals": {
@@ -19078,7 +19467,7 @@
       "sortDate": "2025-04-28",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 14B",
       "modelKey": "qwen3-14b",
@@ -19097,6 +19486,7 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "推理",
         "国内"
       ],
       "signals": {
@@ -19144,7 +19534,7 @@
       "sortDate": "2025-04-28",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen3 32B",
       "modelKey": "qwen3-32b",
@@ -19163,6 +19553,7 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "推理",
         "国内"
       ],
       "signals": {
@@ -19210,7 +19601,7 @@
       "sortDate": "2025-04-16",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "o4 Mini High",
       "modelKey": "o4-mini-high",
@@ -19229,7 +19620,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -19278,7 +19670,7 @@
       "sortDate": "2025-04-16",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "o3",
       "modelKey": "o3",
@@ -19295,7 +19687,10 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理",
+        "编程",
+        "科学"
       ],
       "signals": {
         "headLab": true,
@@ -19344,7 +19739,7 @@
       "sortDate": "2025-04-16",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "o4 Mini",
       "modelKey": "o4-mini",
@@ -19362,7 +19757,10 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理",
+        "智能体",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -19411,7 +19809,7 @@
       "sortDate": "2025-04-14",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-4.1",
       "modelKey": "gpt-4.1",
@@ -19429,7 +19827,10 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "大模型",
+        "推理",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -19478,7 +19879,7 @@
       "sortDate": "2025-04-14",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-4.1 Mini",
       "modelKey": "gpt-4.1-mini",
@@ -19546,7 +19947,7 @@
       "sortDate": "2025-04-14",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-4.1 Nano",
       "modelKey": "gpt-4.1-nano",
@@ -19614,7 +20015,7 @@
       "sortDate": "2025-04-05",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Llama 4 Maverick",
       "modelKey": "llama-4-maverick",
@@ -19633,7 +20034,8 @@
       ],
       "tags": [
         "开源",
-        "Meta"
+        "Meta",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -19681,7 +20083,7 @@
       "sortDate": "2025-04-05",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Llama 4 Scout",
       "modelKey": "llama-4-scout",
@@ -19748,7 +20150,7 @@
       "sortDate": "2025-03-24",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V3 0324",
       "modelKey": "deepseek-chat-v3",
@@ -19814,7 +20216,7 @@
       "sortDate": "2025-03-19",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "o1-pro",
       "modelKey": "o1-pro",
@@ -19832,7 +20234,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -19881,7 +20284,7 @@
       "sortDate": "2025-03-17",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Small 3.1 24B",
       "modelKey": "mistral-small-3.1-24b",
@@ -19900,7 +20303,8 @@
       ],
       "tags": [
         "开源",
-        "Mistral AI"
+        "Mistral AI",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -19948,7 +20352,7 @@
       "sortDate": "2025-03-13",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemma 3 4B",
       "modelKey": "gemma-3-4b",
@@ -19967,7 +20371,8 @@
       ],
       "tags": [
         "开源",
-        "Google"
+        "Google",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -20015,7 +20420,7 @@
       "sortDate": "2025-03-13",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemma 3 12B",
       "modelKey": "gemma-3-12b",
@@ -20034,7 +20439,8 @@
       ],
       "tags": [
         "开源",
-        "Google"
+        "Google",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -20082,7 +20488,7 @@
       "sortDate": "2025-03-13",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Cohere",
       "modelName": "Command A",
       "modelKey": "command-a",
@@ -20099,7 +20505,9 @@
       ],
       "tags": [
         "开源",
-        "Cohere"
+        "Cohere",
+        "智能体",
+        "编程"
       ],
       "signals": {
         "headLab": true,
@@ -20146,7 +20554,7 @@
       "sortDate": "2025-03-12",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Rekaai",
       "modelName": "Reka Flash 3",
       "modelKey": "reka-flash-3",
@@ -20164,7 +20572,9 @@
       ],
       "tags": [
         "开源",
-        "Rekaai"
+        "Rekaai",
+        "大模型",
+        "编程"
       ],
       "signals": {
         "headLab": false,
@@ -20211,7 +20621,7 @@
       "sortDate": "2025-03-12",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemma 3 27B",
       "modelKey": "gemma-3-27b",
@@ -20230,7 +20640,8 @@
       ],
       "tags": [
         "开源",
-        "Google"
+        "Google",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -20278,7 +20689,7 @@
       "sortDate": "2025-03-10",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Thedrummer",
       "modelName": "Skyfall 36B V2",
       "modelKey": "skyfall-36b-v2",
@@ -20297,7 +20708,8 @@
       ],
       "tags": [
         "开源",
-        "Thedrummer"
+        "Thedrummer",
+        "训练"
       ],
       "signals": {
         "headLab": false,
@@ -20344,7 +20756,7 @@
       "sortDate": "2025-03-07",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Perplexity",
       "modelName": "Sonar Reasoning Pro",
       "modelKey": "sonar-reasoning-pro",
@@ -20364,7 +20776,8 @@
       "tags": [
         "闭源",
         "Perplexity",
-        "推理"
+        "推理",
+        "搜索"
       ],
       "signals": {
         "headLab": true,
@@ -20412,7 +20825,7 @@
       "sortDate": "2025-03-07",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Perplexity",
       "modelName": "Sonar Pro",
       "modelKey": "sonar-pro",
@@ -20430,7 +20843,8 @@
       ],
       "tags": [
         "闭源",
-        "Perplexity"
+        "Perplexity",
+        "搜索"
       ],
       "signals": {
         "headLab": true,
@@ -20478,7 +20892,7 @@
       "sortDate": "2025-03-07",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Perplexity",
       "modelName": "Sonar Deep Research",
       "modelKey": "sonar-deep-research",
@@ -20498,6 +20912,7 @@
       "tags": [
         "闭源",
         "Perplexity",
+        "推理",
         "搜索"
       ],
       "signals": {
@@ -20545,7 +20960,7 @@
       "sortDate": "2025-02-17",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Saba",
       "modelKey": "mistral-saba",
@@ -20610,7 +21025,7 @@
       "sortDate": "2025-02-12",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "o3 Mini High",
       "modelKey": "o3-mini-high",
@@ -20629,7 +21044,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -20677,7 +21093,7 @@
       "sortDate": "2025-02-04",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Aion Labs",
       "modelName": "Aion-RP 1.0 (8B)",
       "modelKey": "aion-rp-llama-3.1-8b",
@@ -20696,7 +21112,10 @@
       ],
       "tags": [
         "闭源",
-        "Aion Labs"
+        "Aion Labs",
+        "大模型",
+        "评测",
+        "融资"
       ],
       "signals": {
         "headLab": false,
@@ -20743,7 +21162,7 @@
       "sortDate": "2025-02-01",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen2.5 VL 72B Instruct",
       "modelKey": "qwen2.5-vl-72b",
@@ -20811,7 +21230,7 @@
       "sortDate": "2025-02-01",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen-Plus",
       "modelKey": "qwen-plus",
@@ -20829,6 +21248,7 @@
       "tags": [
         "闭源",
         "阿里云 Qwen",
+        "大模型",
         "国内"
       ],
       "signals": {
@@ -20876,7 +21296,7 @@
       "sortDate": "2025-01-31",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "o3 Mini",
       "modelKey": "o3-mini",
@@ -20894,7 +21314,10 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "推理",
+        "编程",
+        "科学"
       ],
       "signals": {
         "headLab": true,
@@ -20942,7 +21365,7 @@
       "sortDate": "2025-01-30",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Small 3",
       "modelKey": "mistral-small-24b-instruct",
@@ -21007,7 +21430,7 @@
       "sortDate": "2025-01-27",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Perplexity",
       "modelName": "Sonar",
       "modelKey": "sonar",
@@ -21072,7 +21495,7 @@
       "sortDate": "2025-01-15",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "MiniMax",
       "modelName": "MiniMax-01",
       "modelKey": "minimax-01",
@@ -21138,7 +21561,7 @@
       "sortDate": "2025-01-10",
       "year": 2025,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Microsoft",
       "modelName": "Phi 4",
       "modelKey": "phi-4",
@@ -21156,7 +21579,9 @@
       ],
       "tags": [
         "开源",
-        "Microsoft"
+        "Microsoft",
+        "推理",
+        "搜索"
       ],
       "signals": {
         "headLab": true,
@@ -21203,7 +21628,7 @@
       "sortDate": "2024-12-26",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "DeepSeek",
       "modelName": "DeepSeek V3",
       "modelKey": "deepseek",
@@ -21221,6 +21646,7 @@
       "tags": [
         "开源",
         "DeepSeek",
+        "编程",
         "国内"
       ],
       "signals": {
@@ -21268,7 +21694,7 @@
       "sortDate": "2024-12-17",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "o1",
       "modelKey": "o1",
@@ -21334,7 +21760,7 @@
       "sortDate": "2024-12-14",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Cohere",
       "modelName": "Command R7B (12-2024)",
       "modelKey": "command-r7b-12",
@@ -21354,7 +21780,9 @@
       ],
       "tags": [
         "闭源",
-        "Cohere"
+        "Cohere",
+        "智能体",
+        "搜索"
       ],
       "signals": {
         "headLab": true,
@@ -21401,7 +21829,7 @@
       "sortDate": "2024-12-06",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Llama 3.3 70B Instruct",
       "modelKey": "llama-3.3-70b",
@@ -21421,7 +21849,9 @@
       ],
       "tags": [
         "开源",
-        "Meta"
+        "Meta",
+        "大模型",
+        "训练"
       ],
       "signals": {
         "headLab": true,
@@ -21468,7 +21898,7 @@
       "sortDate": "2024-12-05",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Amazon",
       "modelName": "Nova Lite 1.0",
       "modelKey": "nova-lite-v1",
@@ -21487,7 +21917,8 @@
       ],
       "tags": [
         "闭源",
-        "Amazon"
+        "Amazon",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -21535,7 +21966,7 @@
       "sortDate": "2024-12-05",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Amazon",
       "modelName": "Nova Micro 1.0",
       "modelKey": "nova-micro-v1",
@@ -21601,7 +22032,7 @@
       "sortDate": "2024-12-05",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Amazon",
       "modelName": "Nova Pro 1.0",
       "modelKey": "nova-pro-v1",
@@ -21620,7 +22051,8 @@
       ],
       "tags": [
         "闭源",
-        "Amazon"
+        "Amazon",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -21668,7 +22100,7 @@
       "sortDate": "2024-11-20",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-4o (2024-11-20)",
       "modelKey": "gpt-4o",
@@ -21738,7 +22170,7 @@
       "sortDate": "2024-11-19",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Large 2407",
       "modelKey": "mistral-large",
@@ -21756,7 +22188,8 @@
       ],
       "tags": [
         "闭源",
-        "Mistral AI"
+        "Mistral AI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -21804,7 +22237,7 @@
       "sortDate": "2024-11-11",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen2.5 Coder 32B Instruct",
       "modelKey": "qwen-2.5-coder-32b",
@@ -21824,6 +22257,7 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "大模型",
         "国内"
       ],
       "signals": {
@@ -21871,7 +22305,7 @@
       "sortDate": "2024-11-08",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Thedrummer",
       "modelName": "UnslopNemo 12B",
       "modelKey": "unslopnemo-12b",
@@ -21936,7 +22370,7 @@
       "sortDate": "2024-10-22",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Anthracite Org",
       "modelName": "Magnum v4 72B",
       "modelKey": "magnum-v4-72b",
@@ -22001,7 +22435,7 @@
       "sortDate": "2024-10-16",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen2.5 7B Instruct",
       "modelKey": "qwen-2.5-7b",
@@ -22021,6 +22455,7 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "大模型",
         "国内"
       ],
       "signals": {
@@ -22068,7 +22503,7 @@
       "sortDate": "2024-09-25",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Llama 3.2 1B Instruct",
       "modelKey": "llama-3.2-1b",
@@ -22135,7 +22570,7 @@
       "sortDate": "2024-09-25",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Llama 3.2 3B Instruct",
       "modelKey": "llama-3.2-3b",
@@ -22155,7 +22590,9 @@
       ],
       "tags": [
         "开源",
-        "Meta"
+        "Meta",
+        "大模型",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -22202,7 +22639,7 @@
       "sortDate": "2024-09-19",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "阿里云 Qwen",
       "modelName": "Qwen2.5 72B Instruct",
       "modelKey": "qwen-2.5-72b",
@@ -22221,6 +22658,7 @@
       "tags": [
         "开源",
         "阿里云 Qwen",
+        "大模型",
         "国内"
       ],
       "signals": {
@@ -22268,7 +22706,7 @@
       "sortDate": "2024-08-30",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Cohere",
       "modelName": "Command R (08-2024)",
       "modelKey": "command-r-08",
@@ -22287,7 +22725,8 @@
       ],
       "tags": [
         "闭源",
-        "Cohere"
+        "Cohere",
+        "搜索"
       ],
       "signals": {
         "headLab": true,
@@ -22334,7 +22773,7 @@
       "sortDate": "2024-08-30",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Cohere",
       "modelName": "Command R+ (08-2024)",
       "modelKey": "command-r-plus-08",
@@ -22400,7 +22839,7 @@
       "sortDate": "2024-08-28",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Sao10k",
       "modelName": "Llama 3.1 Euryale 70B v2.2",
       "modelKey": "l3.1-euryale-70b",
@@ -22468,7 +22907,7 @@
       "sortDate": "2024-08-18",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Nousresearch",
       "modelName": "Hermes 3 70B Instruct",
       "modelKey": "hermes-3-llama-3.1-70b",
@@ -22489,6 +22928,7 @@
       "tags": [
         "开源",
         "Nousresearch",
+        "智能体",
         "搜索"
       ],
       "signals": {
@@ -22536,7 +22976,7 @@
       "sortDate": "2024-08-16",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Nousresearch",
       "modelName": "Hermes 3 405B Instruct",
       "modelKey": "hermes-3-llama-3.1-405b",
@@ -22557,6 +22997,8 @@
       "tags": [
         "开源",
         "Nousresearch",
+        "推理",
+        "智能体",
         "搜索"
       ],
       "signals": {
@@ -22604,7 +23046,7 @@
       "sortDate": "2024-08-13",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Sao10k",
       "modelName": "Llama 3 8B Lunaris",
       "modelKey": "l3-lunaris-8b",
@@ -22671,7 +23113,7 @@
       "sortDate": "2024-08-06",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-4o (2024-08-06)",
       "modelKey": "gpt-4o",
@@ -22741,7 +23183,7 @@
       "sortDate": "2024-07-23",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Llama 3.1 70B Instruct",
       "modelKey": "llama-3.1-70b",
@@ -22808,7 +23250,7 @@
       "sortDate": "2024-07-23",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Meta",
       "modelName": "Llama 3.1 8B Instruct",
       "modelKey": "llama-3.1-8b",
@@ -22875,7 +23317,7 @@
       "sortDate": "2024-07-19",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Nemo",
       "modelKey": "mistral-nemo",
@@ -22892,7 +23334,8 @@
       ],
       "tags": [
         "开源",
-        "Mistral AI"
+        "Mistral AI",
+        "芯片"
       ],
       "signals": {
         "headLab": true,
@@ -22939,7 +23382,7 @@
       "sortDate": "2024-07-18",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-4o-mini",
       "modelKey": "gpt-4o-mini",
@@ -22958,7 +23401,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -23007,7 +23451,7 @@
       "sortDate": "2024-07-18",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-4o-mini (2024-07-18)",
       "modelKey": "gpt-4o-mini",
@@ -23029,7 +23473,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -23078,7 +23523,7 @@
       "sortDate": "2024-07-13",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Google",
       "modelName": "Gemma 2 27B",
       "modelKey": "gemma-2-27b",
@@ -23097,7 +23542,9 @@
       ],
       "tags": [
         "开源",
-        "Google"
+        "Google",
+        "搜索",
+        "技术"
       ],
       "signals": {
         "headLab": true,
@@ -23144,7 +23591,7 @@
       "sortDate": "2024-05-13",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-4o",
       "modelKey": "gpt-4o",
@@ -23162,7 +23609,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -23211,7 +23659,7 @@
       "sortDate": "2024-05-13",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-4o (2024-05-13)",
       "modelKey": "gpt-4o",
@@ -23232,7 +23680,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "多模态"
       ],
       "signals": {
         "headLab": true,
@@ -23281,7 +23730,7 @@
       "sortDate": "2024-04-17",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mixtral 8x22B Instruct",
       "modelKey": "mixtral-8x22b",
@@ -23300,7 +23749,8 @@
       ],
       "tags": [
         "开源",
-        "Mistral AI"
+        "Mistral AI",
+        "训练"
       ],
       "signals": {
         "headLab": true,
@@ -23348,7 +23798,7 @@
       "sortDate": "2024-04-09",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-4 Turbo",
       "modelKey": "gpt-4-turbo",
@@ -23367,7 +23817,9 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "训练",
+        "数据"
       ],
       "signals": {
         "headLab": true,
@@ -23415,7 +23867,7 @@
       "sortDate": "2024-02-26",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mistral AI",
       "modelName": "Mistral Large",
       "modelKey": "mistral-large",
@@ -23432,7 +23884,8 @@
       ],
       "tags": [
         "闭源",
-        "Mistral AI"
+        "Mistral AI",
+        "推理"
       ],
       "signals": {
         "headLab": true,
@@ -23480,7 +23933,7 @@
       "sortDate": "2024-01-25",
       "year": 2024,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-3.5 Turbo (older v0613)",
       "modelKey": "gpt-3.5-turbo",
@@ -23501,7 +23954,9 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "训练",
+        "数据"
       ],
       "signals": {
         "headLab": true,
@@ -23548,7 +24003,7 @@
       "sortDate": "2023-11-08",
       "year": 2023,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Openrouter",
       "modelName": "Auto Router",
       "modelKey": "auto",
@@ -23616,7 +24071,7 @@
       "sortDate": "2023-09-28",
       "year": 2023,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-3.5 Turbo Instruct",
       "modelKey": "gpt-3.5-turbo",
@@ -23636,7 +24091,9 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "训练",
+        "数据"
       ],
       "signals": {
         "headLab": true,
@@ -23683,7 +24140,7 @@
       "sortDate": "2023-08-28",
       "year": 2023,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-3.5 Turbo 16k",
       "modelKey": "gpt-3.5-turbo-16k",
@@ -23703,7 +24160,9 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "训练",
+        "数据"
       ],
       "signals": {
         "headLab": true,
@@ -23750,7 +24209,7 @@
       "sortDate": "2023-08-02",
       "year": 2023,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Mancer",
       "modelName": "Weaver (alpha)",
       "modelKey": "weaver",
@@ -23815,7 +24274,7 @@
       "sortDate": "2023-07-22",
       "year": 2023,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Undi95",
       "modelName": "ReMM SLERP 13B",
       "modelKey": "remm-slerp-l2-13b",
@@ -23880,7 +24339,7 @@
       "sortDate": "2023-07-02",
       "year": 2023,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "Gryphe",
       "modelName": "MythoMax 13B",
       "modelKey": "mythomax-l2-13b",
@@ -23897,7 +24356,8 @@
       ],
       "tags": [
         "开源",
-        "Gryphe"
+        "Gryphe",
+        "训练"
       ],
       "signals": {
         "headLab": false,
@@ -23944,7 +24404,7 @@
       "sortDate": "2023-05-28",
       "year": 2023,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-3.5 Turbo",
       "modelKey": "gpt-3.5-turbo",
@@ -23963,7 +24423,9 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "训练",
+        "数据"
       ],
       "signals": {
         "headLab": true,
@@ -24010,7 +24472,7 @@
       "sortDate": "2023-05-28",
       "year": 2023,
       "datePrecision": "day",
-      "summaryKind": "template",
+      "summaryKind": "card",
       "organization": "OpenAI",
       "modelName": "GPT-4",
       "modelKey": "gpt-4",
@@ -24028,7 +24490,8 @@
       ],
       "tags": [
         "闭源",
-        "OpenAI"
+        "OpenAI",
+        "多模态"
       ],
       "signals": {
         "headLab": true,

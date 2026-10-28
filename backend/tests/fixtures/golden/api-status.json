@@ -6,20 +6,20 @@
     "lastStatus": "succeeded",
     "running": false,
     "stale": true,
-    "seedVersion": "2026.10.25.1",
+    "seedVersion": "2026.10.28.1",
     "eventCount": 158
   },
   "panel": {
     "configured": false,
     "models": [],
     "reason": "models",
-    "rubricVersion": "chronicle-v3",
+    "rubricVersion": "chronicle-v4",
     "includeScore": 75,
     "minVotes": 3
   },
   "runs": [
     {
-      "id": "a477c529-ca60-49f5-9ecd-2323b46bd640",
+      "id": "ea4ca813-ddeb-4744-adaf-c21fbcc2e9eb",
       "trigger": "manual",
       "status": "succeeded",
       "startedAt": "2026-10-23T22:00:00.000Z",
