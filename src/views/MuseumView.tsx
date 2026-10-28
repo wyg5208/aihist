@@ -249,7 +249,7 @@ export function MuseumView({ archive }: { archive: ArchiveController }) {
 
                 <div className="mu-green px-[18px] pb-4 pt-3.5">
                   <p className="mb-2.5 text-[12.8px] text-[#c8bb9c]">
-                    每周一封邮件，只写这一周新增了什么。
+                    每周一发一封，只写这一周新增了什么；这一周没有新增就不发。
                   </p>
                   <SubscribeForm
                     source="month"

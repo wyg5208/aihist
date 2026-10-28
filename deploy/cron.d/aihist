@@ -1,4 +1,4 @@
-# /etc/cron.d/aihist -- collection, analytics and backups.
+# /etc/cron.d/aihist -- collection, analytics, backups and the weekly digest.
 #
 # `run-sync` is the only thing that adds events. `ingest-access-log` is the only
 # thing that sees the JavaScript-free citation pages being read, and `prune` is
@@ -33,6 +33,13 @@ MAILTO=""
 # 90d, crawl_hits 120d, api_key_usage 400d, audit_log 730d. Events, sources,
 # sync runs and subscribers have no window and are never touched.
 40 4 * * 0 aihist /srv/aihist/deploy/run-cli.sh prune >> /var/log/aihist/prune.log 2>&1
+
+# Weekly (Monday 07:10): the one message this box sends to readers. After the
+# 01:05 collection, so the week that just ended is complete; a week with no new
+# entries exits 0 and sends nothing, because an empty issue is not worth an
+# inbox. Exit 1 here means recipients were addressed and none were delivered —
+# a broken SMTP password, not a quiet week.
+10 7 * * 1 aihist /srv/aihist/deploy/run-cli.sh weekly-digest >> /var/log/aihist/digest.log 2>&1
 
 # Weekly (Sunday 04:50), ten minutes after `prune`: trim the collection ledger.
 # Only the append-only trail and `dropped` items past COLLECT_RETENTION_DAYS go;

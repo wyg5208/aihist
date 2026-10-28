@@ -1,26 +1,28 @@
-# Registers the four recurring jobs. This is the Windows replacement for
+# Registers the five recurring jobs. This is the Windows replacement for
 # deploy/cron.d/aihist: there is no cron on Windows Server.
 #
 #   aihist-sync       daily 01:05     (the only thing that ever writes new events)
 #   aihist-backup     daily 03:20     (SQLite backup API + rotation)
 #   aihist-analytics  hourly          (access log -> crawl_hits)
 #   aihist-prune      weekly, Sun      (analytics retention)
+#   aihist-digest     weekly, Mon      (the weekly mail to confirmed subscribers)
 #
 # `aihist-prune` is the only task allowed to delete rows, and it deletes only
 # from page_views, crawl_hits, api_key_usage and audit_log.
 #
-# All four run as SYSTEM so they do not depend on an interactive login.
+# All five run as SYSTEM so they do not depend on an interactive login.
 #
 # usage (elevated):
 #   powershell -ExecutionPolicy Bypass -File deploy\windows\register-tasks.ps1
-#   ... -SyncAt 00:20 -BackupAt 02:30 -PruneAt 04:40
+#   ... -SyncAt 00:20 -BackupAt 02:30 -PruneAt 04:40 -DigestAt 07:10
 
 [CmdletBinding()]
 param(
     [string]$AppDir = "D:\srv\aihist",
     [string]$SyncAt = "01:05",
     [string]$BackupAt = "03:20",
-    [string]$PruneAt = "04:40"
+    [string]$PruneAt = "04:40",
+    [string]$DigestAt = "07:10"
 )
 
 $ErrorActionPreference = "Stop"
@@ -112,6 +114,22 @@ Register-ScheduledTask `
     -Description "AI 纪年: analytics retention. Deletes only page_views, crawl_hits, api_key_usage and audit_log." `
     -Force | Out-Null
 
+Write-Host "==> aihist-digest (weekly, Monday $DigestAt)"
+# Monday morning, after the 01:05 collection, so the week it describes is
+# complete. The command exits 0 on a week with nothing to say and 1 only when
+# recipients were addressed and none were delivered — that is what a wrong
+# SMTP password looks like, and it must not pass for a quiet Monday.
+$digestTrigger = New-ScheduledTaskTrigger -Weekly -DaysOfWeek Monday -At $DigestAt
+
+Register-ScheduledTask `
+    -TaskName "aihist-digest" `
+    -Action (New-AihistAction $cliScript "-Command weekly-digest") `
+    -Trigger $digestTrigger `
+    -Principal (New-AihistPrincipal) `
+    -Settings (New-AihistSettings) `
+    -Description "AI 纪年: mail the week's new entries to confirmed subscribers. Skips an empty week." `
+    -Force | Out-Null
+
 Write-Host ""
 Write-Host "==> registered. Verify:" -ForegroundColor Green
 Get-ScheduledTask -TaskName "aihist-*" |
@@ -120,4 +138,5 @@ Get-ScheduledTask -TaskName "aihist-*" |
 
 Write-Host "Run one by hand:   Start-ScheduledTask -TaskName aihist-sync"
 Write-Host "Watch the log:     Get-Content $AppDir\logs\sync.log -Tail 20 -Wait"
+Write-Host "Compose a digest:  powershell -File $cliScript -Command weekly-digest -Arguments @('--dry-run')"
 Write-Host "Ingest the log:    powershell -File $cliScript -Command ingest-access-log -Arguments @('--dry-run')"

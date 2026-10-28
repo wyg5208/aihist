@@ -1,6 +1,6 @@
 # AI 纪年 / AI Chronicle
 
-> **当前版本**：v0.9.0 ｜ **更新日期**：2026-10-28 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
+> **当前版本**：v0.10.0 ｜ **更新日期**：2026-10-28 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
 
 一个中文的人工智能编年史站点：记录里程碑、模型发布、研究突破与产业事件。条目来自固定公开源（OpenRouter、Hugging Face、arXiv、Hacker News、官方公告与科技媒体 RSS），经指纹去重、跨源合并与置信度计算后，还要通过规则预筛和五家不同厂商的大模型评审（至少三票同意）才入档。完整规则见 [收录标准](docs/AI纪年_收录标准_v1.0.md)。
 
@@ -27,7 +27,7 @@
 | 后端 | FastAPI + SQLAlchemy 2（async）+ Alembic，Pydantic v2 |
 | 数据库 | SQLite（默认，单文件）/ PostgreSQL（改 `DATABASE_URL` 即可） |
 | 构建 | `tsc --noEmit` → Vite → `scripts/build.mjs` → `build-pages.mjs`（种子静态页 + sitemap + robots + JSON-LD） |
-| 测试 | 后端 `pytest`（365 项，全部跑在 SQLite 上）；前端无单测，用 `scripts/check-*.mjs` 做行为断言 |
+| 测试 | 后端 `pytest`（378 项，全部跑在 SQLite 上）；前端无单测，用 `scripts/check-*.mjs` 做行为断言 |
 | 部署 | 前端：Vercel（根目录 `vercel.json`，回源 `api.aihist.net`）；后端：Windows Server（`deploy/windows/*.ps1` + Caddy）或 Linux（systemd + nginx + cron） |
 
 ## 本地开发
@@ -169,7 +169,7 @@ scripts/export-seed.mjs                 从 functions/lib/seed.mjs 重导 seed.j
 
 ## 数据与接口
 
-数据库 19 张表（SQLite 与 PostgreSQL 共用一套模型）。档案五张：`events`、`raw_items`、`sync_runs`、`sync_state`、`review_decisions`；采集两张：`ingest_sources`（信源目录，兼重定向白名单来源）、`collect_verdicts`（append-only 裁决轨迹）；运营十二张：`admin_users`、`audit_log`、`page_views`、`crawl_hits`、`log_ingest_state`、`source_health`、`subscribers`、`api_keys`、`api_key_usage`、`api_applications`、`partners`、`partner_clicks`。
+数据库 20 张表（SQLite 与 PostgreSQL 共用一套模型）。档案五张：`events`、`raw_items`、`sync_runs`、`sync_state`、`review_decisions`；采集两张：`ingest_sources`（信源目录，兼重定向白名单来源）、`collect_verdicts`（append-only 裁决轨迹）；运营十三张：`admin_users`、`audit_log`、`page_views`、`crawl_hits`、`log_ingest_state`、`source_health`、`subscribers`、`digest_sends`、`api_keys`、`api_key_usage`、`api_applications`、`partners`、`partner_clicks`。
 
 公开接口：
 
@@ -244,6 +244,7 @@ EDITORIAL_JUDGE_5_KEY=<secret>
 
 ```sh
 python -m app.cli ingest-access-log   # 每小时：新增日志行 → crawl_hits（未配置日志时打印 skip 并退出 0）
+python -m app.cli weekly-digest       # 每周一：把本周新增条目发给 status=confirmed 的订阅人
 python -m app.cli prune               # 每周：按保留期清理四张分析表
 python -m app.cli library-prune       # 每周：清理采集轨迹与陈旧的 dropped 条目
 python -m app.cli catalog-seed        # 首装：把种子信源目录写进 ingest_sources
@@ -252,6 +253,8 @@ python -m app.cli create-owner --username you
 ```
 
 `ingest-access-log --dry-run` 只计数、不写库、不动 offset，用来校验日志格式是否还对得上（nginx 与 Caddy 样例在 `dev/fixtures/access/`）。增量读靠 `log_ingest_state` 的字节偏移，日志变短就当作轮转并从零重读；没有换行符的尾行留给下一轮，避免服务器半写时丢整行。
+
+每周简报是唯一发给读者本人的邮件：`weekly-digest` 取 `first_seen_at` 落在最近七天、且过了入档闸门的条目（最多 12 条），拼成纯文本正文（日期、一句为什么重要、条目链接、退订链接），只发给 `status='confirmed'` 的地址。这一周没有新增就不发，不发空信；一周内已经收到过的地址会被跳过，而上次发送失败的地址不在那个集合里，下一次运行会自动补发。每次投递写一行 `digest_sends`（`queued` 先写、结果覆盖，`(issue, email)` 唯一），所以运行到一半被杀也留得下记录、也不会有人收到同一封两次。退出码只有一种非零：有收件人但一封都没发出去（典型是 SMTP 口令错）。`--dry-run` 打印一封完整正文但不发信，`--force` 连一周内已收到的地址也重发，用于人工补发。
 
 开放数据 API 走「申请—审核—签发」，不建账号体系：站点页脚的「API 申请」指向 `/api/v1/open/apply`（后端渲染的 HTML 表单，与 `OPEN_API_ENABLED` 同开关），提交只落一条 `api_applications` 的 `pending` 行；管理台 `#/applications` 读完用途后，批准即签发只读密钥并写审计，拒绝也保留记录与理由。邮件是可选通道：配置 `SMTP_HOST` 后密钥随批准邮件发出（纯文本，含配额、端点与规则），未配置时明文只在批准响应里出现一次，由运营手动转发——两种情况下签发都不依赖邮件是否成功。表单侧只有两件廉价防护：同一地址每小时 5 次提交上限，以及浏览器看不见的诱饵字段（命中者照常看到成功页，但不落库）。
 

@@ -439,7 +439,7 @@ class SourceHealth(Base):
 
 
 class Subscriber(Base):
-    """Mailing list entry. Consent is recorded; delivery is out of scope."""
+    """Mailing list entry. Consent is recorded here; delivery in `digest_sends`."""
 
     __tablename__ = "subscribers"
 
@@ -607,6 +607,52 @@ class PartnerClick(Base):
     )
 
     __table_args__ = (Index("ix_partner_clicks_partner_day", "partner_id", "day"),)
+
+
+class DigestSend(Base):
+    """One address's copy of one weekly digest (migration 0006_weekly_digest).
+
+    This is the delivery ledger, not the mailing list: `subscribers` says who
+    consented, this says what actually left the building. One row per address
+    per issue, so the unique index on (`issue`, `email`) is the promise "nobody
+    gets the same issue twice" — a re-run updates its row instead of mailing
+    again. `status='queued'` is written before the SMTP call and overwritten
+    with the answer, which is the only way a run killed mid-list leaves an
+    honest trace of who was already mailed.
+    """
+
+    __tablename__ = "digest_sends"
+
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    # The issue's UTC date (`YYYY-MM-DD`), not the send time: a retry the same
+    # day belongs to the same issue, next Monday's does not.
+    issue: Mapped[str] = mapped_column(
+        String(10), nullable=False, default="", server_default=""
+    )
+    subscriber_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
+    # Snapshot of the address at send time: the row must still explain itself
+    # if the subscriber row is ever corrected in place.
+    email: Mapped[str] = mapped_column(
+        String(254), nullable=False, default="", server_default=""
+    )
+    status: Mapped[str] = mapped_column(
+        String(12), nullable=False, default="queued", server_default="queued"
+    )
+    # `smtp_not_configured` / `smtp_failed`, or empty when it went out.
+    error: Mapped[str] = mapped_column(
+        String(64), nullable=False, default="", server_default=""
+    )
+    item_count: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=0, server_default="0"
+    )
+    at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=utc_now
+    )
+
+    __table_args__ = (
+        Index("ux_digest_sends_issue_email", "issue", "email", unique=True),
+        Index("ix_digest_sends_at", "at"),
+    )
 
 
 # ---------------------------------------------------------------------------

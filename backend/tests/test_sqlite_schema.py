@@ -22,9 +22,9 @@ from app.db.session import SQLITE_BUSY_TIMEOUT_MS, apply_sqlite_pragmas
 BACKEND = Path(__file__).resolve().parent.parent
 
 # 0001 (editorial) + 0002 (admin console) + 0003 (application queue) + 0004
-# (source registry and collection ledger). The second group is additive; the
-# first five must keep their exact shape because the public API contract and the
-# 158-row curated seed are frozen against them.
+# (source registry and collection ledger) + 0006 (digest delivery ledger). The
+# second group is additive; the first five must keep their exact shape because
+# the public API contract and the 158-row curated seed are frozen against them.
 EXPECTED_TABLES = {
     "events",
     "raw_items",
@@ -45,6 +45,7 @@ EXPECTED_TABLES = {
     "api_applications",
     "ingest_sources",
     "collect_verdicts",
+    "digest_sends",
 }
 
 EXPECTED_INDEXES = {
@@ -89,6 +90,8 @@ EXPECTED_INDEXES = {
     "ix_collect_verdicts_at",
     "ix_collect_verdicts_run",
     "ix_collect_verdicts_status",
+    "ux_digest_sends_issue_email",
+    "ix_digest_sends_at",
 }
 
 # Columns added by 0002 and 0004 to tables that already shipped in 0001.

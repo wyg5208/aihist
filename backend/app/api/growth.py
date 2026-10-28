@@ -10,6 +10,11 @@ deliverability, bounces and complaints outside this application while still
 producing a consent record that means something: `status='confirmed'` only ever
 comes from someone following the link.
 
+The weekly digest (`app/digest.py`) is the one message that does leave this box.
+That is the whole reason `confirmed` is not a flag: it addresses only rows that
+got here through the link below, and every message carries the `/unsubscribe`
+link this module defines.
+
 Nothing here is authenticated and nothing here reveals whether an address is
 already on the list beyond the status of the address the caller just typed.
 """
@@ -177,7 +182,7 @@ _FORM_CSS = """  form { margin-top: 1.3rem; display: grid; gap: 0.85rem; }
 
 _FORM_BODY = """  <p class="mark">AI 纪年 · 简报名单</p>
   <h1>订阅《AI 纪年》</h1>
-  <p>只在一段时间确实有值得记的条目时发信：日期、一句为什么重要、来源链接；没有就直说没有。频率低，每封都带退订。</p>
+  <p>每周一发一封：日期、一句为什么重要、来源链接；这一周没有新增就不发。每封都带退订。</p>
   <form method="post" action="/api/v1/subscribe/form">
 {src_field}    <label>邮箱
       <input type="email" name="email" required maxlength="254" autocomplete="email" placeholder="you@example.com">
@@ -348,8 +353,8 @@ async def confirm_subscription(
         await repo_growth.set_status(session, row, "confirmed")
         await session.commit()
         body = (
-            "<p>确认完成。我们只会在此后有成规模的更新时联系你，频率很低，"
-            "每封信里都有退订链接。</p>"
+            "<p>确认完成。此后每周一给你发一封，只写这一周新增了什么；"
+            "这一周没有新增就不发。每封都带退订链接。</p>"
         )
     return _page(title="订阅已确认", heading="订阅已确认", body=body)
 

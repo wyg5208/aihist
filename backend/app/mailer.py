@@ -1,20 +1,27 @@
-"""The one outbound message this application sends.
+"""Outbound mail. Two messages, and nothing else.
 
-Four constraints, all deliberate:
+* **The approved API key** (`send_api_key`). Transactional: it exists because a
+  key is only ever shown once, and the person who applied for it is not the
+  person reading the console.
+* **The weekly digest** (`send_batch`). Editorial: `app/digest.py` composes it,
+  this module only carries it to one address at a time.
 
-* **Transactional only.** An approved API key and nothing else. The subscriber
-  list stays a list that the operator exports and mails with whatever tool they
-  already use — that decision (see `api/growth.py`) has not changed just
-  because one message now needs to leave.
-* **Plain text.** A key in an HTML mail is a key in a screenshot; plain text is
-  also the form that survives every client and spam filter.
-* **Optional at runtime.** No `SMTP_HOST` means no mailer: the caller receives
-  `(False, "smtp_not_configured")` and the console falls back to showing the
-  plaintext once, for the operator to forward by hand. Approval must never
-  depend on a mail server being reachable.
-* **Never raises.** By the time a message is attempted the key already exists;
-  a failed send is a fact to report alongside the key, not an exception that
-  unwinds the approval.
+Four constraints apply to both, all deliberate:
+
+* **Plain text.** A key in an HTML mail is a key in a screenshot; a plain body
+  also survives every client and spam filter. The digest needs dates, one line
+  of why each entry matters and a source link, none of which need a stylesheet.
+* **Optional at runtime.** No `SMTP_HOST` means no mailer: callers receive
+  `(False, "smtp_not_configured")`. The console then shows a key's plaintext
+  once for manual forwarding, and `weekly-digest` prints a skip line instead of
+  claiming it mailed anyone.
+* **Never raises.** By the time a message is attempted, the key already exists
+  or the delivery row is already reserved; a failed send is a fact to report
+  next to what it was about, not an exception that unwinds a commit or a
+  scheduled job.
+* **One connection per run.** Per-message connections are a TLS handshake and
+  a login each, which providers throttle; `send_batch` opens one session and
+  walks the list inside it.
 """
 
 from __future__ import annotations
@@ -59,30 +66,85 @@ def _body(*, name: str, plaintext: str, monthly_quota: int, site_origin: str) ->
     )
 
 
-def _send_sync(settings: Settings, to: str, subject: str, body: str) -> None:
-    message = EmailMessage()
-    message["From"] = settings.smtp_from or settings.smtp_user
-    message["To"] = to
-    message["Subject"] = subject
-    message.set_content(body)
+def _open(settings: Settings):
+    """Authenticated session. Port decides the shape: 465 implicit TLS, 587 STARTTLS.
 
+    The caller owns the session and is responsible for closing it; a login that
+    fails is closed here so a half-open socket cannot outlive the call.
+    """
     host = settings.smtp_host
     port = int(settings.smtp_port or 465)
-    with_message = message
 
     if settings.smtp_starttls:
-        with smtplib.SMTP(host, port, timeout=TIMEOUT_SECONDS) as smtp:
+        smtp = smtplib.SMTP(host, port, timeout=TIMEOUT_SECONDS)
+        try:
             smtp.ehlo()
             smtp.starttls()
             smtp.ehlo()
             if settings.smtp_user:
                 smtp.login(settings.smtp_user, settings.smtp_password)
-            smtp.send_message(with_message)
-    else:
-        with smtplib.SMTP_SSL(host, port, timeout=TIMEOUT_SECONDS) as smtp:
-            if settings.smtp_user:
-                smtp.login(settings.smtp_user, settings.smtp_password)
-            smtp.send_message(with_message)
+        except Exception:
+            smtp.close()
+            raise
+        return smtp
+
+    smtp = smtplib.SMTP_SSL(host, port, timeout=TIMEOUT_SECONDS)
+    try:
+        if settings.smtp_user:
+            smtp.login(settings.smtp_user, settings.smtp_password)
+    except Exception:
+        smtp.close()
+        raise
+    return smtp
+
+
+def _message(settings: Settings, to: str, subject: str, body: str) -> EmailMessage:
+    message = EmailMessage()
+    message["From"] = settings.smtp_from or settings.smtp_user
+    message["To"] = to
+    message["Subject"] = subject
+    message.set_content(body)
+    return message
+
+
+def _send_all_sync(
+    settings: Settings, messages: list[tuple[str, str, str]]
+) -> list[tuple[bool, str | None]]:
+    """One connection, one answer per message, in order.
+
+    A failure inside the loop is recorded and the loop continues; the address
+    that bounced must not cost the next one its mail. If the *connection* is
+    what failed, every remaining message is reported as failed rather than
+    retried here — the delivery ledger keeps them for the next run.
+    """
+    results: list[tuple[bool, str | None]] = []
+    try:
+        smtp = _open(settings)
+    except Exception as error:  # noqa: BLE001 - reported per message, never raised
+        logger.warning("could not open smtp session on %s: %s", settings.smtp_host, error)
+        return [(False, "smtp_failed") for _ in messages]
+
+    with smtp:
+        for to, subject, body in messages:
+            try:
+                smtp.send_message(_message(settings, to, subject, body))
+            except Exception as error:  # noqa: BLE001 - one address, not the run
+                logger.warning("could not mail %s: %s", to, error)
+                results.append((False, "smtp_failed"))
+            else:
+                results.append((True, None))
+    return results
+
+
+async def send_batch(
+    settings: Settings, messages: list[tuple[str, str, str]]
+) -> list[tuple[bool, str | None]]:
+    """`[(to, subject, body), ...]` in, `[(sent, error), ...]` out, same order."""
+    if not messages:
+        return []
+    if not configured(settings):
+        return [(False, "smtp_not_configured") for _ in messages]
+    return await asyncio.to_thread(_send_all_sync, settings, list(messages))
 
 
 async def send_api_key(
@@ -103,12 +165,8 @@ async def send_api_key(
         site_origin=settings.site_origin,
     )
     subject = "[AI 纪年] 开放数据 API 密钥"
-    try:
-        await asyncio.to_thread(_send_sync, settings, to, subject, body)
-    except Exception as error:  # noqa: BLE001 - the key exists; report, do not raise
-        logger.warning("could not mail a key to %s: %s", to, error)
-        return False, "smtp_failed"
-    return True, None
+    results = await send_batch(settings, [(to, subject, body)])
+    return results[0]
 
 
-__all__ = ["configured", "send_api_key"]
+__all__ = ["configured", "send_api_key", "send_batch"]

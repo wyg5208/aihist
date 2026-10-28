@@ -3,10 +3,12 @@
 `seed`, `sync`, `backfill-slugs`, `hash-password` run the archive; the three added
 for the console are `ingest-access-log`, `prune` and `create-owner`. The catalogue
 added its own trio: `catalog-seed` (first install), `probe` (is this feed alive?)
-and `library-prune` (drop old *dropped* rows, never the evidence). The scheduled
-ones return 0 even when they did nothing: cron and Task Scheduler both report a
-non-zero exit as a broken box, and an operator who learns to ignore that mail
-stops reading the one that matters.
+and `library-prune` (drop old *dropped* rows, never the evidence). `weekly-digest`
+is the mailing list's one command: compose the week's new entries and mail them.
+The scheduled ones return 0 even when they did nothing: cron and Task Scheduler
+both report a non-zero exit as a broken box, and an operator who learns to ignore
+that mail stops reading the one that matters. `weekly-digest` is the exception it
+has to be — see its docstring.
 """
 
 from __future__ import annotations
@@ -31,6 +33,7 @@ from app.db.models import STATE_ID, SyncState
 from app.db.repo_sync import utc_now
 from app.db.session import SessionLocal, engine
 from app.deps import judge_env
+from app.digest import send_weekly
 from app.ingest import registry
 from app.ingest.pipeline import backfill_slugs, run_sync, seed_rows
 from app.ingest.seed import SEED_VERSION
@@ -213,6 +216,39 @@ def _create_owner(username: str, password: str | None) -> int:
 
 
 # ---------------------------------------------------------------------------
+# Mailing list: the weekly digest
+# ---------------------------------------------------------------------------
+
+
+def _weekly_digest(dry_run: bool, force: bool) -> int:
+    """Mail the week's new entries to everyone who confirmed.
+
+    Exit 0, except in one case: recipients were addressed and not one message
+    went out. That is the shape a wrong SMTP password has, and letting it look
+    like a quiet week for three Mondays in a row is how a newsletter quietly
+    dies. An empty week (no new entries, nobody confirmed, mailer not
+    configured) is a normal Monday and stays 0.
+    """
+    settings = get_settings()
+
+    async def main():
+        return await _with_session(
+            lambda session: send_weekly(
+                session, settings, dry_run=dry_run, force=force
+            )
+        )
+
+    report = asyncio.run(main())
+    print(report.summary())
+    if report.sample:
+        print("--- body ---")
+        print(report.sample, end="")
+    if report.failed and not report.sent:
+        return 1
+    return 0
+
+
+# ---------------------------------------------------------------------------
 # Catalogue: seed, probe, and ledger retention
 # ---------------------------------------------------------------------------
 
@@ -379,6 +415,18 @@ def main(argv: list[str] | None = None) -> int:
     )
     library_parser.add_argument("--dry-run", action="store_true", help="report what would go")
 
+    digest_parser = sub.add_parser(
+        "weekly-digest", help="mail the week's new entries to confirmed subscribers"
+    )
+    digest_parser.add_argument(
+        "--dry-run", action="store_true", help="compose and print one body, send nothing"
+    )
+    digest_parser.add_argument(
+        "--force",
+        action="store_true",
+        help="also mail addresses that already received an issue this week",
+    )
+
     args = parser.parse_args(argv)
 
     if args.command == "seed":
@@ -399,6 +447,8 @@ def main(argv: list[str] | None = None) -> int:
         return _probe(args.key, args.url, args.kind)
     if args.command == "library-prune":
         return _library_prune(args.days, args.dry_run)
+    if args.command == "weekly-digest":
+        return _weekly_digest(args.dry_run, args.force)
     return _hash_password(args.password)
 
 

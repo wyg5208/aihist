@@ -218,6 +218,38 @@ async def upsert_review_decisions(
     return len(rows)
 
 
+def _entered_between(statement: Select[Any], since: datetime, until: datetime) -> Select[Any]:
+    """Restrict to rows first seen inside the window, behind the editorial gate."""
+    return observable(statement).where(
+        Event.first_seen_at >= since, Event.first_seen_at < until
+    )
+
+
+async def count_new_events(
+    session: AsyncSession, *, since: datetime, until: datetime
+) -> int:
+    statement = _entered_between(select(func.count()).select_from(Event), since, until)
+    return int((await session.execute(statement)).scalar_one())
+
+
+async def load_new_events(
+    session: AsyncSession, *, since: datetime, until: datetime, limit: int = 12
+) -> list[Event]:
+    """Entries that entered the archive inside one window, best first.
+
+    `first_seen_at` is the only honest "new": `updated_at` moves whenever a
+    merge touches a row, so a digest ordered by it would keep re-mailing last
+    year's entries. The editorial gate is applied here rather than by the
+    caller, so an issue can never carry a held or excluded row.
+    """
+    result = await session.execute(
+        _entered_between(select(Event), since, until)
+        .order_by(Event.sort_date.desc(), Event.importance.desc(), Event.id)
+        .limit(limit)
+    )
+    return list(result.scalars().all())
+
+
 async def read_event(session: AsyncSession, event_id: uuid.UUID) -> Event | None:
     result = await session.execute(select(Event).where(Event.id == event_id))
     return result.scalar_one_or_none()

@@ -229,7 +229,7 @@ export function Subscribers() {
               // A download, not a fetch: the browser handles the CSV without the
               // console having to hold a blob in memory.
               window.location.href = growthApi.exportUrl(status);
-              notify("info", "已开始导出 CSV：可在自己的邮件工具里导入发送");
+              notify("info", "已开始导出 CSV：用于外部工具，或核对每周简报的发送名单");
             }}
           >
             导出 CSV
@@ -263,7 +263,15 @@ export function Subscribers() {
             <span className="text-[var(--c-text-mute)]">退订</span> — 不删除记录，改为抑制状态，保留「不要再发」这件事本身。
           </li>
           <li>
-            <span className="text-[var(--c-text-mute)]">发信</span> — 本后台不发送邮件。邮件通道未配置，导出 CSV 后在自己的邮件工具里发送。
+            <span className="text-[var(--c-text-mute)]">发信</span> — 每周一由
+            <code className="mx-1">python -m app.cli weekly-digest</code>
+            给「已确认」的地址发一封本周新增，每封都带退订链接；每次投递记在
+            <code className="mx-1">digest_sends</code>
+            表（失败原因、发出条数、时间），失败的地址下一次运行会重试。这一周没有新增就不发。
+          </li>
+          <li>
+            <span className="text-[var(--c-text-mute)]">导出</span> — CSV 仍保留，
+            SMTP 未配置时靠它把名单带到自己的邮件工具里发。
           </li>
         </ul>
       </Card>

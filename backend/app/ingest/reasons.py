@@ -49,6 +49,12 @@ REASONS: dict[str, tuple[str, str]] = {
     "panel:unconfigured": ("panel", "面板未配置"),
     "deferred": ("panel", "批次上限顺延"),
     "admitted": ("panel", "已纳入"),
+    # ----- migration 0005: rows that predate the ledger ---------------------
+    # Not a verdict anyone took. Those items were collected before `status`
+    # existed, so calling them `pending` would promise a decision that can
+    # never arrive. The label is deliberately plain: it names the era, not a
+    # judgement.
+    "legacy_pre_ledger": ("fetch", "账本上线前采集"),
 }
 
 # `rule:<key>` borrows the hard-rule key as its suffix, and `manual:<action>`
