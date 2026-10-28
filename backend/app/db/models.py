@@ -101,6 +101,15 @@ class Event(Base):
 
 
 class RawItem(Base):
+    """One collected entry, with its current disposition.
+
+    The row is keyed by `fingerprint` = sha256(sourceName|externalId), which is
+    frozen: changing it would duplicate the whole table on upgrade. The columns
+    added by 0004 turn a write-only staging table into the collection ledger —
+    `status`/`stage`/`reason_*` say where the item stands *now*, while the
+    append-only `collect_verdicts` table keeps how it got there.
+    """
+
     __tablename__ = "raw_items"
 
     id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
@@ -112,14 +121,54 @@ class RawItem(Base):
     url: Mapped[str] = mapped_column(Text, nullable=False, default="")
     published_at: Mapped[str | None] = mapped_column(String(32), nullable=True)
     payload: Mapped[dict] = mapped_column(JSONDoc, nullable=False, default=dict)
+    # Kept as "first time we ever fetched it", so the ledger's first_seen_at and
+    # this column agree on rows that predate 0004.
     fetched_at: Mapped[datetime] = mapped_column(
         DateTime(timezone=True), nullable=False, default=utc_now
+    )
+    # ----- ledger state (0004) ----------------------------------------------
+    source_key: Mapped[str] = mapped_column(
+        String(48), nullable=False, default="", server_default=""
+    )
+    run_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
+    status: Mapped[str] = mapped_column(
+        String(12), nullable=False, default="pending", server_default="pending"
+    )
+    stage: Mapped[str] = mapped_column(
+        String(16), nullable=False, default="fetch", server_default="fetch"
+    )
+    reason_code: Mapped[str] = mapped_column(
+        String(40), nullable=False, default="", server_default=""
+    )
+    reason_text: Mapped[str] = mapped_column(
+        Text, nullable=False, default="", server_default=""
+    )
+    score: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=0, server_default="0"
+    )
+    event_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
+    event_fingerprint: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    first_seen_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=utc_now
+    )
+    last_seen_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=utc_now
+    )
+    seen_count: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=1, server_default="1"
+    )
+    decided_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
     )
 
     __table_args__ = (
         Index("ux_raw_items_fingerprint", "fingerprint", unique=True),
         Index("ix_raw_items_fetched_at", "fetched_at"),
         Index("ix_raw_items_family", "source_family"),
+        Index("ix_raw_items_status_seen", "status", "last_seen_at"),
+        Index("ix_raw_items_source_seen", "source_key", "last_seen_at"),
+        Index("ix_raw_items_event_fp", "event_fingerprint"),
+        Index("ix_raw_items_run", "run_id"),
     )
 
 
@@ -558,3 +607,94 @@ class PartnerClick(Base):
     )
 
     __table_args__ = (Index("ix_partner_clicks_partner_day", "partner_id", "day"),)
+
+
+# ---------------------------------------------------------------------------
+# Collection ledger tables (migration 0004_ingest_catalog_and_ledger)
+#
+# `ingest_sources` is both the registry and the configuration: adding a feed is
+# an INSERT, not a release. `collect_verdicts` is the append-only trail that
+# explains every row of `raw_items` — it is inserted into and never updated, so
+# a re-decision reads as a second line rather than an overwrite.
+# ---------------------------------------------------------------------------
+
+
+class IngestSource(Base):
+    """One configured source. Also the allow-list for redirect hosts."""
+
+    __tablename__ = "ingest_sources"
+
+    key: Mapped[str] = mapped_column(String(48), primary_key=True)
+    name: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    family: Mapped[str] = mapped_column(String(20), nullable=False, default="official")
+    kind: Mapped[str] = mapped_column(String(12), nullable=False, default="feed")
+    url: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    path_pattern: Mapped[str] = mapped_column(
+        String(80), nullable=False, default="/news/", server_default="/news/"
+    )
+    domestic: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False, server_default=_server("false")
+    )
+    ai_only: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=False, server_default=_server("false")
+    )
+    enabled: Mapped[bool] = mapped_column(
+        Boolean, nullable=False, default=True, server_default=_server("true")
+    )
+    # Ordering and human reading only. Never participates in scoring.
+    weight: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=100, server_default="100"
+    )
+    timeout_ms: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=12000, server_default="12000"
+    )
+    rationale: Mapped[str] = mapped_column(Text, nullable=False, default="", server_default="")
+    # NULL means "never probed"; enabling requires a non-null value.
+    verified_at: Mapped[datetime | None] = mapped_column(
+        DateTime(timezone=True), nullable=True
+    )
+    created_by: Mapped[str] = mapped_column(String(40), nullable=False, default="", server_default="")
+    created_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=utc_now
+    )
+    updated_at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=utc_now, onupdate=utc_now
+    )
+
+    __table_args__ = (
+        Index("ix_ingest_sources_family", "family"),
+        Index("ix_ingest_sources_enabled", "enabled"),
+    )
+
+
+class CollectVerdict(Base):
+    """Append-only decision trail for one collected item.
+
+    `item_fingerprint` points at `raw_items.fingerprint`; `event_fingerprint`
+    bridges to `review_decisions.id` / `events.fingerprint` so the console can
+    join the five-judge vote straight onto the collected item.
+    """
+
+    __tablename__ = "collect_verdicts"
+
+    id: Mapped[uuid.UUID] = mapped_column(Uuid, primary_key=True, default=uuid.uuid4)
+    item_fingerprint: Mapped[str] = mapped_column(String(64), nullable=False)
+    run_id: Mapped[uuid.UUID | None] = mapped_column(Uuid, nullable=True)
+    stage: Mapped[str] = mapped_column(String(16), nullable=False, default="fetch")
+    status: Mapped[str] = mapped_column(String(12), nullable=False, default="pending")
+    reason_code: Mapped[str] = mapped_column(String(40), nullable=False, default="")
+    reason_text: Mapped[str] = mapped_column(Text, nullable=False, default="")
+    score: Mapped[int] = mapped_column(
+        Integer, nullable=False, default=0, server_default="0"
+    )
+    event_fingerprint: Mapped[str | None] = mapped_column(String(64), nullable=True)
+    at: Mapped[datetime] = mapped_column(
+        DateTime(timezone=True), nullable=False, default=utc_now
+    )
+
+    __table_args__ = (
+        Index("ix_collect_verdicts_item", "item_fingerprint", "at"),
+        Index("ix_collect_verdicts_at", "at"),
+        Index("ix_collect_verdicts_run", "run_id"),
+        Index("ix_collect_verdicts_status", "status", "at"),
+    )

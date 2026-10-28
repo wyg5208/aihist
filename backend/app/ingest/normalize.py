@@ -405,6 +405,39 @@ def extract_tags(value: object) -> list[str]:
     return keywords_from_text(value, 8)
 
 
+def _drop(
+    drops: list[dict[str, Any]] | None,
+    source: dict[str, Any],
+    *,
+    code: str,
+    external_id: object = "",
+    title: object = "",
+    url: object = "",
+    published_at: object = None,
+) -> None:
+    """Record *why* an item never became a candidate.
+
+    Every `continue` below used to be a silent discard, which made the console
+    unable to answer “why is this story missing”. The record is deliberately a
+    plain dict in the same shape as a raw item, because the ledger writes it
+    straight into `raw_items`.
+    """
+    if drops is None:
+        return
+    drops.append(
+        {
+            "sourceKey": str(source.get("key") or ""),
+            "sourceFamily": str(source.get("family") or ""),
+            "sourceName": str(source.get("name") or ""),
+            "externalId": str(external_id or ""),
+            "title": str(title or "")[:300],
+            "url": str(url or ""),
+            "publishedAt": published_at if isinstance(published_at, str) else None,
+            "reasonCode": code,
+        }
+    )
+
+
 def base_candidate(overrides: dict[str, Any]) -> Candidate:
     event_date = overrides.get("eventDate") or ""
     title = overrides.get("title") or ""
@@ -455,7 +488,14 @@ def base_candidate(overrides: dict[str, Any]) -> Candidate:
     }
 
 
-def openrouter_candidates(payload: dict, now_ms: int) -> list[Candidate]:
+def openrouter_candidates(
+    payload: dict,
+    now_ms: int,
+    *,
+    drops: list[dict[str, Any]] | None = None,
+    source: dict[str, Any] | None = None,
+) -> list[Candidate]:
+    source = source or {"key": "openrouter", "family": "openrouter", "name": "OpenRouter"}
     cutoff_ms = now_ms - 120 * 86_400_000
     seen: set[str] = set()
     out: list[Candidate] = []
@@ -463,12 +503,35 @@ def openrouter_candidates(payload: dict, now_ms: int) -> list[Candidate]:
         created = model.get("created")
         parsed = parse_iso(str(created)) if created else None
         if parsed is None or int(parsed.timestamp() * 1000) < cutoff_ms:
+            _drop(
+                drops,
+                source,
+                code="date_missing" if parsed is None else "window_age",
+                external_id=model.get("id"),
+                title=model.get("name") or model.get("id"),
+                url=f"https://openrouter.ai/{model.get('canonicalSlug') or model.get('id') or ''}",
+                published_at=created if isinstance(created, str) else None,
+            )
             continue
         model_id = model.get("id") or ""
         if re.search(r":free$|:batch$", model_id) or model_id.startswith("~"):
+            _drop(
+                drops,
+                source,
+                code="model_filter",
+                external_id=model_id,
+                title=model.get("name") or model_id,
+            )
             continue
         canonical = model.get("canonicalSlug") or model_id
         if canonical in seen:
+            _drop(
+                drops,
+                source,
+                code="duplicate",
+                external_id=model_id,
+                title=model.get("name") or model_id,
+            )
             continue
         seen.add(canonical)
         vendor_key = model_id.split("/")[0]
@@ -537,26 +600,66 @@ _FINETUNE_TAG_RE = compile_ascii(r"base_model:(finetune|adapter|merge)", re.I)
 _HF_SUFFIX_RE = compile_ascii(r"[-_](gguf|awq|gptq|fp8)$", re.I)
 
 
-def hf_candidates(payload: dict, now_ms: int) -> list[Candidate]:
+def hf_candidates(
+    payload: dict,
+    now_ms: int,
+    *,
+    drops: list[dict[str, Any]] | None = None,
+    source: dict[str, Any] | None = None,
+) -> list[Candidate]:
+    source = source or {"key": "hf-trending", "family": "huggingface", "name": "Hugging Face"}
     cutoff_ms = now_ms - 180 * 86_400_000
     seen: set[str] = set()
     out: list[Candidate] = []
     for model in payload.get("items") or []:
+        model_id = model.get("id") or ""
         created_at = model.get("createdAt")
         parsed = parse_iso(str(created_at)) if created_at else None
         if parsed is None or int(parsed.timestamp() * 1000) < cutoff_ms:
+            _drop(
+                drops,
+                source,
+                code="date_missing" if parsed is None else "window_age",
+                external_id=model_id,
+                title=model_id,
+                url=f"https://huggingface.co/{model_id}",
+                published_at=created_at if isinstance(created_at, str) else None,
+            )
             continue
-        model_id = model.get("id") or ""
         if model_id in seen:
+            _drop(
+                drops,
+                source,
+                code="duplicate",
+                external_id=model_id,
+                title=model_id,
+                url=f"https://huggingface.co/{model_id}",
+            )
             continue
         seen.add(model_id)
         tags = model.get("tags") or []
-        if any(_QUANT_TAG_RE.match(tag) for tag in tags):
-            continue
-        if any(_FINETUNE_TAG_RE.search(tag) for tag in tags):
+        if any(_QUANT_TAG_RE.match(tag) for tag in tags) or any(
+            _FINETUNE_TAG_RE.search(tag) for tag in tags
+        ):
+            _drop(
+                drops,
+                source,
+                code="model_filter",
+                external_id=model_id,
+                title=model_id,
+                url=f"https://huggingface.co/{model_id}",
+            )
             continue
         likes = int(model.get("likes") or 0)
         if likes < 20:
+            _drop(
+                drops,
+                source,
+                code="below_likes",
+                external_id=model_id,
+                title=model_id,
+                url=f"https://huggingface.co/{model_id}",
+            )
             continue
         repo_name = model_id.split("/")[-1] or model_id
         display_name = _HF_SUFFIX_RE.sub("", repo_name)
@@ -614,12 +717,37 @@ def hf_candidates(payload: dict, now_ms: int) -> list[Candidate]:
     return out
 
 
-def arxiv_candidates(payload: dict, now_ms: int) -> list[Candidate]:
+def arxiv_candidates(
+    payload: dict,
+    now_ms: int,
+    *,
+    drops: list[dict[str, Any]] | None = None,
+    source: dict[str, Any] | None = None,
+) -> list[Candidate]:
+    source = source or {"key": "arxiv", "family": "arxiv", "name": "arXiv"}
     out: list[Candidate] = []
     for paper in payload.get("items") or []:
         if not paper.get("publishedAt") or not within_days(paper["publishedAt"], 10, now_ms):
+            _drop(
+                drops,
+                source,
+                code="date_missing" if not paper.get("publishedAt") else "window_age",
+                external_id=paper.get("id"),
+                title=paper.get("title"),
+                url=paper.get("url"),
+                published_at=paper.get("publishedAt"),
+            )
             continue
         if not TOPIC_WORDS.search(paper.get("title") or ""):
+            _drop(
+                drops,
+                source,
+                code="topic_gate",
+                external_id=paper.get("id"),
+                title=paper.get("title"),
+                url=paper.get("url"),
+                published_at=paper.get("publishedAt"),
+            )
             continue
         date = iso_day(paper["publishedAt"])
         excerpt = clean_text(paper.get("summary"), 240)
@@ -657,13 +785,38 @@ def arxiv_candidates(payload: dict, now_ms: int) -> list[Candidate]:
     return out
 
 
-def community_candidates(payload: dict, now_ms: int) -> list[Candidate]:
+def community_candidates(
+    payload: dict,
+    now_ms: int,
+    *,
+    drops: list[dict[str, Any]] | None = None,
+    source: dict[str, Any] | None = None,
+) -> list[Candidate]:
+    source = source or {"key": "hn", "family": "community", "name": "Hacker News"}
     out: list[Candidate] = []
     for hit in payload.get("items") or []:
         if not hit.get("publishedAt") or not within_days(hit["publishedAt"], 14, now_ms):
+            _drop(
+                drops,
+                source,
+                code="date_missing" if not hit.get("publishedAt") else "window_age",
+                external_id=hit.get("externalId") or hit.get("id"),
+                title=hit.get("title"),
+                url=hit.get("hnLink") or hit.get("url"),
+                published_at=hit.get("publishedAt"),
+            )
             continue
         title = html_to_text(hit.get("title"), 300)
         if len(title) < 12:
+            _drop(
+                drops,
+                source,
+                code="title_too_short",
+                external_id=hit.get("externalId") or hit.get("id"),
+                title=title,
+                url=hit.get("hnLink") or hit.get("url"),
+                published_at=hit.get("publishedAt"),
+            )
             continue
         category = classify_title(title, "", hit.get("url"))
         date = iso_day(hit["publishedAt"])
@@ -703,16 +856,49 @@ def community_candidates(payload: dict, now_ms: int) -> list[Candidate]:
     return out
 
 
-def feed_candidates(payload: dict, source: dict, now_ms: int) -> list[Candidate]:
+def feed_candidates(
+    payload: dict,
+    source: dict,
+    now_ms: int,
+    *,
+    drops: list[dict[str, Any]] | None = None,
+) -> list[Candidate]:
     out: list[Candidate] = []
     window_days = 45 if source.get("family") == "official" else 21
     for item in payload.get("items") or []:
         if not item.get("publishedAt") or not within_days(item["publishedAt"], window_days, now_ms):
+            _drop(
+                drops,
+                source,
+                code="date_missing" if not item.get("publishedAt") else "window_age",
+                external_id=item.get("externalId"),
+                title=item.get("title"),
+                url=item.get("url"),
+                published_at=item.get("publishedAt"),
+            )
             continue
         title = clean_text(item.get("title"), 300)
         if len(title) < 12:
+            _drop(
+                drops,
+                source,
+                code="title_too_short",
+                external_id=item.get("externalId"),
+                title=title,
+                url=item.get("url"),
+                published_at=item.get("publishedAt"),
+            )
             continue
         if source.get("aiOnly") and not AI_RELEVANCE.search(title):
+            _drop(
+                drops,
+                source,
+                code="ai_only_miss",
+                external_id=item.get("externalId"),
+                title=title,
+                url=item.get("url"),
+                published_at=item.get("publishedAt"),
+            )
             continue
         category = classify_title(title, item.get("summary"), item.get("url"))
         date = iso_day(item["publishedAt"])
@@ -766,8 +952,24 @@ def feed_candidates(payload: dict, source: dict, now_ms: int) -> list[Candidate]
 
 
 def normalize_results(results: list[dict], now_ms: int) -> dict[str, Any]:
+    """Dispatch each fetched source to its parser builder.
+
+    Dispatch is by `kind` — the column the source registry stores — with the
+    historical key-prefix rules taking precedence, because those prefixes are
+    reserved (`catalog.validate_key` refuses them) and the golden fixtures froze
+    what they currently produce. Concretely: `hf-blog` is `kind="feed"` but its
+    key matches `hf-`, so it keeps being routed to the Hugging Face model
+    builder, which yields nothing for a feed. That is a known defect, and it is
+    only safe to correct together with a golden re-export — not in a migration
+    that is supposed to change no existing verdict.
+
+    `drops` is new: every item a builder refuses is described once, so the
+    ledger can answer “why is this not in the archive”. It is an extra key, not
+    a change to `candidates`/`failed`, which is what the parity test compares.
+    """
     candidates: list[Candidate] = []
     failed: list[dict] = []
+    drops: list[dict[str, Any]] = []
     for result in results:
         if not result.get("ok"):
             failed.append(
@@ -780,23 +982,38 @@ def normalize_results(results: list[dict], now_ms: int) -> dict[str, Any]:
             )
             continue
         key = result.get("key") or ""
+        source = {
+            "key": key,
+            "family": result.get("family"),
+            "name": result.get("name"),
+            "kind": result.get("kind") or "",
+            "url": result.get("url") or "",
+            "domestic": bool(result.get("domestic")),
+            "aiOnly": bool(result.get("aiOnly")),
+        }
+        kind = source["kind"]
         if key == "openrouter":
-            candidates.extend(openrouter_candidates(result, now_ms))
+            kind = "openrouter"
         elif key.startswith("hf-"):
-            candidates.extend(hf_candidates(result, now_ms))
+            kind = "hf"
         elif key == "arxiv":
-            candidates.extend(arxiv_candidates(result, now_ms))
+            kind = "arxiv"
         elif key.startswith("hn-"):
-            candidates.extend(community_candidates(result, now_ms))
+            kind = "hn"
+        elif not kind:
+            kind = "feed"
+        if kind == "openrouter":
+            candidates.extend(
+                openrouter_candidates(result, now_ms, drops=drops, source=source)
+            )
+        elif kind == "hf":
+            candidates.extend(hf_candidates(result, now_ms, drops=drops, source=source))
+        elif kind == "arxiv":
+            candidates.extend(arxiv_candidates(result, now_ms, drops=drops, source=source))
+        elif kind == "hn":
+            candidates.extend(
+                community_candidates(result, now_ms, drops=drops, source=source)
+            )
         else:
-            source = {
-                "key": result.get("key"),
-                "family": result.get("family"),
-                "name": result.get("name"),
-                "kind": result.get("kind") or "",
-                "url": result.get("url") or "",
-                "domestic": bool(result.get("domestic")),
-                "aiOnly": bool(result.get("aiOnly")),
-            }
-            candidates.extend(feed_candidates(result, source, now_ms))
-    return {"candidates": candidates, "failed": failed}
+            candidates.extend(feed_candidates(result, source, now_ms, drops=drops))
+    return {"candidates": candidates, "failed": failed, "drops": drops}

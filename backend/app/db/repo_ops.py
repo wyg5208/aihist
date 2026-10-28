@@ -44,6 +44,7 @@ from app.db.models import (
     utc_now,
 )
 from app.db.repo_events import observable
+from app.ingest import registry
 from app.ingest.sources import SOURCES
 from app.schemas.admin import (
     admin_run_record,
@@ -277,9 +278,33 @@ async def run_detail(session: AsyncSession, run_id: uuid.UUID) -> SyncRun | None
     return await session.get(SyncRun, run_id)
 
 
-async def registered_sources() -> list[dict[str, str]]:
+async def registered_sources(session: AsyncSession | None = None) -> list[dict[str, Any]]:
+    """The catalogue, DB first.
+
+    `session` stays optional because the table may not exist yet (a bare
+    `create_all` in a test) and because the frozen seed is a legitimate answer on
+    its own: the seventeen sources are the reference list, not a leftover.
+    """
+    if session is not None:
+        try:
+            rows = await registry.all_sources(session)
+        except Exception:  # noqa: BLE001 - a missing table must not break /sources
+            rows = []
+        if rows:
+            return rows
     return [
-        {"key": source["key"], "name": source["name"], "family": source["family"]}
+        {
+            "key": source["key"],
+            "name": source["name"],
+            "family": source["family"],
+            "kind": source.get("kind"),
+            "url": source.get("url"),
+            "enabled": True,
+            "rationale": source.get("rationale", ""),
+            "verifiedAt": None,
+            "domestic": bool(source.get("domestic")),
+            "aiOnly": bool(source.get("aiOnly")),
+        }
         for source in SOURCES
     ]
 
@@ -289,7 +314,7 @@ async def source_health(session: AsyncSession) -> list[dict[str, Any]]:
     rows = await session.execute(select(SourceHealth))
     observed = {row.key: row for row in rows.scalars().all()}
     merged: list[dict[str, Any]] = []
-    for source in await registered_sources():
+    for source in await registered_sources(session):
         row = observed.pop(source["key"], None)
         merged.append(
             {
@@ -303,6 +328,15 @@ async def source_health(session: AsyncSession) -> list[dict[str, Any]]:
                 "lastItemCount": int(row.last_item_count if row else 0),
                 "totalRuns": int(row.total_runs if row else 0),
                 "totalFailures": int(row.total_failures if row else 0),
+                "kind": source.get("kind"),
+                "url": source.get("url"),
+                "enabled": bool(source.get("enabled", True)),
+                "rationale": source.get("rationale", ""),
+                "verifiedAt": _as_utc(source.get("verifiedAt")).isoformat()
+                if source.get("verifiedAt")
+                else None,
+                "domestic": bool(source.get("domestic")),
+                "aiOnly": bool(source.get("aiOnly")),
             }
         )
     # A row whose source left the registry is still worth showing: it may be the

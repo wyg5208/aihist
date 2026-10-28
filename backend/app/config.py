@@ -79,6 +79,13 @@ class Settings(BaseSettings):
     run_budget_seconds: int = 300
     fetch_budget_seconds: int = 120
 
+    # Collection ledger. `collect_raw_cap` replaces the hard-coded 180-candidate
+    # cap: with ~30 sources that cut every feed down to six items. `retention`
+    # only ever prunes rows whose status is `dropped`; admitted/excluded/held
+    # rows are audit evidence and are never deleted automatically.
+    collect_raw_cap: int = 320
+    collect_retention_days: int = 180
+
     site_origin: str = "https://aihist.net"
     # Where reader corrections go. Empty derives `correct@<site host>` so the
     # correction page never ships a dead address; set it to a mailbox someone

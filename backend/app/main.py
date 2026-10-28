@@ -21,7 +21,9 @@ from app.api import admin as admin_api
 from app.api import admin_applications as admin_applications_api
 from app.api import admin_commercial as admin_commercial_api
 from app.api import admin_growth as admin_growth_api
+from app.api import admin_library as admin_library_api
 from app.api import admin_ops as admin_ops_api
+from app.api import admin_sources as admin_sources_api
 from app.api import admin_system as admin_system_api
 from app.api import apply as apply_api
 from app.api import correct as correct_api
@@ -102,6 +104,10 @@ def create_app() -> FastAPI:
     # Distinct module, same prefix: `/sync` and its `run_sync` import stay in
     # `admin.py` because the existing tests monkeypatch that exact symbol.
     app.include_router(admin_ops_api.router, prefix="/api/v1/admin", tags=["admin"])
+    # The collection ledger and the source catalog are read-heavy audit surfaces;
+    # they sit beside `admin_ops` because they extend the same console pages.
+    app.include_router(admin_library_api.router, prefix="/api/v1/admin", tags=["admin"])
+    app.include_router(admin_sources_api.router, prefix="/api/v1/admin", tags=["admin"])
     app.include_router(admin_growth_api.router, prefix="/api/v1/admin", tags=["admin"])
     app.include_router(admin_commercial_api.router, prefix="/api/v1/admin", tags=["admin"])
     # The application queue sits next to the keys it mints, but in its own module:

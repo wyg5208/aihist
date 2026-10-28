@@ -15,7 +15,7 @@ from sqlalchemy.dialects.postgresql import insert as pg_insert
 from sqlalchemy.dialects.sqlite import insert as sqlite_insert
 from sqlalchemy.ext.asyncio import AsyncSession
 
-from app.db.models import Event, RawItem, ReviewDecision
+from app.db.models import CollectVerdict, Event, RawItem, ReviewDecision
 
 
 def utc_now() -> datetime:
@@ -61,6 +61,76 @@ async def insert_raw_items(session: AsyncSession, rows: Sequence[dict[str, Any]]
     await session.execute(_insert_ignore(session, RawItem, rows))
     await session.commit()
     return len(rows)
+
+
+async def upsert_collected(
+    session: AsyncSession, rows: Sequence[dict[str, Any]], *, bump_seen: bool = True
+) -> int:
+    """Write the *current* disposition of collected items, one row per fingerprint.
+
+    Unlike `insert_raw_items`, a second sighting does not no-op: the row keeps
+    `first_seen_at`, bumps `seen_count`, and takes the new status/stage/reason.
+    The trail of *how* it got there lives in `collect_verdicts` instead, which is
+    why this can stay a plain upsert.
+
+    Every row must carry the same keys; callers build them from one helper so
+    that stays true.
+    """
+    if not rows:
+        return 0
+    payload = list(rows)
+    mutable = {
+        key: payload[0][key]
+        for key in (
+            "source_key",
+            "run_id",
+            "status",
+            "stage",
+            "reason_code",
+            "reason_text",
+            "score",
+            "event_id",
+            "event_fingerprint",
+            "last_seen_at",
+            "decided_at",
+        )
+        if key in payload[0]
+    }
+    updates: dict[str, Any]
+    if _dialect_name(session) == "sqlite":
+        statement = sqlite_insert(RawItem).values(payload)
+    else:
+        statement = pg_insert(RawItem).values(payload)
+    excluded = statement.excluded
+    updates = {key: getattr(excluded, key) for key in mutable}
+    # A second *run* is evidence of persistence, not a new row. The pipeline
+    # writes the same rows twice per run (intake, then verdicts), so the second
+    # flush passes `bump_seen=False` — otherwise one run would count as two
+    # sightings of every item.
+    if bump_seen:
+        updates["seen_count"] = RawItem.seen_count + 1
+    statement = statement.on_conflict_do_update(
+        index_elements=[RawItem.fingerprint], set_=updates
+    )
+    await session.execute(statement)
+    await session.commit()
+    return len(payload)
+
+
+async def insert_verdicts(session: AsyncSession, rows: Sequence[dict[str, Any]]) -> int:
+    """Append decision-trail rows. Insert-only by design: no update, no delete."""
+    if not rows:
+        return 0
+    await session.execute(_insert_ignore(session, CollectVerdict, rows))
+    await session.commit()
+    return len(rows)
+
+
+async def read_collected(session: AsyncSession, fingerprint: str) -> RawItem | None:
+    result = await session.execute(
+        select(RawItem).where(RawItem.fingerprint == fingerprint)
+    )
+    return result.scalar_one_or_none()
 
 
 async def update_events(

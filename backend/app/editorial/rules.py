@@ -24,7 +24,13 @@ def utc_now() -> datetime:
 # v2: the panel moved from three judges / two votes to five vendors / three
 # votes. The bump is what retires the cached v1 ballots, so decisions taken
 # under the old quorum are re-reviewed instead of reused.
-RUBRIC_VERSION = "chronicle-v2"
+# v3: the `policy` family scores as a primary source, so regulatory feeds are no
+# longer scored as media. The bump retires every cached v2 ballot for the same
+# reason: a score computed under the old weights cannot be reused for the new
+# rubric. Rollback is `policy` out of three places + this constant back to v2;
+# `collect_verdicts` keeps the history either way, because that is data, not a
+# rule.
+RUBRIC_VERSION = "chronicle-v3"
 INCLUDE_SCORE = 75
 # One judge per domestic vendor: DeepSeek, Qwen, GLM, Kimi, MiniMax. Five
 # vendors rather than five copies of one model, so no single vendor's bias can
@@ -187,6 +193,10 @@ def rule_score_of(candidate: Candidate) -> int:
     if len(families) >= 3:
         score += 7
     if "official" in families:
+        score += 10
+    # A regulator's own text is first-hand like an official announcement, and the
+    # whole point of adding the family is that it should not be scored as media.
+    if "policy" in families:
         score += 10
     if "arxiv" in families or "paper" in families:
         score += 6

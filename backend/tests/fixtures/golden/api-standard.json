@@ -1,7 +1,7 @@
 {
   "ok": true,
   "standard": {
-    "version": "chronicle-v2",
+    "version": "chronicle-v3",
     "includeScore": 75,
     "panelSize": 5,
     "minVotes": 3,

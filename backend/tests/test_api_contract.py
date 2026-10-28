@@ -10,11 +10,12 @@ Values are compared where they are deterministic (slugs, counts, the standard
 snapshot). Row identifiers, timestamps and the panel's configured/models/reason
 trio are not.
 
-The standard document was re-baselined once on purpose: the panel grew from
-three judges / two votes to five vendors / three votes (`editorial/rules.py`)
-and the rubric version moved to `chronicle-v2`. Those fields are the only values
-that differ from the original reference snapshot, and `test_standard_contract`
-pins the current policy, not the old one.
+The standard document was re-baselined twice on purpose. First the panel grew
+from three judges / two votes to five vendors / three votes (`editorial/rules.py`).
+Then `RUBRIC_VERSION` moved to `chronicle-v3` when the `policy` family started
+scoring as a primary source. The fixtures were re-exported each time, and those
+fields are the only values that differ from the original reference snapshot:
+`test_standard_contract` pins the current policy, not the old one.
 """
 
 from __future__ import annotations

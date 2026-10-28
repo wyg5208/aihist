@@ -1,8 +1,10 @@
 # AI 纪年 / AI Chronicle
 
-> **当前版本**：v0.8.2 ｜ **更新日期**：2026-10-28 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
+> **当前版本**：v0.9.0 ｜ **更新日期**：2026-10-28 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
 
 一个中文的人工智能编年史站点：记录里程碑、模型发布、研究突破与产业事件。条目来自固定公开源（OpenRouter、Hugging Face、arXiv、Hacker News、官方公告与科技媒体 RSS），经指纹去重、跨源合并与置信度计算后，还要通过规则预筛和五家不同厂商的大模型评审（至少三票同意）才入档。完整规则见 [收录标准](docs/AI纪年_收录标准_v1.0.md)。
+
+信源本身是一张表（`ingest_sources`）：后台可新增、编辑、启停、探活任意 RSS／Atom／sitemap 源，改源不必发版；每个新源必须探活通过才能启用。每条抓到的条目（含被丢弃的）都在采集库留一行当前状态，决策轨迹另存 append-only 的 `collect_verdicts`——未纳入的条目也能回答「为什么」。
 
 采集与访问完全解耦：后台定时任务每天 01:05 跑一次，管理台可手动触发，浏览页面不会发起任何同步。未经评审的条目一律暂缓，不会退回"没人看过就发布"的新闻流。
 
@@ -13,7 +15,7 @@
 | `/` | 主时间轴：按年代分组、按类别与来源族筛选、展开条目详情、可复制引用；公共站三套**独立版式**（典藏卷轴 / 深色极光 / 博物馆暖调），每套自带文案与结构，顶部导航右上一键切换、选择记在 `localStorage`，未选过时跟随系统偏好 |
 | `/?e=<slug>` | 站内深链，展开某条条目，包括尚未生成静态页的自动条目 |
 | `/e/<slug>.html` | 种子条目的静态引用页：canonical、OG、JSON-LD、来源列表，**不含 JavaScript**，深/浅色只跟随系统偏好，供外部引用与搜索收录 |
-| `/admin/` | 运营台独立 bundle（14 个页面），深/浅双主题，按角色过滤导航，`noindex` |
+| `/admin/` | 运营台独立 bundle（15 个页面），深/浅双主题，按角色过滤导航，`noindex` |
 | `/go/<code>` | 合作方跳转与点击计数，302 |
 | `/api/v1/*` | 同源 JSON 接口，浏览器从不接触数据库地址或凭据 |
 
@@ -25,7 +27,7 @@
 | 后端 | FastAPI + SQLAlchemy 2（async）+ Alembic，Pydantic v2 |
 | 数据库 | SQLite（默认，单文件）/ PostgreSQL（改 `DATABASE_URL` 即可） |
 | 构建 | `tsc --noEmit` → Vite → `scripts/build.mjs` → `build-pages.mjs`（种子静态页 + sitemap + robots + JSON-LD） |
-| 测试 | 后端 `pytest`（244 项，全部跑在 SQLite 上）；前端无单测，用 `scripts/check-*.mjs` 做行为断言 |
+| 测试 | 后端 `pytest`（365 项，全部跑在 SQLite 上）；前端无单测，用 `scripts/check-*.mjs` 做行为断言 |
 | 部署 | 前端：Vercel（根目录 `vercel.json`，回源 `api.aihist.net`）；后端：Windows Server（`deploy/windows/*.ps1` + Caddy）或 Linux（systemd + nginx + cron） |
 
 ## 本地开发
@@ -167,7 +169,7 @@ scripts/export-seed.mjs                 从 functions/lib/seed.mjs 重导 seed.j
 
 ## 数据与接口
 
-数据库 17 张表（SQLite 与 PostgreSQL 共用一套模型）。档案五张：`events`、`raw_items`、`sync_runs`、`sync_state`、`review_decisions`；运营十二张：`admin_users`、`audit_log`、`page_views`、`crawl_hits`、`log_ingest_state`、`source_health`、`subscribers`、`api_keys`、`api_key_usage`、`api_applications`、`partners`、`partner_clicks`。
+数据库 19 张表（SQLite 与 PostgreSQL 共用一套模型）。档案五张：`events`、`raw_items`、`sync_runs`、`sync_state`、`review_decisions`；采集两张：`ingest_sources`（信源目录，兼重定向白名单来源）、`collect_verdicts`（append-only 裁决轨迹）；运营十二张：`admin_users`、`audit_log`、`page_views`、`crawl_hits`、`log_ingest_state`、`source_health`、`subscribers`、`api_keys`、`api_key_usage`、`api_applications`、`partners`、`partner_clicks`。
 
 公开接口：
 
@@ -185,11 +187,15 @@ scripts/export-seed.mjs                 从 functions/lib/seed.mjs 重导 seed.j
 
 管理接口（`/api/v1/admin/*`，需会话与对应权限）：登录/登出/会话、改密、审计日志、触发同步（202）、运行列表与详情、暂缓队列、总览、来源健康、评审席位、流量、条目列表与详情、条目处置、订阅者（含 CSV 导出）、API Key 签发与吊销、开放 API 申请队列（列表/批准签发/拒绝）、合作方统计与配置、账号管理、配置体检。
 
+采集库与信源目录各一组只读／可写接口：`GET /admin/library`（关键词、状态、环节、理由、来源、族、运行、窗口、分页）与 `/library/summary`、`/library/funnel`、`/library/reasons`、`/library/{id}` 全部只要 `read`，没有任何改判入口——决策仍集中在 `#/content`，采集库只负责回答「为什么」。`GET /admin/sources/registry` 列全部源（含未启用），写操作只要 `manage`：新建、编辑、启停、探活；改地址或解析器会清空 `verified_at` 并自动停用，未探活的源一律 409 `probe_required`。探活是本项目唯一接受管理员输入并出网的入口，因此 URL 先校验形状（scheme、userinfo、端口白名单、长度），再要求每个解析地址都是公网地址。
+
 公开的 `/timeline`、`/status`、`/events` 字段集由 `backend/tests/test_api_contract.py` 严格断言，新字段一律只进 `/api/v1/admin/*`。
 
 ## 收录门槛与评审面板
 
 自动条目先经确定性规则预筛，排除融资、人事、合作、价格、发布会、访谈、早报、传闻等新闻型内容；规则分达到 35 的候选再交给评审面板，并按分数排序取其上限。面板按厂商各取一家 —— DeepSeek、通义千问、智谱 GLM、Kimi、MiniMax —— 最多五席。至少 3 票 `include` 且中位分达到 75 才入档（`score < 75` 的 `include` 票不计为同意）；有效票不足 3 票、票型分裂（如 2–2）、超时或未配置评审模型时一律暂缓。
+
+来源族参与打分：`official` 与 `policy`（监管原文）各加 10 分，因为它们是一手信息；`policy` 在聚类阶段也不套「官方号才算节点」的门——一条生效的法规本身就是节点。这也是 `RUBRIC_VERSION` 升到 `chronicle-v3` 的原因，升级后旧票型自动失效并重审。
 
 评审模型通过环境变量配置：本地写仓库根 `.env`，生产写 `deploy/api.env`（Linux `/etc/aihist/api.env`），密钥只存在于服务器。每席只需要厂商名和密钥，端点、默认模型以及关闭思考的参数由 `backend/app/editorial/providers.py` 的预设提供：
 
@@ -224,6 +230,8 @@ EDITORIAL_JUDGE_5_KEY=<secret>
 
 环境变量里的 `ADMIN_USER` / `ADMIN_PASSWORD_HASH` 永远可登录且视为 `owner`，是改坏 `admin_users` 后的回退通道；日常账号用 `#/users` 或 `python -m app.cli create-owner` 建。所有写操作落 `audit_log`（IP 只存哈希，`detail` 不存密钥），内容处置必须填理由。条目「下架」是 `editorial_status='excluded'`，公开接口立即 404，不是删行。
 
+两个页面组成采集链路的观测面：`#/library`（采集库）按窗口／状态／环节／理由／来源筛选每一条抓到的条目，顶部漏斗的 `parsed = admitted + excluded + held + dropped` 恒等，点开任意条目可看到它的去向时间轴；有面板裁决的条目直接附五席票型，没有的则说明是被确定性规则在面板之前排除的。`#/sources`（信源目录）按配置而非常量展示所有源，含未启用项，新增源必须先探活。两个页面都不提供改判按钮，处置入口仍然集中在 `#/content`。
+
 指标口径写在代码里，不靠人记：
 
 - `PV` = 当日 `page_views` 行数（人类、非 bot）；`UV` = 当日 `count(distinct visitor_hash)`
@@ -237,6 +245,9 @@ EDITORIAL_JUDGE_5_KEY=<secret>
 ```sh
 python -m app.cli ingest-access-log   # 每小时：新增日志行 → crawl_hits（未配置日志时打印 skip 并退出 0）
 python -m app.cli prune               # 每周：按保留期清理四张分析表
+python -m app.cli library-prune       # 每周：清理采集轨迹与陈旧的 dropped 条目
+python -m app.cli catalog-seed        # 首装：把种子信源目录写进 ingest_sources
+python -m app.cli probe --url <url> --kind feed   # 探活单个候选源，不写库
 python -m app.cli create-owner --username you
 ```
 
@@ -251,7 +262,7 @@ python -m app.cli create-owner --username you
 | 版本族 | 真源 | 同步点 |
 | --- | --- | --- |
 | 产品版本 `X.Y.Z` | `package.json` | `backend/pyproject.toml`、本文件顶部「当前版本」行、迭代记录文件名 |
-| 收录规则 `RUBRIC_VERSION`（当前 `chronicle-v2`） | `backend/app/editorial/rules.py` | `functions/lib/editorial.mjs`（参考实现）、票型缓存、`/api/v1/standard` |
+| 收录规则 `RUBRIC_VERSION`（当前 `chronicle-v3`） | `backend/app/editorial/rules.py` | `functions/lib/editorial.mjs`（参考实现）、票型缓存、`/api/v1/standard` |
 | 种子数据 `SEED_VERSION`（当前 `2026.10.24.6`） | `functions/lib/seed.mjs` | `backend/app/data/seed.json`（由 `scripts/export-seed.mjs` 生成）、`sync_state.seed_version` |
 | 契约夹具 | `backend/tests/fixtures/golden/*.json` | 由 `scripts/export-golden.mjs` / `export-api-golden.mjs` 从参考实现生成 |
 
@@ -264,7 +275,7 @@ python -m app.cli create-owner --username you
 - SQLite 同一时刻只有一个写者。写入口只有定时任务与管理台手动触发，租约（`sync_state.lease_token`，150 秒 TTL）保证二者不会并发；读走 WAL，不受写阻塞。
 - 数据库文件必须放在本机固定磁盘，不能放 SMB/NFS 共享：那里的文件锁语义不可靠，会写坏库。
 - 备份只能用 `deploy/backup.py`（SQLite 备份 API）或 `VACUUM INTO`，不能直接复制 `.db` 文件——WAL 下普通复制可能得到撕裂快照。
-- 档案库不授予 DELETE：错误条目通过更严格的入库门槛、种子校订与后续迁移修正。唯一的删除任务是每周的 `prune`，它只清四张分析表（`page_views`、`crawl_hits`、`api_key_usage`、`audit_log`），白名单写死在 `backend/app/analytics/retention.py`，其他表永不在其列。
+- 档案库不授予 DELETE：错误条目通过更严格的入库门槛、种子校订与后续迁移修正。唯一的删除任务是每周的 `prune`，它只清四张分析表（`page_views`、`crawl_hits`、`api_key_usage`、`audit_log`），白名单写死在 `backend/app/analytics/retention.py`，其他表永不在其列。采集库另有一条口子 `library-prune`：按 `COLLECT_RETENTION_DAYS` 清理 `collect_verdicts` 轨迹与状态为 `dropped` 的 `raw_items`；`admitted`／`excluded`／`held` 的行是已发布条目的审计证据，永不被自动删除。
 - 采集只保留标题、短摘录与外链，不镜像全文，并标注来源。
 
 ## 发布

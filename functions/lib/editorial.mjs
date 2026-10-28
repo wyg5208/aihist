@@ -7,7 +7,7 @@
  * split or unparseable panel leaves the candidate out (fail closed).
  */
 
-export const RUBRIC_VERSION = "chronicle-v2";
+export const RUBRIC_VERSION = "chronicle-v3";
 export const INCLUDE_SCORE = 75;
 // One judge per domestic vendor: DeepSeek, Qwen, GLM, Kimi, MiniMax. Five
 // vendors rather than five copies of one model, so no single vendor's bias can

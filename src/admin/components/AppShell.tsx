@@ -13,6 +13,7 @@ import { Applications } from "../pages/Applications";
 import { Audit } from "../pages/Audit";
 import { Content } from "../pages/Content";
 import { Editorial } from "../pages/Editorial";
+import { Library } from "../pages/Library";
 import { Partners } from "../pages/Partners";
 import { Runs } from "../pages/Runs";
 import { Settings } from "../pages/Settings";
@@ -86,6 +87,8 @@ function pageFor(name: string): ReactNode {
       return <Overview />;
     case "content":
       return <Content />;
+    case "library":
+      return <Library />;
     case "runs":
       return <Runs />;
     case "sources":

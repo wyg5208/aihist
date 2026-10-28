@@ -19,6 +19,9 @@ Candidate = dict[str, Any]
 
 FAMILY_ORDER = [
     "official",
+    # Regulatory primary sources rank beside official announcements: a published
+    # rule is a first-hand event, not commentary about one.
+    "policy",
     "openrouter",
     "huggingface",
     "arxiv",
@@ -28,7 +31,7 @@ FAMILY_ORDER = [
     "reference",
 ]
 
-PRIMARY_FAMILIES = frozenset({"official", "openrouter", "huggingface", "arxiv", "paper"})
+PRIMARY_FAMILIES = frozenset({"official", "policy", "openrouter", "huggingface", "arxiv", "paper"})
 
 SOURCE_LIMIT = 6
 
@@ -385,6 +388,11 @@ def should_keep(candidate: Candidate, importance: int, confidence: str) -> bool:
 
     if head == "official":
         return bool(signals.get("notableOfficial")) and importance >= 28
+    # A regulator's own text has no `notableOfficial` signal to earn — the
+    # `is_notable_official` gate is about press-release noise. One effective rule
+    # is a milestone by itself, so the bar is the importance floor alone.
+    if head == "policy":
+        return importance >= 30
     # Single-source preprints are kept only when they pass the topic gate and
     # reach the preprint baseline importance; cross-source matches rank higher.
     if head == "arxiv":
@@ -472,7 +480,10 @@ def cluster_candidates(
     """Group fresh candidates into events, then reconcile them with stored rows.
 
     Returns `{"items": [...], "updates": [...]}`; `updates` carry an
-    `existingId` pointing at the row that must be rewritten.
+    `existingId` pointing at the row that must be rewritten. Two extra keys feed
+    the collection funnel: `dropped` (one entry per cluster `should_keep`
+    refused, with its reason) and `dedup` (how many evidence rows collapsed into
+    already-known items). Neither changes `items`/`updates`.
     """
     clusters: list[list[Candidate]] = []
     for candidate in candidates:
@@ -489,6 +500,8 @@ def cluster_candidates(
     existing = [from_existing(row) for row in existing_rows or []]
     results: list[Candidate] = []
     updates: list[Candidate] = []
+    dropped: list[dict[str, Any]] = []
+    dedup = 0
     by_existing: dict[Any, Candidate] = {}
 
     for bucket in clusters:
@@ -524,7 +537,11 @@ def cluster_candidates(
             merged["firstSeenAt"] = match.get("firstSeenAt")
 
         finalized = finalize(merged)
+        # An item that never became an event still has to explain itself: this
+        # was a silent `continue` until the collection ledger existed.
+        dedup += max(len(bucket) - 1, 0)
         if not should_keep(finalized, finalized["importance"], finalized["confidence"]):
+            dropped.append({"candidate": finalized, "reason": "below_keep"})
             continue
 
         existing_id = finalized.get("existingId")
@@ -551,7 +568,7 @@ def cluster_candidates(
             results.append(finalized)
 
     results.sort(key=lambda item: item.get("sortDate") or "", reverse=True)
-    return {"items": results, "updates": updates}
+    return {"items": results, "updates": updates, "dropped": dropped, "dedup": dedup}
 
 
 def summarize_confidence(items: list[Candidate]) -> dict[str, int]:

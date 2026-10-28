@@ -16,6 +16,7 @@ from typing import Any, Awaitable, Callable, Mapping
 
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from app.config import get_settings
 from app.db import repo_events, repo_ops, repo_sync
 from app.db.repo_sync import utc_now
 from app.domain.slug import auto_slug, seed_slug
@@ -31,16 +32,19 @@ from app.editorial.rules import (
     should_audit_out,
 )
 from app.ingest.cluster import cluster_candidates, confidence_of, fingerprint_of
+from app.ingest.ledger import Ledger
 from app.ingest.normalize import CATEGORY_KEYS, normalize_results
+from app.ingest.registry import allowed_hosts, enabled_sources, ensure_catalog
 from app.ingest.seed import SEED_EVENTS, SEED_VERSION
-from app.ingest.sources import SOURCE_TIMEOUT_MS, SOURCES, load_sources
+from app.ingest.sources import ALLOWED_HOSTS, SOURCE_TIMEOUT_MS, load_sources
+from app.ingest.catalog import SEED_SOURCES
 
 DEFAULT_RUN_BUDGET_MS = 300_000
 DEFAULT_FETCH_BUDGET_MS = 120_000
 MAX_RAW_ITEMS = 180
 MAX_NEW_EVENTS = 50
 MAX_PANEL_ITEMS = 24
-MAX_FETCH_CONCURRENCY = 5
+MAX_FETCH_CONCURRENCY = 6
 RECENT_YEAR_SPAN = 2
 SUMMARY_TIMEOUT_MS = 8_000
 
@@ -355,6 +359,28 @@ def editorial_patch(status: str, review: dict[str, Any] | None, now: datetime) -
     }
 
 
+def _rule_reason(assessment: dict[str, Any]) -> tuple[str, str]:
+    """Reason code + readable text for a deterministic rule rejection."""
+    from app.ingest.reasons import label_of
+
+    key = assessment.get("disqualify")
+    code = f"rule:{key}" if key else "score_low"
+    text = "、".join(assessment.get("reasons") or []) or label_of(code)
+    return code, text
+
+
+def _panel_reason(outcome: dict[str, Any]) -> tuple[str, str]:
+    """Reason code + readable text for a panel verdict."""
+    from app.ingest.ledger import human_summary
+
+    decision = outcome.get("decision")
+    if decision == "include":
+        return "admitted", human_summary(outcome)
+    if decision == "exclude":
+        return "panel:exclude", human_summary(outcome)
+    return "panel:hold", human_summary(outcome)
+
+
 def _review_from_cached(cached: Any) -> dict[str, Any]:
     return {
         "version": cached.rubric_version,
@@ -488,6 +514,7 @@ async def run_sync(
     run_budget_ms: int = DEFAULT_RUN_BUDGET_MS,
     fetch_budget_ms: int = DEFAULT_FETCH_BUDGET_MS,
     concurrency: int = MAX_FETCH_CONCURRENCY,
+    raw_cap: int | None = None,
 ) -> dict[str, Any]:
     """One synchronisation run. Never exposes payloads, SQL or credentials."""
     env = env or {}
@@ -495,6 +522,7 @@ async def run_sync(
     run_id = run_id or uuid.uuid4()
     token = token or uuid.uuid4().hex
     post = post or httpx_post
+    raw_cap = raw_cap or get_settings().collect_raw_cap
     start_ms = int(time.time() * 1000)
 
     state = await repo_sync.read_state(session)
@@ -523,6 +551,7 @@ async def run_sync(
     reviewed_count = admitted_count = excluded_count = held_count = 0
     panel_configured = False
     failed_sources: list[str] = []
+    ledger: Ledger | None = None
     status = "succeeded"
 
     try:
@@ -540,9 +569,29 @@ async def run_sync(
                 notes.append("seed_failed")
 
         deadline_ms = start_ms + fetch_budget_ms
+        # The catalogue is the source of truth, and the seed is only the
+        # fallback: an operator edit must survive the next deploy, and every
+        # existing test creates the schema without ever seeding a row.
+        try:
+            if await ensure_catalog(session, now=now_iso_now):
+                notes.append("catalog:seeded")
+        except Exception:  # noqa: BLE001 - a missing table is not a failed run
+            notes.append("catalog_failed")
+        try:
+            sources = await enabled_sources(session)
+            allowed = await allowed_hosts(session)
+        except Exception:  # noqa: BLE001
+            sources, allowed = SEED_SOURCES, ALLOWED_HOSTS
+        if len(sources) != len(SEED_SOURCES):
+            notes.append(f"catalog:{len(sources)}")
+
         if fetch is not None:
             results = await load_sources(
-                SOURCES, fetch=fetch, deadline_ms=deadline_ms, concurrency=concurrency
+                sources,
+                fetch=fetch,
+                deadline_ms=deadline_ms,
+                concurrency=concurrency,
+                allowed_hosts=allowed,
             )
         else:
             from app.ingest.sources import httpx_fetch
@@ -551,7 +600,11 @@ async def run_sync(
                 return await httpx_fetch(url, timeout_ms=SOURCE_TIMEOUT_MS)
 
             results = await load_sources(
-                SOURCES, fetch=_fetch, deadline_ms=deadline_ms, concurrency=concurrency
+                sources,
+                fetch=_fetch,
+                deadline_ms=deadline_ms,
+                concurrency=concurrency,
+                allowed_hosts=allowed,
             )
 
         normalized = normalize_results(results, now_ms=int(time.time() * 1000))
@@ -571,13 +624,36 @@ async def run_sync(
         except Exception:  # noqa: BLE001
             notes.append("source_health_failed")
 
-        candidates = interleave_candidates(normalized["candidates"], MAX_RAW_ITEMS)
+        candidates_all = normalized["candidates"]
+        candidates = interleave_candidates(candidates_all, raw_cap)
+
+        # ----- ledger, first flush ------------------------------------------
+        # Everything we saw is written *before* any verdict, so a run that dies
+        # in the panel stage still leaves its intake visible.
+        ledger = Ledger(run_id=run_id, now=now_iso_now)
+        ledger.bump("fetched", sum(
+            len(entry.get("items") or []) for entry in results if entry.get("ok")
+        ))
+        for drop in normalized.get("drops") or []:
+            ledger.note_drop(drop, stage="normalize")
+        kept = {id(candidate) for candidate in candidates}
+        for candidate in candidates_all:
+            if id(candidate) in kept:
+                continue
+            ledger.note_candidate(
+                candidate, stage="cap", status="dropped", reason_code="cap_raw"
+            )
+        ledger.bump("capped", max(len(candidates_all) - len(candidates), 0))
+        for candidate in candidates:
+            ledger.note_candidate(candidate, stage="cluster", status="pending")
+        raw_count = len(ledger.pending)
 
         await _guard_heartbeat(session, token, run_id)
-        raw = raw_rows(candidates, now_iso_now)
-        raw_count = len(raw)
-        if raw:
-            await repo_events.insert_raw_items(session, raw)
+        try:
+            await repo_events.upsert_collected(session, ledger.pending_rows())
+            notes.append(f"ledger:pending:{raw_count}")
+        except Exception:  # noqa: BLE001 - bookkeeping never changes a verdict
+            notes.append("ledger_failed")
 
         existing_rows = await repo_events.load_recent_events(
             session, now.year - RECENT_YEAR_SPAN, 600
@@ -585,9 +661,36 @@ async def run_sync(
         clustered = cluster_candidates(candidates, existing_rows)
         items = clustered["items"]
         updates = clustered["updates"]
+        for entry in clustered.get("dropped") or []:
+            ledger.set_verdict(
+                entry["candidate"],
+                status="dropped",
+                stage="cluster",
+                reason_code=entry.get("reason") or "below_keep",
+            )
+        ledger.bump("clustered", len(items))
+        ledger.bump("clusterDropped", len(clustered.get("dropped") or []))
+        ledger.bump("deduped", int(clustered.get("dedup") or 0))
+        for item in updates:
+            # Merged into an event that already exists: admitted as evidence,
+            # with the reason saying so.
+            ledger.set_verdict(
+                item,
+                status="admitted",
+                stage="dedup",
+                reason_code="duplicate",
+                reason_text="并入已有条目",
+            )
 
         existing_by_id = {row.id: row for row in existing_rows}
-        fresh_all = [item for item in items if not item.get("existingId")][:MAX_NEW_EVENTS]
+        fresh_items = [item for item in items if not item.get("existingId")]
+        over_cap = fresh_items[MAX_NEW_EVENTS:]
+        for item in over_cap:
+            ledger.set_verdict(
+                item, status="dropped", stage="cap", reason_code="cap_events"
+            )
+        ledger.bump("overEventCap", len(over_cap))
+        fresh_all = fresh_items[:MAX_NEW_EVENTS]
         changed_updates = []
         for item in updates:
             row = existing_by_id.get(item.get("existingId"))
@@ -604,6 +707,13 @@ async def run_sync(
             accepted.extend(fresh_all)
             for item in accepted:
                 item["editorialStatus"] = "admitted"
+                ledger.set_verdict(
+                    item,
+                    status="admitted",
+                    stage="panel",
+                    reason_code="admitted",
+                    reason_text="目录校对模式，未送面板",
+                )
         else:
             panel = build_panel_config(dict(env))
             panel_configured = panel["configured"]
@@ -624,9 +734,25 @@ async def run_sync(
                         item["editorialReview"] = _review_from_cached(cached_row)
                         accepted.append(item)
                         admitted_count += 1
+                        ledger.set_verdict(
+                            item,
+                            status="admitted",
+                            stage="panel",
+                            reason_code="admitted",
+                            reason_text="沿用同版本面板裁决",
+                            score=cached_row.score,
+                        )
                         continue
                     if cached_row.decision == "exclude":
                         excluded_count += 1
+                        ledger.set_verdict(
+                            item,
+                            status="excluded",
+                            stage="panel",
+                            reason_code="panel:exclude",
+                            reason_text="沿用同版本面板裁决",
+                            score=cached_row.score,
+                        )
                         continue
                 assessment = assess_candidate(item)
                 if assessment["disqualify"] or assessment["score"] < RULE_PANEL_THRESHOLD:
@@ -636,6 +762,15 @@ async def run_sync(
                                         now=now_iso_now)
                     )
                     excluded_count += 1
+                    code, text = _rule_reason(assessment)
+                    ledger.set_verdict(
+                        item,
+                        status="excluded",
+                        stage="rule",
+                        reason_code=code,
+                        reason_text=text,
+                        score=assessment["score"],
+                    )
                     continue
                 panel_queue.append({"kind": "new", "candidate": item, "assessment": assessment})
 
@@ -658,6 +793,14 @@ async def run_sync(
                         excluded_count += 1
                     else:
                         admitted_count += 1
+                    ledger.set_verdict(
+                        candidate,
+                        status=state_status,
+                        stage="panel",
+                        reason_code="admitted" if state_status == "admitted" else "panel:exclude",
+                        reason_text="沿用同版本面板裁决",
+                        score=cached_row.score,
+                    )
                     continue
                 assessment = assess_candidate(candidate)
                 if should_audit_out(assessment):
@@ -671,6 +814,15 @@ async def run_sync(
                         "patch": editorial_patch("excluded", review_summary(outcome, "rule"), now_iso_now),
                     }
                     excluded_count += 1
+                    code, text = _rule_reason(assessment)
+                    ledger.set_verdict(
+                        candidate,
+                        status="excluded",
+                        stage="rule",
+                        reason_code=code,
+                        reason_text=text,
+                        score=assessment["score"],
+                    )
                     continue
                 if panel["configured"]:
                     panel_queue.append(
@@ -687,12 +839,28 @@ async def run_sync(
                         ),
                     }
                     held_count += 1
+                    ledger.set_verdict(
+                        candidate,
+                        status="held",
+                        stage="panel",
+                        reason_code="panel:unconfigured",
+                        reason_text="面板未配置，下一轮重试",
+                        score=assessment["score"],
+                    )
 
             panel_queue.sort(key=lambda entry: (0 if entry["kind"] == "new" else 1, -entry["assessment"]["score"]))
             batch = panel_queue[:MAX_PANEL_ITEMS]
             deferred = panel_queue[MAX_PANEL_ITEMS:]
             for entry in deferred:
                 held_count += 1
+                ledger.set_verdict(
+                    entry["candidate"],
+                    status="held",
+                    stage="panel",
+                    reason_code="deferred",
+                    reason_text=f"超出单批 {MAX_PANEL_ITEMS} 条上限，顺延到下一轮",
+                    score=entry["assessment"]["score"],
+                )
                 if entry["kind"] == "audit":
                     audit_patches[entry["row"].id] = {
                         "id": entry["row"].id,
@@ -727,6 +895,14 @@ async def run_sync(
                         outcome = aggregate["byId"].get(entry["candidate"]["fingerprint"])
                         if outcome is None:
                             held_count += 1
+                            ledger.set_verdict(
+                                entry["candidate"],
+                                status="held",
+                                stage="panel",
+                                reason_code="panel:hold",
+                                reason_text="未拿到任何有效票",
+                                score=entry["assessment"]["score"],
+                            )
                             continue
                         if outcome["validVotes"] >= MIN_INCLUDE_VOTES:
                             decisions.append(
@@ -735,6 +911,19 @@ async def run_sync(
                                     source="panel", now=now_iso_now,
                                 )
                             )
+                        code, text = _panel_reason(outcome)
+                        ledger.set_verdict(
+                            entry["candidate"],
+                            status="admitted"
+                            if outcome["decision"] == "include"
+                            else "excluded"
+                            if outcome["decision"] == "exclude"
+                            else "held",
+                            stage="panel",
+                            reason_code=code,
+                            reason_text=text,
+                            score=outcome.get("score") or 0,
+                        )
                         if outcome["decision"] == "include":
                             admitted_count += 1
                             if entry["kind"] == "new":
@@ -769,6 +958,15 @@ async def run_sync(
                 else:
                     notes.append("panel:unconfigured")
                     held_count += len(batch)
+                    for entry in batch:
+                        ledger.set_verdict(
+                            entry["candidate"],
+                            status="held",
+                            stage="panel",
+                            reason_code="panel:unconfigured",
+                            reason_text="五席面板未配置，暂不裁决",
+                            score=entry["assessment"]["score"],
+                        )
 
             if audit_patches:
                 await _guard_heartbeat(session, token, run_id)
@@ -819,6 +1017,24 @@ async def run_sync(
         if _elapsed_ms(start_ms) > run_budget_ms:
             notes.append("stage:deadline")
 
+        # ----- ledger, second flush ------------------------------------------
+        # After the verdicts exist: the same rows are rewritten with their final
+        # status, and only the *changes* become trail lines.
+        ledger.bump("reviewed", reviewed_count)
+        try:
+            if ledger.pending:
+                # Same rows, final status: one run is one sighting, so the
+                # second write must not advance `seen_count` again.
+                await repo_events.upsert_collected(
+                    session, ledger.pending_rows(), bump_seen=False
+                )
+            trail = ledger.verdict_rows()
+            if trail:
+                await repo_events.insert_verdicts(session, trail)
+                notes.append(f"ledger:verdicts:{len(trail)}")
+        except Exception:  # noqa: BLE001 - bookkeeping never changes a verdict
+            notes.append("ledger_failed")
+
         final_status = status
         if status == "failed" and (seed_inserted > 0 or created_count + merged_count > 0):
             final_status = "partial"
@@ -837,7 +1053,12 @@ async def run_sync(
             "failedSources": failed_sources,
             "notes": "; ".join(notes) or None,
             "durationMs": _elapsed_ms(start_ms),
-            "detail": _run_detail(results, notes),
+            "detail": _run_detail(
+                results,
+                notes,
+                funnel=ledger.funnel() if ledger else None,
+                verdicts=ledger.verdict_counts() if ledger else None,
+            ),
         }
 
         await repo_sync.finish_run(session, run_id, result)
@@ -866,7 +1087,12 @@ async def run_sync(
             "failedSources": failed_sources,
             "notes": "; ".join([*notes, f"stage:{code}"]),
             "durationMs": _elapsed_ms(start_ms),
-            "detail": _run_detail(results, [*notes, f"stage:{code}"]),
+            "detail": _run_detail(
+                results,
+                [*notes, f"stage:{code}"],
+                funnel=ledger.funnel() if ledger else None,
+                verdicts=ledger.verdict_counts() if ledger else None,
+            ),
         }
         try:
             await repo_sync.finish_run(session, run_id, failed_result)
@@ -900,12 +1126,20 @@ def _failure_note(failed: list[dict[str, Any]]) -> str:
     return "failed:" + ",".join(parts)
 
 
-def _run_detail(results: list[dict[str, Any]], notes: list[str]) -> dict[str, Any]:
+def _run_detail(
+    results: list[dict[str, Any]],
+    notes: list[str],
+    *,
+    funnel: dict[str, Any] | None = None,
+    verdicts: dict[str, int] | None = None,
+) -> dict[str, Any]:
     """Structured run detail, so the console never parses the `notes` string.
 
     `notes` predates the console and is the `;`-joined log line budget; it stays
     for the existing tests and for grep-ability. This is the same information in
-    the shape a detail page needs: one entry per source with its own timing.
+    the shape a detail page needs: one entry per source with its own timing, plus
+    the collection funnel (`fetched → parsed → … → admitted`) and the reason-code
+    histogram the library page links back to.
     """
     sources = []
     for entry in results or []:
@@ -921,7 +1155,7 @@ def _run_detail(results: list[dict[str, Any]], notes: list[str]) -> dict[str, An
                 "error": str(entry.get("error") or "") or None,
             }
         )
-    return {"sources": sources, "notes": list(notes)}
+    return {"sources": sources, "notes": list(notes), "funnel": funnel or {}, "verdicts": verdicts or {}}
 
 
 async def run_sync_detached(session_factory: Any, **kwargs: Any) -> dict[str, Any]:

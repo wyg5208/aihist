@@ -39,6 +39,7 @@ export const CONFIDENCE_META: Record<
 
 export const FAMILY_LABELS: Record<string, string> = {
   official: "官方公告",
+  policy: "监管原文",
   openrouter: "模型目录",
   huggingface: "开源模型库",
   arxiv: "论文预印本",

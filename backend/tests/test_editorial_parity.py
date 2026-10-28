@@ -14,7 +14,7 @@ from app.editorial.panel import (
     parse_judge_content,
     public_panel_info,
 )
-from app.editorial.rules import assess_candidate, should_audit_out
+from app.editorial.rules import RUBRIC_VERSION, assess_candidate, should_audit_out
 from app.editorial.standard import STANDARD
 from app.ingest.normalize import normalize_results
 
@@ -180,7 +180,9 @@ def test_panel_not_configured_hides_models() -> None:
 
 def test_standard_is_serialisable() -> None:
     blob = json.dumps(STANDARD, ensure_ascii=False)
-    assert "chronicle-v2" in blob
+    # Pin the standard to the rubric constant rather than a literal: a version
+    # bump is a deliberate change with its own review, not a test typo.
+    assert json.dumps(RUBRIC_VERSION) in blob
     assert len(STANDARD["hardRejects"]) == 9
 
 

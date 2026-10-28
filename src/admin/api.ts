@@ -673,3 +673,244 @@ export const settingsApi = {
   read: (signal?: AbortSignal) =>
     get<{ ok: boolean; settings: SettingsEntry[] }>("/settings", signal),
 };
+
+// ---------------------------------------------------------------------------
+// Collection library
+// ---------------------------------------------------------------------------
+
+/** One `raw_items` row as the audit surface reports it. */
+export interface LibraryItem {
+  id: string;
+  sourceKey: string;
+  sourceName: string;
+  sourceFamily: string;
+  externalId: string;
+  title: string;
+  url: string;
+  publishedAt: string | null;
+  fetchedAt: string | null;
+  firstSeenAt: string | null;
+  lastSeenAt: string | null;
+  seenCount: number;
+  /** `pending` | `admitted` | `excluded` | `held` | `dropped` */
+  status: string;
+  /** `fetch` | `normalize` | `cap` | `cluster` | `rule` | `panel` | `manual` */
+  stage: string;
+  reasonCode: string;
+  /** Chinese label resolved by the backend from `app/ingest/reasons.py`. */
+  reasonLabel: string;
+  reasonText: string;
+  score: number;
+  decidedAt: string | null;
+  eventFingerprint: string | null;
+  eventId: string | null;
+  eventSlug: string | null;
+  eventTitle: string | null;
+  runId: string | null;
+}
+
+export interface LibraryVerdict {
+  id: string;
+  at: string | null;
+  runId: string | null;
+  stage: string;
+  status: string;
+  reasonCode: string;
+  reasonLabel: string;
+  reasonText: string;
+  score: number;
+  eventFingerprint: string | null;
+}
+
+/** The panel ballot behind a decision; mirrors `AdminEditorialReview` plus rubric. */
+export interface LibraryReview {
+  rubricVersion: string;
+  decision: string;
+  score: number;
+  includeVotes: number;
+  validVotes: number;
+  sourceCount: number;
+  decisionSource: string;
+  votes: AdminReviewVote[];
+  at: string | null;
+}
+
+export interface LibraryDetail {
+  ok: boolean;
+  item: LibraryItem;
+  verdicts: LibraryVerdict[];
+  review: LibraryReview | null;
+  event: {
+    id: string;
+    slug: string | null;
+    title: string;
+    category: string;
+    editorialStatus: EditorialStatusValue;
+    eventDate: string;
+  } | null;
+}
+
+export interface LibrarySummary {
+  days: number;
+  total: number;
+  byStatus: Record<string, number>;
+  byStage: Record<string, number>;
+  byReason: Record<string, number>;
+  bySource: Record<string, number>;
+}
+
+export interface LibraryFunnelStage {
+  stage: string;
+  admitted: number;
+  excluded: number;
+  held: number;
+  dropped: number;
+  pending: number;
+}
+
+export interface LibraryReasonOption {
+  code: string;
+  label: string;
+  stage: string;
+  count: number;
+}
+
+export interface LibraryFunnel {
+  ok: boolean;
+  days: number;
+  /** The last run's own counters, straight out of `sync_runs.detail.funnel`. */
+  latest: {
+    runId: string | null;
+    startedAt: string | null;
+    funnel: Record<string, number | Record<string, number>>;
+    verdicts: Record<string, number>;
+  };
+  stages: LibraryFunnelStage[];
+  verdicts: LibraryReasonOption[];
+  bySource: Array<{
+    key: string;
+    name: string;
+    family: string;
+    admitted: number;
+    excluded: number;
+    held: number;
+    dropped: number;
+    pending: number;
+    total: number;
+  }>;
+}
+
+export interface LibraryQuery {
+  q?: string;
+  status?: string;
+  stage?: string;
+  /** A code or a prefix (`rule:`, `panel:`); the backend matches prefixes. */
+  reason?: string;
+  sourceKey?: string;
+  family?: string;
+  runId?: string;
+  days?: number;
+  page?: number;
+  size?: number;
+  sort?: string;
+}
+
+export const libraryApi = {
+  list: (filters: LibraryQuery, signal?: AbortSignal) =>
+    get<{
+      ok: boolean;
+      items: LibraryItem[];
+      total: number;
+      page: number;
+      size: number;
+      summary: LibrarySummary;
+    }>(`/library${query({ ...filters })}`, signal),
+  funnel: (days = 7, signal?: AbortSignal) =>
+    get<LibraryFunnel>(`/library/funnel?days=${days}`, signal),
+  reasons: (days = 30, signal?: AbortSignal) =>
+    get<{ ok: boolean; items: LibraryReasonOption[] }>(`/library/reasons?days=${days}`, signal),
+  detail: (id: string, signal?: AbortSignal) =>
+    get<LibraryDetail>(`/library/${encodeURIComponent(id)}`, signal),
+};
+
+// ---------------------------------------------------------------------------
+// Source catalogue (mutable configuration, unlike `/sources`)
+// ---------------------------------------------------------------------------
+
+export interface SourceRegistryRow {
+  key: string;
+  name: string;
+  family: string;
+  kind: string;
+  url: string;
+  enabled: boolean;
+  rationale: string;
+  verifiedAt: string | null;
+  domestic: boolean;
+  aiOnly: boolean;
+  lastOkAt: string | null;
+  lastError: string;
+  consecutiveFailures: number;
+  lastMs: number;
+  lastItemCount: number;
+  totalRuns: number;
+  totalFailures: number;
+}
+
+export interface ProbeResult {
+  ok: boolean;
+  status: number | null;
+  ms: number;
+  attempts: number;
+  error: string | null;
+  sample: Array<{ title: string; url: string; publishedAt: string | null }>;
+  latestAt: string | null;
+  itemCount: number;
+  url: string;
+  kind: string;
+}
+
+export interface SourceWrite {
+  key?: string;
+  name?: string;
+  family?: string;
+  kind?: string;
+  url?: string;
+  pathPattern?: string;
+  domestic?: boolean;
+  aiOnly?: boolean;
+  timeoutMs?: number;
+  rationale?: string;
+}
+
+export const sourcesApi = {
+  registry: (signal?: AbortSignal) =>
+    get<{
+      ok: boolean;
+      items: SourceRegistryRow[];
+      total: number;
+      enabled: number;
+      unverified: number;
+      families: Array<{ key: string; label: string; count: number }>;
+      kinds: string[];
+    }>("/sources/registry", signal),
+  /** Dry run: never writes, and the only call that fetches an arbitrary URL. */
+  probe: (body: { url: string; kind: string; pathPattern?: string; timeoutMs?: number }) =>
+    post<{ ok: boolean; probe: ProbeResult }>("/sources/probe", body),
+  verify: (key: string) =>
+    post<{ ok: boolean; probe: ProbeResult; source: SourceRegistryRow }>(
+      `/sources/registry/${encodeURIComponent(key)}/verify`,
+    ),
+  create: (body: SourceWrite & { key: string; url: string }) =>
+    post<{ ok: boolean; source: SourceRegistryRow }>("/sources/registry", body),
+  update: (key: string, body: SourceWrite) =>
+    patch<{ ok: boolean; source: SourceRegistryRow; probeRequired: boolean }>(
+      `/sources/registry/${encodeURIComponent(key)}`,
+      body,
+    ),
+  setEnabled: (key: string, enabled: boolean) =>
+    post<{ ok: boolean; source: SourceRegistryRow }>(
+      `/sources/registry/${encodeURIComponent(key)}/enabled`,
+      { enabled },
+    ),
+};

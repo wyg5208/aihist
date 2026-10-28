@@ -21,9 +21,10 @@ from app.db.session import SQLITE_BUSY_TIMEOUT_MS, apply_sqlite_pragmas
 
 BACKEND = Path(__file__).resolve().parent.parent
 
-# 0001 (editorial) + 0002 (admin console) + 0003 (application queue). The
-# second group is additive; the first five must keep their exact shape because
-# the public API contract and the 158-row curated seed are frozen against them.
+# 0001 (editorial) + 0002 (admin console) + 0003 (application queue) + 0004
+# (source registry and collection ledger). The second group is additive; the
+# first five must keep their exact shape because the public API contract and the
+# 158-row curated seed are frozen against them.
 EXPECTED_TABLES = {
     "events",
     "raw_items",
@@ -42,6 +43,8 @@ EXPECTED_TABLES = {
     "partners",
     "partner_clicks",
     "api_applications",
+    "ingest_sources",
+    "collect_verdicts",
 }
 
 EXPECTED_INDEXES = {
@@ -76,11 +79,21 @@ EXPECTED_INDEXES = {
     "ix_partner_clicks_partner_day",
     "ix_api_applications_status",
     "ix_api_applications_email",
+    "ix_raw_items_status_seen",
+    "ix_raw_items_source_seen",
+    "ix_raw_items_event_fp",
+    "ix_raw_items_run",
+    "ix_ingest_sources_family",
+    "ix_ingest_sources_enabled",
+    "ix_collect_verdicts_item",
+    "ix_collect_verdicts_at",
+    "ix_collect_verdicts_run",
+    "ix_collect_verdicts_status",
 }
 
-# Columns added by 0002 to tables that already shipped in 0001. Asserted
-# explicitly because an `ADD COLUMN` that silently no-ops on SQLite is exactly
-# the failure the batch-vs-native debate was about.
+# Columns added by 0002 and 0004 to tables that already shipped in 0001.
+# Asserted explicitly because an `ADD COLUMN` that silently no-ops on SQLite is
+# exactly the failure the batch-vs-native debate was about.
 ADDED_COLUMNS = {
     "events": {"ops_note"},
     "sync_runs": {
@@ -91,6 +104,21 @@ ADDED_COLUMNS = {
         "panel_configured",
         "duration_ms",
         "detail",
+    },
+    "raw_items": {
+        "source_key",
+        "run_id",
+        "status",
+        "stage",
+        "reason_code",
+        "reason_text",
+        "score",
+        "event_id",
+        "event_fingerprint",
+        "first_seen_at",
+        "last_seen_at",
+        "seen_count",
+        "decided_at",
     },
 }
 

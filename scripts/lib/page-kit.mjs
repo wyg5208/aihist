@@ -12,6 +12,7 @@ export const CATEGORY_LABELS = {
 
 export const FAMILY_LABELS = {
   official: "官方公告",
+  policy: "监管原文",
   openrouter: "模型目录",
   huggingface: "开源模型库",
   arxiv: "论文预印本",

@@ -33,3 +33,9 @@ MAILTO=""
 # 90d, crawl_hits 120d, api_key_usage 400d, audit_log 730d. Events, sources,
 # sync runs and subscribers have no window and are never touched.
 40 4 * * 0 aihist /srv/aihist/deploy/run-cli.sh prune >> /var/log/aihist/prune.log 2>&1
+
+# Weekly (Sunday 04:50), ten minutes after `prune`: trim the collection ledger.
+# Only the append-only trail and `dropped` items past COLLECT_RETENTION_DAYS go;
+# admitted / excluded / held rows are the audit evidence behind a published
+# entry and are never removed here.
+50 4 * * 0 aihist /srv/aihist/deploy/run-cli.sh library-prune >> /var/log/aihist/prune.log 2>&1

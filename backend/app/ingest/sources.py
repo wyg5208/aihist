@@ -55,6 +55,7 @@ FAMILY_LABELS = {
     "huggingface": "开源模型库",
     "arxiv": "论文预印本",
     "official": "官方公告",
+    "policy": "监管原文",
     "community": "社区讨论",
     "media": "媒体报道",
 }
@@ -259,14 +260,20 @@ class FetchResult:
 Fetcher = Callable[[str], Awaitable[FetchResult]]
 
 
-def host_allowed(url: str) -> bool:
+def host_allowed(url: str, allowed: frozenset[str] | set[str] = ALLOWED_HOSTS) -> bool:
+    """Is this URL's host one we registered?
+
+    `allowed` is passed in by the pipeline: the registry adds every enabled
+    source's host, so a feed added from the console does not have to be in this
+    module's constant. The default keeps every existing caller working.
+    """
     try:
         from urllib.parse import urlparse
 
         host = (urlparse(url).hostname or "").lower()
     except ValueError:
         return False
-    return host in ALLOWED_HOSTS
+    return host in allowed
 
 
 def _tagged(block: str, names: list[str]) -> str:
@@ -564,11 +571,15 @@ def _classify_error(message: str, timed_out: bool) -> str:
 
 
 async def _fetch_items(
-    source: dict[str, Any], *, fetch: Fetcher, budget_ms: int
+    source: dict[str, Any],
+    *,
+    fetch: Fetcher,
+    budget_ms: int,
+    allowed: frozenset[str] | set[str] = ALLOWED_HOSTS,
 ) -> list[dict[str, Any]]:
     """One attempt: fetch, re-check the redirect, parse. Raises on any failure."""
     result = await asyncio.wait_for(fetch(source["url"]), timeout=budget_ms / 1000)
-    if not host_allowed(result.url):
+    if not host_allowed(result.url, allowed):
         raise ValueError("bad_redirect")
     if not result.ok:
         raise ValueError(f"http_{result.status}")
@@ -582,7 +593,7 @@ async def _fetch_items(
     if kind == "feed":
         items = parse_feed(body)
     elif kind == "sitemap":
-        items = parse_sitemap(body)
+        items = parse_sitemap(body, source.get("pathPattern") or "/news/")
     elif kind == "arxiv":
         items = parse_arxiv(body)
     else:
@@ -607,6 +618,7 @@ async def load_source(
     fetch: Fetcher,
     deadline_ms: int,
     retry_ms: int = RETRY_TIMEOUT_MS,
+    allowed: frozenset[str] | set[str] = ALLOWED_HOSTS,
 ) -> dict[str, Any]:
     started = int(time.time() * 1000)
     if started >= deadline_ms:
@@ -625,7 +637,7 @@ async def load_source(
     while True:
         attempts += 1
         try:
-            items = await _fetch_items(source, fetch=fetch, budget_ms=budget_ms)
+            items = await _fetch_items(source, fetch=fetch, budget_ms=budget_ms, allowed=allowed)
         except asyncio.CancelledError:
             raise
         except asyncio.TimeoutError:
@@ -677,8 +689,10 @@ async def load_sources(
     fetch: Fetcher,
     deadline_ms: int,
     concurrency: int = 4,
+    allowed_hosts: frozenset[str] | set[str] | None = None,
 ) -> list[dict[str, Any]]:
     """Run fetches with a small concurrency ceiling and a shared deadline."""
+    allowed = allowed_hosts if allowed_hosts is not None else ALLOWED_HOSTS
     results: list[dict[str, Any] | None] = [None] * len(sources)
     cursor = 0
     lock = asyncio.Lock()
@@ -691,7 +705,9 @@ async def load_sources(
                     return
                 index = cursor
                 cursor += 1
-            results[index] = await load_source(sources[index], fetch=fetch, deadline_ms=deadline_ms)
+            results[index] = await load_source(
+                sources[index], fetch=fetch, deadline_ms=deadline_ms, allowed=allowed
+            )
 
     await asyncio.gather(*(worker() for _ in range(min(concurrency, len(sources)))))
     return [result for result in results if result is not None]

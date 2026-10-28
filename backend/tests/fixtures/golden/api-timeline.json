@@ -2,7 +2,7 @@
   "ok": true,
   "items": [
     {
-      "id": "4255b4a1-5a66-4b12-b1f8-ef9574e40103",
+      "id": "dcd7c925-3c11-4436-ae04-549ffd72d9a1",
       "slug": "agentic-ai-foundation-2026",
       "eventDate": "2026-10-22",
       "datePrecision": "day",
@@ -33,7 +33,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a88b4c6d-0a17-4371-8b07-d22bc3a87858",
+      "id": "321935cf-1dd7-422d-be89-537eff8b20b0",
       "slug": "openai-google-cloud-2026",
       "eventDate": "2026-10-21",
       "datePrecision": "day",
@@ -64,7 +64,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "2b0bb5ae-0fb3-45a1-ae06-444ee19dec47",
+      "id": "7e249d71-2a14-454e-a6a9-ee21d79e93d2",
       "slug": "anthropic-distillation-2026",
       "eventDate": "2026-10-20",
       "datePrecision": "day",
@@ -95,7 +95,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4bc89f18-5075-4e61-99eb-d00b598d7f9c",
+      "id": "3e00c704-4866-4155-afc6-9e2dba6409c2",
       "slug": "gemini-4-argon-2026",
       "eventDate": "2026-10-13",
       "datePrecision": "day",
@@ -128,7 +128,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "721b07fc-caff-440c-9048-ce97bbf73559",
+      "id": "28faa12c-c747-41a9-8a6e-d2e3e84fdd0b",
       "slug": "claude-haiku-5-5-2026",
       "eventDate": "2026-10-07",
       "datePrecision": "day",
@@ -158,7 +158,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "15a6441d-a5db-40c1-af04-19a2cc8f8d5b",
+      "id": "47fc7827-7679-455d-9ee7-5afe896f1640",
       "slug": "gpt-6-1-2026",
       "eventDate": "2026-09-29",
       "datePrecision": "day",
@@ -189,7 +189,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "125a7d6c-cecb-4494-a379-2f97be7673e7",
+      "id": "957042b2-892d-40b6-8247-3eecdb401018",
       "slug": "claude-sonnet-5-5-2026",
       "eventDate": "2026-09-28",
       "datePrecision": "day",
@@ -219,7 +219,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "04b1023f-5f91-4584-a0e4-764236c71234",
+      "id": "73cff0b4-0ca0-42ad-8b08-6526bbfaecad",
       "slug": "gpt-6-2026",
       "eventDate": "2026-09-22",
       "datePrecision": "day",
@@ -251,7 +251,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "503232c0-e181-4777-b428-ca388f849979",
+      "id": "5a4028fc-d1dc-4bfc-b044-f5f51a2c7cc5",
       "slug": "claude-opus-5-5-2026",
       "eventDate": "2026-09-22",
       "datePrecision": "day",
@@ -282,7 +282,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "fd5fbb69-6626-40b3-8d0b-e05f904883b7",
+      "id": "db8342cb-83cc-4f5d-9ba0-c9dcf7a57023",
       "slug": "muse-2026",
       "eventDate": "2026-09-15",
       "datePrecision": "day",
@@ -313,7 +313,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "2859256d-22b4-49b4-8c6f-d799cb4a49c3",
+      "id": "1d81d045-6b00-452d-9b41-36d62654eb93",
       "slug": "agents-api-2026",
       "eventDate": "2026-09-10",
       "datePrecision": "day",
@@ -343,7 +343,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "35ead063-0e1f-4fec-884e-8fac90892b4c",
+      "id": "01bfff1b-d4dc-4155-a862-733191bd2749",
       "slug": "gpt-6-astra-2026",
       "eventDate": "2026-09-03",
       "datePrecision": "day",
@@ -375,7 +375,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5bf631b0-4b8f-4c4e-abeb-41fd30ff1610",
+      "id": "12cf8ac2-fa9c-44f3-a471-76ee6f18b746",
       "slug": "glm-5-3-2026",
       "eventDate": "2026-08-25",
       "datePrecision": "day",
@@ -409,7 +409,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "85b9dd01-e92e-4077-8c39-98f108f6981f",
+      "id": "a3ed36c4-cb59-4346-abdb-3a8d827fa657",
       "slug": "qwen3-8-2026",
       "eventDate": "2026-08-05",
       "datePrecision": "day",
@@ -441,7 +441,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f282359d-f4ec-4f33-9e0b-fd824af6fcad",
+      "id": "cdcd5c5e-8ea4-4896-b41c-619a680aec76",
       "slug": "claude-opus-5-2026",
       "eventDate": "2026-07-24",
       "datePrecision": "day",
@@ -472,7 +472,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4e029cb5-e701-4a5b-9940-42fcebabacb3",
+      "id": "30a748b6-dee8-4f8a-90a5-562346f87726",
       "slug": "kimi-k3-2026",
       "eventDate": "2026-07-16",
       "datePrecision": "day",
@@ -503,7 +503,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "921fc37e-2679-4804-bdd9-9a8609d4f34f",
+      "id": "ec3b87bf-62a8-4f88-9f85-7564db39e5db",
       "slug": "gpt-5-6-2026",
       "eventDate": "2026-07-09",
       "datePrecision": "day",
@@ -532,7 +532,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f8c15475-d2be-4bf1-a6f4-1a24822d83a0",
+      "id": "fafd5d45-d866-4082-8e2d-80199ce0e789",
       "slug": "grok-4-5-2026",
       "eventDate": "2026-07-08",
       "datePrecision": "day",
@@ -562,7 +562,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8baf9004-1888-484a-8eb8-9a65483fdb38",
+      "id": "a5a3c05c-3238-42af-9a2c-057ddaa24f79",
       "slug": "claude-sonnet-5-2026",
       "eventDate": "2026-06-30",
       "datePrecision": "day",
@@ -593,7 +593,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a093418e-8999-4e3e-8686-73e67f9a8019",
+      "id": "c70630e2-2155-49cf-9578-534090af915b",
       "slug": "glm-5-2-2026",
       "eventDate": "2026-06-16",
       "datePrecision": "day",
@@ -625,7 +625,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b0a16064-d8ee-41e0-b0ee-0bf9619a2ff8",
+      "id": "50dca6cd-b503-417a-b220-38709f26e2e1",
       "slug": "minimax-m3-2026",
       "eventDate": "2026-05-31",
       "datePrecision": "day",
@@ -657,7 +657,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d794d2dc-3d08-4e65-a864-21edcbd6ef7d",
+      "id": "508a2361-47cb-41ee-8d0b-7533eca575fc",
       "slug": "gemini-3-5-flash-2026",
       "eventDate": "2026-05-19",
       "datePrecision": "day",
@@ -687,7 +687,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e8eb5f51-c699-43d5-8d3d-8f3526431cb9",
+      "id": "3188c4cd-43e3-4d28-9dbd-fbcd70c0b066",
       "slug": "deepseek-v4-2026",
       "eventDate": "2026-04-23",
       "datePrecision": "day",
@@ -718,7 +718,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9a13ef50-2c83-4a53-b9d2-7d09d3d8e89b",
+      "id": "9faa0aa3-a8ab-4a86-8ab9-358b5860c1b8",
       "slug": "gpt-5-5-2026",
       "eventDate": "2026-04-23",
       "datePrecision": "day",
@@ -749,7 +749,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "61f89595-e978-4649-a532-093997abc21e",
+      "id": "bd7a28ff-7e86-4fe2-b90d-8ba82cde65e0",
       "slug": "glm-5-1-2026",
       "eventDate": "2026-04-03",
       "datePrecision": "day",
@@ -781,7 +781,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "10b0521c-e94c-4cbc-9f3e-6f57709e0d48",
+      "id": "906ecf8d-6c92-4839-85fc-2ed9fd22892f",
       "slug": "gpt-5-4-2026",
       "eventDate": "2026-03-05",
       "datePrecision": "day",
@@ -812,7 +812,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "166acb54-49ae-44d6-8995-3c2a57ddb19d",
+      "id": "9b9c3251-9e8b-413e-ac94-2613b616a841",
       "slug": "gemini-3-1-2026",
       "eventDate": "2026-02-19",
       "datePrecision": "day",
@@ -842,7 +842,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d857882d-8d22-4d1e-8799-c5824309f832",
+      "id": "261071b8-d2f8-40b3-98bb-b1c2dcfe7c4b",
       "slug": "qwen3-5-2026",
       "eventDate": "2026-02-16",
       "datePrecision": "day",
@@ -874,7 +874,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d3c40471-7f14-4b3e-ba2c-5ca751fd805b",
+      "id": "1202b8c7-8c99-44e5-a7fc-81569f21f92a",
       "slug": "glm-5-2026",
       "eventDate": "2026-02-11",
       "datePrecision": "day",
@@ -905,7 +905,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8a0c0a71-1ea7-466c-9e98-ca9e3dcb4bb9",
+      "id": "7dcd6a32-7ec3-4704-ba4e-5dbcb7f4f752",
       "slug": "gpt-5-3-codex-2026",
       "eventDate": "2026-02-05",
       "datePrecision": "day",
@@ -937,7 +937,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7ffc75fd-fa60-4990-b649-8ed51dd01445",
+      "id": "77665a0c-eb1d-42ee-a934-4f01549ef04e",
       "slug": "glm-4-7-2025",
       "eventDate": "2025-12-22",
       "datePrecision": "day",
@@ -971,7 +971,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a6090678-fb96-4ca7-ba93-bd08876d4db0",
+      "id": "032de005-5f42-4177-a5d8-db772224f3b6",
       "slug": "gemini-3-flash-2025",
       "eventDate": "2025-12-17",
       "datePrecision": "day",
@@ -1001,7 +1001,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "56768959-cdc3-43bb-84f9-f39c23fccca4",
+      "id": "6d97caff-f2ac-4222-a34d-d33ff5b0269e",
       "slug": "gpt-5-2-2025",
       "eventDate": "2025-12-11",
       "datePrecision": "day",
@@ -1031,7 +1031,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4b31595e-1d9f-414e-ab5c-d3397585834f",
+      "id": "3e65ea3b-85f3-4557-a36c-a61d56c98e6d",
       "slug": "claude-opus-4-5-2025",
       "eventDate": "2025-11-24",
       "datePrecision": "day",
@@ -1061,7 +1061,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "23c18424-f869-4437-8d29-a62846ee82ee",
+      "id": "219487ab-4814-4e34-bc72-52dbee696b2c",
       "slug": "gemini-3-2025",
       "eventDate": "2025-11-18",
       "datePrecision": "day",
@@ -1093,7 +1093,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "0d80ba06-76a1-4329-8021-04098562b0d6",
+      "id": "62d57d15-2602-40ce-a3c6-825079c8a019",
       "slug": "gpt-5-1-2025",
       "eventDate": "2025-11-13",
       "datePrecision": "day",
@@ -1122,7 +1122,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "759fff41-8c12-4add-9a65-cd7a34c75540",
+      "id": "7231c50a-7230-4aaf-ae81-8edffdd052b3",
       "slug": "kimi-k2-thinking-2025",
       "eventDate": "2025-11-06",
       "datePrecision": "day",
@@ -1153,7 +1153,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "62a5dd5f-85fa-42c7-a45d-d3e2c4a50c46",
+      "id": "fbf4da41-543a-431d-9bdd-d438c8e07d52",
       "slug": "minimax-m2-2025",
       "eventDate": "2025-10-23",
       "datePrecision": "day",
@@ -1185,7 +1185,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a2c14bef-a6a6-4956-847f-406e32bb85e0",
+      "id": "8c307678-46af-4194-82d3-cb9067c71516",
       "slug": "sora-2-2025",
       "eventDate": "2025-09-30",
       "datePrecision": "day",
@@ -1217,7 +1217,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "2361d574-a96f-4f80-a29c-9ebe684468ba",
+      "id": "20a54018-c939-4235-a92c-55ccea6daf29",
       "slug": "glm-4-6-2025",
       "eventDate": "2025-09-30",
       "datePrecision": "day",
@@ -1249,7 +1249,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "68e3bcc5-61f5-4bb6-a5b7-2cab46220d08",
+      "id": "b3c9e2d8-5594-4386-893c-b811f7c554c1",
       "slug": "china-ai-plus-2025",
       "eventDate": "2025-08-26",
       "datePrecision": "day",
@@ -1282,7 +1282,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5864904a-24e5-4a43-bf1b-2ad2f468c4b3",
+      "id": "8984f815-9071-45b4-86b2-f2726301b75c",
       "slug": "gpt-5-2025",
       "eventDate": "2025-08-07",
       "datePrecision": "day",
@@ -1312,7 +1312,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "1f7f12f1-726b-4fe6-a945-e4926c725505",
+      "id": "a5c894fc-39bf-41ff-8dbf-43a9478e177e",
       "slug": "eu-gpai-2025",
       "eventDate": "2025-08-02",
       "datePrecision": "day",
@@ -1343,7 +1343,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f90723f3-d9cf-4279-9271-33869c438cdb",
+      "id": "0026e392-73ac-4fd5-970a-d7218ced9413",
       "slug": "glm-4-5-2025",
       "eventDate": "2025-07-28",
       "datePrecision": "day",
@@ -1376,7 +1376,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c7727701-1041-4376-93be-0e105143b2e2",
+      "id": "20b052a4-5517-4844-97fd-f3da1e54f14d",
       "slug": "china-bci-policy-2025",
       "eventDate": "2025-07-23",
       "datePrecision": "day",
@@ -1409,7 +1409,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "546b70dc-ada9-43e6-9c8a-e86057e48166",
+      "id": "c3b3f7ff-4c2f-4552-8807-df6ac6dea6b2",
       "slug": "kimi-k2-2025",
       "eventDate": "2025-07-11",
       "datePrecision": "day",
@@ -1441,7 +1441,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bc38b784-9c1b-429a-a0ec-b7284300a600",
+      "id": "0c614e02-146c-4885-944f-8b705c6203d5",
       "slug": "grok-4-2025",
       "eventDate": "2025-07-09",
       "datePrecision": "day",
@@ -1472,7 +1472,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "53f03d45-1ac8-4c19-aca4-ec02f8822ed1",
+      "id": "dd2d9f7a-5b11-47e9-86c6-06e95dbc69a1",
       "slug": "claude-4-2025",
       "eventDate": "2025-05-22",
       "datePrecision": "day",
@@ -1502,7 +1502,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "625419ca-fc6e-4c29-8819-3f70c682a21c",
+      "id": "3670f177-f5cc-4bb7-9093-ef7208ec9a13",
       "slug": "qwen3-2025",
       "eventDate": "2025-04-29",
       "datePrecision": "day",
@@ -1533,7 +1533,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8cf2d069-5de2-4602-a633-32189c30e7c8",
+      "id": "57dd5b0c-bd9f-4a9b-a25f-0e38d5c14cbb",
       "slug": "o3-2025",
       "eventDate": "2025-04-16",
       "datePrecision": "day",
@@ -1563,7 +1563,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "74fdadea-b540-4d50-bd08-39f49e549645",
+      "id": "8363de77-b5e1-4884-a8e6-23813a2e13f9",
       "slug": "llama-4-2025",
       "eventDate": "2025-04-05",
       "datePrecision": "day",
@@ -1594,7 +1594,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7cbd769a-9b96-4f35-a96a-8147c703fb0f",
+      "id": "058c938d-a1c8-498f-913c-af4c1d531d28",
       "slug": "ai-2027-forecast-2025",
       "eventDate": "2025-04-03",
       "datePrecision": "day",
@@ -1628,7 +1628,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "66809bc5-ca62-4a43-aed9-6930d21d187a",
+      "id": "ff5bcb78-382d-4de1-ad70-b2d539611d49",
       "slug": "gemini-2-5-pro-2025",
       "eventDate": "2025-03-25",
       "datePrecision": "day",
@@ -1659,7 +1659,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "06160db8-d812-4ae6-972c-7e6f6a834402",
+      "id": "4d966296-56c1-451c-ad87-63661b1390b8",
       "slug": "gpt-4-5-2025",
       "eventDate": "2025-02-27",
       "datePrecision": "day",
@@ -1689,7 +1689,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "73a939b9-2907-4a2c-aa70-611e92f5c14f",
+      "id": "69ee1d8c-e6a0-4f6e-8606-0910efff5273",
       "slug": "claude-3-7-2025",
       "eventDate": "2025-02-24",
       "datePrecision": "day",
@@ -1719,7 +1719,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "feb4b87e-0498-473d-a7e3-8aa1f1f787da",
+      "id": "950be17c-f730-49b2-819e-d53a153b71ce",
       "slug": "paris-ai-summit-2025",
       "eventDate": "2025-02-11",
       "datePrecision": "day",
@@ -1749,7 +1749,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "55c621d7-f467-4ec3-8fc5-474429f5d327",
+      "id": "973e685d-4043-421f-bb47-035c13e0c16a",
       "slug": "stargate-2025",
       "eventDate": "2025-01-21",
       "datePrecision": "day",
@@ -1782,7 +1782,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d18d5514-5113-45c2-8dcf-09e5a3d15673",
+      "id": "48b734c3-6171-4738-ac6f-8780b0cf1d8b",
       "slug": "deepseek-r1-2025",
       "eventDate": "2025-01-20",
       "datePrecision": "day",
@@ -1819,7 +1819,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e0fe9685-48d3-4c2d-9edf-be79aab0cf80",
+      "id": "3383b1a4-59ba-4fdf-90b3-610e91b9528d",
       "slug": "deepseek-v3-2024",
       "eventDate": "2024-12-26",
       "datePrecision": "day",
@@ -1851,7 +1851,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b0e71c7c-42be-49b8-bd4a-a85ce9ba8477",
+      "id": "563c2ab8-a19e-4845-b0dd-711419a44db6",
       "slug": "gemini-2-2024",
       "eventDate": "2024-12-11",
       "datePrecision": "day",
@@ -1882,7 +1882,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "66ea3c38-95e8-41e9-a064-cbbfc65ae1e1",
+      "id": "5acd8afe-1a93-43a4-8b05-19ca136e2db5",
       "slug": "hinton-nobel-lecture-2024",
       "eventDate": "2024-12-07",
       "datePrecision": "day",
@@ -1915,7 +1915,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "93c7c54f-8e78-4599-a3cf-72c84c279f3b",
+      "id": "97cc7b43-7488-4bd6-96b1-691741690a19",
       "slug": "nobel-chemistry-2024",
       "eventDate": "2024-10-09",
       "datePrecision": "day",
@@ -1947,7 +1947,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7d34c589-52a5-4d95-bcac-de5a28188a11",
+      "id": "dacc2f2a-b9f6-4c60-b654-35e2f993a42e",
       "slug": "nobel-physics-2024",
       "eventDate": "2024-10-08",
       "datePrecision": "day",
@@ -1978,7 +1978,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "05ebcd99-fe23-46df-ba15-d61526e6963a",
+      "id": "19df0144-3828-4f24-9c5f-3cec5b5ea08b",
       "slug": "o1-2024",
       "eventDate": "2024-09-12",
       "datePrecision": "day",
@@ -2010,7 +2010,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "1d8e1e93-2523-4f53-b8b3-17a99efdb8bc",
+      "id": "0bfcbe73-6a90-4698-8df9-d269d8d1feef",
       "slug": "gpt-4o-2024",
       "eventDate": "2024-05-13",
       "datePrecision": "day",
@@ -2041,7 +2041,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "0b9d2f79-7e20-4550-8346-ec6433db1dd0",
+      "id": "81f6d6fc-81f5-489b-b62b-9c966d1d8d30",
       "slug": "alphafold3-2024",
       "eventDate": "2024-05-08",
       "datePrecision": "day",
@@ -2072,7 +2072,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a7b36eb3-c8ec-4fca-84fd-4b50927422a2",
+      "id": "25dc1999-8d91-4d6c-9416-be47d8a9b86e",
       "slug": "llama-3-2024",
       "eventDate": "2024-04-18",
       "datePrecision": "day",
@@ -2103,7 +2103,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "096c209a-90b7-4ac1-a9e7-5273d1ee434c",
+      "id": "c866596f-d6fc-4889-82c2-a941aa0f9b25",
       "slug": "eu-ai-act-adopted-2024",
       "eventDate": "2024-03-13",
       "datePrecision": "day",
@@ -2134,7 +2134,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8f02584f-0825-4f45-b23b-2acd1a3e2e3f",
+      "id": "bbce009c-8d6d-40aa-ae99-6bef17280389",
       "slug": "claude-3-2024",
       "eventDate": "2024-03-04",
       "datePrecision": "day",
@@ -2164,7 +2164,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ddb30ee3-040b-460f-aebd-7c9503237e2d",
+      "id": "3c389668-c5c7-4000-91a0-e14b5b5538c3",
       "slug": "sora-2024",
       "eventDate": "2024-02-15",
       "datePrecision": "day",
@@ -2196,7 +2196,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "36d910d3-fc7c-46c9-9c69-d53c203b8fc2",
+      "id": "5eb35e54-75ef-4860-9036-a0cd378c8cdf",
       "slug": "glm-4-2024",
       "eventDate": "2024-01-16",
       "datePrecision": "day",
@@ -2230,7 +2230,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "44cebf88-33a5-4ab6-9ddf-bdce4fa744ef",
+      "id": "c29d4144-0b14-4e5e-b731-d5149831dc0e",
       "slug": "eu-ai-act-deal-2023",
       "eventDate": "2023-12-08",
       "datePrecision": "day",
@@ -2261,7 +2261,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "2ace7128-3cbc-4971-9555-1fb7b8d9500b",
+      "id": "b42c866f-8f60-41c9-8ccc-91852aae52f7",
       "slug": "gemini-1-2023",
       "eventDate": "2023-12-06",
       "datePrecision": "day",
@@ -2292,7 +2292,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a325a39d-2ccc-470e-8b81-fa7460f13aec",
+      "id": "4d09744f-525a-4589-9135-a11f24d3b104",
       "slug": "us-ai-eo-2023",
       "eventDate": "2023-10-30",
       "datePrecision": "day",
@@ -2322,7 +2322,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f077c077-e7c8-4f2b-9117-07130a46a9e6",
+      "id": "2074ac70-eb89-4d61-b495-0b5ad1be05a2",
       "slug": "chatglm3-6b-2023",
       "eventDate": "2023-10-25",
       "datePrecision": "day",
@@ -2353,7 +2353,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "33bf5d34-9963-4000-b6dd-ee5c6b50583d",
+      "id": "9ec6a17c-efca-48fa-8ece-23f9c56b13dd",
       "slug": "mistral-7b-2023",
       "eventDate": "2023-09-27",
       "datePrecision": "day",
@@ -2383,7 +2383,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c60ab5b8-5adb-4a28-9a6d-0b8c6322d70f",
+      "id": "e9963e07-9e0f-46f1-99a2-b2eb6ed536d6",
       "slug": "china-genai-rules-2023",
       "eventDate": "2023-07-13",
       "datePrecision": "day",
@@ -2415,7 +2415,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7d05ebde-a95e-4004-8fd4-4d9a1b142120",
+      "id": "bcae6488-203d-4b34-a56f-d1f7dd3d5ee7",
       "slug": "chatglm2-6b-2023",
       "eventDate": "2023-06-25",
       "datePrecision": "day",
@@ -2446,7 +2446,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "6a66f00f-2d5a-47c2-81b3-5fa11da6ee1d",
+      "id": "ecf6fcb5-09fa-48df-a528-4201bab41ceb",
       "slug": "ai-risk-statement-2023",
       "eventDate": "2023-05-30",
       "datePrecision": "day",
@@ -2476,7 +2476,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "06ca6f8b-cd8d-4329-825a-95181c8f7e22",
+      "id": "078fda7f-c699-45ab-9603-e63a745b45cd",
       "slug": "pause-letter-2023",
       "eventDate": "2023-03-29",
       "datePrecision": "day",
@@ -2507,7 +2507,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "320c5a0e-eca8-4eda-acd1-12e80b8f6f43",
+      "id": "05c31df8-bf17-4b82-8605-a2f039ade6f6",
       "slug": "us-copyright-2023",
       "eventDate": "2023-03-16",
       "datePrecision": "day",
@@ -2537,7 +2537,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "6e95579a-d3cc-4882-9fc3-91ccb5489462",
+      "id": "b975877a-4ae5-4b25-80e8-e245527d4a0b",
       "slug": "gpt-4-2023",
       "eventDate": "2023-03-14",
       "datePrecision": "day",
@@ -2569,7 +2569,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "847dda0e-9b26-4318-aa63-4ff5f2340b8c",
+      "id": "9a12eabf-18b5-4b9a-b361-b9db66eb9e74",
       "slug": "claude-2023",
       "eventDate": "2023-03-14",
       "datePrecision": "day",
@@ -2600,7 +2600,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4c3f7ddd-13da-4753-aaae-185a33a393e6",
+      "id": "48aa8b32-bfd8-4533-b63f-cd67fdf9008c",
       "slug": "chatglm-6b-2023",
       "eventDate": "2023-03-14",
       "datePrecision": "day",
@@ -2632,7 +2632,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f845bfd6-755f-4587-ba19-3f7fa7a9e922",
+      "id": "b4679cdf-0969-4ede-8a86-e196d7c924aa",
       "slug": "llama-2023",
       "eventDate": "2023-02-24",
       "datePrecision": "day",
@@ -2663,7 +2663,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "26038d3f-d404-4535-8f25-6a9bc066ed3f",
+      "id": "0f7526d9-8f01-4293-9028-b0aa7953694b",
       "slug": "chatgpt-2022",
       "eventDate": "2022-11-30",
       "datePrecision": "day",
@@ -2694,7 +2694,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "724813ac-16e7-491b-8d34-1e59de0a190a",
+      "id": "998eaafd-b4a7-4e64-98c7-ac96aa88375e",
       "slug": "stable-diffusion-2022",
       "eventDate": "2022-08-22",
       "datePrecision": "day",
@@ -2724,7 +2724,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "07fc8100-fbdc-4b08-b692-514120484434",
+      "id": "ef5287fd-8ef5-4dc1-b554-bd851259f5d9",
       "slug": "dalle2-2022",
       "eventDate": "2022-04-06",
       "datePrecision": "day",
@@ -2753,7 +2753,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bfc20c23-0804-4f8c-a04b-2b9cdaa9d249",
+      "id": "48d7a8a7-3bd9-4fa8-9484-1b707d45896a",
       "slug": "chinchilla-2022",
       "eventDate": "2022-03-29",
       "datePrecision": "day",
@@ -2785,7 +2785,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "add4248d-7d6a-4e1f-a99b-25b3a0c2af5f",
+      "id": "bd84bdce-4a48-4716-abd6-d96d20c81708",
       "slug": "instructgpt-2022",
       "eventDate": "2022-03-04",
       "datePrecision": "day",
@@ -2818,7 +2818,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "51d74009-7519-44a0-9c5a-de7ef290a7d6",
+      "id": "332b54da-c946-458d-82fd-f3f485786401",
       "slug": "unesco-2021",
       "eventDate": "2021-11-23",
       "datePrecision": "day",
@@ -2848,7 +2848,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a57075f3-ee05-4448-b90e-dce07990494d",
+      "id": "d1baa144-e225-4de1-9cf0-a4e71f9d0fe7",
       "slug": "copilot-2021",
       "eventDate": "2021-06-29",
       "datePrecision": "day",
@@ -2879,7 +2879,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b26b58a2-304c-472a-9ba2-0ce6bdcac2cb",
+      "id": "c99660cd-3708-4d28-a335-973b51abf168",
       "slug": "clip-dalle-2021",
       "eventDate": "2021-01-05",
       "datePrecision": "day",
@@ -2910,7 +2910,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "d3dabde3-b208-4cc0-9811-730ce19dd242",
+      "id": "4a6733ed-337a-451e-8143-0a02905bbd4b",
       "slug": "alphafold2-2020",
       "eventDate": "2020-11-30",
       "datePrecision": "day",
@@ -2942,7 +2942,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c1310738-2394-4801-8a50-5c78a8a90f2d",
+      "id": "cd14ae7d-da2f-4827-9598-c126240407e6",
       "slug": "gpt-3-2020",
       "eventDate": "2020-05-28",
       "datePrecision": "day",
@@ -2973,7 +2973,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bc13f8f4-8295-4c0d-a7f7-fb7d3abe273f",
+      "id": "b0afd4a8-7d48-4f8f-bde6-3b7aa8a61d8c",
       "slug": "alphastar-2019",
       "eventDate": "2019-10-30",
       "datePrecision": "day",
@@ -3007,7 +3007,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "2f8b50dd-642a-4293-8929-7ab53a20ce64",
+      "id": "ae5561d8-05cc-4e84-be9b-9f124032dad5",
       "slug": "bitter-lesson-2019",
       "eventDate": "2019-03-13",
       "datePrecision": "day",
@@ -3041,7 +3041,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "561f98a3-8b7d-440b-bb73-e1ef024426ed",
+      "id": "65aeaa15-0990-4b35-be3c-2a17d03b03cb",
       "slug": "gpt-2-2019",
       "eventDate": "2019-02-14",
       "datePrecision": "day",
@@ -3071,7 +3071,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bbd97f8a-8e34-42b7-90d4-dad1aed3c3b1",
+      "id": "700fccf8-68da-4931-ab08-d9d4e2b6f42a",
       "slug": "bert-2018",
       "eventDate": "2018-10-11",
       "datePrecision": "day",
@@ -3104,7 +3104,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "62b83768-3cb7-4122-8f99-7cb3de78b506",
+      "id": "13ced92e-a592-41ef-ae51-7318b049aa3d",
       "slug": "gpt-1-2018",
       "eventDate": "2018-06-11",
       "datePrecision": "day",
@@ -3137,7 +3137,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "28b4df04-7c84-43c4-bd7d-8478a03e120e",
+      "id": "91c98cbe-1a45-42e1-8ca2-c89b9868d360",
       "slug": "alphago-zero-2017",
       "eventDate": "2017-10-19",
       "datePrecision": "day",
@@ -3171,7 +3171,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b78d01ef-a8e8-4a72-a527-f41b498800f0",
+      "id": "506b286b-5da2-4454-9f79-a0c0382b961c",
       "slug": "china-ai-plan-2017",
       "eventDate": "2017-07-20",
       "datePrecision": "day",
@@ -3202,7 +3202,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "48a3e26b-4489-46b3-b817-fc8f138de52b",
+      "id": "0a841443-b4dd-4d03-8418-20988264bf5b",
       "slug": "transformer-2017",
       "eventDate": "2017-06-12",
       "datePrecision": "day",
@@ -3234,7 +3234,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "85c0833e-658c-46d4-86dc-6ca319b1a2c3",
+      "id": "54be332b-4536-44b5-aa4e-0be8548be9b5",
       "slug": "wavenet-2016",
       "eventDate": "2016-09",
       "datePrecision": "month",
@@ -3265,7 +3265,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b7009b98-bcf0-4b00-b75b-ee0578c0485c",
+      "id": "d5dd6ab9-321f-472a-811d-0ddc32a2d1f2",
       "slug": "alphago-match-2016",
       "eventDate": "2016-03-15",
       "datePrecision": "day",
@@ -3298,7 +3298,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "1b064ce2-5d74-41d7-b042-ce04d09faa08",
+      "id": "84284630-2ae8-41e9-9eb9-3b1b564958f3",
       "slug": "alphago-2016",
       "eventDate": "2016-01-27",
       "datePrecision": "day",
@@ -3331,7 +3331,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "ec04ff40-49e0-43d8-91af-e6d99c1b7425",
+      "id": "bd4340d3-563c-44ff-bd65-50fad2537216",
       "slug": "resnet-2015",
       "eventDate": "2015-12-10",
       "datePrecision": "day",
@@ -3362,7 +3362,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "14d66a27-0783-4357-88c4-b53212ffa518",
+      "id": "183a2caf-a17c-4e3f-ad6b-5f48f8b2e9fc",
       "slug": "dqn-2015",
       "eventDate": "2015-02-26",
       "datePrecision": "day",
@@ -3394,7 +3394,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b584911a-9365-49b3-8ace-9efda139cbd1",
+      "id": "a551c8a5-5846-4fd9-97bf-1fa85bf0bf88",
       "slug": "seq2seq-2014",
       "eventDate": "2014-09-10",
       "datePrecision": "day",
@@ -3423,7 +3423,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "70b3a033-6fc4-47e2-9e46-11dbdf2f4c13",
+      "id": "5e38e3a6-ae60-4e50-9bf9-a33d9a19829a",
       "slug": "gan-2014",
       "eventDate": "2014-06-10",
       "datePrecision": "day",
@@ -3453,7 +3453,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3aa161e9-5ac9-4ceb-9b07-4f507b3ed841",
+      "id": "306d346b-9422-4e79-b6ff-96585b51d600",
       "slug": "word2vec-2013",
       "eventDate": "2013-01-16",
       "datePrecision": "day",
@@ -3485,7 +3485,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "50388e70-2eb0-4a2c-8571-09e15b261896",
+      "id": "4657d900-49be-4279-937f-52e7e30df22d",
       "slug": "alexnet-2012",
       "eventDate": "2012-12-03",
       "datePrecision": "day",
@@ -3517,7 +3517,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4c387ed7-cf54-484c-933b-6a199aba91af",
+      "id": "6d072acf-0f39-4499-b7a2-fb8aa64270a2",
       "slug": "siri-2011",
       "eventDate": "2011-10-04",
       "datePrecision": "day",
@@ -3547,7 +3547,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9c813470-3778-4669-853c-b456f976e65d",
+      "id": "8a5ede7a-e8b6-4e98-8a07-a404df7fc453",
       "slug": "watson-2011",
       "eventDate": "2011-02-14",
       "datePrecision": "day",
@@ -3576,7 +3576,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "8c1e2b92-d9da-45cd-b9a5-6704fe4f3cbb",
+      "id": "a1cb86d7-0aca-4bbd-b9ca-7cbe0968129a",
       "slug": "imagenet-2009",
       "eventDate": "2009-06",
       "datePrecision": "month",
@@ -3607,7 +3607,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "efbe695d-0234-4d3a-ad2b-7109edd4c009",
+      "id": "73fab7e0-b189-4f13-915b-787fd9686f2b",
       "slug": "dbn-2006",
       "eventDate": "2006-07-28",
       "datePrecision": "day",
@@ -3638,7 +3638,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a666572c-0902-494d-8285-00ef1dcc8a52",
+      "id": "78bb6396-0ef0-4ca0-a193-6d4d21084a42",
       "slug": "darpa-grand-challenge-2005",
       "eventDate": "2005-10-08",
       "datePrecision": "day",
@@ -3668,7 +3668,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "25c4aaf5-d72e-409a-a7ca-6410899ec190",
+      "id": "0605b9ab-c83d-450e-8c43-8ddcbe60e72c",
       "slug": "roomba-2002",
       "eventDate": "2002-09",
       "datePrecision": "month",
@@ -3699,7 +3699,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "55379504-8bd6-4cd2-9d7b-88078e93fce1",
+      "id": "92db8b66-ffde-4bad-8a4f-21186abbe976",
       "slug": "lenet5-1998",
       "eventDate": "1998-11",
       "datePrecision": "month",
@@ -3729,7 +3729,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "80d7364f-e013-4545-bfa2-0361bb5f0ca6",
+      "id": "356a4fc4-e679-49e4-8b6a-5cbc803eb967",
       "slug": "lstm-1997",
       "eventDate": "1997-11",
       "datePrecision": "month",
@@ -3758,7 +3758,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "65293efd-4dfa-4314-afb4-43968be04e2e",
+      "id": "21f856c4-2e12-4472-8381-06475a24e609",
       "slug": "robocup-1997",
       "eventDate": "1997-08",
       "datePrecision": "month",
@@ -3789,7 +3789,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "f26d1c18-607d-47e8-8d5b-6538acf2e53e",
+      "id": "71e23466-789a-433e-9048-1c0cc7130c76",
       "slug": "deep-blue-1997",
       "eventDate": "1997-05-11",
       "datePrecision": "day",
@@ -3819,7 +3819,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "461c0417-aae5-46d4-8691-809e2147dbfa",
+      "id": "b5253c71-d7a1-492a-a126-31d62319e196",
       "slug": "svm-1995",
       "eventDate": "1995-09",
       "datePrecision": "month",
@@ -3849,7 +3849,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "03c35c55-928f-4131-9ea0-08ccd3b1caa0",
+      "id": "9c5aa1e8-d59b-4258-900f-56f06c024336",
       "slug": "td-gammon-1992",
       "eventDate": "1992-06",
       "datePrecision": "month",
@@ -3882,7 +3882,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "265cc4f7-62e9-4d21-8807-ee00b89154b7",
+      "id": "80ac3c66-b665-4347-84ab-7361bfd14a50",
       "slug": "lenet-1989",
       "eventDate": "1989-06",
       "datePrecision": "month",
@@ -3912,7 +3912,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "6ed80d46-ad83-4d7a-80f3-1747239f07dc",
+      "id": "1d88adfd-9d89-4648-b897-86bc25619bf4",
       "slug": "brooks-subsumption-1987",
       "eventDate": "1987",
       "datePrecision": "year",
@@ -3945,7 +3945,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "9decfbd6-d5ae-41a6-81a4-f840847784a2",
+      "id": "874bf606-b7ba-4b83-99ce-895c3b6d6b7d",
       "slug": "backprop-1986",
       "eventDate": "1986-10-09",
       "datePrecision": "day",
@@ -3976,7 +3976,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3a81ac44-ded0-4af6-8175-926ae8ecb6d5",
+      "id": "fc20f13e-f9e7-4edc-bf5c-8a81dd9228b4",
       "slug": "hopfield-1982",
       "eventDate": "1982-04",
       "datePrecision": "month",
@@ -4006,7 +4006,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b7f4866d-55e5-4127-973e-a18a5f5375e6",
+      "id": "3da47b85-2d66-48f3-8223-b1a88a836338",
       "slug": "fifth-generation-1982",
       "eventDate": "1982-04",
       "datePrecision": "month",
@@ -4037,7 +4037,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4c4fb6e8-0324-4dfa-9e73-a6750ffd2a92",
+      "id": "c6e01b38-566e-46b4-8bc9-8261d7ef23e1",
       "slug": "xcon-1980",
       "eventDate": "1980",
       "datePrecision": "year",
@@ -4068,7 +4068,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3a511834-23f7-41cb-ba16-1389a4ed305f",
+      "id": "1f71b256-6caa-4529-aad4-d23a55336780",
       "slug": "simon-nobel-1978",
       "eventDate": "1978-10",
       "datePrecision": "month",
@@ -4098,7 +4098,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "478a652d-0ee1-44d3-ac9f-587376303321",
+      "id": "dfa0694d-e475-4ad9-8ea2-34bd09bb363b",
       "slug": "mycin-1974",
       "eventDate": "1974",
       "datePrecision": "year",
@@ -4129,7 +4129,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "1e4b10fa-5685-4306-b322-96612357d4de",
+      "id": "4b0977cb-7ce8-4d73-a576-28ca5519074b",
       "slug": "lighthill-report-1973",
       "eventDate": "1973-07",
       "datePrecision": "month",
@@ -4159,7 +4159,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "fc7de131-ad52-46a7-9735-16da02fe7537",
+      "id": "8bb3464b-49e0-4551-ad23-7ba5ad136f02",
       "slug": "prolog-1972",
       "eventDate": "1972",
       "datePrecision": "year",
@@ -4190,7 +4190,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "0996cd0c-8dd4-46c2-8890-28cd7ce2d64f",
+      "id": "a2bef9dd-b7f0-4d31-ac54-e0c93b1245cc",
       "slug": "shrdlu-1971",
       "eventDate": "1971",
       "datePrecision": "year",
@@ -4221,7 +4221,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7fa70202-b596-4e9d-b853-dcf960a93303",
+      "id": "b90fe96a-a22b-4521-a43f-f4c62a61e2ee",
       "slug": "perceptrons-1969",
       "eventDate": "1969",
       "datePrecision": "year",
@@ -4250,7 +4250,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "46b08a58-2193-483a-b14e-77c85e18ff4a",
+      "id": "a5323052-1b99-41ac-a046-230b673653cf",
       "slug": "shakey-1969",
       "eventDate": "1969",
       "datePrecision": "year",
@@ -4280,7 +4280,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c004576a-fdd8-4744-a634-3199ebb493cf",
+      "id": "36826b13-d511-4054-8ff5-94bdfcb0ae38",
       "slug": "eliza-1966",
       "eventDate": "1966-01",
       "datePrecision": "month",
@@ -4310,7 +4310,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "5586614b-3681-436a-b2bb-ebc937e7bd5e",
+      "id": "7b8ed07c-3620-4826-b227-d0dc4a807370",
       "slug": "fuzzy-sets-1965",
       "eventDate": "1965-06",
       "datePrecision": "month",
@@ -4341,7 +4341,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "b2ecd5a2-bc94-42ab-95b4-59fbd9674b88",
+      "id": "896d1cdb-8ea7-4ff0-8e3a-c10e07e0de4b",
       "slug": "dendral-1965",
       "eventDate": "1965",
       "datePrecision": "year",
@@ -4371,7 +4371,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "af63dde7-2729-487e-ba74-6362b85b9266",
+      "id": "199c5b77-e16d-4e3e-ad3e-11db4b67c0d2",
       "slug": "unimate-1961",
       "eventDate": "1961",
       "datePrecision": "year",
@@ -4402,7 +4402,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a8d584d3-e5ba-4189-885e-a206b2f8caf5",
+      "id": "7c430bc1-d2bd-4a1e-b5f8-1197fa445763",
       "slug": "samuel-checkers-1959",
       "eventDate": "1959-07",
       "datePrecision": "month",
@@ -4432,7 +4432,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "bf75cd33-cc09-4dec-bfda-0b71bc30e71f",
+      "id": "e896ceeb-4358-4285-897b-fd505e5a4839",
       "slug": "mit-ai-lab-1959",
       "eventDate": "1959-07",
       "datePrecision": "month",
@@ -4463,7 +4463,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "37ed4090-0e2a-4c29-9c39-d32bb5c1a9ed",
+      "id": "d6aed4e4-f341-4e94-8df1-2947df0ebce1",
       "slug": "gps-1959",
       "eventDate": "1959",
       "datePrecision": "year",
@@ -4494,7 +4494,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "31ee2d4f-ce19-4870-a234-960d0b1df738",
+      "id": "bfe4892c-a489-4132-8589-b2bb570ef820",
       "slug": "lisp-1958",
       "eventDate": "1958-10",
       "datePrecision": "month",
@@ -4524,7 +4524,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "cd54ebf7-35c9-4d09-a86a-1484d0ab7e17",
+      "id": "d2d0e0bc-5de0-4c31-bac7-db2b2ba0665f",
       "slug": "perceptron-1958",
       "eventDate": "1958-01",
       "datePrecision": "month",
@@ -4555,7 +4555,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "1019bf9d-5ffd-4fd5-bee2-8e5465109de2",
+      "id": "f7475d2b-0a30-44af-aaeb-b14ccebf013d",
       "slug": "logic-theorist-1956",
       "eventDate": "1956-08",
       "datePrecision": "month",
@@ -4585,7 +4585,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a3133463-9bad-4c35-b4b0-9fad73d93899",
+      "id": "924e8dc9-a5ad-4bab-9d83-73050e5d607e",
       "slug": "dartmouth-1956",
       "eventDate": "1956",
       "datePrecision": "year",
@@ -4616,7 +4616,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "97fde7f0-8973-4266-ba27-d949f81b37c3",
+      "id": "aa245082-42ca-45b5-a270-57169c7e6481",
       "slug": "turing-1950",
       "eventDate": "1950-10",
       "datePrecision": "month",
@@ -4645,7 +4645,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "7383e5c5-c53e-479b-8c38-3d8bb75cf56e",
+      "id": "38962dfe-52a3-4ea0-a90e-640287129d85",
       "slug": "hebb-1949",
       "eventDate": "1949",
       "datePrecision": "year",
@@ -4676,7 +4676,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "e917d73b-6092-44d6-84fc-02b71a538918",
+      "id": "02bde6e0-6401-4114-8f8f-9d154c36b339",
       "slug": "as-we-may-think-1945",
       "eventDate": "1945-07",
       "datePrecision": "month",
@@ -4706,7 +4706,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "2c728fd2-ceef-4fe7-a08c-26e474cad2fd",
+      "id": "e8536448-350e-4755-975d-7d2761051c2c",
       "slug": "mcculloch-pitts-1943",
       "eventDate": "1943-12",
       "datePrecision": "month",
@@ -4737,7 +4737,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c4d5c793-d6e4-492d-bc96-ca52f9f68e49",
+      "id": "ca696aa8-aa96-4fde-81bb-706532217266",
       "slug": "cybernetics-1943",
       "eventDate": "1943-01",
       "datePrecision": "month",
@@ -4768,7 +4768,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "4dc636e5-c590-418d-ac47-93bd65e8eb65",
+      "id": "dd34b97c-8251-4f9d-8f04-64baa4e3e522",
       "slug": "shannon-switching-1938",
       "eventDate": "1938",
       "datePrecision": "year",
@@ -4799,7 +4799,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3ed49d4c-0403-4fc9-abd7-12b202d53ead",
+      "id": "4d730b65-1e9c-45fd-8e82-d68cba00a366",
       "slug": "turing-machine-1936",
       "eventDate": "1936-05",
       "datePrecision": "month",
@@ -4830,7 +4830,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "c29ece15-3626-48aa-b63f-4da308b3d3df",
+      "id": "d83a50f8-a496-48c6-b74a-60c7a0fef227",
       "slug": "godel-1931",
       "eventDate": "1931",
       "datePrecision": "year",
@@ -4861,7 +4861,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "3ae2d806-256a-473c-ae25-a112009f7021",
+      "id": "c08ae3f6-41eb-4b30-9002-ed673fe814ca",
       "slug": "rur-1920",
       "eventDate": "1920",
       "datePrecision": "year",
@@ -4891,7 +4891,7 @@
       "updatedAt": "2026-10-24T00:00:00.000Z"
     },
     {
-      "id": "a062405c-00c5-44b5-9a54-8e1759576b89",
+      "id": "754a1819-13f7-4c38-ba8c-5db3a3350e51",
       "slug": "el-ajedrecista-1912",
       "eventDate": "1912",
       "datePrecision": "year",

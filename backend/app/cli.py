@@ -1,10 +1,12 @@
 """Command line entry points.
 
 `seed`, `sync`, `backfill-slugs`, `hash-password` run the archive; the three added
-for the console are `ingest-access-log`, `prune` and `create-owner`. The two
-scheduled ones return 0 even when they did nothing: cron and Task Scheduler both
-report a non-zero exit as a broken box, and an operator who learns to ignore that
-mail stops reading the one that matters.
+for the console are `ingest-access-log`, `prune` and `create-owner`. The catalogue
+added its own trio: `catalog-seed` (first install), `probe` (is this feed alive?)
+and `library-prune` (drop old *dropped* rows, never the evidence). The scheduled
+ones return 0 even when they did nothing: cron and Task Scheduler both report a
+non-zero exit as a broken box, and an operator who learns to ignore that mail
+stops reading the one that matters.
 """
 
 from __future__ import annotations
@@ -13,6 +15,9 @@ import argparse
 import asyncio
 import getpass
 import sys
+import time
+from typing import Any
+from urllib.parse import urlsplit
 
 from argon2 import PasswordHasher
 from sqlalchemy import update
@@ -21,13 +26,19 @@ from app.analytics.ingest import ingest_access_log
 from app.analytics.logs import LOG_FORMATS
 from app.analytics.retention import prune
 from app.config import get_settings
-from app.db import repo_admin, repo_events, repo_sync
+from app.db import repo_admin, repo_events, repo_library, repo_sync
 from app.db.models import STATE_ID, SyncState
 from app.db.repo_sync import utc_now
 from app.db.session import SessionLocal, engine
 from app.deps import judge_env
+from app.ingest import registry
 from app.ingest.pipeline import backfill_slugs, run_sync, seed_rows
 from app.ingest.seed import SEED_VERSION
+from app.ingest.sources import SOURCE_TIMEOUT_MS, httpx_fetch, load_source
+
+# A single probe is allowed to be slower than a batch fetch: an operator is
+# waiting on one answer, and a slow feed is still a working feed.
+PROBE_TIMEOUT_MS = 15_000
 
 
 async def _with_session(work):
@@ -201,6 +212,117 @@ def _create_owner(username: str, password: str | None) -> int:
     return 0
 
 
+# ---------------------------------------------------------------------------
+# Catalogue: seed, probe, and ledger retention
+# ---------------------------------------------------------------------------
+
+
+def _catalog_seed() -> int:
+    """Insert the catalogue rows a fresh database has never seen.
+
+    `run_sync` does this on every pass, so the command exists for the first
+    install and for a box that has never collected anything. Existing rows are
+    never touched: an operator edit has to survive a deploy.
+    """
+
+    async def main() -> int:
+        return await _with_session(lambda session: registry.ensure_catalog(session))
+
+    added = asyncio.run(main())
+    print(f"catalogue rows added: {added}")
+    return 0
+
+
+async def _resolve_probe_target(
+    session, key: str, url: str, kind: str
+) -> dict[str, Any] | None:
+    """A probe reads either a stored row or an ad-hoc URL."""
+    if key:
+        row = await registry.get_source(session, key)
+        if row is None:
+            return None
+        return {
+            "key": row.key,
+            "name": row.name,
+            "family": row.family,
+            "kind": row.kind,
+            "url": row.url,
+            "pathPattern": row.path_pattern,
+            "timeout": row.timeout_ms,
+        }
+    return {
+        "key": "probe",
+        "name": "probe",
+        "family": "official",
+        "kind": kind or "feed",
+        "url": url,
+        "timeout": SOURCE_TIMEOUT_MS,
+    }
+
+
+def _probe(key: str, url: str, kind: str) -> int:
+    """Fetch one source with its real parser. Never writes, never raises."""
+    if not key and not url:
+        print("error: pass --key or --url", file=sys.stderr)
+        return 2
+
+    async def main() -> dict[str, Any] | None:
+        async def work(session):
+            source = await _resolve_probe_target(session, key, url, kind)
+            if source is None:
+                return None
+            started = int(time.time() * 1000)
+            result = await load_source(
+                source,
+                fetch=lambda target: httpx_fetch(target, timeout_ms=PROBE_TIMEOUT_MS),
+                deadline_ms=started + PROBE_TIMEOUT_MS,
+                allowed={urlsplit(source["url"]).hostname or ""},
+            )
+            return {"source": source, **result}
+
+        return await _with_session(work)
+
+    outcome = asyncio.run(main())
+    if outcome is None:
+        print(f"error: no source with key `{key}`", file=sys.stderr)
+        return 2
+
+    source = outcome["source"]
+    if not outcome.get("ok"):
+        print(f"probe {source['key']} failed: {outcome.get('error')} ({outcome.get('ms')} ms)")
+        return 1
+
+    items = list(outcome.get("items") or [])
+    dates = [str(item["publishedAt"]) for item in items if item.get("publishedAt")]
+    print(
+        f"probe {source['key']} ok: {outcome.get('ms')} ms items={len(items)} "
+        f"latest={max(dates) if dates else '-'}"
+    )
+    for item in items[:3]:
+        print(f"  {item.get('publishedAt') or '-'}  {item.get('title')}")
+    return 0
+
+
+def _library_prune(days: int | None, dry_run: bool) -> int:
+    """Drop trail rows and *dropped* items past the window.
+
+    `admitted` / `excluded` / `held` rows are never pruned: they are the audit
+    evidence behind a published entry.
+    """
+    settings = get_settings()
+    window = days if days is not None else settings.collect_retention_days
+
+    async def main() -> int:
+        return await _with_session(
+            lambda session: repo_library.prune_verdicts(session, days=window, dry_run=dry_run)
+        )
+
+    removed = asyncio.run(main())
+    suffix = " (dry run)" if dry_run else ""
+    print(f"library-prune {window}d: rows={removed}{suffix}")
+    return 0
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(prog="python -m app.cli")
     sub = parser.add_subparsers(dest="command", required=True)
@@ -240,6 +362,23 @@ def main(argv: list[str] | None = None) -> int:
         "--password", default="", help="omit to be prompted (keeps it out of shell history)"
     )
 
+    sub.add_parser("catalog-seed", help="insert the source catalogue into ingest_sources")
+
+    probe_parser = sub.add_parser("probe", help="fetch one source once, without writing")
+    probe_parser.add_argument("--key", default="", help="a registered source key")
+    probe_parser.add_argument("--url", default="", help="an ad-hoc URL (for a candidate)")
+    probe_parser.add_argument(
+        "--kind", default="feed", choices=["feed", "sitemap", "arxiv", "openrouter", "hf", "hn"]
+    )
+
+    library_parser = sub.add_parser(
+        "library-prune", help="drop old trail rows and old dropped items"
+    )
+    library_parser.add_argument(
+        "--days", type=int, default=None, help="override COLLECT_RETENTION_DAYS"
+    )
+    library_parser.add_argument("--dry-run", action="store_true", help="report what would go")
+
     args = parser.parse_args(argv)
 
     if args.command == "seed":
@@ -254,6 +393,12 @@ def main(argv: list[str] | None = None) -> int:
         return _prune(args.days, args.dry_run)
     if args.command == "create-owner":
         return _create_owner(args.username, args.password or None)
+    if args.command == "catalog-seed":
+        return _catalog_seed()
+    if args.command == "probe":
+        return _probe(args.key, args.url, args.kind)
+    if args.command == "library-prune":
+        return _library_prune(args.days, args.dry_run)
     return _hash_password(args.password)
 
 

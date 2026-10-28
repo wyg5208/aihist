@@ -28,8 +28,9 @@ export const NAV: NavGroup[] = [
   {
     group: "采集与评审",
     items: [
+      { name: "library", label: "采集库", permission: "read" },
       { name: "runs", label: "采集运行", permission: "read" },
-      { name: "sources", label: "来源健康", permission: "read" },
+      { name: "sources", label: "信源目录", permission: "read" },
       { name: "editorial", label: "评审一致性", permission: "read" },
     ],
   },
