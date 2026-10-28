@@ -1,6 +1,6 @@
 {
-  "exportedAt": "2026-10-24T15:38:01.575Z",
-  "nowMs": 1792856281575,
+  "exportedAt": "2026-10-28T08:13:35.086Z",
+  "nowMs": 1793175215086,
   "assessments": [
     {
       "key": "openrouter:minimax/minimax-m3.1-flash",
@@ -1193,6 +1193,2600 @@
       "sourceNames": []
     },
     {
+      "key": "openrouter:sakana/fugu-ultra",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-3.1-flash-image",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-3-pro-image",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-5.2",
+      "score": 37,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openrouter/fusion",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:moonshotai/kimi-k2.7-code",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:anthropic/claude-fable-5",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:nvidia/nemotron-3.5-content-safety",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:nvidia/nemotron-3-ultra-550b-a55b",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.7-plus",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:minimax/minimax-m3",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:stepfun/step-3.7-flash",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:anthropic/claude-opus-4.8",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.7-max",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:x-ai/grok-build-0.1",
+      "score": 31,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-3.5-flash",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:perceptron/perceptron-mk1",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-3.1-flash-lite",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-chat-latest",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:x-ai/grok-4.3",
+      "score": 37,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-medium-3-5",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.5-plus-20260420",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.6-flash",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.6-35b-a3b",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.6-27b",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.5-pro",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.5",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:deepseek/deepseek-v4-pro",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:deepseek/deepseek-v4-flash",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:tencent/hy3-preview",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:xiaomi/mimo-v2.5-pro",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:xiaomi/mimo-v2.5",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.4-image-2",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openrouter/pareto-code",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:moonshotai/kimi-k2.6",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:anthropic/claude-opus-4.7",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-5.1",
+      "score": 37,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemma-4-26b-a4b-it",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemma-4-31b-it",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.6-plus",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-5v-turbo",
+      "score": 27,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:arcee-ai/trinity-large-thinking",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:x-ai/grok-4.20-multi-agent",
+      "score": 37,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:x-ai/grok-4.20",
+      "score": 37,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/lyria-3-pro-preview",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/lyria-3-clip-preview",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:rekaai/reka-edge",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:minimax/minimax-m2.7",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.4-nano",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.4-mini",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-small-2603",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-5-turbo",
+      "score": 27,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:nvidia/nemotron-3-super-120b-a12b",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:bytedance-seed/seed-2.0-lite",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.5-9b",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.4-pro",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.4",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:inception/mercury-2",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-3.1-flash-lite-preview",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:bytedance-seed/seed-2.0-mini",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-3.1-flash-image-preview",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.5-35b-a3b",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.5-27b",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.5-122b-a10b",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.5-flash-02-23",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-3.1-pro-preview-customtools",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.3-codex",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:aion-labs/aion-2.0",
+      "score": 31,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-3.1-pro-preview",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:anthropic/claude-sonnet-4.6",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.5-plus-02-15",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3.5-397b-a17b",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:minimax/minimax-m2.5",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-5",
+      "score": 41,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:anthropic/claude-opus-4.6",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-coder-next",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openrouter/free",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:stepfun/step-3.5-flash",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:moonshotai/kimi-k2.5",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:upstage/solar-pro-3",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:minimax/minimax-m2-her",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:writer/palmyra-x5",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-audio",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-audio-mini",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-4.7-flash",
+      "score": 23,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.2-codex",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:bytedance-seed/seed-1.6-flash",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:bytedance-seed/seed-1.6",
+      "score": 31,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:minimax/minimax-m2.1",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-4.7",
+      "score": 37,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-3-flash-preview",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:nvidia/nemotron-3-nano-30b-a3b",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.2-chat",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.2-pro",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.2",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/devstral-2512",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:relace/relace-search",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-4.6v",
+      "score": 37,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openrouter/bodybuilder",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.1-codex-max",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:amazon/nova-2-lite-v1",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/ministral-14b-2512",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/ministral-8b-2512",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/ministral-3b-2512",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-large-2512",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:deepseek/deepseek-v3.2",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:anthropic/claude-opus-4.5",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-3-pro-image-preview",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.1",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.1-codex",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5.1-codex-mini",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:moonshotai/kimi-k2-thinking",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:amazon/nova-premier-v1",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:perplexity/sonar-pro-search",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/voxtral-small-24b-2507",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-oss-safeguard-20b",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:minimax/minimax-m2",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:ibm-granite/granite-4.0-h-micro",
+      "score": 31,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5-image-mini",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:anthropic/claude-haiku-4.5",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-vl-8b-instruct",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5-image",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-2.5-flash-image",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-vl-30b-a3b-thinking",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-vl-30b-a3b-instruct",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5-pro",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-4.6",
+      "score": 37,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:anthropic/claude-sonnet-4.5",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:deepseek/deepseek-v3.2-exp",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:thedrummer/cydonia-24b-v4.1",
+      "score": 31,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:relace/relace-apply-3",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-vl-235b-a22b-instruct",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:deepseek/deepseek-v3.1-terminus",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-coder-flash",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-next-80b-a3b-thinking",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-next-80b-a3b-instruct",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:moonshotai/kimi-k2-0905",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:nousresearch/hermes-4-405b",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:deepseek/deepseek-chat-v3.1",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-medium-3.1",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-4.5v",
+      "score": 37,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5-mini",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-5-nano",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-oss-120b",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-oss-20b",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:anthropic/claude-opus-4.1",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/codestral-2508",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-coder-30b-a3b-instruct",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-30b-a3b-instruct-2507",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-4.5",
+      "score": 37,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:z-ai/glm-4.5-air",
+      "score": 23,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-235b-a22b-thinking-2507",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-coder",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:bytedance/ui-tars-1.5-7b",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-2.5-flash-lite",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-235b-a22b-2507",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:moonshotai/kimi-k2",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:cognitivecomputations/dolphin-mistral-24b-venice-edition",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:tencent/hunyuan-a13b-instruct",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:morph/morph-v3-large",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:morph/morph-v3-fast",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-small-3.2-24b-instruct",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:minimax/minimax-m1",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-2.5-flash",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-2.5-pro",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/o3-pro",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemini-2.5-pro-preview",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:deepseek/deepseek-r1-0528",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-medium-3",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:meta-llama/llama-guard-4-12b",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-30b-a3b",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-14b",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen3-32b",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/o4-mini-high",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/o3",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/o4-mini",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-4.1",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-4.1-mini",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-4.1-nano",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:meta-llama/llama-4-maverick",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:meta-llama/llama-4-scout",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:deepseek/deepseek-chat-v3-0324",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/o1-pro",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-small-3.1-24b-instruct",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemma-3-4b-it",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemma-3-12b-it",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:cohere/command-a",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:rekaai/reka-flash-3",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemma-3-27b-it",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:thedrummer/skyfall-36b-v2",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:perplexity/sonar-reasoning-pro",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:perplexity/sonar-pro",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:perplexity/sonar-deep-research",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-saba",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/o3-mini-high",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:aion-labs/aion-rp-llama-3.1-8b",
+      "score": 31,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen2.5-vl-72b-instruct",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen-plus",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/o3-mini",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-small-24b-instruct-2501",
+      "score": 43,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:perplexity/sonar",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:minimax/minimax-01",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:microsoft/phi-4",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:deepseek/deepseek-chat",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/o1",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:cohere/command-r7b-12-2024",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:meta-llama/llama-3.3-70b-instruct",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:amazon/nova-lite-v1",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:amazon/nova-micro-v1",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:amazon/nova-pro-v1",
+      "score": 39,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-4o-2024-11-20",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-large-2407",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen-2.5-coder-32b-instruct",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:thedrummer/unslopnemo-12b",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:anthracite-org/magnum-v4-72b",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen-2.5-7b-instruct",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:meta-llama/llama-3.2-1b-instruct",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:meta-llama/llama-3.2-3b-instruct",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:qwen/qwen-2.5-72b-instruct",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:cohere/command-r-08-2024",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:cohere/command-r-plus-08-2024",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:sao10k/l3.1-euryale-70b",
+      "score": 37,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:nousresearch/hermes-3-llama-3.1-70b",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:nousresearch/hermes-3-llama-3.1-405b",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:sao10k/l3-lunaris-8b",
+      "score": 41,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-4o-2024-08-06",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:meta-llama/llama-3.1-70b-instruct",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:meta-llama/llama-3.1-8b-instruct",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-nemo",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-4o-mini",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-4o-mini-2024-07-18",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:google/gemma-2-27b-it",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-4o",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-4o-2024-05-13",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mixtral-8x22b-instruct",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-4-turbo",
+      "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mistralai/mistral-large",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-3.5-turbo-0613",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openrouter/auto",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-3.5-turbo-instruct",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-3.5-turbo-16k",
+      "score": 45,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:mancer/weaver",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:undi95/remm-slerp-l2-13b",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:gryphe/mythomax-l2-13b",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-3.5-turbo",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openrouter:openai/gpt-4",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
       "key": "arxiv:http://arxiv.org/abs/2610.31670v1",
       "score": 25,
       "flags": [],
@@ -2128,6 +4722,216 @@
       "sourceNames": []
     },
     {
+      "key": "hn:49997073",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49959869",
+      "score": 32,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49943034",
+      "score": 32,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49936575",
+      "score": 32,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49933476",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49929391",
+      "score": 32,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49926512",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49911995",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49911500",
+      "score": 38,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49884625",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49882781",
+      "score": 32,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49879401",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49857656",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49854875",
+      "score": 32,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49853175",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49835531",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49833867",
+      "score": 42,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49830866",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49823348",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49808023",
+      "score": 32,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:49807688",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
       "key": "hn:50199389",
       "score": 28,
       "flags": [],
@@ -2564,6 +5368,36 @@
       "reasons": [],
       "disqualify": null,
       "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:50031614",
+      "score": 32,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:50027118",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hn:50024090",
+      "score": 28,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
       "families": [],
       "sourceNames": []
     },
@@ -3585,7 +6419,187 @@
       "sourceNames": []
     },
     {
+      "key": "openai:https://openai.com/index/ai-policy-window",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/gpt-6-astra-next-generation-work",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
       "key": "openai:https://openai.com/index/paul-christiano-joins-openai-foundation-board",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/codex-quantum-computing-experiments",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/the-work-now-within-reach",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/introducing-chatgpt-images-2-5",
+      "score": 51,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/supporting-journalism-from-classrooms-to-newsrooms",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/navier-stokes-solution",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/teen-development-research-grants",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/1password",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/supporting-independent-journalism-in-ukraine",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/an-alien-mind",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/research-acceleration-view-inside-openai",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/daybreak-for-frontline-defenders",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/legora-financial-statement-review-with-astra",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/playco-game-prototyping-with-astra",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/gpt-6-astra",
+      "score": 41,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/safety-overview-gpt-6-astra",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "openai:https://openai.com/index/atv-big-air-tour",
       "score": 33,
       "flags": [],
       "reasons": [],
@@ -3766,6 +6780,26 @@
     },
     {
       "key": "google:https://blog.google/innovation-and-ai/technology/ai/love-rendered-film/",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "google:https://blog.google/innovation-and-ai/technology/safety-security/fairwind-program/",
+      "score": 33,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "google:https://blog.google/innovation-and-ai/technology/google-ai-updates-august-2026/",
       "score": 33,
       "flags": [],
       "reasons": [],
@@ -6802,7 +9836,29 @@
       "sourceNames": []
     },
     {
+      "key": "hf:deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "score": 37,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
       "key": "hf:RecursiveSI/flint",
+      "score": 38,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:OpenMOSS-Team/MOSS-Image-SFT",
       "score": 38,
       "flags": [],
       "reasons": [],
@@ -6842,6 +9898,16 @@
       "sourceNames": []
     },
     {
+      "key": "hf:XHToken/Spark-X2.6-4B",
+      "score": 34,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
       "key": "hf:Qwen/Qwen3.8-27B",
       "score": 51,
       "flags": [],
@@ -6854,6 +9920,16 @@
     {
       "key": "hf:google/embeddinggemma-2",
       "score": 55,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:datalab-to/indra-ocr",
+      "score": 38,
       "flags": [],
       "reasons": [],
       "disqualify": null,
@@ -6924,8 +10000,18 @@
       "sourceNames": []
     },
     {
-      "key": "hf:nvidia/Qwen3.8-Flash-Next-FP4-Local",
-      "score": 48,
+      "key": "hf:orcarouter/OrcaCyber-Nano-1.0",
+      "score": 31,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:facebook/sam3",
+      "score": 41,
       "flags": [],
       "reasons": [],
       "disqualify": null,
@@ -6974,8 +10060,40 @@
       "sourceNames": []
     },
     {
+      "key": "hf:LiquidAI/LFM2.5-24B-A2B",
+      "score": 34,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:linoyts/ltx2-19b-distilled-faceswap-v3",
+      "score": 35,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
       "key": "hf:KRAFTON/Raon-1-mini-preview",
       "score": 35,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:deepseek-ai/DeepSeek-V4.1-Flash",
+      "score": 37,
       "flags": [],
       "reasons": [
         "同族包装变体"
@@ -7006,8 +10124,8 @@
       "sourceNames": []
     },
     {
-      "key": "hf:nvidia/GLM-5.3-Flash-FP4-Local",
-      "score": 45,
+      "key": "hf:facebook/dinov3-vitl16-pretrain-lvd1689m",
+      "score": 41,
       "flags": [],
       "reasons": [],
       "disqualify": null,
@@ -7036,6 +10154,28 @@
       "sourceNames": []
     },
     {
+      "key": "hf:pyannote/speaker-diarization-community-1",
+      "score": 41,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:briaai/Fibo-2.0-edit-turbo",
+      "score": 31,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": false,
+      "families": [],
+      "sourceNames": []
+    },
+    {
       "key": "hf:nvidia/NVIDIA-Nemotron-3.5-Super-VL-120B-A12B-NVFP4",
       "score": 45,
       "flags": [],
@@ -7056,8 +10196,390 @@
       "sourceNames": []
     },
     {
+      "key": "hf:Qwen/Qwen-Image-2.1-Turbo",
+      "score": 45,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:deepseek-ai/DeepSeek-R1",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:meta-llama/Llama-3.1-8B-Instruct",
+      "score": 51,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:meta-llama/Meta-Llama-3-8B",
+      "score": 55,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:deepseek-ai/DeepSeek-V4-Pro",
+      "score": 41,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:meta-llama/Meta-Llama-3-8B-Instruct",
+      "score": 55,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:openai/gpt-oss-120b",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:openai/gpt-oss-20b",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
       "key": "hf:zai-org/GLM-5.2",
       "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:bigscience/bloom",
+      "score": 41,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:meta-llama/Llama-2-7b-chat-hf",
+      "score": 55,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:deepseek-ai/DeepSeek-V4.1-Flash",
+      "score": 37,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:meta-llama/Llama-2-7b",
+      "score": 55,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:deepseek-ai/DeepSeek-V3",
+      "score": 55,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:mistralai/Mistral-7B-v0.1",
+      "score": 51,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:deepseek-ai/DeepSeek-V4-Flash-0731",
+      "score": 41,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:openai-community/gpt2",
+      "score": 47,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:microsoft/phi-2",
+      "score": 55,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:google/gemma-7b",
+      "score": 55,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:mistralai/Mistral-7B-Instruct-v0.2",
+      "score": 51,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:deepseek-ai/DeepSeek-V3-0324",
+      "score": 55,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:meta-llama/Llama-3.3-70B-Instruct",
+      "score": 51,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:moonshotai/Kimi-K2-Instruct",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:bigcode/starcoder",
+      "score": 41,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:Qwen/QwQ-32B",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:meta-llama/Llama-3.2-3B-Instruct",
+      "score": 51,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:meta-llama/Llama-3.2-1B",
+      "score": 51,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:meta-llama/Llama-3.1-8B",
+      "score": 51,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:deepseek-ai/DeepSeek-V4.1-Flash-1017",
+      "score": 37,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:deepseek-ai/DeepSeek-R1-0528",
+      "score": 49,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:xai-org/grok-1",
+      "score": 47,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:meta-llama/Llama-2-7b-hf",
+      "score": 55,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:Qwen/Qwen2.5-7B-Instruct",
+      "score": 51,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:tiiuae/falcon-40b",
+      "score": 41,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:deepseek-ai/DeepSeek-V4-Flash",
+      "score": 41,
+      "flags": [],
+      "reasons": [
+        "同族包装变体"
+      ],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:microsoft/phi-4",
+      "score": 55,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:zai-org/GLM-5.3",
+      "score": 43,
+      "flags": [],
+      "reasons": [],
+      "disqualify": null,
+      "eligible": true,
+      "families": [],
+      "sourceNames": []
+    },
+    {
+      "key": "hf:meta-llama/Llama-2-70b-chat-hf",
+      "score": 55,
       "flags": [],
       "reasons": [],
       "disqualify": null,

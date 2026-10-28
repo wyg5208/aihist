@@ -274,10 +274,42 @@ function isoDay(value) {
   return date.toISOString().slice(0, 10);
 }
 
-function withinDays(value, days) {
-  const time = Date.parse(value || "");
-  if (Number.isNaN(time)) return false;
-  return Date.now() - time <= days * 86400_000;
+// The collection window is open: a chronicle wants history, not just the last
+// few weeks. These parsers used to carry their own cut-off (120 days for
+// OpenRouter, 180 for Hugging Face, 10 for arXiv, 14 for Hacker News, 21/45 for
+// feeds), which dropped DeepSeek-R1 (2025-01) and V3 (2024-12) as "too old".
+
+const BASE_MODEL_PREFIX = "base_model:";
+const QUANT_NAME_RE =
+  /(?:^|[-_.])(?:gguf|awq|gptq|fp8|fp16|fp4|mlx|onnx|exl2|ggml|int4|int8|4bit|8bit|bf16|comfy)(?:$|[-_.])|\b\d+(?:\.\d+)?gb\b/i;
+
+function baseModelRepo(tag) {
+  let repo = tag.slice(BASE_MODEL_PREFIX.length).trim();
+  for (const kind of ["quantized:", "finetune:", "adapter:", "merge:", "quantized-"]) {
+    if (repo.startsWith(kind)) return repo.slice(kind.length).trim();
+  }
+  return repo;
+}
+
+/**
+ * Is this repository someone else's model, repackaged?
+ *
+ * A `gguf`/`fp8` tag says nothing about who published the weights: DeepSeek and
+ * GLM ship FP8 themselves. The `base_model:` tag does name the upstream repo, so
+ * a derivative is one whose upstream belongs to another author, or the author's
+ * own quantized variant (their BF16 re-released as GGUF/4GB/…).
+ */
+function isDerivedRepo(modelId, tags) {
+  if (typeof modelId !== "string" || !modelId.includes("/")) return false;
+  const author = modelId.split("/")[0].trim().toLowerCase();
+  for (const tag of tags || []) {
+    if (typeof tag !== "string" || !tag.startsWith(BASE_MODEL_PREFIX)) continue;
+    const upstream = baseModelRepo(tag);
+    if (!upstream.includes("/")) continue;
+    if (upstream.split("/")[0].trim().toLowerCase() !== author) return true;
+    if (QUANT_NAME_RE.test(modelId.split("/").pop())) return true;
+  }
+  return false;
 }
 
 export function classifyTitle(title, summary, url) {
@@ -387,11 +419,10 @@ function baseCandidate(overrides) {
 }
 
 function openRouterCandidates(payload) {
-  const cutoff = Date.now() - 120 * 86400_000;
   const seen = new Set();
   const out = [];
   for (const model of payload.items || []) {
-    if (!model.created || Date.parse(model.created) < cutoff) continue;
+    if (!model.created) continue;
     if (/:free$|:batch$/.test(model.id) || model.id.startsWith("~")) continue;
     if (seen.has(model.canonicalSlug)) continue;
     seen.add(model.canonicalSlug);
@@ -451,16 +482,14 @@ function openRouterCandidates(payload) {
 }
 
 function hfCandidates(payload) {
-  const cutoff = Date.now() - 180 * 86400_000;
   const seen = new Set();
   const out = [];
   for (const model of payload.items || []) {
-    if (!model.createdAt || Date.parse(model.createdAt) < cutoff) continue;
+    if (!model.createdAt) continue;
     if (seen.has(model.id)) continue;
     seen.add(model.id);
     const tags = model.tags || [];
-    if (tags.some((t) => /^(gguf|awq|gptq|4bit|8bit|fp8|fp16|mlx|onnx|exl2|ggml|int4|int8)$/i.test(t))) continue;
-    if (tags.some((t) => /base_model:(finetune|adapter|merge)/i.test(t))) continue;
+    if (isDerivedRepo(model.id, tags)) continue;
     if (model.likes < 20) continue;
     const repoName = model.id.split("/").pop() || model.id;
     const displayName = repoName.replace(/[-_](gguf|awq|gptq|fp8)$/i, "");
@@ -520,7 +549,7 @@ function hfCandidates(payload) {
 function arxivCandidates(payload) {
   const out = [];
   for (const paper of payload.items || []) {
-    if (!paper.publishedAt || !withinDays(paper.publishedAt, 10)) continue;
+    if (!paper.publishedAt) continue;
     if (!TOPIC_WORDS.test(paper.title)) continue;
     const date = isoDay(paper.publishedAt);
     const excerpt = cleanText(paper.summary, 240);
@@ -559,7 +588,7 @@ function arxivCandidates(payload) {
 function communityCandidates(payload) {
   const out = [];
   for (const hit of payload.items || []) {
-    if (!hit.publishedAt || !withinDays(hit.publishedAt, 14)) continue;
+    if (!hit.publishedAt) continue;
     const title = htmlToText(hit.title, 300);
     if (title.length < 12) continue;
     const category = classifyTitle(title, "", hit.url);
@@ -599,9 +628,8 @@ function communityCandidates(payload) {
 
 function feedCandidates(payload, source) {
   const out = [];
-  const windowDays = source.family === "official" ? 45 : 21;
   for (const item of payload.items || []) {
-    if (!item.publishedAt || !withinDays(item.publishedAt, windowDays)) continue;
+    if (!item.publishedAt) continue;
     const title = cleanText(item.title, 300);
     if (title.length < 12) continue;
     // Domestic general-tech feeds carry a lot of non-AI business news; the

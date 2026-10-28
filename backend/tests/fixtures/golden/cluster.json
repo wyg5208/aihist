@@ -1,6 +1,6 @@
 {
-  "exportedAt": "2026-10-24T15:38:01.575Z",
-  "nowMs": 1792856281575,
+  "exportedAt": "2026-10-28T08:13:35.086Z",
+  "nowMs": 1793175215086,
   "clustered": [
     {
       "fingerprint": "6db4eec9752b708963c67cfcdd974c5ab56e30d96e5aa6c18793535d3b17359b",
@@ -853,10 +853,10 @@
       ]
     },
     {
-      "fingerprint": "ebfe00b8c95d3d554f45a96ca729a4a01538dbe875e30de4aa638dab263950c5",
-      "title": "Briaai 开源 Fibo-2.0-dev",
+      "fingerprint": "4f8b45c2d8cf5dfe639fdb5745e20990f15403bddd688ec2c7df44f0c73927c7",
+      "title": "Xhtoken 开源 Spark-X2.6-4B",
       "category": "model",
-      "eventDate": "2026-10-18",
+      "eventDate": "2026-10-19",
       "importance": 20,
       "confidence": "single",
       "sourceCount": 1,
@@ -864,9 +864,29 @@
         "huggingface"
       ],
       "evidenceUrls": [
-        "https://huggingface.co/briaai/Fibo-2.0-dev"
+        "https://huggingface.co/XHToken/Spark-X2.6-4B"
       ],
       "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "ebfe00b8c95d3d554f45a96ca729a4a01538dbe875e30de4aa638dab263950c5",
+      "title": "Briaai 开源 Fibo-2.0-edit-turbo",
+      "category": "model",
+      "eventDate": "2026-10-18",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/briaai/Fibo-2.0-dev",
+        "https://huggingface.co/briaai/Fibo-2.0-edit-turbo"
+      ],
+      "evidenceNames": [
+        "Hugging Face",
         "Hugging Face"
       ]
     },
@@ -888,6 +908,24 @@
       ],
       "evidenceNames": [
         "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "103f19d12f76b3e78340f32bfe9d121f186ec21f3b6fbd4674625fdd99762a96",
+      "title": "Orcarouter 开源 OrcaCyber-Nano-1.0",
+      "category": "model",
+      "eventDate": "2026-10-16",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/orcarouter/OrcaCyber-Nano-1.0"
+      ],
+      "evidenceNames": [
         "Hugging Face"
       ]
     },
@@ -1018,24 +1056,6 @@
       ]
     },
     {
-      "fingerprint": "3f9d8980595a0be1e6aa31d88940dd421f92fb0093ddd07f193a778b6d3d1cc4",
-      "title": "Liquid AI 发布 LFM2.5-24B-A2B",
-      "category": "model",
-      "eventDate": "2026-10-13",
-      "importance": 35,
-      "confidence": "single",
-      "sourceCount": 1,
-      "families": [
-        "openrouter"
-      ],
-      "evidenceUrls": [
-        "https://openrouter.ai/liquid/lfm-2.5-24b-a2b-20261012"
-      ],
-      "evidenceNames": [
-        "OpenRouter"
-      ]
-    },
-    {
       "fingerprint": "a982ae8b5b9e3aab4eba3b7d983e593c240b861c6b8d1fcdfcb6c9139dab1cc1",
       "title": "Google 发布 Gemini 4 Argon",
       "category": "model",
@@ -1111,6 +1131,27 @@
       ]
     },
     {
+      "fingerprint": "3f9d8980595a0be1e6aa31d88940dd421f92fb0093ddd07f193a778b6d3d1cc4",
+      "title": "Liquid AI 发布 LFM2.5-24B-A2B",
+      "category": "model",
+      "eventDate": "2026-10-12",
+      "importance": 60,
+      "confidence": "verified",
+      "sourceCount": 2,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/liquid/lfm-2.5-24b-a2b-20261012",
+        "https://huggingface.co/LiquidAI/LFM2.5-24B-A2B"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
       "fingerprint": "f1a00692dd4b77a4d33216966e7b6333d1f67a21f3ccdb46af71c5ef2b6e07d1",
       "title": "Meta 发布 Muse Wonder",
       "category": "model",
@@ -1129,10 +1170,30 @@
       ]
     },
     {
-      "fingerprint": "744fe495e9c09f4af3f863da40d90d6ecd88e38c439ab3feaa7fa957fba68fc1",
+      "fingerprint": "f3468544b80758b0f6ec3e06806771a219fbf83ac9a1e89d34832bc2186fd782",
       "title": "Openmoss Team 开源 MOSS-Image-Base",
       "category": "model",
       "eventDate": "2026-10-11",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Image-SFT",
+        "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
+      ],
+      "evidenceNames": [
+        "Hugging Face",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "8d61b57be947170b3b0b82d6c802f00ed51bd7d1b555aeb4d48e1672a7c9ae03",
+      "title": "Datalab To 开源 indra-ocr",
+      "category": "model",
+      "eventDate": "2026-10-10",
       "importance": 20,
       "confidence": "single",
       "sourceCount": 1,
@@ -1140,7 +1201,25 @@
         "huggingface"
       ],
       "evidenceUrls": [
-        "https://huggingface.co/OpenMOSS-Team/MOSS-Image-Base"
+        "https://huggingface.co/datalab-to/indra-ocr"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "3628fa137b4e85f88a3dddfb432a3a21b0e46ce0ea74af4b23278d2b19f9c2de",
+      "title": "阿里云 Qwen 开源 Qwen-Image-2.1-Turbo",
+      "category": "model",
+      "eventDate": "2026-10-09",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/Qwen/Qwen-Image-2.1-Turbo"
       ],
       "evidenceNames": [
         "Hugging Face"
@@ -1162,26 +1241,6 @@
       ],
       "evidenceNames": [
         "OpenRouter"
-      ]
-    },
-    {
-      "fingerprint": "17d873c2eb998e17b15b6eb7a23c0238fd80fcdd00a9f499cfcbf8f4503f3516",
-      "title": "NVIDIA 开源 Qwen3.8-Flash-Next-FP4-Local",
-      "category": "model",
-      "eventDate": "2026-10-08",
-      "importance": 35,
-      "confidence": "single",
-      "sourceCount": 2,
-      "families": [
-        "huggingface"
-      ],
-      "evidenceUrls": [
-        "https://huggingface.co/nvidia/Qwen3.8-Flash-Next-FP4-Local",
-        "https://huggingface.co/nvidia/GLM-5.3-Flash-FP4-Local"
-      ],
-      "evidenceNames": [
-        "Hugging Face",
-        "Hugging Face"
       ]
     },
     {
@@ -1575,19 +1634,24 @@
       "title": "DeepSeek 发布 DeepSeek V4.1 Flash 1017",
       "category": "model",
       "eventDate": "2026-09-10",
-      "importance": 35,
-      "confidence": "single",
-      "sourceCount": 2,
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 4,
       "families": [
-        "openrouter"
+        "openrouter",
+        "huggingface"
       ],
       "evidenceUrls": [
         "https://openrouter.ai/deepseek/deepseek-v4.1-flash-20261017",
-        "https://openrouter.ai/deepseek/deepseek-v4.1-flash-20260910"
+        "https://openrouter.ai/deepseek/deepseek-v4.1-flash-20260910",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash-1017",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4.1-Flash"
       ],
       "evidenceNames": [
         "OpenRouter",
-        "OpenRouter"
+        "OpenRouter",
+        "Hugging Face",
+        "Hugging Face"
       ]
     },
     {
@@ -1606,6 +1670,24 @@
       ],
       "evidenceNames": [
         "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "0c9407d4f920310f75e883bd4fe4fee563ad9565f0910646ebe5eade013ce308",
+      "title": "Introducing ChatGPT Images 2.5",
+      "category": "model",
+      "eventDate": "2026-09-08",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "official"
+      ],
+      "evidenceUrls": [
+        "https://openai.com/index/introducing-chatgpt-images-2-5"
+      ],
+      "evidenceNames": [
+        "OpenAI News"
       ]
     },
     {
@@ -1647,6 +1729,24 @@
       ],
       "evidenceNames": [
         "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "26f946cc16e34155e96f1cd9bd2f805701ec423ce3cecd298708e3e3d1b3751d",
+      "title": "GPT-6 Astra: A new generation of intelligence",
+      "category": "research",
+      "eventDate": "2026-09-03",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "official"
+      ],
+      "evidenceUrls": [
+        "https://openai.com/index/gpt-6-astra"
+      ],
+      "evidenceNames": [
+        "OpenAI News"
       ]
     },
     {
@@ -1853,6 +1953,29 @@
       ]
     },
     {
+      "fingerprint": "6db426b10fe5604d26b587f26b6fe18ce518f814c483981a0df7df2ceb85ab64",
+      "title": "Z.ai 发布 GLM 5.3 Flash",
+      "category": "model",
+      "eventDate": "2026-08-18",
+      "importance": 53,
+      "confidence": "verified",
+      "sourceCount": 3,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/z-ai/glm-5.3-flash-20260826",
+        "https://openrouter.ai/z-ai/glm-5.3-20260816",
+        "https://huggingface.co/zai-org/GLM-5.3"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
       "fingerprint": "c5a44361b85e3e1fde763a4005290ffe1d68e8df597430f5cff5157300e15524",
       "title": "Google 发布 Gemini 3.7 Flash",
       "category": "model",
@@ -1883,24 +2006,6 @@
       ],
       "evidenceUrls": [
         "https://openrouter.ai/qwen/qwen3.8-2.4t-a95b-20260812"
-      ],
-      "evidenceNames": [
-        "OpenRouter"
-      ]
-    },
-    {
-      "fingerprint": "b570a23c1aaf8157ee3de4a7502dc9801e502284fa9ac828fbfbb3d6d7635363",
-      "title": "DeepSeek 发布 DeepSeek V4 Pro 0813",
-      "category": "model",
-      "eventDate": "2026-08-12",
-      "importance": 35,
-      "confidence": "single",
-      "sourceCount": 1,
-      "families": [
-        "openrouter"
-      ],
-      "evidenceUrls": [
-        "https://openrouter.ai/deepseek/deepseek-v4-pro-20260813"
       ],
       "evidenceNames": [
         "OpenRouter"
@@ -2210,24 +2315,6 @@
       ]
     },
     {
-      "fingerprint": "0dfe7eb8ce67e1a2299dc977807228991fe5f373f7d92ff198230e5228013cb2",
-      "title": "腾讯 发布 Hy3",
-      "category": "model",
-      "eventDate": "2026-07-06",
-      "importance": 35,
-      "confidence": "single",
-      "sourceCount": 1,
-      "families": [
-        "openrouter"
-      ],
-      "evidenceUrls": [
-        "https://openrouter.ai/tencent/hy3-20260706"
-      ],
-      "evidenceNames": [
-        "OpenRouter"
-      ]
-    },
-    {
       "fingerprint": "efe1511f67cb6b1d215e6fd7cec895c91acbaed4b9082aa35931ee8a3986533c",
       "title": "Anthropic 发布 Claude Sonnet 5",
       "category": "model",
@@ -2264,6 +2351,24 @@
       ]
     },
     {
+      "fingerprint": "721d2898aa8fd1cc2a99057ae641c66f2db86af84db3245a605a1db53f21d9bb",
+      "title": "Sakana AI 发布 Fugu Ultra",
+      "category": "model",
+      "eventDate": "2026-06-24",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/sakana/fugu-ultra-20260615"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
       "fingerprint": "9341f9df6d58a3ebee979bd7d2ba95d6e428fde39b36eeb123d8767164992482",
       "title": "百度 开源 Unlimited-OCR",
       "category": "model",
@@ -2283,9 +2388,1225 @@
     },
     {
       "fingerprint": "03a1f0b5736dc22cf365b3dd80c40aad488a9da9fd06bc4be27681f319cdf698",
-      "title": "Zai Org 开源 GLM-5.2",
+      "title": "Z.ai 发布 GLM 5.2",
       "category": "model",
       "eventDate": "2026-06-16",
+      "importance": 53,
+      "confidence": "verified",
+      "sourceCount": 2,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/z-ai/glm-5.2-20260616",
+        "https://huggingface.co/zai-org/GLM-5.2"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "6b31c44d8294ff5c4ea6a77118d91e389adcd5fc8cbdc85420a4ed3f2232240a",
+      "title": "月之暗面 发布 Kimi K2.7 Code",
+      "category": "model",
+      "eventDate": "2026-06-12",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/moonshotai/kimi-k2.7-code-20260612"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "2c1db3f1baaea66d4cdf7f54f2ef6de5d0f2fd91e01de22a9cff50b6c4779d59",
+      "title": "Anthropic 发布 Claude Fable 5",
+      "category": "model",
+      "eventDate": "2026-06-09",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-5-fable-20260609"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "91b7c899ff8b05bdf239cb12430c1cdd9bc7d46b23ab5b9cff9c2f2e7c8b7fcc",
+      "title": "NVIDIA 发布 Nemotron 3.5 Content Safety",
+      "category": "model",
+      "eventDate": "2026-06-04",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/nvidia/nemotron-3.5-content-safety-20260604"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "0120ca9ff03c947a89f9358e37d3eb4349f8eb3ce18c7acaa81b6adb1955d462",
+      "title": "NVIDIA 发布 Nemotron 3 Ultra",
+      "category": "model",
+      "eventDate": "2026-06-04",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/nvidia/nemotron-3-ultra-550b-a55b-20260604"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "bba57878d977a9ac3f48777325d8b188ead9881f855f631c0d5c59520df298f0",
+      "title": "阿里云 Qwen 发布 Qwen3.7 Plus",
+      "category": "model",
+      "eventDate": "2026-06-03",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.7-plus-20260602"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "6fba04543186ef8470f1535d19f007216e85195dc4c7633638cd03b9f0ceccc4",
+      "title": "MiniMax 发布 MiniMax M3",
+      "category": "model",
+      "eventDate": "2026-05-31",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/minimax/minimax-m3-20260531"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "efd5fe57567f872c9370b4fcbf22248c2e42cc5c8a5538f06b61e96bdba9749f",
+      "title": "阶跃星辰 发布 Step 3.7 Flash",
+      "category": "model",
+      "eventDate": "2026-05-28",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/stepfun/step-3.7-flash-20260528"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "5483ecf6be27cb8a27f2fdfdccab5f0af3c1c0210bfb2ddbcb37fa4e7e4bd8af",
+      "title": "Anthropic 发布 Claude Opus 4.8",
+      "category": "model",
+      "eventDate": "2026-05-27",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-4.8-opus-20260528"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "93e3d625d6652ca77c0a5dfb26c62e5af3f0a757e9cdc53168d2ea30f198e778",
+      "title": "阿里云 Qwen 发布 Qwen3.7 Max",
+      "category": "model",
+      "eventDate": "2026-05-21",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.7-max-20260520"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "9dd71f35adfa301c5fe14d70c609d5b1e5110143e549d92ff6a3e603d91a78a3",
+      "title": "Google 发布 Gemini 3.5 Flash",
+      "category": "model",
+      "eventDate": "2026-05-19",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-3.5-flash-20260519"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "1864adabe06130df991ff137afd63066346c60b572364c8ac4786dc66c079950",
+      "title": "OpenAI 发布 GPT Chat Latest",
+      "category": "model",
+      "eventDate": "2026-05-05",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-chat-latest-20260505"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "39cb92dbe6c8001d70c827f04de070a5bdc77ac8f80294bbebff44b4c4bae75d",
+      "title": "Mistral AI 发布 Mistral Medium 3.5",
+      "category": "model",
+      "eventDate": "2026-04-30",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/mistral-medium-3.5-20260430"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "032ff191eed2844e8b2bea1f0ed8911e12c34fdf283b8dd38ca5e1dcf89da463",
+      "title": "阿里云 Qwen 发布 Qwen3.5 Plus 2026-04-20",
+      "category": "model",
+      "eventDate": "2026-04-27",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.5-plus-20260420"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "0e7b0444931b5cac8730cc3fd2e939629d399f11d2dca46774ad77a8504fac9a",
+      "title": "阿里云 Qwen 发布 Qwen3.6 Flash",
+      "category": "model",
+      "eventDate": "2026-04-27",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.6-flash"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "cedc39d36a55a4cdc211c04499f91c74aba80bbe80d3421899616c844044ef88",
+      "title": "阿里云 Qwen 发布 Qwen3.6 35B A3B",
+      "category": "model",
+      "eventDate": "2026-04-27",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.6-35b-a3b-20260415"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "f403ac94d100e211964c8258e79ced892071fed623e889eadd4df9f53b2630b8",
+      "title": "阿里云 Qwen 发布 Qwen3.6 27B",
+      "category": "model",
+      "eventDate": "2026-04-27",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.6-27b-20260422"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "481bad61e60469ddb6bb3adcbc8ed8c7ab2869e685caf66d3bebaea2c1586793",
+      "title": "OpenAI 发布 GPT-5.5 Pro",
+      "category": "model",
+      "eventDate": "2026-04-24",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5.5-pro-20260423",
+        "https://openrouter.ai/openai/gpt-5.5-20260423"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "b570a23c1aaf8157ee3de4a7502dc9801e502284fa9ac828fbfbb3d6d7635363",
+      "title": "DeepSeek 发布 DeepSeek V4 Flash 0423",
+      "category": "model",
+      "eventDate": "2026-04-22",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 6,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-v4-pro-20260813",
+        "https://openrouter.ai/deepseek/deepseek-v4-pro-20260423",
+        "https://openrouter.ai/deepseek/deepseek-v4-flash-20260423",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash-0731",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V4-Flash"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter",
+        "Hugging Face",
+        "Hugging Face",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "0dfe7eb8ce67e1a2299dc977807228991fe5f373f7d92ff198230e5228013cb2",
+      "title": "腾讯 发布 Hy3 preview",
+      "category": "model",
+      "eventDate": "2026-04-22",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/tencent/hy3-20260706",
+        "https://openrouter.ai/tencent/hy3-preview-20260421"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "599c937aefc80a6399bd3f75b0792eb16c242021b57c6e9747b2911b0b9ff529",
+      "title": "小米 发布 MiMo-V2.5",
+      "category": "model",
+      "eventDate": "2026-04-22",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/xiaomi/mimo-v2.5-pro-20260422",
+        "https://openrouter.ai/xiaomi/mimo-v2.5-20260422"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "cfa90afd26399709c8c61d75c7df6cbf76ad43b1806bfb947746c63f272297d5",
+      "title": "OpenAI 发布 GPT-5.4 Image 2",
+      "category": "model",
+      "eventDate": "2026-04-21",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5.4-image-2-20260421"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "950297efd50225f9e2e64423696e805ff8d1770d79d66c36d836ae59c3d44a65",
+      "title": "月之暗面 发布 Kimi K2.6",
+      "category": "model",
+      "eventDate": "2026-04-20",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/moonshotai/kimi-k2.6-20260420"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "e9f20b923be7f23ccfeec7ba5b1428fa1df4112b1c3269b2e4725368bfe47a78",
+      "title": "Anthropic 发布 Claude Opus 4.7",
+      "category": "model",
+      "eventDate": "2026-04-16",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-4.7-opus-20260416"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "5791e66e90a1ba8808dcd0081ba831a7b3c3e989b329934b53a8f3fc0aed42db",
+      "title": "Google 发布 Gemma 4 26B A4B",
+      "category": "model",
+      "eventDate": "2026-04-02",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemma-4-26b-a4b-it-20260403",
+        "https://openrouter.ai/google/gemma-4-31b-it-20260402"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "073d685250219d01439a16bed448959cf267a6503fbd5a15e9203e5f86c2c04d",
+      "title": "阿里云 Qwen 发布 Qwen3.6 Plus",
+      "category": "model",
+      "eventDate": "2026-04-02",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.6-plus-04-02"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "4a812dd6a076c9562b79cd18c4abe3a43d7cb8811b13cfe8bc82adbf6f3b7082",
+      "title": "Google 发布 Lyria 3 Clip Preview",
+      "category": "model",
+      "eventDate": "2026-03-30",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/lyria-3-pro-preview-20260330",
+        "https://openrouter.ai/google/lyria-3-clip-preview-20260330"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "61d2dddcaa7847d83b4d9d23e347dfc836d9384df24d940cfaa42098d2c67370",
+      "title": "MiniMax 发布 MiniMax M2.7",
+      "category": "model",
+      "eventDate": "2026-03-18",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/minimax/minimax-m2.7-20260318"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "ec3c739605be588e86ae797fa8cbc9a168774dc64030f57858cd8a5ed59b372d",
+      "title": "OpenAI 发布 GPT-5.4 Nano",
+      "category": "model",
+      "eventDate": "2026-03-17",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5.4-nano-20260317",
+        "https://openrouter.ai/openai/gpt-5.4-mini-20260317"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "6bf1474a0c864c98402b261f1334627d8d1a353c5fddd3e28d18b9e1a5a1df54",
+      "title": "Mistral AI 发布 Mistral Small 4",
+      "category": "model",
+      "eventDate": "2026-03-16",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/mistral-small-2603"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "0c9cb34293b32f4f2d9c29796497f62ead6ad45e2795d3f82509c0113021583e",
+      "title": "NVIDIA 发布 Nemotron 3 Super",
+      "category": "model",
+      "eventDate": "2026-03-11",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/nvidia/nemotron-3-super-120b-a12b-20230311"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "e5bfa1de5b9aad88c3429baaa962298f8a82dcd59df290eb7049ff6cfee276af",
+      "title": "阿里云 Qwen 发布 Qwen3.5-9B",
+      "category": "model",
+      "eventDate": "2026-03-10",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.5-9b-20260310"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "3ba1d8be140135b72996e7681d8fa86423598e4013d712d63c8352206796309b",
+      "title": "OpenAI 发布 GPT-5.4 Pro",
+      "category": "model",
+      "eventDate": "2026-03-05",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5.4-pro-20260305",
+        "https://openrouter.ai/openai/gpt-5.4-20260305"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "434869681a9dd3ebe3272b2c307aeec736db5665d602239038728b955a5a8b65",
+      "title": "Google 发布 Gemini 3.1 Flash Lite Preview",
+      "category": "model",
+      "eventDate": "2026-03-03",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-3.1-flash-lite-20260507",
+        "https://openrouter.ai/google/gemini-3.1-flash-lite-preview-20260303"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "29d7c6de57f2df82c9c65c2b6ce6bfe2176cc7dbcedb658e8ff02333229e8685",
+      "title": "Linoyts 开源 ltx2-19b-distilled-faceswap-v3",
+      "category": "model",
+      "eventDate": "2026-03-03",
+      "importance": 20,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/linoyts/ltx2-19b-distilled-faceswap-v3"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "94f12dd813de2a461b2e87bb2a77f44c6e2d2cab8805f32b8405fb583c665e6a",
+      "title": "阿里云 Qwen 发布 Qwen3.5-35B-A3B",
+      "category": "model",
+      "eventDate": "2026-02-25",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.5-35b-a3b-20260224"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "7b31c6fa9825549939f1cc1e99c293536ed0bd747fdd19e2652207008f1587ba",
+      "title": "阿里云 Qwen 发布 Qwen3.5-27B",
+      "category": "model",
+      "eventDate": "2026-02-25",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.5-27b-20260224"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "c6082148d355fe5ef817447dceeae687e9718acb4096671138ec45a9d371a593",
+      "title": "阿里云 Qwen 发布 Qwen3.5-122B-A10B",
+      "category": "model",
+      "eventDate": "2026-02-25",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.5-122b-a10b-20260224"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "cc76325cd4e36c6f73af315aa6f49fcfaf1348536e5b6629732e99dd811c9555",
+      "title": "阿里云 Qwen 发布 Qwen3.5-Flash",
+      "category": "model",
+      "eventDate": "2026-02-25",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.5-flash-20260224"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "1f380538de42d553e66ba973129685843398137e8c79ee81d99c8cf8836d3b0d",
+      "title": "Google 发布 Gemini 3.1 Pro Preview Custom Tools",
+      "category": "model",
+      "eventDate": "2026-02-25",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-3.1-pro-preview-customtools-20260219"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "174e2c9465015c2374b341009cdd474199f56a97aabe126eb3b20ec5fa2266c0",
+      "title": "OpenAI 发布 GPT-5.3-Codex",
+      "category": "model",
+      "eventDate": "2026-02-24",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5.3-codex-20260224"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "cb8b08e9c6769869e19477e8787251f7d2995dca43932561f7441dc0dd447cf8",
+      "title": "Google 发布 Nano Banana 2 (Gemini 3.1 Flash Image Preview)",
+      "category": "model",
+      "eventDate": "2026-02-19",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-3.1-flash-image-20260528",
+        "https://openrouter.ai/google/gemini-3.1-flash-image-preview-20260226",
+        "https://openrouter.ai/google/gemini-3.1-pro-preview-20260219"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "37c2d0e40af4a48d2e0681846a48620f812a85e4c6586b80cddd0fd90b78772e",
+      "title": "Anthropic 发布 Claude Sonnet 4.6",
+      "category": "model",
+      "eventDate": "2026-02-17",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-4.6-sonnet-20260217"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "e52b6ebeda77b7da8743b8522727370b87c49ca03db5a314d73e1c0eeceee360",
+      "title": "阿里云 Qwen 发布 Qwen3.5 Plus 2026-02-15",
+      "category": "model",
+      "eventDate": "2026-02-16",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.5-plus-20260216"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "3070ae691fb74ee73176fda6de62a3818ded92a0cddb3050ad1df59c9795192b",
+      "title": "阿里云 Qwen 发布 Qwen3.5 397B A17B",
+      "category": "model",
+      "eventDate": "2026-02-16",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3.5-397b-a17b-20260216"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "c10952939dc27816dd70bca2f96a647910fb907d373f93c73acb73a9e30b8c95",
+      "title": "MiniMax 发布 MiniMax M2.5",
+      "category": "model",
+      "eventDate": "2026-02-12",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/minimax/minimax-m2.5-20260211"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "d284923484e60b5acc921fae14acfa2873151a8a52a2aeb5a15f5080b650ddc5",
+      "title": "Anthropic 发布 Claude Opus 4.6",
+      "category": "model",
+      "eventDate": "2026-02-04",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-4.6-opus-20260205"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "24c2a3130f17a44ff197999cefa26dabc60ce53b78df6aafdc30cf9627e78308",
+      "title": "阿里云 Qwen 发布 Qwen3 Coder Next",
+      "category": "model",
+      "eventDate": "2026-02-04",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-coder-next-2025-02-03"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "b5084439f803b43af2af25edfca22cf924a598a8e8c59dc99fca72ac34fa1c8f",
+      "title": "阶跃星辰 发布 Step 3.5 Flash",
+      "category": "model",
+      "eventDate": "2026-01-29",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/stepfun/step-3.5-flash"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "e2a710e5b6fd7a1ca89931fa144c5b2a376e8cbd3f70bea0578d74ae73dede3d",
+      "title": "月之暗面 发布 Kimi K2.5",
+      "category": "model",
+      "eventDate": "2026-01-27",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/moonshotai/kimi-k2.5-0127"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "edfd65b12922ae0adfbb626937f5d61ddc81fb6e5b453fc205bd95d9134b2e5d",
+      "title": "Upstage 发布 Solar Pro 3",
+      "category": "model",
+      "eventDate": "2026-01-27",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/upstage/solar-pro-3"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "361f1ceb18744beb691ced1406e77d7df763fbbfcaf400863f2dd6cee64264aa",
+      "title": "MiniMax 发布 MiniMax M2-her",
+      "category": "model",
+      "eventDate": "2026-01-23",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/minimax/minimax-m2-her-20260123"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "6bf58cc9652fe32e00ac5850701ff1631a2c8ea842e601254cdcab9075096a3c",
+      "title": "OpenAI 发布 GPT Audio Mini",
+      "category": "model",
+      "eventDate": "2026-01-19",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-audio",
+        "https://openrouter.ai/openai/gpt-audio-mini"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "bd6f4916b99861264239a033a85c115d3d4d166d7bc286476db543eb4cb51450",
+      "title": "OpenAI 发布 GPT-5.2-Codex",
+      "category": "model",
+      "eventDate": "2026-01-14",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5.2-codex-20260114"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "944231429a1bb3da27118143a202caebd32210f7c39c44062bd94194abaeb16f",
+      "title": "MiniMax 发布 MiniMax M2.1",
+      "category": "model",
+      "eventDate": "2025-12-23",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/minimax/minimax-m2.1"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "e0a40a9e2137dc2674be52039bfca907f094e00fcdbec28d8dd9d240334fcce8",
+      "title": "Google 发布 Gemini 3 Flash Preview",
+      "category": "model",
+      "eventDate": "2025-12-17",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-3-flash-preview-20251217"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "acc3ad3668ffb7f4dcf8506fab0913b11c78103569f2e2db9189e5287edd5f53",
+      "title": "NVIDIA 发布 Nemotron 3 Nano 30B A3B",
+      "category": "model",
+      "eventDate": "2025-12-14",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/nvidia/nemotron-3-nano-30b-a3b"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "4d26aefb952be5c233f02c80fe0a4b05df1f25107fc2a1aec8bd18a2d251a548",
+      "title": "OpenAI 发布 GPT-5.2 Chat",
+      "category": "model",
+      "eventDate": "2025-12-10",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5.2-chat-20251211",
+        "https://openrouter.ai/openai/gpt-5.2-pro-20251211",
+        "https://openrouter.ai/openai/gpt-5.2-20251211"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "d2d9d5c7dc4fcc6b748a0b7a44bb5b7e958fcde086580433e0462fdb2a320cc4",
+      "title": "Mistral AI 发布 Devstral 2 2512",
+      "category": "model",
+      "eventDate": "2025-12-09",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/devstral-2512"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "abec885da03cecd0755fdf03722305c69715e3a01df75db2ef4c0301cf08202a",
+      "title": "OpenAI 发布 GPT-5.1-Codex-Max",
+      "category": "model",
+      "eventDate": "2025-12-04",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5.1-codex-max-20251204"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "57622d90e5e3c06d24e7fff588313e480571b5549cf518310fd71109644765f4",
+      "title": "Amazon 发布 Nova 2 Lite",
+      "category": "model",
+      "eventDate": "2025-12-02",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/amazon/nova-2-lite-v1"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "4503bafc3c081b4010fd6184384b28b8df07595743cd8787a10b0055308e0a2a",
+      "title": "DeepSeek 发布 DeepSeek V3.2",
+      "category": "model",
+      "eventDate": "2025-12-01",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-v3.2-20251201"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "df0d4f579acfcb41e182468cec046d0192fd92e9489e0c7118bc50b1e9a0560c",
+      "title": "Anthropic 发布 Claude Opus 4.5",
+      "category": "model",
+      "eventDate": "2025-11-24",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-4.5-opus-20251124"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "2e916a1d9ee2e9b087fad4c043a9f981c9497822d3312614cd12cda832f02027",
+      "title": "Google 发布 Nano Banana Pro (Gemini 3 Pro Image Preview)",
+      "category": "model",
+      "eventDate": "2025-11-20",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-3-pro-image-20260528",
+        "https://openrouter.ai/google/gemini-3-pro-image-preview-20251120"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "db986d6bb720a47af0068fc612b7b55884c8502989dc6910dea166f2423c6908",
+      "title": "OpenAI 发布 GPT-5.1-Codex-Mini",
+      "category": "model",
+      "eventDate": "2025-11-13",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5.1-20251113",
+        "https://openrouter.ai/openai/gpt-5.1-codex-20251113",
+        "https://openrouter.ai/openai/gpt-5.1-codex-mini-20251113"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "d5cd466680a7ea33d101c121a15f8c1f29358c7f4f4df82a33d3cdd903e6f877",
+      "title": "Facebook 开源 sam3",
+      "category": "model",
+      "eventDate": "2025-11-07",
       "importance": 28,
       "confidence": "single",
       "sourceCount": 1,
@@ -2293,7 +3614,1832 @@
         "huggingface"
       ],
       "evidenceUrls": [
-        "https://huggingface.co/zai-org/GLM-5.2"
+        "https://huggingface.co/facebook/sam3"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "89dbfe98a5255ee78450a8acbd2217e65fea2934a4a19bd25bb5504b0a09f387",
+      "title": "Amazon 发布 Nova Premier 1.0",
+      "category": "model",
+      "eventDate": "2025-10-31",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/amazon/nova-premier-v1"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "41da8193385e4a68afc5b9e28f88ec56bce211dc1e62bc4c5edc49fd32ba3779",
+      "title": "Perplexity 发布 Sonar Pro Search",
+      "category": "model",
+      "eventDate": "2025-10-30",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/perplexity/sonar-pro-search"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "2e430e672725065cca354ee1abb69f7cd7a2720ec539ccbc375498e9f08f7d65",
+      "title": "Mistral AI 发布 Voxtral Small 24B 2507",
+      "category": "model",
+      "eventDate": "2025-10-30",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/voxtral-small-24b-2507"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "dca379c176f94a814f89e0766e0075e4d2d09d543659b7f35abe231ac584b8db",
+      "title": "OpenAI 发布 gpt-oss-safeguard-20b",
+      "category": "model",
+      "eventDate": "2025-10-29",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-oss-safeguard-20b"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "833fe175b976b982624bc91eb0cebddec6fac01efcb19e1c8626cc90ade1ee84",
+      "title": "MiniMax 发布 MiniMax M2",
+      "category": "model",
+      "eventDate": "2025-10-23",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/minimax/minimax-m2"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "03a1f4f49cf9ad17e0af60b9a99ad627dde4fbfa9ba36a1e613b7f8bc5097f34",
+      "title": "Anthropic 发布 Claude Haiku 4.5",
+      "category": "model",
+      "eventDate": "2025-10-15",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-4.5-haiku-20251001"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "9f5fd59f077fa3cf05f8eb1a1f8e625d47891d4a6800aab5d47fb95fc0757a7e",
+      "title": "Google 发布 Nano Banana (Gemini 2.5 Flash Image)",
+      "category": "model",
+      "eventDate": "2025-10-07",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-2.5-flash-image"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "eacc100772e9b7fcf90ba17f36aa09c05f3708c8f3f5d32105500100ba848274",
+      "title": "OpenAI 发布 GPT-5 Image Mini",
+      "category": "model",
+      "eventDate": "2025-10-06",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5-image-mini",
+        "https://openrouter.ai/openai/gpt-5-image",
+        "https://openrouter.ai/openai/gpt-5-pro-2025-10-06"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "226721effaba8cf0c876842445938a8d5dc53f1d625c58d73a74d829bd82f71b",
+      "title": "阿里云 Qwen 发布 Qwen3 VL 30B A3B Instruct",
+      "category": "model",
+      "eventDate": "2025-10-06",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-vl-8b-instruct",
+        "https://openrouter.ai/qwen/qwen3-vl-30b-a3b-instruct"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "da8bdc9989b75c047c1317450e9180a81c0975a1ac9263bb1d80bf12490894be",
+      "title": "阿里云 Qwen 发布 Qwen3 VL 30B A3B Thinking",
+      "category": "model",
+      "eventDate": "2025-10-06",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-vl-30b-a3b-thinking"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "4cba7047e2fa7309c9d48d144a8c5fb91f5409e188da10893d1a11fa9f882920",
+      "title": "Anthropic 发布 Claude Sonnet 4.5",
+      "category": "model",
+      "eventDate": "2025-09-29",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-4.5-sonnet-20250929"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "8d24a6f6d2eac7431a20223a93b79970ce4fe2968ac0497f3de453c31ef4828d",
+      "title": "DeepSeek 发布 DeepSeek V3.2 Exp",
+      "category": "model",
+      "eventDate": "2025-09-29",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-v3.2-exp"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "76d983818a4a5c07327832e7bbdcebe6ef2a271a502fabd200cc1a3f359c4b17",
+      "title": "阿里云 Qwen 发布 Qwen3 VL 235B A22B Instruct",
+      "category": "model",
+      "eventDate": "2025-09-23",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-vl-235b-a22b-instruct"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "3c62f141573cde568032b4a80376390e6a1bbf894a60b7c5f51b90d57a49a2c6",
+      "title": "DeepSeek 发布 DeepSeek V3.1 Terminus",
+      "category": "model",
+      "eventDate": "2025-09-22",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-v3.1-terminus"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "3e6b73284cb380b1e65ae018e22a2039e29c345be1a1fd67d09ae8a86c839a1b",
+      "title": "阿里云 Qwen 发布 Qwen3 Coder Flash",
+      "category": "model",
+      "eventDate": "2025-09-17",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-coder-flash"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "1ec7e610bbd82a318346c9e1c7f16f265a3f6891def51482ef60aa50b5f7c120",
+      "title": "阿里云 Qwen 发布 Qwen3 Next 80B A3B Thinking",
+      "category": "model",
+      "eventDate": "2025-09-11",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-next-80b-a3b-thinking-2509",
+        "https://openrouter.ai/qwen/qwen3-next-80b-a3b-instruct-2509"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "54feea0a0d7c26c002ec8b55a5bb95ed0a5538a435ec5f7cc27343d34da94b37",
+      "title": "DeepSeek 发布 DeepSeek V3.1",
+      "category": "model",
+      "eventDate": "2025-08-21",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-chat-v3.1"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "619b310dc84816a4e0da7d7a61266547bce5d41b2d2b9e6dfc8f1be46ecd4797",
+      "title": "Mistral AI 发布 Mistral Medium 3.1",
+      "category": "model",
+      "eventDate": "2025-08-13",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/mistral-medium-3.1"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "11d9a1bd99fa33e37aa8523185b4b8dcc330f5b5b93aadb7c59497391f34d8c3",
+      "title": "OpenAI 发布 GPT-5 Mini",
+      "category": "model",
+      "eventDate": "2025-08-07",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-5-2025-08-07",
+        "https://openrouter.ai/openai/gpt-5-mini-2025-08-07",
+        "https://openrouter.ai/openai/gpt-5-nano-2025-08-07"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "267bc3fac9f2a576517d8d786d30422a18a1c9bde5b3f41dc6b47f3c60a2674d",
+      "title": "Facebook 开源 dinov3-vitl16-pretrain-lvd1689m",
+      "category": "model",
+      "eventDate": "2025-08-06",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/facebook/dinov3-vitl16-pretrain-lvd1689m"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "602ebfe45c8f99c0ff3bf13684d3cf8276f61e1fcf716004b83416062f41d5c5",
+      "title": "Anthropic 发布 Claude Opus 4.1",
+      "category": "model",
+      "eventDate": "2025-08-05",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/anthropic/claude-4.1-opus-20250805"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "fdffdc44f520eeb7fa678f679eec7a6c1a4c076c92e2f4170b76706cfaf7c3ea",
+      "title": "OpenAI 发布 gpt-oss-120b",
+      "category": "model",
+      "eventDate": "2025-08-04",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 4,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-oss-120b",
+        "https://openrouter.ai/openai/gpt-oss-20b",
+        "https://huggingface.co/openai/gpt-oss-120b",
+        "https://huggingface.co/openai/gpt-oss-20b"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "Hugging Face",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "ae383dc564504b5451d8d7427068ecc5f7e8cb973c152ca27fcf1224545c8f90",
+      "title": "Mistral AI 发布 Codestral 2508",
+      "category": "model",
+      "eventDate": "2025-08-01",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/codestral-2508"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "a3bbfaabf2d71ffa0875e21218c6dea12fe56ac3c7985cb1fb4d6e8b6528f799",
+      "title": "阿里云 Qwen 发布 Qwen3 Coder 30B A3B Instruct",
+      "category": "model",
+      "eventDate": "2025-07-29",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-coder-30b-a3b-instruct",
+        "https://openrouter.ai/qwen/qwen3-30b-a3b-instruct-2507"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "b312b35b38cb3aaa871816a75842eb33e4f30cff8790e9b16efa9dd273bc0f9f",
+      "title": "阿里云 Qwen 发布 Qwen3 Coder 480B A35B",
+      "category": "model",
+      "eventDate": "2025-07-23",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-coder-480b-a35b-07-25"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "d85ae703fd3bebbf43a8f1915f6de3a8d856689f14f48061614c0e85bf4e5ba7",
+      "title": "字节跳动 发布 UI-TARS 7B",
+      "category": "model",
+      "eventDate": "2025-07-22",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/bytedance/ui-tars-1.5-7b"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "f34dadcf98f91cf77bc5f2ab311064b787d63578ee80f6190b1492a01c6c1b30",
+      "title": "Google 发布 Gemini 2.5 Flash Lite",
+      "category": "model",
+      "eventDate": "2025-07-22",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-2.5-flash-lite"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "3c31f01025d34f2c47cecb79f6d4241283b06cd8e430ce6cad0a2c5d28c7622c",
+      "title": "阿里云 Qwen 发布 Qwen3 235B A22B Thinking 2507",
+      "category": "model",
+      "eventDate": "2025-07-21",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-235b-a22b-thinking-2507",
+        "https://openrouter.ai/qwen/qwen3-235b-a22b-07-25"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "589453a8bbc3b0cf2844f3005331bf79cead94254306f596fbe4f503c2fb0bbe",
+      "title": "月之暗面 发布 Kimi K2 Thinking",
+      "category": "model",
+      "eventDate": "2025-07-11",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 4,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/moonshotai/kimi-k2-thinking-20251106",
+        "https://openrouter.ai/moonshotai/kimi-k2-0905",
+        "https://openrouter.ai/moonshotai/kimi-k2",
+        "https://huggingface.co/moonshotai/Kimi-K2-Instruct"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "44049e38e6f0f3961c4393a0f3ce1eda757100ae1daebebde46b99e90a690a7a",
+      "title": "腾讯 发布 Hunyuan A13B Instruct",
+      "category": "model",
+      "eventDate": "2025-07-08",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/tencent/hunyuan-a13b-instruct"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "8f933818877136e2377d785fec9c94c54a1bdd61299feabd99efcd10c84829bf",
+      "title": "Mistral AI 发布 Mistral Small 3.2 24B",
+      "category": "model",
+      "eventDate": "2025-06-20",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/mistral-small-3.2-24b-instruct-2506"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "335d27182e72e1b6c68982e9c42af19b6c06ab33629d5a6d564b1aeca677726d",
+      "title": "MiniMax 发布 MiniMax M1",
+      "category": "model",
+      "eventDate": "2025-06-17",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/minimax/minimax-m1"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "425d8a6199f90704113ed8a2375080c1e7ab492c35d71af87f06c5907f7ad24f",
+      "title": "OpenAI 发布 o3 Pro",
+      "category": "model",
+      "eventDate": "2025-06-10",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/o3-pro-2025-06-10"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "22e0a826bb88977d46bb8eab5f82226384cfc1ecb3a54697216265621f11d613",
+      "title": "Google 发布 Gemini 2.5 Pro Preview 06-05",
+      "category": "model",
+      "eventDate": "2025-06-05",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemini-2.5-flash",
+        "https://openrouter.ai/google/gemini-2.5-pro",
+        "https://openrouter.ai/google/gemini-2.5-pro-preview-06-05"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "35f0fb4e005a64977762511ab03076e61b2203b46bb95f7952ed15d532024250",
+      "title": "Mistral AI 发布 Mistral Medium 3",
+      "category": "model",
+      "eventDate": "2025-05-07",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/mistral-medium-3"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "94692bc13f4391acde7945694fb46ee13ff7af4bc5c3995a3e590d56c5e3ee86",
+      "title": "Meta 发布 Llama Guard 4 12B",
+      "category": "model",
+      "eventDate": "2025-04-30",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta-llama/llama-guard-4-12b"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "78cf2ebe699f3b524a402baa2c732bf50b298c55f42cd1a8adf2133d5fa2e3fe",
+      "title": "阿里云 Qwen 发布 Qwen3 30B A3B",
+      "category": "model",
+      "eventDate": "2025-04-28",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-30b-a3b-04-28"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "5cfc492ecd418beeebb74a9884b075689e6b855581a94ea1164814772768f6b6",
+      "title": "阿里云 Qwen 发布 Qwen3 14B",
+      "category": "model",
+      "eventDate": "2025-04-28",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-14b-04-28"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "3563671d0ffb8764143b2f617a0e0a9bebd4a3a3a6380e34b78fa560fdf4cdc2",
+      "title": "阿里云 Qwen 发布 Qwen3 32B",
+      "category": "model",
+      "eventDate": "2025-04-28",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen3-32b-04-28"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "556d3b88ecfa5c1dd832b7c8fc46e8297a3e7a342eda5cd2a30bda3e21c411a3",
+      "title": "OpenAI 发布 o4 Mini High",
+      "category": "model",
+      "eventDate": "2025-04-16",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/o4-mini-high-2025-04-16",
+        "https://openrouter.ai/openai/o4-mini-2025-04-16"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "00bafc88879ac58c0f20d0dc46a33d2ac621fe72af934ca311f8201a4ba0978b",
+      "title": "OpenAI 发布 o3",
+      "category": "model",
+      "eventDate": "2025-04-16",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/o3-2025-04-16"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "19c2b68580fda64425748fc48a231b84ee8da73dbfb33c2bbf06a6342fc1a83d",
+      "title": "Pyannote 开源 speaker-diarization-community-1",
+      "category": "model",
+      "eventDate": "2025-04-15",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/pyannote/speaker-diarization-community-1"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "80062a61e79f6925422b3a4ac44929590e7a0e460acf5faca874976546c2798b",
+      "title": "OpenAI 发布 GPT-4.1 Mini",
+      "category": "model",
+      "eventDate": "2025-04-14",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-4.1-2025-04-14",
+        "https://openrouter.ai/openai/gpt-4.1-mini-2025-04-14",
+        "https://openrouter.ai/openai/gpt-4.1-nano-2025-04-14"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "6889ace9f8527bb537553903a9384edd389f68cb8d0164a8dbf57348cebf4241",
+      "title": "Meta 发布 Llama 4 Maverick",
+      "category": "model",
+      "eventDate": "2025-04-05",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta-llama/llama-4-maverick-17b-128e-instruct",
+        "https://openrouter.ai/meta-llama/llama-4-scout-17b-16e-instruct"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "84f51f37184c899e785ad4e542e67bf5569d7c798d17e9a8418d23e9332e03dd",
+      "title": "DeepSeek 发布 DeepSeek V3 0324",
+      "category": "model",
+      "eventDate": "2025-03-24",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 2,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-chat-v3-0324",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V3-0324"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "f97046c8e2ec1fed6c186010903b30678c86ec1adecccd8f22db7809482f5e26",
+      "title": "OpenAI 发布 o1-pro",
+      "category": "model",
+      "eventDate": "2025-03-19",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/o1-pro"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "833e97f9fea5483a6b7162419838a08862170c05a45aa1fd07ea13adcef348fd",
+      "title": "Mistral AI 发布 Mistral Small 3.1 24B",
+      "category": "model",
+      "eventDate": "2025-03-17",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/mistral-small-3.1-24b-instruct-2503"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "f8d31f3498bc7e2b8d7c0b1db28b98f862595aa38663291608050808920124e4",
+      "title": "Cohere 发布 Command A",
+      "category": "model",
+      "eventDate": "2025-03-13",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/cohere/command-a-03-2025"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "2623a9ad4b596fc823158974ecabc686cadba3f971603f596c6efc28a5684a88",
+      "title": "Google 发布 Gemma 3 12B",
+      "category": "model",
+      "eventDate": "2025-03-12",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemma-3-4b-it",
+        "https://openrouter.ai/google/gemma-3-12b-it",
+        "https://openrouter.ai/google/gemma-3-27b-it"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "23b3bc3f6c3193836d5967efe4585515e2f537b612271d0035e812a48f7bd020",
+      "title": "Perplexity 发布 Sonar Reasoning Pro",
+      "category": "model",
+      "eventDate": "2025-03-07",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/perplexity/sonar-reasoning-pro",
+        "https://openrouter.ai/perplexity/sonar-pro"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "5cb5fa7249792ffda2e994caa8033c04f0de25e4821f8b607179d24baf2a7a7e",
+      "title": "Perplexity 发布 Sonar Deep Research",
+      "category": "model",
+      "eventDate": "2025-03-07",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/perplexity/sonar-deep-research"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "ff1bd7d37a49a8ac94126ed4403720f85f7f9e745a7cd73728d3e3310792059f",
+      "title": "阿里云 Qwen 开源 QwQ-32B",
+      "category": "model",
+      "eventDate": "2025-03-05",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/Qwen/QwQ-32B"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "d17d6edbcdf5cc27a06db775249df2981b357ef9746f6f005333f334a36a55e3",
+      "title": "Mistral AI 发布 Saba",
+      "category": "model",
+      "eventDate": "2025-02-17",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/mistral-saba-2502"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "8c84f6ed039227f16649d75d9e8cde5d8956cb3a4e41145af63e6125345c8739",
+      "title": "OpenAI 发布 o3 Mini High",
+      "category": "model",
+      "eventDate": "2025-02-12",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/o3-mini-high-2025-01-31"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "07c02e07ddd5b7bed5b57abda4d4003b1514019f3180360b6ac89d3b0bc63d30",
+      "title": "阿里云 Qwen 发布 Qwen2.5 VL 72B Instruct",
+      "category": "model",
+      "eventDate": "2025-02-01",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen2.5-vl-72b-instruct"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "02df47fa17a6acb37486093e811e59c18cb48f67272e989310f2ffc409425775",
+      "title": "阿里云 Qwen 发布 Qwen-Plus",
+      "category": "model",
+      "eventDate": "2025-02-01",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen-plus-2025-01-25"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "97914eae95b1de565fbe47f9df8ff067746233924e2872e44121e2b0a3fca648",
+      "title": "OpenAI 发布 o3 Mini",
+      "category": "model",
+      "eventDate": "2025-01-31",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/o3-mini-2025-01-31"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "994aeb881aade2ad42c07d2c285fcc1c9e58ee23ef838ee722a434b4454eacd9",
+      "title": "Mistral AI 发布 Mistral Small 3",
+      "category": "model",
+      "eventDate": "2025-01-30",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/mistral-small-24b-instruct-2501"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "f402af7fd9feb48f86761ae3f581da8dc006d29ee1ae2125f4ea7a0f60d40baf",
+      "title": "Perplexity 发布 Sonar",
+      "category": "model",
+      "eventDate": "2025-01-27",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/perplexity/sonar"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "b29d5f670610ada452dc765c95ce24788d38d8a9f226e9adecfd8887e37de779",
+      "title": "DeepSeek 发布 R1 0528",
+      "category": "model",
+      "eventDate": "2025-01-20",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 3,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-r1-0528",
+        "https://huggingface.co/deepseek-ai/DeepSeek-R1",
+        "https://huggingface.co/deepseek-ai/DeepSeek-R1-0528"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "47ced1c965e3b7fcab83eb1000b9eadfe6ecb621f58a25f533dd07c9a4804c6a",
+      "title": "MiniMax 发布 MiniMax-01",
+      "category": "model",
+      "eventDate": "2025-01-15",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/minimax/minimax-01"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "c1cbbb19f34f20dff510bc4cae93ec49abbd4e245d7c4c699622efd0aa80bf6d",
+      "title": "DeepSeek 发布 DeepSeek V3",
+      "category": "model",
+      "eventDate": "2024-12-25",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 2,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/deepseek/deepseek-chat-v3",
+        "https://huggingface.co/deepseek-ai/DeepSeek-V3"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "3e0d13f4da4f360b76c65e97f914097b7ce35a666d406e9727ce0fa8fa1d0764",
+      "title": "OpenAI 发布 o1",
+      "category": "model",
+      "eventDate": "2024-12-17",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/o1-2024-12-17"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "ffc8c944d39735d2b8acc0fa203d9cb85ba7890bb6eb38f7b5ddd8fa9d3874c1",
+      "title": "Cohere 发布 Command R7B (12-2024)",
+      "category": "model",
+      "eventDate": "2024-12-14",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/cohere/command-r7b-12-2024"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "3681cea55e91de75ceb69aaadd1335277f48b69394effd051f08f259181a31e5",
+      "title": "Microsoft 发布 Phi 4",
+      "category": "model",
+      "eventDate": "2024-12-11",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 2,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/microsoft/phi-4",
+        "https://huggingface.co/microsoft/phi-4"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "af2343ccdcc10415c7e212d91a5240a7e16465f580cc3549da71e6d3e5a47b34",
+      "title": "Amazon 发布 Nova Lite 1.0",
+      "category": "model",
+      "eventDate": "2024-12-05",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/amazon/nova-lite-v1",
+        "https://openrouter.ai/amazon/nova-micro-v1",
+        "https://openrouter.ai/amazon/nova-pro-v1"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "5f2bfc15a5312a20b8760a4a48b0cb2ceb392c7c0268735779a9ef7a6c61f789",
+      "title": "Meta 发布 Llama 3.3 70B Instruct",
+      "category": "model",
+      "eventDate": "2024-11-26",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 2,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta-llama/llama-3.3-70b-instruct",
+        "https://huggingface.co/meta-llama/Llama-3.3-70B-Instruct"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "6e3a066b6d7cc1a4fe44a99ac90ae98ac73f9ce7026a5ad9fbb18e94ecf239ed",
+      "title": "阿里云 Qwen 发布 Qwen2.5 Coder 32B Instruct",
+      "category": "model",
+      "eventDate": "2024-11-11",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen-2.5-coder-32b-instruct"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "e81e6157d03352258a41c416f9147b5996813df5f9bbb185668c24a565f3d1f9",
+      "title": "阿里云 Qwen 发布 Qwen2.5 7B Instruct",
+      "category": "model",
+      "eventDate": "2024-10-16",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen-2.5-7b-instruct"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "eda366e509b052a9eb1780a03c095e4cc2c0d8215c19e4b109bdf8321734ce48",
+      "title": "阿里云 Qwen 发布 Qwen2.5 72B Instruct",
+      "category": "model",
+      "eventDate": "2024-09-19",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/qwen/qwen-2.5-72b-instruct"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "dee457282741f0604f00a633583ad158a711c41e53ec211f0ea643e199ab04f3",
+      "title": "Meta 发布 Llama 3.2 3B Instruct",
+      "category": "model",
+      "eventDate": "2024-09-18",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 4,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta-llama/llama-3.2-1b-instruct",
+        "https://openrouter.ai/meta-llama/llama-3.2-3b-instruct",
+        "https://huggingface.co/meta-llama/Llama-3.2-3B-Instruct",
+        "https://huggingface.co/meta-llama/Llama-3.2-1B"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "Hugging Face",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "464db971285f44abb451876c2179bd7d0482de60f8f2011efa9edfdb1951ca3b",
+      "title": "阿里云 Qwen 开源 Qwen2.5-7B-Instruct",
+      "category": "model",
+      "eventDate": "2024-09-16",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/Qwen/Qwen2.5-7B-Instruct"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "071604186914a3ac8c26e6af5c1c1e27ded9cf2cac3ba5711ec28bfb635c02a7",
+      "title": "Cohere 发布 Command R+ (08-2024)",
+      "category": "model",
+      "eventDate": "2024-08-30",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/cohere/command-r-08-2024",
+        "https://openrouter.ai/cohere/command-r-plus-08-2024"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "3104a875723ee4d3723328e822860d902fe48d3053b7d4d037b9abf2bdfec6a0",
+      "title": "Mistral AI 发布 Mistral Nemo",
+      "category": "model",
+      "eventDate": "2024-07-19",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/mistral-nemo"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "fe728f3105bcf4dacd8affb0ab72c6d57216811f81937da68e18538fe850de6d",
+      "title": "OpenAI 发布 GPT-4o-mini (2024-07-18)",
+      "category": "model",
+      "eventDate": "2024-07-18",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-4o-mini",
+        "https://openrouter.ai/openai/gpt-4o-mini-2024-07-18"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "0d2ce963d1c951d7cae5ca19d4111e63c733c2ca14cd2ec12b19828eb36e6e82",
+      "title": "Meta 发布 Llama 3.1 70B Instruct",
+      "category": "model",
+      "eventDate": "2024-07-14",
+      "importance": 68,
+      "confidence": "verified",
+      "sourceCount": 4,
+      "families": [
+        "openrouter",
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/meta-llama/llama-3.1-70b-instruct",
+        "https://openrouter.ai/meta-llama/llama-3.1-8b-instruct",
+        "https://huggingface.co/meta-llama/Llama-3.1-8B-Instruct",
+        "https://huggingface.co/meta-llama/Llama-3.1-8B"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "Hugging Face",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "e54ea60a445010dfd4257bb9574645946eeaa778d68f31c8ff735f2cef9dfb62",
+      "title": "Google 发布 Gemma 2 27B",
+      "category": "model",
+      "eventDate": "2024-07-13",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/google/gemma-2-27b-it"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "b835ad4d40f1a5e107debd96ab65ab435703786102e43252480043bf3283ff79",
+      "title": "OpenAI 发布 GPT-4o (2024-11-20)",
+      "category": "model",
+      "eventDate": "2024-05-13",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 4,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-4o-2024-11-20",
+        "https://openrouter.ai/openai/gpt-4o-2024-08-06",
+        "https://openrouter.ai/openai/gpt-4o",
+        "https://openrouter.ai/openai/gpt-4o-2024-05-13"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "3ba53b977cec7c6b75a60fc969afc13f1fdc225f79bdad73d68c6f0983a92d7c",
+      "title": "Mistral AI 发布 Mixtral 8x22B Instruct",
+      "category": "model",
+      "eventDate": "2024-04-17",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/mixtral-8x22b-instruct"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "ce9db61c0972003ebf1e3059df1ab91e761aa6e9663473da73e5738fe42c7437",
+      "title": "Meta 开源 Meta-Llama-3-8B-Instruct",
+      "category": "model",
+      "eventDate": "2024-04-17",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 2,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/meta-llama/Meta-Llama-3-8B",
+        "https://huggingface.co/meta-llama/Meta-Llama-3-8B-Instruct"
+      ],
+      "evidenceNames": [
+        "Hugging Face",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "885663b9745673f2bdb1a56184f81e12c98410ac7789682da8bbe20811813326",
+      "title": "OpenAI 发布 GPT-4 Turbo",
+      "category": "model",
+      "eventDate": "2024-04-09",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-4-turbo"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "d36463c8ef855511234a08c8d8b081950e975ef729dfdfeb6ae1db53a5384dfb",
+      "title": "Xai Org 开源 grok-1",
+      "category": "model",
+      "eventDate": "2024-03-17",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/xai-org/grok-1"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "6d22acaaf5e4e3bbd7d220aceb4d5c7523bb3f24b8282ead4d9f86cd1dbb8bab",
+      "title": "Mistral AI 发布 Mistral Large 3 2512",
+      "category": "model",
+      "eventDate": "2024-02-26",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 6,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/mistralai/ministral-14b-2512",
+        "https://openrouter.ai/mistralai/ministral-8b-2512",
+        "https://openrouter.ai/mistralai/ministral-3b-2512",
+        "https://openrouter.ai/mistralai/mistral-large-2512",
+        "https://openrouter.ai/mistralai/mistral-large-2407",
+        "https://openrouter.ai/mistralai/mistral-large"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "943f2e20321616c76d09d41d0b84a02e177014e00da144c91d2e462a1ba20b31",
+      "title": "Google 开源 gemma-7b",
+      "category": "model",
+      "eventDate": "2024-02-08",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/google/gemma-7b"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "0ca7247e71902116b9838451b4cfb42770583a15959be9c1167a8774f6fd4213",
+      "title": "Microsoft 开源 phi-2",
+      "category": "model",
+      "eventDate": "2023-12-13",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/microsoft/phi-2"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "01fb7ea017f4bd0949f21812d00fedcd413e1f84b6dd742b90558089e4ec05d7",
+      "title": "Mistral AI 开源 Mistral-7B-Instruct-v0.2",
+      "category": "model",
+      "eventDate": "2023-12-11",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/mistralai/Mistral-7B-Instruct-v0.2"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "b0f3ce24f750b579605ce19fb3e6143c1cc6a57ab68052a44774a57de618d071",
+      "title": "Mistral AI 开源 Mistral-7B-v0.1",
+      "category": "model",
+      "eventDate": "2023-09-20",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/mistralai/Mistral-7B-v0.1"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "a698797cad3bf82f97387d2d40c81daa034a51d5564da6a5bc8efea041bb5cac",
+      "title": "OpenAI 发布 GPT-3.5 Turbo 16k",
+      "category": "model",
+      "eventDate": "2023-08-28",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-3.5-turbo-16k"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "d8399e3ae65a9fa060ee3ea9125ae89f7c4ed6d34c6a86512c65496b52f3f517",
+      "title": "Meta 开源 Llama-2-7b-chat-hf",
+      "category": "model",
+      "eventDate": "2023-07-09",
+      "importance": 43,
+      "confidence": "single",
+      "sourceCount": 4,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/meta-llama/Llama-2-7b-chat-hf",
+        "https://huggingface.co/meta-llama/Llama-2-7b",
+        "https://huggingface.co/meta-llama/Llama-2-7b-hf",
+        "https://huggingface.co/meta-llama/Llama-2-70b-chat-hf"
+      ],
+      "evidenceNames": [
+        "Hugging Face",
+        "Hugging Face",
+        "Hugging Face",
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "50db5aef55920bfec621f694d14c1ccf6b2d853e09b37f3d3f5f3a2467922b29",
+      "title": "OpenAI 发布 GPT-3.5 Turbo (older v0613)",
+      "category": "model",
+      "eventDate": "2023-05-28",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 3,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-3.5-turbo-0613",
+        "https://openrouter.ai/openai/gpt-3.5-turbo-instruct",
+        "https://openrouter.ai/openai/gpt-3.5-turbo"
+      ],
+      "evidenceNames": [
+        "OpenRouter",
+        "OpenRouter",
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "4c374eb1a3439f42c87060cac365a6de0612ca0dae5b797cf8c96f541afdd400",
+      "title": "OpenAI 发布 GPT-4",
+      "category": "model",
+      "eventDate": "2023-05-28",
+      "importance": 35,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "openrouter"
+      ],
+      "evidenceUrls": [
+        "https://openrouter.ai/openai/gpt-4"
+      ],
+      "evidenceNames": [
+        "OpenRouter"
+      ]
+    },
+    {
+      "fingerprint": "b517d1edabb79b7a55f9b51c1bcd11b5a61a7f7456967c527cf89a798ba0278d",
+      "title": "Tiiuae 开源 falcon-40b",
+      "category": "model",
+      "eventDate": "2023-05-24",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/tiiuae/falcon-40b"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "9ca19e814882c6eebc274f0e533d863bd10987388a81afe44d70b4f18ef545d4",
+      "title": "Bigcode 开源 starcoder",
+      "category": "model",
+      "eventDate": "2023-04-24",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/bigcode/starcoder"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "bd63c9edaafa00bb7c45a6830906d737ebfefd392d043a5fd4c3228ab394297f",
+      "title": "Bigscience 开源 bloom",
+      "category": "model",
+      "eventDate": "2022-05-19",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/bigscience/bloom"
+      ],
+      "evidenceNames": [
+        "Hugging Face"
+      ]
+    },
+    {
+      "fingerprint": "aaf754683b93a18f4db92a1ebc4abdcd19291ec9fa227d77514c74802ae78562",
+      "title": "Openai Community 开源 gpt2",
+      "category": "model",
+      "eventDate": "2022-03-02",
+      "importance": 28,
+      "confidence": "single",
+      "sourceCount": 1,
+      "families": [
+        "huggingface"
+      ],
+      "evidenceUrls": [
+        "https://huggingface.co/openai-community/gpt2"
       ],
       "evidenceNames": [
         "Hugging Face"

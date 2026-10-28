@@ -9,7 +9,7 @@ import { StatusPill } from "../components/StatusPill";
 import { useShell } from "../components/AppShell";
 import { useResource } from "../hooks/useResource";
 import { navigate, useHashRoute } from "../router";
-import { duration, formatCount, relativeTime, stamp } from "../format";
+import { duration, formatCount, relativeTime, stamp, triggerLabel } from "../format";
 import { RunDetail } from "./RunDetail";
 
 /**
@@ -43,7 +43,7 @@ export function Runs() {
         <span className="flex items-center gap-1.5">
           <StatusPill status={run.status} dot={run.status === "running"} />
           <span className="text-[10px] text-[var(--c-text-mute)]">
-            {run.trigger === "manual" ? "手动" : "定时"}
+            {triggerLabel(run.trigger)}
           </span>
         </span>
       ),

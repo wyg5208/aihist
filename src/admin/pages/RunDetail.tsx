@@ -4,7 +4,7 @@ import { Button, Card } from "../components/Field";
 import { ErrorState, TableSkeleton } from "../components/EmptyState";
 import { StatusPill } from "../components/StatusPill";
 import { useResource } from "../hooks/useResource";
-import { clock, duration, formatCount, ratio, relativeTime, stamp } from "../format";
+import { clock, duration, formatCount, ratio, relativeTime, stamp, triggerLabel } from "../format";
 
 /**
  * One run, in full.
@@ -81,7 +81,7 @@ export function RunDetail({ runId }: { runId: string }) {
       <div className="flex flex-wrap items-center gap-2">
         <StatusPill status={run.status} dot={run.status === "running"} />
         <span className="text-[11px] text-[var(--c-text-dim)]">
-          {run.trigger === "manual" ? "手动触发" : "定时触发"}
+          {triggerLabel(run.trigger)}触发
         </span>
         <span className="num text-[10px] text-[var(--c-text-mute)]">
           {stamp(run.startedAt)}

@@ -51,8 +51,15 @@ DEFAULT_TIMEOUT_MS = 90000
 # 1800 left no headroom once a vendor ignored the thinking switch. The 90s guard
 # is sized on the slowest vendor: glm-4.7 answered a full ballot in 34s and 58s
 # on two runs, and httpx raises its read timeout with an empty message, which is
-# why `ask` classifies by exception type rather than by text.
+# why `ask_ballot` classifies by exception type rather than by text.
 MAX_COMPLETION_TOKENS = 2400
+
+# How many candidates one ballot may carry. The token ceiling above is sized for
+# exactly one ballot, and every vote has to sit inside the same JSON object. A
+# 150-candidate ballot is cut off mid-object, fails to parse, and `judge_batch`
+# files the whole batch as `invalid_json` — which is why a history sweep has to
+# split its queue rather than raise the ceiling.
+BALLOT_SIZE = 24
 
 
 def candidate_payload(candidate: Candidate) -> dict[str, Any]:
@@ -226,10 +233,49 @@ async def judge_batch(
     post: "Any | None" = None,
     timeout_ms: int = DEFAULT_TIMEOUT_MS,
 ) -> list[dict[str, Any]]:
-    """Ask every judge for a ballot; any failure becomes an empty ballot."""
+    """Ask every judge for a ballot; any failure becomes an empty ballot.
+
+    The queue is split into `BALLOT_SIZE` slices and the ballots are merged, so
+    a caller may hand over the whole history sweep at once. A slice that fails
+    only costs its own votes: the rest of that judge's ballot still counts.
+    """
 
     if not candidates:
         return []
+    chunks = [
+        candidates[index : index + BALLOT_SIZE]
+        for index in range(0, len(candidates), BALLOT_SIZE)
+    ]
+
+    async def ask(judge: dict[str, Any]) -> dict[str, Any]:
+        merged: dict[str, Any] = {
+            "slot": judge["slot"],
+            "model": judge["model"],
+            "ok": False,
+            "error": None,
+            "reviews": {},
+        }
+        for chunk in chunks:
+            ballot = await ask_ballot(judge, chunk, post=post, timeout_ms=timeout_ms)
+            if ballot["ok"]:
+                merged["ok"] = True
+                merged["reviews"].update(ballot["reviews"])
+            elif merged["error"] is None:
+                merged["error"] = ballot["error"]
+        return merged
+
+    return list(await asyncio.gather(*(ask(judge) for judge in judges)))
+
+
+async def ask_ballot(
+    judge: dict[str, Any],
+    candidates: list[Candidate],
+    *,
+    post: "Any | None" = None,
+    timeout_ms: int = DEFAULT_TIMEOUT_MS,
+) -> dict[str, Any]:
+    """One ballot for one slice of the queue."""
+
     ids = {candidate["fingerprint"] for candidate in candidates if candidate.get("fingerprint")}
     payload = [candidate_payload(candidate) for candidate in candidates]
     body = {
@@ -237,53 +283,50 @@ async def judge_batch(
         "candidates": payload,
     }
 
-    async def ask(judge: dict[str, Any]) -> dict[str, Any]:
-        url = f"{str(judge['base']).rstrip('/')}/chat/completions"
-        request: dict[str, Any] = {
-            "model": judge["model"],
-            "max_tokens": MAX_COMPLETION_TOKENS,
-            "messages": [
-                {"role": "system", "content": PANEL_SYSTEM_PROMPT},
-                {"role": "user", "content": json.dumps(body, ensure_ascii=False)},
-            ],
-        }
-        # `None` means the vendor rejects the field outright (kimi-k2.5 accepts
-        # only 1.0 or 0.6), so it is omitted rather than defaulted.
-        temperature = judge.get("temperature")
-        if temperature is not None:
-            request["temperature"] = temperature
-        request.update(judge.get("extra") or {})
-        try:
-            if post is None:
-                response = await httpx_post(url, judge["key"], request, timeout_ms)
-            else:
-                response = await asyncio.wait_for(
-                    post(url, judge["key"], request, timeout_ms), timeout=timeout_ms / 1000
-                )
-        except asyncio.TimeoutError:
-            return _failure(judge, "timeout")
-        except Exception as error:  # noqa: BLE001 - a judge outage is data
-            # httpx timeouts carry no message (`ReadTimeout('')`), so the type
-            # name is the reliable signal; the text check covers wrappers.
-            name = type(error).__name__.lower()
-            message = str(error).lower()
-            timed_out = "timeout" in name or "timeout" in message or "timed out" in message
-            return _failure(judge, "timeout" if timed_out else "network")
+    url = f"{str(judge['base']).rstrip('/')}/chat/completions"
+    request: dict[str, Any] = {
+        "model": judge["model"],
+        "max_tokens": MAX_COMPLETION_TOKENS,
+        "messages": [
+            {"role": "system", "content": PANEL_SYSTEM_PROMPT},
+            {"role": "user", "content": json.dumps(body, ensure_ascii=False)},
+        ],
+    }
+    # `None` means the vendor rejects the field outright (kimi-k2.5 accepts
+    # only 1.0 or 0.6), so it is omitted rather than defaulted.
+    temperature = judge.get("temperature")
+    if temperature is not None:
+        request["temperature"] = temperature
+    request.update(judge.get("extra") or {})
+    try:
+        if post is None:
+            response = await httpx_post(url, judge["key"], request, timeout_ms)
+        else:
+            response = await asyncio.wait_for(
+                post(url, judge["key"], request, timeout_ms), timeout=timeout_ms / 1000
+            )
+    except asyncio.TimeoutError:
+        return _failure(judge, "timeout")
+    except Exception as error:  # noqa: BLE001 - a judge outage is data
+        # httpx timeouts carry no message (`ReadTimeout('')`), so the type
+        # name is the reliable signal; the text check covers wrappers.
+        name = type(error).__name__.lower()
+        message = str(error).lower()
+        timed_out = "timeout" in name or "timeout" in message or "timed out" in message
+        return _failure(judge, "timeout" if timed_out else "network")
 
-        status, data = response
-        if status >= 400:
-            return _failure(judge, f"http_{status}")
+    status, data = response
+    if status >= 400:
+        return _failure(judge, f"http_{status}")
+    content = None
+    try:
+        content = data["choices"][0]["message"]["content"]
+    except (KeyError, IndexError, TypeError):
         content = None
-        try:
-            content = data["choices"][0]["message"]["content"]
-        except (KeyError, IndexError, TypeError):
-            content = None
-        reviews = parse_judge_content(content, ids)
-        if reviews is None:
-            return _failure(judge, "invalid_json")
-        return {"slot": judge["slot"], "model": judge["model"], "ok": True, "error": None, "reviews": reviews}
-
-    return list(await asyncio.gather(*(ask(judge) for judge in judges)))
+    reviews = parse_judge_content(content, ids)
+    if reviews is None:
+        return _failure(judge, "invalid_json")
+    return {"slot": judge["slot"], "model": judge["model"], "ok": True, "error": None, "reviews": reviews}
 
 
 def _failure(judge: dict[str, Any], error: str) -> dict[str, Any]:
@@ -380,6 +423,8 @@ def aggregate_reviews(
         "failures": [
             {"judge": result["slot"], "model": result["model"], "error": result["error"]}
             for result in results
-            if not result["ok"]
+            # A merged ballot can be partly answered: `ok` is True as long as one
+            # slice parsed, and `error` still names the slice that did not.
+            if not result["ok"] or result.get("error")
         ],
     }

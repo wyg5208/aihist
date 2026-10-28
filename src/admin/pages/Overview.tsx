@@ -15,6 +15,7 @@ import {
   relativeTime,
   stamp,
   statusLabel,
+  triggerLabel,
 } from "../format";
 
 /**
@@ -267,7 +268,7 @@ export function Overview() {
                         {stamp(run.startedAt)}
                       </span>
                       <span className="text-[10px] text-[var(--c-text-mute)]">
-                        {run.trigger === "manual" ? "手动" : "定时"}
+                        {triggerLabel(run.trigger)}
                       </span>
                     </span>
                     <span className="num flex-none text-[10px] text-[var(--c-text-mute)]">

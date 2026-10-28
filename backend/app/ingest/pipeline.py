@@ -48,6 +48,23 @@ MAX_FETCH_CONCURRENCY = 6
 RECENT_YEAR_SPAN = 2
 SUMMARY_TIMEOUT_MS = 8_000
 
+# How many candidates one source may contribute before the raw cap applies.
+# A daily run only needs the newest few from a catalogue that never changes
+# shape (OpenRouter returns hundreds of models every time); a backfill run has
+# to see everything or the 41st model never gets a slot.
+PER_SOURCE_CAP = 40
+
+# The year a backfill's duplicate check starts from. A widening of the window
+# is worthless if clustering cannot see 2023 events and inserts them twice.
+HISTORY_MIN_YEAR = 1900
+
+# `load_recent_events` returns the *newest* rows, so the daily limit keeps
+# exactly the wrong subset for a history sweep: the 2023 records it is trying
+# to recover are the first to fall off the end. 5,000 rows against ~1,000
+# candidates measures out at ~25 s in `cluster_candidates`, well inside the
+# backfill's 30-minute budget.
+HISTORY_EVENT_LIMIT = 5_000
+
 SUMMARY_PROMPT = (
     "你是 AI 编年史的编辑。为给定事件写一句简洁、只陈述事实的中文摘要，不要推测。"
     '输出 JSON：{"items":[{"id":"...","summary":"..."}]}'
@@ -96,12 +113,18 @@ def _unique(values: list[Any]) -> list[Any]:
     return out
 
 
-def interleave_candidates(candidates: list[dict[str, Any]], limit: int) -> list[dict[str, Any]]:
+def interleave_candidates(
+    candidates: list[dict[str, Any]],
+    limit: int,
+    per_source: int | None = PER_SOURCE_CAP,
+) -> list[dict[str, Any]]:
     """Round-robin across sources before the raw cap is applied.
 
     OpenRouter alone returns hundreds of models; a plain slice would spend the
     whole run budget on one source and drop every feed, including the domestic
-    outlets.
+    outlets. `per_source=None` disables the per-source slice, which is what a
+    backfill needs: the same forty rows would win the slot on every run and the
+    rest of the catalogue would never be reached.
     """
     groups: dict[str, list[dict[str, Any]]] = {}
     for candidate in candidates:
@@ -111,7 +134,7 @@ def interleave_candidates(candidates: list[dict[str, Any]], limit: int) -> list[
         key = source_key or (candidate.get("key") or "").split(":")[0] or "other"
         groups.setdefault(key, []).append(candidate)
 
-    queues = [rows[:40] for rows in groups.values()]
+    queues = [rows[:per_source] if per_source else list(rows) for rows in groups.values()]
     out: list[dict[str, Any]] = []
     added = True
     while len(out) < limit and added:
@@ -515,6 +538,10 @@ async def run_sync(
     fetch_budget_ms: int = DEFAULT_FETCH_BUDGET_MS,
     concurrency: int = MAX_FETCH_CONCURRENCY,
     raw_cap: int | None = None,
+    per_source: int | None = PER_SOURCE_CAP,
+    new_event_cap: int = MAX_NEW_EVENTS,
+    panel_batch: int = MAX_PANEL_ITEMS,
+    history_min_year: int | None = None,
 ) -> dict[str, Any]:
     """One synchronisation run. Never exposes payloads, SQL or credentials."""
     env = env or {}
@@ -625,7 +652,7 @@ async def run_sync(
             notes.append("source_health_failed")
 
         candidates_all = normalized["candidates"]
-        candidates = interleave_candidates(candidates_all, raw_cap)
+        candidates = interleave_candidates(candidates_all, raw_cap, per_source=per_source)
 
         # ----- ledger, first flush ------------------------------------------
         # Everything we saw is written *before* any verdict, so a run that dies
@@ -655,8 +682,13 @@ async def run_sync(
         except Exception:  # noqa: BLE001 - bookkeeping never changes a verdict
             notes.append("ledger_failed")
 
+        existing_limit = max(600, new_event_cap * 4)
+        if history_min_year is not None:
+            existing_limit = max(existing_limit, HISTORY_EVENT_LIMIT)
         existing_rows = await repo_events.load_recent_events(
-            session, now.year - RECENT_YEAR_SPAN, 600
+            session,
+            history_min_year if history_min_year is not None else now.year - RECENT_YEAR_SPAN,
+            existing_limit,
         )
         clustered = cluster_candidates(candidates, existing_rows)
         items = clustered["items"]
@@ -684,13 +716,15 @@ async def run_sync(
 
         existing_by_id = {row.id: row for row in existing_rows}
         fresh_items = [item for item in items if not item.get("existingId")]
-        over_cap = fresh_items[MAX_NEW_EVENTS:]
+        # A backfill raises this: its whole point is to admit more than a day of
+        # news in one pass.
+        over_cap = fresh_items[new_event_cap:]
         for item in over_cap:
             ledger.set_verdict(
                 item, status="dropped", stage="cap", reason_code="cap_events"
             )
         ledger.bump("overEventCap", len(over_cap))
-        fresh_all = fresh_items[:MAX_NEW_EVENTS]
+        fresh_all = fresh_items[:new_event_cap]
         changed_updates = []
         for item in updates:
             row = existing_by_id.get(item.get("existingId"))
@@ -849,8 +883,8 @@ async def run_sync(
                     )
 
             panel_queue.sort(key=lambda entry: (0 if entry["kind"] == "new" else 1, -entry["assessment"]["score"]))
-            batch = panel_queue[:MAX_PANEL_ITEMS]
-            deferred = panel_queue[MAX_PANEL_ITEMS:]
+            batch = panel_queue[:panel_batch]
+            deferred = panel_queue[panel_batch:]
             for entry in deferred:
                 held_count += 1
                 ledger.set_verdict(
@@ -858,7 +892,7 @@ async def run_sync(
                     status="held",
                     stage="panel",
                     reason_code="deferred",
-                    reason_text=f"超出单批 {MAX_PANEL_ITEMS} 条上限，顺延到下一轮",
+                    reason_text=f"超出单批 {panel_batch} 条上限，顺延到下一轮",
                     score=entry["assessment"]["score"],
                 )
                 if entry["kind"] == "audit":
@@ -1000,7 +1034,7 @@ async def run_sync(
             )
         if changed_updates:
             merged_count = await repo_events.update_events(
-                session, changed_updates[:MAX_NEW_EVENTS]
+                session, changed_updates[:new_event_cap]
             )
 
         try:
@@ -1012,7 +1046,7 @@ async def run_sync(
         except Exception:  # noqa: BLE001
             notes.append("slug_failed")
 
-        if len(fresh_all) >= MAX_NEW_EVENTS:
+        if len(fresh_all) >= new_event_cap:
             notes.append("cap:events")
         if _elapsed_ms(start_ms) > run_budget_ms:
             notes.append("stage:deadline")

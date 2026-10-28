@@ -93,6 +93,18 @@ export function originLabel(value: string | null | undefined): string {
   return ORIGIN_LABELS[value] ?? value;
 }
 
+/** How a run was started. `backfill` is the manual sweep over past years. */
+export const TRIGGER_LABELS: Record<string, string> = {
+  auto: "定时",
+  manual: "手动",
+  backfill: "回补",
+};
+
+export function triggerLabel(value: string | null | undefined): string {
+  if (!value) return "—";
+  return TRIGGER_LABELS[value] ?? value;
+}
+
 /**
  * The traffic buckets, spelled the same way everywhere: `repo_ops` returns keys
  * (`ai`, `event`, `mobile`), the console shows words. An unknown key falls

@@ -8,6 +8,7 @@ from typing import Any
 import pytest
 
 from app.editorial.panel import (
+    BALLOT_SIZE,
     aggregate_reviews,
     build_panel_config,
     judge_batch,
@@ -263,3 +264,51 @@ async def test_judge_request_follows_the_vendor_preset() -> None:
     assert sent["qwen3.5-plus"]["enable_thinking"] is False
     assert sent["MiniMax-M3"]["thinking"] == {"type": "disabled"}
     assert sent["MiniMax-M3"]["url"] == "https://api.minimax.cn/v1/chat/completions"
+
+
+def ballot_ids(payload: dict[str, Any]) -> list[str]:
+    body = json.loads(payload["messages"][1]["content"])
+    return [candidate["id"] for candidate in body["candidates"]]
+
+
+def perfect_ballot(ids: list[str]) -> tuple[int, Any]:
+    ballot = {"reviews": [{"id": identifier, "score": 90} for identifier in ids]}
+    return 200, {"choices": [{"message": {"content": json.dumps(ballot)}}]}
+
+
+async def test_a_queue_longer_than_one_ballot_is_split_and_merged() -> None:
+    """150 candidates cannot share one ballot: the reply is cut off at 2,400 tokens."""
+    sizes: list[int] = []
+
+    async def post(url: str, key: str, payload: dict[str, Any], timeout_ms: int):
+        ids = ballot_ids(payload)
+        sizes.append(len(ids))
+        return perfect_ballot(ids)
+
+    judges = build_panel_config(PROVIDER_ENV)["judges"][:1]
+    queue = [{"fingerprint": f"c{index}"} for index in range(2 * BALLOT_SIZE + 6)]
+    results = await judge_batch(judges, queue, post=post, timeout_ms=2000)
+
+    assert sizes == [BALLOT_SIZE, BALLOT_SIZE, 6]
+    assert results[0]["ok"] is True
+    assert len(results[0]["reviews"]) == len(queue)
+
+
+async def test_a_failed_slice_only_costs_its_own_votes() -> None:
+    calls: list[int] = []
+
+    async def post(url: str, key: str, payload: dict[str, Any], timeout_ms: int):
+        ids = ballot_ids(payload)
+        calls.append(len(ids))
+        if len(calls) == 1:
+            return 200, {"choices": [{"message": {"content": "{\"reviews\": ["}}]}
+        return perfect_ballot(ids)
+
+    judges = build_panel_config(PROVIDER_ENV)["judges"][:1]
+    queue = [{"fingerprint": f"c{index}"} for index in range(BALLOT_SIZE + 1)]
+    results = await judge_batch(judges, queue, post=post, timeout_ms=2000)
+
+    assert results[0]["ok"] is True
+    assert results[0]["error"] == "invalid_json"
+    # The candidates in the slice that parsed still get their vote.
+    assert list(results[0]["reviews"]) == [f"c{BALLOT_SIZE}"]

@@ -5,6 +5,8 @@ for the console are `ingest-access-log`, `prune` and `create-owner`. The catalog
 added its own trio: `catalog-seed` (first install), `probe` (is this feed alive?)
 and `library-prune` (drop old *dropped* rows, never the evidence). `weekly-digest`
 is the mailing list's one command: compose the week's new entries and mail them.
+`backfill` is the archive's: it sweeps the same sources with the caps raised, so
+the years that predate this installation can still be recorded.
 The scheduled ones return 0 even when they did nothing: cron and Task Scheduler
 both report a non-zero exit as a broken box, and an operator who learns to ignore
 that mail stops reading the one that matters. `weekly-digest` is the exception it
@@ -35,13 +37,30 @@ from app.db.session import SessionLocal, engine
 from app.deps import judge_env
 from app.digest import send_weekly
 from app.ingest import registry
-from app.ingest.pipeline import backfill_slugs, run_sync, seed_rows
+from app.ingest.normalize import normalize_results
+from app.ingest.pipeline import (
+    DEFAULT_FETCH_BUDGET_MS,
+    HISTORY_MIN_YEAR,
+    MAX_FETCH_CONCURRENCY,
+    backfill_slugs,
+    run_sync,
+    seed_rows,
+)
 from app.ingest.seed import SEED_VERSION
-from app.ingest.sources import SOURCE_TIMEOUT_MS, httpx_fetch, load_source
+from app.ingest.sources import SOURCE_TIMEOUT_MS, httpx_fetch, load_source, load_sources
 
 # A single probe is allowed to be slower than a batch fetch: an operator is
 # waiting on one answer, and a slow feed is still a working feed.
 PROBE_TIMEOUT_MS = 15_000
+
+# A backfill is the opposite trade: it is meant to walk years of a catalogue in
+# one pass, so the raw cap rises well above the daily 320 and the run gets its
+# own, longer budgets. 1,500 covers the 1,018 candidates the current catalogue
+# returns with room for growth — at 800 the oldest 218 lost their slot, and
+# because the sweep always sees the same 800 first, they would never get one.
+BACKFILL_RAW_CAP = 1500
+BACKFILL_RUN_BUDGET_MS = 1_800_000
+BACKFILL_FETCH_BUDGET_MS = 300_000
 
 
 async def _with_session(work):
@@ -89,6 +108,81 @@ def _run_sync_command(trigger: str) -> int:
     result = outcome.get("result") or {}
     print(
         f"sync {outcome['status']}: raw={result.get('rawCount', 0)} "
+        f"created={result.get('createdCount', 0)} merged={result.get('mergedCount', 0)} "
+        f"admitted={result.get('admittedCount', 0)} held={result.get('heldCount', 0)}"
+    )
+    if result.get("notes"):
+        print(f"notes: {result['notes']}")
+    return 0 if outcome["status"] in ("succeeded", "partial") else 1
+
+
+def _history_preview(max_events: int) -> int:
+    """Fetch and normalize without writing: what would a backfill see?"""
+
+    async def work(session):
+        sources = await registry.enabled_sources(session)
+        allowed = await registry.allowed_hosts(session)
+        started = int(time.time() * 1000)
+        results = await load_sources(
+            sources,
+            fetch=lambda url: httpx_fetch(url, timeout_ms=SOURCE_TIMEOUT_MS),
+            deadline_ms=started + DEFAULT_FETCH_BUDGET_MS,
+            concurrency=MAX_FETCH_CONCURRENCY,
+            allowed_hosts=allowed,
+        )
+        return normalize_results(results, now_ms=started)
+
+    normalized = asyncio.run(_with_session(work))
+    candidates = normalized["candidates"]
+    per_source: dict[str, int] = {}
+    for candidate in candidates:
+        evidence = candidate.get("evidence") or [{}]
+        key = str((evidence[0] or {}).get("sourceKey") or "?")
+        per_source[key] = per_source.get(key, 0) + 1
+    print(f"backfill (dry run): {len(candidates)} candidates, {len(per_source)} sources")
+    for key, count in sorted(per_source.items(), key=lambda pair: -pair[1]):
+        print(f"  {key:20} {count:>4}")
+    oldest = sorted(candidates, key=lambda entry: str(entry.get("eventDate") or ""))[:5]
+    for candidate in oldest:
+        print(f"  oldest → {candidate.get('eventDate')}  {str(candidate.get('title'))[:60]}")
+    print(f"would admit at most {max_events} new events (raw cap {BACKFILL_RAW_CAP})")
+    return 0
+
+
+def _collect_history(max_events: int, dry_run: bool) -> int:
+    """Sweep the enabled sources for entries a daily run would never reach.
+
+    Same pipeline, four knobs turned up: no per-source slice (the 41st model of
+    a catalogue would otherwise never get a slot), a higher raw cap, a larger
+    panel batch, and a duplicate check that sees the whole archive — clustering
+    against the last two years only would insert 2023 entries a second time.
+    """
+    if dry_run:
+        return _history_preview(max_events)
+
+    async def main() -> dict:
+        return await _with_session(
+            lambda session: run_sync(
+                session,
+                trigger="backfill",
+                env=judge_env(get_settings()),
+                raw_cap=BACKFILL_RAW_CAP,
+                per_source=None,
+                new_event_cap=max_events,
+                panel_batch=max_events,
+                history_min_year=HISTORY_MIN_YEAR,
+                run_budget_ms=BACKFILL_RUN_BUDGET_MS,
+                fetch_budget_ms=BACKFILL_FETCH_BUDGET_MS,
+            )
+        )
+
+    outcome = asyncio.run(main())
+    if outcome.get("busy"):
+        print("backfill skipped: another run holds the lease", file=sys.stderr)
+        return 0
+    result = outcome.get("result") or {}
+    print(
+        f"backfill {outcome['status']}: raw={result.get('rawCount', 0)} "
         f"created={result.get('createdCount', 0)} merged={result.get('mergedCount', 0)} "
         f"admitted={result.get('admittedCount', 0)} held={result.get('heldCount', 0)}"
     )
@@ -370,6 +464,16 @@ def main(argv: list[str] | None = None) -> int:
 
     sub.add_parser("backfill-slugs", help="assign slugs to rows that lack one")
 
+    history_parser = sub.add_parser(
+        "backfill", help="sweep the sources for older entries (years, not a day)"
+    )
+    history_parser.add_argument(
+        "--max-events", type=int, default=150, help="new events admitted in this pass"
+    )
+    history_parser.add_argument(
+        "--dry-run", action="store_true", help="fetch and normalize only: no rows, no verdicts"
+    )
+
     hash_parser = sub.add_parser("hash-password", help="print an argon2 hash")
     hash_parser.add_argument("password")
 
@@ -435,6 +539,8 @@ def main(argv: list[str] | None = None) -> int:
         return _run_sync_command(args.trigger)
     if args.command == "backfill-slugs":
         return _backfill()
+    if args.command == "backfill":
+        return _collect_history(args.max_events, args.dry_run)
     if args.command == "ingest-access-log":
         return _ingest_access_log(args.path, args.format, args.dry_run)
     if args.command == "prune":

@@ -325,12 +325,26 @@ def modality_text(inputs: object) -> str:
     return f"{'、'.join(unique)}输入"
 
 
-def within_days(value: object, days: int, now_ms: int) -> bool:
+MAX_AGE_DAYS = 0
+"""How old a collected item may be. `0` means no lower bound.
+
+The window used to be per parser — 120 days for OpenRouter, 180 for Hugging
+Face, 10 for arXiv, 14 for Hacker News, 21/45 for feeds — which quietly turned
+a chronicle into a news reader: DeepSeek-R1 (2025-01-20) and DeepSeek-V3
+(2024-12-25) were both dropped as `window_age` even though Hugging Face returns
+them in its all-time popular list. The archive wants history, so the bound is
+off; the raw cap, not a date filter, is what keeps one run bounded.
+"""
+
+
+def too_old(value: object, days: int, now_ms: int) -> bool:
+    """Is the item older than the window? With `days <= 0` nothing is too old."""
+    if days <= 0:
+        return False
     parsed = parse_iso(str(value)) if value else None
     if parsed is None:
         return False
-    delta_ms = now_ms - int(parsed.timestamp() * 1000)
-    return delta_ms <= days * 86_400_000
+    return now_ms - int(parsed.timestamp() * 1000) > days * 86_400_000
 
 
 def has_word(pattern: re.Pattern[str], text: str) -> bool:
@@ -496,13 +510,12 @@ def openrouter_candidates(
     source: dict[str, Any] | None = None,
 ) -> list[Candidate]:
     source = source or {"key": "openrouter", "family": "openrouter", "name": "OpenRouter"}
-    cutoff_ms = now_ms - 120 * 86_400_000
     seen: set[str] = set()
     out: list[Candidate] = []
     for model in payload.get("items") or []:
         created = model.get("created")
         parsed = parse_iso(str(created)) if created else None
-        if parsed is None or int(parsed.timestamp() * 1000) < cutoff_ms:
+        if parsed is None or too_old(created, MAX_AGE_DAYS, now_ms):
             _drop(
                 drops,
                 source,
@@ -595,9 +608,53 @@ def openrouter_candidates(
     return out
 
 
-_QUANT_TAG_RE = compile_ascii(r"^(gguf|awq|gptq|4bit|8bit|fp8|fp16|mlx|onnx|exl2|ggml|int4|int8)$", re.I)
-_FINETUNE_TAG_RE = compile_ascii(r"base_model:(finetune|adapter|merge)", re.I)
 _HF_SUFFIX_RE = compile_ascii(r"[-_](gguf|awq|gptq|fp8)$", re.I)
+_QUANT_NAME_RE = compile_ascii(
+    r"(?:^|[-_.])(?:gguf|awq|gptq|fp8|fp16|fp4|mlx|onnx|exl2|ggml|int4|int8|4bit|8bit|bf16|comfy)(?:$|[-_.])"
+    r"|\b\d+(?:\.\d+)?gb\b",
+    re.I,
+)
+_BASE_MODEL_PREFIX = "base_model:"
+_BASE_MODEL_KINDS = ("quantized:", "finetune:", "adapter:", "merge:", "quantized-")
+
+
+def _base_model_repo(tag: str) -> str:
+    """`base_model:quantized:Qwen/Qwen3.8-27B` -> `Qwen/Qwen3.8-27B`."""
+    repo = tag[len(_BASE_MODEL_PREFIX) :].strip()
+    for kind in _BASE_MODEL_KINDS:
+        if repo.startswith(kind):
+            return repo[len(kind) :].strip()
+    return repo
+
+
+def is_derived_repo(model_id: str, tags: list[str]) -> bool:
+    """Is this repository someone's model, repackaged?
+
+    The old rule dropped any repo carrying a `gguf`/`fp8`/`4bit` tag, which
+    mistook the vendors' own releases for community re-uploads: DeepSeek ships
+    FP8 weights (`deepseek-ai/DeepSeek-V4.1-Flash-1017` carries `fp8` and
+    `8-bit`), and so does GLM, so every DeepSeek release ended up filed as
+    「模型条目不适用」.
+
+    Who made it is the real question, and Hugging Face answers it with the
+    `base_model:` tag, which names the upstream repository. A repo is therefore
+    a derivative when that upstream belongs to *another* author, or when it is
+    the author's own quantized variant (their BF16 re-released as GGUF/4GB/…).
+    """
+    if not isinstance(model_id, str) or "/" not in model_id:
+        return False
+    author = model_id.split("/")[0].strip().lower()
+    for tag in tags or []:
+        if not isinstance(tag, str) or not tag.startswith(_BASE_MODEL_PREFIX):
+            continue
+        upstream = _base_model_repo(tag)
+        if "/" not in upstream:
+            continue
+        if upstream.split("/")[0].strip().lower() != author:
+            return True
+        if _QUANT_NAME_RE.search(model_id.split("/")[-1]):
+            return True
+    return False
 
 
 def hf_candidates(
@@ -608,14 +665,13 @@ def hf_candidates(
     source: dict[str, Any] | None = None,
 ) -> list[Candidate]:
     source = source or {"key": "hf-trending", "family": "huggingface", "name": "Hugging Face"}
-    cutoff_ms = now_ms - 180 * 86_400_000
     seen: set[str] = set()
     out: list[Candidate] = []
     for model in payload.get("items") or []:
         model_id = model.get("id") or ""
         created_at = model.get("createdAt")
         parsed = parse_iso(str(created_at)) if created_at else None
-        if parsed is None or int(parsed.timestamp() * 1000) < cutoff_ms:
+        if parsed is None or too_old(created_at, MAX_AGE_DAYS, now_ms):
             _drop(
                 drops,
                 source,
@@ -638,9 +694,7 @@ def hf_candidates(
             continue
         seen.add(model_id)
         tags = model.get("tags") or []
-        if any(_QUANT_TAG_RE.match(tag) for tag in tags) or any(
-            _FINETUNE_TAG_RE.search(tag) for tag in tags
-        ):
+        if is_derived_repo(model_id, tags):
             _drop(
                 drops,
                 source,
@@ -648,6 +702,7 @@ def hf_candidates(
                 external_id=model_id,
                 title=model_id,
                 url=f"https://huggingface.co/{model_id}",
+                published_at=created_at if isinstance(created_at, str) else None,
             )
             continue
         likes = int(model.get("likes") or 0)
@@ -727,7 +782,7 @@ def arxiv_candidates(
     source = source or {"key": "arxiv", "family": "arxiv", "name": "arXiv"}
     out: list[Candidate] = []
     for paper in payload.get("items") or []:
-        if not paper.get("publishedAt") or not within_days(paper["publishedAt"], 10, now_ms):
+        if not paper.get("publishedAt") or too_old(paper["publishedAt"], MAX_AGE_DAYS, now_ms):
             _drop(
                 drops,
                 source,
@@ -795,7 +850,7 @@ def community_candidates(
     source = source or {"key": "hn", "family": "community", "name": "Hacker News"}
     out: list[Candidate] = []
     for hit in payload.get("items") or []:
-        if not hit.get("publishedAt") or not within_days(hit["publishedAt"], 14, now_ms):
+        if not hit.get("publishedAt") or too_old(hit["publishedAt"], MAX_AGE_DAYS, now_ms):
             _drop(
                 drops,
                 source,
@@ -864,9 +919,8 @@ def feed_candidates(
     drops: list[dict[str, Any]] | None = None,
 ) -> list[Candidate]:
     out: list[Candidate] = []
-    window_days = 45 if source.get("family") == "official" else 21
     for item in payload.get("items") or []:
-        if not item.get("publishedAt") or not within_days(item["publishedAt"], window_days, now_ms):
+        if not item.get("publishedAt") or too_old(item["publishedAt"], MAX_AGE_DAYS, now_ms):
             _drop(
                 drops,
                 source,
