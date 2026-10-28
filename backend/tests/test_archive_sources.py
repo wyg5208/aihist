@@ -8,6 +8,8 @@ what they return (that is `sources.py`'s job and already parity-tested).
 
 from __future__ import annotations
 
+import logging
+import re
 import sys
 import types
 import uuid
@@ -274,3 +276,86 @@ async def test_a_backfill_sized_batch_reaches_the_ledger(db_factory) -> None:
     async with db_factory() as session:
         assert await repo_events.read_collected(session, rows[-1]["fingerprint"])
         assert await repo_events.insert_verdicts(session, verdicts) == len(verdicts)
+
+
+# ---------------------------------------------------------------------------
+# The swallowed ledger failure still says why
+# ---------------------------------------------------------------------------
+
+
+async def test_a_failed_ledger_write_warns_and_still_reports_success(
+    db_factory, monkeypatch, caplog
+) -> None:
+    """A note is not a diagnosis.
+
+    Both flushes go through `upsert_collected`, so breaking it reproduces the
+    worst case: no ledger at all, one `ledger_failed` note, and a run that still
+    reports success — the right posture for bookkeeping, but only if the warning
+    says what failed and on how many rows. The 32,766-parameter ceiling proved
+    how expensive that silence is.
+    """
+
+    async def explode(*args: Any, **kwargs: Any) -> int:
+        raise RuntimeError("too many SQL variables")
+
+    monkeypatch.setattr(repo_events, "upsert_collected", explode)
+
+    with caplog.at_level(logging.WARNING, logger="aihist.pipeline"):
+        async with db_factory() as session:
+            outcome = await run_sync(
+                session, now=now(), fetch=make_fixture_fetch(), editorial=False
+            )
+
+    result = outcome["result"]
+    # The ledger is not the run: the sources decide the status.
+    assert result["status"] in ("succeeded", "partial")
+    assert "ledger_failed" in (result["notes"] or "")
+
+    warnings = [
+        record.getMessage()
+        for record in caplog.records
+        if record.name == "aihist.pipeline" and record.levelno == logging.WARNING
+    ]
+    assert len(warnings) == 2, warnings
+    first, second = warnings
+
+    assert first.startswith("ledger intake flush failed at pending")
+    assert f"run={outcome['runId']}" in first
+    assert f"rows={result['rawCount']}" in first
+    assert "RuntimeError: too many SQL variables" in first
+    # The second write rewrites the same rows, so only the flush tells them apart.
+    assert second.startswith("ledger final flush failed at pending")
+    assert f"rows={result['rawCount']}" in second
+
+
+async def test_the_warning_names_the_write_that_failed(db_factory, monkeypatch, caplog) -> None:
+    """A half-written run has to be distinguishable from a wholly missing one."""
+
+    async def explode(*args: Any, **kwargs: Any) -> int:
+        raise RuntimeError("too many SQL variables")
+
+    monkeypatch.setattr(repo_events, "insert_verdicts", explode)
+
+    with caplog.at_level(logging.WARNING, logger="aihist.pipeline"):
+        async with db_factory() as session:
+            outcome = await run_sync(
+                session, now=now(), fetch=make_fixture_fetch(), editorial=False
+            )
+
+    result = outcome["result"]
+    notes = result["notes"] or ""
+    assert result["status"] in ("succeeded", "partial")
+    # The rows landed; only the trail did not.
+    assert f"ledger:pending:{result['rawCount']}" in notes
+    assert "ledger:verdicts" not in notes
+    assert "ledger_failed" in notes
+
+    warnings = [
+        record.getMessage()
+        for record in caplog.records
+        if record.name == "aihist.pipeline" and record.levelno == logging.WARNING
+    ]
+    assert len(warnings) == 1, warnings
+    assert warnings[0].startswith("ledger final flush failed at verdicts")
+    trail_rows = int(re.search(r"rows=(\d+)", warnings[0]).group(1))
+    assert trail_rows > 0

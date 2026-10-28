@@ -9,6 +9,7 @@ from __future__ import annotations
 import asyncio
 import hashlib
 import json
+import logging
 import time
 import uuid
 from datetime import datetime, timezone
@@ -51,6 +52,8 @@ from app.ingest.catalog import (
 from app.ingest.seed import SEED_EVENTS, SEED_VERSION
 from app.ingest.sources import ALLOWED_HOSTS, SOURCE_TIMEOUT_MS, load_sources
 
+logger = logging.getLogger("aihist.pipeline")
+
 DEFAULT_RUN_BUDGET_MS = 300_000
 DEFAULT_FETCH_BUDGET_MS = 120_000
 MAX_RAW_ITEMS = 180
@@ -91,6 +94,30 @@ class SyncError(Exception):
     def __init__(self, code: str) -> None:
         super().__init__(code)
         self.code = code
+
+
+def _warn_ledger(
+    *, flush: str, stage: str, run_id: uuid.UUID, rows: int, error: BaseException
+) -> None:
+    """A swallowed ledger failure still has to leave a trace somewhere.
+
+    The ledger never changes a verdict, so its failures degrade to a
+    `ledger_failed` note and the run still reports success. Silence was the
+    part that hurt: SQLite's 32,766 bound-parameter ceiling dropped a whole
+    sweep's audit trail and nothing said why. The note records *that* it
+    failed; this records which write failed, on how many rows, for which run.
+    Two writes carry the same rows, so `flush` is what tells them apart.
+    """
+    logger.warning(
+        "ledger %s flush failed at %s (run=%s, rows=%d): %s: %s",
+        flush,
+        stage,
+        run_id,
+        rows,
+        type(error).__name__,
+        error,
+        exc_info=True,
+    )
 
 
 def stable(value: Any) -> str:
@@ -751,7 +778,10 @@ async def run_sync(
         try:
             await repo_events.upsert_collected(session, ledger.pending_rows())
             notes.append(f"ledger:pending:{raw_count}")
-        except Exception:  # noqa: BLE001 - bookkeeping never changes a verdict
+        except Exception as error:  # noqa: BLE001 - bookkeeping never changes a verdict
+            _warn_ledger(
+                flush="intake", stage="pending", run_id=run_id, rows=raw_count, error=error
+            )
             notes.append("ledger_failed")
 
         existing_limit = max(600, new_event_cap * 4)
@@ -1136,6 +1166,7 @@ async def run_sync(
         # After the verdicts exist: the same rows are rewritten with their final
         # status, and only the *changes* become trail lines.
         ledger.bump("reviewed", reviewed_count)
+        stage, rows = "pending", len(ledger.pending)
         try:
             if ledger.pending:
                 # Same rows, final status: one run is one sighting, so the
@@ -1144,10 +1175,14 @@ async def run_sync(
                     session, ledger.pending_rows(), bump_seen=False
                 )
             trail = ledger.verdict_rows()
+            stage, rows = "verdicts", len(trail)
             if trail:
                 await repo_events.insert_verdicts(session, trail)
                 notes.append(f"ledger:verdicts:{len(trail)}")
-        except Exception:  # noqa: BLE001 - bookkeeping never changes a verdict
+        except Exception as error:  # noqa: BLE001 - bookkeeping never changes a verdict
+            _warn_ledger(
+                flush="final", stage=stage, run_id=run_id, rows=rows, error=error
+            )
             notes.append("ledger_failed")
 
         final_status = status
