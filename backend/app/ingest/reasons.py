@@ -46,6 +46,7 @@ REASONS: dict[str, tuple[str, str]] = {
     "score_low": ("rule", "规则分不足"),
     "panel:exclude": ("panel", "面板否决"),
     "panel:hold": ("panel", "面板暂缓"),
+    "panel:tier": ("panel", "同代档位分数不足"),
     "panel:unconfigured": ("panel", "面板未配置"),
     "deferred": ("panel", "批次上限顺延"),
     "admitted": ("panel", "已纳入"),
@@ -66,7 +67,9 @@ MANUAL_PREFIX = "manual:"
 
 # Why a batch of items waited: the console shows these on the "待定" tile so an
 # operator can tell "the panel voted hold" from "we never got a quorum".
-HOLD_REASONS = frozenset({"panel:hold", "panel:unconfigured", "deferred", "score_low"})
+HOLD_REASONS = frozenset(
+    {"panel:hold", "panel:tier", "panel:unconfigured", "deferred", "score_low"}
+)
 
 _HARD_RULE_LABELS = {
     "funding": "融资与估值",

@@ -10,6 +10,8 @@ from app.editorial.rules import (
     MIN_INCLUDE_VOTES,
     PANEL_SIZE,
     RUBRIC_VERSION,
+    TIER_LINE_CAP,
+    TIER_LINE_STEP,
 )
 
 STANDARD: dict[str, Any] = {
@@ -61,12 +63,15 @@ STANDARD: dict[str, Any] = {
         "detail": (
             f"{PANEL_SIZE} 家不同厂商的模型使用同一 rubric 分别打分并投票；"
             f"至少 {MIN_INCLUDE_VOTES} 票 include 且分数不低于 {INCLUDE_SCORE} 才入档。"
+            f"同一代际的第 2 个档位起，门槛每档加 {TIER_LINE_STEP} 分，上限 {TIER_LINE_CAP}。"
             "票型分裂、有效票不足或调用失败时暂缓，不发布。"
         ),
     },
     "decisions": {
         "include": f"{MIN_INCLUDE_VOTES} 票及以上同意，分数达到门槛，写入时间轴。",
         "exclude": f"{MIN_INCLUDE_VOTES} 票及以上反对，或命中硬性排除，不写入；保留评审记录。",
-        "hold": f"有效票不足 {MIN_INCLUDE_VOTES} 票或票型分裂，暂缓且不显示。",
+        "hold": (
+            f"有效票不足 {MIN_INCLUDE_VOTES} 票、票型分裂，或同代档位分数不及更高门槛，暂缓且不显示。"
+        ),
     },
 }

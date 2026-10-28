@@ -10,7 +10,10 @@
 // v4: a catalogue model reaches the panel as its vendor model card instead of a
 // template that listed the context window and nothing else, and a tier suffix
 // costs 4 points instead of 8.
-export const RUBRIC_VERSION = "chronicle-v4";
+// v5: a generation admits its first tier at 75 and charges every further tier 5
+// more points (see `tierLine`), so a family that ships four SKUs in a week no
+// longer fills four slots.
+export const RUBRIC_VERSION = "chronicle-v5";
 export const INCLUDE_SCORE = 75;
 // One judge per domestic vendor: DeepSeek, Qwen, GLM, Kimi, MiniMax. Five
 // vendors rather than five copies of one model, so no single vendor's bias can
@@ -21,6 +24,18 @@ export const PANEL_SIZE = 5;
 export const MIN_INCLUDE_VOTES = 3;
 export const RULE_PANEL_THRESHOLD = 35;
 export const RULE_AUDIT_THRESHOLD = 25;
+
+// ---- the generation ladder -------------------------------------------------
+// A generation's flagship is the event; its second tier is a product line and
+// its third is marketing. `ruleScoreOf` already charges a tier suffix four
+// points, which keeps a family off the top of the queue but not out of the same
+// 75-82 band: the panel admits them in whatever order it happens to read them.
+//
+// So the count is charged after the ballots, against the panel's own median:
+// 75, 80, 85, ... capped at 95. The score that decides is still the panel's; the
+// ladder only decides how many members of one generation may pass.
+export const TIER_LINE_STEP = 5;
+export const TIER_LINE_CAP = 95;
 
 const HARD_RULES = [
   {
@@ -220,6 +235,75 @@ export function assessCandidate(candidate) {
 export function shouldAuditOut(candidate, assessment) {
   if (assessment.disqualify) return true;
   return assessment.score < RULE_AUDIT_THRESHOLD;
+}
+
+/** Score the `ordinal`-th admitted tier of a generation has to reach. */
+export function tierLine(ordinal) {
+  if (ordinal <= 1) return INCLUDE_SCORE;
+  return Math.min(TIER_LINE_CAP, INCLUDE_SCORE + TIER_LINE_STEP * (ordinal - 1));
+}
+
+/** The key whose tiers compete with each other, or "" if it has none. */
+export function generationOf(candidate) {
+  if (candidate.category !== "model") return "";
+  return candidate.familyKey || candidate.modelKey || "";
+}
+
+/**
+ * Charge each further tier of a generation a higher score than the last.
+ *
+ * `byId` is the panel's aggregate (`fingerprint` -> outcome, a Map) and is
+ * updated in place; `admittedTiers` counts the tiers each generation already
+ * has, so the ladder survives across runs. Members of one generation are ranked
+ * by median score, best first: a candidate that clears its line takes the seat,
+ * and one that does not leaves the seat to its siblings.
+ *
+ * A candidate the panel wanted but the ladder held back becomes `hold`, not
+ * `exclude`: the ordinal is not stable across runs, so caching a rejection
+ * taken against a seat that can still move would be wrong.
+ */
+export function applyTierLines(byId, candidates, admittedTiers = {}) {
+  const seats = { ...admittedTiers };
+  const groups = new Map();
+  for (const candidate of candidates) {
+    const key = generationOf(candidate);
+    if (!key || !candidate.fingerprint || !byId.has(candidate.fingerprint)) continue;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(candidate.fingerprint);
+  }
+
+  for (const [key, fingerprints] of groups) {
+    let seat = seats[key] || 0;
+    const ranked = [...fingerprints].sort((a, b) => {
+      const sa = byId.get(a).score || 0;
+      const sb = byId.get(b).score || 0;
+      if (sa !== sb) return sb - sa;
+      return a < b ? -1 : a > b ? 1 : 0;
+    });
+    for (const fingerprint of ranked) {
+      const outcome = byId.get(fingerprint);
+      const ordinal = seat + 1;
+      const line = tierLine(ordinal);
+      outcome.tierOrdinal = ordinal;
+      outcome.tierLine = line;
+      if (outcome.decision !== "include") continue;
+      if ((outcome.score || 0) >= line) seat = ordinal;
+      else {
+        outcome.decision = "hold";
+        outcome.tierHeld = true;
+      }
+    }
+    seats[key] = seat;
+  }
+  return byId;
+}
+
+/** Why a panel-approved model is still waiting: the seat, the line, the score. */
+export function tierLineNote(outcome) {
+  const line = outcome.tierLine;
+  if (line === undefined || line === null) return "";
+  const ordinal = outcome.tierOrdinal || 1;
+  return `同代第 ${ordinal} 档需 ${line} 分，本轮中位 ${outcome.score || 0} 分`;
 }
 
 function parseJudgeContent(content, ids) {
@@ -596,11 +680,11 @@ export const STANDARD = {
     size: PANEL_SIZE,
     minVotes: MIN_INCLUDE_VOTES,
     temperature: 0,
-    detail: `${PANEL_SIZE} 家不同厂商的模型使用同一 rubric 分别打分并投票；至少 ${MIN_INCLUDE_VOTES} 票 include 且分数不低于 ${INCLUDE_SCORE} 才入档。票型分裂、有效票不足或调用失败时暂缓，不发布。`,
+    detail: `${PANEL_SIZE} 家不同厂商的模型使用同一 rubric 分别打分并投票；至少 ${MIN_INCLUDE_VOTES} 票 include 且分数不低于 ${INCLUDE_SCORE} 才入档。同一代际的第 2 个档位起，门槛每档加 ${TIER_LINE_STEP} 分，上限 ${TIER_LINE_CAP}。票型分裂、有效票不足或调用失败时暂缓，不发布。`,
   },
   decisions: {
     include: `${MIN_INCLUDE_VOTES} 票及以上同意，分数达到门槛，写入时间轴。`,
     exclude: `${MIN_INCLUDE_VOTES} 票及以上反对，或命中硬性排除，不写入；保留评审记录。`,
-    hold: `有效票不足 ${MIN_INCLUDE_VOTES} 票或票型分裂，暂缓且不显示。`,
+    hold: `有效票不足 ${MIN_INCLUDE_VOTES} 票、票型分裂，或同代档位分数不及更高门槛，暂缓且不显示。`,
   },
 };

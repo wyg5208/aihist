@@ -13,13 +13,13 @@
     "configured": false,
     "models": [],
     "reason": "models",
-    "rubricVersion": "chronicle-v4",
+    "rubricVersion": "chronicle-v5",
     "includeScore": 75,
     "minVotes": 3
   },
   "runs": [
     {
-      "id": "ea4ca813-ddeb-4744-adaf-c21fbcc2e9eb",
+      "id": "999a5b6a-0f40-4087-829f-19f95a489de5",
       "trigger": "manual",
       "status": "succeeded",
       "startedAt": "2026-10-23T22:00:00.000Z",

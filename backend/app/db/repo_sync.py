@@ -11,7 +11,7 @@ import uuid
 from datetime import datetime, timedelta, timezone
 from typing import Any
 
-from sqlalchemy import select, update
+from sqlalchemy import func, select, update
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -210,6 +210,20 @@ async def recent_runs(session: AsyncSession, limit: int = 5) -> list[SyncRun]:
         select(SyncRun).order_by(SyncRun.started_at.desc()).limit(limit)
     )
     return list(result.scalars().all())
+
+
+async def count_runs(session: AsyncSession, trigger: str) -> int:
+    """How many runs of this trigger have finished starting.
+
+    The archive uses it as a clock: one backfill advances its year by one. A
+    counter of rows beats a stored field because it needs no migration, and a
+    failed run still counts at its turn — it is a retry of the same year, not a
+    reason to skip it.
+    """
+    result = await session.execute(
+        select(func.count()).select_from(SyncRun).where(SyncRun.trigger == trigger)
+    )
+    return int(result.scalar_one())
 
 
 async def recover_stale_runs(session: AsyncSession, minutes: int = STALE_RUN_MINUTES) -> int:

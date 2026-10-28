@@ -61,6 +61,131 @@ RESERVED_PREFIXES = ("hf-", "hn-")
 
 KEY_RE = re.compile(r"^[a-z0-9][a-z0-9-]{1,46}$")
 
+# ---- archive sources -------------------------------------------------------
+# A daily run can only see what a feed still remembers. Hugging Face's
+# `trendingScore` list is a fortnight long, and arXiv's `submittedDate` sort stops
+# at thirty entries — which is why a sweep of everything before 2025 found 114
+# candidates and almost no models: the sources themselves had forgotten.
+#
+# An archive source answers a different question. `hf-archive` asks for the
+# all-time download ranking (bert, gpt2, whisper — the models every later
+# generation is measured against), and `arxiv-archive` asks one year at a time
+# what its core literature said, rotating one year per backfill so the sweep
+# walks 2012 forward instead of re-reading last week.
+#
+# They are seeded **enabled** but only fetched when the run is historical: the
+# `-archive` suffix is the mode switch (`is_archive_source`), and it survives the
+# database round trip because `source_dict` returns the key verbatim. A daily run
+# would otherwise spend a third of its fetch budget on 2019.
+ARCHIVE_SUFFIX = "-archive"
+ARCHIVE_TOKEN = "{year}"
+ARCHIVE_START_YEAR = 2012
+
+# The archive asks each year one question — "what did the core literature say"
+# — and the panel is the filter. The vocabulary is deliberately narrow: a single
+# year of cs.AI is tens of thousands of papers, and forty relevance slots have to
+# be spent on titles that could plausibly be a milestone. Eight field-defining
+# terms beat a bag of superlatives ("breakthrough", "novel") that every abstract
+# uses and no landmark title needs.
+ARCHIVE_TERMS = "+OR+".join(
+    (
+        "ti:transformer",
+        "ti:attention",
+        "ti:diffusion",
+        "ti:reinforcement",
+        "ti:reasoning",
+        "ti:generative",
+        "ti:alignment",
+        "ti:agent",
+    )
+)
+ARCHIVE_CATEGORIES = "+OR+".join(
+    ("cat:cs.AI", "cat:cs.CL", "cat:cs.LG", "cat:cs.MA")
+)
+
+
+def _archive(
+    key: str,
+    name: str,
+    family: str,
+    kind: str,
+    url: str,
+    *,
+    rationale: str,
+) -> dict[str, Any]:
+    """One archival source. Enabled, because the mode already gates it."""
+    return {
+        "key": key,
+        "family": family,
+        "name": name,
+        "kind": kind,
+        "url": url,
+        "pathPattern": "/news/",
+        "timeout": SOURCE_TIMEOUT_MS,
+        "domestic": False,
+        "aiOnly": False,
+        "enabled": True,
+        "verified": True,
+        "weight": 200,
+        "rationale": rationale,
+    }
+
+
+ARCHIVE_SOURCES: list[dict[str, Any]] = [
+    _archive(
+        "hf-archive",
+        "Hugging Face 全时下载榜",
+        "huggingface",
+        "hf",
+        "https://huggingface.co/api/models?sort=downloads&direction=-1&limit=100",
+        rationale=(
+            "按历史累计下载排序，得到 bert/gpt2/t5/whisper 这类定义过后继基准的老模型；"
+            "trending 榜只看近两周，日常运行永远看不到它们。"
+        ),
+    ),
+    _archive(
+        "arxiv-archive",
+        "arXiv 按年检索",
+        "arxiv",
+        "arxiv",
+        (
+            "https://export.arxiv.org/api/query?search_query="
+            f"({ARCHIVE_TERMS})+AND+({ARCHIVE_CATEGORIES})+"
+            "AND+submittedDate:[{year}01010000+TO+{year}12312359]"
+            "&sortBy=relevance&sortOrder=descending&max_results=40"
+        ),
+        rationale=(
+            "按年取当年核心主题的 40 篇，每轮回补只推进一年（2012 起），"
+            "用来找回预先印本排序（只给最新三十篇）永远拿不到的历史里程碑。"
+        ),
+    ),
+]
+
+
+def is_archive_source(source: dict[str, Any]) -> bool:
+    """Is this source only fetched by a historical run?"""
+    return str(source.get("key") or "").endswith(ARCHIVE_SUFFIX)
+
+
+def archive_years(now_year: int) -> tuple[int, ...]:
+    """Every year the archive may ask for: 2012 up to the year before `now`."""
+    return tuple(range(ARCHIVE_START_YEAR, max(ARCHIVE_START_YEAR, now_year)))
+
+
+def archive_year_for(turn: int, now_year: int) -> int:
+    """The year this run owns. `turn` grows by one per backfill."""
+    years = archive_years(now_year)
+    return years[turn % len(years)]
+
+
+def resolve_archive_source(source: dict[str, Any], year: int) -> dict[str, Any]:
+    """Copy of `source` with `{year}` filled in. A no-op for a fixed URL."""
+    url = str(source.get("url") or "")
+    if ARCHIVE_TOKEN not in url:
+        return source
+    return {**source, "url": url.replace(ARCHIVE_TOKEN, str(year))}
+
+
 
 def _extra(
     key: str,
@@ -292,9 +417,9 @@ EXTRA_SOURCES: list[dict[str, Any]] = [
     ),
 ]
 
-# Seed first, extras second: the console lists them in this order until an
-# operator sets a different `weight`.
-CATALOG_SEED: list[dict[str, Any]] = [*SEED_SOURCES, *EXTRA_SOURCES]
+# Seed first, extras second, archives last: the console lists them in this order
+# until an operator sets a different `weight`.
+CATALOG_SEED: list[dict[str, Any]] = [*SEED_SOURCES, *EXTRA_SOURCES, *ARCHIVE_SOURCES]
 
 
 def validate_key(key: str) -> str:

@@ -36,7 +36,12 @@ def utc_now() -> datetime:
 # judgement *about*, so every cached verdict has to be re-taken; without the bump
 # the 148 model releases the panel filed as 「仅目录条目」 would stay excluded
 # forever, because a decision is reused whenever its rubric version matches.
-RUBRIC_VERSION = "chronicle-v4"
+# v5: a generation now admits its first tier at 75 and charges every further
+# tier 5 more points (see `tier_line`), so a family that ships four SKUs in a
+# week no longer fills four slots. The bump retires the v4 ballots for the same
+# reason as before: a verdict taken without knowing which tier the candidate
+# was competing for cannot be reused under a rubric that counts tiers.
+RUBRIC_VERSION = "chronicle-v5"
 INCLUDE_SCORE = 75
 # One judge per domestic vendor: DeepSeek, Qwen, GLM, Kimi, MiniMax. Five
 # vendors rather than five copies of one model, so no single vendor's bias can
@@ -47,6 +52,22 @@ PANEL_SIZE = 5
 MIN_INCLUDE_VOTES = 3
 RULE_PANEL_THRESHOLD = 35
 RULE_AUDIT_THRESHOLD = 25
+
+# ---- the generation ladder -------------------------------------------------
+# A generation's flagship is the event; its second tier is a product line and
+# its third is marketing. `rule_score_of` already charges a tier suffix four
+# points, which is enough to keep a family off the top of the queue but not
+# enough to separate one that ships four tiers in a week: they all land in the
+# same 75-82 band and the panel admits them in whatever order it happens to
+# read them.
+#
+# So the count is charged after the ballots, against the panel's own median:
+# the first tier of a generation needs 75, the second 80, the third 85, and so
+# on, capped at 95. The score that decides is still the panel's; the ladder only
+# decides how many members of one generation may pass. `None` here means no
+# model has been admitted for that generation yet.
+TIER_LINE_STEP = 5
+TIER_LINE_CAP = 95
 
 HARD_RULES: list[dict[str, Any]] = [
     {
@@ -180,6 +201,81 @@ def has_tier_variant(candidate: Candidate) -> bool:
     return bool(family_key and model_key and family_key != model_key)
 
 
+def tier_line(ordinal: int) -> int:
+    """Score the `ordinal`-th admitted tier of a generation has to reach.
+
+    Ordinals start at 1, so the flagship is charged exactly `INCLUDE_SCORE` and
+    the ladder is a pure addition on top of the existing rule — a generation
+    with one member behaves as it did under v4.
+    """
+    if ordinal <= 1:
+        return INCLUDE_SCORE
+    return min(TIER_LINE_CAP, INCLUDE_SCORE + TIER_LINE_STEP * (ordinal - 1))
+
+
+def generation_of(candidate: Candidate) -> str:
+    """The key whose tiers compete with each other, or `""` if it has none.
+
+    Only a model release has a generation. A policy or a research milestone is
+    a one-off: two of them in a year are two events, not two SKUs.
+    """
+    if candidate.get("category") != "model":
+        return ""
+    return str(candidate.get("familyKey") or candidate.get("modelKey") or "")
+
+
+def apply_tier_lines(
+    by_id: dict[str, dict[str, Any]],
+    candidates: list[Candidate],
+    admitted_tiers: dict[str, int] | None = None,
+) -> dict[str, dict[str, Any]]:
+    """Charge each further tier of a generation a higher score than the last.
+
+    `by_id` is the panel's aggregate (`fingerprint` -> outcome) and is updated
+    in place; `admitted_tiers` counts the tiers each generation already has in
+    the archive, so the ladder survives across runs. Members of one generation
+    are ranked by median score, best first: a candidate that clears its line
+    takes the seat, and one that does not leaves the seat to its siblings rather
+    than blocking them.
+
+    A candidate the panel *wanted* but the ladder held back becomes `hold`, not
+    `exclude`. The ordinal is not stable — the next run may rank the siblings
+    differently — so caching a rejection taken against a seat number that can
+    still move would be wrong. A panel rejection is left alone: a higher bar
+    never rescues a candidate the panel already turned down.
+    """
+    seats = dict(admitted_tiers or {})
+    groups: dict[str, list[str]] = {}
+    for candidate in candidates:
+        fingerprint = candidate.get("fingerprint")
+        key = generation_of(candidate)
+        if not fingerprint or not key or fingerprint not in by_id:
+            continue
+        groups.setdefault(key, []).append(fingerprint)
+
+    for key, fingerprints in groups.items():
+        seat = seats.get(key, 0)
+        ranked = sorted(
+            fingerprints,
+            key=lambda fp: (-(by_id[fp].get("score") or 0), fp),
+        )
+        for fingerprint in ranked:
+            outcome = by_id[fingerprint]
+            ordinal = seat + 1
+            line = tier_line(ordinal)
+            outcome["tierOrdinal"] = ordinal
+            outcome["tierLine"] = line
+            if outcome.get("decision") == "include":
+                if (outcome.get("score") or 0) >= line:
+                    seat = ordinal
+                else:
+                    outcome["decision"] = "hold"
+                    outcome["tierHeld"] = True
+        seats[key] = seat
+
+    return by_id
+
+
 def _number(value: object) -> float:
     try:
         return float(value)  # type: ignore[arg-type]
@@ -288,6 +384,15 @@ def assess_candidate(candidate: Candidate) -> dict[str, Any]:
         "families": families,
         "sourceNames": names,
     }
+
+
+def tier_line_note(outcome: dict[str, Any]) -> str:
+    """Why a panel-approved model is still waiting: the seat, the line, the score."""
+    ordinal = outcome.get("tierOrdinal") or 1
+    line = outcome.get("tierLine")
+    if line is None:
+        return ""
+    return f"同代第 {ordinal} 档需 {line} 分，本轮中位 {outcome.get('score') or 0} 分"
 
 
 def should_audit_out(assessment: dict[str, Any]) -> bool:

@@ -25,19 +25,31 @@ from app.editorial.rules import (
     MIN_INCLUDE_VOTES,
     RUBRIC_VERSION,
     RULE_PANEL_THRESHOLD,
+    apply_tier_lines,
     assess_candidate,
     decision_record,
     review_summary,
     rule_decision,
     should_audit_out,
+    tier_line_note,
 )
 from app.ingest.cluster import cluster_candidates, confidence_of, fingerprint_of
 from app.ingest.ledger import Ledger
-from app.ingest.normalize import CATEGORY_KEYS, normalize_results
+from app.ingest.normalize import (
+    CATEGORY_KEYS,
+    model_family_key,
+    model_key_of,
+    normalize_results,
+)
 from app.ingest.registry import allowed_hosts, enabled_sources, ensure_catalog
+from app.ingest.catalog import (
+    SEED_SOURCES,
+    archive_year_for,
+    is_archive_source,
+    resolve_archive_source,
+)
 from app.ingest.seed import SEED_EVENTS, SEED_VERSION
 from app.ingest.sources import ALLOWED_HOSTS, SOURCE_TIMEOUT_MS, load_sources
-from app.ingest.catalog import SEED_SOURCES
 
 DEFAULT_RUN_BUDGET_MS = 300_000
 DEFAULT_FETCH_BUDGET_MS = 120_000
@@ -356,6 +368,11 @@ def changed(item: dict[str, Any], row: Any) -> bool:
 def audit_candidate(row: Any) -> dict[str, Any]:
     families = row.source_families if isinstance(row.source_families, list) else []
     evidence = row.sources if isinstance(row.sources, list) else []
+    # `modelKey`/`familyKey` used to be dropped here, which made an audited row
+    # a different shape from a fresh one: the tier handicap and the generation
+    # ladder both read them, so a legacy model row was scored as if it had no
+    # siblings at all. The name is the only input, so it is re-derived.
+    model_name = row.model_name
     return {
         "fingerprint": row.fingerprint,
         "title": row.title,
@@ -365,7 +382,9 @@ def audit_candidate(row: Any) -> dict[str, Any]:
         "year": row.year,
         "category": row.category,
         "organization": row.organization,
-        "modelName": row.model_name,
+        "modelName": model_name,
+        "modelKey": model_key_of(model_name) if model_name else "",
+        "familyKey": model_family_key(model_name) if model_name else "",
         "sourceCount": row.source_count,
         "families": families,
         "evidence": evidence,
@@ -401,6 +420,11 @@ def _panel_reason(outcome: dict[str, Any]) -> tuple[str, str]:
         return "admitted", human_summary(outcome)
     if decision == "exclude":
         return "panel:exclude", human_summary(outcome)
+    if outcome.get("tierHeld"):
+        # The panel said yes; the generation ladder had no seat left at that
+        # score. Naming the seat and the line is the difference between an
+        # operator reading "暂缓" as an outage and as a policy.
+        return "panel:tier", tier_line_note(outcome)
     return "panel:hold", human_summary(outcome)
 
 
@@ -533,6 +557,25 @@ async def _refresh_seed_in_batches(
     return inserted
 
 
+async def _admitted_tiers(session: AsyncSession) -> dict[str, int]:
+    """How many tiers each model generation already has in the archive.
+
+    Read per run rather than carried in a counter: the archive is ~170 model
+    rows, and a counter would have to be corrected by hand every time an
+    operator re-judges a row.
+    """
+    try:
+        names = await repo_events.load_admitted_model_names(session)
+    except Exception:  # noqa: BLE001 - a bookkeeping read never blocks a verdict
+        return {}
+    counts: dict[str, int] = {}
+    for name in names:
+        key = model_family_key(name)
+        if key:
+            counts[key] = counts.get(key, 0) + 1
+    return counts
+
+
 async def run_sync(
     session: AsyncSession,
     *,
@@ -573,6 +616,14 @@ async def run_sync(
         return {"ok": False, "busy": True, "runId": None, "status": "busy", "result": None}
 
     seed_needed = state is None or state.seed_version != SEED_VERSION
+    # The archive's clock. Read before `start_run` inserts this row, so the turn
+    # is "how many backfills have happened", not "how many, including me".
+    history_turn = 0
+    if history_min_year is not None:
+        try:
+            history_turn = await repo_sync.count_runs(session, trigger)
+        except Exception:  # noqa: BLE001 - a clock failure is not a failed run
+            history_turn = 0
 
     try:
         await repo_sync.start_run(session, run_id=run_id, trigger=trigger, now=now)
@@ -621,6 +672,17 @@ async def run_sync(
             sources, allowed = SEED_SOURCES, ALLOWED_HOSTS
         if len(sources) != len(SEED_SOURCES):
             notes.append(f"catalog:{len(sources)}")
+
+        # Archive sources are the history sweep's own tool: a daily run has one
+        # day of budget and an archive has nothing newer than last year, so they
+        # are dropped there rather than fetched and discarded. In a sweep the
+        # `{year}` placeholder is filled with the year this turn owns.
+        if history_min_year is None:
+            sources = [source for source in sources if not is_archive_source(source)]
+        else:
+            archive_year = archive_year_for(history_turn, now.year)
+            sources = [resolve_archive_source(source, archive_year) for source in sources]
+            notes.append(f"archive:{archive_year}")
 
         if fetch is not None:
             results = await load_sources(
@@ -925,6 +987,15 @@ async def run_sync(
                         timeout_ms=panel["timeoutMs"],
                     )
                     aggregate = aggregate_reviews(results_batch, batch_candidates)
+                    # The ladder runs after the ballots, not before: the panel's
+                    # median orders a generation, the ladder decides how many of
+                    # its tiers may pass. Only the decided outcome changes — the
+                    # votes stay as the judges cast them.
+                    apply_tier_lines(
+                        aggregate["byId"],
+                        batch_candidates,
+                        await _admitted_tiers(session),
+                    )
                     ok_count = sum(1 for result in results_batch if result["ok"])
                     notes.append(f"panel:{ok_count}/{len(panel['judges'])}")
                     if aggregate["failures"]:

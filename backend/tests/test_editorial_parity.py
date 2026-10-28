@@ -15,7 +15,14 @@ from app.editorial.panel import (
     parse_judge_content,
     public_panel_info,
 )
-from app.editorial.rules import RUBRIC_VERSION, assess_candidate, should_audit_out
+from app.editorial.rules import (
+    RUBRIC_VERSION,
+    apply_tier_lines,
+    assess_candidate,
+    generation_of,
+    should_audit_out,
+    tier_line,
+)
 from app.editorial.standard import STANDARD
 from app.ingest.normalize import normalize_results
 
@@ -323,6 +330,137 @@ async def test_a_queue_longer_than_one_ballot_is_split_and_merged() -> None:
     assert sizes == [BALLOT_SIZE, BALLOT_SIZE, 6]
     assert results[0]["ok"] is True
     assert len(results[0]["reviews"]) == len(queue)
+
+
+# ---------------------------------------------------------------------------
+# The generation ladder
+# ---------------------------------------------------------------------------
+
+
+def test_tier_line_ladder() -> None:
+    assert [tier_line(ordinal) for ordinal in range(1, 9)] == [75, 80, 85, 90, 95, 95, 95, 95]
+
+
+def test_tier_line_parity(golden_editorial: dict[str, Any]) -> None:
+    # The table is produced by the JS reference (`node scripts/export-golden.mjs`),
+    # so the step and the cap have to be changed there first.
+    assert [tier_line(ordinal) for ordinal in range(1, 9)] == golden_editorial["tierLines"]
+
+
+def test_only_a_model_has_a_generation() -> None:
+    assert generation_of({"category": "model", "familyKey": "gemini-3.8"}) == "gemini-3.8"
+    # A family-less model is its own generation.
+    assert generation_of({"category": "model", "modelKey": "gpt-6"}) == "gpt-6"
+    # Two policies in a year are two events, not two SKUs.
+    assert generation_of({"category": "policy", "familyKey": "eu-ai-act"}) == ""
+
+
+def _outcome(score: int, decision: str = "include") -> dict[str, Any]:
+    return {
+        "decision": decision,
+        "score": score,
+        "includeVotes": 5,
+        "excludeVotes": 0,
+        "validVotes": 5,
+        "votes": [],
+    }
+
+
+def _model(fingerprint: str, family: str = "gemini-3.8") -> dict[str, Any]:
+    return {
+        "fingerprint": fingerprint,
+        "category": "model",
+        "familyKey": family,
+        "modelKey": f"{family}-{fingerprint}",
+    }
+
+
+def test_the_second_tier_of_a_generation_needs_a_higher_score() -> None:
+    """One generation, one slot at 75; the second seat costs 80."""
+    candidates = [_model("pro"), _model("flash")]
+    by_id = {"pro": _outcome(91), "flash": _outcome(78)}
+
+    apply_tier_lines(by_id, candidates)
+
+    assert by_id["pro"]["decision"] == "include"
+    assert by_id["pro"]["tierOrdinal"] == 1
+    assert by_id["pro"]["tierLine"] == 75
+    assert by_id["flash"]["tierOrdinal"] == 2
+    assert by_id["flash"]["tierLine"] == 80
+    assert by_id["flash"]["decision"] == "hold"
+    assert by_id["flash"]["tierHeld"] is True
+
+
+def test_the_ladder_ranks_by_score_not_by_arrival() -> None:
+    """The better-scoring tier takes the seat, whatever order the batch holds."""
+    candidates = [_model("flash"), _model("pro")]
+    by_id = {"flash": _outcome(88), "pro": _outcome(76)}
+
+    apply_tier_lines(by_id, candidates)
+
+    assert by_id["flash"]["tierOrdinal"] == 1
+    assert by_id["flash"]["decision"] == "include"
+    # 76 clears the first line but not the second; the seat it wanted is taken.
+    assert by_id["pro"]["tierOrdinal"] == 2
+    assert by_id["pro"]["decision"] == "hold"
+
+
+def test_a_held_tier_does_not_consume_its_seat() -> None:
+    """A weak member must not block the sibling behind it."""
+    candidates = [_model("pro"), _model("flash"), _model("mini")]
+    by_id = {"pro": _outcome(92), "flash": _outcome(77), "mini": _outcome(81)}
+
+    apply_tier_lines(by_id, candidates)
+
+    assert by_id["pro"]["decision"] == "include"
+    # `mini` at 81 cleared the 80 line, so it took seat 2; `flash` at 77 was
+    # asked for 85 and is still waiting.
+    assert by_id["mini"]["tierOrdinal"] == 2
+    assert by_id["mini"]["decision"] == "include"
+    assert by_id["flash"]["tierOrdinal"] == 3
+    assert by_id["flash"]["tierLine"] == 85
+    assert by_id["flash"]["decision"] == "hold"
+
+
+def test_the_ladder_continues_from_what_the_archive_already_holds() -> None:
+    candidates = [_model("flash")]
+    by_id = {"flash": _outcome(84)}
+
+    apply_tier_lines(by_id, candidates, {"gemini-3.8": 3})
+
+    assert by_id["flash"]["tierOrdinal"] == 4
+    assert by_id["flash"]["tierLine"] == 90
+    assert by_id["flash"]["decision"] == "hold"
+
+    again = {"flash": _outcome(84)}
+    apply_tier_lines(again, candidates, {"gemini-3.8": 1})
+    assert again["flash"]["tierOrdinal"] == 2
+    assert again["flash"]["tierLine"] == 80
+    assert again["flash"]["decision"] == "include"
+
+
+def test_a_panel_rejection_is_never_rescued_by_the_ladder() -> None:
+    candidates = [_model("pro"), _model("flash")]
+    by_id = {"pro": _outcome(90), "flash": _outcome(76, decision="exclude")}
+
+    apply_tier_lines(by_id, candidates)
+
+    assert by_id["flash"]["decision"] == "exclude"
+    assert "tierHeld" not in by_id["flash"]
+
+
+def test_a_lone_generation_behaves_as_it_did_before_the_ladder() -> None:
+    by_id = {"pro": _outcome(75)}
+    apply_tier_lines(by_id, [_model("pro")])
+    assert by_id["pro"]["tierLine"] == 75
+    assert by_id["pro"]["decision"] == "include"
+
+
+def test_a_non_model_candidate_is_not_laddered() -> None:
+    by_id = {"act": _outcome(80)}
+    apply_tier_lines(by_id, [{"fingerprint": "act", "category": "policy"}])
+    assert "tierLine" not in by_id["act"]
+    assert by_id["act"]["decision"] == "include"
 
 
 async def test_a_failed_slice_only_costs_its_own_votes() -> None:

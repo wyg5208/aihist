@@ -1,6 +1,6 @@
 # AI 纪年 / AI Chronicle
 
-> **当前版本**：v0.12.0 ｜ **更新日期**：2026-10-28 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
+> **当前版本**：v0.13.0 ｜ **更新日期**：2026-10-28 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
 
 一个中文的人工智能编年史站点：记录里程碑、模型发布、研究突破与产业事件。条目来自固定公开源（OpenRouter、Hugging Face、arXiv、Hacker News、官方公告与科技媒体 RSS），经指纹去重、跨源合并与置信度计算后，还要通过规则预筛和五家不同厂商的大模型评审（至少三票同意）才入档。完整规则见 [收录标准](docs/AI纪年_收录标准_v1.0.md)。
 
@@ -195,9 +195,13 @@ scripts/export-seed.mjs                 从 functions/lib/seed.mjs 重导 seed.j
 
 自动条目先经确定性规则预筛，排除融资、人事、合作、价格、发布会、访谈、早报、传闻等新闻型内容；规则分达到 35 的候选再交给评审面板，并按分数排序取其上限。面板按厂商各取一家 —— DeepSeek、通义千问、智谱 GLM、Kimi、MiniMax —— 最多五席。至少 3 票 `include` 且中位分达到 75 才入档（`score < 75` 的 `include` 票不计为同意）；有效票不足 3 票、票型分裂（如 2–2）、超时或未配置评审模型时一律暂缓。
 
+同一代际只留一个位置，第 N 个档位要付更高的分数：第 1 个档位 75 分、第 2 个 80、第 3 个 85、第 4 个 90，封顶 95。阶梯在面板投票之后生效，用的是面板自己给出的中位分——分数决定谁先占位，阶梯决定同一代际能留下几个。一个家族一周连发 Pro／Flash／Mini 四个 SKU 时，规则分只能把它们摊在同一分数带里，靠面板阅读顺序决定谁赢；现在它们按分数排队，过线的占位，没过线的让位给后面的兄弟，家族不会被最弱的那一个堵住。被面板认可但被阶梯卡住的模型记为「同代档位分数不足」的暂缓（不入档、也不写死结论），因为座次本身会随后续运行变化。
+
 来源族参与打分：`official` 与 `policy`（监管原文）各加 10 分，因为它们是一手信息；`policy` 在聚类阶段也不套「官方号才算节点」的门——一条生效的法规本身就是节点。这也是 `RUBRIC_VERSION` 升到 `chronicle-v3` 的原因，升级后旧票型自动失效并重审。
 
 模型目录（OpenRouter、Hugging Face）的候选现在把厂商自己的模型卡原文带给面板，而不是只报一个上下文窗口——摘要是「sparse mixture-of-experts, 3.8B active out of 25.2B」还是「上下文窗口 262K」，决定了同一条候选是被当成新架构还是被当成目录噪音。同族档位（`-pro`/`-flash`）仍然扣分，但只扣 4 分、不再单独构成淘汰，所以 `Gemini 3.8 Flash` 这类「本代旗舰只有一个档位」的发布能进到面板；它是不是**新模型**由模型卡回答（`the same underlying model as …`、`the October 17 snapshot of …` 会被判为变体或快照）。这两处改动是 `RUBRIC_VERSION` 升到 `chronicle-v4` 的原因，旧票型（包括此前按模板摘要判出的「仅目录条目」淘汰）一并失效重审。
+
+同日上线的还有两个**历史档案型源**，它们回答日常源回答不了的问题：`hf-archive` 取 Hugging Face 全时下载榜（bert、gpt2、t5、whisper 这些定义过后继基准的老模型，trending 榜只看近两周），`arxiv-archive` 按年检索当年核心主题的四十篇（预先印本排序只给最新三十篇，2016 年那批里程碑早已不在返回结果里）。两者只在回补模式启用，键名以 `-archive` 结尾即是开关；`arxiv-archive` 的 URL 带 `{year}` 占位，每次回补只推进一年，从 2012 走到去年，走完一圈再从头开始（轮次记在 `sync_runs` 的条数上，不需要新字段）。代际阶梯与档案源是 `RUBRIC_VERSION` 升到 `chronicle-v5` 的原因。
 
 评审模型通过环境变量配置：本地写仓库根 `.env`，生产写 `deploy/api.env`（Linux `/etc/aihist/api.env`），密钥只存在于服务器。每席只需要厂商名和密钥，端点、默认模型以及关闭思考的参数由 `backend/app/editorial/providers.py` 的预设提供：
 
@@ -269,7 +273,7 @@ python -m app.cli create-owner --username you
 | 版本族 | 真源 | 同步点 |
 | --- | --- | --- |
 | 产品版本 `X.Y.Z` | `package.json` | `backend/pyproject.toml`、本文件顶部「当前版本」行、迭代记录文件名 |
-| 收录规则 `RUBRIC_VERSION`（当前 `chronicle-v4`） | `backend/app/editorial/rules.py` | `functions/lib/editorial.mjs`（参考实现）、票型缓存、`/api/v1/standard` |
+| 收录规则 `RUBRIC_VERSION`（当前 `chronicle-v5`） | `backend/app/editorial/rules.py` | `functions/lib/editorial.mjs`（参考实现）、票型缓存、`/api/v1/standard` |
 | 种子数据 `SEED_VERSION`（当前 `2026.10.24.6`） | `functions/lib/seed.mjs` | `backend/app/data/seed.json`（由 `scripts/export-seed.mjs` 生成）、`sync_state.seed_version` |
 | 契约夹具 | `backend/tests/fixtures/golden/*.json` | 由 `scripts/export-golden.mjs` / `export-api-golden.mjs` 从参考实现生成 |
 

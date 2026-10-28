@@ -12,7 +12,7 @@ import { fixtureFetch } from "../dev/fixture-fetch.mjs";
 import { SOURCES, loadSources } from "../functions/lib/sources.mjs";
 import { normalizeResults } from "../functions/lib/normalize.mjs";
 import { clusterCandidates } from "../functions/lib/cluster.mjs";
-import { assessCandidate } from "../functions/lib/editorial.mjs";
+import { assessCandidate, tierLine } from "../functions/lib/editorial.mjs";
 
 const ROOT = resolve(fileURLToPath(new URL("..", import.meta.url)));
 const OUT_DIR = join(ROOT, "backend", "tests", "fixtures", "golden");
@@ -89,6 +89,11 @@ const clusteredRows = clustered.items.map((item) => ({
 await mkdir(OUT_DIR, { recursive: true });
 const header = { exportedAt: new Date(nowMs).toISOString(), nowMs };
 
+// The generation ladder, positions 1..8: 75, 80, 85, 90, 95, 95, 95, 95. Exported
+// as a table rather than recomputed in the Python test, so a change to the step
+// or the cap has to be made on this side first — that is what "reference" means.
+const tierLines = Array.from({ length: 8 }, (_, index) => tierLine(index + 1));
+
 await writeFile(
   join(OUT_DIR, "sources.json"),
   `${JSON.stringify({ ...header, parsed }, null, 2)}\n`,
@@ -101,7 +106,7 @@ await writeFile(
 );
 await writeFile(
   join(OUT_DIR, "editorial.json"),
-  `${JSON.stringify({ ...header, assessments }, null, 2)}\n`,
+  `${JSON.stringify({ ...header, assessments, tierLines }, null, 2)}\n`,
   "utf8"
 );
 await writeFile(

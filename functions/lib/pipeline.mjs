@@ -1,12 +1,13 @@
 import { sha256Hex } from "./http.mjs";
 import { SOURCES, loadSources } from "./sources.mjs";
-import { CATEGORY_KEYS, normalizeResults } from "./normalize.mjs";
+import { CATEGORY_KEYS, modelFamilyKey, modelKeyOf, normalizeResults } from "./normalize.mjs";
 import { clusterCandidates, confidenceOf, fingerprintOf } from "./cluster.mjs";
 import {
   MIN_INCLUDE_VOTES,
   RUBRIC_VERSION,
   RULE_PANEL_THRESHOLD,
   aggregateReviews,
+  applyTierLines,
   assessCandidate,
   buildPanelConfig,
   decisionRecord,
@@ -276,12 +277,31 @@ function auditCandidate(row) {
     category: row.category,
     organization: row.organization,
     modelName: row.model_name,
+    modelKey: row.model_name ? modelKeyOf(row.model_name) : "",
+    familyKey: row.model_name ? modelFamilyKey(row.model_name) : "",
     sourceCount: row.source_count,
     families: Array.isArray(row.source_families) ? row.source_families : [],
     evidence: Array.isArray(row.sources) ? row.sources : [],
     signals: {},
     meta: row.meta || {},
   };
+}
+
+/**
+ * How many tiers each model generation already has in the archive.
+ *
+ * `rows` is the same set clustering already read, so the ladder costs no extra
+ * query. The name is the only stable key: `familyKey` is derived from it by
+ * `modelFamilyKey` on both the stored and the candidate side.
+ */
+function countTiers(rows) {
+  const counts = {};
+  for (const row of rows) {
+    if (row.category !== "model" || row.editorial_status !== "admitted") continue;
+    const key = modelFamilyKey(row.model_name || "");
+    if (key) counts[key] = (counts[key] || 0) + 1;
+  }
+  return counts;
 }
 
 function editorialPatch(status, review) {
@@ -639,6 +659,13 @@ export async function runSync({
           const aggregate = aggregateReviews(
             results,
             batch.map((entry) => entry.candidate)
+          );
+          // The ladder runs after the ballots: the panel's median orders a
+          // generation, the ladder decides how many of its tiers may pass.
+          applyTierLines(
+            aggregate.byId,
+            batch.map((entry) => entry.candidate),
+            countTiers(existingRows)
           );
           const okCount = results.filter((result) => result.ok).length;
           notes.push(`panel:${okCount}/${panel.judges.length}`);

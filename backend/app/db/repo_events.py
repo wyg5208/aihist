@@ -212,6 +212,25 @@ async def load_audit_events(session: AsyncSession, limit: int = 120) -> list[Eve
     return list(result.scalars().all())
 
 
+async def load_admitted_model_names(session: AsyncSession) -> list[str]:
+    """Every model release the archive has already taken.
+
+    The generation ladder needs to know how many tiers a family already has,
+    and the name is the only stable key: `familyKey` is derived from it by the
+    same function on both sides (`normalize.model_family_key`), so counting
+    here and resolving a candidate cannot disagree. Only ~170 rows exist, so
+    this is a cheap read rather than a maintained counter that could drift.
+    """
+    result = await session.execute(
+        select(Event.model_name).where(
+            Event.category == "model",
+            Event.editorial_status == "admitted",
+            Event.model_name.is_not(None),
+        )
+    )
+    return [name for name in result.scalars().all() if name]
+
+
 async def load_slugless_events(session: AsyncSession, limit: int = 60) -> list[Event]:
     result = await session.execute(
         select(Event).where(Event.slug.is_(None)).limit(limit)
