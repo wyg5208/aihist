@@ -1,5 +1,5 @@
 {
-  "note": "配图登记表。键是条目的 slug（没有 slug 时用 id）。src 指向 public/visuals 下的文件；credit 与 license 必填——没有出处与授权说明的图不进放映。真图来自 Wikimedia Commons，全部按 API 返回的 LicenseShortName 登记，sourceUrl 指回文件页供核对；CC BY 与 CC BY-SA 要求在放映里署名，所以图注常驻作者与许可，末尾的外链可点回原始文件页。另有 11 条 AI 生成示意图（kind=illustration，图注写明「非史实照片」），其余条目继续使用程序化编年图版。",
+  "note": "配图登记表。键是条目的 slug（没有 slug 时用 id）。src 指向 public/visuals 下的文件；credit 与 license 必填——没有出处与授权说明的图不进放映。真图来自 Wikimedia Commons，全部按 API 返回的 LicenseShortName 登记，sourceUrl 指回文件页供核对；CC BY 与 CC BY-SA 要求在放映里署名，所以图注常驻作者与许可，末尾的外链可点回原始文件页。另有 11 条 AI 生成示意图（kind=illustration，图注写明「非史实照片」），其余条目继续使用程序化编年图版。换图不要原地覆盖同名文件：/visuals/ 缓存 30 天（再配 7 天 stale-while-revalidate），必须改文件名、同步这里的 src 并重跑 npm run build:visuals，否则读者会长时间看到旧图；只改 alt/credit/license 则不需要改名。",
   "items": {
     "el-ajedrecista-1912": {
       "src": "/visuals/el-ajedrecista-1912.jpg",

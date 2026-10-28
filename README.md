@@ -74,7 +74,7 @@ npm run dev          # http://127.0.0.1:5173，/api 代理到 127.0.0.1:8000
 | 命令 | 作用 |
 | --- | --- |
 | `npm run build` | `tsc --noEmit` + Vite + 种子静态页与站点文件 |
-| `npm run build:visuals` | 把 `public/visuals/*.jpg` 重新转成 760w / 900w 两档 WebP（需本机 `ffmpeg`，已转好的不会重做，`--force` 全量重出） |
+| `npm run build:visuals` | 把 `public/visuals/*.jpg` 重新转成 760w / 900w 两档 WebP（需本机 `ffmpeg`，已转好的不会重做，`--force` 全量重出）。**换图必须先改文件名**，见[换图与配图缓存](#换图与配图缓存) |
 | `npm run preview` | 预览构建产物 |
 | `npm run check:version` | 产品版本三处一致（G0） |
 | `npm run check:pages` | 校验 `dist/e/*.html`、sitemap、robots、首页 JSON-LD |
@@ -278,10 +278,12 @@ python -m app.cli create-owner --username you
 | --- | --- | --- |
 | 产品版本 `X.Y.Z` | `package.json` | `backend/pyproject.toml`、本文件顶部「当前版本」行、迭代记录文件名 |
 | 收录规则 `RUBRIC_VERSION`（当前 `chronicle-v5`） | `backend/app/editorial/rules.py` | `functions/lib/editorial.mjs`（参考实现）、票型缓存、`/api/v1/standard` |
-| 种子数据 `SEED_VERSION`（当前 `2026.10.28.1`） | `functions/lib/seed.mjs` | `backend/app/data/seed.json`（由 `scripts/export-seed.mjs` 生成）、`sync_state.seed_version` |
+| 种子数据 `SEED_VERSION`（当前 `2026.10.28.1`） | `functions/lib/seed.mjs` | `backend/app/data/seed.json`（由 `scripts/export-seed.mjs` 生成，含 `seedDigest`）、`sync_state.seed_version`（存 `SEED_VERSION#摘要`） |
 | 契约夹具 | `backend/tests/fixtures/golden/*.json` | 由 `scripts/export-golden.mjs` / `export-api-golden.mjs` 从参考实现生成 |
 
 `npm run check:version` 硬校验产品版本三处一致（不一致退出码 1）；规则与数据的漂移只报 `WARN`，但必须在迭代记录里说明处理结论。改规则要同时改两套实现并同步 `scripts/check-editorial.mjs` 的断言，否则检查会"假绿"。
+
+`sync_state.seed_version` 存的是 `SEED_STAMP` = `SEED_VERSION#内容摘要`：改种子（哪怕只改一条证据的来源族）摘要就会变，下一次同步自动刷新库中已有行；日期版本仍由人写，用来说明这次修订的性质。重刷只改证据投影（`sources` / `source_families` / `source_count` / `confidence` / `updated_at`），不动运维裁定、`slug` 与首次采集时间。手工兜底：`python -m app.cli seed`（幂等）。
 
 每个对外版本都要写一份 `docs/开发记录/v{版本}_{日期}_{主题}.md`，章节结构与必填项见 `.qoder/agents/iteration-doc.md`；发布流程、回滚方式与线上验收清单见 `.qoder/agents/version-release.md`。仓库已纳入 Git（`main` 分支），首个提交即 v0.2.0 基线。
 
@@ -292,6 +294,24 @@ python -m app.cli create-owner --username you
 - 备份只能用 `deploy/backup.py`（SQLite 备份 API）或 `VACUUM INTO`，不能直接复制 `.db` 文件——WAL 下普通复制可能得到撕裂快照。
 - 档案库不授予 DELETE：错误条目通过更严格的入库门槛、种子校订与后续迁移修正。唯一的删除任务是每周的 `prune`，它只清四张分析表（`page_views`、`crawl_hits`、`api_key_usage`、`audit_log`），白名单写死在 `backend/app/analytics/retention.py`，其他表永不在其列。采集库另有一条口子 `library-prune`：按 `COLLECT_RETENTION_DAYS` 清理 `collect_verdicts` 轨迹与状态为 `dropped` 的 `raw_items`；`admitted`／`excluded`／`held` 的行是已发布条目的审计证据，永不被自动删除。
 - 采集只保留标题、短摘录与外链，不镜像全文，并标注来源。
+
+## 换图与配图缓存
+
+`/visuals/` 在 Vercel 上带 `public, max-age=2592000, stale-while-revalidate=604800`：**一张图发出去，浏览器和边缘就会缓存 30 天，过期后还能再拿旧图顶 7 天。** 所以配图不能原地覆盖——这是 v0.14.2 之前每次放映都要回源校验、翻屏先空一块的直接原因。
+
+换一张图的标准动作：
+
+1. **改文件名**：`perceptron-1958.jpg` → `perceptron-1958-v2.jpg`，而不是覆盖同名文件。
+2. 同步改 `src/data/visuals.json` 里那条的 `src`（`alt` / `credit` / `license` 也要跟图一起核对）。
+3. `npm run build:visuals` 重出两档 WebP。只改文件名不跑这一步，`<picture>` 的 WebP 源会 404 再静默退回 JPEG。
+4. 旧文件留着或删掉都行：已缓存的读者照样看旧图，新访客拿到新图。
+
+几个容易踩的坑：
+
+- **不要用 `?v=2` 绕过缓存**：`visualSources()` 只认以 `.jpg` 结尾的 `src`，带查询串会返回 `null`，`<picture>` 的 WebP 源整体消失、静默退回 JPEG（体积翻倍）。真要支持 query，得先让它按 URL 解析后缀。
+- **不要靠删 `vercel.json` 的 `/visuals` 缓存头来解决**：那等于退回 `max-age=0`，每次放映都回源校验，正是这一版修掉的问题。
+- **只想改图注就不用改名**：`alt` / `credit` / `license` 跟 bundle 走（文件名带哈希），改 `visuals.json` 重新构建即可，不参与图片缓存。
+- 同一张图换内容又不想改名时，最坏情况下旧图会在读者那里留到 30 + 7 天，这个等待时间要提前算进去。
 
 ## 发布
 
@@ -306,7 +326,7 @@ node scripts/release-gate.mjs      # G0 版本一致 → 构建 → 静态页 �
 两条通道彼此独立，可以分开发，但版本号只有一个：
 
 - ~~**静态站**（Qoder Sites）~~：**2026-10-26 已停用**。该通道已由站点负责人关闭，不再发布、不再推送、不再核对回执；根目录的 `*.qoder.site` 只是历史凭据（已被 `.gitignore` 忽略），不是待办。静态站只走 Vercel。
-- **静态站**（Vercel）：`vercel.json` 把 nginx 的路由规则复刻到平台侧——`/admin` 与 `/e/<slug>` 的 rewrite、`/api` 与 `/go` 回源 `https://api.aihist.net`、assets 一年 immutable、`/e/` 七天、`/visuals/` 三十天（配 `stale-while-revalidate`，换图后要改文件名才会立即生效）、`/admin` 加 `X-Robots-Tag`。构建命令仍是 `npm run build`，产物 `dist`，`cleanUrls` 必须保持 `false`：canonical 与 sitemap 里的规范地址带 `.html`，开了 `cleanUrls` 会把 159 条 URL（158 个种子页 + 首页）一起 308 掉。
+- **静态站**（Vercel）：`vercel.json` 把 nginx 的路由规则复刻到平台侧——`/admin` 与 `/e/<slug>` 的 rewrite、`/api` 与 `/go` 回源 `https://api.aihist.net`、assets 一年 immutable、`/e/` 七天、`/visuals/` 三十天（配 `stale-while-revalidate`；换图必须改文件名，见[换图与配图缓存](#换图与配图缓存)）、`/admin` 加 `X-Robots-Tag`。构建命令仍是 `npm run build`，产物 `dist`，`cleanUrls` 必须保持 `false`：canonical 与 sitemap 里的规范地址带 `.html`，开了 `cleanUrls` 会把 159 条 URL（158 个种子页 + 首页）一起 308 掉。
 - **API 服务器**：Windows Server 用 `deploy\windows\install.ps1 -ApiHost api.aihist.net` → `install-service.ps1` → `register-tasks.ps1` → `switch-caddy.ps1`；Linux 用 `deploy/bootstrap.sh` → `aihist-api.service` → `cron.d/aihist`。`install.ps1` 默认不构建 `dist\`（前端归 Vercel），仍要整站自托管时加 `-BuildSite`；`-SiteOrigin` 必须等于 api.env 里的 `SITE_ORIGIN`，否则直接中断——订阅确认链接与来源分类都从它拼出来。`switch-caddy.ps1` 把 Caddy 从「全站」换成 `Caddyfile.api`（只留 `/api` 与 `/go`，其余硬 404）：先 `caddy validate`、再备份旧文件、最后重启并探活，回滚命令由它自己打印。发布后用 `GET /api/v1/status` 核对 `seedVersion` 与 `panel.configured`，用 `GET /api/v1/standard` 核对 `rubricVersion` / `panelSize` / `minVotes` / `includeScore`。
 
 前端上 Vercel 时后端不搬家：SQLite 要在本机固定磁盘、采集是每天 01:05 的定时任务、租约与 track 限流都是进程内状态，这些都不成立在 Serverless 上。所以 `api.aihist.net` 只暴露两个前缀（`deploy/windows/Caddyfile.api`，其余路径硬 404），Vercel 用 rewrite 做服务端回源，浏览器始终只看 `aihist.net`，`src/api.ts` 的 `BASE = "/api/v1"` 与管理台的 host-only Cookie 都不用改。缓存要分层看：**管理台与写接口（`/api/v1/admin/*`、`track`、`events`、`apply`、`correct`、`go`）必须 `Cache-Control: no-store`**，Vercel 会按上游响应缓存 external rewrite，放宽了管理台就读旧数据；而 `/api/v1/timeline`、`/status`、`/standard` 是三个无副作用的公开读，允许 60 秒（`vercel.json` 给边缘 `s-maxage=60`，`deploy/windows/nginx-api.aihist.net.conf` 给源站 `proxy_cache` 同样 60 秒）——新条目最多晚一分钟可见。另一个代价：`/e/<slug>.html` 的访问记录不再落在本机反代日志里，`ingest-access-log` 的 `crawl_hits` 链路会断（`switch-caddy.ps1` 结尾会比对 `ANALYTICS_LOG_PATH`，指向旧的 `access.log` 时告警）。

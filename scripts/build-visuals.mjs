@@ -9,6 +9,11 @@
  *   node scripts/build-visuals.mjs            # 只补缺失的
  *   node scripts/build-visuals.mjs --force    # 全部重出
  * 产物与 JPEG 同名同目录，`.jpg` 换成 `.webp` / `-760.webp`。
+ *
+ * 换图不要原地覆盖同名 JPEG：`/visuals/` 在 Vercel 上缓存 30 天（再配 7 天
+ * stale-while-revalidate），覆写后读者仍会拿旧图。改文件名（`x.jpg` →
+ * `x-v2.jpg`）、同步 `src/data/visuals.json`，再跑这个脚本。旧档位不会自动
+ * 删除——它们已经是另一个文件名，要清就手工清。
  */
 import { execFileSync } from "node:child_process";
 import { existsSync, readdirSync, statSync } from "node:fs";

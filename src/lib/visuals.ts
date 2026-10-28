@@ -58,6 +58,10 @@ export interface VisualSources {
 /**
  * 同一张图的 WebP 两档，由 `scripts/build-visuals.mjs` 生成。
  * 源不是 JPEG（或将来换成别的格式）时返回 null，调用方直接走原图。
+ *
+ * 文件名是从 `src` 派生的，所以换图必须改名并重跑 `npm run build:visuals`：
+ * 只改 `src` 不重跑，WebP 源会 404 再静默退回 JPEG。也正因为只认 `.jpg`
+ * 结尾，`?v=` 这类查询串会直接走到下面返回 null 的分支（WebP 整体失效）。
  */
 export function visualSources(entry: VisualEntry): VisualSources | null {
   if (!entry.src.endsWith(".jpg")) return null;
