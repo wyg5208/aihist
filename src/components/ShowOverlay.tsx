@@ -12,6 +12,7 @@ import { prefetchEvent } from "../hooks/useEventDetail";
 import type { ShowController, ShowOptions, ShowPace } from "../hooks/useShow";
 import { CATEGORY_META } from "../lib/format";
 import { plateSpec } from "../lib/plate";
+import { prefetchVisuals } from "../lib/visuals";
 import { ShowSlide } from "./ShowSlide";
 import { VisualPlate } from "./VisualPlate";
 
@@ -76,6 +77,17 @@ export function ShowOverlay({ show, onOpenEntry }: Props) {
     if (show.upcoming) prefetchEvent(show.upcoming.id);
   }, [show.phase, show.active, show.upcoming]);
 
+  // 图也一样要提前取：不预取时，每一屏都是切过去才开始下载，冷启动要
+  // 等三五百毫秒才出图。取后两屏，按节奏 6 秒一屏也来得及。
+  useEffect(() => {
+    if (show.phase !== "stage") return;
+    prefetchVisuals([
+      show.active,
+      show.upcoming,
+      show.queue[show.index + 2] ?? null,
+    ]);
+  }, [show.phase, show.active, show.upcoming, show.queue, show.index]);
+
   const toggleFullscreen = useCallback(async () => {
     try {
       if (document.fullscreenElement) await document.exitFullscreen();
@@ -129,7 +141,7 @@ export function ShowOverlay({ show, onOpenEntry }: Props) {
       <div className="show-shell">
         {show.phase === "setup" ? (
           <SetupScreen show={show} onClose={close} />
-        ) : (
+        ) : show.phase === "stage" ? (
           <>
             <header className="show-head">
               <span className="show-brand">AI 纪年 · 自动演示</span>
@@ -235,7 +247,7 @@ export function ShowOverlay({ show, onOpenEntry }: Props) {
               </div>
             </footer>
           </>
-        )}
+        ) : null}
       </div>
     </dialog>
   );

@@ -41,6 +41,8 @@ function errorCode(payload: ErrorPayload | null): string {
 export async function requestJson<T>(url: string, init?: RequestInit): Promise<T> {
   let response: Response;
   try {
+    // 默认绕开 HTTP 缓存（管理台的读必须新鲜）；下面三个公开只读接口自己传
+    // `cache: "default"`，让浏览器与边缘 CDN 的 `max-age` 生效。
     response = await fetch(url, {
       cache: "no-store",
       ...init,
@@ -75,7 +77,7 @@ function request<T>(path: string, init?: RequestInit): Promise<T> {
 }
 
 export function fetchTimeline(limit = 1200, signal?: AbortSignal) {
-  return request<TimelineResponse>(`/timeline?limit=${limit}`, { signal });
+  return request<TimelineResponse>(`/timeline?limit=${limit}`, { signal, cache: "default" });
 }
 
 export function fetchEvent(id: string, signal?: AbortSignal) {
@@ -91,9 +93,9 @@ export function fetchEventBySlug(slug: string, signal?: AbortSignal) {
 }
 
 export function fetchStatus(signal?: AbortSignal) {
-  return request<StatusResponse>("/status", { signal });
+  return request<StatusResponse>("/status", { signal, cache: "default" });
 }
 
 export function fetchStandard(signal?: AbortSignal) {
-  return request<StandardResponse>("/standard", { signal });
+  return request<StandardResponse>("/standard", { signal, cache: "default" });
 }

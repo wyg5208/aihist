@@ -1384,6 +1384,13 @@ input[type="search"]::-webkit-search-cancel-button {
   object-fit: cover;
 }
 
+/* <picture> 自身不参与布局，得显式撑满画框，否则 img 的 100% 没有参照。 */
+.show-figure > picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
 .show-credit {
   position: absolute;
   left: 18px;

@@ -28,6 +28,15 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
     },
     {
+      "source": "/visuals/:path*",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=2592000, stale-while-revalidate=604800"
+        }
+      ]
+    },
+    {
       "source": "/admin",
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     },
@@ -44,6 +53,48 @@
       "headers": [
         { "key": "CDN-Cache-Control", "value": "no-store" },
         { "key": "x-vercel-enable-rewrite-caching", "value": "0" }
+      ]
+    },
+    {
+      "source": "/api/v1/timeline",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=15, s-maxage=60, stale-while-revalidate=300"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=60, stale-while-revalidate=300"
+        },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "1" }
+      ]
+    },
+    {
+      "source": "/api/v1/status",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=15, s-maxage=60, stale-while-revalidate=300"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=60, stale-while-revalidate=300"
+        },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "1" }
+      ]
+    },
+    {
+      "source": "/api/v1/standard",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=86400"
+        },
+        {
+          "key": "CDN-Cache-Control",
+          "value": "public, s-maxage=3600, stale-while-revalidate=86400"
+        },
+        { "key": "x-vercel-enable-rewrite-caching", "value": "1" }
       ]
     },
     {

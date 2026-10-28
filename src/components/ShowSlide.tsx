@@ -2,7 +2,7 @@ import { useMemo, useState } from "react";
 import type { TimelineItem } from "../types";
 import { CATEGORY_META, CONFIDENCE_META, formatCount, summaryKindLabel } from "../lib/format";
 import { plateSpec } from "../lib/plate";
-import { visualCredit, visualFor } from "../lib/visuals";
+import { SHOW_IMAGE_SIZES, visualCredit, visualFor, visualSources } from "../lib/visuals";
 import { useEventDetail } from "../hooks/useEventDetail";
 import { VisualPlate } from "./VisualPlate";
 
@@ -25,11 +25,17 @@ function dateTail(item: TimelineItem): string {
  *
  * 视觉优先级是「登记过的真图 → 程序化图版」。真图加载失败也退回图版，
  * 所以放映永远不会出现破图；没有登记图的条目本来就用图版，不会留空。
+ *
+ * 真图先试 WebP 两档（见 `scripts/build-visuals.mjs`），浏览器不支持或
+ * 文件缺失时退回同名 JPEG，再失败才退图版。
  */
 export function ShowSlide({ item, onOpen }: Props) {
   const { detail, loading } = useEventDetail(item.id, true);
   const visual = visualFor(item);
   const [brokenSrc, setBrokenSrc] = useState<string | null>(null);
+  const [webpFailed, setWebpFailed] = useState(false);
+  const sources = visual ? visualSources(visual) : null;
+  const useWebp = Boolean(sources) && !webpFailed;
   const spec = useMemo(() => plateSpec(item), [item]);
   const showImage = Boolean(visual) && visual?.src !== brokenSrc;
   const category = CATEGORY_META[item.category];
@@ -39,17 +45,33 @@ export function ShowSlide({ item, onOpen }: Props) {
     <article className="show-slide">
       <figure className="show-figure" data-visual={showImage ? visual?.kind : "plate"}>
         {showImage && visual ? (
-          <img
-            className="show-photo"
-            src={visual.src}
-            alt={visual.alt}
-            style={
-              visual.cover || visual.fit
-                ? { objectPosition: visual.cover, objectFit: visual.fit }
-                : undefined
-            }
-            onError={() => setBrokenSrc(visual.src)}
-          />
+          <picture>
+            {useWebp && sources ? (
+              <source
+                type="image/webp"
+                srcSet={`${sources.narrow} 760w, ${sources.wide} 900w`}
+                sizes={SHOW_IMAGE_SIZES}
+              />
+            ) : null}
+            <img
+              className="show-photo"
+              src={visual.src}
+              alt={visual.alt}
+              sizes={SHOW_IMAGE_SIZES}
+              decoding="async"
+              fetchPriority="high"
+              style={
+                visual.cover || visual.fit
+                  ? { objectPosition: visual.cover, objectFit: visual.fit }
+                  : undefined
+              }
+              onError={() => {
+                // WebP 那一档挂了只说明文件不在，退回 JPEG；JPEG 也挂才用图版。
+                if (useWebp) setWebpFailed(true);
+                else setBrokenSrc(visual.src);
+              }}
+            />
+          </picture>
         ) : (
           <VisualPlate spec={spec} />
         )}
