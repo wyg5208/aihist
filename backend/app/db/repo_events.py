@@ -42,6 +42,33 @@ def _insert_ignore(session: AsyncSession, model: Any, rows: Sequence[dict[str, A
     return pg_insert(model).values(list(rows)).on_conflict_do_nothing()
 
 
+# SQLite binds one parameter per column per row and refuses a statement that asks
+# for more than SQLITE_MAX_VARIABLE_NUMBER of them (32,766 since 3.32). `raw_items`
+# has 23 columns, so a single 1,500-row backfill upsert asks for 34,500 — over the
+# budget. The error was swallowed as `ledger_failed`, which dropped the whole
+# audit trail for that run without failing it. Every multi-row writer therefore
+# goes through `_batches`, sized well under the limit on either dialect.
+WRITE_BATCH_ROWS = 500
+
+
+def _batches(rows: Sequence[dict[str, Any]]) -> list[list[dict[str, Any]]]:
+    return [
+        list(rows[start : start + WRITE_BATCH_ROWS])
+        for start in range(0, len(rows), WRITE_BATCH_ROWS)
+    ]
+
+
+async def _insert_ignore_batched(
+    session: AsyncSession, model: Any, rows: Sequence[dict[str, Any]]
+) -> int:
+    """Insert-or-ignore in batches; returns the rows the database accepted."""
+    inserted = 0
+    for batch in _batches(rows):
+        result = await session.execute(_insert_ignore(session, model, batch))
+        inserted += max(result.rowcount or 0, 0)
+    return inserted
+
+
 async def count_events(session: AsyncSession) -> int:
     statement = observable(select(func.count()).select_from(Event))
     return int((await session.execute(statement)).scalar_one())
@@ -50,9 +77,9 @@ async def count_events(session: AsyncSession) -> int:
 async def insert_events(session: AsyncSession, rows: Sequence[dict[str, Any]]) -> int:
     if not rows:
         return 0
-    result = await session.execute(_insert_ignore(session, Event, rows))
+    inserted = await _insert_ignore_batched(session, Event, rows)
     await session.commit()
-    return max(result.rowcount or 0, 0)
+    return inserted
 
 
 # Seeds carry curated content, so a revision to them — a corrected source
@@ -79,12 +106,12 @@ async def upsert_seed_events(session: AsyncSession, rows: Sequence[dict[str, Any
     missing = [row for row in rows if row["fingerprint"] not in existing]
     present = [row for row in rows if row["fingerprint"] in existing]
     if missing:
-        await session.execute(_insert_ignore(session, Event, missing))
-    if present:
+        await _insert_ignore_batched(session, Event, missing)
+    for batch in _batches(present):
         if _dialect_name(session) == "sqlite":
-            statement = sqlite_insert(Event).values(present)
+            statement = sqlite_insert(Event).values(batch)
         else:
-            statement = pg_insert(Event).values(present)
+            statement = pg_insert(Event).values(batch)
         excluded = statement.excluded
         statement = statement.on_conflict_do_update(
             index_elements=[Event.fingerprint],
@@ -98,7 +125,7 @@ async def upsert_seed_events(session: AsyncSession, rows: Sequence[dict[str, Any
 async def insert_raw_items(session: AsyncSession, rows: Sequence[dict[str, Any]]) -> int:
     if not rows:
         return 0
-    await session.execute(_insert_ignore(session, RawItem, rows))
+    await _insert_ignore_batched(session, RawItem, rows)
     await session.commit()
     return len(rows)
 
@@ -136,23 +163,26 @@ async def upsert_collected(
         )
         if key in payload[0]
     }
-    updates: dict[str, Any]
-    if _dialect_name(session) == "sqlite":
-        statement = sqlite_insert(RawItem).values(payload)
-    else:
-        statement = pg_insert(RawItem).values(payload)
-    excluded = statement.excluded
-    updates = {key: getattr(excluded, key) for key in mutable}
-    # A second *run* is evidence of persistence, not a new row. The pipeline
-    # writes the same rows twice per run (intake, then verdicts), so the second
-    # flush passes `bump_seen=False` — otherwise one run would count as two
-    # sightings of every item.
-    if bump_seen:
-        updates["seen_count"] = RawItem.seen_count + 1
-    statement = statement.on_conflict_do_update(
-        index_elements=[RawItem.fingerprint], set_=updates
-    )
-    await session.execute(statement)
+    def statement_for(batch: list[dict[str, Any]]):
+        built = (
+            sqlite_insert(RawItem).values(batch)
+            if _dialect_name(session) == "sqlite"
+            else pg_insert(RawItem).values(batch)
+        )
+        excluded = built.excluded
+        updates = {key: getattr(excluded, key) for key in mutable}
+        # A second *run* is evidence of persistence, not a new row. The pipeline
+        # writes the same rows twice per run (intake, then verdicts), so the second
+        # flush passes `bump_seen=False` — otherwise one run would count as two
+        # sightings of every item.
+        if bump_seen:
+            updates["seen_count"] = RawItem.seen_count + 1
+        return built.on_conflict_do_update(
+            index_elements=[RawItem.fingerprint], set_=updates
+        )
+
+    for batch in _batches(payload):
+        await session.execute(statement_for(batch))
     await session.commit()
     return len(payload)
 
@@ -161,7 +191,7 @@ async def insert_verdicts(session: AsyncSession, rows: Sequence[dict[str, Any]])
     """Append decision-trail rows. Insert-only by design: no update, no delete."""
     if not rows:
         return 0
-    await session.execute(_insert_ignore(session, CollectVerdict, rows))
+    await _insert_ignore_batched(session, CollectVerdict, rows)
     await session.commit()
     return len(rows)
 

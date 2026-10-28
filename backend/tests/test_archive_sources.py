@@ -10,9 +10,12 @@ from __future__ import annotations
 
 import sys
 import types
+import uuid
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
+
+from app.db import repo_events
 
 from app.ingest.catalog import (
     ARCHIVE_SOURCES,
@@ -203,3 +206,71 @@ def test_a_row_without_a_model_name_has_no_generation() -> None:
     candidate = audit_candidate(_row(model_name=None))
     assert candidate["modelKey"] == ""
     assert candidate["familyKey"] == ""
+
+
+# ---------------------------------------------------------------------------
+# The archive raises the row count past SQLite's parameter budget
+# ---------------------------------------------------------------------------
+
+
+def _ledger_row(index: int) -> dict[str, Any]:
+    moment = now()
+    return {
+        "id": uuid.uuid4(),
+        "fingerprint": f"{index:064x}",
+        "source_family": "huggingface",
+        "source_name": "Hugging Face 全时下载榜",
+        "external_id": f"archive-{index}",
+        "title": f"archive row {index}",
+        "url": f"https://example.com/archive/{index}",
+        "published_at": None,
+        "payload": {},
+        "fetched_at": moment,
+        "source_key": "hf-archive",
+        "run_id": None,
+        "status": "pending",
+        "stage": "fetch",
+        "reason_code": "",
+        "reason_text": "",
+        "score": 0,
+        "event_id": None,
+        "event_fingerprint": None,
+        "first_seen_at": moment,
+        "last_seen_at": moment,
+        "seen_count": 1,
+        "decided_at": None,
+    }
+
+
+async def test_a_backfill_sized_batch_reaches_the_ledger(db_factory) -> None:
+    """23 columns × 1,510 rows is past SQLite's 32,766 bound parameters.
+
+    The failure mode was silent: the pipeline catches every ledger exception and
+    notes `ledger_failed`, so one oversized statement dropped the whole audit
+    trail for a run without failing it. The archive sources are what pushed a
+    sweep over the limit (1,379 rows before, 1,510 after).
+    """
+    rows = [_ledger_row(index) for index in range(1510)]
+    moment = now()
+    verdicts = [
+        {
+            "id": uuid.uuid4(),
+            "item_fingerprint": row["fingerprint"],
+            "run_id": None,
+            "stage": "fetch",
+            "status": "pending",
+            "reason_code": "",
+            "reason_text": "",
+            "score": 0,
+            "event_fingerprint": None,
+            "at": moment,
+        }
+        for row in rows
+    ]
+
+    async with db_factory() as session:
+        assert await repo_events.upsert_collected(session, rows) == len(rows)
+
+    async with db_factory() as session:
+        assert await repo_events.read_collected(session, rows[-1]["fingerprint"])
+        assert await repo_events.insert_verdicts(session, verdicts) == len(verdicts)

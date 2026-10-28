@@ -1,6 +1,6 @@
 # AI 纪年 / AI Chronicle
 
-> **当前版本**：v0.13.0 ｜ **更新日期**：2026-10-28 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
+> **当前版本**：v0.13.1 ｜ **更新日期**：2026-10-28 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
 
 一个中文的人工智能编年史站点：记录里程碑、模型发布、研究突破与产业事件。条目来自固定公开源（OpenRouter、Hugging Face、arXiv、Hacker News、官方公告与科技媒体 RSS），经指纹去重、跨源合并与置信度计算后，还要通过规则预筛和五家不同厂商的大模型评审（至少三票同意）才入档。完整规则见 [收录标准](docs/AI纪年_收录标准_v1.0.md)。
 
@@ -274,7 +274,7 @@ python -m app.cli create-owner --username you
 | --- | --- | --- |
 | 产品版本 `X.Y.Z` | `package.json` | `backend/pyproject.toml`、本文件顶部「当前版本」行、迭代记录文件名 |
 | 收录规则 `RUBRIC_VERSION`（当前 `chronicle-v5`） | `backend/app/editorial/rules.py` | `functions/lib/editorial.mjs`（参考实现）、票型缓存、`/api/v1/standard` |
-| 种子数据 `SEED_VERSION`（当前 `2026.10.24.6`） | `functions/lib/seed.mjs` | `backend/app/data/seed.json`（由 `scripts/export-seed.mjs` 生成）、`sync_state.seed_version` |
+| 种子数据 `SEED_VERSION`（当前 `2026.10.28.1`） | `functions/lib/seed.mjs` | `backend/app/data/seed.json`（由 `scripts/export-seed.mjs` 生成）、`sync_state.seed_version` |
 | 契约夹具 | `backend/tests/fixtures/golden/*.json` | 由 `scripts/export-golden.mjs` / `export-api-golden.mjs` 从参考实现生成 |
 
 `npm run check:version` 硬校验产品版本三处一致（不一致退出码 1）；规则与数据的漂移只报 `WARN`，但必须在迭代记录里说明处理结论。改规则要同时改两套实现并同步 `scripts/check-editorial.mjs` 的断言，否则检查会"假绿"。
