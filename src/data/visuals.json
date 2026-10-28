@@ -1,0 +1,103 @@
+{
+  "note": "真实配图登记表。键是条目的 slug（没有 slug 时用 id）。src 指向 public/visuals 下的文件；credit 与 license 必填——没有出处与授权说明的图不进放映。cover 字段可选，用于裁切时的人物/主体位置。当前 14 条为 AI 生成示意图（kind=illustration，非史实照片，图注随图展示）；其余条目继续使用程序化编年图版。",
+  "items": {
+    "turing-1950": {
+      "src": "/visuals/turing-1950.jpg",
+      "alt": "打字机、棋盘与打成孔洞的纸带卷成一个巨大的问号",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "dartmouth-1956": {
+      "src": "/visuals/dartmouth-1956.jpg",
+      "alt": "空荡的研讨教室，黑板上画着节点与箭头连成的示意图",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "deep-blue-1997": {
+      "src": "/visuals/deep-blue-1997.jpg",
+      "alt": "棋桌上一局进行中的国际象棋，身后是 1990 年代的老式电脑",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "alexnet-2012": {
+      "src": "/visuals/alexnet-2012.jpg",
+      "alt": "叠放的加速卡经线缆连到影像网格，再汇入层层收窄的结构",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "alphago-match-2016": {
+      "src": "/visuals/alphago-match-2016.jpg",
+      "alt": "围棋盘上黑白子交错成复杂局面，一枚朱红棋子落在中盘",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "transformer-2017": {
+      "src": "/visuals/transformer-2017.jpg",
+      "alt": "两排节点之间密布交叉弧线，示意注意力连接的多少",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "bitter-lesson-2019": {
+      "src": "/visuals/bitter-lesson-2019.jpg",
+      "alt": "两条曲线在纸上交叉：一条抖动着趋于平缓，一条持续上扬",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "alphafold2-2020": {
+      "src": "/visuals/alphafold2-2020.jpg",
+      "alt": "折叠成球状的蛋白质缎带，背后浮着淡淡的距离矩阵",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "stable-diffusion-2022": {
+      "src": "/visuals/stable-diffusion-2022.jpg",
+      "alt": "噪点自上而下逐渐稀疏，最终凝成一个圆与一条地平线",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "chatgpt-2022": {
+      "src": "/visuals/chatgpt-2022.jpg",
+      "alt": "两个相对的对话气泡：一个内卷成螺旋，一个填满点阵",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "gpt-4-2023": {
+      "src": "/visuals/gpt-4-2023.jpg",
+      "alt": "一摞稿纸与一只空画框之间，细线收拢穿过中间的圆环",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "eu-ai-act-adopted-2024": {
+      "src": "/visuals/eu-ai-act-adopted-2024.jpg",
+      "alt": "摊开的厚法典上方悬着十二颗星组成的圆环，书页上浮出网格",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "nobel-physics-2024": {
+      "src": "/visuals/nobel-physics-2024.jpg",
+      "alt": "一枚刻着节点网络的圆形徽章，浮在点阵般的网络之上",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    },
+    "deepseek-r1-2025": {
+      "src": "/visuals/deepseek-r1-2025.jpg",
+      "alt": "九个方块串成的推理链垂入一枚芯片",
+      "credit": "AI 生成示意图",
+      "license": "非史实照片",
+      "kind": "illustration"
+    }
+  }
+}

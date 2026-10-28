@@ -21,6 +21,21 @@ function remember(id: string, detail: EventDetail) {
   }
 }
 
+const PREFETCHING = new Set<string>();
+
+/**
+ * 放映会一屏接一屏地走，下一屏的摘要值得提前取。取回来只进缓存，不触发
+ * 任何渲染；真正打开那一屏时 `useEventDetail` 从缓存里直接拿得到。
+ */
+export function prefetchEvent(id: string) {
+  if (!id || CACHE.has(id) || PREFETCHING.has(id)) return;
+  PREFETCHING.add(id);
+  fetchEvent(id)
+    .then((data) => remember(id, data.event))
+    .catch(() => undefined)
+    .finally(() => PREFETCHING.delete(id));
+}
+
 export function useEventDetail(id: string, expanded: boolean) {
   const [detail, setDetail] = useState<EventDetail | null>(() => CACHE.get(id) ?? null);
   const [loading, setLoading] = useState(false);

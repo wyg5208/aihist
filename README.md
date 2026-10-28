@@ -1,6 +1,6 @@
 # AI 纪年 / AI Chronicle
 
-> **当前版本**：v0.13.2 ｜ **更新日期**：2026-10-28 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
+> **当前版本**：v0.14.0 ｜ **更新日期**：2026-10-28 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
 
 一个中文的人工智能编年史站点：记录里程碑、模型发布、研究突破与产业事件。条目来自固定公开源（OpenRouter、Hugging Face、arXiv、Hacker News、官方公告与科技媒体 RSS），经指纹去重、跨源合并与置信度计算后，还要通过规则预筛和五家不同厂商的大模型评审（至少三票同意）才入档。完整规则见 [收录标准](docs/AI纪年_收录标准_v1.0.md)。
 
@@ -14,6 +14,7 @@
 | --- | --- |
 | `/` | 主时间轴：按年代分组、按类别与来源族筛选、展开条目详情、可复制引用；公共站三套**独立版式**（典藏卷轴 / 深色极光 / 博物馆暖调），每套自带文案与结构，顶部导航右上一键切换、选择记在 `localStorage`，未选过时跟随系统偏好 |
 | `/?e=<slug>` | 站内深链，展开某条条目，包括尚未生成静态页的自动条目 |
+| `/?show=<区间>` | 自动演示：全屏放映厅，一屏一条，区间写 `all` / `2023-01..2026-04` / `1956`，链接可直接分享；方向键翻页、空格暂停、`F` 全屏、`Esc` 退出。配图取 `src/data/visuals.json` 的登记项，未登记的条目用程序化编年图版 |
 | `/e/<slug>.html` | 种子条目的静态引用页：canonical、OG、JSON-LD、来源列表，**不含 JavaScript**，深/浅色只跟随系统偏好，供外部引用与搜索收录 |
 | `/admin/` | 运营台独立 bundle（15 个页面），深/浅双主题，按角色过滤导航，`noindex` |
 | `/go/<code>` | 合作方跳转与点击计数，302 |
@@ -122,6 +123,8 @@ node scripts/release-gate.mjs --from G4  # 从某一步开始
 ```
 src/                     React 前端（时间轴、筛选、详情、同步状态面板）
 src/admin/               运营台 SPA：pages/ 14 个页面 + components/ 与 router
+src/data/visuals.json    放映配图登记表：键为条目 slug，含 alt / credit / license / kind
+public/visuals/          已登记的配图文件（当前 14 张 AI 生成示意图，900×1125）
 admin.html               管理台入口，noindex
 backend/                 FastAPI 后端
   app/api/               公开接口（public/open/growth/correct/track/redirect）与管理接口（admin*）
