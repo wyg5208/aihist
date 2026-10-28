@@ -45,12 +45,13 @@ def make_event(
     *,
     first_seen_at: datetime = NOW - timedelta(days=2),
     editorial_status: str | None = None,
+    event_date: str = "2026-10-30",
 ) -> Event:
     return Event(
         fingerprint=f"fp-digest-{uuid.uuid4().hex}",
         slug=f"digest-entry-{index}",
-        event_date="2026-10-30",
-        sort_date="2026-10-30",
+        event_date=event_date,
+        sort_date=event_date,
         year=2026,
         title=f"第 {index} 条新增",
         summary="模型在推理基准上取得新成绩，并公开了完整技术报告与评测方法。",
@@ -150,6 +151,29 @@ async def test_body_carries_the_date_the_summary_the_link_and_the_way_out(
             assert event.event_date in body
             assert f"{ORIGIN}/?e={event.slug}" in body
         assert "退订：https://aihist.net/api/v1/unsubscribe?token=" in body
+
+
+async def test_an_old_entry_admitted_now_is_not_this_weeks_news(
+    db_factory, digest_settings, monkeypatch
+):
+    """Two windows, not one.
+
+    A freshly seeded archive gives every row a `first_seen_at` inside the week
+    that is about to be mailed, so `first_seen_at` alone would send the whole
+    archive — "159 entries this week" listing milestones from decades ago. The
+    entry's own date has to be recent too.
+    """
+    sent = patch_mailer(monkeypatch, (True, None))
+    async with db_factory() as session:
+        # Admitted two days ago, but it happened in September.
+        await add_events(session, 1, event_date="2026-09-10")
+        await add_subscriber(session, "reader@example.com")
+
+        report = await digest.send_weekly(session, digest_settings, now=NOW)
+
+        assert report.reason == "no_new_entries"
+        assert sent == []
+        assert await count_sends(session) == 0
 
 
 async def test_a_busy_week_counts_every_entry_and_lists_only_twelve(

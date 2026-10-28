@@ -27,7 +27,7 @@
 | 后端 | FastAPI + SQLAlchemy 2（async）+ Alembic，Pydantic v2 |
 | 数据库 | SQLite（默认，单文件）/ PostgreSQL（改 `DATABASE_URL` 即可） |
 | 构建 | `tsc --noEmit` → Vite → `scripts/build.mjs` → `build-pages.mjs`（种子静态页 + sitemap + robots + JSON-LD） |
-| 测试 | 后端 `pytest`（378 项，全部跑在 SQLite 上）；前端无单测，用 `scripts/check-*.mjs` 做行为断言 |
+| 测试 | 后端 `pytest`（379 项，全部跑在 SQLite 上）；前端无单测，用 `scripts/check-*.mjs` 做行为断言 |
 | 部署 | 前端：Vercel（根目录 `vercel.json`，回源 `api.aihist.net`）；后端：Windows Server（`deploy/windows/*.ps1` + Caddy）或 Linux（systemd + nginx + cron） |
 
 ## 本地开发

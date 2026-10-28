@@ -219,9 +219,20 @@ async def upsert_review_decisions(
 
 
 def _entered_between(statement: Select[Any], since: datetime, until: datetime) -> Select[Any]:
-    """Restrict to rows first seen inside the window, behind the editorial gate."""
+    """Restrict to *this week's news*, behind the editorial gate.
+
+    Two windows, not one. `first_seen_at` alone answers "new to the archive",
+    which on a freshly seeded archive is everything ever written: the first
+    digest would claim "159 entries this week" while listing milestones from
+    decades ago. The reader's question is what happened this week, so the
+    entry's own `sort_date` has to land inside the same window too — a piece
+    published a month ago and admitted today is a good archive entry and bad
+    news.
+    """
     return observable(statement).where(
-        Event.first_seen_at >= since, Event.first_seen_at < until
+        Event.first_seen_at >= since,
+        Event.first_seen_at < until,
+        Event.sort_date >= since.date().isoformat(),
     )
 
 
@@ -235,12 +246,14 @@ async def count_new_events(
 async def load_new_events(
     session: AsyncSession, *, since: datetime, until: datetime, limit: int = 12
 ) -> list[Event]:
-    """Entries that entered the archive inside one window, best first.
+    """Entries that are this week's news, best first.
 
     `first_seen_at` is the only honest "new": `updated_at` moves whenever a
     merge touches a row, so a digest ordered by it would keep re-mailing last
-    year's entries. The editorial gate is applied here rather than by the
-    caller, so an issue can never carry a held or excluded row.
+    year's entries. The gate in `_entered_between` adds the second window — the
+    entry itself has to be recent — and applies the editorial gate here rather
+    than leaving it to the caller, so an issue can never carry a held or
+    excluded row.
     """
     result = await session.execute(
         _entered_between(select(Event), since, until)
