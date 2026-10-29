@@ -1,6 +1,6 @@
 # AI 纪年 / AI Chronicle
 
-> **当前版本**：v0.15.0 ｜ **更新日期**：2026-10-29 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
+> **当前版本**：v0.15.1 ｜ **更新日期**：2026-10-29 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
 
 一个中文的人工智能编年史站点：记录里程碑、模型发布、研究突破与产业事件。条目来自固定公开源（OpenRouter、Hugging Face、arXiv、Hacker News、官方公告与科技媒体 RSS），经指纹去重、跨源合并与置信度计算后，还要通过规则预筛和五家不同厂商的大模型评审（至少三票同意）才入档。完整规则见 [收录标准](docs/AI纪年_收录标准_v1.0.md)。
 
@@ -12,7 +12,7 @@
 
 | 入口 | 说明 |
 | --- | --- |
-| `/` | 主时间轴：按年代分组、按类别与来源族筛选、展开条目详情、可复制引用；公共站三套**独立版式**（典藏卷轴 / 深色极光 / 博物馆暖调），每套自带文案与结构，顶部导航右上一键切换、选择记在 `localStorage`，未选过时跟随系统偏好 |
+| `/` | 主时间轴：按年代分组、按类别与来源族筛选、展开条目详情、可复制引用；桌面端右侧有随滚动切换的「时代摘要」侧栏（年份区间、时代标题与详细概述），窄屏折叠为年份下的「时代特征」；公共站三套**独立版式**（典藏卷轴 / 深色极光 / 博物馆暖调），每套自带文案与结构，顶部导航右上一键切换、选择记在 `localStorage`，未选过时跟随系统偏好 |
 | `/?e=<slug>` | 站内深链，展开某条条目，包括尚未生成静态页的自动条目 |
 | `/?show=<区间>` | 自动演示：全屏放映厅，一屏一条，区间写 `all` / `2023-01..2026-04` / `1956`，链接可直接分享；方向键翻页、空格暂停、`F` 全屏、`Esc` 退出。配图取 `src/data/visuals.json` 的登记项（真图图注带署名、授权与「原图」外链），未登记的条目用程序化编年图版；真图按 760w / 900w 两档 WebP 交付，并在开播时预取后两屏 |
 | `/e/<slug>.html` | 种子条目的静态引用页：canonical、OG、JSON-LD、来源列表，**不含 JavaScript**，深/浅色只跟随系统偏好，供外部引用与搜索收录 |
@@ -52,7 +52,7 @@ python -m venv .venv
 .venv/Scripts/python -m pip install -e .            # Linux: .venv/bin/python
 .venv/Scripts/python -m app.cli hash-password "your passphrase"    # 把输出填进 ADMIN_PASSWORD_HASH
 .venv/Scripts/python -m alembic upgrade head        # 建表
-.venv/Scripts/python -m app.cli seed                # 灌入 158 条种子
+.venv/Scripts/python -m app.cli seed                # 灌入 172 条种子
 .venv/Scripts/python -m uvicorn app.main:app --port 8000
 ```
 
@@ -89,7 +89,7 @@ npm run dev          # http://127.0.0.1:5173，/api 代理到 127.0.0.1:8000
 | `npm run release:gate` | 发布门禁：串行跑 G0–G6（G2 后紧跟 G2b 检查器自检），红灯即停 |
 | `cd backend && python -m pytest -q` | 后端接口、采集管线、租约、迁移与 SQLite PRAGMA |
 
-`npm run build` 分两步：Vite 产出 `dist/index.html` 与资源，随后 `scripts/build-pages.mjs` 为每个种子生成 `dist/e/<slug>.html`（当前 158 个），并写出 `dist/sitemap.xml`（159 条 URL）、`dist/robots.txt`，向首页注入 `WebSite` + `Organization` JSON-LD。
+`npm run build` 分两步：Vite 产出 `dist/index.html` 与资源，随后 `scripts/build-pages.mjs` 为每个种子生成 `dist/e/<slug>.html`（当前 172 个），并写出 `dist/sitemap.xml`（173 条 URL）、`dist/robots.txt`，向首页注入 `WebSite` + `Organization` JSON-LD。
 
 静态页的绝对地址来自 `site.config.mjs` 的 `SITE_ORIGIN`（默认 `https://aihist.net`），构建时可覆盖：
 
@@ -128,6 +128,7 @@ src/                     React 前端（时间轴、筛选、详情、同步状�
 src/admin/               运营台 SPA：pages/ 14 个页面 + components/ 与 router
 src/data/visuals.json    放映配图登记表：键为条目 slug，含 alt / credit / license / kind，真图另有 sourceUrl（文件页）与可选 fit: contain
 src/lib/sisterSites.ts   页脚「相关站点」的标签、简介、域名与外链（ai-edu.pw / ai-skill.pw）
+src/components/EraBrief.tsx  时代摘要：桌面端吸顶侧栏 EraBrief + 窄屏折叠 EraNote，三套版式共用
 public/visuals/          已登记的配图文件：23 张 JPEG（当前 12 张 Wikimedia Commons 真图 + 11 张 AI 生成示意图），每张另有 `<名>.webp`（900w）与 `<名>-760.webp` 两档，由 `npm run build:visuals` 生成
 admin.html               管理台入口，noindex
 backend/                 FastAPI 后端
@@ -136,7 +137,7 @@ backend/                 FastAPI 后端
   app/editorial/         收录规则、标准文本、厂商预设、评审面板与聚合
   app/analytics/         UA 分类、访问日志解析、摄取与保留策略（纯函数为主）
   app/ingest/            采集管线、编辑门槛、聚类与种子
-  app/data/seed.json     人工校订的 158 条历史种子（构建与灌库的唯一来源）
+  app/data/seed.json     人工校订的 172 条历史种子（构建与灌库的唯一来源）
   alembic/               迁移脚本
   tests/                 后端测试，全部跑在 SQLite 上
 functions/               JS 参考实现：sources / normalize / cluster / editorial / pipeline
@@ -318,7 +319,7 @@ python -m app.cli create-owner --username you
 
 ## 发布
 
-发布产物里的绝对地址全部来自 `site.config.mjs` 的 `SITE_ORIGIN`，发布到哪个域名就用它构建，否则 canonical、`og:url`、sitemap 与 158 个种子页会一起指错。**先定域名，再构建，最后校验**——`check:pages` 必须与同一次 `npm run build` 配对，否则校验的是上一次产物。
+发布产物里的绝对地址全部来自 `site.config.mjs` 的 `SITE_ORIGIN`，发布到哪个域名就用它构建，否则 canonical、`og:url`、sitemap 与 172 个种子页会一起指错。**先定域名，再构建，最后校验**——`check:pages` 必须与同一次 `npm run build` 配对，否则校验的是上一次产物。
 
 ```sh
 node scripts/release-gate.mjs      # G0 版本一致 → 构建 → 静态页 → 检查器自检 → 管线 → 收录门槛 → 覆盖率 → 后端测试
@@ -329,7 +330,7 @@ node scripts/release-gate.mjs      # G0 版本一致 → 构建 → 静态页 �
 两条通道彼此独立，可以分开发，但版本号只有一个：
 
 - ~~**静态站**（Qoder Sites）~~：**2026-10-26 已停用**。该通道已由站点负责人关闭，不再发布、不再推送、不再核对回执；根目录的 `*.qoder.site` 只是历史凭据（已被 `.gitignore` 忽略），不是待办。静态站只走 Vercel。
-- **静态站**（Vercel）：`vercel.json` 把 nginx 的路由规则复刻到平台侧——`/admin` 与 `/e/<slug>` 的 rewrite、`/api` 与 `/go` 回源 `https://api.aihist.net`、assets 一年 immutable、`/e/` 七天、`/visuals/` 三十天（配 `stale-while-revalidate`；换图必须改文件名，见[换图与配图缓存](#换图与配图缓存)）、`/admin` 加 `X-Robots-Tag`。构建命令仍是 `npm run build`，产物 `dist`，`cleanUrls` 必须保持 `false`：canonical 与 sitemap 里的规范地址带 `.html`，开了 `cleanUrls` 会把 159 条 URL（158 个种子页 + 首页）一起 308 掉。
+- **静态站**（Vercel）：`vercel.json` 把 nginx 的路由规则复刻到平台侧——`/admin` 与 `/e/<slug>` 的 rewrite、`/api` 与 `/go` 回源 `https://api.aihist.net`、assets 一年 immutable、`/e/` 七天、`/visuals/` 三十天（配 `stale-while-revalidate`；换图必须改文件名，见[换图与配图缓存](#换图与配图缓存)）、`/admin` 加 `X-Robots-Tag`。构建命令仍是 `npm run build`，产物 `dist`，`cleanUrls` 必须保持 `false`：canonical 与 sitemap 里的规范地址带 `.html`，开了 `cleanUrls` 会把 173 条 URL（172 个种子页 + 首页）一起 308 掉。
 - **API 服务器**：Windows Server 用 `deploy\windows\install.ps1 -ApiHost api.aihist.net` → `install-service.ps1` → `register-tasks.ps1` → `switch-caddy.ps1`；Linux 用 `deploy/bootstrap.sh` → `aihist-api.service` → `cron.d/aihist`。`install.ps1` 默认不构建 `dist\`（前端归 Vercel），仍要整站自托管时加 `-BuildSite`；`-SiteOrigin` 必须等于 api.env 里的 `SITE_ORIGIN`，否则直接中断——订阅确认链接与来源分类都从它拼出来。`switch-caddy.ps1` 把 Caddy 从「全站」换成 `Caddyfile.api`（只留 `/api` 与 `/go`，其余硬 404）：先 `caddy validate`、再备份旧文件、最后重启并探活，回滚命令由它自己打印。发布后用 `GET /api/v1/status` 核对 `seedVersion` 与 `panel.configured`，用 `GET /api/v1/standard` 核对 `rubricVersion` / `panelSize` / `minVotes` / `includeScore`。
 
 前端上 Vercel 时后端不搬家：SQLite 要在本机固定磁盘、采集是每天 01:05 的定时任务、租约与 track 限流都是进程内状态，这些都不成立在 Serverless 上。所以 `api.aihist.net` 只暴露两个前缀（`deploy/windows/Caddyfile.api`，其余路径硬 404），Vercel 用 rewrite 做服务端回源，浏览器始终只看 `aihist.net`，`src/api.ts` 的 `BASE = "/api/v1"` 与管理台的 host-only Cookie 都不用改。缓存要分层看：**管理台与写接口（`/api/v1/admin/*`、`track`、`events`、`apply`、`correct`、`go`）必须 `Cache-Control: no-store`**，Vercel 会按上游响应缓存 external rewrite，放宽了管理台就读旧数据；而 `/api/v1/timeline`、`/status`、`/standard` 是三个无副作用的公开读，允许 60 秒（`vercel.json` 给边缘 `s-maxage=60`，`deploy/windows/nginx-api.aihist.net.conf` 给源站 `proxy_cache` 同样 60 秒）——新条目最多晚一分钟可见。另一个代价：`/e/<slug>.html` 的访问记录不再落在本机反代日志里，`ingest-access-log` 的 `crawl_hits` 链路会断（`switch-caddy.ps1` 结尾会比对 `ANALYTICS_LOG_PATH`，指向旧的 `access.log` 时告警）。
