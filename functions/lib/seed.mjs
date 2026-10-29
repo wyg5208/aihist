@@ -10,7 +10,7 @@ import { keywordsFor } from "./keywords.mjs";
 // SEED_VERSION is the human-authored dated revision. What sync stores is
 // SEED_STAMP (`version#digest`, derived at the bottom): editing an evidence
 // family changes the digest, so live rows refresh without a manual bump.
-export const SEED_VERSION = "2026.10.28.1";
+export const SEED_VERSION = "2026.10.29.1";
 
 function seed(def) {
   const date = def.date;
@@ -3253,6 +3253,289 @@ export const SEED_EVENTS = [
       },
     ],
     note: "爱丽舍宫声明原文核对",
+  }),
+
+  // ---------------------------------------------------------------------------
+  // Agent lineage and classic machine learning, added after the 2026-10-29
+  // topic-coverage audit. Agents enter as research or milestone nodes rather
+  // than product releases; dates follow first public availability.
+  // ---------------------------------------------------------------------------
+  seed({
+    id: "q-learning-1992",
+    date: "1992-05",
+    category: "research",
+    title: "Watkins 与 Dayan 发表 Q-learning，无模型强化学习奠基",
+    titleEn: "Q-learning",
+    summary:
+      "Watkins 与 Dayan 在《Machine Learning》发表 Q-learning，提出不依赖环境模型的时序差分控制方法：学习器从延迟奖励中直接学习动作价值函数，并在一定条件下收敛到最优策略。它成为此后 DQN 等深度强化学习方法的算法底座。",
+    org: "Christopher Watkins、Peter Dayan",
+    importance: 82,
+    tags: ["机器学习", "强化学习", "算法", "论文"],
+    sources: [
+      {
+        name: "Machine Learning",
+        family: "paper",
+        url: "https://doi.org/10.1007/BF00992698",
+      },
+    ],
+    note: "期刊 DOI 核对；Q-learning 最早见于 Watkins 1989 年博士论文，1992 年论文给出收敛证明",
+  }),
+  seed({
+    id: "random-forest-2001",
+    date: "2001-10",
+    category: "research",
+    title: "Breiman 提出随机森林，集成学习成为经典方法",
+    titleEn: "Random Forests",
+    summary:
+      "Breiman 在《Machine Learning》发表随机森林：对样本做自助采样、对特征做随机子集选择，再让大量决策树投票。它以较小的调参成本获得稳定精度，还能给出袋外误差与特征重要性，长期是表格数据与工业建模的默认基线。",
+    org: "University of California, Berkeley",
+    importance: 80,
+    tags: ["机器学习", "集成学习", "算法", "论文"],
+    sources: [
+      {
+        name: "Machine Learning",
+        family: "paper",
+        url: "https://doi.org/10.1023/A:1010933404324",
+      },
+    ],
+    note: "期刊 DOI 核对",
+  }),
+  seed({
+    id: "vae-2013",
+    date: "2013-12-20",
+    category: "research",
+    title: "变分自编码器 VAE 提出，深度生成模型有了概率框架",
+    titleEn: "Auto-Encoding Variational Bayes",
+    summary:
+      "Kingma 与 Welling 提出变分自编码器，用变分推断加重新参数化技巧，让含隐变量的深度生成模型可以端到端反向传播训练。它与同期 GAN 构成两条生成模型主线，后来的图像、语音与表征学习大量沿用其潜空间思路。",
+    org: "University of Amsterdam",
+    importance: 84,
+    tags: ["机器学习", "深度学习", "生成模型", "论文"],
+    sources: [
+      { name: "arXiv", family: "paper", url: "https://arxiv.org/abs/1312.6114" },
+    ],
+    note: "arXiv 预印本核对；论文于 2014 年在 ICLR 发表",
+  }),
+  seed({
+    id: "gcn-2016",
+    date: "2016-09-09",
+    category: "research",
+    title: "图卷积网络 GCN 提出，图神经网络进入主流",
+    titleEn: "Semi-Supervised Classification with Graph Convolutional Networks",
+    summary:
+      "Kipf 与 Welling 把谱图卷积做一阶近似，得到逐层传播的简洁图卷积形式，并在引文网络上完成半监督节点分类。GCN 让图结构数据可以直接用神经网络训练，成为药物发现、推荐、风控与知识图谱的常用基础模块。",
+    org: "University of Amsterdam",
+    importance: 82,
+    tags: ["机器学习", "深度学习", "神经网络", "图神经网络", "论文"],
+    sources: [
+      { name: "arXiv", family: "paper", url: "https://arxiv.org/abs/1609.02907" },
+    ],
+    note: "arXiv 预印本核对；论文于 2017 年在 ICLR 发表",
+  }),
+  seed({
+    id: "scaling-laws-2020",
+    date: "2020-01-23",
+    category: "research",
+    title: "OpenAI 提出 Scaling Laws，规模化成为大模型路线",
+    titleEn: "Scaling Laws for Neural Language Models",
+    summary:
+      "Kaplan 等人发现语言模型损失随参数量、数据量与计算量呈幂律下降，并给出可外推的拟合公式。它把“把模型做大”从经验判断变成可预算的工程路线，直接支撑 GPT-3 及此后的大模型竞赛；2022 年 Chinchilla 又修正了参数与数据的配比。",
+    org: "OpenAI",
+    importance: 90,
+    tags: ["机器学习", "大模型", "缩放定律", "论文"],
+    sources: [
+      { name: "arXiv", family: "paper", url: "https://arxiv.org/abs/2001.08361" },
+    ],
+    note: "arXiv 预印本核对；Chinchilla 的修正见后续记录",
+  }),
+  seed({
+    id: "ddpm-2020",
+    date: "2020-06-19",
+    category: "research",
+    title: "DDPM 提出，扩散模型成为生成模型主线",
+    titleEn: "Denoising Diffusion Probabilistic Models",
+    summary:
+      "Ho、Jain 与 Abbeel 提出去噪扩散概率模型：先对图像逐步加噪，再训练网络反向去噪，从纯噪声中生成样本。它在图像生成上取得与当时最强 GAN 相当的质量，此后成为 Stable Diffusion、DALL·E 2 与视频生成模型的共同基础。",
+    org: "University of California, Berkeley",
+    importance: 88,
+    tags: ["机器学习", "深度学习", "生成模型", "扩散模型", "论文"],
+    sources: [
+      { name: "arXiv", family: "paper", url: "https://arxiv.org/abs/2006.11239" },
+    ],
+    note: "arXiv 预印本核对；论文于 2020 年在 NeurIPS 发表",
+  }),
+  seed({
+    id: "react-2022",
+    date: "2022-10-06",
+    category: "research",
+    title: "ReAct 提出“推理—行动”循环，智能体有了基本范式",
+    titleEn: "ReAct: Synergizing Reasoning and Acting in Language Models",
+    summary:
+      "Yao 等人提出 ReAct，让语言模型交替生成推理轨迹与外部动作，再根据环境返回的观察继续推理。这个“思考—行动—观察”循环后来成为工具调用与自主智能体的公共骨架，也是多数 Agent 框架的默认工作方式。",
+    org: "Princeton University / Google Research",
+    importance: 82,
+    tags: ["智能体", "推理", "工具调用", "论文"],
+    sources: [
+      { name: "arXiv", family: "paper", url: "https://arxiv.org/abs/2210.03629" },
+    ],
+    note: "arXiv 预印本核对；论文于 2023 年在 ICLR 发表",
+  }),
+  seed({
+    id: "autogpt-2023",
+    date: "2023-03-30",
+    category: "milestone",
+    title: "AutoGPT 开源，自主智能体进入大众视野",
+    titleEn: "AutoGPT",
+    summary:
+      "Significant Gravitas 开源 AutoGPT，用 GPT-4 让模型围绕一个目标自行拆解任务、保存记忆、调用工具并循环执行。项目在 GitHub 迅速走红，把“给目标，它自己干活”的想象推向大众，也暴露了成本、可靠性与失控风险。",
+    org: "Significant Gravitas",
+    importance: 85,
+    tags: ["智能体", "开源", "自主任务"],
+    sources: [
+      {
+        name: "GitHub",
+        family: "official",
+        url: "https://github.com/Significant-Gravitas/AutoGPT",
+      },
+    ],
+    note: "GitHub 仓库与发布记录核对；项目于 2023 年 3 月开源",
+  }),
+  seed({
+    id: "mcp-2024",
+    date: "2024-11-25",
+    category: "milestone",
+    title: "Anthropic 发布 MCP，统一模型与工具、数据的连接",
+    titleEn: "Introducing the Model Context Protocol",
+    summary:
+      "Anthropic 开源 Model Context Protocol，用统一的客户端—服务器协议把模型连接到文件、数据库、开发工具与外部服务。它降低了每个模型、每个工具各自适配的成本，随后被 OpenAI、Google 与主流开发工具采用，成为智能体工具生态的基础接口。",
+    org: "Anthropic",
+    importance: 88,
+    tags: ["智能体", "协议", "工具调用", "开源"],
+    sources: [
+      {
+        name: "Anthropic",
+        family: "official",
+        url: "https://www.anthropic.com/news/model-context-protocol",
+      },
+      {
+        name: "Model Context Protocol",
+        family: "official",
+        url: "https://modelcontextprotocol.io/",
+      },
+    ],
+    note: "Anthropic 官方公告与协议站点核对",
+  }),
+  seed({
+    id: "manus-2025",
+    date: "2025-03-06",
+    category: "milestone",
+    title: "Manus 发布，通用智能体首次现象级出圈",
+    titleEn: "Manus",
+    summary:
+      "Monica 团队发布通用智能体 Manus：用户给出目标后，它在云端虚拟机里拆解步骤、浏览网页、写代码并交付报告或网站。内测邀请码一码难求，引发“Agent 的 ChatGPT 时刻”讨论，也让通用智能体成为 2025 年产品竞争的主线。",
+    org: "Monica（蝴蝶效应）",
+    importance: 88,
+    tags: ["智能体", "通用智能体", "国内", "云端执行"],
+    sources: [
+      { name: "Manus", family: "official", url: "https://manus.im/home" },
+      {
+        name: "36Kr",
+        family: "media",
+        url: "https://eu.36kr.com/en/p/4004527155171460",
+      },
+    ],
+    note: "Manus 官网与 36Kr 报道核对；正式发布于 2025 年 3 月 6 日",
+  }),
+  seed({
+    id: "claude-code-2025",
+    date: "2025-05-22",
+    category: "milestone",
+    title: "Claude Code 正式可用，终端编程智能体成型",
+    titleEn: "Claude Code",
+    summary:
+      "Anthropic 随 Claude 4 宣布 Claude Code 正式可用。它常驻终端，能读写代码库、执行命令、运行测试并提交改动，把编程助手从 IDE 补全推进到“委派一整段任务”。终端由此成为编程智能体的主要宿主，独立产品线随之形成。",
+    org: "Anthropic",
+    importance: 85,
+    tags: ["智能体", "编程", "开发者工具", "终端"],
+    sources: [
+      {
+        name: "Anthropic",
+        family: "official",
+        url: "https://www.anthropic.com/news/claude-4",
+      },
+    ],
+    note: "Anthropic 官方公告核对；Claude Code 于 2025 年 2 月以研究预览发布",
+  }),
+  seed({
+    id: "openclaw-2026",
+    date: "2026-01-30",
+    category: "milestone",
+    title: "OpenClaw 定名并开源，个人智能体进入本地部署时代",
+    titleEn: "OpenClaw",
+    summary:
+      "Peter Steinberger 的个人项目在 2025 年底以 Clawdbot 起步，2026 年 1 月 27 日因商标顾虑改名 Moltbot，1 月 30 日定名 OpenClaw 并开源。它运行在用户自己的电脑上，通过聊天软件接收指令、调用技能并直接操作系统，带动了本地个人智能体与“养虾”生态。",
+    org: "OpenClaw Foundation",
+    importance: 86,
+    tags: ["智能体", "开源", "本地部署", "个人助理"],
+    sources: [
+      { name: "OpenClaw", family: "official", url: "https://openclaw.ai/" },
+      {
+        name: "GitHub",
+        family: "official",
+        url: "https://github.com/openclaw/openclaw",
+      },
+    ],
+    note: "OpenClaw 官网与 GitHub 仓库核对；项目现由 OpenClaw Foundation 维护；现象级开源项目，历史地位待时间检验",
+  }),
+  seed({
+    id: "workbuddy-2026",
+    date: "2026-03-09",
+    category: "milestone",
+    title: "腾讯 WorkBuddy 上线，桌面智能体进入办公场景",
+    titleEn: "WorkBuddy",
+    summary:
+      "腾讯云 CodeBuddy 团队推出 WorkBuddy，把自然语言任务直接落到桌面：读取本地文件、处理表格、生成文档与 PPT，并支持 MCP 与技能扩展。上线当天访问量远超预期，团队紧急扩容十倍；此后它成为国内桌面办公智能体规模化的代表。",
+    org: "腾讯云",
+    importance: 84,
+    tags: ["智能体", "国内", "办公", "桌面端"],
+    sources: [
+      {
+        name: "腾讯云",
+        family: "official",
+        url: "https://intl.cloud.tencent.com/zh/products/workbuddy",
+      },
+      {
+        name: "IT之家",
+        family: "media",
+        url: "https://www.ithome.com/tags/WorkBuddy",
+      },
+    ],
+    note: "腾讯云产品页与 IT之家报道核对；2026 年 3 月 9 日正式上线；现象级产品，历史地位待时间检验",
+  }),
+  seed({
+    id: "muse-agent-2026",
+    date: "2026-09-08",
+    category: "milestone",
+    title: "Meta 发布个人智能体 Muse，消费级个人 Agent 成形",
+    titleEn: "Introducing Muse: The World's First Personal AI Agent Built for Everyone",
+    summary:
+      "Meta 发布个人智能体 Muse，为每个用户分配一台云端安全虚拟机，可代查邮件、订行程、比价购物，并在关闭应用后继续执行任务。它面向美国用户首发，支持 iOS、Android、网页与 WhatsApp，上线后迅速登顶美国 App Store，把 Personal AI Agent 推向大众消费市场。",
+    org: "Meta",
+    importance: 86,
+    tags: ["智能体", "个人助理", "云端执行", "消费级"],
+    sources: [
+      {
+        name: "Meta Newsroom",
+        family: "official",
+        url: "https://about.fb.com/news/2026/09/introducing-muse/",
+      },
+      {
+        name: "Axios",
+        family: "media",
+        url: "https://www.axios.com/2026/09/08/meta-debuts-muse-personal-ai-agent",
+      },
+    ],
+    note: "Meta Newsroom 公告与 Axios 报道核对；2026 年 9 月 8 日发布；现象级产品，历史地位待时间检验",
   }),
 ];
 

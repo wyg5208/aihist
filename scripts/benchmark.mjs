@@ -617,4 +617,62 @@ export const BENCHMARK = [
     note: "强化推理与智能体能力",
     vendor: "智谱",
   }),
+
+  // Agent lineage and classic machine learning (2026-10-29 audit)
+  b("q-learning-1992", 1992, "research", 82, {
+    phrase: "Q-learning",
+    note: "Watkins 与 Dayan 提出无模型强化学习控制方法",
+  }),
+  b("random-forest-2001", 2001, "research", 80, {
+    phrase: "随机森林",
+    note: "Breiman 提出随机森林，集成学习的经典方法",
+  }),
+  b("vae-2013", 2013, "research", 84, {
+    phrase: "变分自编码器",
+    note: "VAE 为深度生成模型提供概率框架",
+  }),
+  b("gcn-2016", 2016, "research", 82, {
+    phrase: "图卷积网络",
+    note: "GCN 把卷积推广到图结构数据",
+  }),
+  b("scaling-laws-2020", 2020, "research", 90, {
+    phrase: "Scaling Laws",
+    note: "OpenAI 提出语言模型的规模化法则",
+  }),
+  b("ddpm-2020", 2020, "research", 88, {
+    phrase: "DDPM",
+    note: "去噪扩散概率模型成为生成模型主线",
+  }),
+  b("react-2022", 2022, "research", 82, {
+    phrase: "推理—行动",
+    note: "ReAct 确立“思考—行动—观察”的智能体循环",
+  }),
+  b("autogpt-2023", 2023, "milestone", 85, {
+    phrase: "AutoGPT",
+    note: "首个现象级开源自主智能体",
+  }),
+  b("mcp-2024", 2024, "milestone", 88, {
+    phrase: "Model Context Protocol",
+    note: "MCP 统一模型与工具、数据的连接",
+  }),
+  b("manus-2025", 2025, "milestone", 88, {
+    phrase: "Manus 发布",
+    note: "通用智能体首次现象级出圈",
+  }),
+  b("claude-code-2025", 2025, "milestone", 85, {
+    phrase: "终端编程智能体",
+    note: "Claude Code 正式可用，终端成为 Agent 宿主",
+  }),
+  b("openclaw-2026", 2026, "milestone", 86, {
+    phrase: "OpenClaw",
+    note: "个人智能体进入本地部署与开源生态",
+  }),
+  b("workbuddy-2026", 2026, "milestone", 84, {
+    phrase: "WorkBuddy",
+    note: "腾讯桌面办公智能体进入规模化使用",
+  }),
+  b("muse-agent-2026", 2026, "milestone", 86, {
+    phrase: "个人智能体 Muse",
+    note: "Meta 把 Personal AI Agent 做成消费级产品",
+  }),
 ];

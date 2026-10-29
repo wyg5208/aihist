@@ -100,7 +100,7 @@ async def test_search_sees_every_status_and_paginates(db_factory, admin_settings
         page = await client.get("/api/v1/admin/events?size=10")
         assert page.status_code == 200
         body = page.json()
-        assert body["total"] == 158
+        assert body["total"] == 172
         assert len(body["items"]) == 10
         assert body["page"] == 1 and body["size"] == 10
 
@@ -142,7 +142,7 @@ async def test_search_filters_by_every_axis(db_factory, admin_settings, seeded_d
 
         live = (await client.get("/api/v1/admin/events?status=live")).json()
         excluded = (await client.get("/api/v1/admin/events?status=excluded")).json()
-        assert live["total"] == 158
+        assert live["total"] == 172
         assert excluded["total"] == 0
 
         bad_sort = await client.get("/api/v1/admin/events?sort=nonsense")
@@ -177,7 +177,7 @@ async def test_health_filters_match_the_counts_they_explain(db_factory, admin_se
         assert all(item["editorialStatus"] is None for item in ungated["items"])
 
         unknown = (await client.get("/api/v1/admin/events?missing=nonsense")).json()
-        assert unknown["total"] == 158, "an unknown filter is ignored, not fatal"
+        assert unknown["total"] == 172, "an unknown filter is ignored, not fatal"
 
 
 # ---------------------------------------------------------------------------

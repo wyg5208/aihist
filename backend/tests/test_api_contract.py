@@ -1,7 +1,7 @@
 """Contract tests against the frozen responses of the previous deployment.
 
 The fixture `golden/api-*.json` was produced by running the real Reference
-handler over the 158 frozen seeds (`scripts/export-api-golden.mjs`). Every key
+handler over the 172 frozen seeds (`scripts/export-api-golden.mjs`). Every key
 in those files must exist, with the same name and nesting, in the Python
 response — a silently renamed field would render as an empty cell in the React
 app with no error anywhere.
@@ -84,7 +84,7 @@ async def test_timeline_contract(api_client, seeded_db):
     assert_same_keys(body["sync"], golden["sync"], context="timeline.sync", ignore=VOLATILE_SYNC_KEYS)
     assert_same_keys(body["items"][0], golden["items"][0], context="timeline.items[0]")
 
-    assert body["total"] == golden["total"] == 158
+    assert body["total"] == golden["total"] == 172
     assert body["truncated"] == golden["truncated"] is False
     assert [item["slug"] for item in body["items"]] == [
         item["slug"] for item in golden["items"]
@@ -249,7 +249,7 @@ async def test_status_contract(api_client, db_factory, seeded_db):
     assert body["panel"]["includeScore"] == golden["panel"]["includeScore"]
     assert body["panel"]["minVotes"] == golden["panel"]["minVotes"]
     assert (body["panel"]["reason"] is None) is body["panel"]["configured"]
-    assert body["sync"]["eventCount"] == 158
+    assert body["sync"]["eventCount"] == 172
     assert len(body["runs"]) == 1
     assert_same_keys(body["runs"][0], golden["runs"][0], context="status.runs[0]")
     assert body["runs"][0]["status"] == "succeeded"

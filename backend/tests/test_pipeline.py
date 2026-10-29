@@ -77,16 +77,16 @@ async def test_first_run_inserts_seed_and_collects(db_factory):
     assert outcome["ok"] is True
     assert outcome["busy"] is False
     result = outcome["result"]
-    assert result["seedInserted"] == 158
+    assert result["seedInserted"] == 172
     assert result["rawCount"] > 0
     assert result["createdCount"] > 0
     assert result["status"] in ("succeeded", "partial")
-    assert "seed:158" in (result["notes"] or "")
+    assert "seed:172" in (result["notes"] or "")
 
     async with db_factory() as session:
         events = await session.scalar(select(func.count()).select_from(Event))
         raw = await session.scalar(select(func.count()).select_from(RawItem))
-    assert events == 158 + result["createdCount"]
+    assert events == 172 + result["createdCount"]
     assert raw == result["rawCount"]
     assert await seed_version_of(db_factory) is not None
 
@@ -98,13 +98,13 @@ async def test_second_run_reuses_the_seed(db_factory):
     async with db_factory() as session:
         second = await run_sync(session, now=now(), fetch=fetch, editorial=False)
 
-    assert first["result"]["seedInserted"] == 158
+    assert first["result"]["seedInserted"] == 172
     assert second["result"]["seedInserted"] == 0
-    assert "seed:158" not in (second["result"]["notes"] or "")
+    assert "seed:172" not in (second["result"]["notes"] or "")
 
     async with db_factory() as session:
         events = await session.scalar(select(func.count()).select_from(Event))
-    assert events == 158 + second["result"]["createdCount"] + first["result"]["createdCount"]
+    assert events == 172 + second["result"]["createdCount"] + first["result"]["createdCount"]
 
 
 async def test_a_seed_revision_refreshes_existing_rows(db_factory):
@@ -119,7 +119,7 @@ async def test_a_seed_revision_refreshes_existing_rows(db_factory):
     from app.ingest.pipeline import seed_rows
 
     async with db_factory() as session:
-        assert await repo_events.upsert_seed_events(session, seed_rows(now())) == 158
+        assert await repo_events.upsert_seed_events(session, seed_rows(now())) == 172
 
     async with db_factory() as session:
         row = await session.scalar(select(Event).where(Event.slug == "alphago-match-2016"))
@@ -171,7 +171,7 @@ async def test_editorial_gate_fails_closed_without_a_panel(db_factory):
 
     async with db_factory() as session:
         events = await session.scalar(select(func.count()).select_from(Event))
-    assert events == 158, "nothing unvetted may reach the public timeline"
+    assert events == 172, "nothing unvetted may reach the public timeline"
 
 
 async def test_panel_includes_candidates(db_factory):
@@ -248,7 +248,7 @@ async def test_judge_failure_keeps_everything_out(db_factory):
 
     async with db_factory() as session:
         events = await session.scalar(select(func.count()).select_from(Event))
-    assert events == 158
+    assert events == 172
 
 
 async def test_rule_and_panel_verdicts_are_disjoint(db_factory):
@@ -329,7 +329,7 @@ async def test_each_run_is_recorded(db_factory):
     for run in runs:
         assert run.status in ("succeeded", "partial")
         assert run.finished_at is not None
-    assert runs[0].notes and runs[0].notes.startswith("seed:158")
+    assert runs[0].notes and runs[0].notes.startswith("seed:172")
 
 
 async def test_a_failing_fetch_degrades_to_partial(db_factory):

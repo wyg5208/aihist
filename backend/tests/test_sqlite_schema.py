@@ -24,7 +24,7 @@ BACKEND = Path(__file__).resolve().parent.parent
 # 0001 (editorial) + 0002 (admin console) + 0003 (application queue) + 0004
 # (source registry and collection ledger) + 0006 (digest delivery ledger). The
 # second group is additive; the first five must keep their exact shape because
-# the public API contract and the 158-row curated seed are frozen against them.
+# the public API contract and the 172-row curated seed are frozen against them.
 EXPECTED_TABLES = {
     "events",
     "raw_items",

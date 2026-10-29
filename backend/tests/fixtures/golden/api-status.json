@@ -6,8 +6,8 @@
     "lastStatus": "succeeded",
     "running": false,
     "stale": true,
-    "seedVersion": "2026.10.28.1#c0423905e03613f1",
-    "eventCount": 158
+    "seedVersion": "2026.10.29.1#35c6083e6e4cc26a",
+    "eventCount": 172
   },
   "panel": {
     "configured": false,
@@ -19,7 +19,7 @@
   },
   "runs": [
     {
-      "id": "999a5b6a-0f40-4087-829f-19f95a489de5",
+      "id": "9ea0fd2a-486b-494c-a44a-ec3b150911c4",
       "trigger": "manual",
       "status": "succeeded",
       "startedAt": "2026-10-23T22:00:00.000Z",
