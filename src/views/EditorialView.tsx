@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type { Confidence, TimelineItem } from "../types";
 import { BrandMark } from "../components/BrandMark";
 import { EventDetail } from "../components/EventDetail";
+import { FooterSites } from "../components/FooterSites";
 import { SubscribeForm } from "../components/SubscribeForm";
 import { ThemeSwitcher } from "../components/ThemeSwitcher";
 import { EmptyState, ErrorState, LoadingState } from "../components/States";
@@ -545,7 +546,9 @@ export function EditorialView({ archive }: { archive: ArchiveController }) {
             </p>
           </div>
 
-          <div className="mt-6 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[#2a3a4d] pt-4 text-[12px] text-[#8d949f]">
+          <FooterSites tone="editorial" className="mt-6" />
+
+          <div className="mt-4 flex flex-wrap items-center gap-x-6 gap-y-3 border-t border-[#2a3a4d] pt-4 text-[12px] text-[#8d949f]">
             <span>
               © {new Date().getFullYear()} AI 纪年 · Vol. I · {modelCount} 条模型发布
             </span>

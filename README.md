@@ -1,6 +1,6 @@
 # AI 纪年 / AI Chronicle
 
-> **当前版本**：v0.14.2 ｜ **更新日期**：2026-10-29 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
+> **当前版本**：v0.15.0 ｜ **更新日期**：2026-10-29 ｜ **Node** 22.12–22.x ｜ **Python** 3.11+
 
 一个中文的人工智能编年史站点：记录里程碑、模型发布、研究突破与产业事件。条目来自固定公开源（OpenRouter、Hugging Face、arXiv、Hacker News、官方公告与科技媒体 RSS），经指纹去重、跨源合并与置信度计算后，还要通过规则预筛和五家不同厂商的大模型评审（至少三票同意）才入档。完整规则见 [收录标准](docs/AI纪年_收录标准_v1.0.md)。
 
@@ -19,6 +19,8 @@
 | `/admin/` | 运营台独立 bundle（15 个页面），深/浅双主题，按角色过滤导航，`noindex` |
 | `/go/<code>` | 合作方跳转与点击计数，302 |
 | `/api/v1/*` | 同源 JSON 接口，浏览器从不接触数据库地址或凭据 |
+
+三套版式的页脚底部都有一条「相关站点」：AI 素养学习站（ai-edu.pw）与 AI 素养考核站（ai-skill.pw），均在新标签页打开并带 `noopener noreferrer`；标签、域名与简介统一放在 `src/lib/sisterSites.ts`，两站也各自在顶栏和页脚回链 AI 纪年。
 
 ## 技术栈
 
@@ -125,6 +127,7 @@ node scripts/release-gate.mjs --from G4  # 从某一步开始
 src/                     React 前端（时间轴、筛选、详情、同步状态面板）
 src/admin/               运营台 SPA：pages/ 14 个页面 + components/ 与 router
 src/data/visuals.json    放映配图登记表：键为条目 slug，含 alt / credit / license / kind，真图另有 sourceUrl（文件页）与可选 fit: contain
+src/lib/sisterSites.ts   页脚「相关站点」的标签、简介、域名与外链（ai-edu.pw / ai-skill.pw）
 public/visuals/          已登记的配图文件：23 张 JPEG（当前 12 张 Wikimedia Commons 真图 + 11 张 AI 生成示意图），每张另有 `<名>.webp`（900w）与 `<名>-760.webp` 两档，由 `npm run build:visuals` 生成
 admin.html               管理台入口，noindex
 backend/                 FastAPI 后端

@@ -3,6 +3,7 @@ import type { ReactNode } from "react";
 import type { Category, Confidence, TimelineItem } from "../types";
 import { BrandMark } from "../components/BrandMark";
 import { EventDetail } from "../components/EventDetail";
+import { FooterSites } from "../components/FooterSites";
 import { SubscribeForm } from "../components/SubscribeForm";
 import { ThemeSwitcher } from "../components/ThemeSwitcher";
 import { EmptyState, ErrorState, LoadingState } from "../components/States";
@@ -505,7 +506,9 @@ export function MuseumView({ archive }: { archive: ArchiveController }) {
             </p>
           </div>
 
-          <div className="mt-5 flex flex-wrap items-center gap-x-5.5 gap-y-2.5 border-t border-[#26463a] py-3.5 text-[12px] text-[#8d9c92]">
+          <FooterSites tone="museum" className="mt-5" />
+
+          <div className="mt-4 flex flex-wrap items-center gap-x-5.5 gap-y-2.5 border-t border-[#26463a] py-3.5 text-[12px] text-[#8d9c92]">
             <span>
               © {new Date().getFullYear()} AI 纪年 · Vol. I · {panelSeats || "—"} 席评审
             </span>

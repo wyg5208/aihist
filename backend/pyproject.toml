@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "aihist-backend"
-version = "0.14.2"
+version = "0.15.0"
 description = "AI 绾勾 backend: FastAPI + SQLite"
 requires-python = ">=3.11"
 dependencies = [

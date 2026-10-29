@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import type { Confidence, TimelineItem } from "../types";
 import { BrandMark } from "../components/BrandMark";
 import { EventDetail } from "../components/EventDetail";
+import { FooterSites } from "../components/FooterSites";
 import { SubscribeForm } from "../components/SubscribeForm";
 import { ThemeSwitcher } from "../components/ThemeSwitcher";
 import { EmptyState, ErrorState, LoadingState } from "../components/States";
@@ -412,7 +413,9 @@ export function AuroraView({ archive }: { archive: ArchiveController }) {
             </FootColumn>
           </div>
 
-          <div className="mt-8 flex flex-wrap items-center gap-x-5.5 gap-y-2.5 border-t border-[var(--rule)] pt-4 text-[12px] text-[var(--muted)]">
+          <FooterSites tone="aurora" className="mt-8" />
+
+          <div className="mt-4 flex flex-wrap items-center gap-x-5.5 gap-y-2.5 border-t border-[var(--rule)] pt-4 text-[12px] text-[var(--muted)]">
             <span>© {new Date().getFullYear()} AI 纪年 · Vol. I</span>
             <span className="flex flex-wrap gap-4.5">
               <a href="/api/v1/subscribe?src=footer" className="hover:text-white">
