@@ -49,7 +49,7 @@ from app.ingest.catalog import (
     is_archive_source,
     resolve_archive_source,
 )
-from app.ingest.seed import SEED_EVENTS, SEED_VERSION
+from app.ingest.seed import SEED_EVENTS, SEED_STAMP
 from app.ingest.sources import ALLOWED_HOSTS, SOURCE_TIMEOUT_MS, load_sources
 
 logger = logging.getLogger("aihist.pipeline")
@@ -642,7 +642,7 @@ async def run_sync(
     if not lease["ok"]:
         return {"ok": False, "busy": True, "runId": None, "status": "busy", "result": None}
 
-    seed_needed = state is None or state.seed_version != SEED_VERSION
+    seed_needed = state is None or state.seed_version != SEED_STAMP
     # The archive's clock. Read before `start_run` inserts this row, so the turn
     # is "how many backfills have happened", not "how many, including me".
     history_turn = 0
@@ -1213,13 +1213,13 @@ async def run_sync(
 
         await repo_sync.finish_run(session, run_id, result)
         if seed_needed and final_status in ("succeeded", "partial"):
-            await repo_sync.update_seed_version(session, token, run_id, SEED_VERSION)
+            await repo_sync.update_seed_version(session, token, run_id, SEED_STAMP)
         await repo_sync.release_lease(
             session,
             token,
             run_id,
             status=final_status,
-            seed_version=SEED_VERSION if seed_needed and final_status != "failed" else None,
+            seed_version=SEED_STAMP if seed_needed and final_status != "failed" else None,
         )
         return {"ok": True, "busy": False, "runId": str(run_id), "status": final_status, "result": result}
     except BaseException as error:  # noqa: BLE001 - the run row must always be closed

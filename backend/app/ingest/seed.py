@@ -25,9 +25,17 @@ def seed_version() -> str:
     return str(_payload()["seedVersion"])
 
 
+def seed_digest() -> str:
+    return str(_payload().get("seedDigest") or "")
+
+
 def seed_events() -> list[dict[str, Any]]:
     return _payload()["events"]
 
 
 SEED_VERSION = seed_version()
+SEED_DIGEST = seed_digest()
+# What sync stores and compares: the dated revision plus a fingerprint of the
+# frozen rows, so editing an evidence family refreshes live rows by itself.
+SEED_STAMP = f"{SEED_VERSION}#{SEED_DIGEST}" if SEED_DIGEST else SEED_VERSION
 SEED_EVENTS = seed_events()

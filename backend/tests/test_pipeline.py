@@ -141,6 +141,19 @@ async def test_a_seed_revision_refreshes_existing_rows(db_factory):
     assert row.first_seen_at == first_seen
 
 
+async def test_the_seed_stamp_carries_a_content_fingerprint():
+    """Sync compares a stamped version, not the hand-written date.
+
+    Without the digest an evidence edit looked current to sync whenever nobody
+    bumped SEED_VERSION, so the fix never reached live rows.
+    """
+    from app.ingest.seed import SEED_DIGEST, SEED_STAMP, SEED_VERSION
+
+    assert len(SEED_DIGEST) == 16
+    assert SEED_STAMP == f"{SEED_VERSION}#{SEED_DIGEST}"
+    assert SEED_STAMP != SEED_VERSION
+
+
 async def test_editorial_gate_fails_closed_without_a_panel(db_factory):
     async with db_factory() as session:
         outcome = await run_sync(

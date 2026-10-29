@@ -7,6 +7,9 @@ import { keywordsFor } from "./keywords.mjs";
  * the captured OpenRouter, Hugging Face, arXiv and official-news payloads.
  * Seeds are inserted by the first sync, never by migration SQL.
  */
+// SEED_VERSION is the human-authored dated revision. What sync stores is
+// SEED_STAMP (`version#digest`, derived at the bottom): editing an evidence
+// family changes the digest, so live rows refresh without a manual bump.
 export const SEED_VERSION = "2026.10.28.1";
 
 function seed(def) {
@@ -3252,3 +3255,24 @@ export const SEED_EVENTS = [
     note: "爱丽舍宫声明原文核对",
   }),
 ];
+
+/**
+ * Content fingerprint of the curated catalogue. Sync compares SEED_STAMP with
+ * `sync_state.seed_version`, so any edit to the frozen fields re-seeds existing
+ * rows even when nobody bumps the dated SEED_VERSION. Node and Deno run this
+ * exact function, so the digest cannot drift between runtimes.
+ */
+function stampDigest(events) {
+  const text = JSON.stringify(events);
+  let low = 0x811c9dc5;
+  let high = 0x01000193;
+  for (let index = 0; index < text.length; index += 1) {
+    const code = text.charCodeAt(index);
+    low = Math.imul(low ^ code, 0x01000193);
+    high = Math.imul(high + code, 0x85ebca6b);
+  }
+  return `${(low >>> 0).toString(16).padStart(8, "0")}${(high >>> 0).toString(16).padStart(8, "0")}`;
+}
+
+export const SEED_DIGEST = stampDigest(SEED_EVENTS);
+export const SEED_STAMP = `${SEED_VERSION}#${SEED_DIGEST}`;

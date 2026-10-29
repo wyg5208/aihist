@@ -16,7 +16,7 @@ import { handleApp } from "../functions/handler.mjs";
 import { createFakeSupabase } from "../dev/fake-supabase.mjs";
 import { confidenceOf, fingerprintOf } from "../functions/lib/cluster.mjs";
 import { CATEGORY_KEYS } from "../functions/lib/normalize.mjs";
-import { SEED_EVENTS, SEED_VERSION } from "../functions/lib/seed.mjs";
+import { SEED_EVENTS, SEED_STAMP } from "../functions/lib/seed.mjs";
 import { autoSlug, seedSlug } from "../functions/lib/slug.mjs";
 
 const root = resolve(fileURLToPath(new URL("..", import.meta.url)));
@@ -90,7 +90,7 @@ function stateRow(nowIso) {
     last_attempt_at: nowIso,
     last_success_at: nowIso,
     last_status: "succeeded",
-    seed_version: SEED_VERSION,
+    seed_version: SEED_STAMP,
     updated_at: nowIso,
   };
 }

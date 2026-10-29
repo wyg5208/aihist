@@ -5,7 +5,7 @@
  *   node scripts/check-pipeline.mjs
  */
 import { MAX_RAW_ITEMS, runSync } from "../functions/lib/pipeline.mjs";
-import { SEED_EVENTS, SEED_VERSION } from "../functions/lib/seed.mjs";
+import { SEED_EVENTS, SEED_STAMP } from "../functions/lib/seed.mjs";
 import { seriesFor, vendorFor } from "../functions/lib/taxonomy.mjs";
 import { fixtureFetch } from "../dev/fixture-fetch.mjs";
 import { createFakeSupabase } from "../dev/fake-supabase.mjs";
@@ -40,7 +40,7 @@ check("first run not busy", first.ok && !first.busy);
 check("first run produced events", first.result?.createdCount > 0);
 check(
   "seed version stored",
-  supabase.tables.sync_state[0]?.seed_version === SEED_VERSION,
+  supabase.tables.sync_state[0]?.seed_version === SEED_STAMP,
   String(supabase.tables.sync_state[0]?.seed_version)
 );
 

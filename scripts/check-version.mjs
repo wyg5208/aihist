@@ -103,13 +103,24 @@ if (pyRule.panel !== jsRule.panel) warnings.push("PANEL_SIZE drifts between the 
 
 // --- seed data version and its frozen copy ----------------------------------
 
-const seedJs = await read("functions/lib/seed.mjs");
-const seedVersionJs = firstMatch(seedJs, /export const SEED_VERSION\s*=\s*"([^"]+)"/);
+const seedModule = await import("../functions/lib/seed.mjs");
+const seedVersionJs = seedModule.SEED_VERSION;
+const seedDigestJs = seedModule.SEED_DIGEST;
 const seedJson = JSON.parse(await read("backend/app/data/seed.json"));
 const seedVersionJson = String(seedJson.seedVersion ?? "");
+const seedDigestJson = String(seedJson.seedDigest ?? "");
 row("SEED_VERSION (functions/lib/seed.mjs)", seedVersionJs);
-row("seedVersion (app/data/seed.json)", seedVersionJson, seedVersionJs === seedVersionJson ? "ok" : "WARN stale");
-if (seedVersionJs !== seedVersionJson) {
+row(
+  "seedVersion (app/data/seed.json)",
+  seedVersionJson,
+  seedVersionJs === seedVersionJson ? "ok" : "WARN stale"
+);
+row(
+  "seed digest (js / frozen)",
+  `${seedDigestJs} / ${seedDigestJson}`,
+  seedDigestJs === seedDigestJson ? "ok" : "WARN stale"
+);
+if (seedVersionJs !== seedVersionJson || seedDigestJs !== seedDigestJson) {
   warnings.push("backend/app/data/seed.json is stale: run node scripts/export-seed.mjs and the backend tests");
 }
 

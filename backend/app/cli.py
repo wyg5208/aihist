@@ -46,7 +46,7 @@ from app.ingest.pipeline import (
     run_sync,
     seed_rows,
 )
-from app.ingest.seed import SEED_VERSION
+from app.ingest.seed import SEED_STAMP
 from app.ingest.sources import SOURCE_TIMEOUT_MS, httpx_fetch, load_source, load_sources
 
 # A single probe is allowed to be slower than a batch fetch: an operator is
@@ -88,10 +88,10 @@ async def _seed(session) -> int:
     inserted = await repo_events.upsert_seed_events(session, seed_rows(utc_now()))
     state = await repo_sync.read_state(session)
     if state is None:
-        session.add(SyncState(id=STATE_ID, seed_version=SEED_VERSION))
-    elif state.seed_version != SEED_VERSION:
+        session.add(SyncState(id=STATE_ID, seed_version=SEED_STAMP))
+    elif state.seed_version != SEED_STAMP:
         await session.execute(
-            update(SyncState).where(SyncState.id == STATE_ID).values(seed_version=SEED_VERSION)
+            update(SyncState).where(SyncState.id == STATE_ID).values(seed_version=SEED_STAMP)
         )
     await session.commit()
     return inserted

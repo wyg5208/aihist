@@ -110,7 +110,15 @@ systemctl restart aihist-api
 Invoke-RestMethod http://127.0.0.1:8000/api/v1/status
 ```
 
-逐项确认：`running` 租约未被僵尸持有、`seedVersion` 等于本次 `SEED_VERSION`、`panel.configured` 与 `reason` 符合预期（少于 3 席应报告 `models` 并全部暂缓）。再到管理台手动触发一次同步，确认 `sync_runs` 写出新记录且状态非 `failed`。
+逐项确认：`running` 租约未被僵尸持有、`seedVersion` 等于 `SEED_VERSION#seedDigest`（`node scripts/check-version.mjs` 会打印两侧摘要）、`panel.configured` 与 `reason` 符合预期（少于 3 席应报告 `models` 并全部暂缓）。再到管理台手动触发一次同步，确认 `sync_runs` 写出新记录且状态非 `failed`。
+
+部署后不管版本号有没有变化，都显式补一次种子（幂等：`inserted=0` 表示行已存在，但证据列已按种子刷新）：
+
+```powershell
+backend\.venv\Scripts\python.exe -m app.cli seed
+```
+
+`sync_state.seed_version` 存的是 `SEED_VERSION#内容摘要`，所以改种子不动日期版本也会在下次同步时重刷；这条手工命令只是“不想等下一次同步”时的兜底。
 
 **数据前置条件**
 

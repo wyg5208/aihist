@@ -16,7 +16,7 @@ import {
   ruleDecision,
   shouldAuditOut,
 } from "./editorial.mjs";
-import { SEED_EVENTS, SEED_VERSION } from "./seed.mjs";
+import { SEED_EVENTS, SEED_STAMP } from "./seed.mjs";
 import { autoSlug, seedSlug } from "./slug.mjs";
 import {
   acquireLease,
@@ -424,7 +424,7 @@ export async function runSync({
     return { ok: false, busy: true, runId: null, status: "busy", result: null };
   }
 
-  const seedNeeded = state?.seed_version !== SEED_VERSION;
+  const seedNeeded = state?.seed_version !== SEED_STAMP;
 
   try {
     await startRun(supabase, { runId, trigger, now });
@@ -795,11 +795,11 @@ export async function runSync({
 
     await finishRun(supabase, runId, result);
     if (seedNeeded && (finalStatus === "succeeded" || finalStatus === "partial")) {
-      await updateSeedVersion(supabase, token, runId, SEED_VERSION);
+      await updateSeedVersion(supabase, token, runId, SEED_STAMP);
     }
     await releaseLease(supabase, token, runId, {
       status: finalStatus,
-      seedVersion: seedNeeded && finalStatus !== "failed" ? SEED_VERSION : undefined,
+      seedVersion: seedNeeded && finalStatus !== "failed" ? SEED_STAMP : undefined,
     });
     return { ok: true, busy: false, runId, status: finalStatus, result };
   } catch (error) {

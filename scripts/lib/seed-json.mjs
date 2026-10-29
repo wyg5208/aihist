@@ -23,4 +23,6 @@ if (typeof parsed.count === "number" && parsed.count !== parsed.events.length) {
 }
 
 export const SEED_VERSION = String(parsed.seedVersion ?? "unknown");
+export const SEED_DIGEST = String(parsed.seedDigest ?? "");
+export const SEED_STAMP = SEED_DIGEST ? `${SEED_VERSION}#${SEED_DIGEST}` : SEED_VERSION;
 export const SEED_EVENTS = parsed.events;
