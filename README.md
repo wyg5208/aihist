@@ -86,10 +86,11 @@ npm run dev          # http://127.0.0.1:5173，/api 代理到 127.0.0.1:8000
 | `npm run check:coverage` | 基准集覆盖率（先跑离线同步，不写库） |
 | `npm run check:coverage:selftest` | 覆盖率检查器自检 |
 | `npm run check:function` | `deno check functions/index.ts`，需安装 Deno，仅用于对照参考实现 |
+| `npm run push:baidu` | 把 `dist/sitemap.xml` 的 URL 主动推给百度收录（需 `BAIDU_PUSH_SITE` / `BAIDU_PUSH_TOKEN`，token 只放环境变量；`--dry-run` 只打印） |
 | `npm run release:gate` | 发布门禁：串行跑 G0–G6（G2 后紧跟 G2b 检查器自检），红灯即停 |
 | `cd backend && python -m pytest -q` | 后端接口、采集管线、租约、迁移与 SQLite PRAGMA |
 
-`npm run build` 分两步：Vite 产出 `dist/index.html` 与资源，随后 `scripts/build-pages.mjs` 为每个种子生成 `dist/e/<slug>.html`（当前 172 个），并写出 `dist/sitemap.xml`（173 条 URL）、`dist/robots.txt`，向首页注入 `WebSite` + `Organization` JSON-LD。
+`npm run build` 分两步：Vite 产出 `dist/index.html` 与资源，随后 `scripts/build-pages.mjs` 为每个种子生成 `dist/e/<slug>.html`（当前 172 个），并写出 `dist/sitemap.xml`（173 条 URL）、`dist/sitemap_baidu.txt`（同清单的纯文本镜像，百度站长主格式）、`dist/robots.txt`，向首页注入 `WebSite` + `Organization` JSON-LD。站长平台验证标签按环境变量注入：`BAIDU_CODE` / `GOOGLE_CODE` 有值才写 `<meta name="*-site-verification">`，GSC 域名资源走 DNS 验证通常不需要 `GOOGLE_CODE`，流程见 `docs/推广/AI纪年SEO_GSC与百度站长_资源提交手册_v1.md`。
 
 静态页的绝对地址来自 `site.config.mjs` 的 `SITE_ORIGIN`（默认 `https://aihist.net`），构建时可覆盖：
 
@@ -171,6 +172,7 @@ scripts/check-node.mjs                  Node 版本守卫（preinstall / predev 
 scripts/export-golden.mjs               从 JS 参考实现重导契约夹具
 scripts/export-api-golden.mjs           从参考实现重导接口夹具
 scripts/export-seed.mjs                 从 functions/lib/seed.mjs 重导 seed.json
+scripts/push-baidu.mjs                  百度主动推送（sitemap URL 批量 POST 给站长平台）
 ```
 
 `check:coverage` 会先跑完整的离线同步，再按总量、年代、厂商、类别和高重要度种子统计覆盖率。基准集只用于度量；缺口写入 `coverage-report.json`，该文件仅本地复盘、不进入发布目录（已在 `.gitignore`）。

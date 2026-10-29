@@ -198,6 +198,22 @@ const cases = [
     },
   },
   {
+    name: "sitemap_baidu.txt missing",
+    expect: "sitemap_baidu.txt is missing",
+    mutate: async (ctx) => {
+      await unlink(join(ctx.dist, "sitemap_baidu.txt"));
+    },
+  },
+  {
+    name: "sitemap_baidu.txt drift",
+    expect: "sitemap_baidu.txt: url list differs",
+    mutate: async (ctx) => {
+      await edit(join(ctx.dist, "sitemap_baidu.txt"), (text) =>
+        replaceOnce(text, `${process.env.SITE_ORIGIN || "https://aihist.net"}/e/${TURING}.html\n`, "")
+      );
+    },
+  },
+  {
     name: "robots without sitemap",
     expect: "robots.txt: sitemap is not declared",
     mutate: async (ctx) => {

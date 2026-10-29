@@ -30,3 +30,23 @@ export const SITE_NAME = "AI 纪年";
 export const SITE_TITLE = "AI 纪年 · 人工智能发展编年史";
 export const SITE_DESCRIPTION =
   "AI 纪年：记录人工智能的关键事件、大模型发布与重要研究。条目来自公开接口与官方公告，经去重与交叉验证入档。";
+
+/**
+ * Webmaster verification codes, injected into the homepage <head> as
+ * <meta name="...-site-verification" content="..."> when set. They are public
+ * tags, not secrets, but they only exist after the domain is added to the
+ * matching console — see docs/推广/AI纪年SEO_GSC与百度站长_资源提交手册_v1.md.
+ * The GSC property here is verified by DNS (domain property), so GOOGLE_CODE
+ * stays empty unless a URL-prefix property ever needs its own meta tag.
+ */
+function verifyCode(raw, label) {
+  const value = String(raw || "").trim();
+  if (!value) return "";
+  if (!/^[\w=+\/-]{4,128}$/.test(value)) {
+    throw new Error(`${label} does not look like a verification code`);
+  }
+  return value;
+}
+
+export const BAIDU_CODE = verifyCode(process.env.BAIDU_CODE, "BAIDU_CODE");
+export const GOOGLE_CODE = verifyCode(process.env.GOOGLE_CODE, "GOOGLE_CODE");

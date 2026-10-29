@@ -21,7 +21,8 @@
     "check:coverage": "node scripts/check-coverage.mjs",
     "check:coverage:selftest": "node scripts/check-coverage-selftest.mjs",
     "check:editorial": "node scripts/check-editorial.mjs",
-    "check:function": "deno check functions/index.ts"
+    "check:function": "deno check functions/index.ts",
+    "push:baidu": "node scripts/push-baidu.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",

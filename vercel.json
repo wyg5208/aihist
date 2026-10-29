@@ -28,6 +28,10 @@
       "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
     },
     {
+      "source": "/sitemap_baidu.txt",
+      "headers": [{ "key": "Cache-Control", "value": "public, max-age=3600" }]
+    },
+    {
       "source": "/visuals/:path*",
       "headers": [
         {

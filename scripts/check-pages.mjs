@@ -3,6 +3,8 @@ import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SEED_EVENTS } from "./lib/seed-json.mjs";
 import {
+  BAIDU_CODE,
+  GOOGLE_CODE,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_ORIGIN,
@@ -431,6 +433,7 @@ export async function checkPages({ root = PROJECT_ROOT, quiet = false } = {}) {
   }
 
   const sitemap = await readFile(join(dist, "sitemap.xml"), "utf8").catch(() => "");
+  let locs = [];
   if (!sitemap) {
     fail("sitemap.xml is missing");
   } else {
@@ -453,7 +456,6 @@ export async function checkPages({ root = PROJECT_ROOT, quiet = false } = {}) {
     const blocks = [...sitemap.matchAll(/<url>([\s\S]*?)<\/url>/g)].map(
       (match) => match[1]
     );
-    const locs = [];
     for (const block of blocks) {
       const locsInBlock = countOccurrences(block, "<loc>");
       const lastmodsInBlock = countOccurrences(block, "<lastmod>");
@@ -490,6 +492,20 @@ export async function checkPages({ root = PROJECT_ROOT, quiet = false } = {}) {
     if (new Set(locs).size !== locs.length) fail("sitemap: duplicate urls");
     if (locs.some((loc) => /\/e\/[^/]+\/$/.test(loc))) {
       fail("sitemap: directory-style /e/<slug>/ loc is not served");
+    }
+  }
+
+  // Baidu's sitemap reader wants the same URLs as a plain text list.
+  const sitemapTxt = await readFile(join(dist, "sitemap_baidu.txt"), "utf8").catch(() => "");
+  if (!sitemapTxt) {
+    fail("sitemap_baidu.txt is missing");
+  } else {
+    const txtLocs = sitemapTxt.split(/\r?\n/).map((line) => line.trim()).filter(Boolean);
+    if (txtLocs.some((loc) => !isHttpUrl(loc))) {
+      fail("sitemap_baidu.txt: every line must be an absolute http(s) url");
+    }
+    if (locs.length > 0 && txtLocs.join("\n") !== locs.join("\n")) {
+      fail(`sitemap_baidu.txt: url list differs from sitemap.xml (${txtLocs.length} vs ${locs.length})`);
     }
   }
 
@@ -536,6 +552,26 @@ export async function checkPages({ root = PROJECT_ROOT, quiet = false } = {}) {
     }
     if (!home.includes('<meta property="og:type" content="website"')) {
       fail("homepage: og:type is not website");
+    }
+    const verificationTags = [
+      ...home.matchAll(/<meta name="(baidu|google)-site-verification" content="([^"]*)" \/>/g),
+    ];
+    if (verificationTags.length > 2) {
+      fail("homepage: too many webmaster verification tags");
+    }
+    for (const [, engine, code] of verificationTags) {
+      if (!/^[\w=+\/-]{4,128}$/.test(code)) {
+        fail(`homepage: ${engine}-site-verification content looks invalid`);
+      }
+    }
+    const expectedVerification = `${BAIDU_CODE ? "baidu" : ""}${
+      GOOGLE_CODE ? (BAIDU_CODE ? "+google" : "google") : ""
+    }`;
+    const foundVerification = verificationTags.map(([, engine]) => engine).sort().join("+");
+    if (foundVerification !== expectedVerification) {
+      fail(
+        `homepage: verification tags ${foundVerification || "none"} differ from site.config (${expectedVerification || "none"})`
+      );
     }
     if (countOccurrences(home, "data-site-jsonld") !== 1) {
       // one attribute on the script tag; more would mean a duplicated block

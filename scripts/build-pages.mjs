@@ -3,6 +3,8 @@ import { join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { SEED_EVENTS, SEED_VERSION } from "./lib/seed-json.mjs";
 import {
+  BAIDU_CODE,
+  GOOGLE_CODE,
   SITE_DESCRIPTION,
   SITE_NAME,
   SITE_ORIGIN,
@@ -377,23 +379,33 @@ ${sourcesHtml}
 `;
 }
 
-function renderSitemap(seeds, buildDate) {
-  const urls = [
-    `  <url>\n    <loc>${escapeHtml(`${SITE_ORIGIN}/`)}</loc>\n    <lastmod>${buildDate}</lastmod>\n  </url>`,
-    ...seeds.map(
-      (seed) =>
-        `  <url>\n    <loc>${escapeHtml(
-          absolutePageUrl(SITE_ORIGIN, seed.seedId)
-        )}</loc>\n    <lastmod>${buildDate}</lastmod>\n  </url>`
-    ),
+function sitemapLocs(seeds) {
+  return [
+    `${SITE_ORIGIN}/`,
+    ...seeds.map((seed) => absolutePageUrl(SITE_ORIGIN, seed.seedId)),
   ];
+}
+
+function renderSitemap(seeds, buildDate) {
+  const urls = sitemapLocs(seeds).map(
+    (loc) =>
+      `  <url>\n    <loc>${escapeHtml(loc)}</loc>\n    <lastmod>${buildDate}</lastmod>\n  </url>`
+  );
   return `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls.join(
     "\n"
   )}\n</urlset>\n`;
 }
 
+/**
+ * Baidu's 站长平台 sitemap reader is picky about XML and prefers the plain
+ * one-URL-per-line format, so the same URL list is mirrored here.
+ */
+function renderSitemapTxt(seeds) {
+  return `${sitemapLocs(seeds).join("\n")}\n`;
+}
+
 function renderRobots() {
-  return `User-agent: *\nAllow: /\n\nSitemap: ${SITE_ORIGIN}/sitemap.xml\n`;
+  return `User-agent: *\nAllow: /\n\nSitemap: ${SITE_ORIGIN}/sitemap.xml\n# 百度蜘蛛可改用纯文本索引：${SITE_ORIGIN}/sitemap_baidu.txt\n`;
 }
 
 function homepageGraph() {
@@ -422,6 +434,21 @@ function homepageGraph() {
 async function augmentHomepage() {
   const file = join(DIST, "index.html");
   let html = await readFile(file, "utf8");
+
+  // Webmaster verification tags first, so the console crawl sees them even if
+  // anything below changes. Codes come from env (site.config.mjs); no code,
+  // no tag — the block stays idempotent for rebuilds.
+  const verification = [
+    BAIDU_CODE &&
+      `  <meta name="baidu-site-verification" content="${escapeHtml(BAIDU_CODE)}" />`,
+    GOOGLE_CODE &&
+      `  <meta name="google-site-verification" content="${escapeHtml(GOOGLE_CODE)}" />`,
+  ]
+    .filter(Boolean)
+    .join("\n");
+  if (verification && !/site-verification/.test(html)) {
+    html = html.replace("</head>", `${verification}\n</head>`);
+  }
 
   if (!/<script type="application\/ld\+json" data-site-jsonld>/.test(html)) {
     const block = `  <script type="application/ld+json" data-site-jsonld>${escapeJson(
@@ -485,6 +512,7 @@ export async function buildPages() {
       : a.sortDate.localeCompare(b.sortDate)
   );
   await writeFile(join(DIST, "sitemap.xml"), renderSitemap(ordered, buildDate), "utf8");
+  await writeFile(join(DIST, "sitemap_baidu.txt"), renderSitemapTxt(ordered), "utf8");
   await writeFile(join(DIST, "robots.txt"), renderRobots(), "utf8");
   await augmentHomepage();
 
@@ -492,6 +520,12 @@ export async function buildPages() {
     `pages        ${SEED_EVENTS.length} seed pages → dist${pagePath("<slug>")} (${sourceCount} sources)`
   );
   console.log(`sitemap      dist/sitemap.xml (${SEED_EVENTS.length + 1} urls)`);
+  console.log(
+    `sitemap(txt) dist/sitemap_baidu.txt (${SEED_EVENTS.length + 1} urls, Baidu 站长格式)`
+  );
+  console.log(
+    `webmaster    验证标签 ${[BAIDU_CODE && "baidu", GOOGLE_CODE && "google"].filter(Boolean).join(" + ") || "无（未设 BAIDU_CODE / GOOGLE_CODE）"}`
+  );
   console.log("robots       dist/robots.txt");
   console.log("homepage     WebSite + Organization JSON-LD, canonical, og:url");
   console.log(`origin       ${SITE_ORIGIN}`);
