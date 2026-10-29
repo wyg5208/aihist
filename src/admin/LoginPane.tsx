@@ -1,5 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { ApiError } from "../api";
+import { BrandMark } from "../components/BrandMark";
 import { INPUT_CLASS } from "./components/Field";
 import { useSession } from "./session";
 import { currentTheme, toggleTheme, type Theme } from "./theme";
@@ -87,8 +88,34 @@ export function LoginPane() {
 
       <div className="relative w-full max-w-sm">
         <div className="rounded-[var(--c-radius)] border border-[var(--c-line)] bg-[var(--c-surface)] p-6 shadow-xl">
-          <p className="label">AI Chronicle · Console</p>
-          <h1 className="mt-2 text-[18px] tracking-wide text-[var(--c-text)]">运营控制台</h1>
+          {/* The console is a separate bundle, so the login page is the only
+              place a visitor can be unsure whether they are still on the
+              publication. The lockup is itself the way home, and the label
+              spells it out for anyone who reads rather than clicks. */}
+          <a
+            href="/"
+            aria-label="返回 AI 纪年网站首页"
+            title="返回 AI 纪年网站首页"
+            className="group -m-1 flex items-center gap-2.5 rounded-[var(--c-radius)] p-1"
+          >
+            <BrandMark size={30} />
+            <span className="min-w-0">
+              <span className="block text-[16px] leading-5 tracking-[0.06em] text-[var(--c-text)]">
+                AI 纪年
+              </span>
+              <span className="mt-0.5 block font-mono text-[9px] uppercase tracking-[0.18em] text-[var(--c-text-mute)] transition-colors group-hover:text-[var(--c-text-dim)]">
+                AI Chronicle · Console
+              </span>
+            </span>
+            <span
+              aria-hidden="true"
+              className="ml-auto font-mono text-[10px] uppercase tracking-[0.12em] text-[var(--c-text-mute)] transition-colors group-hover:text-[var(--c-accent)]"
+            >
+              首页 ↗
+            </span>
+          </a>
+
+          <h1 className="mt-4 text-[18px] tracking-wide text-[var(--c-text)]">运营控制台</h1>
           <p className="mt-1.5 text-[11px] leading-5 text-[var(--c-text-mute)]">
             采集与访问完全解耦：只有这里和后台定时任务可以触发同步。
           </p>
@@ -132,6 +159,23 @@ export function LoginPane() {
               {busy ? "验证中…" : "登录"}
             </button>
           </form>
+
+          {/* A signed-out visitor may only want the archive. The rule keeps
+              this exit visually separate from the credentials above it. */}
+          <div aria-hidden="true" className="mt-5 flex items-center gap-2.5">
+            <span className="h-px flex-1 bg-[var(--c-line)]" />
+            <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-[var(--c-text-mute)]">
+              或
+            </span>
+            <span className="h-px flex-1 bg-[var(--c-line)]" />
+          </div>
+          <a
+            href="/"
+            className="mt-3 flex w-full items-center justify-center gap-2 rounded-[var(--c-radius)] border border-[var(--c-line-strong)] bg-[var(--c-surface-2)] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.16em] text-[var(--c-text)] transition-colors hover:border-[var(--c-accent)] hover:text-[var(--c-accent)]"
+          >
+            <span aria-hidden="true">←</span>
+            返回网站首页
+          </a>
         </div>
 
         <p className="mt-4 text-center font-mono text-[9px] uppercase leading-5 tracking-[0.14em] text-[var(--c-text-mute)]">

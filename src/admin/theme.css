@@ -26,6 +26,10 @@
   --rule-strong: var(--c-line-strong);
   --accent: var(--c-accent);
   --accent-soft: var(--c-accent-soft);
+  /* The login lockup draws the publication mark; in the console the
+     decorative slip should follow the console accent, not the paper copper
+     that `globals.css` leaves behind for the public bundle. */
+  --accent-mark: var(--c-accent);
 
   --background: var(--c-bg);
   --foreground: var(--c-text);
