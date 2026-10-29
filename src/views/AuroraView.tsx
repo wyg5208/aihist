@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { Confidence, TimelineItem } from "../types";
 import { BrandMark } from "../components/BrandMark";
+import { EraBrief, EraNote } from "../components/EraBrief";
 import { EventDetail } from "../components/EventDetail";
 import { FooterSites } from "../components/FooterSites";
 import { SubscribeForm } from "../components/SubscribeForm";
@@ -46,6 +47,7 @@ export function AuroraView({ archive }: { archive: ArchiveController }) {
     reload,
     filtered,
     groups,
+    activeYear,
     query,
     category,
     setQuery,
@@ -321,34 +323,42 @@ export function AuroraView({ archive }: { archive: ArchiveController }) {
 
           {!showLoading && filtered.length > 0 && (
             <div className={refreshing ? "opacity-70" : undefined}>
-              {groups.map((group) => (
-                <YearBlock
-                  key={group.year}
-                  year={group.year}
-                  items={group.items}
-                  expandedId={expandedId}
-                  onToggle={toggleRow}
-                  onKeyword={focusKeyword}
-                />
-              ))}
+              <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start lg:gap-9">
+                <div className="min-w-0">
+                  {groups.map((group) => (
+                    <YearBlock
+                      key={group.year}
+                      year={group.year}
+                      items={group.items}
+                      expandedId={expandedId}
+                      onToggle={toggleRow}
+                      onKeyword={focusKeyword}
+                    />
+                  ))}
 
-              <div className="au-cta mt-10 grid items-center gap-6 px-8 py-8 lg:grid-cols-[minmax(0,1fr)_auto]">
-                <div>
-                  <h2 className="text-[25px] font-semibold tracking-[-0.02em] text-[var(--ink)]">
-                    订阅，或直接把档案接进你的产品
-                  </h2>
-                  <p className="mt-2 max-w-[56ch] text-[13.8px] leading-6 text-[var(--ink-soft)]">
-                    每周一封邮件只写新增记录；开放 API 返回结构化事件、证据与原链，
-                    免费额度每秒 5 次，通常 1 个工作日内开通。
-                  </p>
+                  <div className="au-cta mt-10 grid items-center gap-6 px-8 py-8 lg:grid-cols-[minmax(0,1fr)_auto]">
+                    <div>
+                      <h2 className="text-[25px] font-semibold tracking-[-0.02em] text-[var(--ink)]">
+                        订阅，或直接把档案接进你的产品
+                      </h2>
+                      <p className="mt-2 max-w-[56ch] text-[13.8px] leading-6 text-[var(--ink-soft)]">
+                        每周一封邮件只写新增记录；开放 API 返回结构化事件、证据与原链，
+                        免费额度每秒 5 次，通常 1 个工作日内开通。
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2.5">
+                      <a className="au-glow inline-flex h-11 items-center rounded-full px-5 text-[14px] font-semibold transition-[filter,transform]" href="/api/v1/subscribe?src=cta">
+                        订阅更新
+                      </a>
+                      <a className="au-line inline-flex h-11 items-center rounded-full px-5 text-[14px] font-semibold transition-colors" href="/api/v1/open/apply">
+                        申请 API
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-2.5">
-                  <a className="au-glow inline-flex h-11 items-center rounded-full px-5 text-[14px] font-semibold transition-[filter,transform]" href="/api/v1/subscribe?src=cta">
-                    订阅更新
-                  </a>
-                  <a className="au-line inline-flex h-11 items-center rounded-full px-5 text-[14px] font-semibold transition-colors" href="/api/v1/open/apply">
-                    申请 API
-                  </a>
+
+                <div className="hidden lg:sticky lg:top-[6.5rem] lg:block">
+                  <EraBrief year={activeYear ?? groups[0].year} variant="aurora" />
                 </div>
               </div>
             </div>
@@ -518,6 +528,8 @@ function YearBlock({
         </span>
         <span className="ml-auto shrink-0 text-[12px] text-[var(--muted)]">{items.length} 条</span>
       </div>
+
+      <EraNote year={year} />
 
       {items.map((item) => (
         <Entry

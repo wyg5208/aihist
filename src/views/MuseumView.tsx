@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import type { ReactNode } from "react";
 import type { Category, Confidence, TimelineItem } from "../types";
 import { BrandMark } from "../components/BrandMark";
+import { EraBrief, EraNote } from "../components/EraBrief";
 import { EventDetail } from "../components/EventDetail";
 import { FooterSites } from "../components/FooterSites";
 import { SubscribeForm } from "../components/SubscribeForm";
@@ -394,38 +395,46 @@ export function MuseumView({ archive }: { archive: ArchiveController }) {
 
           {!showLoading && filtered.length > 0 && (
             <div className={refreshing ? "opacity-70" : undefined}>
-              {groups.map((group) => (
-                <YearGrid
-                  key={group.year}
-                  year={group.year}
-                  items={group.items}
-                  expandedId={expandedId}
-                  onToggle={toggleRow}
-                  onKeyword={focusKeyword}
-                />
-              ))}
+              <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_17rem] lg:items-start lg:gap-7 xl:grid-cols-[minmax(0,1fr)_18rem] xl:gap-9">
+                <div className="min-w-0">
+                  {groups.map((group) => (
+                    <YearGrid
+                      key={group.year}
+                      year={group.year}
+                      items={group.items}
+                      expandedId={expandedId}
+                      onToggle={toggleRow}
+                      onKeyword={focusKeyword}
+                    />
+                  ))}
 
-              <div className="mu-green mt-10 grid items-center gap-6 rounded-[10px] px-6 py-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:px-8 lg:py-[30px]">
-                <div>
-                  <h2 className="font-serif text-[25px] tracking-[-0.01em]">把这份档案带走</h2>
-                  <p className="mt-[7px] max-w-[56ch] text-[13.6px] text-[#c3b898]">
-                    订阅每周简报，或申请 API Key 把结构化事件、证据与原链接入你的产品与研究流程。
-                    免费额度每秒 5 次，通常 1 个工作日内开通。
-                  </p>
+                  <div className="mu-green mt-10 grid items-center gap-6 rounded-[10px] px-6 py-6 lg:grid-cols-[minmax(0,1fr)_auto] lg:px-8 lg:py-[30px]">
+                    <div>
+                      <h2 className="font-serif text-[25px] tracking-[-0.01em]">把这份档案带走</h2>
+                      <p className="mt-[7px] max-w-[56ch] text-[13.6px] text-[#c3b898]">
+                        订阅每周简报，或申请 API Key 把结构化事件、证据与原链接入你的产品与研究流程。
+                        免费额度每秒 5 次，通常 1 个工作日内开通。
+                      </p>
+                    </div>
+                    <div className="flex flex-wrap gap-2.5">
+                      <a
+                        href="/api/v1/subscribe?src=band"
+                        className="inline-flex h-11 items-center rounded-[6px] bg-[var(--accent-mark)] px-5.5 text-[14.5px] font-semibold text-[#20180a] transition-colors hover:bg-[#c29c58]"
+                      >
+                        订阅更新
+                      </a>
+                      <a
+                        href="/api/v1/open/apply"
+                        className="inline-flex h-11 items-center rounded-[6px] border border-[#4e6f60] px-5.5 text-[14.5px] font-semibold text-[#e9e0ca] transition-colors hover:border-[#8aa392]"
+                      >
+                        申请 API →
+                      </a>
+                    </div>
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-2.5">
-                  <a
-                    href="/api/v1/subscribe?src=band"
-                    className="inline-flex h-11 items-center rounded-[6px] bg-[var(--accent-mark)] px-5.5 text-[14.5px] font-semibold text-[#20180a] transition-colors hover:bg-[#c29c58]"
-                  >
-                    订阅更新
-                  </a>
-                  <a
-                    href="/api/v1/open/apply"
-                    className="inline-flex h-11 items-center rounded-[6px] border border-[#4e6f60] px-5.5 text-[14.5px] font-semibold text-[#e9e0ca] transition-colors hover:border-[#8aa392]"
-                  >
-                    申请 API →
-                  </a>
+
+                <div className="hidden lg:sticky lg:top-[9rem] lg:block">
+                  <EraBrief year={activeYear ?? groups[0].year} variant="museum" />
                 </div>
               </div>
             </div>
@@ -615,6 +624,8 @@ function YearGrid({
         </span>
         <span className="ml-auto shrink-0 text-[12px] text-[var(--muted)]">{items.length} 条</span>
       </div>
+
+      <EraNote year={year} />
 
       <div className="mt-3.5 grid gap-3 md:grid-cols-2">
         {items.map((item) => (

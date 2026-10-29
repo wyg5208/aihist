@@ -170,19 +170,34 @@ export function useArchive() {
     if (!yearKey) return;
     const sections = Array.from(document.querySelectorAll<HTMLElement>("[data-year]"));
     if (!sections.length) return;
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries
-          .filter((entry) => entry.isIntersecting)
-          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
-        if (visible[0]) {
-          setActiveYear(Number(visible[0].target.getAttribute("data-year")));
-        }
-      },
-      { rootMargin: "-8% 0px -72% 0px", threshold: 0 }
-    );
-    sections.forEach((section) => observer.observe(section));
-    return () => observer.disconnect();
+    let frame = 0;
+
+    // The era rail describes the year the reader is *at*, not the tallest
+    // section still on screen: pick the last heading that has passed the line
+    // just under the sticky stack. IntersectionObserver's "topmost visible"
+    // rule kept the previous year during the first rows of the next one.
+    const update = () => {
+      frame = 0;
+      const line = 160;
+      let current = sections[0];
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= line) current = section;
+        else break;
+      }
+      setActiveYear(Number(current.getAttribute("data-year")));
+    };
+    const schedule = () => {
+      if (!frame) frame = requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener("scroll", schedule, { passive: true });
+    window.addEventListener("resize", schedule);
+    return () => {
+      if (frame) cancelAnimationFrame(frame);
+      window.removeEventListener("scroll", schedule);
+      window.removeEventListener("resize", schedule);
+    };
   }, [yearKey]);
 
   useEffect(() => {

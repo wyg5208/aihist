@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { Confidence, TimelineItem } from "../types";
 import { BrandMark } from "../components/BrandMark";
+import { EraBrief, EraNote } from "../components/EraBrief";
 import { EventDetail } from "../components/EventDetail";
 import { FooterSites } from "../components/FooterSites";
 import { SubscribeForm } from "../components/SubscribeForm";
@@ -48,6 +49,7 @@ export function EditorialView({ archive }: { archive: ArchiveController }) {
     reload,
     filtered,
     groups,
+    activeYear,
     query,
     category,
     confidence,
@@ -420,35 +422,46 @@ export function EditorialView({ archive }: { archive: ArchiveController }) {
 
           {!showLoading && filtered.length > 0 && (
             <div className={refreshing ? "opacity-70" : undefined}>
-              {groups.map((group) => (
-                <YearBlock
-                  key={group.year}
-                  year={group.year}
-                  items={group.items}
-                  expandedId={expandedId}
-                  onToggle={toggleRow}
-                  onKeyword={focusKeyword}
-                />
-              ))}
+              <div className="lg:grid lg:grid-cols-[minmax(0,1fr)_18rem] lg:items-start lg:gap-10">
+                <div className="min-w-0">
+                  {groups.map((group) => (
+                    <YearBlock
+                      key={group.year}
+                      year={group.year}
+                      items={group.items}
+                      expandedId={expandedId}
+                      onToggle={toggleRow}
+                      onKeyword={focusKeyword}
+                    />
+                  ))}
 
-              <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border border-[var(--rule)] bg-[var(--surface)] px-5 py-4">
-                <p className="text-[13.5px] text-[var(--ink-soft)]">
-                  档案到此为止 · 共 <b className="text-[var(--ink)]">{filtered.length}</b> 条记录
-                  {filtered.length !== items.length ? `（全档 ${items.length} 条）` : ""}。
-                </p>
-                <div className="flex flex-wrap gap-2.5">
-                  <a
-                    href="/api/v1/timeline?limit=1200"
-                    className="inline-flex h-[34px] items-center border border-[var(--rule-strong)] px-3.5 text-[12.5px] font-semibold text-[var(--ink)] transition-colors hover:border-[var(--ink)] hover:bg-white"
-                  >
-                    下载 JSON
-                  </a>
-                  <a
-                    href="/api/v1/open/apply"
-                    className="inline-flex h-[34px] items-center border border-[var(--rule-strong)] px-3.5 text-[12.5px] font-semibold text-[var(--ink)] transition-colors hover:border-[var(--ink)] hover:bg-white"
-                  >
-                    API 接入
-                  </a>
+                  <div className="mt-7 flex flex-wrap items-center justify-between gap-4 border border-[var(--rule)] bg-[var(--surface)] px-5 py-4">
+                    <p className="text-[13.5px] text-[var(--ink-soft)]">
+                      档案到此为止 · 共 <b className="text-[var(--ink)]">{filtered.length}</b> 条记录
+                      {filtered.length !== items.length ? `（全档 ${items.length} 条）` : ""}。
+                    </p>
+                    <div className="flex flex-wrap gap-2.5">
+                      <a
+                        href="/api/v1/timeline?limit=1200"
+                        className="inline-flex h-[34px] items-center border border-[var(--rule-strong)] px-3.5 text-[12.5px] font-semibold text-[var(--ink)] transition-colors hover:border-[var(--ink)] hover:bg-white"
+                      >
+                        下载 JSON
+                      </a>
+                      <a
+                        href="/api/v1/open/apply"
+                        className="inline-flex h-[34px] items-center border border-[var(--rule-strong)] px-3.5 text-[12.5px] font-semibold text-[var(--ink)] transition-colors hover:border-[var(--ink)] hover:bg-white"
+                      >
+                        API 接入
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="hidden lg:sticky lg:top-[8.75rem] lg:block">
+                  <EraBrief
+                    year={activeYear ?? groups[0].year}
+                    variant="editorial"
+                  />
                 </div>
               </div>
             </div>
@@ -648,6 +661,8 @@ function YearBlock({
           {items.length} 条
         </span>
       </div>
+
+      <EraNote year={year} />
 
       {items.map((item) => (
         <Entry
